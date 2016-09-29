@@ -22,14 +22,16 @@ import java.util.HashMap;
  */
 public class UserController {
     public static void LogIn(Context context , String user, String password){
-        String URL_BASE = "http://52.89.227.55/api/";
+        String URL_BASE = "http://192.168.43.6/internetUAS/public/api/";
+        //String URL_BASE = "http://52.89.227.55/api/";
         String URL_COMPLEMENTO = "authenticate";
 
         // Mapeo de los pares clave-valor
         HashMap<String, String> parametros = new HashMap();
-        parametros.put("user", "admin");
-        parametros.put("password", "secret");
+        parametros.put("user", user);
+        parametros.put("password", password);
         System.out.println("Realizando en request");
+        System.out.println(new JSONObject(parametros).toString());
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 URL_BASE + URL_COMPLEMENTO,
@@ -38,13 +40,14 @@ public class UserController {
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        JSONObject jsonUser = null;
+                        JSONObject jsonUser;
                         try {
                             jsonUser = response.getJSONObject("user");
+                            System.out.println(jsonUser.toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(jsonUser.toString());
+
                     }
                 },
                 new Response.ErrorListener() {
