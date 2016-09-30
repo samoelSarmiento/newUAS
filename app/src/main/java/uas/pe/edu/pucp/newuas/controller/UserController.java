@@ -22,12 +22,12 @@ import java.util.HashMap;
  */
 public class UserController {
     public static void LogIn(Context context , String user, String password){
-        String URL_BASE = "http://192.168.43.6/internetUAS/public/api/";
+        String URL_BASE = "http://192.168.1.53/internetUAS/public/api/";
         //String URL_BASE = "http://52.89.227.55/api/";
         String URL_COMPLEMENTO = "authenticate";
 
         // Mapeo de los pares clave-valor
-        HashMap<String, String> parametros = new HashMap();
+        HashMap<String, String> parametros = new HashMap<>();
         parametros.put("user", user);
         parametros.put("password", password);
         System.out.println("Realizando en request");
