@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -49,7 +50,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /*CRUD USER*/
-    void addContact(User contact) {
+    public void addContact(User contact) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -59,5 +60,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Inserting Row
         db.insert(TABLE_USERS, null, values);
         db.close(); // Closing database connection
+    }
+
+    public boolean checkIfUserExists(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] tableColumns = new String[]{KEY_USER};
+        String whereClause = KEY_USER + " = ?";
+        String[] whereArgs = new String[]{username};
+        String orderBy = KEY_USER;
+        //formamos el query
+        Cursor cursor = db.query(TABLE_USERS,tableColumns,whereClause,whereArgs,null,null,orderBy);
+        boolean exists = cursor != null && cursor.getCount() > 0;
+        //Closing connections
+        cursor.close();
+        db.close();
+        //return result
+        return exists;
+    }
+
+    public User queryUser(String username, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] tableColumns = new String[]{KEY_USER};
+        String whereClause = KEY_USER + " = ?";
+        String[] whereArgs = new String[]{username};
+        String orderBy = KEY_USER;
+        //formamos el query
+        Cursor cursor = db.query(TABLE_USERS,tableColumns,whereClause,whereArgs,null,null,orderBy);
+        User user = null;
+        if (cursor != null){
+            cursor.moveToFirst();
+            int id = cursor.getInt(0);
+            int idPerfil = cursor.getInt(1);
+            String usnm = cursor.getString(2);
+            user = new User(id,idPerfil,usnm);
+        }
+        cursor.close();
+        db.close();;
+        return user;
     }
 }
