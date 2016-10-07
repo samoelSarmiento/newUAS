@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
  */
 
 public class InternetConnection {
+
+    //Funcion que verifica si se esta conectado a internet
     public static boolean isOnline(Context context){
         ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
