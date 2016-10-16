@@ -7,4 +7,12 @@
     <string name="btIngresar">INGRESAR</string>
     <string name="ivLogo_description">Logo</string>
     <string name="tvCicle">Ciclo: </string>
+    <string name="btModuleAcr">Acreditación</string>
+    <string name="btModuleTutEv">Tutoría y Evaluación</string>
+    <string name="btModulePsp">PSP</string>
+    <string name="btModuleInv">Investigación</string>
+    <string name="tvCourse">Curso:</string>
+    <string name="tvSpecialty">Especialidad:</string>
+    <string name="tvProfessor">Profesor:</string>
+    <string name="tvDescription">Descripción:</string>
 </resources>

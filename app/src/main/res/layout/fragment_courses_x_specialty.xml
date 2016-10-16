@@ -7,25 +7,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:paddingEnd="100dp"
         android:paddingStart="100dp"
-        android:paddingEnd="100dp">
+        android:paddingTop="10dp">
 
         <TextView
+            android:id="@+id/tvCicle"
             android:layout_width="0dp"
-            android:layout_weight="0.25"
             android:layout_height="match_parent"
-            android:text="@string/tvCicle"/>
+            android:layout_weight="0.25"
+            android:text="@string/tvCicle" />
+
         <Spinner
+            android:id="@+id/spnCicle"
             android:layout_width="0dp"
-            android:layout_weight="0.75"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75">
+            
         </Spinner>
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/svCourses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ListView
+            android:id="@+id/lvCourses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
     </ScrollView>
 </LinearLayout>
