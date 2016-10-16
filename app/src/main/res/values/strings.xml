@@ -2,4 +2,10 @@
     <string name="app_name">NewUAS</string>
     <string name="url_server">http://52.89.227.55/api/</string>
     <string name="tag_authenticate">authenticate</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
