@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -49,6 +50,7 @@ public class UserController {
                         try {
                             jsonUser = response.getJSONObject("user");
                             System.out.println(jsonUser.toString());
+                            Intent intent = new Intent(context,null);
                             //mover al intent siguiente de vista inicial
                         } catch (JSONException e) {
                             e.printStackTrace();

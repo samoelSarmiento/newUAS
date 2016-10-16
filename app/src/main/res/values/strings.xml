@@ -2,10 +2,56 @@
     <string name="app_name">NewUAS</string>
     <string name="url_server">http://52.89.227.55/api/</string>
     <string name="tag_authenticate">authenticate</string>
+
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="etUsername">Usuario</string>
+    <string name="etPassword">Contraseña</string>
+    <string name="btIngresar">INGRESAR</string>
+    <string name="ivLogo_description">Logo</string>
+    <string name="tvCicle">Ciclo: </string>
+
+
+    <!--Investigacion-->
+    <string name="invGroupEsp">Especialidad:</string>
+    <string name="invGroupDesc">Descripcion:</string>
+
+    <string name="invMail">Correo:</string>
+    <string name="invEsp">Especialidad:</string>
+    <string name="invTel">Telefono:</string>
+
+    <string name="projInitDate">Fecha Inicial:</string>
+    <string name="projFinDate">Fecha Final:</string>
+    <string name="projDeliv">Cant. Entregables:</string>
+    <string name="projMembers">Integrantes:</string>
+
+    <string name="btModuleAcr">Acreditación</string>
+    <string name="btModuleTutEv">Tutoría y Evaluación</string>
+    <string name="btModulePsp">PSP</string>
+    <string name="btModuleInv">Investigación</string>
+    <string name="tvCourse">Curso:</string>
+    <string name="tvSpecialty">Especialidad:</string>
+    <string name="tvProfessor">Profesor:</string>
+    <string name="tvDescription">Descripción:</string>
+
+    <string name="tvSpecialtyLabel">Especialidad: </string>
+    <string name="tvSpecialtyCode">Código: </string>
+    <string name="tvSpecialtyCoord">Coordinador: </string>
+    <string name="tvSpecialtyDesc">Descripción: </string>
+    <string name="tvMeasureResStartSemester">Ciclo de Inicio: </string>
+    <string name="tvMeasureResEndSemester">Ciclo de Inicio: </string>
+    <string name="tvMeasureCritLevel">Nivel de criterio: </string>
+    <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
+    <string name="tvMeasureAccPerc">Porc. de Aceptaciòn: </string>
+    <string name="btObjEdu">Objetivos Educacionales</string>
+    <string name="btMeaInst">Instrumentos De Medición</string>
+
+
+
+
 </resources>
