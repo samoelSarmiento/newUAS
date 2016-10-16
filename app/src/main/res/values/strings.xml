@@ -2,4 +2,9 @@
     <string name="app_name">NewUAS</string>
     <string name="url_server">http://52.89.227.55/api/</string>
     <string name="tag_authenticate">authenticate</string>
+    <string name="etUsername">Usuario</string>
+    <string name="etPassword">Contraseña</string>
+    <string name="btIngresar">INGRESAR</string>
+    <string name="ivLogo_description">Logo</string>
+    <string name="tvCicle">Ciclo: </string>
 </resources>

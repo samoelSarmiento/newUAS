@@ -50,6 +50,7 @@ public class UserController {
                         try {
                             jsonUser = response.getJSONObject("user");
                             System.out.println(jsonUser.toString());
+                            Intent intent = new Intent(context,null);
                             //mover al intent siguiente de vista inicial
                         } catch (JSONException e) {
                             e.printStackTrace();
