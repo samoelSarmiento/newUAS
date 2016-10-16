@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-    package="uas.pe.edu.pucp.newuas" >
-=======
+
     package="uas.pe.edu.pucp.newuas">
->>>>>>> 3008c91deddab52e5c8b71da2271053990d09aab
+
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,28 +14,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="NewUAS"
         android:supportsRtl="true"
-<<<<<<< HEAD
-        android:theme="@style/AppTheme" >
-        <activity android:name=".view.NavigationDrawerTutoria" >
-=======
+
+
         android:theme="@style/AppTheme">
         <activity android:name=".view.LogInActivity">
->>>>>>> 3008c91deddab52e5c8b71da2271053990d09aab
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
+
         <activity
             android:name=".view.MainActivity"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
+
         </activity>
-=======
-        <activity android:name=".view.MainActivity"></activity>
->>>>>>> 3008c91deddab52e5c8b71da2271053990d09aab
+
+
     </application>
 
 </manifest>
