@@ -73,17 +73,27 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_myspecialty) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_courses) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_eduobjectivo) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_sizperiod) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_studresult) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_criteria) {
+
+        }else if (id == R.id.nav_upgplan) {
+
+        }else if (id == R.id.nav_efforttable) {
+
+        }else if (id == R.id.nav_sizeresult) {
+
+        }else if (id == R.id.nav_consolidate) {
+
+        }else if (id == R.id.nav_signout) {
 
         }
 
