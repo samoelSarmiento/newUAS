@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_myspecialty"
+            android:icon="@drawable/ic_faculty_white"
+            android:title="@string/itdAcrSpecialty" />
+        <item
+            android:id="@+id/nav_courses"
+            android:icon="@drawable/ic_cursos"
+            android:title="@string/itdAcrCourse" />
+        <item
+            android:id="@+id/nav_eduobjectivo"
+            android:icon="@drawable/ic_objetivos_ed"
+            android:title="@string/itdAcrEducationalObj" />
+        <item
+            android:id="@+id/nav_sizperiod"
+            android:icon="@drawable/ic_aspectos"
+            android:title="@string/itdAcrSizeablePeriod" />
+        <item
+            android:id="@+id/nav_studresult"
+            android:icon="@drawable/ic_resultados_est"
+            android:title="@string/itdAcrStudentResult" />
+        <item
+            android:id="@+id/nav_criteria"
+            android:icon="@drawable/ic_resultados_eval"
+            android:title="@string/itdAcrCriteria" />
+        <item
+            android:id="@+id/nav_upgplan"
+            android:icon="@drawable/ic_mejora_cont"
+            android:title="@string/itdAcrUpgradePlan" />
+        <item
+            android:id="@+id/nav_efforttable"
+            android:icon="@drawable/ic_aspectos"
+            android:title="@string/itdAcrEffortTable" />
+        <item
+            android:id="@+id/nav_sizeresult"
+            android:icon="@drawable/ic_rubricas"
+            android:title="@string/itdAcrSizeResult" />
+        <item
+            android:id="@+id/nav_consolidate"
+            android:icon="@drawable/ic_cursos"
+            android:title="@string/itdAcrConsolidate" />
+        <item
+            android:id="@+id/nav_signout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/itdAcrSignOut" />
+    </group>
+</menu>
