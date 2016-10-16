@@ -30,26 +30,26 @@
     <string name="projDeliv">Cant. Entregables:</string>
     <string name="projMembers">Integrantes:</string>
 
-    <string name="btModuleAcr">Acreditación</string>
-    <string name="btModuleTutEv">Tutoría y Evaluación</string>
+    <string name="btModuleAcr">Acreditacion</string>
+    <string name="btModuleTutEv">Tutoría y Evaluacion</string>
     <string name="btModulePsp">PSP</string>
-    <string name="btModuleInv">Investigación</string>
+    <string name="btModuleInv">Investigacion</string>
     <string name="tvCourse">Curso:</string>
     <string name="tvSpecialty">Especialidad:</string>
     <string name="tvProfessor">Profesor:</string>
-    <string name="tvDescription">Descripción:</string>
+    <string name="tvDescription">Descripcion:</string>
 
     <string name="tvSpecialtyLabel">Especialidad: </string>
-    <string name="tvSpecialtyCode">Código: </string>
+    <string name="tvSpecialtyCode">Codigo: </string>
     <string name="tvSpecialtyCoord">Coordinador: </string>
-    <string name="tvSpecialtyDesc">Descripción: </string>
+    <string name="tvSpecialtyDesc">Descripcion: </string>
     <string name="tvMeasureResStartSemester">Ciclo de Inicio: </string>
     <string name="tvMeasureResEndSemester">Ciclo de Inicio: </string>
     <string name="tvMeasureCritLevel">Nivel de criterio: </string>
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
-    <string name="tvMeasureAccPerc">Porc. de Aceptaciòn: </string>
+    <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
-    <string name="btMeaInst">Instrumentos De Medición</string>
+    <string name="btMeaInst">Instrumentos De Medicion</string>
 
 
 
