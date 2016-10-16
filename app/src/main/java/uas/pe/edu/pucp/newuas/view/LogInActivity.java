@@ -1,6 +1,5 @@
 package uas.pe.edu.pucp.newuas.view;
 
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.UserController;
 
-public class MainActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
 
     Button btnIngresar = null;
     EditText edtUser = null;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
 
         //Elementos de Login
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 String user = edtUser.getText().toString();
                 String password = edtPassword.getText().toString();
                 System.out.println("Log in antes");
-                UserController.LogIn(MainActivity.this,user,password);
+                UserController.LogIn(LogInActivity.this,user,password);
                 System.out.println("Log in despues");
 
             }
