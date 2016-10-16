@@ -2,6 +2,14 @@
     <string name="app_name">NewUAS</string>
     <string name="url_server">http://52.89.227.55/api/</string>
     <string name="tag_authenticate">authenticate</string>
+
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
     <string name="etUsername">Usuario</string>
     <string name="etPassword">Contraseña</string>
     <string name="btIngresar">INGRESAR</string>
@@ -42,6 +50,7 @@
     <string name="tvMeasureAccPerc">Porc. de Aceptaciòn: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
     <string name="btMeaInst">Instrumentos De Medición</string>
+
 
 
 
