@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="@string/invModule">
+        <menu>
+            <item
+                android:id="@+id/nav_invGroup"
+                android:icon="@drawable/ic_aspectos"
+                android:title="@string/invGroup" />
+            <item
+                android:id="@+id/nav_inv"
+                android:icon="@drawable/ic_aspectos"
+                android:title="@string/investigator" />
+
+            <item
+                android:id="@+id/nav_proj"
+                android:icon="@drawable/ic_aspectos"
+                android:title="@string/projects" />
+
+            <item
+                android:id="@+id/nav_back"
+                android:icon="@drawable/ic_back"
+                android:title="@string/invBack" />
+
+            <item
+                android:id="@+id/nav_logOut"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/invLogOut" />
+
+        </menu>
+    </item>
+
+</menu>

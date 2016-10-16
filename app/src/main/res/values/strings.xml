@@ -18,6 +18,14 @@
 
 
     <!--Investigacion-->
+    <string name="invModule">Módulo de Investigación</string>
+    <string name="investigator">Investigadores</string>
+    <string name="invGroup">Grupos de Investigación</string>
+    <string name="projects">Proyectos</string>
+    <string name="invBack">Volver</string>
+    <string name="invLogOut">Cerrar Sesión</string>
+
+
     <string name="invGroupEsp">Especialidad:</string>
     <string name="invGroupDesc">Descripcion:</string>
 
@@ -29,6 +37,7 @@
     <string name="projFinDate">Fecha Final:</string>
     <string name="projDeliv">Cant. Entregables:</string>
     <string name="projMembers">Integrantes:</string>
+    <!--Inv Fin-->
 
     <string name="btModuleAcr">Acreditación</string>
     <string name="btModuleTutEv">Tutoría y Evaluación</string>
@@ -50,8 +59,8 @@
     <string name="tvMeasureAccPerc">Porc. de Aceptaciòn: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
     <string name="btMeaInst">Instrumentos De Medición</string>
-
-
+    <string name="title_activity_navigation_drawer_investigacion">NavigationDrawerInvestigacion
+    </string>
 
 
 </resources>
