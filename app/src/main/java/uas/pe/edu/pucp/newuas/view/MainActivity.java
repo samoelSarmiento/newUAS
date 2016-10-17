@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btModuleAcr:
+                Intent intent = new Intent(this,AcreditacionActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btModuleInv:
+                break;
+            case R.id.btModulePsp:
+                break;
+            case R.id.btModuleTutEv:
                 break;
         }
     }
