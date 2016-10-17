@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btModuleAcr:
-                Intent intent = new Intent(this,AcreditacionActivity.class);
+                Intent intent = new Intent(this,NavigationDrawerAcreditacion.class);
                 startActivity(intent);
                 break;
             case R.id.btModuleInv:
