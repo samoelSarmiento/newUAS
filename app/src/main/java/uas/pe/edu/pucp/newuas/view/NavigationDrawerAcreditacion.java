@@ -80,8 +80,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = null;
-        Class fragmentClass = null;
 
         if (id == R.id.nav_myspecialty) {
             // Handle the camera action

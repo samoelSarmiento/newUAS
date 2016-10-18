@@ -22,14 +22,40 @@ import org.json.JSONObject;
 import java.io.Console;
 import java.util.HashMap;
 
+import uas.pe.edu.pucp.newuas.model.Accreditor;
 import uas.pe.edu.pucp.newuas.model.User;
+import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 /**
  * Created by samoe on 21/09/2016.
  */
 public class UserController {
-    public static boolean LogIn(final Context context , String user, String password){
-        String URL_BASE = "http://192.168.1.53/internetUAS/public/api/";
+
+    private static Accreditor parseAccreditor(JSONObject user) throws JSONException {
+        int idUsuario = user.getInt("IdUsuario");
+        int idPerfil = user.getInt("IdPerfil");
+        String usuario = user.getString("Usuario");
+        Accreditor accreditor = new Accreditor(idUsuario, idPerfil, usuario);
+        JSONObject jsAccreditor = user.getJSONObject("accreditor");
+        int idAcreditador = user.getInt("IdAcreditador");
+        int idEspecialidad = jsAccreditor.getInt("IdEspecialidad");
+        String nombre = jsAccreditor.getString("Nombre");
+        String apellidoPaterno = jsAccreditor.getString("ApellidoPaterno");
+        String apellidoMaterno = jsAccreditor.getString("ApellidoMaterno");
+        String correo = jsAccreditor.getString("Correo");
+
+        accreditor.setNombre(nombre);
+        accreditor.setApellidoPaterno(apellidoPaterno);
+        accreditor.setApellidoMaterno(apellidoMaterno);
+        accreditor.setCorreo(correo);
+        accreditor.setCargo("Acreditador");
+        accreditor.setIdAcreditador(idAcreditador);
+        accreditor.setIdEspecialidad(idEspecialidad);
+        return accreditor;
+    }
+
+    public static boolean LogIn(final Context context, String user, String password) {
+        String URL_BASE = "http://10.101.40.120/internetUAS/public/api/";
         //String URL_BASE = "http://52.89.227.55/api/";
         String URL_COMPLEMENTO = "authenticate";
 
@@ -50,8 +76,12 @@ public class UserController {
                         try {
                             jsonUser = response.getJSONObject("user");
                             System.out.println(jsonUser.toString());
-                            Intent intent = new Intent(context,null);
+                            //if (jsonUser.getInt("IdPerfil") == 4){
+                                Accreditor accreditor = parseAccreditor(jsonUser);
+                            //}
                             //mover al intent siguiente de vista inicial
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -63,20 +93,20 @@ public class UserController {
                     public void onErrorResponse(VolleyError error) {
                         // Manejo de errores
                         System.out.println("Error en el response");
-                        Toast.makeText(context,"Usuario o contraseña incorrrectos",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Usuario o contraseña incorrrectos", Toast.LENGTH_LONG).show();
                         //regresar al intent normal
                     }
                 });
         //Se verifica incialmente si se esta conectado a internet
-        if(!InternetConnection.isOnline(context)){
-            DatabaseHandler db = new DatabaseHandler(context,"dp2",null,1);
+        if (!InternetConnection.isOnline(context)) {
+            DatabaseHandler db = new DatabaseHandler(context, "dp2", null, 1);
             //verificar si el usuario ya existe
-            if (db.checkIfUserExists(user)){
-                User userLogged = db.queryUser(user,"");
+            if (db.checkIfUserExists(user)) {
+                User userLogged = db.queryUser(user, "");
                 //retornar true supongo
                 return true;
-            }else{
-                Toast.makeText(context,"Error de conexion",Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(context, "Error de conexion", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
