@@ -1,5 +1,8 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +39,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        setTitle("Mi Especialidad");
+
     }
 
     @Override
@@ -77,10 +82,13 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         Class fragmentClass = null;
+
         if (id == R.id.nav_myspecialty) {
             // Handle the camera action
         } else if (id == R.id.nav_courses) {
-            fragmentClass = CoursesFragment.class;
+            CoursesFragment coursesFragment = new CoursesFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();
+            setTitle(item.getTitle());
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
@@ -89,30 +97,36 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         } else if (id == R.id.nav_criteria) {
 
-        }else if (id == R.id.nav_upgplan) {
+        } else if (id == R.id.nav_upgplan) {
 
-        }else if (id == R.id.nav_efforttable) {
+        } else if (id == R.id.nav_efforttable) {
 
-        }else if (id == R.id.nav_sizeresult) {
+        } else if (id == R.id.nav_sizeresult) {
 
-        }else if (id == R.id.nav_consolidate) {
+        } else if (id == R.id.nav_consolidate) {
 
-        }else if (id == R.id.nav_signout) {
+        } else if (id == R.id.nav_signout) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Borra los shared preferences
+                            //regresa al login
+                            Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            startActivity(intent);
+                            break;
 
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //Nada pasa
+                            break;
+                    }
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                    .setPositiveButton("Si", dialogClickListener).show();
         }
-
-        try{
-            fragment =  (Fragment) fragmentClass.newInstance();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit();
-
-        item.setChecked(true);
-
-        setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
