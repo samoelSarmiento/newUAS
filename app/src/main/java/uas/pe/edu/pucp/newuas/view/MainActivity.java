@@ -31,12 +31,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()){
             case R.id.btModuleAcr:
-                Intent intent = new Intent(this,NavigationDrawerAcreditacion.class);
+                intent = new Intent(this,NavigationDrawerAcreditacion.class);
                 startActivity(intent);
                 break;
             case R.id.btModuleInv:
+                intent = new Intent(this,NavigationDrawerInvestigacion.class);
+                startActivity(intent);
                 break;
             case R.id.btModulePsp:
                 break;
