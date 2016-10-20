@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
+import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,7 +41,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        setTitle("Mi Especialidad");
+        setTitle("Mi Perfil");
 
     }
 
@@ -80,9 +82,12 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_myself) {
+            MySelfFragment mySelfFragment = new MySelfFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, mySelfFragment).commit();
+            setTitle(item.getTitle());
+        } else if (id == R.id.nav_myspecialty) {
 
-        if (id == R.id.nav_myspecialty) {
-            // Handle the camera action
         } else if (id == R.id.nav_courses) {
             CoursesFragment coursesFragment = new CoursesFragment();
             getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();

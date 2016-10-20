@@ -70,6 +70,7 @@
 
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
+    <string name="itdAcrMyself">Mi Perfil</string>
     <string name="itdAcrCourse">Cursos</string>
     <string name="itdAcrEducationalObj">Objetivo Educacional</string>
     <string name="itdAcrSizeablePeriod">Periodos de Medición</string>
@@ -80,7 +81,9 @@
     <string name="itdAcrSizeResult">Resultados de Medición</string>
     <string name="itdAcrConsolidate">Consolidados</string>
     <string name="itdAcrSignOut">Cerrar Sesión</string>
-
+    <string name="tvAcrName">Nombre:</string>
+    <string name="tvAcrSurnames">Apelldios:</string>
+    <string name="tvAcreEmail">Correo:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
