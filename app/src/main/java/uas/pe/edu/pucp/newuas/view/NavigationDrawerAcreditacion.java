@@ -79,13 +79,13 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_myself) {
             MySelfFragment mySelfFragment = new MySelfFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, mySelfFragment).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
             setTitle(item.getTitle());
         } else if (id == R.id.nav_myspecialty) {
 
         } else if (id == R.id.nav_courses) {
             CoursesFragment coursesFragment = new CoursesFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
             setTitle(item.getTitle());
         } else if (id == R.id.nav_eduobjectivo) {
 
