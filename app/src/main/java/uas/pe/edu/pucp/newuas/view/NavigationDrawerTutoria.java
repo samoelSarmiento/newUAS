@@ -1,5 +1,8 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -93,7 +96,27 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         } else if (id == R.id.nav_citas) {
             fragment = new AlumnoNuevaCitaFragment();
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_loginout) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Borra los shared preferences
+                            //regresa al login
+                            Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            startActivity(intent);
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //Nada pasa
+                            break;
+                    }
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                    .setPositiveButton("Si", dialogClickListener).show();
         }
 
         // Insert the fragment by replacing any existing fragment

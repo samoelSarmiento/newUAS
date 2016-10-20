@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btModulePsp:
                 break;
             case R.id.btModuleTutEv:
+                intent = new Intent(this,NavigationDrawerTutoria.class);
+                startActivity(intent);
                 break;
         }
     }
