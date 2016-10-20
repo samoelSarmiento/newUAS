@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 
@@ -109,6 +110,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             //Borra los shared preferences
+                            Configuration.LOGIN_USER = null;
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
                             startActivity(intent);
