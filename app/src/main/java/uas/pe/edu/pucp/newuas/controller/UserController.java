@@ -1,14 +1,17 @@
 package uas.pe.edu.pucp.newuas.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
-import uas.pe.edu.pucp.newuas.model.UserResponseAccreditor;
+import uas.pe.edu.pucp.newuas.model.UserResponse;
+import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 /**
  * Created by samoe on 21/09/2016.
@@ -17,20 +20,26 @@ public class UserController {
 
 
     public boolean LogIn(final Context context, String user, String password) {
-        RestCon restCon = RetrofitHelper.apiConnector.create(   RestCon.class);
-        Call<UserResponseAccreditor> call = restCon.getAccreditor(new UserRequest(user, password));
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<UserResponse> call = restCon.getAccreditor(new UserRequest(user, password));
 
-        call.enqueue(new Callback<UserResponseAccreditor>() {
+        call.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<UserResponseAccreditor> call, retrofit2.Response<UserResponseAccreditor> response) {
-                UserResponseAccreditor accreditor = response.body();
-                System.out.println(accreditor.getUser().getAccreditor().getNombre());
+            public void onResponse(Call<UserResponse> call, retrofit2.Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    UserResponse user = response.body();
+                    Configuration.LOGIN_USER = user.getUser();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    context.startActivity(intent);
+                }else{
+                    Toast.makeText(context,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<UserResponseAccreditor> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Error de conexión.", Toast.LENGTH_SHORT).show();
             }
         });
 

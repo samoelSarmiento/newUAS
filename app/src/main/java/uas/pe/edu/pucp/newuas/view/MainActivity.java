@@ -12,6 +12,7 @@ import uas.pe.edu.pucp.newuas.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btModuleAcr:
-                intent = new Intent(this,NavigationDrawerAcreditacion.class);
+                intent = new Intent(this, NavigationDrawerAcreditacion.class);
                 startActivity(intent);
                 break;
             case R.id.btModuleInv:
-                intent = new Intent(this,NavigationDrawerInvestigacion.class);
+                intent = new Intent(this, NavigationDrawerInvestigacion.class);
                 startActivity(intent);
                 break;
             case R.id.btModulePsp:

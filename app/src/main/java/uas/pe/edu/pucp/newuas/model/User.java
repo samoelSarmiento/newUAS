@@ -20,6 +20,12 @@ public class User {
     @SerializedName("accreditor")
     private Accreditor accreditor;
 
+    @SerializedName("teacher")
+    private Teacher teacher;
+
+    @SerializedName("investigator")
+    private Investigator investigator;
+
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -52,5 +58,19 @@ public class User {
         this.accreditor = accreditor;
     }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Investigator getInvestigator() {
+        return investigator;
+    }
+
+    public void setInvestigator(Investigator investigator) {
+        this.investigator = investigator;
+    }
 }

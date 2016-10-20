@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by samoe on 28/09/2016.
  */
 
-public class UserResponseAccreditor {
+public class UserResponse {
 
     @SerializedName("token")
     private String token;

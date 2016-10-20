@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
-import uas.pe.edu.pucp.newuas.model.UserResponseAccreditor;
+import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 /**
  * Created by samoe on 18/10/2016.
@@ -12,6 +12,6 @@ import uas.pe.edu.pucp.newuas.model.UserResponseAccreditor;
 
 public interface RestCon {
     @POST("authenticate")
-    Call<UserResponseAccreditor> getAccreditor(@Body UserRequest userRequest);
+    Call<UserResponse> getAccreditor(@Body UserRequest userRequest);
 
 }

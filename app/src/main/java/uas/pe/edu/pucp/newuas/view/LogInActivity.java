@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import uas.pe.edu.pucp.newuas.R;
@@ -39,9 +40,13 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
             case R.id.btnLogin:
                 String user = edtUser.getText().toString();
                 String password = edtPassword.getText().toString();
-                System.out.println("Log in antes");
-                UserController userController = new UserController();
-                userController.LogIn(LogInActivity.this, user, password);
+                if (!user.isEmpty() && !password.isEmpty()) {
+                    System.out.println("Log in antes");
+                    UserController userController = new UserController();
+                    userController.LogIn(LogInActivity.this, user, password);
+                }else{
+                    Toast.makeText(this,"Campos vacios. Intente nuevamente",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
