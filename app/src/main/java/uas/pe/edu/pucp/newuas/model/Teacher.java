@@ -56,6 +56,30 @@ public class Teacher {
     @SerializedName("Descripcion")
     private String descripcion;
 
+
+    @SerializedName("pivot")
+    private Pivot pivot;
+
+    public void setVigente(int vigente) {
+        this.vigente = vigente;
+    }
+
+    public boolean isRolTutoria() {
+        return rolTutoria;
+    }
+
+    public boolean isRolEvaluaciones() {
+        return rolEvaluaciones;
+    }
+
+    public Pivot getPivot() {
+        return pivot;
+    }
+
+    public void setPivot(Pivot pivot) {
+        this.pivot = pivot;
+    }
+
     public int getIdDocente() {
         return idDocente;
     }

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -76,17 +77,16 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        setTitle(item.getTitle());
         int id = item.getItemId();
         if (id == R.id.nav_myself) {
             MySelfFragment mySelfFragment = new MySelfFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
-            setTitle(item.getTitle());
         } else if (id == R.id.nav_myspecialty) {
 
         } else if (id == R.id.nav_courses) {
             CoursesFragment coursesFragment = new CoursesFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
-            setTitle(item.getTitle());
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
