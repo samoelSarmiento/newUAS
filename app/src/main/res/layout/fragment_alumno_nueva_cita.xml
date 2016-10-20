@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AlumnoNuevaCitaFragment"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="40dp"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/general_bg_padding"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Fecha:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+       >
+
+        <EditText
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/dateText"
+ />
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="210dp"
+            android:id="@+id/btnCalendar"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Hora:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerHora"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/hora"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Tema:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerTema"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/tema"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+              android:layout_marginLeft="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:id="@+id/buttonCancelar" />
+
+
+        <Button
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:id="@+id/buttonSolicitar" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

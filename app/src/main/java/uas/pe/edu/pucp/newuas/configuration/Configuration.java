@@ -6,5 +6,8 @@ package uas.pe.edu.pucp.newuas.configuration;
 
 public class Configuration {
     public static final String SHARED_PREFERENCE_NAME = "sharedPreferences";
-    public static final String ACCREDITOR_OBJ = "accreditor";
+    public static final String USER_LOGIN = "userPrefs";
+    public static final String BASE_URL = "";
+    public static final String API_AUTHENTICATE = "authenticate";
+    public static final String Q_SELECT_ALL = "SELECT * FROM ";
 }

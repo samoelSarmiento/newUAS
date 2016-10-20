@@ -9,8 +9,10 @@ import android.widget.EditText;
 
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.UserController;
 
-public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
+public class
+LogInActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnIngresar = null;
     EditText edtUser = null;
@@ -38,10 +40,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                 String user = edtUser.getText().toString();
                 String password = edtPassword.getText().toString();
                 System.out.println("Log in antes");
-                //UserController.LogIn(LogInActivity.this,user,password);
-                System.out.println("Log in despues");
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                UserController userController = new UserController();
+                userController.LogIn(LogInActivity.this, user, password);
                 break;
         }
     }

@@ -1,9 +1,11 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
+import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 
 
 public class NavigationDrawerTutoria extends AppCompatActivity
@@ -83,14 +87,43 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment fragment = new TutorInfoFragment() ;
+
         int id = item.getItemId();
 
         if (id == R.id.nav_tutor) {
-            // Handle the camera action
-        } else if (id == R.id.nav_citas) {
+            fragment = new TutorInfoFragment();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_citas) {
+            fragment = new AlumnoNuevaCitaFragment();
+        } else if (id == R.id.nav_loginout) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Borra los shared preferences
+                            //regresa al login
+                            Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            startActivity(intent);
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //Nada pasa
+                            break;
+                    }
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                    .setPositiveButton("Si", dialogClickListener).show();
         }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
