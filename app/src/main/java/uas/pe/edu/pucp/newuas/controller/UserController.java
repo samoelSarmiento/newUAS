@@ -23,7 +23,7 @@ public class UserController {
 
 
     public boolean LogIn(final Context context, String user, String password) {
-        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        RestCon restCon = RetrofitHelper.apiConnector.create(   RestCon.class);
         Call<Example> call = restCon.getAccreditor(new UserRequest(user, password));
 
         call.enqueue(new Callback<Example>() {
