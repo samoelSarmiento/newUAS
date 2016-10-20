@@ -26,7 +26,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigationdrawertutoria);
+        setContentView(R.layout.activity_navigation_drawer_tutoria);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
