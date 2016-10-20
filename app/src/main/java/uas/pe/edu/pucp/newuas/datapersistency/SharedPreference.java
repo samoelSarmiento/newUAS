@@ -3,6 +3,8 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+//import com.google.gson.Gson;
+
 import com.google.gson.Gson;
 
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
@@ -26,5 +28,4 @@ public class SharedPreference {
         editor.putString(Configuration.USER_LOGIN,json);
         editor.apply();
     }
-
 }

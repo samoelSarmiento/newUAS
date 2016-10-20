@@ -30,7 +30,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.NavigationDrawerAcreditacion"
             android:label="@string/title_activity_navigation_drawer_acreditacion"
@@ -58,6 +57,12 @@
 
         </activity>
 
+        <activity
+            android:name=".view.NavigationDrawerPSP"
+            android:label="Psp"
+            android:theme="@style/AppTheme">
+
+        </activity>
     </application>
 
 </manifest>
