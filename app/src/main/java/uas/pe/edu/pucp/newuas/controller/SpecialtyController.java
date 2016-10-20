@@ -7,7 +7,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
-import uas.pe.edu.pucp.newuas.model.Example;
+
 import uas.pe.edu.pucp.newuas.model.UserRequest;
 
 /**
