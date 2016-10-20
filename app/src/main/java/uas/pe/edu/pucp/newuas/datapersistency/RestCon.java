@@ -3,9 +3,8 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-import uas.pe.edu.pucp.newuas.configuration.Configuration;
-import uas.pe.edu.pucp.newuas.model.Example;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
+import uas.pe.edu.pucp.newuas.model.UserResponseAccreditor;
 
 /**
  * Created by samoe on 18/10/2016.
@@ -13,6 +12,6 @@ import uas.pe.edu.pucp.newuas.model.UserRequest;
 
 public interface RestCon {
     @POST("authenticate")
-    Call<Example> getAccreditor(@Body UserRequest userRequest);
+    Call<UserResponseAccreditor> getAccreditor(@Body UserRequest userRequest);
 
 }
