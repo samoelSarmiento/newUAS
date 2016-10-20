@@ -1,4 +1,4 @@
-package uas.pe.edu.pucp.newuas.model.Fragment;
+package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;

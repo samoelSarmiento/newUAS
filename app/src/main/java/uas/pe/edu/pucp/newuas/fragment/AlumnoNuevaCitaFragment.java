@@ -1,4 +1,4 @@
-package uas.pe.edu.pucp.newuas.model.Fragment;
+package uas.pe.edu.pucp.newuas.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
