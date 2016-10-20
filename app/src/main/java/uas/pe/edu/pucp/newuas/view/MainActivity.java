@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btModuleInv:
                 break;
             case R.id.btModulePsp:
+                Intent intentPSP = new Intent(this,NavigationDrawerPSP.class);
+                startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
                 break;

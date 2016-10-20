@@ -28,26 +28,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.NavigationDrawerAcreditacion"
             android:label="@string/title_activity_navigation_drawer_acreditacion"
-            android:theme="@style/AppTheme">
-
-        </activity>
-
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".view.NavigationDrawerInvestigacion"
             android:label="@string/title_activity_navigation_drawer_investigacion"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".view.MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
-
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".view.NavigationDrawerPSP"></activity>
     </application>
 
 </manifest>
