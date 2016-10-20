@@ -13,7 +13,7 @@
                 android:title="Citas" />
 
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_loginout"
                 android:icon="@drawable/ic_logout"
                 android:title="Cerrar Sesión" />
 
