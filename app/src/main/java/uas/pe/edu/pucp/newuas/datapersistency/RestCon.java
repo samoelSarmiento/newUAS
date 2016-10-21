@@ -7,6 +7,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.UserMe;
+import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
@@ -20,7 +21,7 @@ public interface RestCon {
 
 
     @GET("users/me")
-    Call<UserMe> getInvestigator(@Body String token);
+    Call<UserMeResponse> getInvestigator(@Body String token);
 
 
     @POST("{faculty_id}/evaluated_courses")
