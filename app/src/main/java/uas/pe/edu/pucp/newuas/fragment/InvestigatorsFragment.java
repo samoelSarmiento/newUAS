@@ -19,6 +19,7 @@ import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
@@ -50,15 +51,16 @@ public class InvestigatorsFragment extends Fragment{
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
 
-        Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
+        Call<UserMeResponse> call = restCon.getInvestigator(new TokenRequest(Configuration.LOGIN_USER.getToken()));
         call.enqueue(new Callback<UserMeResponse>() {
             @Override
             public void onResponse(Call<UserMeResponse> call, Response<UserMeResponse> response) {
-                UserMeResponse item = response.body();
+                System.out.println(response.code());
+                /*UserMeResponse item = response.body();
                 ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
                 items.add(item);
                 investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);
+                lvInv.setAdapter(investigatorsAdapter);*/
             }
 
             @Override
