@@ -20,6 +20,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.User;
+import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 /**
@@ -47,7 +48,7 @@ public class InvestigatorsFragment extends Fragment{
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
 
-        Call<UserResponse> call = restCon.getInvestigator();
+        Call<UserResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
         call.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
