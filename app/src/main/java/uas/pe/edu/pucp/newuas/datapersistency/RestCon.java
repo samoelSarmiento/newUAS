@@ -19,7 +19,7 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 public interface RestCon {
     @POST("authenticate")
-    Call<UserResponse> getAccreditor(@Body UserRequest userRequest);
+    Call<UserResponse> getUser(@Body UserRequest userRequest);
 
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);

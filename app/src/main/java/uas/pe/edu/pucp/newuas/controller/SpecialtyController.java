@@ -29,13 +29,13 @@ public class SpecialtyController {
     public boolean getSpecialtybyid(final Context context) {
         /*
         RestCon restCon = RetrofitHelper.apiConnector.create( RestCon.class);
-        Call<Example> call = restCon.getAccreditor(new UserRequest(user, password));
+        Call<Example> call = restCon.getUser(new UserRequest(user, password));
 
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, retrofit2.Response<Example> response) {
                 Example example = response.body();
-                System.out.println(example.getUser().getAccreditor().getNombre());
+                System.out.println(example.getUser().getUser().getNombre());
             }
 
             @Override
