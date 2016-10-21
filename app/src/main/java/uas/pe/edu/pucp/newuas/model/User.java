@@ -1,30 +1,37 @@
 package uas.pe.edu.pucp.newuas.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by samoe on 28/09/2016.
+ * Created by samoe on 20/10/2016.
  */
 
 public class User {
-    int id;
-    int idPerfil;
-    String user;
 
-    public User(int id, int idPerfil, String user) {
-        this.id = id;
-        this.idPerfil = idPerfil;
-        this.user = user;
+    @SerializedName("IdUsuario")
+    private int idUsuario;
+
+    @SerializedName("IdPerfil")
+    private int idPerfil;
+
+    @SerializedName("Usuario")
+    private String usuario;
+
+    @SerializedName("accreditor")
+    private Accreditor accreditor;
+
+    @SerializedName("teacher")
+    private Teacher teacher;
+
+    @SerializedName("investigator")
+    private Investigator investigator;
+
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public User() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdPerfil() {
@@ -35,11 +42,35 @@ public class User {
         this.idPerfil = idPerfil;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public Accreditor getAccreditor() {
+        return accreditor;
+    }
+
+    public void setAccreditor(Accreditor accreditor) {
+        this.accreditor = accreditor;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Investigator getInvestigator() {
+        return investigator;
+    }
+
+    public void setInvestigator(Investigator investigator) {
+        this.investigator = investigator;
     }
 }

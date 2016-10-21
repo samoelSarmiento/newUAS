@@ -1,21 +1,33 @@
 package uas.pe.edu.pucp.newuas.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by samoe on 18/10/2016.
+ * Created by samoe on 20/10/2016.
  */
 
-public class Accreditor extends User {
-    private int idAcreditador;
-    private int idEspecialidad;
-    private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String correo;
-    private String cargo;
+public class Accreditor {
 
-    public Accreditor(int id, int idPerfil, String user) {
-        super(id, idPerfil, user);
-    }
+    @SerializedName("IdAcreditador")
+    private int idAcreditador;
+
+    @SerializedName("IdEspecialidad")
+    private int idEspecialidad;
+
+    @SerializedName("IdUsuario")
+    private int idUsuario;
+
+    @SerializedName("Nombre")
+    private String nombre;
+
+    @SerializedName("ApellidoPaterno")
+    private String apellidoPaterno;
+
+    @SerializedName("ApellidoMaterno")
+    private String apellidoMaterno;
+
+    @SerializedName("Correo")
+    private String correo;
 
     public int getIdAcreditador() {
         return idAcreditador;
@@ -31,6 +43,14 @@ public class Accreditor extends User {
 
     public void setIdEspecialidad(int idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -65,11 +85,5 @@ public class Accreditor extends User {
         this.correo = correo;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
 }

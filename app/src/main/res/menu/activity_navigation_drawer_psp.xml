@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pspCycle"
+            android:icon="@drawable/ic_resultados_eval"
+            android:title="@string/pspCycle" />
+        <item
+            android:id="@+id/nav_pspTutors"
+            android:icon="@drawable/ic_objetivos_ed"
+            android:title="@string/pspTutors" />
+        <item
+            android:id="@+id/nav_pspStudents"
+            android:icon="@drawable/ic_objetivos_ed"
+            android:title="@string/pspStudents" />
+        <item
+            android:id="@+id/nav_pspDates"
+            android:icon="@drawable/ic_mejora_cont"
+            android:title="@string/pspDates" />
+        <item
+            android:id="@+id/nav_pspDocuments"
+            android:icon="@drawable/ic_cursos"
+            android:title="@string/pspDocuments" />
+        <item
+            android:id="@+id/nav_pspExit"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/pspExit" />
+    </group>
+</menu>

@@ -7,7 +7,6 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import uas.pe.edu.pucp.newuas.model.User;
 
 /**
  * Created by samoe on 28/09/2016.
@@ -48,14 +47,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
-
-    /*CRUD USER*/
+/*
     public void addContact(User contact) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_IDPERFIL, contact.getIdPerfil()); // Contact Name
-        values.put(KEY_USER, contact.getUser()); // Contact Phone
+        //values.put(KEY_USER, contact.getUser()); // Contact Phone
 
         // Inserting Row
         db.insert(TABLE_USERS, null, values);
@@ -92,10 +90,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             int id = cursor.getInt(0);
             int idPerfil = cursor.getInt(1);
             String usnm = cursor.getString(2);
-            user = new User(id,idPerfil,usnm);
+            //user = new User(id,idPerfil,usnm);
         }
         cursor.close();
         db.close();;
         return user;
     }
+    */
 }

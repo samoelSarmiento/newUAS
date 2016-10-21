@@ -38,6 +38,20 @@
     <string name="projDeliv">Cant. Entregables:</string>
     <string name="projMembers">Integrantes:</string>
     <!--Inv Fin-->
+    <!--PSP-->
+    <string name="pspCycle">Ciclo</string>
+    <string name="pspTutors">Tutores</string>
+    <string name="pspStudents">Alumnos</string>
+    <string name="pspDates">Reuniones</string>
+    <string name="pspDocuments">Documentos</string>
+    <string name="pspExit">Cerrar Sesión</string>
+
+    <string name="pspSpeciality">Especialidad</string>
+    <string name="pspCycleDescription">Descripción</string>
+    <string name="pspTotalTutors">Total de supervisores</string>
+    <string name="pspTotalAlumnos">Total de alumnos</string>
+
+    <!--PSP Fin-->
 
     <string name="btModuleAcr">Acreditacion</string>
     <string name="btModuleTutEv">Tutoría y Evaluacion</string>
@@ -68,8 +82,40 @@
     </string>
 
 
+    <string name="title_activity_navigation_drawer_tutoria">Tutoría
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <!-- SPINNERS -->
+
+    <string-array name="hora">
+        <item>08:00</item>
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+    </string-array>
+
+    <string-array name="tema">
+        <item>Rendimiento Académico</item>
+        <item>Problemas personales</item>
+        <item>Asesoría académica</item>
+    </string-array>
+
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
+    <string name="itdAcrMyself">Mi Perfil</string>
     <string name="itdAcrCourse">Cursos</string>
     <string name="itdAcrEducationalObj">Objetivo Educacional</string>
     <string name="itdAcrSizeablePeriod">Periodos de Medición</string>
@@ -80,8 +126,11 @@
     <string name="itdAcrSizeResult">Resultados de Medición</string>
     <string name="itdAcrConsolidate">Consolidados</string>
     <string name="itdAcrSignOut">Cerrar Sesión</string>
-
+    <string name="tvAcrName">Nombre:</string>
+    <string name="tvAcrSurnames">Apelldios:</string>
+    <string name="tvAcreEmail">Correo:</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 
 </resources>

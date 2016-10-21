@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/uas_plomo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="115dp"
+    android:fillViewport="true"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/general_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Nombre:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_nombre"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Gerardo Paolo"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="32dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/info_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Apellido:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_Apellido"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Dávila García"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/info_bg_padding"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/info_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Correo:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_email"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="a20101616@pucp.pe"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="42dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/info_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Oficina:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_oficina"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Pabellon V - 205"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="38dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/info_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Anexo:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_anexo"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="2134"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="47dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/info_bg_padding">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="Telefono:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/teacher_detail_telefono"
+                        style="@style/GeneralTextViewsMedium"
+                        android:text="989166938"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="25dp"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
