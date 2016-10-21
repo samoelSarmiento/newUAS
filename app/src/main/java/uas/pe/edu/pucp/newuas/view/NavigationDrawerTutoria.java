@@ -17,6 +17,8 @@ import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
+import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
+import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 
 
@@ -49,6 +51,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -120,11 +123,12 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         }
 
         // Insert the fragment by replacing any existing fragment
+        /*
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

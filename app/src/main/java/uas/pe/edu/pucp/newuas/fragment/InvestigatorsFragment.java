@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +47,7 @@ public class InvestigatorsFragment extends Fragment{
         getActivity().setTitle("Invetigadores");
         lvInv=(ListView) view.findViewById(R.id.invList);
 
-
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
 
         Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
         call.enqueue(new Callback<UserMeResponse>() {
