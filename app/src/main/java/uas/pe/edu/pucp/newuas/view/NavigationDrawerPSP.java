@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
@@ -85,12 +89,35 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_pspTutors) {
 
+
+            PSP_supervisorFragment supervisorFragment = new PSP_supervisorFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(R.id.fragment_container_psp, supervisorFragment).commit();
+            setTitle(item.getTitle());
+
         } else if (id == R.id.nav_pspStudents) {
+
+            try {
+                PSP_studentsFragment studentsFragment = new PSP_studentsFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().add(R.id.fragment_container_psp, studentsFragment).commit();
+                setTitle(item.getTitle());
+            }catch (Exception ex){
+                ex.printStackTrace();
+
+            }
 
         } else if (id == R.id.nav_pspDates) {
 
         } else if (id == R.id.nav_pspDocuments) {
-
+            try {
+                PSP_documentsFragment documentsFragment = new PSP_documentsFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().add(R.id.fragment_container_psp, documentsFragment).commit();
+                setTitle(item.getTitle());
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         } else if (id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
