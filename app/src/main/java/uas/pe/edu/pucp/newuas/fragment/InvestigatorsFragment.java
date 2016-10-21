@@ -20,6 +20,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.User;
+import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
@@ -48,19 +49,19 @@ public class InvestigatorsFragment extends Fragment{
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
 
-        Call<UserResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
-        call.enqueue(new Callback<UserResponse>() {
+        Call<UserMe> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
+        call.enqueue(new Callback<UserMe>() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                UserResponse item = response.body();
-                ArrayList<UserResponse> items= new ArrayList<UserResponse>();
+            public void onResponse(Call<UserMe> call, Response<UserMe> response) {
+                UserMe item = response.body();
+                ArrayList<UserMe> items= new ArrayList<UserMe>();
                 items.add(item);
                 investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
                 lvInv.setAdapter(investigatorsAdapter);
             }
 
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
+            public void onFailure(Call<UserMe> call, Throwable t) {
 
             }
 
