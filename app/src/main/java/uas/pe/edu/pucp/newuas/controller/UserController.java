@@ -28,7 +28,7 @@ public class UserController {
             public void onResponse(Call<UserResponse> call, retrofit2.Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     UserResponse user = response.body();
-                    Configuration.LOGIN_USER = user.getUser();
+                    Configuration.LOGIN_USER = user;
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 }else{

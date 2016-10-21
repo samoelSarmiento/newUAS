@@ -13,6 +13,7 @@ import uas.pe.edu.pucp.newuas.model.Accreditor;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
+import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 public class MySelfFragment extends Fragment {
 
@@ -30,7 +31,8 @@ public class MySelfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        User user = Configuration.LOGIN_USER;
+        UserResponse userResponse = Configuration.LOGIN_USER;
+        User user = userResponse.getUser();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_self, container, false);
         TextView tvName = (TextView) view.findViewById(R.id.tvValueName);

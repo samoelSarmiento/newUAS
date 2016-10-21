@@ -13,11 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
+import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -85,8 +88,14 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_myspecialty) {
 
         } else if (id == R.id.nav_courses) {
-            CoursesFragment coursesFragment = new CoursesFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+            //obtener todos los cursos x especialidad
+            SpecialtyController specialtyController = new SpecialtyController();
+            boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+            if (result) {
+                CoursesFragment coursesFragment = new CoursesFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+            }else
+                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
