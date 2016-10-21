@@ -84,7 +84,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         if (id == R.id.nav_pspCycle) {
             PSP_cycleFragment cycleFragment = new PSP_cycleFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container_psp, cycleFragment).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, cycleFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {
@@ -92,7 +92,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             PSP_supervisorFragment supervisorFragment = new PSP_supervisorFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().add(R.id.fragment_container_psp, supervisorFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, supervisorFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspStudents) {
@@ -100,7 +100,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
             try {
                 PSP_studentsFragment studentsFragment = new PSP_studentsFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().add(R.id.fragment_container_psp, studentsFragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, studentsFragment).commit();
                 setTitle(item.getTitle());
             }catch (Exception ex){
                 ex.printStackTrace();
@@ -113,7 +113,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
             try {
                 PSP_documentsFragment documentsFragment = new PSP_documentsFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().add(R.id.fragment_container_psp, documentsFragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, documentsFragment).commit();
                 setTitle(item.getTitle());
             }catch (Exception ex){
                 ex.printStackTrace();
