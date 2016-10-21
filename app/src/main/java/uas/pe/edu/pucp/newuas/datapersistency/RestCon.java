@@ -2,10 +2,14 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+<<<<<<< HEAD
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+=======
+import retrofit2.http.GET;
+>>>>>>> f49a36ee3bc2f686561129dc2b1c97898d4fd847
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
@@ -23,4 +27,7 @@ public interface RestCon {
 
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);
+
+    @GET("users/me")
+    Call<UserResponse> getInvestigator(@Body String token);
 }

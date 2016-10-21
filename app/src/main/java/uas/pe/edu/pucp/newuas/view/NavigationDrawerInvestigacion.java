@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
+import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 
 public class NavigationDrawerInvestigacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -77,13 +78,15 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
 
         if (id == R.id.nav_invGroup) {
             // Handle the camera action
-            InvGroupFragment coursesFragment = new InvGroupFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();
+            InvGroupFragment invGroupFragment = new InvGroupFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, invGroupFragment).commit();
             setTitle(item.getTitle());
         } else if (id == R.id.nav_proj) {
 
         } else if (id == R.id.nav_inv) {
-
+            InvestigatorsFragment invetigatorsFragment = new InvestigatorsFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, invetigatorsFragment).commit();
+            setTitle(item.getTitle());
         } else if (id == R.id.nav_back) {
 
         } else if (id == R.id.nav_logOut) {
