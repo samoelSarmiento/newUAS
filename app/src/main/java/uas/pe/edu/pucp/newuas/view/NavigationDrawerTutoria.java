@@ -125,10 +125,13 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         // Insert the fragment by replacing any existing fragment
         /*
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        /*fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
+
                 .commit();
 */
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

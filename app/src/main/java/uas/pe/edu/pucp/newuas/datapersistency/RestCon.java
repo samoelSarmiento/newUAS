@@ -26,7 +26,7 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);
 
-    @GET("users/me")
-    Call<UserMeResponse> getInvestigator(@Body String token);
+    @POST("users/me")
+    Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
 
 }
