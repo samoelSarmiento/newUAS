@@ -64,7 +64,7 @@ public class PSP_studentsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-      Log.d("FRAGMENT", "Entra primero");
+        Log.d("FRAGMENT", "Entra primero");
     }
 
     @Override
@@ -98,8 +98,8 @@ public class PSP_studentsFragment extends Fragment {
         list.add(st2);
 
         try{
-        studentsAdapter =  new PSPListViewAdapter(list, getContext());
-        lvPSPStudents.setAdapter(studentsAdapter);
+            studentsAdapter =  new PSPListViewAdapter(list, getContext());
+            lvPSPStudents.setAdapter(studentsAdapter);
         }catch (Exception ex){
             ex.printStackTrace();
         }
