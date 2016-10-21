@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -82,25 +83,33 @@ public class NavigationDrawerPSP extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment  fragment =  new Fragment();
+        FragmentManager fragmentManager =  getSupportFragmentManager();
+
+
+
+
         if (id == R.id.nav_pspCycle) {
-            PSP_cycleFragment cycleFragment = new PSP_cycleFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, cycleFragment).commit();
+
+
+            fragment = new PSP_cycleFragment();
+            fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {
 
 
-            PSP_supervisorFragment supervisorFragment = new PSP_supervisorFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, supervisorFragment).commit();
+            fragment = new PSP_supervisorFragment();
+
+            fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspStudents) {
 
             try {
-                PSP_studentsFragment studentsFragment = new PSP_studentsFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, studentsFragment).commit();
+                fragment = new PSP_studentsFragment();
+
+                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
                 setTitle(item.getTitle());
             }catch (Exception ex){
                 ex.printStackTrace();
@@ -111,9 +120,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_pspDocuments) {
             try {
-                PSP_documentsFragment documentsFragment = new PSP_documentsFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, documentsFragment).commit();
+                fragment= new PSP_documentsFragment();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
                 setTitle(item.getTitle());
             }catch (Exception ex){
                 ex.printStackTrace();
