@@ -35,7 +35,7 @@ public class InvestigatorsAdapter extends BaseAdapter{
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return items.get(position);
     }
 
     @Override
