@@ -2,9 +2,14 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
@@ -16,6 +21,6 @@ public interface RestCon {
     @POST("authenticate")
     Call<UserResponse> getAccreditor(@Body UserRequest userRequest);
 
-    @POST("{faculty_id}/evaluated_courses")
-    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int facultyId, @Body String token);
+    @GET("faculties/{faculty_id}/evaluated_courses")
+    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);
 }

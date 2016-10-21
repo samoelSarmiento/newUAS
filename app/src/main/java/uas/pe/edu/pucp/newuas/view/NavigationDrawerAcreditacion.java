@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -91,11 +92,12 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             //obtener todos los cursos x especialidad
             SpecialtyController specialtyController = new SpecialtyController();
             boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-            if (result) {
-                CoursesFragment coursesFragment = new CoursesFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
-            }else
-                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
+
+//            if (result) {
+//                CoursesFragment coursesFragment = new CoursesFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+//            }else
+//                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
