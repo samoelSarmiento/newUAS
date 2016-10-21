@@ -14,4 +14,7 @@ public interface RestCon {
     @POST("authenticate")
     Call<UserResponse> getAccreditor(@Body UserRequest userRequest);
 
+    @POST("authenticate")
+    Call<UserResponse> getInvestigator(@Body UserRequest userRequest);
+
 }
