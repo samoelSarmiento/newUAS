@@ -130,7 +130,7 @@
     <string name="tvAcrSurnames">Apelldios:</string>
     <string name="tvAcreEmail">Correo:</string>
     <!-- TODO: Remove or change this placeholder text -->
-
+    <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
 
 
 </resources>

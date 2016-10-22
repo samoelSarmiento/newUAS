@@ -1,11 +1,14 @@
 package uas.pe.edu.pucp.newuas.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
@@ -32,6 +35,8 @@ public class UserController {
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 }else{
+                    //TextView tvError = (TextView) ((Activity) context).findViewById(R.id.tvError);
+                    //tvError.setText(R.string.tvErrorLogin);
                     Toast.makeText(context,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
                 }
             }

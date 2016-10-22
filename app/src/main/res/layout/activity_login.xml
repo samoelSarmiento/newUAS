@@ -56,6 +56,13 @@
                 android:layout_marginStart="50dp"
                 android:paddingTop="10dp"
                 android:text="@string/btIngresar" />
+            <TextView
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/uas_rojo"
+                android:layout_gravity="center"/>
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

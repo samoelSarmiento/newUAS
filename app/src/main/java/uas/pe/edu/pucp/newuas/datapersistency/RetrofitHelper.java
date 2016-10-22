@@ -14,7 +14,7 @@ public class RetrofitHelper {
     private static RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory
             .createWithScheduler(Schedulers.io());
     public static Retrofit apiConnector = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.37/internetUAS/public/api/")
+            .baseUrl("http://10.101.40.151/internetUAS/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
             .build();
