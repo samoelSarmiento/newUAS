@@ -21,14 +21,14 @@ public class UserController {
 
     public boolean LogIn(final Context context, String user, String password) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<UserResponse> call = restCon.getAccreditor(new UserRequest(user, password));
+        Call<UserResponse> call = restCon.getUser(new UserRequest(user, password));
 
         call.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, retrofit2.Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     UserResponse user = response.body();
-                    Configuration.LOGIN_USER = user.getUser();
+                    Configuration.LOGIN_USER = user;
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 }else{

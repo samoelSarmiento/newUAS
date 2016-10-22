@@ -3,10 +3,10 @@ package uas.pe.edu.pucp.newuas.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by samoe on 20/10/2016.
+ * Created by Andree on 21/10/2016.
  */
 
-public class Teacher {
+public class Professor {
 
     @SerializedName("IdDocente")
     private int idDocente;
@@ -56,10 +56,6 @@ public class Teacher {
     @SerializedName("Descripcion")
     private String descripcion;
 
-
-    @SerializedName("pivot")
-    private Pivot pivot;
-
     public void setVigente(int vigente) {
         this.vigente = vigente;
     }
@@ -70,14 +66,6 @@ public class Teacher {
 
     public boolean isRolEvaluaciones() {
         return rolEvaluaciones;
-    }
-
-    public Pivot getPivot() {
-        return pivot;
-    }
-
-    public void setPivot(Pivot pivot) {
-        this.pivot = pivot;
     }
 
     public int getIdDocente() {
@@ -184,7 +172,7 @@ public class Teacher {
         this.oficina = oficina;
     }
 
-    public Object getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
@@ -207,4 +195,5 @@ public class Teacher {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }
