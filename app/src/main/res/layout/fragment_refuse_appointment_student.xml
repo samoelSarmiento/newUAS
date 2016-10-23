@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.RefuseAppointmentStudentFragment"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="40dp"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Si va a cancelar/rechazar una cita cita, indique un motivo"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    \
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Tema:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerTema"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/tema"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:id="@+id/buttonCancelar" />
+
+
+        <Button
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:id="@+id/buttonSolicitar" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -129,8 +129,10 @@
     <string name="tvAcrName">Nombre:</string>
     <string name="tvAcrSurnames">Apelldios:</string>
     <string name="tvAcreEmail">Correo:</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 
 </resources>

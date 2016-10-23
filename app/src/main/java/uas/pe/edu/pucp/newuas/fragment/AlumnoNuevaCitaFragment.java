@@ -35,6 +35,8 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
+    String infoSolicitar = "Está a punto de confirmar una cita con su tutor para el 09/11/2016 a las 10:00  \n ¿Desea continuar?";
+
 
 
     public AlumnoNuevaCitaFragment() {
@@ -45,6 +47,7 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        getActivity().setTitle("Tutoría");
         final View view = inflater.inflate(R.layout.fragment_alumno_nueva_cita, container, false);
         txtFecha = (EditText) view.findViewById(R.id.dateText);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar);
@@ -104,7 +107,7 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
                             }
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                        builder.setMessage(infoSolicitar).setNegativeButton("No", dialogClickListener)
                                 .setPositiveButton("Si", dialogClickListener).show();
                     }
                 }
