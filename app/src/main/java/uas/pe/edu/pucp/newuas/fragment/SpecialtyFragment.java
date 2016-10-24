@@ -51,8 +51,12 @@ public class SpecialtyFragment extends Fragment{
             Gson gson = new Gson();
             JsonParser jp = new JsonParser();
             JsonObject json = jp.parse(str).getAsJsonObject();
-            tvsplabel.setText(json.get("Nombre").toString());
-            Log.d("TAG",json.get("Nombre").toString());
+            tvsplabel.setText(json.get("Nombre").getAsString());
+            tvspcode.setText(json.get("Codigo").getAsString());
+            JsonObject json2 = json.get("coordinator").getAsJsonObject();
+            tvspcoord.setText(json2.get("Nombre").getAsString() + " " + json2.get("ApellidoPaterno").getAsString() + " " + json2.get("ApellidoMaterno").getAsString());
+            tvspdesc.setText(json.get("Descripcion").getAsString());
+            Log.d("TAG",json.get("Nombre").getAsString());
             //Log.d("TAG",json.getAsString());
         }
 

@@ -148,11 +148,11 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<Specialty> call, Throwable t) {
-                Log.d("wat", t.getMessage());
-                Log.d("wat", t.getMessage());
+                //Log.d("wat", t.getMessage());
+                //Log.d("wat", t.getMessage());
 
                 t.printStackTrace();
-                Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
+                //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
             }
         });
