@@ -44,10 +44,13 @@ public class InvestigatorsFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_investigators, container, false);
         getActivity().setTitle("Invetigadores");
+
         lvInv=(ListView) view.findViewById(R.id.invList);
 
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        /*
 
 
         Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
@@ -67,6 +70,8 @@ public class InvestigatorsFragment extends Fragment{
             }
 
         });
+
+        */
 
         /*
         Call<ArrayList<UserResponse>> call = restCon.getInvestigator();

@@ -9,13 +9,13 @@ import com.google.gson.annotations.SerializedName;
 public class Teacher {
 
     @SerializedName("IdDocente")
-    private int idDocente;
+    private Integer idDocente;
 
     @SerializedName("IdEspecialidad")
-    private int idEspecialidad;
+    private Integer idEspecialidad;
 
     @SerializedName("IdUsuario")
-    private int idUsuario;
+    private Integer idUsuario;
 
     @SerializedName("Codigo")
     private String codigo;
@@ -36,13 +36,16 @@ public class Teacher {
     private String cargo;
 
     @SerializedName("Vigente")
-    private int vigente;
+    private Integer vigente;
+    /*
 
     @SerializedName("rolTutoria")
     private boolean rolTutoria;
 
     @SerializedName("rolEvaluaciones")
     private boolean rolEvaluaciones;
+
+    */
 
     @SerializedName("oficina")
     private String oficina;
@@ -57,13 +60,18 @@ public class Teacher {
     private String descripcion;
 
 
+    /*
     @SerializedName("pivot")
     private Pivot pivot;
+
+    */
+
 
     public void setVigente(int vigente) {
         this.vigente = vigente;
     }
 
+    /*
     public boolean isRolTutoria() {
         return rolTutoria;
     }
@@ -72,6 +80,10 @@ public class Teacher {
         return rolEvaluaciones;
     }
 
+    */
+
+    /*
+
     public Pivot getPivot() {
         return pivot;
     }
@@ -79,6 +91,7 @@ public class Teacher {
     public void setPivot(Pivot pivot) {
         this.pivot = pivot;
     }
+    */
 
     public int getIdDocente() {
         return idDocente;
@@ -160,6 +173,8 @@ public class Teacher {
         this.vigente = vigente;
     }
 
+    /*
+
     public Object getRolTutoria() {
         return rolTutoria;
     }
@@ -175,6 +190,8 @@ public class Teacher {
     public void setRolEvaluaciones(boolean rolEvaluaciones) {
         this.rolEvaluaciones = rolEvaluaciones;
     }
+
+    */
 
     public String getOficina() {
         return oficina;
