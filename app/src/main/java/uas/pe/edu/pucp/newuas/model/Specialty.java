@@ -1,6 +1,5 @@
 package uas.pe.edu.pucp.newuas.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -25,6 +24,8 @@ public class Specialty {
     private String updatedAt;
     @SerializedName("IdDocente")
     private Integer idDocente;
+    @SerializedName("coordinator")
+    private Teacher coordinator;
 
     /**
      * No args constructor for use in serialization
@@ -42,7 +43,7 @@ public class Specialty {
      * @param descripcion
      * @param idEspecialidad
      */
-    public Specialty(Integer idEspecialidad, String codigo, String nombre, String descripcion, Object deletedAt, String createdAt, String updatedAt, Integer idDocente) {
+    public Specialty(Integer idEspecialidad, String codigo, String nombre, String descripcion, Object deletedAt, String createdAt, String updatedAt, Integer idDocente, Teacher coordinator) {
         this.idEspecialidad = idEspecialidad;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -51,6 +52,7 @@ public class Specialty {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.idDocente = idDocente;
+        this.setCoordinator(coordinator);
     }
 
     /**
@@ -165,4 +167,11 @@ public class Specialty {
         this.idDocente = idDocente;
     }
 
+    public Teacher getCoordinator() {
+        return coordinator;
+    }
+
+    public void setCoordinator(Teacher coordinator) {
+        this.coordinator = coordinator;
+    }
 }
