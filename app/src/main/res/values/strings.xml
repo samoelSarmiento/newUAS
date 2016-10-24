@@ -107,11 +107,7 @@
         <item>22:00</item>
     </string-array>
 
-    <string-array name="tema">
-        <item>Rendimiento Académico</item>
-        <item>Problemas personales</item>
-        <item>Asesoría académica</item>
-    </string-array>
+
 
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
