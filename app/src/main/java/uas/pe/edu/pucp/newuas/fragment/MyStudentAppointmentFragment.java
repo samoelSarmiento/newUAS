@@ -56,7 +56,7 @@ public class MyStudentAppointmentFragment extends Fragment {
                         transaction.addToBackStack(null);
                         transaction.commit();*/
 
-                        ((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
+                        //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
         /*
                         FragmentManager fragMr = ((NavigationDrawerTutoria) getActivity).;
 
