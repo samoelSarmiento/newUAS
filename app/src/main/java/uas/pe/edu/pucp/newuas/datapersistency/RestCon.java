@@ -36,7 +36,7 @@ public interface RestCon {
     Call<UserResponse> getUser(@Body UserRequest userRequest);
 
     @GET("faculties/{faculty_id}/evaluated_courses")
-    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);
+    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
 
     @GET("users/me")
     Call<UserResponse> getInvestigator(@Body String token);

@@ -181,12 +181,15 @@ public class SpecialtyController {
 
     public boolean getCoursesxSpecialy(final Context context, int idEspecialiad) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<CourseResponse> call = restCon.getCoursesxSpecialty(idEspecialiad, Configuration.LOGIN_USER.getToken());
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<CourseResponse> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        //Log.d("TAG",call.request().url());
         call.enqueue(new Callback<CourseResponse>() {
             @Override
             public void onResponse(Call<CourseResponse> call, Response<CourseResponse> response) {
                 CourseResponse courseResponse = response.body();
-                System.out.println(courseResponse.getNombre());
+                //System.out.println(courseResponse.getNombre());
 
                 //CoursesFragment coursesFragment = new CoursesFragment();
                 //coursesFragment.getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
@@ -194,6 +197,7 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<CourseResponse> call, Throwable t) {
+                t.printStackTrace();
                 System.out.println("ERROROROROR");
             }
         });
