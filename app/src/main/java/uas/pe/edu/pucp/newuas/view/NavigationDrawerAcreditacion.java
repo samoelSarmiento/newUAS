@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
@@ -126,6 +127,9 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
+            MeasurePeriodController measurePeriodController = new MeasurePeriodController();
+            boolean result = measurePeriodController.getMeasurePeriods(this);
+
 
         } else if (id == R.id.nav_studresult) {
 
