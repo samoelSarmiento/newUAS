@@ -8,8 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.SpecialtyxCourseDisplay;
 
 /**
@@ -19,10 +21,18 @@ import uas.pe.edu.pucp.newuas.model.SpecialtyxCourseDisplay;
 public class SpecialtyxCoursesAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<SpecialtyxCourseDisplay> items;
+    private List<CourseResponse> items;
     private LayoutInflater layoutInflater;
 
-    public SpecialtyxCoursesAdapter(Context context, ArrayList<SpecialtyxCourseDisplay> items) {
+    public List<CourseResponse> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CourseResponse> items) {
+        this.items = items;
+    }
+
+    public SpecialtyxCoursesAdapter(Context context, List<CourseResponse> items) {
         this.context = context;
         this.items = items;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

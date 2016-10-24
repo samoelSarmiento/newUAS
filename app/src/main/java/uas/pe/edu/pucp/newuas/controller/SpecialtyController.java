@@ -30,6 +30,8 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
+import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
+import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.model.Accreditor;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
@@ -131,8 +133,8 @@ public class SpecialtyController {
                     Bundle bundle = new Bundle();
                     bundle.putString("Specialty", spj);
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Especialidad");
+                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, spFragment).commit();
+                    ((Activity) context).setTitle("Especialidad");
 
 
                 } else {
@@ -183,20 +185,26 @@ public class SpecialtyController {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<CourseResponse> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
-        //Log.d("TAG",call.request().url());
-        call.enqueue(new Callback<CourseResponse>() {
+        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        call.enqueue(new Callback<List<CourseResponse>>() {
             @Override
-            public void onResponse(Call<CourseResponse> call, Response<CourseResponse> response) {
-                CourseResponse courseResponse = response.body();
-                //System.out.println(courseResponse.getNombre());
-
-                //CoursesFragment coursesFragment = new CoursesFragment();
-                //coursesFragment.getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+            public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<CourseResponse> courseResponse = response.body();
+                    Configuration.COURSE_LIST = courseResponse;
+                    Gson gson = new Gson();
+                    String listCourse =  gson.toJson(courseResponse);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("CourseList",listCourse);
+                    //Fragmnet
+                    CoursesxSpecialtyFragment cfFragment = new CoursesxSpecialtyFragment();
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,cfFragment).commit();
+                    ((Activity)context).setTitle("Cursos");
+                }
             }
 
             @Override
-            public void onFailure(Call<CourseResponse> call, Throwable t) {
+            public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
                 t.printStackTrace();
                 System.out.println("ERROROROROR");
             }

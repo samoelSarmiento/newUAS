@@ -1,5 +1,7 @@
 package uas.pe.edu.pucp.newuas.configuration;
 
+import java.util.List;
+
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -19,4 +21,5 @@ public class Configuration {
     public static UserResponse LOGIN_USER = null;
 
     public static Specialty SPECIALTY = null;
+    public static List<CourseResponse> COURSE_LIST = null;
 }
