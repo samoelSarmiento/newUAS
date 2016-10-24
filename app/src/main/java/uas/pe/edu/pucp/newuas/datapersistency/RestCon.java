@@ -16,6 +16,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
+import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
@@ -49,6 +50,9 @@ public interface RestCon {
 
     @GET("/internetUAS/public/api/getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
+
+    @GET("faculties/{f_id}/periods")
+    Call<List<Period>> getPeriods(@Path("f_id") int faculty_id, @QueryMap Map<String,String> token);
 
 
 }
