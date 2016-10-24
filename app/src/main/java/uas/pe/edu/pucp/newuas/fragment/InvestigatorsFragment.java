@@ -59,7 +59,7 @@ public class InvestigatorsFragment extends Fragment{
 
         /*
 
->>>>>>> 2a675e68518c80c0e8ad47cb28ae800f191eba5f
+
 
         call.enqueue(new Callback<UserMeResponse>() {
             @Override
@@ -69,7 +69,7 @@ public class InvestigatorsFragment extends Fragment{
                 ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
                 items.add(item);
                 investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);*/
+                lvInv.setAdapter(investigatorsAdapter);
             }
 
             @Override

@@ -19,6 +19,7 @@ import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
+import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 
@@ -35,7 +36,7 @@ public interface RestCon {
     Call<UserResponse> getUser(@Body UserRequest userRequest);
 
     @GET("faculties/{faculty_id}/evaluated_courses")
-    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id, @Header("token") String tokenRequest);
+    Call<CourseResponse> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
 
 
     @POST("users/me")
@@ -50,5 +51,8 @@ public interface RestCon {
     @GET("faculties/getFaculty/{faculty_id}")
     Call<Specialty> getSpecialtyById(@Path("faculty_id") int faculty_id, @QueryMap Map<String, String> token);
 
+    @GET("/internetUAS/public/api/getTopics")
+    Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
 
 }
+
