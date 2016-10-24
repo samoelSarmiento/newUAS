@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
@@ -14,14 +15,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridLayout;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
+import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,6 +93,25 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             MySelfFragment mySelfFragment = new MySelfFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
         } else if (id == R.id.nav_myspecialty) {
+            SpecialtyController specialtyController = new SpecialtyController();
+
+            specialtyController.getSpecialties(this);
+
+            //while(Configuration.SPECIALTY == null);
+            //System.out.println(Configuration.SPECIALTY.getNombre());
+            //Specialty sp = specialtyController.getSpecialties(this);
+            //System.out.println(sp.getNombre());
+            //Specialty sp = Configuration.SPECIALTY;
+
+
+            /*
+            Gson gson = new Gson();
+            String spj = gson.toJson(sp);
+            System.out.println(spj);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Specialty", spj);
+            spFragment.setArguments(bundle); */
+
 
         } else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
