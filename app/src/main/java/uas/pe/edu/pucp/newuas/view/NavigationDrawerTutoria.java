@@ -17,6 +17,8 @@ import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
+import uas.pe.edu.pucp.newuas.fragment.MyStudentAppointmentFragment;
+import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 
 
@@ -95,7 +97,8 @@ public class NavigationDrawerTutoria extends AppCompatActivity
             fragment = new TutorInfoFragment();
 
         } else if (id == R.id.nav_citas) {
-            fragment = new AlumnoNuevaCitaFragment();
+            //fragment = new AlumnoNuevaCitaFragment();
+            fragment = new MyStudentAppointmentFragment();
         } else if (id == R.id.nav_loginout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
@@ -120,13 +123,20 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         }
 
         // Insert the fragment by replacing any existing fragment
+        replaceFragment(fragment);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+    public void replaceFragment(Fragment fragment){
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
+
 }

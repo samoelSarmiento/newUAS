@@ -10,6 +10,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.UserMe;
+import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 /**
@@ -18,11 +20,11 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 public class InvestigatorsAdapter extends BaseAdapter{
 
-    ArrayList<UserResponse> items;
+    ArrayList<UserMeResponse> items;
     Context context;
     LayoutInflater layoutInflater;
 
-    public InvestigatorsAdapter(Context context, ArrayList<UserResponse> items) {
+    public InvestigatorsAdapter(Context context, ArrayList<UserMeResponse> items) {
         this.context = context;
         this.items = items;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -35,7 +37,7 @@ public class InvestigatorsAdapter extends BaseAdapter{
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return items.get(position);
     }
 
     @Override
@@ -49,16 +51,16 @@ public class InvestigatorsAdapter extends BaseAdapter{
         ViewHolder viewHolder = new ViewHolder();
 
         viewHolder.invName = (TextView) view.findViewById(R.id.invName);
-        viewHolder.invName.setText(items.get(position).getUser().getInvestigator().getNombre());
+        viewHolder.invName.setText(items.get(position).getUserMe().getProfessor().getNombre());
 
         viewHolder.invMail = (TextView) view.findViewById(R.id.invMail);
-        viewHolder.invMail.setText(items.get(position).getUser().getInvestigator().getCorreo());
+        viewHolder.invMail.setText(items.get(position).getUserMe().getProfessor().getCorreo());
 
         viewHolder.invEsp = (TextView) view.findViewById(R.id.invEsp);
-        viewHolder.invEsp.setText(items.get(position).getUser().getInvestigator().getIdEspecialidad());
+        viewHolder.invEsp.setText(items.get(position).getUserMe().getProfessor().getIdEspecialidad());
 
         viewHolder.invTel = (TextView) view.findViewById(R.id.invTel);
-        viewHolder.invTel.setText(items.get(position).getUser().getInvestigator().getCelular());
+        viewHolder.invTel.setText(items.get(position).getUserMe().getProfessor().getTelefono());
 
         return view;
     }

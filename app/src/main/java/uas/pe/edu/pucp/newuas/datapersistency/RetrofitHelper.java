@@ -12,6 +12,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
  * Created by samoe on 20/10/2016.
  */
 
+
 public class RetrofitHelper {
 
     public static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
