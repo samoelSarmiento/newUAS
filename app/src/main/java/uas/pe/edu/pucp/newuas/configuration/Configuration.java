@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.configuration;
 
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
@@ -16,4 +17,6 @@ public class Configuration {
     public static final String Q_SELECT_ALL = "SELECT * FROM ";
     public static final CourseResponse COURSE_RESPONSE = null;
     public static UserResponse LOGIN_USER = null;
+
+    public static Specialty SPECIALTY = null;
 }

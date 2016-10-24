@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -29,6 +30,7 @@ public class UserController {
                 if (response.isSuccessful()) {
                     UserResponse user = response.body();
                     Configuration.LOGIN_USER = user;
+                    System.out.println(user.getToken());
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 }else{

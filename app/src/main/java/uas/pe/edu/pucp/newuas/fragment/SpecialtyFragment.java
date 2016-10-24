@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import uas.pe.edu.pucp.newuas.R;
 
@@ -28,7 +33,24 @@ public class SpecialtyFragment extends Fragment{
                              Bundle savedInstanceState){
 
         getActivity().setTitle("Especialidad");
-        return inflater.inflate(R.layout.fragment_specialty, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_specialty, container, false);
+
+        TextView tvsplabel = (TextView) view.findViewById(R.id.tvSpecialtyLabel);
+        TextView tvspcode = (TextView) view.findViewById(R.id.tvSpecialtyCode);
+        TextView tvspcoord = (TextView) view.findViewById(R.id.tvSpecialtyCoord);
+        TextView tvspdesc = (TextView) view.findViewById(R.id.tvSpecialtyDesc);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            String str = bundle.getString("Specialty");
+            Gson gson = new Gson();
+            JsonParser jp = new JsonParser();
+            JsonObject json = jp.parse(str).getAsJsonObject();
+            tvsplabel.setText(json.getAsString());
+        }
+
+        return view;
 
     }
 
