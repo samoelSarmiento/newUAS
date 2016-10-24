@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ public class SpecialtyFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
     }
 
     @Override
@@ -41,14 +44,18 @@ public class SpecialtyFragment extends Fragment{
         TextView tvspcoord = (TextView) view.findViewById(R.id.tvSpecialtyCoord);
         TextView tvspdesc = (TextView) view.findViewById(R.id.tvSpecialtyDesc);
 
+
         Bundle bundle = this.getArguments();
         if (bundle != null){
             String str = bundle.getString("Specialty");
             Gson gson = new Gson();
             JsonParser jp = new JsonParser();
             JsonObject json = jp.parse(str).getAsJsonObject();
-            tvsplabel.setText(json.getAsString());
+            tvsplabel.setText(json.get("Nombre").toString());
+            Log.d("TAG",json.get("Nombre").toString());
+            //Log.d("TAG",json.getAsString());
         }
+
 
         return view;
 

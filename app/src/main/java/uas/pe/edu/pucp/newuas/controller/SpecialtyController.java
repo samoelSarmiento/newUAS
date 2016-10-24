@@ -1,7 +1,9 @@
 package uas.pe.edu.pucp.newuas.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.schedulers.Schedulers;
+import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
@@ -49,40 +52,17 @@ public class SpecialtyController {
     public Specialty getSpecialties(final Context context) {
 
 
-
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
-        Map<String,String> token = new HashMap<>();
-        token.put("token",Configuration.LOGIN_USER.getToken());
-        Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(),token);
-
-        //System.out.println(restCon.getSpecialtyList(token).request().body().toString());
-        //System.out.println(call.request().url());
-        //System.out.println(call.request().body().toString());
-
-
-        //Specialty list = null;
-        //final Specialty[] spec = {null};
-
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
 
 
         call.enqueue(new Callback<Specialty>() {
-
-
             @Override
             public void onResponse(Call<Specialty> call, retrofit2.Response<Specialty> response) {
-
-                Log.d("LOG", response.isSuccessful() + "" );
-
-
-
-                try {
-                    Log.d("LOG", response.errorBody().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
+                Log.d("LOG", response.isSuccessful() + "");
                 /*
 
                 try {
@@ -104,9 +84,9 @@ public class SpecialtyController {
                     okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
                     Specialty example = response.body();
-                    Log.d("LOG",String.valueOf(response.code()));
-                    Log.d("LOG",response.body().toString());
-                    Log.d("LOG",response.message());
+                    Log.d("LOG", String.valueOf(response.code()));
+                    Log.d("LOG", response.body().toString());
+                    Log.d("LOG", response.message());
 
                     Log.d("llego", "llego");
                     Gson gson = new Gson();
@@ -143,12 +123,22 @@ public class SpecialtyController {
                     }
                     */
                     Configuration.SPECIALTY = example;
+                    SpecialtyFragment spFragment = new SpecialtyFragment();
+
+                    Gson gsonf = new Gson();
+                    String spj = gsonf.toJson(example);
+                    System.out.println(spj);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Specialty", spj);
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Especialidad");
 
 
-                }else{
+                } else {
                     Log.d("wat", response.errorBody().toString());
 
-                    Toast.makeText(context,response.message(),Toast.LENGTH_SHORT);
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
                     Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
 
                 }
@@ -162,7 +152,7 @@ public class SpecialtyController {
                 Log.d("wat", t.getMessage());
 
                 t.printStackTrace();
-                Toast.makeText(context,call.request().url().toString(),Toast.LENGTH_SHORT);
+                Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
             }
         });
@@ -173,14 +163,18 @@ public class SpecialtyController {
 //            list = call.execute().body();
 //        } catch (IOException e) {
 //            e.printStackTrace();
-//        }
+//
+//
+// }
+        /*
         Configuration.SPECIALTY = list;
 
-        if (Configuration.SPECIALTY == null){
+        if (Configuration.SPECIALTY == null) {
             Log.d("wat", "Es nulo");
-        }else{
+        } else {
             Log.d("wat", "WAT");
         }
+        */
         return list;
 
     }

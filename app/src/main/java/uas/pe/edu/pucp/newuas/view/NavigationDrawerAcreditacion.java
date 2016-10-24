@@ -94,21 +94,24 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
         } else if (id == R.id.nav_myspecialty) {
             SpecialtyController specialtyController = new SpecialtyController();
+
             specialtyController.getSpecialties(this);
-            System.out.println(Configuration.SPECIALTY.getNombre());
+
+            //while(Configuration.SPECIALTY == null);
+            //System.out.println(Configuration.SPECIALTY.getNombre());
             //Specialty sp = specialtyController.getSpecialties(this);
             //System.out.println(sp.getNombre());
-            Specialty sp = Configuration.SPECIALTY;
+            //Specialty sp = Configuration.SPECIALTY;
 
-            SpecialtyFragment spFragment = new SpecialtyFragment();
+
+            /*
             Gson gson = new Gson();
             String spj = gson.toJson(sp);
             System.out.println(spj);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Specialty", spj);
-            spFragment.setArguments(bundle);
-            getFragmentManager().beginTransaction().add(R.id.fragment_container,spFragment).commit();
-            setTitle(item.getTitle());
+            spFragment.setArguments(bundle); */
+
 
         } else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
