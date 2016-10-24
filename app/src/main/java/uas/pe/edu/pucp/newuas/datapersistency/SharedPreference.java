@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.UserPrefs;
 
 /**
@@ -28,4 +29,14 @@ public class SharedPreference {
         editor.putString(Configuration.USER_LOGIN,json);
         editor.apply();
     }
+
+    /*
+    public void setSpecialty(Specialty specialty){
+        SharedPreferences.Editor editor = context.getSharedPreferences(Configuration.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE).edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(specialty);
+        editor.putString(Configuration.SPECIALTY,json);
+        editor.apply();
+    }
+    */
 }
