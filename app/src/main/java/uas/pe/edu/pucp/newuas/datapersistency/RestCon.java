@@ -1,5 +1,8 @@
 package uas.pe.edu.pucp.newuas.datapersistency;
 
+import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -8,7 +11,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
@@ -28,5 +33,8 @@ public interface RestCon {
 
     @GET("users/me")
     Call<UserMeResponse> getInvestigator(@Body String token);
+
+    @GET("/internetUAS/public/api/getTopics")
+    Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
 
 }

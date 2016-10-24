@@ -9,9 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +25,7 @@ import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 
 public class AlumnoNuevaCitaFragment extends Fragment  {
@@ -28,6 +33,7 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
 
     ImageButton btnCalendar;
     Button btnSolicitar;
+    Spinner spinnerTemas;
     EditText txtFecha;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
@@ -63,6 +69,11 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoria.nameTopic);
+        s.setAdapter(adapter);
+
 
         selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
