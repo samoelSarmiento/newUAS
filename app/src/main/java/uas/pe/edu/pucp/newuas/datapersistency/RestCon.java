@@ -16,6 +16,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
+import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
@@ -41,6 +42,18 @@ public interface RestCon {
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
+
+    /*Investigacion*/
+    @GET("internetUAS/public/api/getAllInvestigators")
+    Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
+    /*
+    @GET("internetUAS/public/api/getAllGroups")
+    Call<List<InvGroupResponse>> getInvGroups(@QueryMap Map<String,String> token);
+
+    @GET("internetUAS/public/api/getAllProjects")
+    Call<List<ProjResponse>> getProjects(@QueryMap Map<String,String> token);*/
+    /*--------------*/
+
 
     /*@GET("users/me")
     Call<UserResponse> getInvestigator(@Body String token);*/

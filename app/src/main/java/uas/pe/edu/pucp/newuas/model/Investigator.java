@@ -38,6 +38,73 @@ public class Investigator {
     @SerializedName("Vigente")
     private int vigente;
 
+    @SerializedName("deleted_at")
+    private Object deletedAt;
+    @SerializedName("created_at")
+    private String createdAt;
+    @SerializedName("updated_at")
+    private String updatedAt;
+
+    @SerializedName("faculty")
+
+    private Faculty faculty;
+
+    @SerializedName("user")
+    private User user;
+
+    @SerializedName("area")
+    private Area area;
+
+    public Object getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Object deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+
+
     public int getId() {
         return id;
     }

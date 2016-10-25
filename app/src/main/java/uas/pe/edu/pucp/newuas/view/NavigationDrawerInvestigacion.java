@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
@@ -93,9 +94,13 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
             getFragmentManager().beginTransaction().add(R.id.fragment_container, projectsFragment).commit();
             setTitle(item.getTitle());
         } else if (id == R.id.nav_inv) {
+            InvestigatorController invController = new InvestigatorController();
+
+            invController.getInvestigators(this);
+            /*
             InvestigatorsFragment invetigatorsFragment = new InvestigatorsFragment();
             getFragmentManager().beginTransaction().add(R.id.fragment_container, invetigatorsFragment).commit();
-            setTitle(item.getTitle());
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_back) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

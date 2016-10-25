@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -20,6 +25,8 @@ import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.Faculty;
+import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserMe;
@@ -45,22 +52,49 @@ public class InvestigatorsFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_investigators, container, false);
-        getActivity().setTitle("Invetigadores");
-
+        getActivity().setTitle("Investigadores");
         lvInv=(ListView) view.findViewById(R.id.invList);
 
-        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        /*ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
+        items.add(item);
+        investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
+        lvInv.setAdapter(investigatorsAdapter);*/
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            String str = bundle.getString("Investigators");
+            Gson gson = new Gson();
+            JsonParser jp = new JsonParser();
+            JsonArray jsonA = jp.parse(str).getAsJsonArray();//jp.parse(str).getAsJsonObject();
+            int cant=jsonA.size();
+            ArrayList<Investigator> investigators=new ArrayList<Investigator>();
+            for(int i=0;i<cant;i++){
+                JsonObject jsonO=jsonA.get(i).getAsJsonObject();
+                Investigator investigator= new Investigator();
 
+                investigator.setNombre(jsonO.get("nombre").getAsString());
+                investigator.setApePaterno(jsonO.get("ape_paterno").getAsString());
+                investigator.setApeMaterno(jsonO.get("ape_materno").getAsString());
+                investigator.setCorreo(jsonO.get("correo").getAsString());
+                investigator.setCelular(jsonO.get("celular").getAsString());
+
+                JsonObject jsonOFac=jsonO.getAsJsonObject("faculty");
+                Faculty faculty=new Faculty();
+                faculty.setNombre(jsonOFac.get("Nombre").getAsString());
+                investigator.setFaculty(faculty);
+
+                investigators.add(investigator);
+            }
+            investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), investigators);
+            lvInv.setAdapter(investigatorsAdapter);
+            //Log.d("TAG",json.get("Nombre").getAsString());
+            //Log.d("TAG",json.getAsString());
+        }
+
+        //RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         //Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
-
-
-        Call<UserMeResponse> call = restCon.getInvestigator(new TokenRequest(Configuration.LOGIN_USER.getToken()));
-
+        //Call<UserMeResponse> call = restCon.getInvestigator(new TokenRequest(Configuration.LOGIN_USER.getToken()));
         /*
-
-
-
         call.enqueue(new Callback<UserMeResponse>() {
             @Override
             public void onResponse(Call<UserMeResponse> call, Response<UserMeResponse> response) {
@@ -77,10 +111,7 @@ public class InvestigatorsFragment extends Fragment{
 
             }
 
-        });
-
-        */
-
+        });*/
         /*
         Call<ArrayList<UserResponse>> call = restCon.getInvestigator();
         call.enqueue(new Callback<ArrayList<UserResponse>>() {
