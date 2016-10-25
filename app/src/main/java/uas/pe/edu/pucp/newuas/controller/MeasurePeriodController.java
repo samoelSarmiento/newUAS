@@ -35,7 +35,15 @@ public class MeasurePeriodController {
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<Period>> call = restCon.getPeriods(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+
+        Call<List<Period>> call;
+
+        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3){
+            call = restCon.getPeriods(Configuration.SPECIALTY.getIdEspecialidad(), token);
+        }else{
+            call = restCon.getPeriods(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+        }
+
 
         call.enqueue(new Callback<List<Period>>() {
             @Override

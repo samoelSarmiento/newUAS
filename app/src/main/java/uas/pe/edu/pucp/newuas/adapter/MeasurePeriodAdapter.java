@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,8 +63,15 @@ public class MeasurePeriodAdapter extends BaseAdapter{
 
         viewHolder.tvPeriod.setText(items.get(position).getConfiguration().getCycleAcademicStart().getDescripcion() + " - " + items.get(position).getConfiguration().getCycleAcademicEnd().getDescripcion());
         Integer vigente = items.get(position).getVigente();
-        if (vigente == 0) viewHolder.tvPeriodStatus.setText("INACTIVO");
-        else viewHolder.tvPeriodStatus.setText("ACTIVO");
+        if (vigente == 0){
+            viewHolder.tvPeriodStatus.setTextColor(Color.RED);
+            viewHolder.tvPeriodStatus.setText("INACTIVO");
+        }
+        else {
+
+            viewHolder.tvPeriodStatus.setTextColor(Color.rgb(164,198,57));
+            viewHolder.tvPeriodStatus.setText("ACTIVO");
+        }
 
 /*
 
