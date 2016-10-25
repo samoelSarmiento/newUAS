@@ -43,6 +43,8 @@ public class SpecialtyController {
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
+        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
+            return Configuration.SPECIALTY;
         Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
 
 

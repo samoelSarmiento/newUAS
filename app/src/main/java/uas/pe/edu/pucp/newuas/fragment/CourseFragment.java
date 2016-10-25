@@ -22,6 +22,11 @@ public class CourseFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+    
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -37,11 +42,6 @@ public class CourseFragment extends Fragment {
             CourseResponse courseResponse = gson.fromJson(course, CourseResponse.class);
             tvValueCurso.setText(courseResponse.getNombre());
             tvValueCiclo.setText("2016-2");
-            if (Configuration.SPECIALTY == null) {
-
-
-            }
-            tvValueEspecialidad.setText(Configuration.SPECIALTY.getNombre());
             tvValueProfesor.setText("Profesor");
         }
         return view;

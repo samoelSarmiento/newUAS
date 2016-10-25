@@ -42,7 +42,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
                              Bundle savedInstanceState) {
         getActivity().setTitle("Cursos de la especialidad");
 
-        View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
+            View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
         ListView coursesxspecialty = (ListView) view.findViewById(R.id.lvCourses);
         //lleno el spinner
         spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
