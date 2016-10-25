@@ -130,8 +130,11 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
             SpecialtyController specialtyController = new SpecialtyController();
-            boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.SPECIALTY.getIdEspecialidad());
+            } else {
+                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+            }
 //            if (result) {
 //                CourseFragment coursesFragment = new CourseFragment();
 //                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
