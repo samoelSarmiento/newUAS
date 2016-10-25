@@ -67,7 +67,7 @@
     <string name="tvSpecialtyCoord">Coordinador: </string>
     <string name="tvSpecialtyDesc">Descripcion: </string>
     <string name="tvMeasureResStartSemester">Ciclo de Inicio: </string>
-    <string name="tvMeasureResEndSemester">Ciclo de Inicio: </string>
+    <string name="tvMeasureResEndSemester">Ciclo de Fin: </string>
     <string name="tvMeasureCritLevel">Nivel de criterio: </string>
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
