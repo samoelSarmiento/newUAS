@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -83,6 +85,24 @@ public class MeasurePeriodListFragment extends Fragment {
             mpAdapter = new MeasurePeriodAdapter(context,list);
             lvPeriods.setAdapter(mpAdapter);
 
+            lvPeriods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Period per = (Period) mpAdapter.getItem(position);
+                    Log.d("periodo",per.getIdEspecialidad()+ "");
+
+                    MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Period", per);
+                    mpvFragment.setArguments(bundle);
+
+                    Context context = getActivity();
+
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mpvFragment).commit();
+                    ((Activity)context).setTitle("Periodo de Medicion");
+                }
+            });
             /*
             tvsplabel.setText(json.get("Nombre").getAsString());
             tvspcode.setText(json.get("Codigo").getAsString());

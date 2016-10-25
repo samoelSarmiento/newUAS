@@ -51,7 +51,7 @@ public interface RestCon {
     @GET("/internetUAS/public/api/getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
 
-    @GET("faculties/{f_id}/periods")
+    @GET("periods/{f_id}/list")
     Call<List<Period>> getPeriods(@Path("f_id") int faculty_id, @QueryMap Map<String,String> token);
 
 
