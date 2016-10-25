@@ -14,7 +14,7 @@
     <string name="etPassword">Contraseña</string>
     <string name="btIngresar">INGRESAR</string>
     <string name="ivLogo_description">Logo</string>
-    <string name="tvCicle">Ciclo: </string>
+    <string name="tvNivel">Nivel: </string>
 
 
     <!--Investigacion-->
@@ -67,7 +67,7 @@
     <string name="tvSpecialtyCoord">Coordinador: </string>
     <string name="tvSpecialtyDesc">Descripcion: </string>
     <string name="tvMeasureResStartSemester">Ciclo de Inicio: </string>
-    <string name="tvMeasureResEndSemester">Ciclo de Inicio: </string>
+    <string name="tvMeasureResEndSemester">Ciclo de Fin: </string>
     <string name="tvMeasureCritLevel">Nivel de criterio: </string>
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
@@ -108,7 +108,6 @@
     </string-array>
 
 
-
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
     <string name="itdAcrMyself">Mi Perfil</string>
@@ -127,6 +126,9 @@
     <string name="tvAcreEmail">Correo:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
+    <string name="tvCicle">Ciclo:</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

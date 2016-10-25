@@ -2,44 +2,31 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.schedulers.Schedulers;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
-import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
+import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
-import uas.pe.edu.pucp.newuas.model.Accreditor;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Specialty;
-import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
-import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
-import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
-import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 /**
  * Created by Marshall on 20/10/2016.
@@ -131,8 +118,8 @@ public class SpecialtyController {
                     Bundle bundle = new Bundle();
                     bundle.putString("Specialty", spj);
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Especialidad");
+                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, spFragment).commit();
+                    ((Activity) context).setTitle("Especialidad");
 
 
                 } else {
@@ -183,20 +170,23 @@ public class SpecialtyController {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<CourseResponse> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
-        //Log.d("TAG",call.request().url());
-        call.enqueue(new Callback<CourseResponse>() {
+        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        call.enqueue(new Callback<List<CourseResponse>>() {
             @Override
-            public void onResponse(Call<CourseResponse> call, Response<CourseResponse> response) {
-                CourseResponse courseResponse = response.body();
-                //System.out.println(courseResponse.getNombre());
-
-                //CoursesFragment coursesFragment = new CoursesFragment();
-                //coursesFragment.getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+            public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<CourseResponse> courseResponse = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("CourseList", (Serializable) courseResponse);
+                    //Fragmnet
+                    CoursesxSpecialtyFragment cfFragment = new CoursesxSpecialtyFragment();
+                    cfFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, cfFragment).commit();
+                }
             }
 
             @Override
-            public void onFailure(Call<CourseResponse> call, Throwable t) {
+            public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
                 t.printStackTrace();
                 System.out.println("ERROROROROR");
             }

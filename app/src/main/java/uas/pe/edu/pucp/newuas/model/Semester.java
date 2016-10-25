@@ -2,10 +2,12 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by samoe on 20/10/2016.
  */
-public class Semester {
+public class Semester implements Serializable {
 
     @SerializedName("IdCicloAcademico")
     private int idCicloAcademico;
