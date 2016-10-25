@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
@@ -18,8 +19,8 @@ public class Configuration {
     public static final String API_AUTHENTICATE = "authenticate";
     public static final String Q_SELECT_ALL = "SELECT * FROM ";
     public static final CourseResponse COURSE_RESPONSE = null;
+    public static int CXE_ITEM_SHOW = 5;
     public static UserResponse LOGIN_USER = null;
 
     public static Specialty SPECIALTY = null;
-    public static List<CourseResponse> COURSE_LIST = null;
 }

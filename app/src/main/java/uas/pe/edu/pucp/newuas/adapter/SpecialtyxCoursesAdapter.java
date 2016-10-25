@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.SpecialtyxCourseDisplay;
 
@@ -21,22 +22,15 @@ import uas.pe.edu.pucp.newuas.model.SpecialtyxCourseDisplay;
 public class SpecialtyxCoursesAdapter extends BaseAdapter {
 
     private Context context;
-    private List<CourseResponse> items;
+    private ArrayList<CourseResponse> items;
     private LayoutInflater layoutInflater;
 
-    public List<CourseResponse> getItems() {
-        return items;
-    }
-
-    public void setItems(List<CourseResponse> items) {
-        this.items = items;
-    }
-
-    public SpecialtyxCoursesAdapter(Context context, List<CourseResponse> items) {
+    public SpecialtyxCoursesAdapter(Context context, ArrayList<CourseResponse> items) {
         this.context = context;
         this.items = items;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
 
     @Override
     public int getCount() {
@@ -53,6 +47,7 @@ public class SpecialtyxCoursesAdapter extends BaseAdapter {
         return position;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -62,8 +57,12 @@ public class SpecialtyxCoursesAdapter extends BaseAdapter {
         viewHolder.tvCourse = (TextView) view.findViewById(R.id.tvNameCurso);
         viewHolder.tvCode.setText(items.get(position).getCodigo());
         viewHolder.tvCourse.setText(items.get(position).getNombre());
+        if (items.get(position).getNivelAcademico() != Configuration.CXE_ITEM_SHOW) {
+            return new View(view.getContext());
+        }
         return view;
     }
+
 
     private static class ViewHolder {
         TextView tvCode, tvCourse;

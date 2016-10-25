@@ -2,46 +2,31 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.schedulers.Schedulers;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
-import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
-import uas.pe.edu.pucp.newuas.model.Accreditor;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Specialty;
-import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
-import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
-import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
-import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 /**
  * Created by Marshall on 20/10/2016.
@@ -191,15 +176,12 @@ public class SpecialtyController {
             public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
                 if (response.isSuccessful()) {
                     List<CourseResponse> courseResponse = response.body();
-                    Configuration.COURSE_LIST = courseResponse;
-                    Gson gson = new Gson();
-                    String listCourse =  gson.toJson(courseResponse);
                     Bundle bundle = new Bundle();
-                    bundle.putString("CourseList",listCourse);
+                    bundle.putSerializable("CourseList", (Serializable) courseResponse);
                     //Fragmnet
                     CoursesxSpecialtyFragment cfFragment = new CoursesxSpecialtyFragment();
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,cfFragment).commit();
-                    ((Activity)context).setTitle("Cursos");
+                    cfFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, cfFragment).commit();
                 }
             }
 
