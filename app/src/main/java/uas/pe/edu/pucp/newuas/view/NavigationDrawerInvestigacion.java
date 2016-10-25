@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import uas.pe.edu.pucp.newuas.R;
 
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
+import uas.pe.edu.pucp.newuas.controller.ProjectController;
 import uas.pe.edu.pucp.newuas.fragment.CourseFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
@@ -83,17 +85,19 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_invGroup) {
-            // Handle the camera action
-            InvGroupFragment invGroupFragment = new InvGroupFragment();
+            InvGroupController invGroupController = new InvGroupController();
+            invGroupController.getInvGroups(this);
+            /*InvGroupFragment invGroupFragment = new InvGroupFragment();
             getFragmentManager().beginTransaction().add(R.id.fragment_container, invGroupFragment).commit();
-            setTitle(item.getTitle());
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_proj) {
-            ProjectsFragment projectsFragment = new ProjectsFragment();
+            ProjectController projController = new ProjectController();
+            projController.getProjects(this);
+            /*ProjectsFragment projectsFragment = new ProjectsFragment();
             getFragmentManager().beginTransaction().add(R.id.fragment_container, projectsFragment).commit();
-            setTitle(item.getTitle());
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_inv) {
             InvestigatorController invController = new InvestigatorController();
-
             invController.getInvestigators(this);
             /*
             InvestigatorsFragment invetigatorsFragment = new InvestigatorsFragment();
