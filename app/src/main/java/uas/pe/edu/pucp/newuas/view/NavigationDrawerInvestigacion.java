@@ -4,9 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,9 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
+import uas.pe.edu.pucp.newuas.fragment.CourseFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.fragment.ProjectsFragment;

@@ -79,25 +79,26 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
-        Log.d("Tag","I DIT ITafsaffsafsasf");
+        Log.d("Tag", "I DIT ITafsaffsafsasf");
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Log.d("Tag","I DIT IT");
+        Log.d("Tag", "I DIT IT");
         Call<List<TopicResponse>> call = restCon.getTopics(data);
-        Log.d("Tag",call.request().url()+ "");
+        Log.d("Tag", call.request().url() + "");
         call.enqueue(new Callback<List<TopicResponse>>() {
 
 
             @Override
             public void onResponse(Call<List<TopicResponse>> call, Response<List<TopicResponse>> response) {
                 List<TopicResponse> topicResponses = response.body();
-                for (TopicResponse topic: topicResponses){
+                for (TopicResponse topic : topicResponses) {
                     //nameTopic[i] = topic.getNombre();
                     //i++;
                     nameTopicsList.add(topic.getNombre());
                 }
                 nameTopic = new String[nameTopicsList.size()];
-                for (int i = 0; i<nameTopicsList.size(); i++) nameTopic[i] = nameTopicsList.get(i);
+                for (int i = 0; i < nameTopicsList.size(); i++)
+                    nameTopic[i] = nameTopicsList.get(i);
 
             }
 
@@ -106,8 +107,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
             }
         });
-
-
 
 
     }
@@ -148,7 +147,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = new TutorInfoFragment() ;
+        Fragment fragment = new TutorInfoFragment();
 
         int id = item.getItemId();
 
@@ -192,7 +191,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     }
 
 
-    public void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment) {
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -205,8 +204,8 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
     }
 
-    public void showDialogFragment(DialogFragment d){
-        d.show(getFragmentManager(),"tag");
+    public void showDialogFragment(DialogFragment d) {
+        d.show(getFragmentManager(), "tag");
     }
 
 }

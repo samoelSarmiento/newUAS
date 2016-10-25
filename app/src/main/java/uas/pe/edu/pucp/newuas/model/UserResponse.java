@@ -2,6 +2,9 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by samoe on 28/09/2016.
  */
@@ -13,6 +16,17 @@ public class UserResponse {
 
     @SerializedName("user")
     private User user;
+
+    @SerializedName("faculties")
+    private List<Specialty> specialtyList;
+
+    public List<Specialty> getSpecialtyList() {
+        return specialtyList;
+    }
+
+    public void setSpecialtyList(ArrayList<Specialty> specialtyList) {
+        this.specialtyList = specialtyList;
+    }
 
     public String getToken() {
         return token;

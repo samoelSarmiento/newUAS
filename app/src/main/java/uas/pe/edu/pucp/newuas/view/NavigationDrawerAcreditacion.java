@@ -3,11 +3,8 @@ package uas.pe.edu.pucp.newuas.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,22 +12,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.GridLayout;
-import android.widget.Toast;
+import android.view.View;
 
-import com.google.gson.Gson;
+import java.io.Serializable;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
-import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
-import uas.pe.edu.pucp.newuas.model.CourseResponse;
-import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +42,21 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        setTitle("Mi Perfil");
-        getFragmentManager().beginTransaction().add(R.id.fragment_container, new MySelfFragment()).commit();
+        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+            //cambiar la visibilidad de los elementos
+            navigationView.getMenu().findItem(R.id.nav_specialty_list).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_myself).setVisible(false);
+            //poner la lista de especialidades como la pantalla principal
+            SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            specialtyListFragment.setArguments(bundle);
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, specialtyListFragment).commit();
+        } else {
+            setTitle("Mi Perfil");
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MySelfFragment()).commit();
+
+        }
     }
 
     @Override
@@ -92,6 +100,12 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         if (id == R.id.nav_myself) {
             MySelfFragment mySelfFragment = new MySelfFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
+        } else if (id == R.id.nav_specialty_list) {
+            SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            specialtyListFragment.setArguments(bundle);
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, specialtyListFragment).commit();
         } else if (id == R.id.nav_myspecialty) {
             SpecialtyController specialtyController = new SpecialtyController();
 
@@ -119,13 +133,16 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
 
 //            if (result) {
-//                CoursesFragment coursesFragment = new CoursesFragment();
+//                CourseFragment coursesFragment = new CourseFragment();
 //                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
 //            }else
 //                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
+            MeasurePeriodController measurePeriodController = new MeasurePeriodController();
+            boolean result = measurePeriodController.getMeasurePeriods(this);
+
 
         } else if (id == R.id.nav_studresult) {
 

@@ -72,15 +72,15 @@ public class InvestigatorsAdapter extends BaseAdapter{
         ViewHolder viewHolder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_investigators_item, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_investigators_detail, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.invName.setText(items.get(position).getNombre() + " " + items.get(position).getApePaterno() + " " + items.get(position).getApeMaterno());
-        viewHolder.invMail.setText(items.get(position).getCorreo());
+        //viewHolder.invName.setText(items.get(position).getNombre() + " " + items.get(position).getApePaterno() + " " + items.get(position).getApeMaterno());
+        //viewHolder.invMail.setText(items.get(position).getCorreo());
 
         return convertView;
     }
