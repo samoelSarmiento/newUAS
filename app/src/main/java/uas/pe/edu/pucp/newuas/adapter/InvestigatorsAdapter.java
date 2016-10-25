@@ -49,12 +49,15 @@ public class InvestigatorsAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = layoutInflater.inflate(R.layout.fragment_investigators_detail,null);
+
+        /*View view = layoutInflater.inflate(R.layout.fragment_investigators_item,null);
+        return view;*/
+        /*
         ViewHolder viewHolder = new ViewHolder();
 
-        viewHolder.invName = (TextView) view.findViewById(R.id.invName);
-        viewHolder.invName.setText(items.get(position).getNombre());
-
+        viewHolder.invName = (TextView) view.findViewById(R.id.inv_name);
+        viewHolder.invName.setText(items.get(position).getNombre() + " " + items.get(position).getApePaterno() + " " + items.get(position).getApeMaterno());*/
+/*
         viewHolder.invMail = (TextView) view.findViewById(R.id.invMail);
         viewHolder.invMail.setText(items.get(position).getCorreo());
 
@@ -63,14 +66,33 @@ public class InvestigatorsAdapter extends BaseAdapter{
 
         viewHolder.invTel = (TextView) view.findViewById(R.id.invTel);
         viewHolder.invTel.setText(items.get(position).getCelular());
+*/
 
-        return view;
+
+        ViewHolder viewHolder;
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_investigators_item, null);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        viewHolder.invName.setText(items.get(position).getNombre() + " " + items.get(position).getApePaterno() + " " + items.get(position).getApeMaterno());
+        viewHolder.invMail.setText(items.get(position).getCorreo());
+
+        return convertView;
     }
 
     public static class ViewHolder{
         TextView invName;
         TextView invMail;
-        TextView invEsp;
-        TextView invTel;
+
+        public ViewHolder(View view) {
+            invName = (TextView)view.findViewById(R.id.inv_name);
+            invMail = (TextView)view.findViewById(R.id.inv_mail);
+        }
+
     }
 }

@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -38,6 +39,8 @@ public class InvestigatorController {
         call.enqueue(new Callback<List<Investigator>>() {
             @Override
             public void onResponse(Call<List<Investigator>> call, retrofit2.Response<List<Investigator>> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
                 if (response.isSuccessful()) {
                     okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
@@ -58,9 +61,9 @@ public class InvestigatorController {
 
                     InvestigatorsFragment spFragment = new InvestigatorsFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().add(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Investigadores");
-
+                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
                 } else {
                     //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);

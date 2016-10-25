@@ -44,7 +44,7 @@ public interface RestCon {
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
 
     /*Investigacion*/
-    @GET("internetUAS/public/api/getAllInvestigators")
+    @GET("getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
     /*
     @GET("internetUAS/public/api/getAllGroups")
