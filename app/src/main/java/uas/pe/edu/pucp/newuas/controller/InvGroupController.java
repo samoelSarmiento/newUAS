@@ -58,11 +58,11 @@ public class InvGroupController {
                     String spj = gsonf.toJson(example);
                     //System.out.println(spj);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Groups.", spj);
+                    bundle.putString("Groups", spj);
 
                     InvGroupFragment spFragment = new InvGroupFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().add(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Investigadores");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 

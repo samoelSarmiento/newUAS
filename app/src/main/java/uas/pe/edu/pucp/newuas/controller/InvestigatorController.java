@@ -61,7 +61,7 @@ public class InvestigatorController {
 
                     InvestigatorsFragment spFragment = new InvestigatorsFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().add(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Investigadores");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
