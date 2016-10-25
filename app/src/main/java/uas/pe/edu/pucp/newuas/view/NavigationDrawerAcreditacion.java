@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -21,6 +24,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
+import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
@@ -107,9 +111,23 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             specialtyListFragment.setArguments(bundle);
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, specialtyListFragment).commit();
         } else if (id == R.id.nav_myspecialty) {
-            SpecialtyController specialtyController = new SpecialtyController();
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3){
 
-            specialtyController.getSpecialties(this);
+                SpecialtyFragment spFragment = new SpecialtyFragment();
+
+                Gson gsonf = new Gson();
+                String spj = gsonf.toJson(Configuration.SPECIALTY);
+                System.out.println(spj);
+                Bundle bundle = new Bundle();
+                bundle.putString("Specialty", spj);
+                spFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, spFragment).commit();
+                setTitle("Especialidad");
+            }else{
+                SpecialtyController specialtyController = new SpecialtyController();
+                specialtyController.getSpecialties(this);
+            }
+
 
             //while(Configuration.SPECIALTY == null);
             //System.out.println(Configuration.SPECIALTY.getNombre());
@@ -130,8 +148,11 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
             SpecialtyController specialtyController = new SpecialtyController();
-            boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.SPECIALTY.getIdEspecialidad());
+            } else {
+                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+            }
 //            if (result) {
 //                CourseFragment coursesFragment = new CourseFragment();
 //                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
