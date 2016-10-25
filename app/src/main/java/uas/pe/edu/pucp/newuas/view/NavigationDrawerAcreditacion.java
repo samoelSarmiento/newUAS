@@ -4,11 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,10 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
+import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
+import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        setTitle("Mi Especialidad");
-
+        setTitle("Mi Perfil");
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MySelfFragment()).commit();
     }
 
     @Override
@@ -79,17 +78,48 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        setTitle(item.getTitle());
         int id = item.getItemId();
+        if (id == R.id.nav_myself) {
+            MySelfFragment mySelfFragment = new MySelfFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, mySelfFragment).commit();
+        } else if (id == R.id.nav_myspecialty) {
+            SpecialtyController specialtyController = new SpecialtyController();
 
-        if (id == R.id.nav_myspecialty) {
-            // Handle the camera action
+            specialtyController.getSpecialties(this);
+
+            //while(Configuration.SPECIALTY == null);
+            //System.out.println(Configuration.SPECIALTY.getNombre());
+            //Specialty sp = specialtyController.getSpecialties(this);
+            //System.out.println(sp.getNombre());
+            //Specialty sp = Configuration.SPECIALTY;
+
+
+            /*
+            Gson gson = new Gson();
+            String spj = gson.toJson(sp);
+            System.out.println(spj);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Specialty", spj);
+            spFragment.setArguments(bundle); */
+
+
         } else if (id == R.id.nav_courses) {
-            CoursesFragment coursesFragment = new CoursesFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();
-            setTitle(item.getTitle());
+            //obtener todos los cursos x especialidad
+            SpecialtyController specialtyController = new SpecialtyController();
+            boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+
+//            if (result) {
+//                CourseFragment coursesFragment = new CourseFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
+//            }else
+//                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_eduobjectivo) {
 
         } else if (id == R.id.nav_sizperiod) {
+            MeasurePeriodController measurePeriodController = new MeasurePeriodController();
+            boolean result = measurePeriodController.getMeasurePeriods(this);
+
 
         } else if (id == R.id.nav_studresult) {
 
@@ -110,6 +140,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             //Borra los shared preferences
+                            Configuration.LOGIN_USER = null;
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
                             startActivity(intent);

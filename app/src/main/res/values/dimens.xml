@@ -13,4 +13,7 @@
     <dimen name="invGroupImage">200dp</dimen>
 
 
+    <dimen name="general_bg_padding">10dp</dimen>
+    <dimen name="info_bg_padding">30dp</dimen>
+
 </resources>
