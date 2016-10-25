@@ -17,8 +17,12 @@ import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
+
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+
+
+import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 
 import uas.pe.edu.pucp.newuas.model.Period;
 
@@ -75,6 +79,9 @@ public interface RestCon {
 
     @GET("periods/{f_id}/list")
     Call<List<Period>> getPeriods(@Path("f_id") int faculty_id, @QueryMap Map<String,String> token);
+
+    @GET("periods/{p_id}/instruments")
+    Call<List<MeasureInstrument>> getMeaInstofPer(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
 
 
 }
