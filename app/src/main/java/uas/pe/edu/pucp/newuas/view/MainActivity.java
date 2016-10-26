@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
+
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -65,8 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case DialogInterface.BUTTON_POSITIVE:
                         //seteamos el loginuser a null
                         Configuration.LOGIN_USER = null;
+
                         Intent intent = new Intent(getBaseContext(), LogInActivity.class);
                         startActivity(intent);
+                        finish();
+
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;
@@ -74,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+        builder.setMessage("Cerrar sesión?").setNegativeButton("No", dialogClickListener)
                 .setPositiveButton("Si", dialogClickListener).show();
+
     }
 }
