@@ -40,7 +40,7 @@
     <!--Inv Fin-->
     <!--PSP-->
     <string name="pspCycle">Ciclo</string>
-    <string name="pspTutors">Tutores</string>
+    <string name="pspTutors">Supervisores</string>
     <string name="pspStudents">Alumnos</string>
     <string name="pspDates">Reuniones</string>
     <string name="pspDocuments">Documentos</string>
