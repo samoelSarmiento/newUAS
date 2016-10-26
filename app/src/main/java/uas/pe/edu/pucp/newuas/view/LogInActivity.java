@@ -50,4 +50,6 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }
+
+
 }
