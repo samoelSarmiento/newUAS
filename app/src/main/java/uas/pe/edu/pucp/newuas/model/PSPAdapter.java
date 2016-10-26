@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.GroupViewHolder;
 
 /**
  * Created by Franz on 21/10/2016.
@@ -71,9 +72,9 @@ public class PSPAdapter  extends BaseAdapter {
                     SupViewHolder viewHolderSup  = new SupViewHolder();
                     viewHolderSup.buildView(view,items,position);
 
-
-
                 }
+
+
             } catch (Exception ex) {
 
                 ex.printStackTrace();
