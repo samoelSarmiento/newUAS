@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.adapter.GroupViewHolder;
+//import uas.pe.edu.pucp.newuas.adapter.GroupViewHolder;
 
 /**
  * Created by Franz on 21/10/2016.
