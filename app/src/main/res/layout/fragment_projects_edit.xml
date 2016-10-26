@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <EditText
                     android:id="@+id/projName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                     android:layout_weight="0.3"
                     android:text="@string/projInitDate" />
 
-                <TextView
+                <EditText
                     android:id="@+id/projInitDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                     android:layout_weight="0.3"
                     android:text="@string/projFinDate" />
 
-                <TextView
+                <EditText
                     android:id="@+id/projFinDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                     android:layout_weight="0.3"
                     android:text="@string/projDeliv" />
 
-                <TextView
+                <EditText
                     android:id="@+id/projDeliv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                     android:layout_weight="0.3"
                     android:text="@string/projMembers" />
 
-                <TextView
+                <EditText
                     android:id="@+id/projMembers"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -114,10 +114,22 @@
         </LinearLayout>
 
     </ScrollView>
-    <Button
-        android:id="@+id/projEdit"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Editar"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/projSave"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Guardar"/>
+        <Button
+            android:id="@+id/projCancel"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"/>
+    </LinearLayout>
 
 </LinearLayout>

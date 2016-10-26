@@ -26,7 +26,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <EditText
                     android:id="@+id/invGroupName"
                     android:text=""
                     android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
-                <TextView
+                <EditText
                     android:id="@+id/invGroupEsp"
                     android:text=""
                     android:layout_weight="0.7"
@@ -66,7 +66,7 @@
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
-                <TextView
+                <EditText
                     android:id="@+id/invGroupDesc"
                     android:text=""
                     android:layout_weight="0.7"
@@ -79,10 +79,23 @@
         </LinearLayout>
 
     </ScrollView>
-    <Button
-        android:id="@+id/invGroupEdit"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Editar"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/invGroupSave"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Guardar"/>
+        <Button
+            android:id="@+id/invGroupCancel"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"/>
+    </LinearLayout>
+
 
 </LinearLayout>
