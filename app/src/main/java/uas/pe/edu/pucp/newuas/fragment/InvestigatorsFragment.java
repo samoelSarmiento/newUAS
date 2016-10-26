@@ -1,11 +1,20 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 
@@ -16,9 +25,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
+import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.Faculty;
+import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
@@ -43,52 +58,37 @@ public class InvestigatorsFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_investigators, container, false);
-        getActivity().setTitle("Invetigadores");
-
+        getActivity().setTitle("Investigadores");
         lvInv=(ListView) view.findViewById(R.id.invList);
 
+        /*ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
+        items.add(item);
+        investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
+        lvInv.setAdapter(investigatorsAdapter);*/
 
-        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Bundle bundle = this.getArguments();
 
-        /*
+        if (bundle != null){
 
+            ArrayList<Investigator> investigators = (ArrayList<Investigator>) bundle.getSerializable("Investigators");
 
-        Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
-        call.enqueue(new Callback<UserMeResponse>() {
+            investigatorsAdapter = new InvestigatorsAdapter(getActivity(), investigators);
+            lvInv.setAdapter(investigatorsAdapter);
+            //Log.d("TAG",json.get("Nombre").getAsString());
+            //Log.d("TAG",json.getAsString());
+        }
+        lvInv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onResponse(Call<UserMeResponse> call, Response<UserMeResponse> response) {
-                UserMeResponse item = response.body();
-                ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
-                items.add(item);
-                investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Investigator inv = (Investigator) investigatorsAdapter.getItem(position);
 
-            @Override
-            public void onFailure(Call<UserMeResponse> call, Throwable t) {
-
-            }
-
-        });
-
-        */
-
-        /*
-        Call<ArrayList<UserResponse>> call = restCon.getInvestigator();
-        call.enqueue(new Callback<ArrayList<UserResponse>>() {
-            @Override
-            public void onResponse(Call<ArrayList<UserResponse>> call, Response<ArrayList<UserResponse>> response) {
-                ArrayList<UserResponse> items = response.body();
-                investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<UserResponse>> call, Throwable t) {
+                InvestigatorController invController = new InvestigatorController();
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                invController.getInvestigatorById(getActivity(),inv.getId());
 
             }
         });
-        */
+
         return view;
     }
 
