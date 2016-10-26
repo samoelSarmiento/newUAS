@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 
+import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 import uas.pe.edu.pucp.newuas.model.Semester;
@@ -98,6 +99,19 @@ public interface RestCon {
 
     @GET("periods/{p_id}/cycles")
     Call<List<Semester>> getSemofPer(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
+
+
+    /* PSP  Section*/
+
+    @GET("/internetUAS/public/api/getGroups")
+    Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
+
+
+
+
+    /*END SECTION*/
+
+
 
 
 }

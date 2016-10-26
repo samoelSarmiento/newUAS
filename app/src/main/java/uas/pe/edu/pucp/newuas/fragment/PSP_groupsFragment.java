@@ -1,23 +1,17 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-
-import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.model.PSPAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPSupervisor;
 
 
-
-public class PSP_supervisorFragment extends Fragment {
+public class PSP_groupsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,13 +22,7 @@ public class PSP_supervisorFragment extends Fragment {
     private String mParam2;
 
 
-
-    private ArrayList<PSPSupervisor> list;
-    private PSPAdapter adapter;
-
-    private ListView lvPSPSupervisor;
-
-    public PSP_supervisorFragment() {
+    public PSP_groupsFragment() {
         // Required empty public constructor
     }
 
@@ -44,11 +32,11 @@ public class PSP_supervisorFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PSP_supervisorFragment.
+     * @return A new instance of fragment PSP_groupsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PSP_supervisorFragment newInstance(String param1, String param2) {
-        PSP_supervisorFragment fragment = new PSP_supervisorFragment();
+    public static PSP_groupsFragment newInstance(String param1, String param2) {
+        PSP_groupsFragment fragment = new PSP_groupsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,35 +56,8 @@ public class PSP_supervisorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        View view = inflater.inflate(R.layout.fragment_psp_supervisor, container, false);
-         lvPSPSupervisor = (ListView) view.findViewById(R.id.lv_psp_supervisors);
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_psp_groups, container, false);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
-        list = new ArrayList<>();
-        PSPSupervisor sup = new PSPSupervisor();
-        sup.setCodigo("11111");
-        sup.setNombre("Juan Morales");
-
-        PSPSupervisor sup2 =  new PSPSupervisor();
-        sup.setNombre("Alberto Cardenas");
-        sup.setCodigo("11115");
-
-        list.add(sup);
-        list.add(sup2);
-
-
-        PSPAdapter adapter =  new PSPAdapter(getActivity(),list);
-        lvPSPSupervisor.setAdapter(adapter);
-
-
-
-    }
 }
