@@ -47,20 +47,12 @@ public class ProjectsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_projects_item, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
+        View view = layoutInflater.inflate(R.layout.fragment_projects_item,null);
+        ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.projName.setText(items.get(position).getNombre());
+        return view;
 
-
-        return convertView;
     }
 
     public static class ViewHolder{

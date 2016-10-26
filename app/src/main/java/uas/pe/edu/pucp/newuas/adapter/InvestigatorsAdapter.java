@@ -65,20 +65,12 @@ public class InvestigatorsAdapter extends BaseAdapter{
         viewHolder.invTel = (TextView) view.findViewById(R.id.invTel);
         viewHolder.invTel.setText(items.get(position).getCelular());
 */
-        ViewHolder viewHolder;
-
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_investigators_item, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
+        View view = layoutInflater.inflate(R.layout.fragment_investigators_item,null);
+        ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.invName.setText(items.get(position).getNombre() + " " + items.get(position).getApePaterno() + " " + items.get(position).getApeMaterno());
-        viewHolder.invMail.setText(items.get(position).getCorreo());
+        //viewHolder.invMail.setText(items.get(position).getCorreo());
+        return view;
 
-        return convertView;
     }
 
     public static class ViewHolder{
@@ -87,7 +79,7 @@ public class InvestigatorsAdapter extends BaseAdapter{
 
         public ViewHolder(View view) {
             invName = (TextView)view.findViewById(R.id.inv_name);
-            invMail = (TextView)view.findViewById(R.id.inv_mail);
+            //invMail = (TextView)view.findViewById(R.id.inv_mail);
         }
 
     }

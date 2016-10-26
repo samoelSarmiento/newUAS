@@ -63,7 +63,7 @@ public class InvGroupFragment extends Fragment{
 
                 invGroups.add(invGroup);
             }
-            invGroupsAdapter = new InvGroupsAdapter(getActivity().getApplicationContext(), invGroups);
+            invGroupsAdapter = new InvGroupsAdapter(getActivity(), invGroups);
             lvInvGroup.setAdapter(invGroupsAdapter);
         }
         return view;

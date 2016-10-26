@@ -64,7 +64,7 @@ public class ProjectsFragment extends Fragment {
 
                 projects.add(proj);
             }
-            projectsAdapter = new ProjectsAdapter(getActivity().getApplicationContext(), projects);
+            projectsAdapter = new ProjectsAdapter(getActivity(), projects);
             lvProj.setAdapter(projectsAdapter);
         }
         return view;

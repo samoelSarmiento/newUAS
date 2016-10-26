@@ -85,7 +85,7 @@ public class InvestigatorsFragment extends Fragment{
 
                 investigators.add(investigator);
             }
-            investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), investigators);
+            investigatorsAdapter = new InvestigatorsAdapter(getActivity(), investigators);
             lvInv.setAdapter(investigatorsAdapter);
             //Log.d("TAG",json.get("Nombre").getAsString());
             //Log.d("TAG",json.getAsString());
