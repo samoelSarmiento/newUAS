@@ -1,5 +1,7 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,13 +46,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btModulePsp:
-                Intent intentPSP = new Intent(this,NavigationDrawerPSP.class);
+                Intent intentPSP = new Intent(this, NavigationDrawerPSP.class);
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                intent = new Intent(this,NavigationDrawerTutoria.class);
+                intent = new Intent(this, NavigationDrawerTutoria.class);
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //seteamos el loginuser a null
+                        Configuration.LOGIN_USER = null;
+                        Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                        startActivity(intent);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                .setPositiveButton("Si", dialogClickListener).show();
     }
 }
