@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.CoursexTeacherAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
@@ -25,6 +27,8 @@ import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 
 public class CourseFragment extends Fragment {
+
+    CoursexTeacherAdapter adapter;
 
     public CourseFragment() {
         // Required empty public constructor
@@ -49,19 +53,13 @@ public class CourseFragment extends Fragment {
             CourseResponse courseResponse = gson.fromJson(course, CourseResponse.class);
             tvValueCurso.setText(courseResponse.getNombre());
             if (courseResponse.getSchedules() != null) {
-
-                /*//List view de profesores visible
                 lvTeacher.setVisibility(View.VISIBLE);
-                ArrayList<Schedules> schedules = courseResponse.getSchedules();
-                Set<Teacher> teachers = new HashSet<>();
-                //Para cada horario
-                for (Schedules schedule : schedules) {
-                    //Se saca la lista de profesores
-                    List<Teacher> scheTeacherList = schedule.getProfessors();
-                    //Se los añade
-                    for (Teacher teacher : scheTeacherList)
-                        teachers.add(teacher);
-                }*/
+                Context context = getActivity();
+                adapter = new CoursexTeacherAdapter(courseResponse.getSchedules(), context);
+                lvTeacher.setAdapter(adapter);
+            }else{
+                TextView tvValueProfessor = (TextView)view.findViewById(R.id.tvValueProfessor);
+                tvValueProfessor.setText(R.string.tvProfessorUnavailable);
             }
         }
         return view;

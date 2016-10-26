@@ -46,7 +46,7 @@ public class SemesterController {
                     bundle.putSerializable("Semesters",(Serializable)semList);
                     slf.setArguments(bundle);
 
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,slf).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,slf).commit();
                     ((Activity)context).setTitle("Semestres");
 
 

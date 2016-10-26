@@ -45,7 +45,11 @@ public class MeasureInstrumentsController {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("MeasureInst",(Serializable)lmi);
                     mif.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mif).commit();
+                    ((Activity)context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container,mif)
+                            .commit();
                     ((Activity)context).setTitle("Instrumentos de Medicion");
 
                 }else{

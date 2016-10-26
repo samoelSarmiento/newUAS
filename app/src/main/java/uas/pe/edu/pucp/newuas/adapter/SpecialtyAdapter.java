@@ -66,7 +66,11 @@ public class SpecialtyAdapter extends BaseAdapter {
                 Bundle bundle = new Bundle();
                 bundle.putString("Specialty", spj);
                 specialtyFragment.setArguments(bundle);
-                ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, specialtyFragment).commit();
+                ((Activity) context).getFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, specialtyFragment)
+                        .commit();
             }
         });
         return view;
