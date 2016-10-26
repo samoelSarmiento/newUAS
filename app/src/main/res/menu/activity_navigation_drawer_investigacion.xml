@@ -7,16 +7,16 @@
         <menu>
             <item
                 android:id="@+id/nav_invGroup"
-                android:icon="@drawable/ic_aspectos"
+                android:icon="@drawable/ic_objetivos_ed"
                 android:title="@string/invGroup" />
             <item
                 android:id="@+id/nav_inv"
-                android:icon="@drawable/ic_aspectos"
+                android:icon="@drawable/ic_user"
                 android:title="@string/investigator" />
 
             <item
                 android:id="@+id/nav_proj"
-                android:icon="@drawable/ic_aspectos"
+                android:icon="@drawable/ic_cursos"
                 android:title="@string/projects" />
 
             <item

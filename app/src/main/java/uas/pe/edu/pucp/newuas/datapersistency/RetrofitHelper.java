@@ -22,9 +22,11 @@ public class RetrofitHelper {
     private static RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory
             .createWithScheduler(Schedulers.io());
     //http://10.101.2.15/internetUAS/public/api/
+    //ip server= http://35.161.73.236/api/
+    //.baseUrl("http://35.161.73.236/api/")
 
     public static Retrofit apiConnector = new Retrofit.Builder()
-            .baseUrl("http://35.161.73.236/api/")
+            .baseUrl("http://192.168.1.24/internetUAS/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())

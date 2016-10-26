@@ -72,6 +72,7 @@
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
+    <string name="btSemPer">Semestres Del Periodo</string>
 
     <string name="btMeaInst">Instrumentos De Medición</string>
 
