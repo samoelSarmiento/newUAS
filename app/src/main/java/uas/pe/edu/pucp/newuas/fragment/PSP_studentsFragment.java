@@ -1,9 +1,9 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,7 +98,7 @@ public class PSP_studentsFragment extends Fragment {
         list.add(st2);
 
         try{
-            studentsAdapter =  new PSPListViewAdapter(list, getContext());
+            studentsAdapter =  new PSPListViewAdapter(list, getActivity());
             lvPSPStudents.setAdapter(studentsAdapter);
         }catch (Exception ex){
             ex.printStackTrace();
