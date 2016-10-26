@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
@@ -57,6 +58,9 @@ public interface RestCon {
 
     @GET("periods/{p_id}/instruments")
     Call<List<MeasureInstrument>> getMeaInstofPer(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
+
+    @GET("periods/{p_id}/cycles")
+    Call<List<Semester>> getSemofPer(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
 
 
 }
