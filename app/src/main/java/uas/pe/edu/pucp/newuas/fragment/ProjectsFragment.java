@@ -44,7 +44,8 @@ public class ProjectsFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null){
-            String str = bundle.getString("Projects");
+            ArrayList<Projects> projects = (ArrayList<Projects>) bundle.getSerializable("Projects");
+            /*String str = bundle.getString("Projects");
             Gson gson = new Gson();
             JsonParser jp = new JsonParser();
             JsonArray jsonA = jp.parse(str).getAsJsonArray();//jp.parse(str).getAsJsonObject();
@@ -63,7 +64,7 @@ public class ProjectsFragment extends Fragment {
                 //falta los integrantes
 
                 projects.add(proj);
-            }
+            }*/
             projectsAdapter = new ProjectsAdapter(getActivity(), projects);
             lvProj.setAdapter(projectsAdapter);
         }

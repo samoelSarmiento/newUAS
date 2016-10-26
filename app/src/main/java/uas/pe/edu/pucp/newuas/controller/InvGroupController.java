@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class InvGroupController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-                    okhttp3.Response raw = response.raw();
+                    //okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
                     List<InvGroups> example = response.body();
 
@@ -54,11 +55,12 @@ public class InvGroupController {
 
                     //Configuration.SPECIALTY = example;
 
-                    Gson gsonf = new Gson();
-                    String spj = gsonf.toJson(example);
+                    //Gson gsonf = new Gson();
+                    //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Groups", spj);
+                    bundle.putSerializable("Groups", (Serializable)example);
+                    //bundle.putString("Groups", spj);
 
                     InvGroupFragment spFragment = new InvGroupFragment();
                     spFragment.setArguments(bundle);

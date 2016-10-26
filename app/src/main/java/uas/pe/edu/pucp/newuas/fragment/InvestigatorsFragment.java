@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,11 +23,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
+import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.Faculty;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserMe;
@@ -61,7 +64,21 @@ public class InvestigatorsFragment extends Fragment{
         lvInv.setAdapter(investigatorsAdapter);*/
 
         Bundle bundle = this.getArguments();
+
         if (bundle != null){
+
+            ArrayList<Investigator> investigators = (ArrayList<Investigator>) bundle.getSerializable("Investigators");
+
+
+            /*
+            Gson gson = new Gson();
+            JsonParser jp = new JsonParser();
+            JsonArray json = jp.parse(str).getAsJsonArray();
+            Log.d("TAG",json.getAsString());
+            Context context = getActivity();
+            */
+
+            /*
             String str = bundle.getString("Investigators");
             Gson gson = new Gson();
             JsonParser jp = new JsonParser();
@@ -84,7 +101,7 @@ public class InvestigatorsFragment extends Fragment{
                 investigator.setFaculty(faculty);
 
                 investigators.add(investigator);
-            }
+            }*/
             investigatorsAdapter = new InvestigatorsAdapter(getActivity(), investigators);
             lvInv.setAdapter(investigatorsAdapter);
             //Log.d("TAG",json.get("Nombre").getAsString());

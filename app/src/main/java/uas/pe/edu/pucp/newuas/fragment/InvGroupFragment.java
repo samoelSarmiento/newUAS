@@ -43,7 +43,8 @@ public class InvGroupFragment extends Fragment{
 
         Bundle bundle = this.getArguments();
         if (bundle != null){
-            String str = bundle.getString("Groups");
+            ArrayList<InvGroups> invGroups = (ArrayList<InvGroups>) bundle.getSerializable("Groups");
+            /*String str = bundle.getString("Groups");
             Gson gson = new Gson();
             JsonParser jp = new JsonParser();
             JsonArray jsonA = jp.parse(str).getAsJsonArray();//jp.parse(str).getAsJsonObject();
@@ -62,7 +63,7 @@ public class InvGroupFragment extends Fragment{
                 invGroup.setFaculty(faculty);
 
                 invGroups.add(invGroup);
-            }
+            }*/
             invGroupsAdapter = new InvGroupsAdapter(getActivity(), invGroups);
             lvInvGroup.setAdapter(invGroupsAdapter);
         }

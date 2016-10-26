@@ -3,10 +3,12 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,9 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
+import uas.pe.edu.pucp.newuas.fragment.MeasurePeriodListFragment;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
  * Created by Andree on 24/10/2016.
@@ -42,10 +46,9 @@ public class InvestigatorController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-                    okhttp3.Response raw = response.raw();
+                    //okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
                     List<Investigator> example = response.body();
-
                     //Gson gson = new Gson();
 
                     //UserResponse userr = Configuration.LOGIN_USER;
@@ -53,11 +56,12 @@ public class InvestigatorController {
 
                     //Configuration.SPECIALTY = example;
 
-                    Gson gsonf = new Gson();
-                    String spj = gsonf.toJson(example);
+                    //Gson gsonf = new Gson();
+                    //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Investigators", spj);
+                    bundle.putSerializable("Investigators", (Serializable)example);
+                    //bundle.putString("Investigators", spj);
 
                     InvestigatorsFragment spFragment = new InvestigatorsFragment();
                     spFragment.setArguments(bundle);
