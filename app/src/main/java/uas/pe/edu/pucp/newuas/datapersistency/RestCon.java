@@ -16,8 +16,17 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
+
+
+import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.Investigator;
+
+
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
+
 import uas.pe.edu.pucp.newuas.model.Period;
+
+import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
@@ -40,8 +49,33 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
 
-    @GET("users/me")
-    Call<UserResponse> getInvestigator(@Body String token);
+
+    @POST("users/me")
+    Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
+
+    /*Investigacion*/
+    @GET("getAllInvestigators")
+    Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
+
+    @GET("getAllInvGroups")
+    Call<List<InvGroups>> getInvGroups(@QueryMap Map<String,String> token);
+
+    @GET("getAllProjects")
+    Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/investigators")
+    Call<List<Investigator>> getInvById(@Path("id") int invId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/groups")
+    Call<List<InvGroups>> getInvGroupById(@Path("id") int groupId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/projects")
+    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+    /*--------------*/
+
+
+    /*@GET("users/me")
+    Call<UserResponse> getInvestigator(@Body String token);*/
 
     /*@GET("faculties")
     Call<List<Specialty>> getSpecialtyList(@QueryMap Map<String, String> token);*/
@@ -60,3 +94,5 @@ public interface RestCon {
 
 
 }
+
+

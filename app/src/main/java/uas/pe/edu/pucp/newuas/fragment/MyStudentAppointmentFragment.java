@@ -36,42 +36,6 @@ public class MyStudentAppointmentFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view =   inflater.inflate(R.layout.fragment_my_student_appointment, container, false);
         newAppointment = (Button)view.findViewById(R.id.btnNewAssignment);
-        newAppointment.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        ((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
-                    }
-                }
-        );
-
-        btnInfo = (ImageButton)view.findViewById(R.id.btnSeek);
-        btnInfo.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        ((NavigationDrawerTutoria)getActivity()).replaceFragment(new ShowAssignmentStudentFragment());
-                    }
-                }
-        );
-
-        btnInfo = (ImageButton)view.findViewById(R.id.btnSeek);
-
-        btnAceptar = (ImageButton)view.findViewById(R.id.btnAccept);
-        btnAceptar.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                      //  DialogFragment d = new AcceptAppointmentStudentFragment();
-                      //  FragmentTransaction ft = getFragmentManager().beginTransaction();
-                      //  d.show(ft,"tag");
-                        ((NavigationDrawerTutoria)getActivity()).showDialogFragment(new AcceptAppointmentStudentFragment());
-
-                    }
-                }
-
-
-        );
 
 
         return view;
