@@ -72,6 +72,7 @@
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
+    <string name="btSemPer">Semestres Del Periodo</string>
 
     <string name="btMeaInst">Instrumentos De Medición</string>
 
@@ -131,5 +132,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="itdAcrSpecialtyList">Especialidades</string>
+    <string name="tvHorario">Horario:</string>
+    <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
 
 </resources>
