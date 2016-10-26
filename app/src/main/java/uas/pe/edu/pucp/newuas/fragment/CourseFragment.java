@@ -49,6 +49,7 @@ public class CourseFragment extends Fragment {
             CourseResponse courseResponse = gson.fromJson(course, CourseResponse.class);
             tvValueCurso.setText(courseResponse.getNombre());
             if (courseResponse.getSchedules() != null) {
+
                 /*//List view de profesores visible
                 lvTeacher.setVisibility(View.VISIBLE);
                 ArrayList<Schedules> schedules = courseResponse.getSchedules();

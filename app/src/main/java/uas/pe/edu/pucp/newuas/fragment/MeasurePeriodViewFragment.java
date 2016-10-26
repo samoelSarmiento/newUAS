@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
+import uas.pe.edu.pucp.newuas.controller.MeasureInstrumentsController;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
@@ -24,6 +26,9 @@ import uas.pe.edu.pucp.newuas.model.Period;
  */
 
 public class MeasurePeriodViewFragment extends Fragment {
+    Period period = null;
+    Integer idPeriod = null;
+
     public MeasurePeriodViewFragment(){
 
     }
@@ -62,17 +67,32 @@ public class MeasurePeriodViewFragment extends Fragment {
         TextView tvMeasureAccLevel = (TextView) view.findViewById(R.id.tvMeasureAccLevel);
         TextView tvMeasureAccPerc = (TextView) view.findViewById(R.id.tvMeasureAccPerc);
 
+        Button btnMeaInst = (Button) view.findViewById(R.id.btnMeaInst);
+
         Bundle bundle = this.getArguments();
         if (bundle != null){
-            Period str = (Period) bundle.getSerializable("Period");
+            final Period str = (Period) bundle.getSerializable("Period");
             tvMeasureResStartSemester.setText(str.getConfiguration().getCycleAcademicStart().getDescripcion());
             tvMeasureResEndSemester.setText(str.getConfiguration().getCycleAcademicEnd().getDescripcion());
             tvMeasureCritLevel.setText(str.getConfiguration().getCantNivelCriterio() + "");
             tvMeasureAccLevel.setText(str.getConfiguration().getNivelEsperado() + "");
             tvMeasureAccPerc.setText(str.getConfiguration().getUmbralAceptacion()+ "%");
+            this.period = str;
+            this.idPeriod = period.getIdPeriodo();
+
+            btnMeaInst.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MeasureInstrumentsController mic = new MeasureInstrumentsController();
+                    mic.getMeasureInstrumentsOfPeriod(str.getIdPeriodo() , getActivity());
+                }
+            });
+
 
 
         }
+
+
 
 
 
