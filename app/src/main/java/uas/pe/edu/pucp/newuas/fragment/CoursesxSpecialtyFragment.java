@@ -93,7 +93,11 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         //crear fragment
         CourseFragment courseFragment = new CourseFragment();
         courseFragment.setArguments(bundle);
-        getActivity().getFragmentManager().beginTransaction().replace(R.id.fragment_container, courseFragment).commit();
+        getActivity().getFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.fragment_container, courseFragment)
+                .commit();
         getActivity().setTitle(courseResponse.getNombre());
     }
 }

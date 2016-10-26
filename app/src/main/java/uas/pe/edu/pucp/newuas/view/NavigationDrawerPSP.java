@@ -90,10 +90,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
         if (id == R.id.nav_pspCycle) {
-
-
-            fragment = new PSP_cycleFragment();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+            PSP_cycleFragment cycleFragment = new PSP_cycleFragment();
+            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp, cycleFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {

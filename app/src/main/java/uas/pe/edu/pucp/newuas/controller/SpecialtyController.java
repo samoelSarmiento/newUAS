@@ -120,7 +120,11 @@ public class SpecialtyController {
                     Bundle bundle = new Bundle();
                     bundle.putString("Specialty", spj);
                     spFragment.setArguments(bundle);
-                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, spFragment).commit();
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, spFragment)
+                            .commit();
                     ((Activity) context).setTitle("Especialidad");
 
 
@@ -183,7 +187,11 @@ public class SpecialtyController {
                     //Fragmnet
                     CoursesxSpecialtyFragment cfFragment = new CoursesxSpecialtyFragment();
                     cfFragment.setArguments(bundle);
-                    ((Activity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, cfFragment).commit();
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, cfFragment)
+                            .commit();
                 }
             }
 

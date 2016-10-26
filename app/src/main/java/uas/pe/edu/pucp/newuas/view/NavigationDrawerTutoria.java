@@ -35,8 +35,10 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.MyStudentAppointmentFragment;
 import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 
@@ -73,6 +75,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
@@ -178,6 +181,9 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         }
 
         // Insert the fragment by replacing any existing fragment
+
+        /*
+
         replaceFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -187,10 +193,14 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
     public void replaceFragment(Fragment fragment) {
 
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        /*fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
+
                 .commit();
+*/
+        return true;
 
     }
 

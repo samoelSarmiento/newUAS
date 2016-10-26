@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
 import uas.pe.edu.pucp.newuas.controller.MeasureInstrumentsController;
+import uas.pe.edu.pucp.newuas.controller.SemesterController;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
@@ -68,6 +69,7 @@ public class MeasurePeriodViewFragment extends Fragment {
         TextView tvMeasureAccPerc = (TextView) view.findViewById(R.id.tvMeasureAccPerc);
 
         Button btnMeaInst = (Button) view.findViewById(R.id.btnMeaInst);
+        Button btnSemPer = (Button) view.findViewById(R.id.btnSemestersofPeriod);
 
         Bundle bundle = this.getArguments();
         if (bundle != null){
@@ -88,14 +90,20 @@ public class MeasurePeriodViewFragment extends Fragment {
                 }
             });
 
+            btnSemPer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SemesterController sc = new SemesterController();
+                    sc.getSemestersofPeriod(getActivity(),str.getIdPeriodo());
+
+                }
+            });
+
+
+
 
 
         }
-
-
-
-
-
 
 
 
