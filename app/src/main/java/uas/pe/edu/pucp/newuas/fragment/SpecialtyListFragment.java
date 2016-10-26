@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,46 @@ public class SpecialtyListFragment extends Fragment {
             adapter = new SpecialtyAdapter(context,list);
             lvSpecialties.setAdapter(adapter);
         }
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+
         return view;
+    }
+
+    /*
+
+    @Override
+    public void onHiddenChanged(boolean hidden){
+        super.onHiddenChanged(hidden);
+        if (!hidden){
+            ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+        }else{
+            ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        }
+
+    }
+    */
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
     }
 
 }
