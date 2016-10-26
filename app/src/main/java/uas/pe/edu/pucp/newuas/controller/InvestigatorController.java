@@ -19,6 +19,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.fragment.MeasurePeriodListFragment;
 import uas.pe.edu.pucp.newuas.model.Investigator;
@@ -87,5 +88,63 @@ public class InvestigatorController {
         });
 
         return list;
+    }
+
+    public Investigator getInvestigatorById(final Context context, final int id){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<Investigator> call = restCon.getInvById(id,token);
+
+        call.enqueue(new Callback<Investigator>() {
+            @Override
+            public void onResponse(Call<Investigator> call, retrofit2.Response<Investigator> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+                    //okhttp3.Response raw = response.raw();
+                    //SpecialtyResponse
+                    Investigator example = response.body();
+                    //Gson gson = new Gson();
+
+                    //UserResponse userr = Configuration.LOGIN_USER;
+                    //User user = userr.getUser();
+
+                    //Configuration.SPECIALTY = example;
+
+                    //Gson gsonf = new Gson();
+                    //String spj = gsonf.toJson(example);
+                    //System.out.println(spj);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Inv", (Serializable)example);
+                    //bundle.putString("Investigators", spj);
+
+                    InvDetailFragment spFragment = new InvDetailFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Investigadores");
+                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
+                    //Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Investigator> call, Throwable t) {
+                t.printStackTrace();
+                //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
+                //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+            }
+
+
+        });
+
+
+        return  list;
     }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -25,6 +26,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.Faculty;
@@ -69,82 +71,36 @@ public class InvestigatorsFragment extends Fragment{
 
             ArrayList<Investigator> investigators = (ArrayList<Investigator>) bundle.getSerializable("Investigators");
 
-
-            /*
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonArray json = jp.parse(str).getAsJsonArray();
-            Log.d("TAG",json.getAsString());
-            Context context = getActivity();
-            */
-
-            /*
-            String str = bundle.getString("Investigators");
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonArray jsonA = jp.parse(str).getAsJsonArray();//jp.parse(str).getAsJsonObject();
-            int cant=jsonA.size();
-            ArrayList<Investigator> investigators=new ArrayList<Investigator>();
-            for(int i=0;i<cant;i++){
-                JsonObject jsonO=jsonA.get(i).getAsJsonObject();
-                Investigator investigator= new Investigator();
-
-                investigator.setNombre(jsonO.get("nombre").getAsString());
-                investigator.setApePaterno(jsonO.get("ape_paterno").getAsString());
-                investigator.setApeMaterno(jsonO.get("ape_materno").getAsString());
-                investigator.setCorreo(jsonO.get("correo").getAsString());
-                investigator.setCelular(jsonO.get("celular").getAsString());
-
-                JsonObject jsonOFac=jsonO.getAsJsonObject("faculty");
-                Faculty faculty=new Faculty();
-                faculty.setNombre(jsonOFac.get("Nombre").getAsString());
-                investigator.setFaculty(faculty);
-
-                investigators.add(investigator);
-            }*/
             investigatorsAdapter = new InvestigatorsAdapter(getActivity(), investigators);
             lvInv.setAdapter(investigatorsAdapter);
             //Log.d("TAG",json.get("Nombre").getAsString());
             //Log.d("TAG",json.getAsString());
         }
-
-        //RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        //Call<UserMeResponse> call = restCon.getInvestigator(Configuration.LOGIN_USER.getToken());
-        //Call<UserMeResponse> call = restCon.getInvestigator(new TokenRequest(Configuration.LOGIN_USER.getToken()));
-        /*
-        call.enqueue(new Callback<UserMeResponse>() {
+        lvInv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onResponse(Call<UserMeResponse> call, Response<UserMeResponse> response) {
-                System.out.println(response.code());
-                /*UserMeResponse item = response.body();
-                ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
-                items.add(item);
-                investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Investigator inv = (Investigator) investigatorsAdapter.getItem(position);
 
-            @Override
-            public void onFailure(Call<UserMeResponse> call, Throwable t) {
+                InvestigatorController invController = new InvestigatorController();
+                invController.getInvestigatorById(getActivity(),inv.getId());
 
-            }
+                /*
+                Period per = (Period) mpAdapter.getItem(position);
+                Log.d("periodo",per.getIdEspecialidad()+ "");
 
-        });*/
-        /*
-        Call<ArrayList<UserResponse>> call = restCon.getInvestigator();
-        call.enqueue(new Callback<ArrayList<UserResponse>>() {
-            @Override
-            public void onResponse(Call<ArrayList<UserResponse>> call, Response<ArrayList<UserResponse>> response) {
-                ArrayList<UserResponse> items = response.body();
-                investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-                lvInv.setAdapter(investigatorsAdapter);
-            }
+                MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
 
-            @Override
-            public void onFailure(Call<ArrayList<UserResponse>> call, Throwable t) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Period", per);
+                mpvFragment.setArguments(bundle);
 
+                Context context = getActivity();*/
+
+                //((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mpvFragment).commit();
+                //((Activity)context).setTitle("Periodo de Medicion");
             }
         });
-        */
+
         return view;
     }
 

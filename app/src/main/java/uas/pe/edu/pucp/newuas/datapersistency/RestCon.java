@@ -62,6 +62,9 @@ public interface RestCon {
 
     @GET("getAllProjects")
     Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/investigators")
+    Call<Investigator> getInvById(@Path("id") int invId, @QueryMap Map<String,String> token);
     /*--------------*/
 
 
