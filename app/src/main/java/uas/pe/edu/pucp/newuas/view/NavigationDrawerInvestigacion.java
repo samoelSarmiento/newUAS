@@ -43,7 +43,7 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setTitle("Grupos de Inv.");
-        getFragmentManager().beginTransaction().add(R.id.fragment_container, new InvGroupFragment()).commit();
+        getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container, new InvGroupFragment()).commit();
     }
 
     @Override

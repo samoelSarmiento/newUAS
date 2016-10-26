@@ -99,7 +99,7 @@ public class MeasurePeriodListFragment extends Fragment {
 
                     Context context = getActivity();
 
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mpvFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
                     ((Activity)context).setTitle("Periodo de Medicion");
                 }
             });

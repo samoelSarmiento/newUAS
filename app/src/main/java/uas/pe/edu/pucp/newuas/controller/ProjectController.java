@@ -65,7 +65,7 @@ public class ProjectController {
 
                     ProjectsFragment spFragment = new ProjectsFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Proyectos");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
@@ -112,7 +112,7 @@ public class ProjectController {
 
                     ProjDetailFragment spFragment = new ProjDetailFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Proyectos");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 

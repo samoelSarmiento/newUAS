@@ -60,7 +60,11 @@ public class MeasurePeriodController {
                     mplFragment.setArguments(bundle);
                     Log.d("TAG", response.body().toString());
 
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mplFragment).commit();
+                    ((Activity)context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container,mplFragment)
+                            .commit();
                     ((Activity)context).setTitle("Periodos de Medicion");
 
 
