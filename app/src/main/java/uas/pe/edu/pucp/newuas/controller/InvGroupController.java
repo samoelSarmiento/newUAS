@@ -17,6 +17,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.InvGroupDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
@@ -87,5 +88,50 @@ public class InvGroupController {
 
         return list;
     }
+
+    public InvGroups getInvGroupById(final Context context, final int id){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<InvGroups>> call = restCon.getInvGroupById(id,token);
+
+        call.enqueue(new Callback<List<InvGroups>>() {
+            @Override
+            public void onResponse(Call<List<InvGroups>> call, retrofit2.Response<List<InvGroups>> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+
+                    List<InvGroups> example = response.body();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("InvGroup", (Serializable)example);
+                    //bundle.putString("Investigators", spj);
+
+                    InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Grupos de Inv.");
+                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<InvGroups>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
+        return  list;
+    }
+
 
 }

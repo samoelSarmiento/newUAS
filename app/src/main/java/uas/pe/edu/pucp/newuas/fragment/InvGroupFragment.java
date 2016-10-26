@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvGroupsAdapter;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.model.Faculty;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
@@ -67,6 +69,18 @@ public class InvGroupFragment extends Fragment{
             invGroupsAdapter = new InvGroupsAdapter(getActivity(), invGroups);
             lvInvGroup.setAdapter(invGroupsAdapter);
         }
+        lvInvGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InvGroups invGroups = (InvGroups) invGroupsAdapter.getItem(position);
+
+                InvGroupController invController = new InvGroupController();
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                invController.getInvGroupById(getActivity(),invGroups.getId());
+
+            }
+        });
+
         return view;
     }
 

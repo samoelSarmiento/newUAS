@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -82,22 +83,9 @@ public class InvestigatorsFragment extends Fragment{
                 Investigator inv = (Investigator) investigatorsAdapter.getItem(position);
 
                 InvestigatorController invController = new InvestigatorController();
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 invController.getInvestigatorById(getActivity(),inv.getId());
 
-                /*
-                Period per = (Period) mpAdapter.getItem(position);
-                Log.d("periodo",per.getIdEspecialidad()+ "");
-
-                MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("Period", per);
-                mpvFragment.setArguments(bundle);
-
-                Context context = getActivity();*/
-
-                //((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mpvFragment).commit();
-                //((Activity)context).setTitle("Periodo de Medicion");
             }
         });
 

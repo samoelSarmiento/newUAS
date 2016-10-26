@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
@@ -35,22 +37,24 @@ public class InvDetailFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_investigators_detail, container, false);
+
         getActivity().setTitle("Investigadores");
 
-        invName=(TextView) view.findViewById(R.id.inv_name);
+        invName=(TextView) view.findViewById(R.id.invName);
         invMail=(TextView) view.findViewById(R.id.invMail);
         invTel=(TextView) view.findViewById(R.id.invTel);
         invEsp=(TextView) view.findViewById(R.id.invEsp);
 
         Bundle bundle = this.getArguments();
-        Investigator investigator=null;
+        List<Investigator> investigator=null;
         if (bundle != null){
-            investigator= (Investigator) bundle.getSerializable("Inv");
+            //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
+            investigator= (List<Investigator>) bundle.getSerializable("Inv");
         }
-        invName.setText(investigator.getNombre());
-        invMail.setText(investigator.getCorreo());
-        invTel.setText(investigator.getCelular());
-        invEsp.setText(investigator.getFaculty().getNombre());
+        invName.setText(investigator.get(0).getNombre() + " " + investigator.get(0).getApePaterno() + " " + investigator.get(0).getApeMaterno());
+        invMail.setText(investigator.get(0).getCorreo());
+        invTel.setText(investigator.get(0).getCelular());
+        invEsp.setText(investigator.get(0).getFaculty().getNombre());
 
         return view;
     }

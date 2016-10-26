@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
+import uas.pe.edu.pucp.newuas.fragment.ProjDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.ProjectsFragment;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.Projects;
@@ -86,6 +87,50 @@ public class ProjectController {
         });
 
         return list;
+    }
+
+    public Projects getProjectById(final Context context, final int id){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Projects>> call = restCon.getProjById(id,token);
+
+        call.enqueue(new Callback<List<Projects>>() {
+            @Override
+            public void onResponse(Call<List<Projects>> call, retrofit2.Response<List<Projects>> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+
+                    List<Projects> example = response.body();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Proj", (Serializable)example);
+                    //bundle.putString("Investigators", spj);
+
+                    ProjDetailFragment spFragment = new ProjDetailFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Proyectos");
+                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Projects>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
+        return  list;
     }
 
 }

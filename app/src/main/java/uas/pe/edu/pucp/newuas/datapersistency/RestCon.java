@@ -64,7 +64,13 @@ public interface RestCon {
     Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
 
     @GET("investigation/{id}/investigators")
-    Call<Investigator> getInvById(@Path("id") int invId, @QueryMap Map<String,String> token);
+    Call<List<Investigator>> getInvById(@Path("id") int invId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/groups")
+    Call<List<InvGroups>> getInvGroupById(@Path("id") int groupId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/projects")
+    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
     /*--------------*/
 
 
