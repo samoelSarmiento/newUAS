@@ -54,6 +54,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PHONE = "telefono";
     private static final String KEY_ANEXO = "anexo";
     private static final String KEY_DESC_TEACHER = "descripcion";
+    private static final String KEY_ID_ACCREDITOR_USER = "idAcreditador";
+    private static final String KEY_ID_TEACHER_USER = "idTeacher";
+    private static final String KEY_ID_INVESTIGATOR_USER = "idInvestigador";
 
 
     public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -63,8 +66,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " ("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_IDPERFIL + " INTEGER, "
-                + KEY_USER + " VARCHAR(100)" + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_IDPERFIL + " INTEGER, "
+                + KEY_USER + " VARCHAR(100),"
+                + KEY_ID_ACCREDITOR_USER + " INTEGER,"
+                + KEY_ID_TEACHER_USER + " INTEGER,"
+                + KEY_ID_INVESTIGATOR_USER + "INTEGER"
+                + ")";
 
 
         db.execSQL(CREATE_USERS_TABLE);
@@ -106,6 +114,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPECIALTIES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TEACHERS);
         // Create tables again
         onCreate(db);
     }
