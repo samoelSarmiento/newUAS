@@ -1,0 +1,42 @@
+#
+# generated on 2016/10/27 03:28:55
+#
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.User
+tableName=user
+# --table-fields-start--
+# --field-start--
+fieldName=id
+foreign=true
+foreignColumnName=userresponse
+# --field-end--
+# --field-start--
+fieldName=idUsuario
+id=true
+# --field-end--
+# --field-start--
+fieldName=idPerfil
+# --field-end--
+# --field-start--
+fieldName=usuario
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.UserResponse
+tableName=userresponse
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=token
+# --field-end--
+# --field-start--
+fieldName=user
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

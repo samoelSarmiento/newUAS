@@ -1,20 +1,29 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "user")
 public class User {
 
+    @DatabaseField(foreign = true, foreignColumnName = "userresponse")
+    private int id;
+
     @SerializedName("IdUsuario")
+    @DatabaseField(id = true)
     private int idUsuario;
 
     @SerializedName("IdPerfil")
+    @DatabaseField
     private int idPerfil;
 
     @SerializedName("Usuario")
+    @DatabaseField
     private String usuario;
 
     @SerializedName("accreditor")
@@ -25,6 +34,17 @@ public class User {
 
     @SerializedName("investigator")
     private Investigator investigator;
+
+    public User(){
+
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getIdUsuario() {
         return idUsuario;
