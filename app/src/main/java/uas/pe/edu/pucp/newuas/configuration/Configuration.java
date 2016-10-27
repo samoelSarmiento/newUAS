@@ -21,4 +21,8 @@ public class Configuration {
     public static int CXE_ITEM_SHOW = 5;
     public static UserResponse LOGIN_USER = null;
     public static Specialty SPECIALTY = null;
+
+    public static final String DATABASE_NAME = "UAS";
+    public static final Integer DATABASE_VERSION = 1;
+
 }
