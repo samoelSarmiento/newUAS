@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingTop="70dp"
     android:orientation="vertical">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,6 +114,10 @@
         </LinearLayout>
 
     </ScrollView>
-
+    <Button
+        android:id="@+id/projEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Editar"/>
 
 </LinearLayout>

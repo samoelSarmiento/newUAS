@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "uas.pe.edu.pucp.newuas"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -18,7 +18,7 @@ android {
         }
     }
 }
-repositories{
+repositories {
     maven {
         url "https://jitpack.io"
     }
@@ -26,7 +26,6 @@ repositories{
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -36,10 +35,11 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
     androidTestCompile 'com.android.support:support-v4:24.2.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 }

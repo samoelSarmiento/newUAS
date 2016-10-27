@@ -35,8 +35,10 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.MyStudentAppointmentFragment;
 import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 
@@ -74,27 +76,29 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
-        Log.d("Tag","I DIT ITafsaffsafsasf");
+        Log.d("Tag", "I DIT ITafsaffsafsasf");
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Log.d("Tag","I DIT IT");
+        Log.d("Tag", "I DIT IT");
         Call<List<TopicResponse>> call = restCon.getTopics(data);
-        Log.d("Tag",call.request().url()+ "");
+        Log.d("Tag", call.request().url() + "");
         call.enqueue(new Callback<List<TopicResponse>>() {
 
 
             @Override
             public void onResponse(Call<List<TopicResponse>> call, Response<List<TopicResponse>> response) {
                 List<TopicResponse> topicResponses = response.body();
-                for (TopicResponse topic: topicResponses){
+                for (TopicResponse topic : topicResponses) {
                     //nameTopic[i] = topic.getNombre();
                     //i++;
                     nameTopicsList.add(topic.getNombre());
                 }
                 nameTopic = new String[nameTopicsList.size()];
-                for (int i = 0; i<nameTopicsList.size(); i++) nameTopic[i] = nameTopicsList.get(i);
+                for (int i = 0; i < nameTopicsList.size(); i++)
+                    nameTopic[i] = nameTopicsList.get(i);
 
             }
 
@@ -103,7 +107,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
             }
         });
-
 
 
     }
@@ -144,7 +147,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = new TutorInfoFragment() ;
+        Fragment fragment = new TutorInfoFragment();
 
         int id = item.getItemId();
 
@@ -178,6 +181,9 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         }
 
         // Insert the fragment by replacing any existing fragment
+
+        /*
+
         replaceFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -185,17 +191,21 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     }
 
 
-    public void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment) {
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        /*fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
+
                 .commit();
+*/
+        return true;
 
     }
 
-    public void showDialogFragment(DialogFragment d){
-        d.show(getFragmentManager(),"tag");
+    public void showDialogFragment(DialogFragment d) {
+        d.show(getFragmentManager(), "tag");
     }
 
 }
