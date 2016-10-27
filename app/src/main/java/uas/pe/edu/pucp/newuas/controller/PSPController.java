@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -13,9 +14,11 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 
 /**
@@ -25,7 +28,7 @@ import uas.pe.edu.pucp.newuas.model.PSPGroup;
 public class PSPController {
 
 
-    public boolean getGroups (Context context){
+    public boolean getGroups (final Context context){
         RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String,String> token = new HashMap<>();
@@ -47,6 +50,13 @@ public class PSPController {
                     bundle.putSerializable("PSPGroups",(Serializable) pspGroupList);
 
 
+                    PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
+                    groupsFragment.setArguments(bundle);
+
+
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,groupsFragment).commit();
+                    ((Activity)context).setTitle("Seleccionar grupos");
+
 
 
 
@@ -67,6 +77,43 @@ public class PSPController {
             }
         });
 
+
+
+        return true;
+    }
+
+    public boolean updateGroup(final Context context, int idGroup){
+        RestCon restCon =  RetrofitHelper.apiConnector.create(RestCon.class);
+
+
+
+        Map<String,String> token = new HashMap<>();
+
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<Boolean> call = restCon.updateGroup(idGroup,token);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()){
+
+                    if (response.body()){
+
+
+                    }
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
 
 
         return true;
