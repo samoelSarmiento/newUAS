@@ -103,7 +103,7 @@ public interface RestCon {
 
     /* PSP  Section*/
 
-    @GET("/internetUAS/public/api/getGroups")
+    @GET("psp/groups/all")
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
 
     @POST("groups/{g_id}/groups")

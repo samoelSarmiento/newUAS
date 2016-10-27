@@ -24,6 +24,7 @@ public class RetrofitHelper {
     //http://10.101.2.15/internetUAS/public/api/
     //ip server= http://35.161.73.236/api/
     //.baseUrl("http://35.161.73.236/api/")
+    //"http://10.100.185.201/internetUAS/public/api/
 
     public static Retrofit apiConnector = new Retrofit.Builder()
             .baseUrl("http://35.161.73.236/api/")

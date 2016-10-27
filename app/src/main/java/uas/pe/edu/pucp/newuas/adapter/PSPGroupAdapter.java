@@ -75,7 +75,7 @@ public class PSPGroupAdapter extends BaseAdapter {
                 }
             });
 
-            viewHolder.tvPspNumberGroup .setText( "" + items.get(position).getIdGroup());
+            viewHolder.tvPspNumberGroup .setText( items.get(position).getNumero());
             viewHolder.tvPspDescriptionGroup .setText(items.get(position).getDescription());
 
         }catch (Exception ex){ex.printStackTrace();}
