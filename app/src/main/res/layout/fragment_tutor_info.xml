@@ -25,8 +25,9 @@
             android:gravity="center">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -43,7 +44,6 @@
 
                     <TextView android:id="@+id/teacher_detail_nombre"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="Gerardo Paolo"
                         android:textColor="@color/black"
                         android:layout_marginLeft="32dp"/>
 
@@ -63,7 +63,6 @@
 
                     <TextView android:id="@+id/teacher_detail_Apellido"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="Dávila García"
                         android:textColor="@color/black"
                         android:layout_marginLeft="@dimen/info_bg_padding"/>
 
@@ -83,7 +82,6 @@
 
                     <TextView android:id="@+id/teacher_detail_email"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="a20101616@pucp.pe"
                         android:textColor="@color/black"
                         android:layout_marginLeft="42dp"/>
 
@@ -104,7 +102,6 @@
 
                     <TextView android:id="@+id/teacher_detail_oficina"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="Pabellon V - 205"
                         android:textColor="@color/black"
                         android:layout_marginLeft="38dp"/>
 
@@ -124,7 +121,7 @@
 
                     <TextView android:id="@+id/teacher_detail_anexo"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="2134"
+                        android:text=""
                         android:textColor="@color/black"
                         android:layout_marginLeft="47dp"/>
 
@@ -145,7 +142,7 @@
 
                     <TextView android:id="@+id/teacher_detail_telefono"
                         style="@style/GeneralTextViewsMedium"
-                        android:text="989166938"
+                        android:text=""
                         android:textColor="@color/black"
                         android:layout_marginLeft="25dp"/>
 
