@@ -16,24 +16,32 @@
         android:id="@+id/btModuleAcr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login"
+        android:textColor="@color/white"
         android:text="@string/btModuleAcr" />
 
     <Button
         android:id="@+id/btModulePsp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login"
+        android:textColor="@color/white"
         android:text="@string/btModulePsp" />
 
     <Button
         android:id="@+id/btModuleTutEv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login"
+        android:textColor="@color/white"
         android:text="@string/btModuleTutEv" />
 
     <Button
         android:id="@+id/btModuleInv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login"
+        android:textColor="@color/white"
         android:text="@string/btModuleInv" />
 
 </LinearLayout>
