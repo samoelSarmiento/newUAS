@@ -11,8 +11,12 @@ import java.io.Serializable;
 
 public class PSPGroup implements Serializable {
 
-    @SerializedName("idPspGroupp")
-    private int idGroup;
+    @SerializedName("idPspGroup")
+    private int idPspGroup;
+
+    @SerializedName("numero")
+    private String numero;
+
 
     @SerializedName("description")
     private String description;
@@ -32,11 +36,11 @@ public class PSPGroup implements Serializable {
 
 
     public int getIdGroup() {
-        return idGroup;
+        return idPspGroup;
     }
 
     public void setIdGroup(int idGroup) {
-        this.idGroup = idGroup;
+        this.idPspGroup = idGroup;
     }
 
     public String getDescription() {
@@ -69,5 +73,13 @@ public class PSPGroup implements Serializable {
 
     public void setDeleted_at(Object deleted_at) {
         this.deleted_at = deleted_at;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 }
