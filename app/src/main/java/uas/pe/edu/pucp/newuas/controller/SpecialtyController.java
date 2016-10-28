@@ -113,6 +113,9 @@ public class SpecialtyController {
                     */
                     Configuration.SPECIALTY = example;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
+                    DatabaseHandler dbHandler = new DatabaseHandler(context,Configuration.DATABASE_NAME,null,Configuration.DATABASE_VERSION);
+                    dbHandler.addSpecialty(example);
+
 
                     Gson gsonf = new Gson();
                     String spj = gsonf.toJson(example);
@@ -120,6 +123,7 @@ public class SpecialtyController {
                     Bundle bundle = new Bundle();
                     bundle.putString("Specialty", spj);
                     spFragment.setArguments(bundle);
+
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -145,6 +149,33 @@ public class SpecialtyController {
                 //Log.d("wat", t.getMessage());
 
                 t.printStackTrace();
+                DatabaseHandler dbHandler = new DatabaseHandler(context,Configuration.DATABASE_NAME,null,Configuration.DATABASE_VERSION);
+
+                Specialty sp = null;
+                if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
+                    sp = dbHandler.getSpecialtyById( Configuration.SPECIALTY.getIdEspecialidad());
+                else{
+                    sp = dbHandler.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+
+                }
+
+                SpecialtyFragment spFragment = new SpecialtyFragment();
+                Gson gsonf = new Gson();
+                String spj = gsonf.toJson(sp);
+                System.out.println(spj);
+                Bundle bundle = new Bundle();
+                bundle.putString("Specialty", spj);
+                spFragment.setArguments(bundle);
+
+                ((Activity) context).getFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, spFragment)
+                        .commit();
+                ((Activity) context).setTitle("Especialidad");
+                //Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+
+
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
             }
@@ -172,11 +203,12 @@ public class SpecialtyController {
 
     }
 
-    public boolean getCoursesxSpecialy(final Context context, int idEspecialiad) {
+    public boolean getCoursesxSpecialyxCycle(final Context context, int idEspecialiad, int idCycle) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        //Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, idCycle, token);
         call.enqueue(new Callback<List<CourseResponse>>() {
             @Override
             public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {

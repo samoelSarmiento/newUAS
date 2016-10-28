@@ -1,9 +1,12 @@
 package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +18,10 @@ import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
@@ -77,19 +84,52 @@ public class NavigationDrawerPSP extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment  fragment =  new Fragment();
+        FragmentManager fragmentManager =  getSupportFragmentManager();
+
+
+
+
         if (id == R.id.nav_pspCycle) {
-            PSP_cycleFragment cycleFragment = new PSP_cycleFragment();
-            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp, cycleFragment).commit();
+            PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
+
+            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp,psp_cycleFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {
 
+
+            fragment = new PSP_supervisorFragment();
+
+            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp, fragment).commit();
+            setTitle(item.getTitle());
+
         } else if (id == R.id.nav_pspStudents) {
+
+            try {
+                fragment = new PSP_studentsFragment();
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+                setTitle(item.getTitle());
+            }catch (Exception ex){
+                ex.printStackTrace();
+
+            }
 
         } else if (id == R.id.nav_pspDates) {
 
-        } else if (id == R.id.nav_pspDocuments) {
+            fragment =  new PSP_groupsFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment).commit();
+            setTitle("Grupos");
 
+        } else if (id == R.id.nav_pspDocuments) {
+            try {
+                fragment= new PSP_documentsFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+                setTitle(item.getTitle());
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         } else if (id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
