@@ -106,14 +106,14 @@ public interface RestCon {
 
     /* TUTORIA Section*/
 
-    @GET("/internetUAS/public/api/getTopics")
+    @GET("getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
 
-    @GET("/internetUAS/public/api/getTutorInfo/{id_usuario}")
+    @GET("getTutorInfo/{id_usuario}")
     //Call<List<TUTInfoResponse>>getTutorInfo
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
-    @POST("/internetUAS/public/api/registerStudentAppointment")
+    @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest,@QueryMap Map<String,String> token) ;
 
     /*END SECTION*/
@@ -131,7 +131,11 @@ public interface RestCon {
 
     /* PSP  Section*/
 
+<<<<<<< HEAD
     @GET("psp/groups/all")
+=======
+    @GET("getGroups")
+>>>>>>> d8a970d725f3e565666f8c4ac22ac1ef57a61405
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
 
     @POST("psp/groups/selectGroup/{g_id}")
