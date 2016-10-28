@@ -24,7 +24,9 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 
+import uas.pe.edu.pucp.newuas.model.PSPDocument;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
+import uas.pe.edu.pucp.newuas.model.PSPStudent;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 import uas.pe.edu.pucp.newuas.model.Semester;
@@ -106,6 +108,15 @@ public interface RestCon {
     @GET("/internetUAS/public/api/getGroups")
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
 
+
+
+    @GET("psp/students/all")
+     Call<List<PSPStudent>> getStudents(@QueryMap Map<String,String> token);
+
+    @GET("psp/students/documents")
+    Call<List<PSPDocument>> getDocuments(@QueryMap Map<String,String> token);
+
+    //Call<List<PSPDates>> getDatesPsp(@QueryMap Map<String,String> token);//1
 
 
 

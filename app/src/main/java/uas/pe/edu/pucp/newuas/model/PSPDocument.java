@@ -1,5 +1,7 @@
 package uas.pe.edu.pucp.newuas.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Calendar;
 
 /**
@@ -13,36 +15,31 @@ public class PSPDocument {
     private String author;
     private String format;
 
+    @SerializedName("idPSPDocument")
+    public int idPSPDocument;
 
-    public String getName() {
-        return name;
-    }
+    @SerializedName("idTipoEstado")
+    public int idTipoEstado;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public Calendar getDate() {
-        return date;
-    }
+    @SerializedName("ruta")
+    public String ruta;
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
+    @SerializedName("observaciones")
+    public String observaciones;
 
-    public String getAuthor() {
-        return author;
-    }
+    @SerializedName("es_obligatorio")
+    public String es_obligatorio;
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    @SerializedName("idStudent")
+    public int idStudent;
 
-    public String getFormat() {
-        return format;
-    }
+    @SerializedName("idTemplate")
+    public int idTemplate;
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
+
+    @SerializedName("fecha_limite")
+    public int fecha_limite;
+
+
 }

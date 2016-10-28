@@ -84,14 +84,14 @@ public class PSP_studentsFragment extends Fragment {
         list = new ArrayList<>();
 
         PSPStudent st1 = new PSPStudent();
-        st1.setCodigo(4);
-        st1.setName("Alumno 1");
-        st1.setTeacherName("Profesor 1");
+        st1.setCodigo(1);
+       st1.setNombre("Alumno 1");
+        st1.setApellidoPaterno("Profesor 1");
 
         PSPStudent st2 = new PSPStudent();
-        st2.setCodigo(5);
-        st2.setName("Alumno 2");
-        st2.setTeacherName("Profesor 2");
+       st2.setCodigo(5);
+      st2.setNombre("Alumno 2");
+        st2.setApellidoPaterno("Profesor 2");
 
 
         list.add(st1);

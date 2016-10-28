@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
@@ -42,7 +44,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setTitle("PSP");
-
+     //   getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container, new InvGroupFragment()).commit();
     }
 
     @Override
@@ -119,9 +121,10 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_pspDocuments) {
             try {
-                fragment= new PSP_documentsFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
-                setTitle(item.getTitle());
+                PSPController invController = new PSPController();
+                invController.getStudents(this);
+
+
             }catch (Exception ex){
                 ex.printStackTrace();
             }
@@ -131,6 +134,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
+                            Configuration.LOGIN_USER = null;
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
                             startActivity(intent);
                             break;

@@ -4,38 +4,114 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by Franz on 20/10/2016.
  */
 
-public class PSPStudent {
-    private int codigo;
-    private String name;
-    private String teacherName;
+public class PSPStudent  implements Serializable {
 
+
+    @SerializedName("IdAlumno")
+    private int idAlumno;
+
+    @SerializedName("Codigo")
+    private int codigo;
+
+    @SerializedName("Nombre")
+    private String nombre;
+
+    @SerializedName("ApellidoPaterno")
+    private String apellidoPaterno;
+
+    @SerializedName("ApellidoMaterno")
+    private String apellidoMaterno;
+
+
+
+
+
+    public Integer getIdAlumno() {
+        return idAlumno;
+    }
+
+    /**
+     *
+     * @param idAlumno
+     * The IdAlumno
+     */
+    public void setIdAlumno(Integer idAlumno) {
+        this.idAlumno = idAlumno;
+    }
 
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     *
+     * @param codigo
+     * The Codigo
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public String getName() {
-        return name;
+    /**
+     *
+     * @return
+     * The nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    /**
+     *
+     * @param nombre
+     * The Nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    /**
+     *
+     * @return
+     * The apellidoPaterno
+     */
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    /**
+     *
+     * @param apellidoPaterno
+     * The ApellidoPaterno
+     */
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    /**
+     *
+     * @return
+     * The apellidoMaterno
+     */
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    /**
+     *
+     * @param apellidoMaterno
+     * The ApellidoMaterno
+     */
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
 

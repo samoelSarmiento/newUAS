@@ -10,7 +10,7 @@
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
             android:text="Nombre documento"
             android:id="@+id/tv_name_document"/>
         <TextView
@@ -20,7 +20,7 @@
             android:id="@+id/tv_author_document"/>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
             android:text="formato"
             android:id="@+id/tv_format_document"/>
         <TextView

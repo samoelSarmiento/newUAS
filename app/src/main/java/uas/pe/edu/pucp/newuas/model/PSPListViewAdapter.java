@@ -61,8 +61,8 @@ public class PSPListViewAdapter extends BaseAdapter{
 
 
             viewHolder.tvPspIdStudent .setText( "" + items.get(position).getCodigo());
-            viewHolder.tvPspNameStudent .setText(items.get(position).getName());
-            viewHolder.tvPspNameTeacher.setText( items.get(position).getTeacherName());
+            viewHolder.tvPspNameStudent .setText(items.get(position).getNombre());
+            viewHolder.tvPspNameTeacher.setText( items.get(position).getApellidoPaterno());
         }catch (Exception ex){ex.printStackTrace();}
 
 

@@ -15,13 +15,13 @@
             android:icon="@drawable/ic_objetivos_ed"
             android:title="@string/pspStudents" />
         <item
-            android:id="@+id/nav_pspDates"
-            android:icon="@drawable/ic_mejora_cont"
-            android:title="@string/pspDates" />
-        <item
             android:id="@+id/nav_pspDocuments"
             android:icon="@drawable/ic_cursos"
             android:title="@string/pspDocuments" />
+        <item
+            android:id="@+id/nav_pspDates"
+            android:icon="@drawable/ic_mejora_cont"
+            android:title="@string/pspDates" />
         <item
             android:id="@+id/nav_pspExit"
             android:icon="@drawable/ic_logout"
