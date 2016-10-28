@@ -56,7 +56,7 @@
                 android:layout_marginStart="50dp"
                 android:paddingTop="0dp"
                 android:text="@string/btIngresar"
-                android:background="@drawable/bg_button_login"
+                android:background="@drawable/bg_button_login_selector"
                 android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/tvError"

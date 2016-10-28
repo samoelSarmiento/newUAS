@@ -8,7 +8,9 @@
 
 <!-- colores UAS -->
 <color name="uas_rojo">#D93240</color>
-<color name="uas_turquesa">#17A697</color>
+
+<color name="uas_turquesa">#1BC1B0</color>
+    <color name="uas_turquesa_botonpress">#17A697</color>
 <color name="uas_turquesa_oscuro">#0F5959</color>
 <color name="uas_celeste">#92DCE0</color>
 <color name="uas_amarillo">#DEB539</color>

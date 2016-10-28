@@ -16,7 +16,7 @@
         android:id="@+id/btModuleAcr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login"
+        android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
         android:text="@string/btModuleAcr" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/btModulePsp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login"
+        android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
         android:text="@string/btModulePsp" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/btModuleTutEv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login"
+        android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
         android:text="@string/btModuleTutEv" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/btModuleInv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login"
+        android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
         android:text="@string/btModuleInv" />
 
