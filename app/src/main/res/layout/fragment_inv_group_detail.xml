@@ -83,6 +83,8 @@
         android:id="@+id/invGroupEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Editar"/>
+        android:text="Editar"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

@@ -123,6 +123,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:id="@+id/buttonCancelar" />
 
 
@@ -131,6 +133,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Solicitar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:id="@+id/buttonSolicitar" />
 
 

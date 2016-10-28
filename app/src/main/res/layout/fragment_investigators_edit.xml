@@ -102,12 +102,16 @@
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:text="Guardar"/>
         <Button
             android:id="@+id/invCancel"
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:text="Cancelar"/>
     </LinearLayout>
 

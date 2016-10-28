@@ -3,8 +3,8 @@
 
     <gradient
         android:angle="270"
-        android:endColor="@color/uas_plomo_oscuro"
-        android:startColor="@color/uas_plomo_oscuro" />
+        android:endColor="@color/uas_turquesa_botonpress"
+        android:startColor="@color/uas_turquesa_botonpress" />
 
     <stroke
         android:width="0.5dp"
