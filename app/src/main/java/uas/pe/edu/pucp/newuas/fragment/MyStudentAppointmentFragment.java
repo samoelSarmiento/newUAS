@@ -1,16 +1,8 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.DialogFragment;
-import android.content.Context;
-import android.media.Image;
-import android.net.Uri;
+
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +29,20 @@ public class MyStudentAppointmentFragment extends Fragment {
         final View view =   inflater.inflate(R.layout.fragment_my_student_appointment, container, false);
         newAppointment = (Button)view.findViewById(R.id.btnNewAssignment);
 
+        newAppointment.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+
+                        //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
+                        Bundle bundle = new Bundle();
+                        AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
+                        ap.setArguments(bundle);
+                        getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container , ap).commit();
+
+                    }
+                }
+        );
 
         return view;
 

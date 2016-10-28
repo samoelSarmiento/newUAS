@@ -1,10 +1,10 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.ParseException;
@@ -24,16 +25,19 @@ import java.util.Date;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 
-public class AlumnoNuevaCitaFragment extends Fragment  {
+public class AlumnoNuevaCitaFragment extends Fragment {
 
 
+    public String solicitud;
     ImageButton btnCalendar;
     Button btnSolicitar;
-    Spinner spinnerTemas;
+    Spinner spinnerHoras, spinnerTemas;
     EditText txtFecha;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
@@ -41,7 +45,7 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
-    String infoSolicitar = "Está a punto de confirmar una cita con su tutor para el 09/11/2016 a las 10:00  \n ¿Desea continuar?";
+    //String infoSolicitar = "Está a punto de confirmar una cita con su tutor para el 09/11/2016 a las 10:00  \n ¿Desea continuar?";
 
 
 
@@ -58,6 +62,11 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
         txtFecha = (EditText) view.findViewById(R.id.dateText);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar);
         btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendar);
+        spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora);
+        spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
+
+        final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
+
         Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -71,9 +80,13 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
         }
 
         Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
+        s.setAdapter(null);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoria.nameTopic);
         s.setAdapter(adapter);
 
+        valorFecha[0] = txtFecha.getText().toString();
+        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+        valorTema[0] = spinnerTemas.getSelectedItem().toString();
 
         selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
@@ -82,6 +95,7 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
                 String format = "%1$02d";
                 String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
                 txtFecha.setText(date);
+                valorFecha[0] = date.toString();
             }
         };
 
@@ -92,16 +106,21 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
                         DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
                         d.setMinDate(Calendar.getInstance());
                         d.setMaxDate(maxTime);
-                        d.setDisabledDays(dates);
+                        //d.setDisabledDays(dates);
                         d.show(getActivity().getFragmentManager(), "Datepickerdialog");
                     }
                 }
         );
 
+
         btnSolicitar.setOnClickListener(
+
                 new View.OnClickListener(){
                     @Override
+
                     public void onClick(View v) {
+                        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+                        solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -118,12 +137,26 @@ public class AlumnoNuevaCitaFragment extends Fragment  {
                             }
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage(infoSolicitar).setNegativeButton("No", dialogClickListener)
-                                .setPositiveButton("Si", dialogClickListener).show();
+                        builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                                 dialog.cancel();
+
+                                        }
+                             }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
+                                            TutStudentController tsc = new TutStudentController();
+                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0]);
+                                        }
+                                    }
+                                ).show();
                     }
                 }
 
         );
+
+
 
 
         return view;
