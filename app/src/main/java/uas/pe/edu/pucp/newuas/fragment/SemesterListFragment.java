@@ -1,11 +1,13 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasureInstrumentAdapter;
 import uas.pe.edu.pucp.newuas.adapter.SemesterAdapter;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Semester;
 
@@ -73,6 +77,42 @@ public class SemesterListFragment extends Fragment {
             Context context = getActivity();
             semAdapter = new SemesterAdapter(context,list);
             lvSemesters.setAdapter(semAdapter);
+
+            lvSemesters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Semester sem = (Semester) semAdapter.getItem(position);
+
+                    SpecialtyController sc= new SpecialtyController();
+                    Context context = getActivity();
+
+                    if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3){
+                        sc.getCoursesxSpecialyxCycle(context, Configuration.SPECIALTY.getIdEspecialidad(),sem.getIdCicloAcademico());
+
+                    }else{
+                        sc.getCoursesxSpecialyxCycle(context, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(),sem.getIdCicloAcademico());
+
+                    }
+
+
+
+                    /*
+                    CoursesxSpecialtyFragment cxsf = new CoursesxSpecialtyFragment();
+
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Course", sem);
+
+                    cxsf.setArguments(bundle);
+                    Context context = getActivity();
+
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,cxsf).commit();
+                    ((Activity)context).setTitle("Cursos");
+                    */
+
+
+                }
+            });
 
             /*
             lvMeaInst.setOnItemClickListener(new AdapterView.OnItemClickListener() {

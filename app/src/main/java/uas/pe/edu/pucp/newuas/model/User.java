@@ -20,7 +20,7 @@ public class User {
     @SerializedName("accreditor")
     private Accreditor accreditor;
 
-    @SerializedName("teacher")
+    @SerializedName("professor")
     private Teacher teacher;
 
     @SerializedName("investigator")
