@@ -3,8 +3,8 @@
 
     <gradient
         android:angle="270"
-        android:endColor="@color/uas_plomo"
-        android:startColor="@color/uas_plomo" />
+        android:endColor="@color/uas_turquesa"
+        android:startColor="@color/uas_turquesa" />
 
     <stroke
         android:width="0.5dp"
