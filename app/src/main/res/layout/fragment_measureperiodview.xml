@@ -109,6 +109,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
         android:text="@string/btSemPer"/>
 
     <Button
@@ -116,6 +118,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
         android:text="@string/btObjEdu"/>
 
     <Button
@@ -123,6 +127,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
         android:text="@string/btMeaInst"/>
 
 

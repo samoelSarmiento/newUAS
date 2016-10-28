@@ -11,13 +11,15 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="6dp">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp">
             <LinearLayout
+
+                android:background="#83befc"
 
                 android:layout_weight="1"
                 android:orientation="horizontal"
@@ -48,25 +50,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ListView
+            <ListView android:layout_weight="1"
                 android:id="@+id/lv_psp_groups"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </ListView>
 
-
-        </TableRow>
-
-
-
-
+          </TableRow>
 
     </TableLayout>
-
-
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="end"
+        android:paddingRight="16dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_psp_groups_choose"
+            android:text="Seleccionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/btn_psp_groups_cancel"
+            android:text="Cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
 
 </LinearLayout>

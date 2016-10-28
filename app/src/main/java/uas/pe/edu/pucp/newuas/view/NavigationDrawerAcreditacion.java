@@ -165,7 +165,10 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             spFragment.setArguments(bundle); */
 
 
-        } else if (id == R.id.nav_courses) {
+        }
+        /*
+
+        else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
             SpecialtyController specialtyController = new SpecialtyController();
             if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
@@ -178,24 +181,25 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 //                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
 //            }else
 //                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_eduobjectivo) {
+        }
+        else if (id == R.id.nav_eduobjectivo) {
 
-        } else if (id == R.id.nav_sizperiod) {
+        } */ else if (id == R.id.nav_sizperiod) {
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
             boolean result = measurePeriodController.getMeasurePeriods(this);
 
 
-        } else if (id == R.id.nav_studresult) {
+        } /*else if (id == R.id.nav_studresult) {
 
         } else if (id == R.id.nav_criteria) {
 
-        } else if (id == R.id.nav_upgplan) {
+        } */ else if (id == R.id.nav_upgplan) {
 
-        } else if (id == R.id.nav_efforttable) {
+        } /*else if (id == R.id.nav_efforttable) {
 
         } else if (id == R.id.nav_sizeresult) {
 
-        } else if (id == R.id.nav_consolidate) {
+        } */ else if (id == R.id.nav_consolidate) {
 
         } else if (id == R.id.nav_signout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {

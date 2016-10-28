@@ -1,97 +1,75 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "teacher")
 public class Teacher {
 
     @SerializedName("IdDocente")
+    @DatabaseField(columnName = "teacher_id", id = true)
     private Integer idDocente;
 
     @SerializedName("IdEspecialidad")
+    @DatabaseField
     private Integer idEspecialidad;
 
     @SerializedName("IdUsuario")
+    @DatabaseField
     private Integer idUsuario;
 
     @SerializedName("Codigo")
+    @DatabaseField
     private String codigo;
 
     @SerializedName("Nombre")
+    @DatabaseField
     private String nombre;
 
     @SerializedName("ApellidoPaterno")
+    @DatabaseField
     private String apellidoPaterno;
 
     @SerializedName("ApellidoMaterno")
+    @DatabaseField
     private String apellidoMaterno;
 
     @SerializedName("Correo")
+    @DatabaseField
     private String correo;
 
     @SerializedName("Cargo")
+    @DatabaseField
     private String cargo;
 
     @SerializedName("Vigente")
+    @DatabaseField
     private Integer vigente;
-    /*
-
-    @SerializedName("rolTutoria")
-    private boolean rolTutoria;
-
-    @SerializedName("rolEvaluaciones")
-    private boolean rolEvaluaciones;
-
-    */
 
     @SerializedName("oficina")
+    @DatabaseField
     private String oficina;
 
     @SerializedName("telefono")
+    @DatabaseField
     private String telefono;
 
     @SerializedName("anexo")
+    @DatabaseField
     private String anexo;
 
     @SerializedName("Descripcion")
+    @DatabaseField
     private String descripcion;
-
-
-    /*
-    @SerializedName("pivot")
-    private Pivot pivot;
-
-    */
-
 
     public void setVigente(int vigente) {
         this.vigente = vigente;
     }
-
-    /*
-    public boolean isRolTutoria() {
-        return rolTutoria;
-    }
-
-    public boolean isRolEvaluaciones() {
-        return rolEvaluaciones;
-    }
-
-    */
-
-    /*
-
-    public Pivot getPivot() {
-        return pivot;
-    }
-
-    public void setPivot(Pivot pivot) {
-        this.pivot = pivot;
-    }
-    */
 
     public int getIdDocente() {
         return idDocente;
@@ -172,26 +150,6 @@ public class Teacher {
     public void setVigente(Integer vigente) {
         this.vigente = vigente;
     }
-
-    /*
-
-    public Object getRolTutoria() {
-        return rolTutoria;
-    }
-
-    public void setRolTutoria(boolean rolTutoria) {
-        this.rolTutoria = rolTutoria;
-    }
-
-    public boolean getRolEvaluaciones() {
-        return rolEvaluaciones;
-    }
-
-    public void setRolEvaluaciones(boolean rolEvaluaciones) {
-        this.rolEvaluaciones = rolEvaluaciones;
-    }
-
-    */
 
     public String getOficina() {
         return oficina;

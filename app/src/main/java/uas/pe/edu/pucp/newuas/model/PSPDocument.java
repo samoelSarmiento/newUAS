@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Franz on 21/10/2016.
@@ -10,10 +11,30 @@ import java.util.Calendar;
 
 public class PSPDocument {
 
-    private String name;
-    private Calendar date;
-    private String author;
-    private String format;
+    @SerializedName("IdPSPDocument")
+    private
+    int IdPSPDocument;
+    @SerializedName("IdTipoEstado")
+    private
+    int IdTipoEstado;
+    @SerializedName("ruta")
+    private
+    String ruta;
+    @SerializedName("observaciones")
+    private
+    String observaciones;
+    @SerializedName("es_obligatorio")
+    private
+    String es_obligatorio;
+    @SerializedName("IdStudent")
+    private
+    int IdStudent;
+    @SerializedName("IdTemplate")
+    private
+    int IdTemplate;
+    @SerializedName("fecha_limite")
+    private
+    Date fecha_limite;
 
     @SerializedName("idPSPDocument")
     public int idPSPDocument;

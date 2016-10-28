@@ -1,21 +1,18 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPStudent;
+import uas.pe.edu.pucp.newuas.model.Student;
 
 public class PSP_studentsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -30,7 +27,7 @@ public class PSP_studentsFragment extends Fragment {
 
 
     ListView lvPSPStudents;
-    ArrayList<PSPStudent> list;
+    ArrayList<Student> list;
     PSPListViewAdapter studentsAdapter;
 
 
@@ -83,20 +80,22 @@ public class PSP_studentsFragment extends Fragment {
 
         list = new ArrayList<>();
 
-        PSPStudent st1 = new PSPStudent();
-        st1.setCodigo(1);
-       st1.setNombre("Alumno 1");
-        st1.setApellidoPaterno("Profesor 1");
+/*
+        Student st1 = new Student();
+        st1.setCodigo(4);
+        st1.setName("Alumno 1");
+        st1.setTeacherName("Profesor 1");
 
-        PSPStudent st2 = new PSPStudent();
-       st2.setCodigo(5);
-      st2.setNombre("Alumno 2");
-        st2.setApellidoPaterno("Profesor 2");
+        Student st2 = new Student();
+        st2.setCodigo(5);
+        st2.setName("Alumno 2");
+        st2.setTeacherName("Profesor 2");
+>
 
 
         list.add(st1);
         list.add(st2);
-
+*/
         try{
             studentsAdapter =  new PSPListViewAdapter(list, getActivity());
             lvPSPStudents.setAdapter(studentsAdapter);
