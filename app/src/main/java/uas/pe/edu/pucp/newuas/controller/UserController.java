@@ -36,6 +36,7 @@ import uas.pe.edu.pucp.newuas.view.MainActivity;
 public class UserController {
 
     private void saveSpecialyList(DatabaseHelper helper, UserResponse userResponse) {
+
         try {
             Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
             Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
@@ -46,6 +47,7 @@ public class UserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
 
     }
 
