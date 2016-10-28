@@ -114,6 +114,9 @@ public interface RestCon {
     @GET("/internetUAS/public/api/getGroups")
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
 
+    @POST("groups/{g_id}/groups")
+    Call<Boolean>  updateGroup(@Path("g_id") int idGroup , @QueryMap Map<String, String> token);
+
 
 
 
@@ -123,5 +126,4 @@ public interface RestCon {
 
 
 }
-
 
