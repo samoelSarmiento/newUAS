@@ -15,6 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
 
@@ -41,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="13dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="105dp"
         android:orientation="horizontal">
 
         <TextView
@@ -77,12 +78,12 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/black"
-        android:layout_marginTop="77dp"/>
+        android:layout_marginTop="130dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="445dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
