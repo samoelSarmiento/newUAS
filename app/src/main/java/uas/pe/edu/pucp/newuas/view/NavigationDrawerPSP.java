@@ -93,7 +93,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         if (id == R.id.nav_pspCycle) {
             PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
 
-            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp,psp_cycleFragment).commit();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,psp_cycleFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {
@@ -101,7 +101,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             fragment = new PSP_supervisorFragment();
 
-            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp, fragment).commit();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspStudents) {
