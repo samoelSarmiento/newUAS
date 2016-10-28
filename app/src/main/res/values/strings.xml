@@ -134,5 +134,6 @@
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
+    <string name="pspGroup">Seleccionar grupo</string>
 
 </resources>

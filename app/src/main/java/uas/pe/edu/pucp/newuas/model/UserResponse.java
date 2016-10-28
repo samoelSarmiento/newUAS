@@ -20,6 +20,9 @@ public class UserResponse {
     @SerializedName("faculties")
     private List<Specialty> specialtyList;
 
+
+
+
     public List<Specialty> getSpecialtyList() {
         return specialtyList;
     }
@@ -43,5 +46,6 @@ public class UserResponse {
     public void setUser(User user) {
         this.user = user;
     }
+
 
 }
