@@ -35,24 +35,11 @@ public class RetrofitHelper {
     //.baseUrl("http://35.161.73.236/api/")
     //"http://10.100.185.201/internetUAS/public/api/
 
-
-    static Gson gson = new GsonBuilder()
-            .setLenient()
-            .create();
-
-
     public static Retrofit apiConnector = new Retrofit.Builder()
-
-           // .baseUrl("http://35.161.73.236/api/")
-           .baseUrl("http://192.168.0.12/internetUAS/public/api/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-
+            .baseUrl("http://52.89.227.55/api/")
+            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
             .build();
-
-
-
-
 
 }
