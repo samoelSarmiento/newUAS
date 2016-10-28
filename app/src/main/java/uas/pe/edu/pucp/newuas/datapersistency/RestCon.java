@@ -25,7 +25,13 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 
+import uas.pe.edu.pucp.newuas.model.PSPDocument;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
+<<<<<<< HEAD
+import uas.pe.edu.pucp.newuas.model.PSPStudent;
+=======
+import uas.pe.edu.pucp.newuas.model.PSPPhase;
+>>>>>>> 8182730ce7c156371420a677cc57d6aca101b631
 import uas.pe.edu.pucp.newuas.model.Period;
 
 import uas.pe.edu.pucp.newuas.model.Semester;
@@ -125,13 +131,33 @@ public interface RestCon {
 
     /* PSP  Section*/
 
+<<<<<<< HEAD
+    @GET("psp/groups/all")
+=======
     @GET("getGroups")
+>>>>>>> d8a970d725f3e565666f8c4ac22ac1ef57a61405
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String,String> token);
 
-    @POST("groups/{g_id}/groups")
-    Call<Boolean>  updateGroup(@Path("g_id") int idGroup , @QueryMap Map<String, String> token);
+    @POST("psp/groups/selectGroup/{g_id}")
+    Call<String>  updateGroup(@Path("g_id") int idGroup , @QueryMap Map<String, String> token);
+
+    @GET("psp/phases/all")
+    Call<List<PSPPhase>> getPhasesPsp(@QueryMap Map<String,String> token);
 
 
+<<<<<<< HEAD
+    @GET("psp/students/all")
+     Call<List<PSPStudent>> getStudents(@QueryMap Map<String,String> token);
+
+    @GET("psp/students/documents")
+    Call<List<PSPDocument>> getDocuments(@QueryMap Map<String,String> token);
+
+    //Call<List<PSPDates>> getDatesPsp(@QueryMap Map<String,String> token);//1
+
+=======
+    @GET("psp/document/all")
+    Call<List<PSPDocument>> getDocument(@QueryMap Map<String,String> token);
+>>>>>>> 8182730ce7c156371420a677cc57d6aca101b631
 
 
     /*END SECTION*/

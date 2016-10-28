@@ -1,6 +1,9 @@
 package uas.pe.edu.pucp.newuas.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Franz on 21/10/2016.
@@ -8,41 +11,56 @@ import java.util.Calendar;
 
 public class PSPDocument {
 
-    private String name;
-    private Calendar date;
-    private String author;
-    private String format;
+    @SerializedName("IdPSPDocument")
+    private
+    int IdPSPDocument;
+    @SerializedName("IdTipoEstado")
+    private
+    int IdTipoEstado;
+    @SerializedName("ruta")
+    private
+    String ruta;
+    @SerializedName("observaciones")
+    private
+    String observaciones;
+    @SerializedName("es_obligatorio")
+    private
+    String es_obligatorio;
+    @SerializedName("IdStudent")
+    private
+    int IdStudent;
+    @SerializedName("IdTemplate")
+    private
+    int IdTemplate;
+    @SerializedName("fecha_limite")
+    private
+    Date fecha_limite;
+
+    @SerializedName("idPSPDocument")
+    public int idPSPDocument;
+
+    @SerializedName("idTipoEstado")
+    public int idTipoEstado;
 
 
-    public String getName() {
-        return name;
-    }
+    @SerializedName("ruta")
+    public String ruta;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @SerializedName("observaciones")
+    public String observaciones;
 
-    public Calendar getDate() {
-        return date;
-    }
+    @SerializedName("es_obligatorio")
+    public String es_obligatorio;
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
+    @SerializedName("idStudent")
+    public int idStudent;
 
-    public String getAuthor() {
-        return author;
-    }
+    @SerializedName("idTemplate")
+    public int idTemplate;
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 
-    public String getFormat() {
-        return format;
-    }
+    @SerializedName("fecha_limite")
+    public int fecha_limite;
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
+
 }

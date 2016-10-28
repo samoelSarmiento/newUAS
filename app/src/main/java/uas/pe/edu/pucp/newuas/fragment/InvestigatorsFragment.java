@@ -60,17 +60,9 @@ public class InvestigatorsFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_investigators, container, false);
         getActivity().setTitle("Investigadores");
         lvInv=(ListView) view.findViewById(R.id.invList);
-
-        /*ArrayList<UserMeResponse> items= new ArrayList<UserMeResponse>();
-        items.add(item);
-        investigatorsAdapter = new InvestigatorsAdapter(getActivity().getApplicationContext(), items);
-        lvInv.setAdapter(investigatorsAdapter);*/
-
         Bundle bundle = this.getArguments();
-
         if (bundle != null){
-
-            ArrayList<Investigator> investigators = (ArrayList<Investigator>) bundle.getSerializable("Investigators");
+        ArrayList<Investigator> investigators = (ArrayList<Investigator>) bundle.getSerializable("Investigators");
 
             investigatorsAdapter = new InvestigatorsAdapter(getActivity(), investigators);
             lvInv.setAdapter(investigatorsAdapter);
@@ -81,9 +73,7 @@ public class InvestigatorsFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Investigator inv = (Investigator) investigatorsAdapter.getItem(position);
-
                 InvestigatorController invController = new InvestigatorController();
-                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 invController.getInvestigatorById(getActivity(),inv.getId());
 
             }
