@@ -28,6 +28,7 @@ import okio.InflaterSource;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
@@ -87,6 +88,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
           break;
       case 0:
             //STUDENTS
+          menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
@@ -95,6 +97,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
          // menu.setGroupVisible(R.id.nav_psp_group_students, true);
           break;
       case 1:
+          //Teacher
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
@@ -203,9 +206,11 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_item_pspGroup_student){
 
-            PSPController pspController = new PSPController();
-            pspController.getGroups(this);
-
+            SharedPreference shared =  new SharedPreference(getApplicationContext());
+            if (!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {
+                PSPController pspController = new PSPController();
+                pspController.getGroups(this);
+            }
 
         }
 

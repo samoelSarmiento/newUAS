@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -20,6 +21,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
@@ -76,7 +78,7 @@ public class PSPController {
         return true;
     }
 
-    public boolean updateGroup(final Context context, int idGroup){
+    public boolean updateGroup(final Context context, final int idGroup){
         RestCon restCon =  RetrofitHelper.apiConnector.create(RestCon.class);
 
 
@@ -97,6 +99,10 @@ public class PSPController {
                     Log.d("RESPONSE", response.body());
                     Log.d("RESPONSE", response.toString());
                     String answer = response.body();
+
+
+                    SharedPreference shared = new SharedPreference(context);
+                    shared.setGroupStatus(Configuration.LOGIN_USER.getUser());
                     Toast.makeText(context,answer,Toast.LENGTH_SHORT).show();
 
 
@@ -151,7 +157,11 @@ public class PSPController {
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,phasesFragment).commit();
                     ((Activity)context).setTitle("Fases");
                 }else{
+
                     Toast.makeText(context,"Error mostrar fases",Toast.LENGTH_SHORT).show();
+
+
+
                 }
 
 

@@ -17,7 +17,9 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPGroupAdapter;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 
 
@@ -77,6 +79,8 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
             groupList.setAdapter(groupAdapter);
 
 
+
+
         }
 
 
@@ -91,12 +95,18 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
             case R.id.btn_psp_groups_choose:
                 //Actualiza el grupo que pertenece el alumno
                 PSPController controller =  new PSPController();
-                int value = groupAdapter.getSelectedItem().getIdGroup();
-                Log.d("Selected","" + value);
-                controller.updateGroup(getActivity(),value);
+                SharedPreference shared = new SharedPreference(getActivity());
+                if(!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {
+                    int value = groupAdapter.getSelectedItem().getIdGroup();
+                    Log.d("Selected", "" + value);
+                    controller.updateGroup(getActivity(), value);
+                }
+
+
                 break;
 
             case R.id.btn_psp_groups_cancel:
+
 
 
                 break;

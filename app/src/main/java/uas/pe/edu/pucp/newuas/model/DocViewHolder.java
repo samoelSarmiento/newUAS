@@ -25,13 +25,13 @@ public class DocViewHolder {
         tvAuthorDocument = (TextView)  inflater.findViewById(R.id.tv_author_document);
 
         PSPDocument document =(PSPDocument) lista.get(position);
-
+/*
         this.tvNameDocument.setText(document.getName());
         this.tvAuthorDocument.setText(document.getAuthor());
         this.tvFormatDocument.setText(document.getFormat());
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-        this.tvCreationDocument.setText(formatter.format(document.getDate()));
+        this.tvCreationDocument.setText(formatter.format(document.getDate()));*/
 
 
 

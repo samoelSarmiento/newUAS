@@ -1,8 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import java.util.Calendar;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.PSPAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPDocument;
-import uas.pe.edu.pucp.newuas.model.PSPStudent;
 
 
 public class PSP_documentsFragment extends Fragment {
@@ -73,14 +70,14 @@ public class PSP_documentsFragment extends Fragment {
 
 try {
     list = new ArrayList<>();
-
+/*
     PSPDocument document = new PSPDocument();
     document.setName("Doc_2016-2");
     document.setAuthor("Rafa");
     document.setDate(Calendar.getInstance());
     document.setFormat("Excel");
     list.add(document);
-
+*/
 
     pspAdapter = new PSPAdapter( getActivity(), list);
     lvPSPDocuments.setAdapter(pspAdapter);

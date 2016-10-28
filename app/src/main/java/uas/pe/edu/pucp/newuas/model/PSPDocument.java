@@ -1,6 +1,9 @@
 package uas.pe.edu.pucp.newuas.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Franz on 21/10/2016.
@@ -8,41 +11,93 @@ import java.util.Calendar;
 
 public class PSPDocument {
 
-    private String name;
-    private Calendar date;
-    private String author;
-    private String format;
+    @SerializedName("IdPSPDocument")
+    private
+    int IdPSPDocument;
+    @SerializedName("IdTipoEstado")
+    private
+    int IdTipoEstado;
+    @SerializedName("ruta")
+    private
+    String ruta;
+    @SerializedName("observaciones")
+    private
+    String observaciones;
+    @SerializedName("es_obligatorio")
+    private
+    String es_obligatorio;
+    @SerializedName("IdStudent")
+    private
+    int IdStudent;
+    @SerializedName("IdTemplate")
+    private
+    int IdTemplate;
+    @SerializedName("fecha_limite")
+    private
+    Date fecha_limite;
 
 
-    public String getName() {
-        return name;
+    public int getIdPSPDocument() {
+        return IdPSPDocument;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIdPSPDocument(int idPSPDocument) {
+        IdPSPDocument = idPSPDocument;
     }
 
-    public Calendar getDate() {
-        return date;
+    public int getIdTipoEstado() {
+        return IdTipoEstado;
     }
 
-    public void setDate(Calendar date) {
-        this.date = date;
+    public void setIdTipoEstado(int idTipoEstado) {
+        IdTipoEstado = idTipoEstado;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getRuta() {
+        return ruta;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
-    public String getFormat() {
-        return format;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public String getEs_obligatorio() {
+        return es_obligatorio;
+    }
+
+    public void setEs_obligatorio(String es_obligatorio) {
+        this.es_obligatorio = es_obligatorio;
+    }
+
+    public int getIdStudent() {
+        return IdStudent;
+    }
+
+    public void setIdStudent(int idStudent) {
+        IdStudent = idStudent;
+    }
+
+    public int getIdTemplate() {
+        return IdTemplate;
+    }
+
+    public void setIdTemplate(int idTemplate) {
+        IdTemplate = idTemplate;
+    }
+
+    public Date getFecha_limite() {
+        return fecha_limite;
+    }
+
+    public void setFecha_limite(Date fecha_limite) {
+        this.fecha_limite = fecha_limite;
     }
 }

@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 
+import uas.pe.edu.pucp.newuas.model.PSPDocument;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
@@ -136,6 +137,8 @@ public interface RestCon {
     Call<List<PSPPhase>> getPhasesPsp(@QueryMap Map<String,String> token);
 
 
+    @GET("psp/document/all")
+    Call<List<PSPDocument>> getDocument(@QueryMap Map<String,String> token);
 
 
     /*END SECTION*/
