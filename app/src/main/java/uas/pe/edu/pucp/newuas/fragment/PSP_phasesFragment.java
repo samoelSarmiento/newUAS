@@ -1,14 +1,19 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.PSPPhaseAdapter;
+import uas.pe.edu.pucp.newuas.model.PSPPhase;
 
 
 public class PSP_phasesFragment extends Fragment {
@@ -21,6 +26,8 @@ public class PSP_phasesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<PSPPhase>  phases;
+    PSPPhaseAdapter adapter;
     public PSP_phasesFragment() {
         // Required empty public constructor
     }
@@ -56,7 +63,22 @@ public class PSP_phasesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_psp_phases, container, false);
+
+
+        View view = inflater.inflate(R.layout.fragment_psp_phases, container, false);
+
+        ListView list = (ListView) view.findViewById(R.id.lv_psp_phases);
+        Bundle bundle =  getArguments();
+        if(bundle != null){
+
+           phases = (ArrayList<PSPPhase>) bundle.getSerializable("PSPPhases");
+            adapter = new PSPPhaseAdapter(getActivity(),phases);
+            list.setAdapter(adapter);
+
+        }
+
+
+        return view;
     }
 
 

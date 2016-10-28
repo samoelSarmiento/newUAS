@@ -22,9 +22,15 @@
             android:id="@+id/nav_pspDocuments"
             android:icon="@drawable/ic_cursos"
             android:title="@string/pspDocuments" />
+
+        <item
+            android:id="@+id/nav_pspPhases"
+            android:icon="@drawable/ic_objetivos_ed"
+            android:title="Fases" />
         <item
             android:id="@+id/nav_pspExit"
             android:icon="@drawable/ic_logout"
             android:title="@string/pspExit" />
+
     </group>
 </menu>

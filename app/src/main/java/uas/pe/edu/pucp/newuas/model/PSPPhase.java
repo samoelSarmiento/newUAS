@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 public class PSPPhase {
-    @SerializedName("idPhase")
+    @SerializedName("id")
     private int idPhase;
     @SerializedName("numero")
     private int numero;
@@ -43,7 +43,7 @@ public class PSPPhase {
         return descripcion;
     }
 
-    public void setDesciption(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 

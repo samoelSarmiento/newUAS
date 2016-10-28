@@ -1,7 +1,16 @@
 package uas.pe.edu.pucp.newuas.datapersistency;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
+
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,10 +35,21 @@ public class RetrofitHelper {
     //.baseUrl("http://35.161.73.236/api/")
     //"http://10.100.185.201/internetUAS/public/api/
 
+
+    static Gson gson = new GsonBuilder()
+            .setLenient()
+            .create();
+
+
     public static Retrofit apiConnector = new Retrofit.Builder()
-            .baseUrl("http://35.161.73.236/api/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://192.168.0.12/internetUAS/public/api/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(rxAdapter)
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
             .build();
+
+
+
+
+
 }

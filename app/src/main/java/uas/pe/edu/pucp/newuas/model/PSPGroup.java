@@ -17,7 +17,7 @@ public class PSPGroup implements Serializable {
     @SerializedName("numero")
     private String numero;
 
-    @SerializedName("description")
+    @SerializedName("descripcion")
     private String description;
 
     public PSPGroup(){

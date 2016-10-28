@@ -59,6 +59,7 @@ public class PSPGroupAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.item_psp_groups, null);
 
         Log.d("Adapter", "LLego");
+        Log.d("GRUPO", "" + items.get(position).getIdGroup());
         try {
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group);
@@ -91,6 +92,10 @@ public class PSPGroupAdapter extends BaseAdapter {
     public static class ViewHolder{
         TextView tvPspNumberGroup, tvPspDescriptionGroup;
         RadioButton rbPspGroup;
+
+    }
+    public  PSPGroup  getSelectedItem (){
+       return items.get(selectedPosition);
 
     }
 }

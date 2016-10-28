@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
@@ -42,6 +43,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //perfiles
         setTitle("PSP");
 
     }
@@ -93,7 +95,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         if (id == R.id.nav_pspCycle) {
             PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
 
-            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp,psp_cycleFragment).commit();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,psp_cycleFragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspTutors) {
@@ -101,7 +103,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             fragment = new PSP_supervisorFragment();
 
-            getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container_psp, fragment).commit();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
         } else if (id == R.id.nav_pspStudents) {
@@ -117,10 +119,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_pspDates) {
-
-            fragment =  new PSP_groupsFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment).commit();
-            setTitle("Grupos");
+            PSPController pspController = new PSPController();
+            pspController.getGroups(this);
 
         } else if (id == R.id.nav_pspDocuments) {
             try {
@@ -130,7 +130,26 @@ public class NavigationDrawerPSP extends AppCompatActivity
             }catch (Exception ex){
                 ex.printStackTrace();
             }
-        } else if (id == R.id.nav_pspExit) {
+        } else if (id == R.id.nav_pspPhases){
+            try {
+
+
+
+                PSPController controller = new PSPController();
+                controller.getPhases(this);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+
+
+
+
+
+        }
+
+
+
+                else if(id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
