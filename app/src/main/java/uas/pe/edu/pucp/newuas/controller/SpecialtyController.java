@@ -52,22 +52,6 @@ public class SpecialtyController {
             @Override
             public void onResponse(Call<Specialty> call, retrofit2.Response<Specialty> response) {
                 Log.d("LOG", response.isSuccessful() + "");
-                /*
-
-                try {
-                    Log.d("BODY",response.message());
-                    Log.d("BODY",response.errorBody().string());
-                    Log.d("BODY",response.errorBody().string());
-                    Log.d("BODY",response.errorBody().string());
-                } catch (Exception e) {
-                    Toast.makeText(context,response.message(),Toast.LENGTH_SHORT);
-                    e.printStackTrace();
-                }
-
-                */
-
-                //Log.e("PRUBA",response.body().getToken());
-                //Log.e("PRUBA"   ,response.body().getSpecialtyList().get(1).getNombre());
 
                 if (response.isSuccessful()) {
                     okhttp3.Response raw = response.raw();
@@ -83,34 +67,7 @@ public class SpecialtyController {
                     Log.d("llego", "llego");
                     UserResponse userr = Configuration.LOGIN_USER;
                     User user = userr.getUser();
-                    /*
-                    System.out.println(example.get(0).getNombre());
 
-                    if (user.getAccreditor() != null) {
-                        Accreditor accreditor = user.getAccreditor();
-                        for (int i = 0; i < example.size(); i++) {
-                            Specialty sp = example.get(i);
-                            System.out.println(sp.getNombre());
-                            spec[0] = sp;
-                            if (sp.getIdEspecialidad() == accreditor.getIdEspecialidad()) {
-                                Configuration.SPECIALTY = sp;
-                                break;
-                            }
-                        }
-
-
-                    } else if (user.getTeacher() != null) {
-                        Teacher teacher = user.getTeacher();
-                        for (int i = 0; i < example.size(); i++) {
-                            Specialty sp = example.get(i);
-                            spec[0] = sp;
-                            if (sp.getIdEspecialidad() == teacher.getIdEspecialidad()) {
-                                Configuration.SPECIALTY = sp;
-                                break;
-                            }
-                        }
-                    }
-                    */
                     Configuration.SPECIALTY = example;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
                     DatabaseHandler dbHandler = new DatabaseHandler(context,Configuration.DATABASE_NAME,null,Configuration.DATABASE_VERSION);

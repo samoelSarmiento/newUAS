@@ -14,6 +14,8 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
 
@@ -24,8 +26,8 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "db.uas";
     private static final int DATABASE_VERSION = 1;
-    private Dao<UserResponse, Integer> userResponseDAO = null;
-    private Dao<User, Integer> userDao = null;
+    private Dao<Specialty, Integer> specialtyDao = null;
+    private Dao<Teacher, Integer> teacherDao = null;
 
 
     public DatabaseHelper(Context context) {
@@ -58,13 +60,28 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public Dao<UserResponse, Integer> getUserResponseDAO() throws SQLException {
-        if (userResponseDAO == null) userResponseDAO = getDao(UserResponse.class);
-        return userResponseDAO;
+    public Dao<Specialty, Integer> getSpecialtyDao() throws SQLException {
+        if (specialtyDao == null) specialtyDao = getDao(Specialty.class);
+        return specialtyDao;
     }
 
-    public Dao<User, Integer> getUserDao() throws SQLException {
-        if (userDao == null) userDao = getDao(User.class);
-        return userDao;
+    public void setSpecialtyDao(Dao<Specialty, Integer> specialtyDao) {
+        this.specialtyDao = specialtyDao;
+    }
+
+    public Dao<Teacher, Integer> getTeacherDao() throws SQLException {
+        if (teacherDao == null) teacherDao = getDao(Teacher.class);
+        return teacherDao;
+    }
+
+    public void setTeacherDao(Dao<Teacher, Integer> teacherDao) {
+        this.teacherDao = teacherDao;
+    }
+
+    @Override
+    public void close() {
+        super.close();
+        specialtyDao = null;
+        teacherDao = null;
     }
 }

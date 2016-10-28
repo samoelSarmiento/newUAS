@@ -1,41 +1,76 @@
 #
-# generated on 2016/10/27 03:28:55
+# generated on 2016/10/27 09:03:20
 #
 # --table-start--
-dataClass=uas.pe.edu.pucp.newuas.model.User
-tableName=user
+dataClass=uas.pe.edu.pucp.newuas.model.Specialty
+tableName=specialty
 # --table-fields-start--
 # --field-start--
-fieldName=id
-foreign=true
-foreignColumnName=userresponse
+fieldName=idEspecialidad
 # --field-end--
 # --field-start--
-fieldName=idUsuario
-id=true
+fieldName=codigo
 # --field-end--
 # --field-start--
-fieldName=idPerfil
+fieldName=nombre
 # --field-end--
 # --field-start--
-fieldName=usuario
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
+fieldName=coordinator
 # --field-end--
 # --table-fields-end--
 # --table-end--
 #################################
 # --table-start--
-dataClass=uas.pe.edu.pucp.newuas.model.UserResponse
-tableName=userresponse
+dataClass=uas.pe.edu.pucp.newuas.model.Teacher
+tableName=teacher
 # --table-fields-start--
 # --field-start--
-fieldName=id
-generatedId=true
+fieldName=idDocente
 # --field-end--
 # --field-start--
-fieldName=token
+fieldName=idEspecialidad
 # --field-end--
 # --field-start--
-fieldName=user
+fieldName=idUsuario
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=apellidoPaterno
+# --field-end--
+# --field-start--
+fieldName=apellidoMaterno
+# --field-end--
+# --field-start--
+fieldName=correo
+# --field-end--
+# --field-start--
+fieldName=cargo
+# --field-end--
+# --field-start--
+fieldName=vigente
+# --field-end--
+# --field-start--
+fieldName=oficina
+# --field-end--
+# --field-start--
+fieldName=telefono
+# --field-end--
+# --field-start--
+fieldName=anexo
+# --field-end--
+# --field-start--
+fieldName=descripcion
 # --field-end--
 # --table-fields-end--
 # --table-end--

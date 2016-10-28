@@ -11,18 +11,12 @@ import java.util.List;
  * Created by samoe on 28/09/2016.
  */
 
-@DatabaseTable(tableName = "userresponse")
 public class UserResponse {
 
-    @DatabaseField(generatedId = true)
-    private int id;
-
     @SerializedName("token")
-    @DatabaseField
     private String token;
 
     @SerializedName("user")
-    @DatabaseField
     private User user;
 
     @SerializedName("faculties")
@@ -38,14 +32,6 @@ public class UserResponse {
 
     public void setSpecialtyList(ArrayList<Specialty> specialtyList) {
         this.specialtyList = specialtyList;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getToken() {
