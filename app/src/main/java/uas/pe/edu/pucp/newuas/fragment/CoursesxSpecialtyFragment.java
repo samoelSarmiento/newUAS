@@ -53,6 +53,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         //la informacion de la lista a mostrar
         Bundle bundle = this.getArguments();
         if (bundle != null) {
+            //list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
             Context context = getActivity();
             adapter = new SpecialtyxCoursesAdapter(context, list);

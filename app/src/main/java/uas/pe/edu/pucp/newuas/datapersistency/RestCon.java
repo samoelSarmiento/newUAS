@@ -52,8 +52,16 @@ public interface RestCon {
     @POST("authenticate")
     Call<UserResponse> getUser(@Body UserRequest userRequest);
 
+
+    @GET("faculties/{f_id}/{s_id}/courses")
+    Call<List<CourseResponse>> getCoursesxSpecialty(@Path("f_id") int faculty_id,
+                                                    @Path("s_id") int semester_id,
+                                                    @QueryMap Map<String, String> token);
+
+    /*
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
+    */
 
 
     @POST("users/me")
@@ -122,5 +130,4 @@ public interface RestCon {
 
 
 }
-
 
