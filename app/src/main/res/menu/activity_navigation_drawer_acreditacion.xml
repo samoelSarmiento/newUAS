@@ -18,13 +18,15 @@
             android:title="@string/itdAcrSpecialtyList"
             android:visible="false" />
 
+        <!--
+
 
         <item
             android:id="@+id/nav_courses"
             android:icon="@drawable/ic_cursos"
             android:title="@string/itdAcrCourse"
             android:visible="true" />
-        <!--
+
         <item
             android:id="@+id/nav_eduobjectivo"
             android:icon="@drawable/ic_objetivos_ed"

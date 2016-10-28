@@ -203,11 +203,12 @@ public class SpecialtyController {
 
     }
 
-    public boolean getCoursesxSpecialy(final Context context, int idEspecialiad) {
+    public boolean getCoursesxSpecialyxCycle(final Context context, int idEspecialiad, int idCycle) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        //Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
+        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, idCycle, token);
         call.enqueue(new Callback<List<CourseResponse>>() {
             @Override
             public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
