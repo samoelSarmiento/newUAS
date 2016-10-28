@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
 
@@ -116,6 +117,10 @@ public class NavigationDrawerPSP extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_pspDates) {
+
+            fragment =  new PSP_groupsFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment).commit();
+            setTitle("Grupos");
 
         } else if (id == R.id.nav_pspDocuments) {
             try {
