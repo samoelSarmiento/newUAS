@@ -42,8 +42,6 @@ public class UserController {
             List<Specialty> specialtyList = userResponse.getSpecialtyList();
             for(Specialty specialty : specialtyList){
                 specialtyDao.create(specialty);
-                Teacher teacher = specialty.getCoordinator();
-                teacherDao.create(teacher);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,5 +1,5 @@
 #
-# generated on 2016/10/27 09:03:20
+# generated on 2016/10/28 01:45:38
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Specialty
@@ -7,6 +7,7 @@ tableName=specialty
 # --table-fields-start--
 # --field-start--
 fieldName=idEspecialidad
+id=true
 # --field-end--
 # --field-start--
 fieldName=codigo
@@ -22,6 +23,10 @@ fieldName=idDocente
 # --field-end--
 # --field-start--
 fieldName=coordinator
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -32,6 +37,8 @@ tableName=teacher
 # --table-fields-start--
 # --field-start--
 fieldName=idDocente
+columnName=teacher_id
+id=true
 # --field-end--
 # --field-start--
 fieldName=idEspecialidad

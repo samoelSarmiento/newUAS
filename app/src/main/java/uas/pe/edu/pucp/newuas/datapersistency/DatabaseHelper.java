@@ -37,8 +37,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource, User.class);
-            TableUtils.createTable(connectionSource, UserResponse.class);
+            TableUtils.createTable(connectionSource, Specialty.class);
+            TableUtils.createTable(connectionSource, Teacher.class);
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -50,8 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
-            TableUtils.dropTable(source, User.class, true);
-            TableUtils.dropTable(source, UserResponse.class, true);
+            TableUtils.dropTable(source, Specialty.class, true);
+            TableUtils.dropTable(source, Teacher.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {

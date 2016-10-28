@@ -12,7 +12,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Teacher {
 
     @SerializedName("IdDocente")
-    @DatabaseField(id = true)
+    @DatabaseField(columnName = "teacher_id", id = true)
     private Integer idDocente;
 
     @SerializedName("IdEspecialidad")
