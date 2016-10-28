@@ -69,12 +69,16 @@
             android:id="@+id/btn_psp_groups_choose"
             android:text="Seleccionar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"/>
         <Button
             android:id="@+id/btn_psp_groups_cancel"
             android:text="Cancelar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

@@ -97,6 +97,8 @@
         android:id="@+id/invEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
         android:text="Editar"/>
 
 </LinearLayout>
