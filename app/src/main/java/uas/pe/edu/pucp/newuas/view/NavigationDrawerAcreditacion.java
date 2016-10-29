@@ -166,6 +166,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
 
         }
+        /*
+
         else if (id == R.id.nav_courses) {
             //obtener todos los cursos x especialidad
             SpecialtyController specialtyController = new SpecialtyController();
@@ -179,7 +181,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 //                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
 //            }else
 //                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
-        } /*
+        }
         else if (id == R.id.nav_eduobjectivo) {
 
         } */ else if (id == R.id.nav_sizperiod) {

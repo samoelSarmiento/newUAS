@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.UserController;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 
 public class
 LogInActivity extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +19,7 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnIngresar = null;
     EditText edtUser = null;
     EditText edtPassword = null;
+    DatabaseHelper databaseHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
         btnIngresar = (Button) findViewById(R.id.btnLogin);
         edtUser = (EditText) findViewById(R.id.edtName);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
-
+        databaseHelper = new DatabaseHelper(this);
         //listener
         btnIngresar.setOnClickListener(this);
     }
@@ -44,11 +46,19 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
                     System.out.println("Log in antes");
                     UserController userController = new UserController();
                     userController.LogIn(LogInActivity.this, user, password);
-                }else{
-                    Toast.makeText(this,"Campos vacios. Intente nuevamente",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Campos vacios. Intente nuevamente", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
+    }
+
+    public DatabaseHelper getDatabaseHelper() {
+        return databaseHelper;
+    }
+
+    public void setDatabaseHelper(DatabaseHelper databaseHelper) {
+        this.databaseHelper = databaseHelper;
     }
 
 
