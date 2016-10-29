@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/uas_plomo"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="115dp"
-    android:fillViewport="true"
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:id="@+id/unMundo"
+        >
 
 
         <LinearLayout
@@ -25,8 +28,9 @@
             android:gravity="center">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -42,8 +46,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_nombre"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="Gerardo Paolo"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="32dp"/>
 
@@ -62,8 +65,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_Apellido"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="Dávila García"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="@dimen/info_bg_padding"/>
 
@@ -82,8 +84,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_email"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="a20101616@pucp.pe"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="42dp"/>
 
@@ -103,8 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_oficina"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="Pabellon V - 205"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="38dp"/>
 
@@ -123,8 +123,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_anexo"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="2134"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="47dp"/>
 
@@ -144,8 +143,7 @@
                         android:textStyle="bold" />
 
                     <TextView android:id="@+id/teacher_detail_telefono"
-                        style="@style/GeneralTextViewsMedium"
-                        android:text="989166938"
+                        style="@style/GeneralTextViewsSmall"
                         android:textColor="@color/black"
                         android:layout_marginLeft="25dp"/>
 
@@ -159,4 +157,5 @@
 
     </LinearLayout>
 
-</ScrollView>
+
+</LinearLayout>

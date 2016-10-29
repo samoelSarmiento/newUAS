@@ -8,6 +8,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="40dp"
+
     >
 
 
@@ -49,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:id="@+id/buttonCancelar" />
 
 
@@ -57,6 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aceptar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
             android:id="@+id/buttonSolicitar" />
 
 

@@ -118,7 +118,9 @@
         android:id="@+id/projEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login"
+
+        android:background="@drawable/bg_button_login_selector"
+
         android:textColor="@color/white"
         android:text="Editar"/>
 

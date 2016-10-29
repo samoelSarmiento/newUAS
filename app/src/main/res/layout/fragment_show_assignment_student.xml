@@ -231,7 +231,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
-        android:text="Solicitar" />
+        android:text="Solicitar"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
+        />
 
 
 
