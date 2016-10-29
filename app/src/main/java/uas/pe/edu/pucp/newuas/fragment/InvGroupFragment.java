@@ -5,13 +5,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.InvGroupsAdapter;
+import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
+import uas.pe.edu.pucp.newuas.model.Faculty;
+import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.Investigator;
 
 /**
  * Created by Andree on 19/10/2016.
  */
 public class InvGroupFragment extends Fragment{
+
+    ListView lvInvGroup;
+    InvGroupsAdapter invGroupsAdapter;
 
     public InvGroupFragment() {
         // Required empty public constructor
@@ -21,9 +39,49 @@ public class InvGroupFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        View view = inflater.inflate(R.layout.fragment_inv_group, container, false);
         getActivity().setTitle("Grupos de Inv.");
-        return inflater.inflate(R.layout.fragment_inv_group, container, false);
+        lvInvGroup=(ListView) view.findViewById(R.id.invGroupList);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            ArrayList<InvGroups> invGroups = (ArrayList<InvGroups>) bundle.getSerializable("Groups");
+            /*String str = bundle.getString("Groups");
+            Gson gson = new Gson();
+            JsonParser jp = new JsonParser();
+            JsonArray jsonA = jp.parse(str).getAsJsonArray();//jp.parse(str).getAsJsonObject();
+            int cant=jsonA.size();
+            ArrayList<InvGroups> invGroups=new ArrayList<InvGroups>();
+            for(int i=0;i<cant;i++){
+                JsonObject jsonO=jsonA.get(i).getAsJsonObject();
+                InvGroups invGroup= new InvGroups();
+
+                invGroup.setNombre(jsonO.get("nombre").getAsString());
+                invGroup.setDescripcion(jsonO.get("descripcion").getAsString());
+
+                JsonObject jsonOFac=jsonO.getAsJsonObject("faculty");
+                Faculty faculty=new Faculty();
+                faculty.setNombre(jsonOFac.get("Nombre").getAsString());
+                invGroup.setFaculty(faculty);
+
+                invGroups.add(invGroup);
+            }*/
+            invGroupsAdapter = new InvGroupsAdapter(getActivity(), invGroups);
+            lvInvGroup.setAdapter(invGroupsAdapter);
+        }
+        lvInvGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InvGroups invGroups = (InvGroups) invGroupsAdapter.getItem(position);
+
+                InvGroupController invController = new InvGroupController();
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                invController.getInvGroupById(getActivity(),invGroups.getId());
+
+            }
+        });
+
+        return view;
     }
 
 }

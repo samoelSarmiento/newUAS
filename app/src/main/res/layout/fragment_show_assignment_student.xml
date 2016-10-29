@@ -1,0 +1,242 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="50dp"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment">}
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="445dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Código:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_code"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="CIT 213"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Asistió:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_assist"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="No"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Tutor:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_tutor"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Gerardo Dávila García"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Fecha:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_date"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="date"
+                    android:text="17/09/2016"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Hora:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_hour"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="16:00 pm"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Lugar:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_place"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Skype"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Tema:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_topic_info"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Rendimiento Académico"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Información extra:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_extraInformation"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Usuario de skype: jgabriel3223"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/GeneralTextViewsMedium"
+                    android:text="Observaciones:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/assignment_detail_observations"
+                    style="@style/GeneralTextViewsMedium"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonSolicitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:text="Solicitar"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
+        />
+
+
+
+
+</LinearLayout>

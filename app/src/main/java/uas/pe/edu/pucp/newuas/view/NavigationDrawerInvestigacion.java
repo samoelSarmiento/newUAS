@@ -1,9 +1,9 @@
 package uas.pe.edu.pucp.newuas.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,8 +14,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.fragment.CoursesFragment;
+
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
+import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
+import uas.pe.edu.pucp.newuas.controller.ProjectController;
+import uas.pe.edu.pucp.newuas.fragment.CourseFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
+import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
+import uas.pe.edu.pucp.newuas.fragment.ProjectsFragment;
 
 public class NavigationDrawerInvestigacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,6 +42,8 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        setTitle("Grupos de Inv.");
+        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new InvGroupFragment()).commit();
     }
 
     @Override
@@ -76,18 +85,49 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_invGroup) {
-            // Handle the camera action
-            InvGroupFragment coursesFragment = new InvGroupFragment();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, coursesFragment).commit();
-            setTitle(item.getTitle());
+            InvGroupController invGroupController = new InvGroupController();
+            invGroupController.getInvGroups(this);
+            /*InvGroupFragment invGroupFragment = new InvGroupFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, invGroupFragment).commit();
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_proj) {
-
+            ProjectController projController = new ProjectController();
+            projController.getProjects(this);
+            /*ProjectsFragment projectsFragment = new ProjectsFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, projectsFragment).commit();
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_inv) {
-
+            InvestigatorController invController = new InvestigatorController();
+            invController.getInvestigators(this);
+            /*
+            InvestigatorsFragment invetigatorsFragment = new InvestigatorsFragment();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, invetigatorsFragment).commit();
+            setTitle(item.getTitle());*/
         } else if (id == R.id.nav_back) {
-
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_logOut) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Borra los shared preferences
+                            Configuration.LOGIN_USER = null;
+                            //regresa al login
+                            Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            startActivity(intent);
+                            break;
 
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //Nada pasa
+                            break;
+                    }
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
+                    .setPositiveButton("Si", dialogClickListener).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -25,7 +25,17 @@ public class SharedPreference {
         SharedPreferences.Editor editor = context.getSharedPreferences(Configuration.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE).edit();
         Gson gson = new Gson();
         String json = gson.toJson(user);
-        editor.putString(Configuration.USER_LOGIN,json);
+        editor.putString(Configuration.USER_PREFERENCE,json);
         editor.apply();
     }
+
+    /*
+    public void setSpecialty(Specialty specialty){
+        SharedPreferences.Editor editor = context.getSharedPreferences(Configuration.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE).edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(specialty);
+        editor.putString(Configuration.SPECIALTY,json);
+        editor.apply();
+    }
+    */
 }

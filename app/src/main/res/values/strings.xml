@@ -14,7 +14,7 @@
     <string name="etPassword">Contraseña</string>
     <string name="btIngresar">INGRESAR</string>
     <string name="ivLogo_description">Logo</string>
-    <string name="tvCicle">Ciclo: </string>
+    <string name="tvNivel">Nivel: </string>
 
 
     <!--Investigacion-->
@@ -40,7 +40,7 @@
     <!--Inv Fin-->
     <!--PSP-->
     <string name="pspCycle">Ciclo</string>
-    <string name="pspTutors">Tutores</string>
+    <string name="pspTutors">Supervisores</string>
     <string name="pspStudents">Alumnos</string>
     <string name="pspDates">Reuniones</string>
     <string name="pspDocuments">Documentos</string>
@@ -67,11 +67,12 @@
     <string name="tvSpecialtyCoord">Coordinador: </string>
     <string name="tvSpecialtyDesc">Descripcion: </string>
     <string name="tvMeasureResStartSemester">Ciclo de Inicio: </string>
-    <string name="tvMeasureResEndSemester">Ciclo de Inicio: </string>
+    <string name="tvMeasureResEndSemester">Ciclo de Fin: </string>
     <string name="tvMeasureCritLevel">Nivel de criterio: </string>
     <string name="tvMeasureAccLevel">Nivel de aceptacion: </string>
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
+    <string name="btSemPer">Semestres Del Periodo</string>
 
     <string name="btMeaInst">Instrumentos De Medición</string>
 
@@ -107,11 +108,6 @@
         <item>22:00</item>
     </string-array>
 
-    <string-array name="tema">
-        <item>Rendimiento Académico</item>
-        <item>Problemas personales</item>
-        <item>Asesoría académica</item>
-    </string-array>
 
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
@@ -130,7 +126,13 @@
     <string name="tvAcrSurnames">Apelldios:</string>
     <string name="tvAcreEmail">Correo:</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
+    <string name="tvCicle">Ciclo:</string>
 
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="itdAcrSpecialtyList">Especialidades</string>
+    <string name="tvHorario">Horario:</string>
+    <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
 
 </resources>

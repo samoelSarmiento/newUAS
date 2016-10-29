@@ -1,12 +1,16 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by samoe on 20/10/2016.
  */
 
 public class User {
+
+    private int id;
 
     @SerializedName("IdUsuario")
     private int idUsuario;
@@ -20,11 +24,22 @@ public class User {
     @SerializedName("accreditor")
     private Accreditor accreditor;
 
-    @SerializedName("teacher")
+    @SerializedName("professor")
     private Teacher teacher;
 
     @SerializedName("investigator")
     private Investigator investigator;
+
+    public User(){
+
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getIdUsuario() {
         return idUsuario;

@@ -5,50 +5,76 @@
         <item
             android:id="@+id/nav_myself"
             android:icon="@drawable/ic_user"
-            android:title="@string/itdAcrMyself" />
+            android:title="@string/itdAcrMyself"
+            android:visible="true" />
         <item
             android:id="@+id/nav_myspecialty"
             android:icon="@drawable/ic_faculty_white"
-            android:title="@string/itdAcrSpecialty" />
+            android:title="@string/itdAcrSpecialty"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_specialty_list"
+            android:icon="@drawable/ic_faculty_white"
+            android:title="@string/itdAcrSpecialtyList"
+            android:visible="false" />
+
+        <!--
+
+
         <item
             android:id="@+id/nav_courses"
             android:icon="@drawable/ic_cursos"
-            android:title="@string/itdAcrCourse" />
+            android:title="@string/itdAcrCourse"
+            android:visible="true" />
+
         <item
             android:id="@+id/nav_eduobjectivo"
             android:icon="@drawable/ic_objetivos_ed"
-            android:title="@string/itdAcrEducationalObj" />
+            android:title="@string/itdAcrEducationalObj"
+            android:visible="true" /> -->
         <item
             android:id="@+id/nav_sizperiod"
             android:icon="@drawable/ic_aspectos"
-            android:title="@string/itdAcrSizeablePeriod" />
+            android:title="@string/itdAcrSizeablePeriod"
+            android:visible="true" />
+        <!--
         <item
             android:id="@+id/nav_studresult"
             android:icon="@drawable/ic_resultados_est"
-            android:title="@string/itdAcrStudentResult" />
+            android:title="@string/itdAcrStudentResult"
+            android:visible="true" /> -->
+        <!--
         <item
             android:id="@+id/nav_criteria"
             android:icon="@drawable/ic_resultados_eval"
-            android:title="@string/itdAcrCriteria" />
+            android:title="@string/itdAcrCriteria"
+            android:visible="true" /> -->
         <item
             android:id="@+id/nav_upgplan"
             android:icon="@drawable/ic_mejora_cont"
-            android:title="@string/itdAcrUpgradePlan" />
+            android:title="@string/itdAcrUpgradePlan"
+            android:visible="true" />
+        <!--
         <item
             android:id="@+id/nav_efforttable"
             android:icon="@drawable/ic_aspectos"
-            android:title="@string/itdAcrEffortTable" />
+            android:title="@string/itdAcrEffortTable"
+            android:visible="true" /> -->
+        <!--
         <item
             android:id="@+id/nav_sizeresult"
             android:icon="@drawable/ic_rubricas"
-            android:title="@string/itdAcrSizeResult" />
+            android:title="@string/itdAcrSizeResult"
+            android:visible="true" /> -->
         <item
             android:id="@+id/nav_consolidate"
             android:icon="@drawable/ic_cursos"
-            android:title="@string/itdAcrConsolidate" />
+            android:title="@string/itdAcrConsolidate"
+            android:visible="true" />
         <item
             android:id="@+id/nav_signout"
             android:icon="@drawable/ic_logout"
-            android:title="@string/itdAcrSignOut" />
+            android:title="@string/itdAcrSignOut"
+            android:visible="true" />
     </group>
 </menu>
