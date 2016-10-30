@@ -1,8 +1,9 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,10 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPPhaseAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
-import uas.pe.edu.pucp.newuas.model.Student;
 
-public class PSP_studentsFragment extends Fragment {
+
+public class PSP_phasesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,15 +26,9 @@ public class PSP_studentsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-
-    ListView lvPSPStudents;
-    ArrayList<Student> list;
-    PSPListViewAdapter studentsAdapter;
-
-
-
-    public PSP_studentsFragment() {
+    ArrayList<PSPPhase>  phases;
+    PSPPhaseAdapter adapter;
+    public PSP_phasesFragment() {
         // Required empty public constructor
     }
 
@@ -44,11 +38,11 @@ public class PSP_studentsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PSP_studentsFragment.
+     * @return A new instance of fragment PSP_phasesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PSP_studentsFragment newInstance(String param1, String param2) {
-        PSP_studentsFragment fragment = new PSP_studentsFragment();
+    public static PSP_phasesFragment newInstance(String param1, String param2) {
+        PSP_phasesFragment fragment = new PSP_phasesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,66 +57,30 @@ public class PSP_studentsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Log.d("FRAGMENT", "Entra primero");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
 
+        View view = inflater.inflate(R.layout.fragment_psp_phases, container, false);
 
-
-
-
-        View view = inflater.inflate(R.layout.fragment_psp__students, container, false);
-        lvPSPStudents = (ListView) view.findViewById(R.id.lv_psp_students);
-
-
+        ListView list = (ListView) view.findViewById(R.id.lv_psp_phases);
         Bundle bundle =  getArguments();
         if(bundle != null){
-/*
-            list = (ArrayList<Student>) bundle.getSerializable("PSPStudents");
-            adapter = new PSPPhaseAdapter(getActivity(),list);
-            list.setAdapter(adapter);*/
+
+           phases = (ArrayList<PSPPhase>) bundle.getSerializable("PSPPhases");
+            adapter = new PSPPhaseAdapter(getActivity(),phases);
+            list.setAdapter(adapter);
 
         }
+
 
         return view;
     }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
-        list = new ArrayList<>();
-/*
-        Student st1 = new Student();
-        st1.setCodigo(4);
-        st1.setName("Alumno 1");
-        st1.setTeacherName("Profesor 1");
-
-        Student st2 = new Student();
-        st2.setCodigo(5);
-        st2.setName("Alumno 2");
-        st2.setTeacherName("Profesor 2");
-
-
-        list.add(st1);
-        list.add(st2);
-*/
-        try{
-            studentsAdapter =  new PSPListViewAdapter(list, getActivity());
-            lvPSPStudents.setAdapter(studentsAdapter);
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-
-
-    }
 
 
 }
