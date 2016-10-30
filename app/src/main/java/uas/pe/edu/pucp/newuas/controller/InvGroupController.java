@@ -65,7 +65,7 @@ public class InvGroupController {
 
                     InvGroupFragment spFragment = new InvGroupFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Investigadores");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
@@ -112,7 +112,7 @@ public class InvGroupController {
 
                     InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Grupos de Inv.");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
