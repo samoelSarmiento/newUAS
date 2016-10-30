@@ -35,8 +35,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
 
-    NavigationView imageView = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,60 +150,14 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                 SpecialtyController specialtyController = new SpecialtyController();
                 specialtyController.getSpecialties(this);
             }
-
-
-            //while(Configuration.SPECIALTY == null);
-            //System.out.println(Configuration.SPECIALTY.getNombre());
-            //Specialty sp = specialtyController.getSpecialties(this);
-            //System.out.println(sp.getNombre());
-            //Specialty sp = Configuration.SPECIALTY;
-
-
-            /*
-            Gson gson = new Gson();
-            String spj = gson.toJson(sp);
-            System.out.println(spj);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Specialty", spj);
-            spFragment.setArguments(bundle); */
-
-
-        }
-        /*
-
-        else if (id == R.id.nav_courses) {
-            //obtener todos los cursos x especialidad
-            SpecialtyController specialtyController = new SpecialtyController();
-            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
-                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.SPECIALTY.getIdEspecialidad());
-            } else {
-                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-            }
-//            if (result) {
-//                CourseFragment coursesFragment = new CourseFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
-//            }else
-//                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
-        }
-        else if (id == R.id.nav_eduobjectivo) {
-
-        } */
-        else if (id == R.id.nav_sizperiod) {
+        } else if (id == R.id.nav_sizperiod) {
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
             boolean result = measurePeriodController.getMeasurePeriods(this);
 
 
-        } /*else if (id == R.id.nav_studresult) {
+        } else if (id == R.id.nav_upgplan) {
 
-        } else if (id == R.id.nav_criteria) {
-
-        } */ else if (id == R.id.nav_upgplan) {
-
-        } /*else if (id == R.id.nav_efforttable) {
-
-        } else if (id == R.id.nav_sizeresult) {
-
-        } */ else if (id == R.id.nav_consolidate) {
+        } else if (id == R.id.nav_consolidate) {
 
         } else if (id == R.id.nav_signout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -235,5 +187,4 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }
