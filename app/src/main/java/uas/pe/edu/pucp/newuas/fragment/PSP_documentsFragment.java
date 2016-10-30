@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -92,8 +93,12 @@ try {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view  = inflater.inflate(R.layout.fragment_psp_documents, container, false);
-        lvPSPDocuments  = (ListView) view.findViewById(R.id.lv_psp_documents);
+    //    lvPSPDocuments  = (ListView) view.findViewById(R.id.lv_psp_documents);
+
+
+        Toast.makeText(getActivity(), "Error de conexion", Toast.LENGTH_SHORT).show();
         return view ;
     }
 

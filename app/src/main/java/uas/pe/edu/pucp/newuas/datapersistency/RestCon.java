@@ -103,14 +103,14 @@ public interface RestCon {
 
     /* TUTORIA Section*/
 
-    @GET("/internetUAS/public/api/getTopics")
+    @GET("getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String,String> token);
 
-    @GET("/internetUAS/public/api/getTutorInfo/{id_usuario}")
+    @GET("getTutorInfo/{id_usuario}")
     //Call<List<TUTInfoResponse>>getTutorInfo
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
-    @POST("/internetUAS/public/api/registerStudentAppointment")
+    @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest,@QueryMap Map<String,String> token) ;
 
     /*END SECTION*/

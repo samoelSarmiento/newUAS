@@ -36,6 +36,7 @@ import uas.pe.edu.pucp.newuas.view.MainActivity;
 public class UserController {
 
     private void saveSpecialyList(DatabaseHelper helper, UserResponse userResponse) {
+
         try {
             Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
             Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
@@ -46,6 +47,7 @@ public class UserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
 
     }
 
@@ -60,10 +62,10 @@ public class UserController {
                     UserResponse user = response.body();
                     Configuration.LOGIN_USER = user;
                     //guardar la lista de especialidades -> solo si es admin
-                    if (user.getUser().getIdPerfil() == 3) {
+                    /*if (user.getUser().getIdPerfil() == 3) {
                         DatabaseHelper helper = ((LogInActivity) context).getDatabaseHelper();
                         saveSpecialyList(helper, user);
-                    }
+                    }*/
                     //--
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
