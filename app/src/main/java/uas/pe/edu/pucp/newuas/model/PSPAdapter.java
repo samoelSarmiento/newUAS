@@ -57,13 +57,7 @@ public class PSPAdapter  extends BaseAdapter {
         if(!items.isEmpty()) {
 
             try {
-                if (items.get(position) instanceof PSPDocument) {
-                    view = inflater.inflate(R.layout.item_psp_documents, null);
-                    DocViewHolder viewHolderA = new DocViewHolder();
-                    viewHolderA.buildView(view, items, position);
 
-
-                }
 
                 if(items.get(position) instanceof PSPSupervisor){
 
