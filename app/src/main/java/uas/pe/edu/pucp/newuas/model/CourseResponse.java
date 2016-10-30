@@ -2,13 +2,14 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by samoe on 20/10/2016.
  */
 
-public class CourseResponse {
+public class CourseResponse implements Serializable {
 
     @SerializedName("IdCurso")
     private int idCurso;
@@ -26,9 +27,6 @@ public class CourseResponse {
     private String nombre;
 
     private ArrayList<Schedules> schedules = new ArrayList<Schedules>();
-
-    private ArrayList<Semester> semesters = new ArrayList<Semester>();
-
 
     public int getIdCurso() {
         return idCurso;
@@ -76,14 +74,6 @@ public class CourseResponse {
 
     public void setSchedules(ArrayList<Schedules> schedules) {
         this.schedules = schedules;
-    }
-
-    public ArrayList<Semester> getSemesters() {
-        return semesters;
-    }
-
-    public void setSemesters(ArrayList<Semester> semesters) {
-        this.semesters = semesters;
     }
 
 }
