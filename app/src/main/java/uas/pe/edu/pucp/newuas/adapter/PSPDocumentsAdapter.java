@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.model.PSPDocument;
+import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
  * Created by Franz on 28/10/2016.
@@ -22,14 +22,14 @@ import uas.pe.edu.pucp.newuas.model.PSPDocument;
 public class PSPDocumentsAdapter extends BaseAdapter {
 
 
-    private ArrayList<PSPDocument> items;
-    private Context context;
-    private LayoutInflater layoutInflater;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+    ArrayList<Student> items;
+    Context context;
+    LayoutInflater layoutInflater;
 
-    public PSPDocumentsAdapter(Context context, ArrayList<PSPDocument> items) {
-        this.items = items;
+    public PSPDocumentsAdapter(Context context, ArrayList<Student> items) {
         this.context = context;
+        this.items = items;
+
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -54,46 +54,16 @@ public class PSPDocumentsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if(view ==null)
-            view = layoutInflater.inflate(R.layout.item_psp_phases, null);
-
-
-        try {
-           ViewHolder viewHolder = new ViewHolder();
-            viewHolder.tvPspDocumentTitle = (TextView) view.findViewById(R.id.tv_item_psp_phase);
-            viewHolder.tvPspDocumentTemplate = (TextView)  view.findViewById(R.id.tv_item_psp_starting_date);
-            viewHolder.tvPspDocumentName = (TextView) view.findViewById(R.id.tv_item_psp_end_date);
-            viewHolder.tvPspDocumentStatus =  (TextView) view.findViewById(R.id.tv_item_psp_end_date);
-            viewHolder.tvPspDocumentPhase =  (TextView) view.findViewById(R.id.tv_item_psp_end_date);
-
-
-
-
-            viewHolder.tvPspDocumentTitle .setText( String.valueOf(items.get(position)));
-            viewHolder.tvPspDocumentTemplate.setText("");
-            viewHolder.tvPspDocumentName.setText("");
-            viewHolder.tvPspDocumentStatus.setText("");
-            viewHolder.tvPspDocumentPhase.setText("");
-
-
-
-        }catch (Exception ex){ex.printStackTrace();}
-
-
+        View view = layoutInflater.inflate(R.layout.fragment_psp_documents_item,null);
+        ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder.studentName.setText(items.get(position).getNombre() + " " + items.get(position).getApellidoPaterno() + " " + items.get(position).getApellidoMaterno());
         return view;
-
-
-
     }
-
 
     public static class ViewHolder{
-        TextView tvPspDocumentTitle, tvPspDocumentTemplate, tvPspDocumentName,
-        tvPspDocumentStatus,tvPspDocumentPhase;
-
+        TextView studentName;
+        public ViewHolder(View view) {
+            studentName = (TextView)view.findViewById(R.id.student_item_name);
+        }
     }
-
-
-
 }

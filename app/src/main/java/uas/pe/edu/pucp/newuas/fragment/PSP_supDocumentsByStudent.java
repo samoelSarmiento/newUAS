@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPGroupAdapter;
-import uas.pe.edu.pucp.newuas.adapter.PSPSupStudentDocumentAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPDocument;
+//import uas.pe.edu.pucp.newuas.adapter.PSPSupStudentDocumentAdapter;
+
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 
 
@@ -29,7 +29,7 @@ public class PSP_supDocumentsByStudent extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    PSPSupStudentDocumentAdapter adapter;
+  //  PSPSupStudentDocumentAdapter adapter;
     ListView  list;
     public PSP_supDocumentsByStudent() {
         // Required empty public constructor
@@ -74,11 +74,13 @@ public class PSP_supDocumentsByStudent extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
 
-            ArrayList<PSPDocument> docs = (ArrayList<PSPDocument>) bundle.getSerializable("PSPDocuments");
+   //
+            //
+            //        ArrayList<PSPDocument> docs = (ArrayList<PSPDocument>) bundle.getSerializable("PSPDocuments");
 
-            adapter = new PSPSupStudentDocumentAdapter(getActivity(),docs);
+    //        adapter = new PSPSupStudentDocumentAdapter(getActivity(),docs);
 
-            list.setAdapter(adapter);
+      //      list.setAdapter(adapter);
 
 
 

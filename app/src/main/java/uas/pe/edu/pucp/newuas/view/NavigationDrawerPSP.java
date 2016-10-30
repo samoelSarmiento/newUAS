@@ -28,9 +28,10 @@ import okio.InflaterSource;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
@@ -84,7 +85,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
   switch(Configuration.LOGIN_USER.getUser().getIdPerfil()){
       case 3:
             //ADMIN
-          menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+
           break;
       case 0:
             //STUDENTS
@@ -102,7 +103,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
           menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-          menu.findItem(R.id.nav_item_pspDocuments_student).setVisible(false);
+          menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
 
 
   }
@@ -189,11 +190,6 @@ public class NavigationDrawerPSP extends AppCompatActivity
         } else if (id == R.id.nav_item_pspDates) {
 
 
-            PSPController controller = new PSPController();
-            controller.getStudents(this);
-
-
-
         } else if (id == R.id.nav_item_pspPhases){
             try {
 
@@ -209,7 +205,23 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
 
-        } else if (id == R.id.nav_item_pspGroup_student){
+        }else if (id == R.id.nav_item_pspDocuments_teacher){
+        try {
+
+
+
+            PSPControllerJ controller = new PSPControllerJ();
+            controller.getStudents(this);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+
+
+
+    }
+    else if (id == R.id.nav_item_pspGroup_student){
 
             SharedPreference shared =  new SharedPreference(getApplicationContext());
             if (!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {

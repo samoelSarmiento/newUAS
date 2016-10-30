@@ -10,59 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.adapter.PSPSupDocumentAdapter;
+//import uas.pe.edu.pucp.newuas.adapter.PSPSupDocumentAdapter;
+import uas.pe.edu.pucp.newuas.adapter.PSPDocumentsAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 
 public class PSP_supDocumentFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     ListView lvStudents;
-    PSPSupDocumentAdapter documentsAdapter;
+    PSPDocumentsAdapter documentsAdapter;
+    public  PSP_supDocumentFragment () {
 
-
-
-    public PSP_supDocumentFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PSP_supDocumentFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PSP_supDocumentFragment newInstance(String param1, String param2) {
-        PSP_supDocumentFragment fragment = new PSP_supDocumentFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -70,24 +34,27 @@ public class PSP_supDocumentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view  = inflater.inflate(R.layout.fragment_psp_documents, container, false);
-        getActivity().setTitle("Documentos");
-        lvStudents  = (ListView) view.findViewById(R.id.lv_psp_documents);
+       View view  = inflater.inflate(R.layout.fragment_psp_documents, container, false);
+       getActivity().setTitle("Seleccione el alumno");
+       lvStudents  = (ListView) view.findViewById(R.id.psp_studentList);
         Bundle bundle = this.getArguments();
         if (bundle != null){
-            ArrayList<Student> students = (ArrayList<Student>) bundle.getSerializable("PSPStudent");
-            documentsAdapter = new PSPSupDocumentAdapter(getActivity(), students);
+            ArrayList<Student> students = (ArrayList<Student>) bundle.getSerializable("Student");
+            documentsAdapter = new PSPDocumentsAdapter(getActivity(), students);
             lvStudents.setAdapter(documentsAdapter);
+
         }
         lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Student students = (Student) documentsAdapter.getItem(position);
-                PSPController documentsController = new PSPController();
+          @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              Toast.makeText(getActivity(), "Proximamente", Toast.LENGTH_SHORT).show();
+
+//                Student students = (Student) documentsAdapter.getItem(position);
+                //              PSPController documentsController = new PSPController();
                 //  documentsController.getDocumentsByStudent(getActivity(),students.getIdAlumno());
-                documentsController.getDocumentsByStudent(getActivity(), students.getIdAlumno() );
+                //        documentsController.getDocumentsByStudent(getActivity(), students.getIdAlumno() );
             }
-        });
+       });
         return view ;
 
     }
