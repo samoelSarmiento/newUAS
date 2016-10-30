@@ -32,7 +32,7 @@ import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
     public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
 
     NavigationView imageView = null;
@@ -47,7 +47,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -75,8 +75,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
-        imageView = (NavigationView) findViewById(R.id.nav_view);
-        imageView.setOnClickListener(this);
     }
 
     @Override
@@ -231,8 +229,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
-        }else if( id == R.id.nav_view){
-            Log.d("IV","LOGOGOGOOG");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -240,12 +236,4 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.nav_view:
-                Log.d("LOGO","PLPLPCLPCLLPCLC;");
-                break;
-        }
-    }
 }
