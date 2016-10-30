@@ -2,12 +2,13 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by samoe on 20/10/2016.
  */
-public class Schedules {
+public class Schedules implements Serializable {
     @SerializedName("IdHorario")
     private int idHorario;
 

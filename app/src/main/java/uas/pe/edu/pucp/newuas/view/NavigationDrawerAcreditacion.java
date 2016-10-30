@@ -12,9 +12,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -29,8 +32,10 @@ import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
+
+    NavigationView imageView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
+        imageView = (NavigationView) findViewById(R.id.nav_view);
+        imageView.setOnClickListener(this);
     }
 
     @Override
@@ -184,7 +191,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         }
         else if (id == R.id.nav_eduobjectivo) {
 
-        } */ else if (id == R.id.nav_sizperiod) {
+        } */
+        else if (id == R.id.nav_sizperiod) {
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
             boolean result = measurePeriodController.getMeasurePeriods(this);
 
@@ -223,10 +231,21 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
+        }else if( id == R.id.nav_view){
+            Log.d("IV","LOGOGOGOOG");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.nav_view:
+                Log.d("LOGO","PLPLPCLPCLLPCLC;");
+                break;
+        }
     }
 }

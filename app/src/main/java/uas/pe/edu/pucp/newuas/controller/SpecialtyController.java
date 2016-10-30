@@ -70,7 +70,7 @@ public class SpecialtyController {
 
                     Configuration.SPECIALTY = example;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
-                    DatabaseHandler dbHandler = new DatabaseHandler(context,Configuration.DATABASE_NAME,null,Configuration.DATABASE_VERSION);
+                    DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
                     dbHandler.addSpecialty(example);
 
 
@@ -106,12 +106,12 @@ public class SpecialtyController {
                 //Log.d("wat", t.getMessage());
 
                 t.printStackTrace();
-                DatabaseHandler dbHandler = new DatabaseHandler(context,Configuration.DATABASE_NAME,null,Configuration.DATABASE_VERSION);
+                DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
 
                 Specialty sp = null;
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
-                    sp = dbHandler.getSpecialtyById( Configuration.SPECIALTY.getIdEspecialidad());
-                else{
+                    sp = dbHandler.getSpecialtyById(Configuration.SPECIALTY.getIdEspecialidad());
+                else {
                     sp = dbHandler.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
 
                 }
