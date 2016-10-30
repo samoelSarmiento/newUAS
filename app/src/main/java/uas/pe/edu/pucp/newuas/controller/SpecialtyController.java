@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
 
 /**
  * Created by Marshall on 20/10/2016.
@@ -37,7 +39,6 @@ public class SpecialtyController {
     Specialty list = null;
 
     public Specialty getSpecialties(final Context context) {
-
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
@@ -188,6 +189,30 @@ public class SpecialtyController {
             public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
                 t.printStackTrace();
                 System.out.println("ERROROROROR");
+            }
+        });
+        return true;
+    }
+
+    public boolean getAllSpecialties(final Context context) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Specialty>> call = restCon.getAllSpecialties(token);
+        call.enqueue(new Callback<List<Specialty>>() {
+            @Override
+            public void onResponse(Call<List<Specialty>> call, Response<List<Specialty>> response) {
+                if (response.isSuccessful()) {
+                    List<Specialty> list = response.body();
+                    Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
+                    intent.putExtra("specialtyList", (Serializable) list);
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Specialty>> call, Throwable t) {
+
             }
         });
         return true;

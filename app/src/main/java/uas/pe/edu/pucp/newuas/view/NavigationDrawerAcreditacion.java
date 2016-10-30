@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
@@ -30,14 +32,21 @@ import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
+    private List<Specialty> specialtyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundleIntent = getIntent().getExtras();
+        if (bundleIntent != null)
+            specialtyList = (List<Specialty>) bundleIntent.getSerializable("specialtyList");
+
         setContentView(R.layout.activity_navigation_drawer_acreditacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,7 +66,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             //poner la lista de especialidades como la pantalla principal
             SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            bundle.putSerializable("specialties", (Serializable) specialtyList);
             specialtyListFragment.setArguments(bundle);
             getFragmentManager()
                     .beginTransaction()
@@ -73,6 +82,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
+
+
     }
 
     @Override
@@ -106,7 +117,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -122,7 +132,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_specialty_list) {
             SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            bundle.putSerializable("specialties", (Serializable) specialtyList);
             specialtyListFragment.setArguments(bundle);
             getFragmentManager()
                     .beginTransaction()

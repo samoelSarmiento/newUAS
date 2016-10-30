@@ -1,6 +1,5 @@
 package uas.pe.edu.pucp.newuas.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +44,7 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
                 if (!user.isEmpty() && !password.isEmpty()) {
                     System.out.println("Log in antes");
                     UserController userController = new UserController();
-                    userController.LogIn(LogInActivity.this, user, password);
+                    userController.logIn(LogInActivity.this, user, password);
                 } else {
                     Toast.makeText(this, "Campos vacios. Intente nuevamente", Toast.LENGTH_SHORT).show();
                 }

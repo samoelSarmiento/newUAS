@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_myself"
-            android:icon="@drawable/ic_user"
+            android:icon="@drawable/ic_objetivos_ed"
             android:title="@string/itdAcrMyself"
             android:visible="true" />
         <item
@@ -35,7 +35,7 @@
             android:icon="@drawable/ic_cursos"
             android:title="@string/itdAcrConsolidate"
             android:visible="true" />
-        
+
         <item
             android:id="@+id/nav_signout"
             android:icon="@drawable/ic_logout"
