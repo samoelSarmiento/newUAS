@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/nav_psp_group"
+        android:id="@+id/nav_psp_groupsss"
         android:checkableBehavior="single"
         android:visible="true">
         <item
@@ -22,15 +22,11 @@
             android:id="@+id/nav_item_pspDates"
             android:icon="@drawable/ic_mejora_cont"
             android:title="@string/pspDates" />
-        <item
-            android:id="@+id/nav_item_pspDocuments_student"
-            android:icon="@drawable/ic_cursos"
-            android:title="@string/pspDocuments" />
 
         <item
             android:id="@+id/nav_item_pspDocuments_teacher"
             android:icon="@drawable/ic_cursos"
-            android:title="@string/pspDocuments" />
+            android:title="@string/pspDocumentsProfesor" />
 
         <item
             android:id="@+id/nav_item_pspGroup_student"

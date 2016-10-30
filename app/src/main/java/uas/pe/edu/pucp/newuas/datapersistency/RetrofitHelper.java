@@ -34,7 +34,7 @@ public class RetrofitHelper {
     //ip server= http://35.161.73.236/api/
     //.baseUrl("http://35.161.73.236/api/")
     //"http://10.100.185.201/internetUAS/public/api/
-
+// .baseUrl("http://52.89.227.55/api/")
 
     static Gson gson = new GsonBuilder()
             .setLenient()
@@ -43,7 +43,7 @@ public class RetrofitHelper {
 
     public static Retrofit apiConnector = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://52.89.227.55/api/")
+            .baseUrl("http://192.168.1.34/internetUAS/public/api/")
             // .baseUrl("http://10.100.184.48/internetUAS/public/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(rxAdapter)

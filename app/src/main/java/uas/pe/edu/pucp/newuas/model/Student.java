@@ -6,11 +6,13 @@ import android.view.ViewGroup;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Franz on 20/10/2016.
  */
 
-public class Student {
+public class Student implements Serializable {
     @SerializedName("IdAlumno")
     private int IdAlumno;
     @SerializedName("IdHorario")

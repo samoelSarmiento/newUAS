@@ -27,7 +27,6 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
-import uas.pe.edu.pucp.newuas.model.PSPDocument;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
@@ -37,52 +36,6 @@ import uas.pe.edu.pucp.newuas.model.Student;
  */
 
 public class PSPController {
-
-
-
-    public boolean getStudents (final Context context) {
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
-        token.put("token", Configuration.LOGIN_USER.getToken());
-
-        Call<List<Student>> call = restCon.getStudents(token);
-        call.enqueue(new Callback<List<Student>>() {
-
-
-            @Override
-            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    List<Student> example = response.body();
-                    Bundle  bundle =  new Bundle();
-                    bundle.putSerializable("PSPStudent",(Serializable) example);
-                    PSP_supDocumentFragment spFragment = new PSP_supDocumentFragment();
-                    spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
-                    ((Activity)context).setTitle("Alumnos");
-
-                } else {
-
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
-                    // Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Student>> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-        return true;
-
-    }
 
 
     public boolean getGroups (final Context context){
@@ -229,40 +182,6 @@ public class PSPController {
     }
 
 
-    public boolean getDocumentsByStudent(final Context context , int idStudent) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-
-        Map<String,String> token = new HashMap<>();
-
-        token.put("token", Configuration.LOGIN_USER.getToken());
-
-        Call<List<PSPDocument>> call = restCon.getDocumentsByStudent(idStudent, token);
-        call.enqueue(new Callback<List<PSPDocument>>() {
-            @Override
-            public void onResponse(Call<List<PSPDocument>> call, Response<List<PSPDocument>> response) {
-
-                List<PSPDocument> pspPhaseList = response.body();
-
-                PSP_supDocumentsByStudent fragment =  new PSP_supDocumentsByStudent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("PSPDocuments",(Serializable) pspPhaseList);
-
-                fragment.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right, R.animator.slide_in_right)//,R.animator.pop_enter,R.animator.pop_exit)
-                        .addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<PSPDocument>> call, Throwable t) {
-
-                t.printStackTrace();
-            }
-        });
-
-        return true;
-    }
 
 }
