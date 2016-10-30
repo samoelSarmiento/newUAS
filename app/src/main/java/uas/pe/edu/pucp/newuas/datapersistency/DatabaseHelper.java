@@ -50,8 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
-            TableUtils.dropTable(source, Specialty.class, true);
             TableUtils.dropTable(source, Teacher.class, true);
+            TableUtils.dropTable(source, Specialty.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
