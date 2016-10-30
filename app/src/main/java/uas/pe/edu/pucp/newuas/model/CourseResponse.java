@@ -28,9 +28,6 @@ public class CourseResponse implements Serializable {
 
     private ArrayList<Schedules> schedules = new ArrayList<Schedules>();
 
-    private ArrayList<Semester> semesters = new ArrayList<Semester>();
-
-
     public int getIdCurso() {
         return idCurso;
     }
@@ -77,14 +74,6 @@ public class CourseResponse implements Serializable {
 
     public void setSchedules(ArrayList<Schedules> schedules) {
         this.schedules = schedules;
-    }
-
-    public ArrayList<Semester> getSemesters() {
-        return semesters;
-    }
-
-    public void setSemesters(ArrayList<Semester> semesters) {
-        this.semesters = semesters;
     }
 
 }

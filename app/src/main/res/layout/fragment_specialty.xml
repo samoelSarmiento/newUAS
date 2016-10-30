@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="@string/tvSpecialtyLabel" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="@string/tvSpecialtyCode" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="@string/tvSpecialtyCoord" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="@string/tvSpecialtyDesc" />
+            android:text="" />
     </LinearLayout>
 
 </LinearLayout>

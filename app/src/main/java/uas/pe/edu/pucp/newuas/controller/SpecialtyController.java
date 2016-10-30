@@ -8,8 +8,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
@@ -204,6 +207,14 @@ public class SpecialtyController {
             public void onResponse(Call<List<Specialty>> call, Response<List<Specialty>> response) {
                 if (response.isSuccessful()) {
                     List<Specialty> list = response.body();
+                    //--guardas todas las especialidades
+                    try {
+                        saveSpecialties(list, context);
+                    } catch (SQLException e) {
+                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                    //
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) list);
                     context.startActivity(intent);
@@ -212,9 +223,38 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<List<Specialty>> call, Throwable t) {
-
+                //Hay un error de conexion, deberia sacar las especialidades de la bd
+                try {
+                    List<Specialty> specialtyList = retriveSpecialties(context);
+                    Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
+                    intent.putExtra("specialtyList", (Serializable) specialtyList);
+                    context.startActivity(intent);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return true;
+    }
+
+    private void saveSpecialties(List<Specialty> specialtyList, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        for (Specialty specialty : specialtyList) {
+            //veo si la especialidad existe
+            Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
+            if (find == null) {
+                specialtyDao.create(specialty);
+            } else {
+                //si se encontro la actualizo
+                specialtyDao.updateId(specialty, find.getIdEspecialidad());
+            }
+        }
+    }
+
+    private List<Specialty> retriveSpecialties(final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        return specialtyDao.queryForAll();
     }
 }
