@@ -11,7 +11,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.PSPPhaseAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
+import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 public class PSP_studentsFragment extends Fragment {
@@ -67,8 +69,25 @@ public class PSP_studentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
+
+
         View view = inflater.inflate(R.layout.fragment_psp__students, container, false);
         lvPSPStudents = (ListView) view.findViewById(R.id.lv_psp_students);
+
+
+        Bundle bundle =  getArguments();
+        if(bundle != null){
+/*
+            list = (ArrayList<Student>) bundle.getSerializable("PSPStudents");
+            adapter = new PSPPhaseAdapter(getActivity(),list);
+            list.setAdapter(adapter);*/
+
+        }
+
         return view;
     }
 

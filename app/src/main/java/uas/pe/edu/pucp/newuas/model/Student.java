@@ -17,11 +17,11 @@ public class Student {
     private int IdHorario;
     @SerializedName("Id")
     private int Id;
-    @SerializedName("nombre")
+    @SerializedName("Nombre")
     private String nombre;
-    @SerializedName("apellidoPaterno")
+    @SerializedName("ApellidoPaterno")
     private String apellidoPaterno;
-    @SerializedName("apellidoMaterno")
+    @SerializedName("ApellidoMaterno")
     private String apellidoMaterno;
     @SerializedName("telefono")
     private String telefono;

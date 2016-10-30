@@ -189,6 +189,11 @@ public class NavigationDrawerPSP extends AppCompatActivity
         } else if (id == R.id.nav_item_pspDates) {
 
 
+            PSPController controller = new PSPController();
+            controller.getStudents(this);
+
+
+
         } else if (id == R.id.nav_item_pspPhases){
             try {
 

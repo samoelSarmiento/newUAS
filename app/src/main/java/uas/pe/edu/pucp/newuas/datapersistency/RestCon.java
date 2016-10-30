@@ -38,6 +38,7 @@ import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 
+import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.model.UserMe;
@@ -139,6 +140,19 @@ public interface RestCon {
 
     @GET("psp/document/all")
     Call<List<PSPDocument>> getDocument(@QueryMap Map<String,String> token);
+
+
+
+    @GET("psp/students/all")
+    Call<List<Student>> getStudents(@QueryMap Map<String,String> token);
+
+
+
+    @GET("psp/students/{s_id}/documents")
+    Call<List<PSPDocument>> getDocumentsByStudent(@Path("s_id") int s_id ,@QueryMap Map<String,String> token);
+
+
+
 
 
     /*END SECTION*/

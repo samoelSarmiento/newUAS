@@ -22,7 +22,8 @@ public class UserResponse {
     @SerializedName("faculties")
     private List<Specialty> specialtyList;
 
-    public UserResponse() {
+    public UserResponse(){
+
 
     }
 

@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ import java.util.Date;
  * Created by Franz on 21/10/2016.
  */
 
-public class PSPDocument {
+public class PSPDocument implements Serializable {
 
     @SerializedName("IdPSPDocument")
     private
