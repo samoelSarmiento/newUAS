@@ -26,8 +26,10 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
 import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
+import uas.pe.edu.pucp.newuas.fragment.CoursexScheduleFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Schedules;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
@@ -248,6 +250,40 @@ public class SpecialtyController {
                 System.out.println("ERROROROROR");
             }
         });
+        return true;
+    }
+
+    public boolean getCourseSchedules(final Context context, int idCourse, int idAcademicCycle) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Schedules>> call = restCon.getCourseSchedules(idCourse, idAcademicCycle, token);
+        call.enqueue(new Callback<List<Schedules>>() {
+            @Override
+            public void onResponse(Call<List<Schedules>> call, Response<List<Schedules>> response) {
+                if (response.isSuccessful()) {
+                    List<Schedules> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("ScheduleList", (Serializable) list);
+                    //Fragment
+                    CoursexScheduleFragment csFragment = new CoursexScheduleFragment();
+                    csFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, csFragment)
+                            .commit();
+                } else {
+                    Toast.makeText(context, "Intente nuevamente", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Schedules>> call, Throwable t) {
+
+            }
+        });
+
         return true;
     }
 

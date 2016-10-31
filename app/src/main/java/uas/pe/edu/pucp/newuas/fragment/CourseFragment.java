@@ -29,7 +29,6 @@ import uas.pe.edu.pucp.newuas.model.Teacher;
 
 public class CourseFragment extends Fragment {
 
-    CoursexTeacherAdapter adapter;
 
     public CourseFragment() {
         // Required empty public constructor
@@ -46,28 +45,36 @@ public class CourseFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
         TextView tvValueCurso = (TextView) view.findViewById(R.id.tvValueCourse);
-        //ListView lvTeacher = (ListView) view.findViewById(R.id.lvTeacher);
+        TextView tvValueCode = (TextView) view.findViewById(R.id.tvValueCode);
+        TextView tvValueLevel = (TextView) view.findViewById(R.id.tvValueLevel);
+
         Bundle bundle = this.getArguments();
-        Button btHorario = (Button) view.findViewById(R.id.btSchedules);
-        btHorario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //cargar el horario de los cursos
-            }
-        });
+
+
         if (bundle != null) {
-            CourseResponse courseResponse = (CourseResponse) bundle.getSerializable("Course");
-            int idCicloAcademio = bundle.getInt("cicloAcademico");
+            final CourseResponse courseResponse = (CourseResponse) bundle.getSerializable("Course");
+            final int idCicloAcademio = bundle.getInt("cicloAcademico");
             if (courseResponse != null) {
                 tvValueCurso.setText(courseResponse.getNombre());
+                tvValueCode.setText(courseResponse.getCodigo());
+                tvValueLevel.setText(courseResponse.getNivelAcademico());
                 if (courseResponse.getSchedules() != null) {
-                    //lvTeacher.setVisibility(View.VISIBLE);
-                    Context context = getActivity();
-                    adapter = new CoursexTeacherAdapter(courseResponse.getSchedules(), context);
-                    //lvTeacher.setAdapter(adapter);
+                    Button btHorario = (Button) view.findViewById(R.id.btSchedules);
+                    btHorario.setVisibility(View.VISIBLE);
+                    final Context context = getActivity();
+                    btHorario.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            SpecialtyController controller = new SpecialtyController();
+                            controller.getCourseSchedules(context, courseResponse.getIdCurso(), idCicloAcademio);
+                        }
+                    });
+
+                    CoursexTeacherAdapter adapter = new CoursexTeacherAdapter(courseResponse.getSchedules(), context);
+
                 } else {
-                    TextView tvValueProfessor = (TextView) view.findViewById(R.id.tvValueProfessor);
-                    tvValueProfessor.setText(R.string.tvProfessorUnavailable);
+                    TextView tvNoSchedules = (TextView) view.findViewById(R.id.tvValueSchedule);
+                    tvNoSchedules.setVisibility(View.VISIBLE);
                 }
             }
 
