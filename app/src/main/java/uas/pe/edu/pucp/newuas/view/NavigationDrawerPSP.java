@@ -2,8 +2,10 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,38 +15,104 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import java.util.zip.Inflater;
+
+import okio.InflaterSource;
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
+import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_documentsFragment;
+
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
+import uas.pe.edu.pucp.newuas.model.User;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    LayoutInflater layoutInflater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_psp);
+
+
+
+
+
+
+
+     //   setContentView(R.layout.activity_navigation_drawer_psp);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+
+
+        showGroupMenu(menu);
+
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
+        //perfiles
         setTitle("PSP");
 
     }
+
+    public void showGroupMenu(Menu menu){
+
+
+  switch(Configuration.LOGIN_USER.getUser().getIdPerfil()){
+      case 3:
+            //ADMIN
+
+          break;
+      case 0:
+            //STUDENTS
+          menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
+          menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+          menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+          menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+          menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+
+         // menu.setGroupVisible(R.id.nav_psp_group_students, true);
+          break;
+      case 1:
+          //Teacher
+          menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+          menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
+          menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+          menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+          menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+
+
+  }
+
+
+
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -59,7 +127,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
+         getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
         return true;
     }
 
@@ -78,6 +146,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -90,13 +161,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
 
-        if (id == R.id.nav_pspCycle) {
+        if (id == R.id.nav_item_pspCycle) {
             PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
 
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,psp_cycleFragment).commit();
             setTitle(item.getTitle());
 
-        } else if (id == R.id.nav_pspTutors) {
+        } else if (id == R.id.nav_item_pspTutors) {
 
 
             fragment = new PSP_supervisorFragment();
@@ -104,7 +175,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
-        } else if (id == R.id.nav_pspStudents) {
+        } else if (id == R.id.nav_item_pspStudents) {
 
             try {
                 fragment = new PSP_studentsFragment();
@@ -116,27 +187,58 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             }
 
-        } else if (id == R.id.nav_pspDates) {
+        } else if (id == R.id.nav_item_pspDates) {
 
-            fragment =  new PSP_groupsFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment).commit();
-            setTitle("Grupos");
 
-        } else if (id == R.id.nav_pspDocuments) {
+        } else if (id == R.id.nav_item_pspPhases){
             try {
-                fragment= new PSP_documentsFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
-                setTitle(item.getTitle());
+
+
+
+                PSPController controller = new PSPController();
+                controller.getPhases(this);
             }catch (Exception ex){
                 ex.printStackTrace();
             }
-        } else if (id == R.id.nav_pspExit) {
+
+
+
+
+
+        }else if (id == R.id.nav_item_pspDocuments_teacher){
+        try {
+
+
+
+            PSPControllerJ controller = new PSPControllerJ();
+            controller.getStudents(this);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+
+
+
+    }
+    else if (id == R.id.nav_item_pspGroup_student){
+
+            SharedPreference shared =  new SharedPreference(getApplicationContext());
+            if (!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {
+                PSPController pspController = new PSPController();
+                pspController.getGroups(this);
+            }
+
+        }
+
+        else if(id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:
