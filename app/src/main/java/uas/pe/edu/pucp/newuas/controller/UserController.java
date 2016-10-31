@@ -30,26 +30,9 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.MainActivity;
 
-/**
- * Created by samoe on 21/09/2016.
- */
 public class UserController {
 
-    private void saveSpecialyList(DatabaseHelper helper, UserResponse userResponse) {
-        try {
-            Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
-            Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
-            List<Specialty> specialtyList = userResponse.getSpecialtyList();
-            for(Specialty specialty : specialtyList){
-                specialtyDao.create(specialty);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public boolean LogIn(final Context context, String user, String password) {
+    public boolean logIn(final Context context, final String user, String password) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<UserResponse> call = restCon.getUser(new UserRequest(user, password));
 
@@ -59,17 +42,9 @@ public class UserController {
                 if (response.isSuccessful()) {
                     UserResponse user = response.body();
                     Configuration.LOGIN_USER = user;
-                    //guardar la lista de especialidades -> solo si es admin
-                    if (user.getUser().getIdPerfil() == 3) {
-                        DatabaseHelper helper = ((LogInActivity) context).getDatabaseHelper();
-                        saveSpecialyList(helper, user);
-                    }
-                    //--
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 } else {
-                    //TextView tvError = (TextView) ((Activity) context).findViewById(R.id.tvError);
-                    //tvError.setText(R.string.tvErrorLogin);
                     Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
                 }
             }
@@ -83,4 +58,5 @@ public class UserController {
 
         return true;
     }
+
 }

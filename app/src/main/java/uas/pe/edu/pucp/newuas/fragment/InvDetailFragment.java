@@ -73,7 +73,7 @@ public class InvDetailFragment extends Fragment {
 
                 Context context = getActivity();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
-                ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,mpvFragment).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
                 ((Activity)context).setTitle("Investigación");
             }
         });

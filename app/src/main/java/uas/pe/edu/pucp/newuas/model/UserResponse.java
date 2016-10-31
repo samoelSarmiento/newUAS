@@ -11,6 +11,7 @@ import java.util.List;
  * Created by samoe on 28/09/2016.
  */
 
+
 public class UserResponse {
 
     @SerializedName("token")
@@ -19,19 +20,7 @@ public class UserResponse {
     @SerializedName("user")
     private User user;
 
-    @SerializedName("faculties")
-    private List<Specialty> specialtyList;
-
     public UserResponse() {
-
-    }
-
-    public List<Specialty> getSpecialtyList() {
-        return specialtyList;
-    }
-
-    public void setSpecialtyList(ArrayList<Specialty> specialtyList) {
-        this.specialtyList = specialtyList;
     }
 
     public String getToken() {

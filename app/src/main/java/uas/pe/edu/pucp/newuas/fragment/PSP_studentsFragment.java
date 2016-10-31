@@ -1,21 +1,20 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.PSPPhaseAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPStudent;
+import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.Student;
 
 public class PSP_studentsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -30,7 +29,7 @@ public class PSP_studentsFragment extends Fragment {
 
 
     ListView lvPSPStudents;
-    ArrayList<PSPStudent> list;
+    ArrayList<Student> list;
     PSPListViewAdapter studentsAdapter;
 
 
@@ -70,8 +69,25 @@ public class PSP_studentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
+
+
         View view = inflater.inflate(R.layout.fragment_psp__students, container, false);
         lvPSPStudents = (ListView) view.findViewById(R.id.lv_psp_students);
+
+
+        Bundle bundle =  getArguments();
+        if(bundle != null){
+/*
+            list = (ArrayList<Student>) bundle.getSerializable("PSPStudents");
+            adapter = new PSPPhaseAdapter(getActivity(),list);
+            list.setAdapter(adapter);*/
+
+        }
+
         return view;
     }
 
@@ -82,13 +98,13 @@ public class PSP_studentsFragment extends Fragment {
 
 
         list = new ArrayList<>();
-
-        PSPStudent st1 = new PSPStudent();
+/*
+        Student st1 = new Student();
         st1.setCodigo(4);
         st1.setName("Alumno 1");
         st1.setTeacherName("Profesor 1");
 
-        PSPStudent st2 = new PSPStudent();
+        Student st2 = new Student();
         st2.setCodigo(5);
         st2.setName("Alumno 2");
         st2.setTeacherName("Profesor 2");
@@ -96,7 +112,7 @@ public class PSP_studentsFragment extends Fragment {
 
         list.add(st1);
         list.add(st2);
-
+*/
         try{
             studentsAdapter =  new PSPListViewAdapter(list, getActivity());
             lvPSPStudents.setAdapter(studentsAdapter);
