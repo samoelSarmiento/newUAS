@@ -138,5 +138,6 @@
     <string name="pspGroup">Seleccionar grupo</string>
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
+    <string name="btHorario">HORARIO</string>
 
 </resources>

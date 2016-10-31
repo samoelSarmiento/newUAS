@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -47,6 +48,13 @@ public class CourseFragment extends Fragment {
         TextView tvValueCurso = (TextView) view.findViewById(R.id.tvValueCourse);
         ListView lvTeacher = (ListView) view.findViewById(R.id.lvTeacher);
         Bundle bundle = this.getArguments();
+        Button btHorario = (Button) view.findViewById(R.id.btSchedules);
+        btHorario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //cargar el horario de los cursos
+            }
+        });
         if (bundle != null) {
             CourseResponse courseResponse = (CourseResponse) bundle.getSerializable("Course");
             int idCicloAcademio = bundle.getInt("cicloAcademico");

@@ -65,29 +65,12 @@
             android:layout_weight="0.7" />
     </LinearLayout>
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/btSchedules"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tvProfessor"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:text="@string/tvHorario" />
-
-        <TextView
-            android:id="@+id/tvValueProfessor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:text="@string/tvNoSchedules" />
-    </LinearLayout>
-
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       />
+        android:background="@color/uas_turquesa"
+        android:text="@string/btHorario" />
 </LinearLayout>
