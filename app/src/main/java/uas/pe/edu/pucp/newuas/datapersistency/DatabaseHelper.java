@@ -32,6 +32,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
     private Dao<Period, Integer> periodDao = null;
+    private Dao<Semester,Integer> semesterDao = null;
 
 
     public DatabaseHelper(Context context) {
@@ -101,6 +102,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public void setPeriodDao(Dao<Period,Integer> periodDao){
         this.periodDao = periodDao;
+    }
+
+    public Dao<Semester,Integer> getSemesterDao() throws SQLException{
+        if(semesterDao == null) semesterDao = getDao(Semester.class);
+        return semesterDao;
+    }
+
+    public void setSemesterDao(Dao<Semester,Integer> semesterDao){
+        this.semesterDao = semesterDao;
     }
 
     @Override
