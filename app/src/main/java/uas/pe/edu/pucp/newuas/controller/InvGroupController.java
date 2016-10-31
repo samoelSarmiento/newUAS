@@ -149,20 +149,6 @@ public class InvGroupController {
 
                 if (response.isSuccessful()) {
 
-
-                    //List<InvGroups> example = response.body();
-
-                    //Bundle bundle = new Bundle();
-                    //bundle.putSerializable("InvGroup", (Serializable)example);
-                    //bundle.putString("Investigators", spj);
-
-                    //InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
-                    //spFragment.setArguments(bundle);
-                    //((Activity)context).getFragmentManager().popBackStack();
-                    //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    //((Activity)context).setTitle("Grupos de Inv.");
-                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
-
                 } else {
                     //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
                 }
@@ -175,8 +161,5 @@ public class InvGroupController {
 
             }
         });
-
-
-
     }
 }
