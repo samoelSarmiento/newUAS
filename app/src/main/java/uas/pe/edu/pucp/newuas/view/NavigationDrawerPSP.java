@@ -235,6 +235,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:

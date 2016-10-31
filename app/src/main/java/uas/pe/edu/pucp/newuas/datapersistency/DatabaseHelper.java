@@ -14,6 +14,9 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
+import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -24,10 +27,12 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "db.uas";
+    private static final String DATABASE_NAME = "uas.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
+    private Dao<Period, Integer> periodDao = null;
+    private Dao<Semester,Integer> semesterDao = null;
 
 
     public DatabaseHelper(Context context) {
@@ -37,8 +42,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource, Specialty.class);
-            TableUtils.createTable(connectionSource, Teacher.class);
+            TableUtils.createTableIfNotExists(connectionSource, Specialty.class);
+            TableUtils.createTableIfNotExists(connectionSource, Teacher.class);
+            TableUtils.createTableIfNotExists(connectionSource, Period.class);
+            TableUtils.createTableIfNotExists(connectionSource, Semester.class);
+            TableUtils.createTableIfNotExists(connectionSource, ConfSpeciality.class);
+
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -50,8 +59,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
-            TableUtils.dropTable(source, Specialty.class, true);
             TableUtils.dropTable(source, Teacher.class, true);
+            TableUtils.dropTable(source, Period.class, true);
+            TableUtils.dropTable(source, Semester.class, true);
+            TableUtils.dropTable(source, ConfSpeciality.class, true);
+            TableUtils.dropTable(source, Specialty.class, true);
+
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
@@ -74,8 +87,30 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return teacherDao;
     }
 
+
+
+
     public void setTeacherDao(Dao<Teacher, Integer> teacherDao) {
         this.teacherDao = teacherDao;
+    }
+
+
+    public Dao<Period,Integer> getPeriodDao() throws SQLException{
+        if(periodDao == null) periodDao = getDao(Period.class);
+        return periodDao;
+    }
+
+    public void setPeriodDao(Dao<Period,Integer> periodDao){
+        this.periodDao = periodDao;
+    }
+
+    public Dao<Semester,Integer> getSemesterDao() throws SQLException{
+        if(semesterDao == null) semesterDao = getDao(Semester.class);
+        return semesterDao;
+    }
+
+    public void setSemesterDao(Dao<Semester,Integer> semesterDao){
+        this.semesterDao = semesterDao;
     }
 
     @Override

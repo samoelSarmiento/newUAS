@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_login_selector"
             android:text="@string/btModuleAcr"
-            android:textColor="@color/white"
-            android:visibility="gone" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btModulePsp"
@@ -31,8 +30,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_login_selector"
             android:text="@string/btModulePsp"
-            android:textColor="@color/white"
-            android:visibility="gone" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btModuleTutEv"
@@ -40,8 +38,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_login_selector"
             android:text="@string/btModuleTutEv"
-            android:textColor="@color/white"
-            android:visibility="gone" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btModuleInv"
@@ -49,7 +46,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_login_selector"
             android:text="@string/btModuleInv"
-            android:textColor="@color/white"
-            android:visibility="gone" />
+            android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

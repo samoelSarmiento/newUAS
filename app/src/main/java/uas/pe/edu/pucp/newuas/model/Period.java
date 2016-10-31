@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,21 +14,23 @@ import java.util.List;
  * Created by Marshall on 23/10/2016.
  */
 
+@DatabaseTable(tableName="period")
 public class Period implements Serializable {
 
     @SerializedName("IdPeriodo")
+    @DatabaseField(id = true)
     private Integer idPeriodo;
 
     @SerializedName("IdEspecialidad")
+    @DatabaseField
     private Integer idEspecialidad;
 
     @SerializedName("Vigente")
+    @DatabaseField
     private Integer vigente;
 
-    @SerializedName("semesters")
-    private List<Semester> semesters;
-
     @SerializedName("configuration")
+    @DatabaseField(foreign=true, foreignAutoRefresh = true)
     private ConfSpeciality configuration;
 
     public Integer getIdPeriodo() {
@@ -52,6 +56,7 @@ public class Period implements Serializable {
     public void setVigente(Integer vigente) {
         this.vigente = vigente;
     }
+    /*
 
     public List<Semester> getSemesters() {
         return semesters;
@@ -60,6 +65,7 @@ public class Period implements Serializable {
     public void setSemesters(List<Semester> semesters) {
         this.semesters = semesters;
     }
+    */
 
     public ConfSpeciality getConfiguration() {
         return configuration;
