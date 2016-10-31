@@ -92,6 +92,9 @@ public interface RestCon {
 
     @POST("investigation/{id}/investigators")
     Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Investigator investigator);
+
+    @POST("investigation/{id}/projects")
+    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Projects projects);
     /*--------------*/
 
 

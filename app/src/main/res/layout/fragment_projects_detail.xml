@@ -102,10 +102,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:text="@string/projMembers" />
+                    android:text="Descripcion" />
 
                 <TextView
-                    android:id="@+id/projMembers"
+                    android:id="@+id/projDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
