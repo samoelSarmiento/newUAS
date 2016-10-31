@@ -182,6 +182,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                             Configuration.LOGIN_USER = null;
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
 

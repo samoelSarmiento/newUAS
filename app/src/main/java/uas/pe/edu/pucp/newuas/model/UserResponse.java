@@ -20,7 +20,7 @@ public class UserResponse {
     @SerializedName("user")
     private User user;
 
-    public UserResponse() {  }
+    public UserResponse() { }
 
     public String getToken() {
         return token;
