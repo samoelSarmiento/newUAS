@@ -24,7 +24,20 @@
                 <EditText
                     android:id="@+id/invName"
                     android:text=""
-                    android:layout_width="match_parent"
+                    android:layout_weight="0.33"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp" />
+                <EditText
+                    android:id="@+id/invApeP"
+                    android:text=""
+                    android:layout_weight="0.33"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp" />
+                <EditText
+                    android:id="@+id/invApeM"
+                    android:text=""
+                    android:layout_weight="0.33"
+                    android:layout_width="0dp"
                     android:layout_height="40dp" />
 
             </LinearLayout>
@@ -61,7 +74,7 @@
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
-                <EditText
+                <TextView
                     android:id="@+id/invEsp"
                     android:text=""
                     android:layout_weight="0.7"
@@ -110,6 +123,7 @@
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+
             android:background="@drawable/bg_button_login_selector"
             android:textColor="@color/white"
             android:text="Cancelar"/>
