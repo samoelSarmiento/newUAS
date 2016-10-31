@@ -43,11 +43,12 @@ public class PSPControllerJ {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-                    List<Student> example = response.body();
+
+                    List<Student> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
 
                     Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Student",(Serializable) example);
+                    bundle.putSerializable("Students",(Serializable) listaEstudiantes);
                     PSP_supDocumentFragment spFragment = new PSP_supDocumentFragment();
                     spFragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();

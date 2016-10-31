@@ -207,10 +207,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         }else if (id == R.id.nav_item_pspDocuments_teacher){
         try {
-
-
-
-            PSPControllerJ controller = new PSPControllerJ();
+     PSPControllerJ controller = new PSPControllerJ();
             controller.getStudents(this);
         }catch (Exception ex){
             ex.printStackTrace();

@@ -20,22 +20,15 @@ import uas.pe.edu.pucp.newuas.model.Student;
  */
 
 public class PSPDocumentsAdapter extends BaseAdapter {
-
-
     ArrayList<Student> items;
     Context context;
     LayoutInflater layoutInflater;
-
     public PSPDocumentsAdapter(Context context, ArrayList<Student> items) {
         this.context = context;
         this.items = items;
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
-
-
-
 
     @Override
     public int getCount() {
@@ -59,7 +52,6 @@ public class PSPDocumentsAdapter extends BaseAdapter {
         viewHolder.studentName.setText(items.get(position).getNombre() + " " + items.get(position).getApellidoPaterno() + " " + items.get(position).getApellidoMaterno());
         return view;
     }
-
     public static class ViewHolder{
         TextView studentName;
         public ViewHolder(View view) {
