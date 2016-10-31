@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
-        int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
+        /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
         if (idPerfil == 4 || idPerfil == 3) {
             btModuleAcr.setVisibility(View.VISIBLE);
         } else if (idPerfil == 1 || idPerfil == 2 || idPerfil == 5) {
             btModulePsp.setVisibility(View.VISIBLE);
             btModuleTutEv.setVisibility(View.VISIBLE);
             btModuleInv.setVisibility(View.VISIBLE);
-        }
+        }*/
     }
 
     @Override
