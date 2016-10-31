@@ -31,7 +31,6 @@ public class SpecialtyxCoursesAdapter extends BaseAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
     @Override
     public int getCount() {
         return items.size();

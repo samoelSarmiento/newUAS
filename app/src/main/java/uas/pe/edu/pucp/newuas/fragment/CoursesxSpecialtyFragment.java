@@ -28,6 +28,8 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     SpecialtyxCoursesAdapter adapter;
     Spinner spnNivel;
     ArrayAdapter<String> spnAdapter;
+    int idCicloAcademico = 0;
+
     public CoursesxSpecialtyFragment() {
         // Required empty public constructor
     }
@@ -42,7 +44,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
                              Bundle savedInstanceState) {
         getActivity().setTitle("Cursos de la especialidad");
 
-            View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
+        View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
         ListView coursesxspecialty = (ListView) view.findViewById(R.id.lvCourses);
         //lleno el spinner
         spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
@@ -53,11 +55,10 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         //la informacion de la lista a mostrar
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            //list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
+            idCicloAcademico = bundle.getInt("cicloAcademico");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
             Context context = getActivity();
             adapter = new SpecialtyxCoursesAdapter(context, list);
-
             coursesxspecialty.setAdapter(adapter);
         }
         return view;
@@ -88,9 +89,8 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         CourseResponse courseResponse = list.get(position);
         Bundle bundle = new Bundle();
-        Gson gson = new Gson();
-        String json = gson.toJson(courseResponse);
-        bundle.putString("Course",json);
+        bundle.putSerializable("Course", courseResponse);
+        bundle.putInt("cicloAcademico", idCicloAcademico);
         //crear fragment
         CourseFragment courseFragment = new CourseFragment();
         courseFragment.setArguments(bundle);
