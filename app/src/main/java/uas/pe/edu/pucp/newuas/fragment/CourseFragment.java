@@ -45,7 +45,7 @@ public class CourseFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
         TextView tvValueCurso = (TextView) view.findViewById(R.id.tvValueCourse);
-        ListView lvTeacher = (ListView) view.findViewById(R.id.lvTeacher);
+        //ListView lvTeacher = (ListView) view.findViewById(R.id.lvTeacher);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             CourseResponse courseResponse = (CourseResponse) bundle.getSerializable("Course");
@@ -53,10 +53,10 @@ public class CourseFragment extends Fragment {
             if (courseResponse != null) {
                 tvValueCurso.setText(courseResponse.getNombre());
                 if (courseResponse.getSchedules() != null) {
-                    lvTeacher.setVisibility(View.VISIBLE);
+                    //lvTeacher.setVisibility(View.VISIBLE);
                     Context context = getActivity();
                     adapter = new CoursexTeacherAdapter(courseResponse.getSchedules(), context);
-                    lvTeacher.setAdapter(adapter);
+                    //lvTeacher.setAdapter(adapter);
                 } else {
                     TextView tvValueProfessor = (TextView) view.findViewById(R.id.tvValueProfessor);
                     tvValueProfessor.setText(R.string.tvProfessorUnavailable);
