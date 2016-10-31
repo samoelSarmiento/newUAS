@@ -69,13 +69,13 @@ public interface RestCon {
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
 
     /*Investigacion*/
-    @GET("getAllInvestigators")
+    @GET("investigation/getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
 
-    @GET("getAllInvGroups")
+    @GET("investigation/getAllInvGroups")
     Call<List<InvGroups>> getInvGroups(@QueryMap Map<String,String> token);
 
-    @GET("getAllProjects")
+    @GET("investigation/getAllProjects")
     Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
 
     @GET("investigation/{id}/investigators")
@@ -86,6 +86,10 @@ public interface RestCon {
 
     @GET("investigation/{id}/projects")
     Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+
+    @POST("investigation/{id}/groups")
+    Call<String> editInvGroup(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body InvGroups invGroups);
+
     /*--------------*/
 
 

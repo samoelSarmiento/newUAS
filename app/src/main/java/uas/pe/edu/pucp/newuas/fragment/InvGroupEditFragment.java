@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
+import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.Investigator;
 
 /**
  * Created by Andree on 26/10/2016.
@@ -22,9 +26,11 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 
 public class InvGroupEditFragment extends Fragment implements View.OnClickListener{
 
-    EditText invGroupName, invGroupDesc,invGroupEsp;
+    EditText invGroupName, invGroupDesc;
+    TextView invGroupEsp;
     Button saveBut,cancelBut;
     InvGroups invG;
+    Context context;
 
     public InvGroupEditFragment() {
         // Required empty public constructor
@@ -35,12 +41,12 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inv_group_edit, container, false);
-
+        context=getActivity();
         getActivity().setTitle("Grupos de Inv.");
 
         invGroupName=(EditText) view.findViewById(R.id.invGroupName);
         invGroupDesc=(EditText) view.findViewById(R.id.invGroupDesc);
-        invGroupEsp=(EditText) view.findViewById(R.id.invGroupEsp);
+        invGroupEsp=(TextView) view.findViewById(R.id.invGroupEsp);
         saveBut=(Button) view.findViewById(R.id.invGroupSave);
         cancelBut=(Button) view.findViewById(R.id.invGroupCancel);
 
@@ -64,6 +70,23 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        InvGroupController invGroupController = new InvGroupController();
+        switch (v.getId()){
+            case R.id.invGroupSave:
 
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+
+                InvGroups changedIG = invG;
+                changedIG.setNombre(invGroupName.getText().toString());
+                changedIG.setDescripcion(invGroupDesc.getText().toString());
+                invGroupController.editInvGroup(context,changedIG);
+                invGroupController.getInvGroupById(context,invG.getId());
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.invGroupCancel:
+                invGroupController.getInvGroupById(context,invG.getId());
+                break;
+        }
     }
 }

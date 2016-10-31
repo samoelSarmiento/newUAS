@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 
 /**
