@@ -29,6 +29,7 @@ import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
 
+import uas.pe.edu.pucp.newuas.model.Schedules;
 import uas.pe.edu.pucp.newuas.model.Semester;
 
 
@@ -66,9 +67,10 @@ public interface RestCon {
     Call<List<Specialty>> getAllSpecialties(@QueryMap Map<String, String> token);
 
     @GET("periods/{p_id}/show")
-    Call<Period> getPeriod(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
+    Call<Period> getPeriod(@Path("p_id") int period_id, @QueryMap Map<String, String> token);
 
-
+    @GET("faculties/course/{course_id}/cycle/{academic_cycle_id}")
+    Call<List<Schedules>> getCourseSchedules(@Path("course_id") int course_id, @Path("academic_cycle_id") int academic_cycle_id, @QueryMap Map<String, String> token);
     /*
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
