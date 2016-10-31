@@ -62,6 +62,9 @@ public interface RestCon {
     @GET("faculties")
     Call<List<Specialty>> getAllSpecialties(@QueryMap Map<String, String> token);
 
+    @GET("periods/{p_id}/show")
+    Call<Period> getPeriod(@Path("p_id") int period_id, @QueryMap Map<String,String> token);
+
 
     /*
     @GET("faculties/{faculty_id}/evaluated_courses")

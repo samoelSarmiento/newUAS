@@ -1,48 +1,51 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
 /**
  * Created by samoe on 20/10/2016.
  */
+
+@DatabaseTable(tableName = "semester")
 public class Semester implements Serializable {
 
+
     @SerializedName("IdCicloAcademico")
+    @DatabaseField(id = true)
     private int idCicloAcademico;
 
     @SerializedName("IdCiclo")
+    @DatabaseField
     private int idCiclo;
 
     @SerializedName("IdEspecialidad")
+    @DatabaseField
     private int idEspecialidad;
 
     @SerializedName("IdDocente")
+    @DatabaseField
     private int idDocente;
 
     @SerializedName("IdPeriodo")
+    @DatabaseField
     private int idPeriodo;
 
     @SerializedName("Descripcion")
+    @DatabaseField
     private String descripcion;
 
     @SerializedName("FechaInicio")
+    @DatabaseField
     private String fechaInicio;
 
     @SerializedName("FechaFin")
+    @DatabaseField
     private String fechaFin;
 
-    @SerializedName("pivot")
-    private Pivot pivot;
-
-    public Pivot getPivot() {
-        return pivot;
-    }
-
-    public void setPivot(Pivot pivot) {
-        this.pivot = pivot;
-    }
 
     public int getIdCicloAcademico() {
         return idCicloAcademico;

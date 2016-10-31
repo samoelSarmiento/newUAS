@@ -41,15 +41,30 @@ public class SpecialtyController {
 
     Specialty list = null;
 
-    public Specialty getSpecialties(final Context context) {
+    public Specialty getSpecialties(final Context context, final Integer specId) {
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
+        Specialty specialty;
+
+        /*
         if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
             return Configuration.SPECIALTY;
-        Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+            */
+        /*
+        Call<Specialty> call = null;
+        if (Configuration.LOGIN_USER.getUser().getAccreditor() != null){
+            call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+        }
+        if (Configuration.LOGIN_USER.getUser().getTeacher() != null){
+            call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
+        }*/
+
+        Call<Specialty> call = restCon.getSpecialtyById(specId, token);
+
+
 
 
         call.enqueue(new Callback<Specialty>() {
@@ -74,8 +89,8 @@ public class SpecialtyController {
 
                     Configuration.SPECIALTY = example;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
-                    DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
-                    dbHandler.addSpecialty(example);
+                    //DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
+                    //dbHandler.addSpecialty(example);
 
 
                     Gson gsonf = new Gson();
@@ -84,6 +99,14 @@ public class SpecialtyController {
                     Bundle bundle = new Bundle();
                     bundle.putString("Specialty", spj);
                     spFragment.setArguments(bundle);
+
+                    try {
+                        saveSpecialty(example,context);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+
 
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
@@ -110,6 +133,36 @@ public class SpecialtyController {
                 //Log.d("wat", t.getMessage());
 
                 t.printStackTrace();
+
+                try {
+                    Specialty spec = getSpecialty(specId,context);
+
+
+                    SpecialtyFragment spFragment = new SpecialtyFragment();
+
+
+                    Gson gsonf = new Gson();
+                    String spj = gsonf.toJson(spec);
+                    System.out.println(spj);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Specialty", spj);
+                    spFragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, spFragment)
+                            .commit();
+                    ((Activity) context).setTitle("Especialidad");
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+                /*
                 DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
 
                 Specialty sp = null;
@@ -139,6 +192,9 @@ public class SpecialtyController {
 
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                */
+
+
             }
         });
 
@@ -257,4 +313,25 @@ public class SpecialtyController {
         Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         return specialtyDao.queryForAll();
     }
+
+
+    private void saveSpecialty(Specialty specialty, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Specialty,Integer> specialtyDao = helper.getSpecialtyDao();
+        Specialty find= specialtyDao.queryForId(specialty.getIdEspecialidad());
+        if (find==null){
+            specialtyDao.create(specialty);
+        }else{
+            specialtyDao.updateId(specialty,find.getIdEspecialidad());
+        }
+
+    }
+
+    private Specialty getSpecialty (Integer id, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Specialty,Integer> specialtyDao = helper.getSpecialtyDao();
+        return specialtyDao.queryForId(id);
+    }
+
+
 }

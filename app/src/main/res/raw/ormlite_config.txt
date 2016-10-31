@@ -1,6 +1,105 @@
 #
-# generated on 2016/10/28 01:45:38
+# generated on 2016/10/30 06:33:50
 #
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ConfSpeciality
+tableName=confSpecialty
+# --table-fields-start--
+# --field-start--
+fieldName=idConfEspecialidad
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idPeriodo
+# --field-end--
+# --field-start--
+fieldName=idCicloInicio
+# --field-end--
+# --field-start--
+fieldName=idCicloFin
+# --field-end--
+# --field-start--
+fieldName=umbralAceptacion
+# --field-end--
+# --field-start--
+fieldName=nivelEsperado
+# --field-end--
+# --field-start--
+fieldName=cantNivelCriterio
+# --field-end--
+# --field-start--
+fieldName=cycleAcademicStart
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=cycleAcademicEnd
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Period
+tableName=period
+# --table-fields-start--
+# --field-start--
+fieldName=idPeriodo
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=vigente
+# --field-end--
+# --field-start--
+fieldName=configuration
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Semester
+tableName=semester
+# --table-fields-start--
+# --field-start--
+fieldName=idCicloAcademico
+id=true
+# --field-end--
+# --field-start--
+fieldName=idCiclo
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
+fieldName=idPeriodo
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=fechaInicio
+# --field-end--
+# --field-start--
+fieldName=fechaFin
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Specialty
 tableName=specialty
@@ -26,7 +125,6 @@ fieldName=coordinator
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
-foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--

@@ -23,6 +23,7 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
@@ -91,6 +92,15 @@ public class MeasurePeriodListFragment extends Fragment {
                     Period per = (Period) mpAdapter.getItem(position);
                     Log.d("periodo",per.getIdEspecialidad()+ "");
 
+                    MeasurePeriodController mpc = new MeasurePeriodController();
+                    Context context = getActivity();
+
+                    mpc.getMeasurePeriod(context,per.getIdPeriodo());
+
+                    /*
+
+
+
                     MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
 
                     Bundle bundle = new Bundle();
@@ -101,6 +111,8 @@ public class MeasurePeriodListFragment extends Fragment {
 
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
                     ((Activity)context).setTitle("Periodo de Medicion");
+
+                    */
                 }
             });
             /*
