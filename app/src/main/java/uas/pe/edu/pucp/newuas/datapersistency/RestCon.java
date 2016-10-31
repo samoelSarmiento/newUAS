@@ -71,7 +71,7 @@ public interface RestCon {
 
     @GET("faculties/course/{course_id}/cycle/{academic_cycle_id}")
     Call<List<Schedules>> getCourseSchedules(@Path("course_id") int course_id, @Path("academic_cycle_id") int academic_cycle_id, @QueryMap Map<String, String> token);
-    /*
+    /*0.
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
     */

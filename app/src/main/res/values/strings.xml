@@ -136,5 +136,7 @@
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
     <string name="pspGroup">Seleccionar grupo</string>
+    <string name="tvNivelAcademico">Nivel Académico:</string>
+    <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
 
 </resources>

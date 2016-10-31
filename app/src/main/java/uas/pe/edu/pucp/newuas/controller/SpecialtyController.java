@@ -65,8 +65,6 @@ public class SpecialtyController {
         Call<Specialty> call = restCon.getSpecialtyById(specId, token);
 
 
-
-
         call.enqueue(new Callback<Specialty>() {
             @Override
             public void onResponse(Call<Specialty> call, retrofit2.Response<Specialty> response) {
@@ -101,11 +99,10 @@ public class SpecialtyController {
                     spFragment.setArguments(bundle);
 
                     try {
-                        saveSpecialty(example,context);
+                        saveSpecialty(example, context);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
 
 
                     ((Activity) context).getFragmentManager()
@@ -135,7 +132,7 @@ public class SpecialtyController {
                 t.printStackTrace();
 
                 try {
-                    Specialty spec = getSpecialty(specId,context);
+                    Specialty spec = getSpecialty(specId, context);
 
 
                     SpecialtyFragment spFragment = new SpecialtyFragment();
@@ -220,7 +217,7 @@ public class SpecialtyController {
 
     }
 
-    public boolean getCoursesxSpecialyxCycle(final Context context, int idEspecialiad, int idCycle) {
+    public boolean getCoursesxSpecialyxCycle(final Context context, int idEspecialiad, final int idCycle) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -233,6 +230,7 @@ public class SpecialtyController {
                     List<CourseResponse> courseResponse = response.body();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CourseList", (Serializable) courseResponse);
+                    bundle.putInt("cicloAcademico", idCycle);
                     //Fragmnet
                     CoursesxSpecialtyFragment cfFragment = new CoursesxSpecialtyFragment();
                     cfFragment.setArguments(bundle);
@@ -317,19 +315,19 @@ public class SpecialtyController {
 
     private void saveSpecialty(Specialty specialty, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Specialty,Integer> specialtyDao = helper.getSpecialtyDao();
-        Specialty find= specialtyDao.queryForId(specialty.getIdEspecialidad());
-        if (find==null){
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
+        if (find == null) {
             specialtyDao.create(specialty);
-        }else{
-            specialtyDao.updateId(specialty,find.getIdEspecialidad());
+        } else {
+            specialtyDao.updateId(specialty, find.getIdEspecialidad());
         }
 
     }
 
-    private Specialty getSpecialty (Integer id, final Context context) throws SQLException {
+    private Specialty getSpecialty(Integer id, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Specialty,Integer> specialtyDao = helper.getSpecialtyDao();
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         return specialtyDao.queryForId(id);
     }
 
