@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by Marshall on 23/10/2016.
  */
-@DatabaseTable(tableName = "confSpecialty")
+@DatabaseTable(tableName = "confspecialty")
 public class ConfSpeciality implements Serializable {
 
 

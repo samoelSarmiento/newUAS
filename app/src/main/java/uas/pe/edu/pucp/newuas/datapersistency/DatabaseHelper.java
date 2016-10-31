@@ -27,7 +27,7 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "db.uas";
+    private static final String DATABASE_NAME = "uas.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
@@ -41,11 +41,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource, Specialty.class);
-            TableUtils.createTable(connectionSource, Teacher.class);
-            TableUtils.createTable(connectionSource, Period.class);
-            TableUtils.createTable(connectionSource, Semester.class);
-            TableUtils.createTable(connectionSource, ConfSpeciality.class);
+            TableUtils.createTableIfNotExists(connectionSource, Specialty.class);
+            TableUtils.createTableIfNotExists(connectionSource, Teacher.class);
+            TableUtils.createTableIfNotExists(connectionSource, Period.class);
+            TableUtils.createTableIfNotExists(connectionSource, Semester.class);
+            TableUtils.createTableIfNotExists(connectionSource, ConfSpeciality.class);
 
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
