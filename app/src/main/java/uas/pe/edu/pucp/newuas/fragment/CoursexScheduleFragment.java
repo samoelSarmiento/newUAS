@@ -23,8 +23,10 @@ public class CoursexScheduleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course_x_schedule, container, false);
+        getActivity().setTitle("Horarios");
+        View view = inflater.inflate(R.layout.fragment_course_x_schedule, container, false);
+
+        return view;
     }
 
 }
