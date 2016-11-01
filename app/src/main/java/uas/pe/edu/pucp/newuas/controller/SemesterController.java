@@ -92,6 +92,7 @@ public class SemesterController {
 
     }
 
+
     private List<Semester> getSemestersListofPeriod(final Context context, Integer periodId) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
@@ -129,5 +130,7 @@ public class SemesterController {
         }
 
     }
+
+
 }
 

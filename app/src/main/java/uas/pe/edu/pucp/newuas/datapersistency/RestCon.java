@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
+import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 
@@ -75,6 +76,11 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
     */
+
+    @GET("periods/{p_id}/{f_id}/objectives")
+    Call<List<EducationalObjective>> getEducationalObjectivesByPeriodSpecialty(@Path("p_id") int period_id,
+                                                                               @Path("f_id") int faculty_id,
+                                                                               @QueryMap Map<String,String> token);
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
+import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
 import uas.pe.edu.pucp.newuas.controller.MeasureInstrumentsController;
 import uas.pe.edu.pucp.newuas.controller.SemesterController;
 import uas.pe.edu.pucp.newuas.model.Period;
@@ -70,6 +71,7 @@ public class MeasurePeriodViewFragment extends Fragment {
 
         Button btnMeaInst = (Button) view.findViewById(R.id.btnMeaInst);
         Button btnSemPer = (Button) view.findViewById(R.id.btnSemestersofPeriod);
+        Button btnEduObj = (Button) view.findViewById(R.id.btnObjEdu);
 
         Bundle bundle = this.getArguments();
         if (bundle != null){
@@ -97,6 +99,16 @@ public class MeasurePeriodViewFragment extends Fragment {
                     sc.getSemestersofPeriod(getActivity(),str.getIdPeriodo());
 
                 }
+            });
+
+            btnEduObj.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EducationalObjectiveController eoc = new EducationalObjectiveController();
+                    eoc.getEducationalObjectivesofPeriodSpec(getActivity(),str.getIdPeriodo(),str.getIdEspecialidad());
+
+                }
+
             });
 
 
