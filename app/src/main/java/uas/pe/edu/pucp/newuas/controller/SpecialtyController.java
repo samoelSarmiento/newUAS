@@ -313,7 +313,17 @@ public class SpecialtyController {
             @Override
             public void onFailure(Call<List<Schedule>> call, Throwable t) {
                 try {
-                    retrieveCourseSchedules(context, idCourse, idAcademicCycle);
+                    List<Schedule> list = retrieveCourseSchedules(context, idCourse, idAcademicCycle);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("ScheduleList", (Serializable) list);
+                    //Fragment
+                    CoursexScheduleFragment csFragment = new CoursexScheduleFragment();
+                    csFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, csFragment)
+                            .commit();
                 } catch (SQLException e) {
                     Toast.makeText(context, "No se pudo recuperar los datos", Toast.LENGTH_LONG).show();
                 }
@@ -392,6 +402,7 @@ public class SpecialtyController {
     }
 
     private List<Schedule> retrieveCourseSchedules(final Context context, int idCourse, int idCycle) throws SQLException {
+        Log.d("LOG","ENTRE AQUI");
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
         Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
@@ -399,6 +410,7 @@ public class SpecialtyController {
                 .where().eq("course_id", idCourse)
                 .and().eq("idCicloAcademico", idCycle).query();
         for (Schedule schedule : list) {
+            Log.d("COSI", schedule.getIdHorario() + "");
             List<Teacher> teacherList = teacherDao.queryBuilder()
                     .where().eq("schedule_id", schedule.getIdHorario()).query();
             schedule.setProfessors(teacherList);

@@ -46,6 +46,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
             TableUtils.createTableIfNotExists(connectionSource, CourseResponse.class);
+            TableUtils.createTableIfNotExists(connectionSource, Schedule.class);
             TableUtils.createTableIfNotExists(connectionSource, Specialty.class);
             TableUtils.createTableIfNotExists(connectionSource, Teacher.class);
             TableUtils.createTableIfNotExists(connectionSource, Period.class);
@@ -63,6 +64,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             //Se borran todas las tablas
             TableUtils.dropTable(source, CourseResponse.class, true);
+            TableUtils.dropTable(source, Schedule.class, true);
             TableUtils.dropTable(source, Teacher.class, true);
             TableUtils.dropTable(source, Period.class, true);
             TableUtils.dropTable(source, Semester.class, true);
