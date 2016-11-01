@@ -1,9 +1,9 @@
 #
-# generated on 2016/10/30 07:30:17
+# generated on 2016/10/31 08:27:26
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.ConfSpeciality
-tableName=confSpecialty
+tableName=confspecialty
 # --table-fields-start--
 # --field-start--
 fieldName=idConfEspecialidad
@@ -46,6 +46,33 @@ maxForeignAutoRefreshLevel=2
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.CourseResponse
+tableName=course
+# --table-fields-start--
+# --field-start--
+fieldName=idCurso
+columnName=course_id
+id=true
+# --field-end--
+# --field-start--
+fieldName=idAcademicCycle
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=nivelAcademico
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Period
 tableName=period
 # --table-fields-start--
@@ -64,6 +91,34 @@ fieldName=configuration
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Schedule
+tableName=schedule
+# --table-fields-start--
+# --field-start--
+fieldName=idHorario
+columnName=schedule_id
+id=true
+# --field-end--
+# --field-start--
+fieldName=idCurso
+columnName=course_id
+# --field-end--
+# --field-start--
+fieldName=idCicloAcademico
+# --field-end--
+# --field-start--
+fieldName=idCursoxCiclo
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=totalalumnos
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -137,6 +192,10 @@ tableName=teacher
 fieldName=idDocente
 columnName=teacher_id
 id=true
+# --field-end--
+# --field-start--
+fieldName=idSchedule
+columnName=schedule_id
 # --field-end--
 # --field-start--
 fieldName=idEspecialidad

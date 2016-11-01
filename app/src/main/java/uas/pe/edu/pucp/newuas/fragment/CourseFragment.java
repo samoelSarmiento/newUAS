@@ -7,25 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.CoursexTeacherAdapter;
-import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
-import uas.pe.edu.pucp.newuas.model.Schedules;
-import uas.pe.edu.pucp.newuas.model.Semester;
-import uas.pe.edu.pucp.newuas.model.Specialty;
-import uas.pe.edu.pucp.newuas.model.Teacher;
 
 public class CourseFragment extends Fragment {
 
@@ -57,7 +44,8 @@ public class CourseFragment extends Fragment {
             if (courseResponse != null) {
                 tvValueCurso.setText(courseResponse.getNombre());
                 tvValueCode.setText(courseResponse.getCodigo());
-                tvValueLevel.setText(courseResponse.getNivelAcademico());
+                String nivelAcademico = courseResponse.getNivelAcademico() + "";
+                tvValueLevel.setText(nivelAcademico);
                 if (courseResponse.getSchedules() != null) {
                     Button btHorario = (Button) view.findViewById(R.id.btSchedules);
                     btHorario.setVisibility(View.VISIBLE);
