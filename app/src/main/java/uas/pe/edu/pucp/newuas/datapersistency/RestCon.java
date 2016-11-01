@@ -73,14 +73,15 @@ public interface RestCon {
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
 
     /*Investigacion*/
-    @GET("getAllInvestigators")
-    Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
+    @GET("investigation/getAllInvestigators")
+    Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
 
-    @GET("getAllInvGroups")
-    Call<List<InvGroups>> getInvGroups(@QueryMap Map<String, String> token);
+    @GET("investigation/getAllInvGroups")
+    Call<List<InvGroups>> getInvGroups(@QueryMap Map<String,String> token);
 
-    @GET("getAllProjects")
-    Call<List<Projects>> getProjects(@QueryMap Map<String, String> token);
+    @GET("investigation/getAllProjects")
+    Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
+
 
     @GET("investigation/{id}/investigators")
     Call<List<Investigator>> getInvById(@Path("id") int invId, @QueryMap Map<String, String> token);
@@ -89,7 +90,16 @@ public interface RestCon {
     Call<List<InvGroups>> getInvGroupById(@Path("id") int groupId, @QueryMap Map<String, String> token);
 
     @GET("investigation/{id}/projects")
-    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String, String> token);
+    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+
+    @POST("investigation/{id}/groups")
+    Call<String> editInvGroup(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body InvGroups invGroups);
+
+    @POST("investigation/{id}/investigators")
+    Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Investigator investigator);
+
+    @POST("investigation/{id}/projects")
+    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Projects projects);
     /*--------------*/
 
 
