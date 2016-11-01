@@ -379,11 +379,12 @@ public class SpecialtyController {
         Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
         for (Schedule schedule : scheduleList) {
             schedule.setIdCiclo(idAcademicCycle);
+            schedule.setIdCurso(idCourse);
             Schedule find = scheduleDao.queryForId(schedule.getIdHorario());
             if (find == null) {
                 scheduleDao.create(schedule);
             } else {
-                scheduleDao.updateId(schedule, find.getIdHorario());
+                scheduleDao.update(schedule);
             }
             //guardamos sus profesores
             List<Teacher> teachers = schedule.getProfessors();
@@ -394,7 +395,7 @@ public class SpecialtyController {
                     if (findT == null) {
                         teacherDao.create(teacher);
                     } else {
-                        teacherDao.updateId(teacher, findT.getIdDocente());
+                        teacherDao.update(teacher);
                     }
                 }
             }
@@ -402,7 +403,6 @@ public class SpecialtyController {
     }
 
     private List<Schedule> retrieveCourseSchedules(final Context context, int idCourse, int idCycle) throws SQLException {
-        Log.d("LOG","ENTRE AQUI");
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
         Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
@@ -427,7 +427,7 @@ public class SpecialtyController {
             if (find == null) {
                 courseDao.create(crs);
             } else {
-                courseDao.updateId(crs, find.getIdCurso());
+                courseDao.update(crs);
             }
         }
     }
@@ -450,7 +450,7 @@ public class SpecialtyController {
                 specialtyDao.create(specialty);
             } else {
                 //si se encontro la actualizo
-                specialtyDao.updateId(specialty, find.getIdEspecialidad());
+                specialtyDao.update(specialty);
             }
         }
     }
@@ -468,7 +468,7 @@ public class SpecialtyController {
         if (find == null) {
             specialtyDao.create(specialty);
         } else {
-            specialtyDao.updateId(specialty, find.getIdEspecialidad());
+            specialtyDao.update(specialty);
         }
 
     }
