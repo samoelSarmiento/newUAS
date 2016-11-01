@@ -73,7 +73,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         ProjectController projectController = new ProjectController();
         switch (v.getId()){
-            case R.id.invGroupSave:
+            case R.id.projSave:
 
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
 
@@ -91,7 +91,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.invGroupCancel:
+            case R.id.projCancel:
                 projectController.getProjectById(context,p.getId());
                 break;
         }
