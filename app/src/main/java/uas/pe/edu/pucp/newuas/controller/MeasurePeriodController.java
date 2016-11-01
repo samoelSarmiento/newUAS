@@ -131,7 +131,6 @@ public class MeasurePeriodController {
                     }
 
 
-
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -196,7 +195,7 @@ public class MeasurePeriodController {
                 periodDao.create(period);
             } else {
                 //si se encontro la actualizo
-                periodDao.updateId(period, find.getIdPeriodo());
+                periodDao.update(period);
             }
         }
 
@@ -217,7 +216,7 @@ public class MeasurePeriodController {
         if (find == null) {
             periodDao.create(period);
         } else {
-            periodDao.updateId(period, find.getIdPeriodo());
+            periodDao.update(period);
         }
 
     }
