@@ -129,8 +129,35 @@ public class InvestigatorController {
 
             }
         });
-
-
         return  list;
+    }
+
+    public void editInv(final Context context,final Investigator inv){
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<String> call = restCon.editInvestigator(inv.getId(),token,inv);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+
+                } else {
+                    //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
     }
 }
