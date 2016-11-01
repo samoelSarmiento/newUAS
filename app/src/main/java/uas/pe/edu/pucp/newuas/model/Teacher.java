@@ -11,11 +11,14 @@ import java.io.Serializable;
  */
 
 @DatabaseTable(tableName = "teacher")
-public class Teacher implements Serializable{
+public class Teacher implements Serializable {
 
     @SerializedName("IdDocente")
     @DatabaseField(columnName = "teacher_id", id = true)
     private Integer idDocente;
+
+    @DatabaseField(columnName = "schedule_id")
+    private int idSchedule;
 
     @SerializedName("IdEspecialidad")
     @DatabaseField
@@ -68,6 +71,17 @@ public class Teacher implements Serializable{
     @SerializedName("Descripcion")
     @DatabaseField
     private String descripcion;
+
+    public Teacher() {
+    }
+
+    public int getIdSchedule() {
+        return idSchedule;
+    }
+
+    public void setIdSchedule(int idSchedule) {
+        this.idSchedule = idSchedule;
+    }
 
     public void setVigente(int vigente) {
         this.vigente = vigente;
@@ -184,4 +198,5 @@ public class Teacher implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }

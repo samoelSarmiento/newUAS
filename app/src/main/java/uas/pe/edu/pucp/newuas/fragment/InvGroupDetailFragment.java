@@ -22,7 +22,7 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 public class InvGroupDetailFragment extends Fragment {
 
     TextView invGroupName, invGroupDesc,invGroupEsp;
-    Button invGroupBut;
+    Button invGroupBut,invGroupSeeEv;
     InvGroups invG;
 
     public InvGroupDetailFragment() {
@@ -41,6 +41,7 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupDesc=(TextView) view.findViewById(R.id.invGroupDesc);
         invGroupEsp=(TextView) view.findViewById(R.id.invGroupEsp);
         invGroupBut=(Button) view.findViewById(R.id.invGroupEdit);
+        invGroupSeeEv=(Button) view.findViewById(R.id.invGroupSeeEv);
 
         Bundle bundle = this.getArguments();
         List<InvGroups> invGroup=null;
@@ -65,6 +66,13 @@ public class InvGroupDetailFragment extends Fragment {
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
                 ((Activity)context).setTitle("Grupos de Inv.");
+            }
+        });
+        invGroupSeeEv.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

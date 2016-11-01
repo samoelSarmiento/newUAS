@@ -32,7 +32,7 @@ import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class SemesterController {
 
-    public boolean getSemestersofPeriod(final Context context, final Integer periodId){
+    public boolean getSemestersofPeriod(final Context context, final Integer periodId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -43,41 +43,41 @@ public class SemesterController {
         call.enqueue(new Callback<List<Semester>>() {
             @Override
             public void onResponse(Call<List<Semester>> call, Response<List<Semester>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<Semester> semList = response.body();
 
                     SemesterListFragment slf = new SemesterListFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Semesters",(Serializable)semList);
+                    bundle.putSerializable("Semesters", (Serializable) semList);
                     slf.setArguments(bundle);
 
                     try {
-                        saveSemesters(context,semList);
+                        saveSemesters(context, semList);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,slf).commit();
-                    ((Activity)context).setTitle("Semestres");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
+                    ((Activity) context).setTitle("Semestres");
 
 
-                }else{
-                    Log.d("TAG",response.errorBody().toString());
+                } else {
+                    Log.d("TAG", response.errorBody().toString());
 
                     List<Semester> semList = null;
                     try {
-                        semList = getSemestersListofPeriod(context,periodId);
+                        semList = getSemestersListofPeriod(context, periodId);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
 
                     SemesterListFragment slf = new SemesterListFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Semesters",(Serializable)semList);
+                    bundle.putSerializable("Semesters", (Serializable) semList);
                     slf.setArguments(bundle);
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,slf).commit();
-                    ((Activity)context).setTitle("Semestres");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
+                    ((Activity) context).setTitle("Semestres");
                 }
             }
 
@@ -95,37 +95,37 @@ public class SemesterController {
     private List<Semester> getSemestersListofPeriod(final Context context, Integer periodId) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
-        return semesterDao.queryForEq("idPeriodo",periodId);
+        return semesterDao.queryForEq("idPeriodo", periodId);
     }
 
     private void saveSemesters(final Context context, List<Semester> semesters) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Semester,Integer> semesterDao = helper.getSemesterDao();
+        Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         for (Semester semester : semesters) {
             Semester find = semesterDao.queryForId(semester.getIdCicloAcademico());
             if (find == null) {
                 semesterDao.create(semester);
             } else {
-                semesterDao.updateId(semester, find.getIdCicloAcademico());
+                semesterDao.update(semester);
             }
         }
     }
 
     private Semester getSemesterById(final Context context, Integer idSem) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Semester,Integer> semesterDao = helper.getSemesterDao();
+        Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         return semesterDao.queryForId(idSem);
 
     }
 
     private void saveSemester(final Context context, Semester semester) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Semester,Integer> semesterDao = helper.getSemesterDao();
+        Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         Semester find = semesterDao.queryForId(semester.getIdEspecialidad());
-        if (find==null){
+        if (find == null) {
             semesterDao.create(semester);
-        }else{
-            semesterDao.updateId(semester,find.getIdEspecialidad());
+        } else {
+            semesterDao.update(semester);
         }
 
     }
