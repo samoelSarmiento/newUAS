@@ -7,12 +7,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.ImprovementPlanAdapter;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 
 /**
@@ -49,6 +51,16 @@ public class ImprovementPlanListFragment extends Fragment {
             Context context = getActivity();
             ipAdapter = new ImprovementPlanAdapter(context, list);
             lvIp.setAdapter(ipAdapter);
+
+            lvIp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ImprovementPlan ip = (ImprovementPlan) ipAdapter.getItem(position);
+                    ImprovementPlanController ipc = new ImprovementPlanController();
+                    Context context = getActivity();
+                    ipc.getImprovementPlan(context,ip.getIdPlanMejora());
+                }
+            });
 
             //onclick
 

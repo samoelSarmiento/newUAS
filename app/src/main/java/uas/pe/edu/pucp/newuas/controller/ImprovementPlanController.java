@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanListFragment;
+import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanViewFragment;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Period;
 
@@ -74,4 +75,58 @@ public class ImprovementPlanController {
 
     }
 
+    public void getImprovementPlan(final Context context, Integer ipId ){
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<ImprovementPlan> call;
+        call = restCon.getImprovementPlanById(ipId,token);
+
+        call.enqueue(new Callback<ImprovementPlan>() {
+            @Override
+            public void onResponse(Call<ImprovementPlan> call, Response<ImprovementPlan> response) {
+                if(response.isSuccessful()){
+                    ImprovementPlan ip = response.body();
+
+                    ImprovementPlanViewFragment ipvf = new ImprovementPlanViewFragment();
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putSerializable("IPlan",ip);
+                    ipvf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, ipvf)
+                            .commit();
+                    ((Activity) context).setTitle("Plan de Mejora");
+
+
+
+
+
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ImprovementPlan> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+    }
+
 }
+
+

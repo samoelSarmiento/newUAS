@@ -91,6 +91,9 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/improvement_plans")
     Call<List<ImprovementPlan>> getImprovementPlansofSpecialty(@Path("faculty_id") int specId,  @QueryMap Map<String,String> token);
 
+    @GET("improvementplans/{ip_id}/view")
+    Call<ImprovementPlan> getImprovementPlanById(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
+
 
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
