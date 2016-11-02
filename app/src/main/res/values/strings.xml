@@ -144,7 +144,7 @@
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
-    <string name="title_activity_navigation_drawer_tutoria_tutor">NavigationDrawerTutoriaTutor</string>
+    <string name="title_activity_navigation_drawer_tutoria_tutor">Tutoría</string>
     <string name="pspGroup">Seleccionar grupo</string>
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>

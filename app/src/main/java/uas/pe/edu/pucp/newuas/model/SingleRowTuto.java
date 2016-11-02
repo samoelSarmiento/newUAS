@@ -34,7 +34,7 @@ public class SingleRowTuto {
         return estado;
     }
     public String getNombreAlumno() {
-        return estado;
+        return nombreAlumno;
     }
 
 }

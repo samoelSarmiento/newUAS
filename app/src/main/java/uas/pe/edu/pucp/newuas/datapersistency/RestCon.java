@@ -140,7 +140,7 @@ public interface RestCon {
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
 
-    @GET("getTutorInfo/{id_usuario}")
+    @GET("getTutorAppoints/{id_usuario}")
     Call<List<AppointmentResponseTuto>> getTutorAppoints(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
     @POST("registerStudentAppointment")
