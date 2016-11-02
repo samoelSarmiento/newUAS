@@ -223,11 +223,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
     }
     else if (id == R.id.nav_item_pspGroup_student){
 
-            SharedPreference shared =  new SharedPreference(getApplicationContext());
-            if (!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {
+
+
+
                 PSPController pspController = new PSPController();
-                pspController.getGroups(this);
-            }
+                pspController.getStudentGroup(this);
+                //pspController.getGroups(this);
+
 
         }
 

@@ -18,7 +18,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
-
+import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 
@@ -152,6 +152,9 @@ public interface RestCon {
     //Call<List<PSPDocument>> getDocumentsByStudent(@Path("s_id") int s_id ,@QueryMap Map<String,String> token);
 
 
+
+    @GET("psp/student/group")
+    Call<PSPGroup> getStudentGroup(@QueryMap Map<String,String> token);
 
 
 

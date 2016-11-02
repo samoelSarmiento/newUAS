@@ -38,6 +38,7 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
     private Button btnChoose;
     private Button btnCancel;
 
+    private boolean option;
 
     public PSP_groupsFragment() {
         // Required empty public constructor
@@ -73,9 +74,27 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
         Bundle bundle = getArguments();
         if (bundle != null) {
 
-            ArrayList<PSPGroup> groups = (ArrayList<PSPGroup>) bundle.getSerializable("PSPGroups");
+            PSPGroup group = (PSPGroup)bundle.getSerializable("PSPGroups");
+            ArrayList<PSPGroup> groups;
+            if(group != null){
 
-            groupAdapter = new PSPGroupAdapter(getActivity(), groups);
+
+                option =  true;
+                groups =  new ArrayList<>();
+                groups.add(group);
+
+
+
+            }else{
+
+                groups = (ArrayList<PSPGroup>) bundle.getSerializable("PSPGroups");
+
+            }
+
+
+
+
+            groupAdapter = new PSPGroupAdapter(getActivity(), groups , option);
             groupList.setAdapter(groupAdapter);
 
 

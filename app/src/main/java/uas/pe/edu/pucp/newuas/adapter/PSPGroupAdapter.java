@@ -23,12 +23,14 @@ public class PSPGroupAdapter extends BaseAdapter {
 
     private ArrayList<PSPGroup> items;
     private Context context;
+    private boolean group;
     private LayoutInflater layoutInflater;
     private int selectedPosition = 0;
 
-    public PSPGroupAdapter(Context context, ArrayList<PSPGroup> items) {
+    public PSPGroupAdapter(Context context, ArrayList<PSPGroup> items,  boolean hasGroup) {
         this.items = items;
         this.context = context;
+        this.group = hasGroup;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -56,32 +58,47 @@ public class PSPGroupAdapter extends BaseAdapter {
 
         View view = convertView;
         if(view ==null)
-            view = layoutInflater.inflate(R.layout.item_psp_groups, null);
+            view = layoutInflater.inflate(R.layout.item_psp_has_group, null);
 
         Log.d("Adapter", "LLego");
         Log.d("GRUPO", "" + items.get(position).getIdGroup());
-        try {
-            ViewHolder viewHolder = new ViewHolder();
-            viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group);
-            viewHolder.tvPspDescriptionGroup = (TextView)  view.findViewById(R.id.tv_item_psp_description_group);
-            viewHolder.rbPspGroup = (RadioButton) view.findViewById(R.id.rb_item_psp_choose_group);
-
-            viewHolder.rbPspGroup.setChecked(position==selectedPosition);
-            viewHolder.rbPspGroup.setTag(position);
-            viewHolder.rbPspGroup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    selectedPosition = (Integer)v.getTag();
-                    notifyDataSetChanged();
-                }
-            });
-
-            viewHolder.tvPspNumberGroup .setText( items.get(position).getNumero());
-            viewHolder.tvPspDescriptionGroup .setText(items.get(position).getDescription());
-
-        }catch (Exception ex){ex.printStackTrace();}
+        ViewHolder viewHolder =  new ViewHolder();
+        if(group){
 
 
+
+            viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group_2);
+            viewHolder.tvPspDescriptionGroup =  (TextView)  view.findViewById(R.id.tv_item_psp_description_group_2);
+
+            viewHolder.tvPspNumberGroup.setText(items.get(position).getNumero());
+            viewHolder.tvPspDescriptionGroup.setText(items.get(position).getDescription());
+
+        }else {
+
+
+
+
+                viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group);
+                viewHolder.tvPspDescriptionGroup = (TextView) view.findViewById(R.id.tv_item_psp_description_group);
+                viewHolder.rbPspGroup = (RadioButton) view.findViewById(R.id.rb_item_psp_choose_group);
+
+                viewHolder.rbPspGroup.setChecked(position == selectedPosition);
+                viewHolder.rbPspGroup.setTag(position);
+                viewHolder.rbPspGroup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedPosition = (Integer) v.getTag();
+                        notifyDataSetChanged();
+                    }
+                });
+
+
+
+        }
+
+
+        viewHolder.tvPspNumberGroup.setText(items.get(position).getNumero());
+        viewHolder.tvPspDescriptionGroup.setText(items.get(position).getDescription());
         return view;
 
 

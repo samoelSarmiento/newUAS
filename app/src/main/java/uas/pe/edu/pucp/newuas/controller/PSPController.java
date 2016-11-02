@@ -27,9 +27,12 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
+import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
+
+import static android.R.attr.fragment;
 
 /**
  * Created by Franz on 26/10/2016.
@@ -38,10 +41,10 @@ import uas.pe.edu.pucp.newuas.model.Student;
 public class PSPController {
 
 
-    public boolean getGroups (final Context context){
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+    public boolean getGroups(final Context context) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
-        Map<String,String> token = new HashMap<>();
+        Map<String, String> token = new HashMap<>();
 
         token.put("token", Configuration.LOGIN_USER.getToken());
 
@@ -52,54 +55,52 @@ public class PSPController {
             @Override
             public void onResponse(Call<List<PSPGroup>> call, Response<List<PSPGroup>> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     List<PSPGroup> pspGroupList = response.body();
 
-                    Bundle  bundle =  new Bundle();
-                    bundle.putSerializable("PSPGroups",(Serializable) pspGroupList);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
 
 
                     PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
                     groupsFragment.setArguments(bundle);
 
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,groupsFragment).commit();
-                    ((Activity)context).setTitle("Seleccionar grupos");
-                }else{
-                    Toast.makeText(context,"Error en seleccionar grupo",Toast.LENGTH_SHORT).show();
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
+                    ((Activity) context).setTitle("Seleccionar grupos");
+                } else {
+                    Toast.makeText(context, "Error en seleccionar grupo", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<PSPGroup>> call, Throwable t) {
-                Toast.makeText(context,"Error de conexion",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         return true;
     }
 
-    public boolean updateGroup(final Context context, final int idGroup){
-        RestCon restCon =  RetrofitHelper.apiConnector.create(RestCon.class);
+    public boolean updateGroup(final Context context, final int idGroup) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
 
-
-        Map<String,String> token = new HashMap<>();
+        Map<String, String> token = new HashMap<>();
 
         token.put("token", Configuration.LOGIN_USER.getToken());
 
 
-        Call<String> call = restCon.updateGroup(idGroup,token);
+        Call<String> call = restCon.updateGroup(idGroup, token);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
 
 
-                 Log.d("RESPONSE",response.message());
+                    Log.d("RESPONSE", response.message());
                     Log.d("RESPONSE", response.body());
                     Log.d("RESPONSE", response.toString());
                     String answer = response.body();
@@ -107,12 +108,10 @@ public class PSPController {
 
                     SharedPreference shared = new SharedPreference(context);
                     shared.setGroupStatus(Configuration.LOGIN_USER.getUser());
-                    Toast.makeText(context,answer,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, answer, Toast.LENGTH_SHORT).show();
 
 
-
-
-                }else{
+                } else {
 
                     Log.d("Response", "Algo paso");
                 }
@@ -131,11 +130,11 @@ public class PSPController {
     }
 
 
-    public boolean getPhases(final Context context){
+    public boolean getPhases(final Context context) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
-        Map<String,String> token = new HashMap<>();
+        Map<String, String> token = new HashMap<>();
 
         token.put("token", Configuration.LOGIN_USER.getToken());
 
@@ -144,26 +143,25 @@ public class PSPController {
         call.enqueue(new Callback<List<PSPPhase>>() {
             @Override
             public void onResponse(Call<List<PSPPhase>> call, Response<List<PSPPhase>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     Log.d("RESPONSE", "todo bien");
 
                     List<PSPPhase> pspPhaseList = response.body();
 
-                    Bundle  bundle =  new Bundle();
-                    bundle.putSerializable("PSPPhases",(Serializable) pspPhaseList);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PSPPhases", (Serializable) pspPhaseList);
 
 
                     PSP_phasesFragment phasesFragment = new PSP_phasesFragment();
                     phasesFragment.setArguments(bundle);
 
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,phasesFragment).commit();
-                    ((Activity)context).setTitle("Fases");
-                }else{
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, phasesFragment).commit();
+                    ((Activity) context).setTitle("Fases");
+                } else {
 
-                    Toast.makeText(context,"Error mostrar fases",Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(context, "Error mostrar fases", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -182,6 +180,101 @@ public class PSPController {
     }
 
 
+    public boolean getDocumentsByStudent(final Context context, int idStudent) {
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Document>> call = restCon.getDocumentsByStudent(idStudent, token);
+        call.enqueue(new Callback<List<Document>>() {
+            @Override
+            public void onResponse(Call<List<Document>> call, Response<List<Document>> response) {
+
+                List<Document> pspPhaseList = response.body();
+                PSP_supDocumentsByStudent fragment = new PSP_supDocumentsByStudent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("PSPDocuments", (Serializable) pspPhaseList);
+                fragment.setArguments(bundle);
+                ((Activity) context).getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)//,R.animator.pop_enter,R.animator.pop_exit)
+                        .addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Document>> call, Throwable t) {
+
+                t.printStackTrace();
+            }
+        });
+
+        return true;
+    }
 
 
+    public boolean getStudentGroup(final Context context) {
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<PSPGroup> call = restCon.getStudentGroup(token);
+
+        call.enqueue(new Callback<PSPGroup>() {
+            @Override
+            public void onResponse(Call<PSPGroup> call, Response<PSPGroup> response) {
+
+                if (response.isSuccessful()) {
+
+                    PSPGroup group = response.body();
+
+                    if (group != null) {
+
+
+                        Log.d("GROUP", "NO ES NULL");
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("PSPGroup", group);
+
+
+                        PSP_groupsFragment groupFragment = new PSP_groupsFragment();
+                        groupFragment.setArguments(bundle);
+
+
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupFragment).commit();
+                        ((Activity) context).setTitle("Grupos");
+
+
+
+
+
+                    } else {
+
+                        Log.d("GROUP", "ES NULL");
+
+
+                    }
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<PSPGroup> call, Throwable t) {
+
+
+                getGroups(context);
+
+            }
+        });
+
+        return  true;
+
+    }
 }
