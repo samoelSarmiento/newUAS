@@ -34,7 +34,7 @@ public class Specialty implements Serializable {
     private Integer idDocente;
 
     @SerializedName("coordinator")
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Teacher coordinator;
 
     public Specialty() {

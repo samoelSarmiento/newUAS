@@ -12,7 +12,6 @@ import android.widget.Button;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
@@ -51,7 +50,7 @@ public class SpecialtyAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.specialty_list_detail, null);
+        View view = layoutInflater.inflate(R.layout.item_specialty, null);
         ViewHolder viewHolder = new ViewHolder();
         viewHolder.specialty = (Button) view.findViewById(R.id.btnSpecialtyDisplay);
         viewHolder.specialty.setId(position);

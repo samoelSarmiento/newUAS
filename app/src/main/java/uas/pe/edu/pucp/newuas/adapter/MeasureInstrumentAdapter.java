@@ -74,7 +74,7 @@ public class MeasureInstrumentAdapter extends BaseAdapter {
         return view;
     }
 
-    public static class ViewHolder{
+    private static class ViewHolder{
         TextView tvMeaInst;
 
     }
