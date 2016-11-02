@@ -23,10 +23,9 @@ public class PSPDocumentsAdapter extends BaseAdapter {
     ArrayList<Student> items;
     Context context;
     LayoutInflater layoutInflater;
-    public PSPDocumentsAdapter(Context context, ArrayList<Student> items) {
+    public PSPDocumentsAdapter(Context context, ArrayList<Student> items) { //, ArrayList<Student> items
         this.context = context;
         this.items = items;
-
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -48,14 +47,14 @@ public class PSPDocumentsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.fragment_psp_documents_item,null);
-        ViewHolder viewHolder = new ViewHolder(view);
+       ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.studentName.setText(items.get(position).getNombre() + " " + items.get(position).getApellidoPaterno() + " " + items.get(position).getApellidoMaterno());
         return view;
     }
     public static class ViewHolder{
         TextView studentName;
         public ViewHolder(View view) {
-            studentName = (TextView)view.findViewById(R.id.student_item_name);
-        }
-    }
+           studentName = (TextView)view.findViewById(R.id.student_item_name);
+       }
+   }
 }

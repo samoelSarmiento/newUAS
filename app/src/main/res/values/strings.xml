@@ -52,6 +52,9 @@
     <string name="pspTotalTutors">Total de supervisores</string>
     <string name="pspTotalAlumnos">Total de alumnos</string>
 
+    <string name="pspSelectButtonInforme">Informacion de empresa</string>
+    <string name="pspSelectButtonDocument">Documento</string>
+
     <!--PSP Fin-->
 
     <string name="btModuleAcr">Acreditacion</string>

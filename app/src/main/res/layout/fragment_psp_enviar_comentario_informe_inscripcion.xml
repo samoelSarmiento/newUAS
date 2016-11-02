@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="70dp"
+    android:background="@color/uas_plomo_fondo"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/editTextComentarioPSPinforme"
+        android:text=""
+        android:layout_weight="0.7"
+        android:layout_width="250dp"
+        android:layout_height="206dp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="114dp"
+        android:layout_height="65dp"
+        android:text="Enviar Comentario"
+        android:id="@+id/btEnviarComentarioPSPaccion"
+        android:layout_weight="0.76"
+        android:layout_gravity="left|top" />
+
+    <Button
+        android:layout_width="146dp"
+        android:layout_height="59dp"
+        android:text="Aceptar"
+        android:id="@+id/btEnviarComentarioPSPcancelar"
+        android:layout_gravity="right|top" />
+
+</FrameLayout>
