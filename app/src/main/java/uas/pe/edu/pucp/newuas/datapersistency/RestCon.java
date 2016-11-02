@@ -34,6 +34,7 @@ import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
@@ -64,7 +65,9 @@ public interface RestCon {
     Call<Period> getPeriod(@Path("p_id") int period_id, @QueryMap Map<String, String> token);
 
     @GET("faculties/course/{course_id}/cycle/{academic_cycle_id}")
-    Call<List<Schedule>> getCourseSchedules(@Path("course_id") int course_id, @Path("academic_cycle_id") int academic_cycle_id, @QueryMap Map<String, String> token);
+    Call<List<Schedule>> getCourseSchedules(@Path("course_id") int course_id,
+                                            @Path("academic_cycle_id") int academic_cycle_id,
+                                            @QueryMap Map<String, String> token);
     /*0.
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
@@ -73,20 +76,25 @@ public interface RestCon {
     @GET("periods/{p_id}/{f_id}/objectives")
     Call<List<EducationalObjective>> getEducationalObjectivesByPeriodSpecialty(@Path("p_id") int period_id,
                                                                                @Path("f_id") int faculty_id,
-                                                                               @QueryMap Map<String,String> token);
+                                                                               @QueryMap Map<String, String> token);
+
+    @GET("faculties/{faculty_id}/eob/{eos_id}/students_results")
+    Call<List<StudentResult>> getStudentResults(@Path("faculty_id") int idSpecialty,
+                                                @Path("eos_id") int idEdObj,
+                                                @QueryMap Map<String, String> token);
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
 
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
-    Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
+    Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
 
     @GET("investigation/getAllInvGroups")
-    Call<List<InvGroups>> getInvGroups(@QueryMap Map<String,String> token);
+    Call<List<InvGroups>> getInvGroups(@QueryMap Map<String, String> token);
 
     @GET("investigation/getAllProjects")
-    Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
+    Call<List<Projects>> getProjects(@QueryMap Map<String, String> token);
 
 
     @GET("investigation/{id}/investigators")
@@ -96,16 +104,16 @@ public interface RestCon {
     Call<List<InvGroups>> getInvGroupById(@Path("id") int groupId, @QueryMap Map<String, String> token);
 
     @GET("investigation/{id}/projects")
-    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+    Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String, String> token);
 
     @POST("investigation/{id}/groups")
-    Call<String> editInvGroup(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body InvGroups invGroups);
+    Call<String> editInvGroup(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body InvGroups invGroups);
 
     @POST("investigation/{id}/investigators")
-    Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Investigator investigator);
+    Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
 
     @POST("investigation/{id}/projects")
-    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String,String> token, @Body Projects projects);
+    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Projects projects);
     /*--------------*/
 
 

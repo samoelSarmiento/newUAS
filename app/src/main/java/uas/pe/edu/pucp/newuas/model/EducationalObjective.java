@@ -14,36 +14,32 @@ import java.io.Serializable;
 @DatabaseTable(tableName = "educationalobjective")
 public class EducationalObjective implements Serializable {
     @SerializedName("IdObjetivoEducacional")
-    @Expose
     @DatabaseField(id = true)
     private Integer idObjetivoEducacional;
+
+    @DatabaseField
+    private int period_id;
+
     @SerializedName("IdEspecialidad")
-    @Expose
     @DatabaseField
     private Integer idEspecialidad;
+    
     @SerializedName("Numero")
-    @Expose
     @DatabaseField
     private Integer numero;
+
     @SerializedName("Descripcion")
-    @Expose
     @DatabaseField
     private String descripcion;
+
     @SerializedName("CicloRegistro")
-    @Expose
-    @DatabaseField
     private Object cicloRegistro;
+
     @SerializedName("Estado")
-    @Expose
     private Integer estado;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public EducationalObjective() {
     }
-
 
     public EducationalObjective(Integer idObjetivoEducacional, Integer idEspecialidad, Integer numero, String descripcion, Object cicloRegistro, Integer estado) {
         this.idObjetivoEducacional = idObjetivoEducacional;
@@ -54,111 +50,58 @@ public class EducationalObjective implements Serializable {
         this.estado = estado;
     }
 
-    /**
-     *
-     * @return
-     * The idObjetivoEducacional
-     */
+    public int getPeriod_id() {
+        return period_id;
+    }
+
+    public void setPeriod_id(int period_id) {
+        this.period_id = period_id;
+    }
+
     public Integer getIdObjetivoEducacional() {
         return idObjetivoEducacional;
     }
 
-    /**
-     *
-     * @param idObjetivoEducacional
-     * The IdObjetivoEducacional
-     */
     public void setIdObjetivoEducacional(Integer idObjetivoEducacional) {
         this.idObjetivoEducacional = idObjetivoEducacional;
     }
 
-    /**
-     *
-     * @return
-     * The idEspecialidad
-     */
     public Integer getIdEspecialidad() {
         return idEspecialidad;
     }
 
-    /**
-     *
-     * @param idEspecialidad
-     * The IdEspecialidad
-     */
     public void setIdEspecialidad(Integer idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
     }
 
-    /**
-     *
-     * @return
-     * The numero
-     */
     public Integer getNumero() {
         return numero;
     }
 
-    /**
-     *
-     * @param numero
-     * The Numero
-     */
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    /**
-     *
-     * @return
-     * The descripcion
-     */
     public String getDescripcion() {
         return descripcion;
     }
 
-    /**
-     *
-     * @param descripcion
-     * The Descripcion
-     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    /**
-     *
-     * @return
-     * The cicloRegistro
-     */
     public Object getCicloRegistro() {
         return cicloRegistro;
     }
 
-    /**
-     *
-     * @param cicloRegistro
-     * The CicloRegistro
-     */
     public void setCicloRegistro(Object cicloRegistro) {
         this.cicloRegistro = cicloRegistro;
     }
 
-
-    /**
-     *
-     * @return
-     * The estado
-     */
     public Integer getEstado() {
         return estado;
     }
 
-    /**
-     *
-     * @param estado
-     * The Estado
-     */
     public void setEstado(Integer estado) {
         this.estado = estado;
     }

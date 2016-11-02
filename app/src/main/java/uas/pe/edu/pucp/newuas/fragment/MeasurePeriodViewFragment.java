@@ -31,7 +31,7 @@ public class MeasurePeriodViewFragment extends Fragment {
     Period period = null;
     Integer idPeriod = null;
 
-    public MeasurePeriodViewFragment(){
+    public MeasurePeriodViewFragment() {
 
     }
 
@@ -40,28 +40,14 @@ public class MeasurePeriodViewFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-
+                             Bundle savedInstanceState) {
         getActivity().setTitle("Periodo");
 
         View view = inflater.inflate(R.layout.fragment_measureperiodview, container, false);
-
-        //ListView lvPeriods = (ListView) view.findViewById(R.id.lvPeriods);
-
-        /*
-
-        TextView tvsplabel = (TextView) view.findViewById(R.id.tvSpecialtyLabel);
-        TextView tvspcode = (TextView) view.findViewById(R.id.tvSpecialtyCode);
-        TextView tvspcoord = (TextView) view.findViewById(R.id.tvSpecialtyCoord);
-        TextView tvspdesc = (TextView) view.findViewById(R.id.tvSpecialtyDesc);
-
-        */
 
         TextView tvMeasureResStartSemester = (TextView) view.findViewById(R.id.tvMeasureResStartSemester);
         TextView tvMeasureResEndSemester = (TextView) view.findViewById(R.id.tvMeasureResEndSemester);
@@ -74,13 +60,13 @@ public class MeasurePeriodViewFragment extends Fragment {
         Button btnEduObj = (Button) view.findViewById(R.id.btnObjEdu);
 
         Bundle bundle = this.getArguments();
-        if (bundle != null){
+        if (bundle != null) {
             final Period str = (Period) bundle.getSerializable("Period");
             tvMeasureResStartSemester.setText(str.getConfiguration().getCycleAcademicStart().getDescripcion());
             tvMeasureResEndSemester.setText(str.getConfiguration().getCycleAcademicEnd().getDescripcion());
             tvMeasureCritLevel.setText(str.getConfiguration().getCantNivelCriterio() + "");
             tvMeasureAccLevel.setText(str.getConfiguration().getNivelEsperado() + "");
-            tvMeasureAccPerc.setText(str.getConfiguration().getUmbralAceptacion()+ "%");
+            tvMeasureAccPerc.setText(str.getConfiguration().getUmbralAceptacion() + "%");
             this.period = str;
             this.idPeriod = period.getIdPeriodo();
 
@@ -88,7 +74,7 @@ public class MeasurePeriodViewFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     MeasureInstrumentsController mic = new MeasureInstrumentsController();
-                    mic.getMeasureInstrumentsOfPeriod(str.getIdPeriodo() , getActivity());
+                    mic.getMeasureInstrumentsOfPeriod(str.getIdPeriodo(), getActivity());
                 }
             });
 
@@ -96,7 +82,7 @@ public class MeasurePeriodViewFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     SemesterController sc = new SemesterController();
-                    sc.getSemestersofPeriod(getActivity(),str.getIdPeriodo());
+                    sc.getSemestersofPeriod(getActivity(), str.getIdPeriodo());
 
                 }
             });
@@ -105,31 +91,16 @@ public class MeasurePeriodViewFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     EducationalObjectiveController eoc = new EducationalObjectiveController();
-                    eoc.getEducationalObjectivesofPeriodSpec(getActivity(),str.getIdPeriodo(),str.getIdEspecialidad());
-
+                    eoc.getEducationalObjectivesofPeriodSpec(getActivity(), str.getIdPeriodo(), str.getIdEspecialidad());
                 }
-
             });
-
-
-
-
-
         }
-
-
-
         return view;
-
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-
-
-
-
 
 
     }
