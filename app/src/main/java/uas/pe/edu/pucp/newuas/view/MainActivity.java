@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                intent = new Intent(this, NavigationDrawerTutoria.class);
+                if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2)
+                    intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
+                else 
+                   intent = new Intent(this, NavigationDrawerTutoria.class);
                 startActivity(intent);
                 break;
         }
