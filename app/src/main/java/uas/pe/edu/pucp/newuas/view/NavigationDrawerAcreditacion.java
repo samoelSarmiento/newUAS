@@ -165,8 +165,21 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     specialtyController.getSpecialties(this, Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
             }
         } else if (id == R.id.nav_sizperiod) {
+
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
-            boolean result = measurePeriodController.getMeasurePeriods(this);
+            if(Configuration.LOGIN_USER.getUser().getIdPerfil()==3){
+                boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.SPECIALTY.getIdEspecialidad());
+            }else{
+                if(Configuration.LOGIN_USER.getUser().getAccreditor()!=null){
+                    boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+                }
+                if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
+                    boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
+                }
+
+            }
+
+
 
 
         } else if (id == R.id.nav_upgplan) {

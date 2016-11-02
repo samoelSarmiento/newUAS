@@ -5,7 +5,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.j256.ormlite.dao.Dao;
+
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.MeasureInstrumentsFragment;
@@ -26,7 +30,7 @@ import uas.pe.edu.pucp.newuas.model.Period;
  */
 
 public class MeasureInstrumentsController {
-    public boolean getMeasureInstrumentsOfPeriod(Integer idPeriod, final Context context){
+    public boolean getMeasureInstrumentsOfPeriod(final Integer idPeriod, final Context context){
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
@@ -45,6 +49,13 @@ public class MeasureInstrumentsController {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("MeasureInst",(Serializable)lmi);
                     mif.setArguments(bundle);
+
+                    try {
+                        saveMeaInsts(context,lmi);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
                     ((Activity)context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -59,7 +70,36 @@ public class MeasureInstrumentsController {
 
             @Override
             public void onFailure(Call<List<MeasureInstrument>> call, Throwable t) {
+
+
+                try {
+                    List<MeasureInstrument> lmi = retrieveMeaInstofPeriod(context,idPeriod);
+
+                    MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("MeasureInst",(Serializable)lmi);
+                    mif.setArguments(bundle);
+
+                    try {
+                        saveMeaInsts(context,lmi);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    ((Activity)context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container,mif)
+                            .commit();
+                    ((Activity)context).setTitle("Instrumentos de Medicion");
+
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
                 t.printStackTrace();
+
 
             }
         });
@@ -69,6 +109,32 @@ public class MeasureInstrumentsController {
 
 
         return true;
+
+    }
+
+
+    private List<MeasureInstrument> retrieveMeaInstofPeriod(final Context context, Integer idPeriod) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        return measureinstrumentDao.queryBuilder().where().eq("idPeriodo", idPeriod).query();
+
+
+    }
+
+
+    private void saveMeaInsts(final Context context, List<MeasureInstrument> mis) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        for(MeasureInstrument mi : mis){
+            MeasureInstrument find = measureinstrumentDao.queryForId(mi.getIdFuenteMedicion());
+            if(find==null){
+                measureinstrumentDao.create(mi);
+            }else{
+                measureinstrumentDao.update(mi);
+            }
+        }
+
+
 
     }
 

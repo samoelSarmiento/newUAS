@@ -19,6 +19,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
@@ -43,6 +44,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Schedule, Integer> scheduleDao = null;
     private Dao<EducationalObjective, Integer> educationalObjectiveDao = null;
     private Dao<StudentResult, Integer> studentResultDao = null;
+    private Dao<MeasureInstrument,Integer> measureinstrumentDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -60,6 +62,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, Period.class);
             TableUtils.createTableIfNotExists(connectionSource, Semester.class);
             TableUtils.createTableIfNotExists(connectionSource, ConfSpeciality.class);
+            TableUtils.createTableIfNotExists(connectionSource, MeasureInstrument.class);
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -161,6 +164,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public void setSemesterDao(Dao<Semester, Integer> semesterDao) {
         this.semesterDao = semesterDao;
+    }
+
+    public Dao<MeasureInstrument, Integer> getMeasureInstrumentDao() throws SQLException {
+        if (measureinstrumentDao == null) measureinstrumentDao = getDao(MeasureInstrument.class);
+        return measureinstrumentDao;
+    }
+
+    public void setMeasureInstrumentDao(Dao<MeasureInstrument, Integer> measureinstrumentDao) {
+        this.measureinstrumentDao = measureinstrumentDao;
     }
 
     @Override
