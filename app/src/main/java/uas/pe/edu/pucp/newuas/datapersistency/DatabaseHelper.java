@@ -9,6 +9,7 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.stmt.query.In;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -22,6 +23,7 @@ import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
@@ -40,6 +42,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<CourseResponse, Integer> courseDao = null;
     private Dao<Schedule, Integer> scheduleDao = null;
     private Dao<EducationalObjective, Integer> educationalObjectiveDao = null;
+    private Dao<StudentResult, Integer> studentResultDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -48,6 +51,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTableIfNotExists(connectionSource, StudentResult.class);
             TableUtils.createTableIfNotExists(connectionSource, EducationalObjective.class);
             TableUtils.createTableIfNotExists(connectionSource, CourseResponse.class);
             TableUtils.createTableIfNotExists(connectionSource, Schedule.class);
@@ -67,6 +71,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
+            TableUtils.dropTable(source, StudentResult.class, true);
             TableUtils.dropTable(source, EducationalObjective.class, true);
             TableUtils.dropTable(source, CourseResponse.class, true);
             TableUtils.dropTable(source, Schedule.class, true);
@@ -81,6 +86,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public Dao<StudentResult, Integer> getStudentResultDao() throws SQLException {
+        if (studentResultDao == null) studentResultDao = getDao(StudentResult.class);
+        return studentResultDao;
+    }
+
+    public void setStudentResultDao(Dao<StudentResult, Integer> studentResultDao) {
+        this.studentResultDao = studentResultDao;
     }
 
     public Dao<EducationalObjective, Integer> getEducationalObjectiveDao() throws SQLException {
