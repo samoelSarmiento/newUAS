@@ -1,6 +1,52 @@
 #
-# generated on 2016/10/31 11:43:09
+# generated on 2016/11/02 02:24:42
 #
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
+tableName=accreditor
+# --table-fields-start--
+# --field-start--
+fieldName=idAcreditador
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idUsuario
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=apellidoPaterno
+# --field-end--
+# --field-start--
+fieldName=apellidoMaterno
+# --field-end--
+# --field-start--
+fieldName=correo
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Area
+tableName=area
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.ConfSpeciality
 tableName=confspecialty
@@ -73,6 +119,111 @@ fieldName=nombre
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Faculty
+tableName=faculty
+# --table-fields-start--
+# --field-start--
+fieldName=idEspecialidad
+id=true
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Investigator
+tableName=investigator
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=idUsuario
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=apePaterno
+# --field-end--
+# --field-start--
+fieldName=apeMaterno
+# --field-end--
+# --field-start--
+fieldName=correo
+# --field-end--
+# --field-start--
+fieldName=celular
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idArea
+# --field-end--
+# --field-start--
+fieldName=vigente
+# --field-end--
+# --field-start--
+fieldName=faculty
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=area
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.InvGroups
+tableName=invGroup
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=imagen
+# --field-end--
+# --field-start--
+fieldName=idLider
+# --field-end--
+# --field-start--
+fieldName=faculty
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Period
 tableName=period
 # --table-fields-start--
@@ -91,6 +242,79 @@ fieldName=configuration
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Projects
+tableName=project
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=numEntregables
+# --field-end--
+# --field-start--
+fieldName=fechaIni
+# --field-end--
+# --field-start--
+fieldName=fechaFin
+# --field-end--
+# --field-start--
+fieldName=idGrupo
+# --field-end--
+# --field-start--
+fieldName=idArea
+# --field-end--
+# --field-start--
+fieldName=idStatus
+# --field-end--
+# --field-start--
+fieldName=area
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=group
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=status
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ProjectStatus
+tableName=projectStatus
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=tipoEstado
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -185,6 +409,20 @@ maxForeignAutoRefreshLevel=2
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Status
+tableName=status
+# --table-fields-start--
+# --field-start--
+fieldName=idStatus
+id=true
+# --field-end--
+# --field-start--
+fieldName=description
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Teacher
 tableName=teacher
 # --table-fields-start--
@@ -235,6 +473,44 @@ fieldName=anexo
 # --field-end--
 # --field-start--
 fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.User
+tableName=user
+# --table-fields-start--
+# --field-start--
+fieldName=idUsuario
+id=true
+# --field-end--
+# --field-start--
+fieldName=idPerfil
+# --field-end--
+# --field-start--
+fieldName=usuario
+# --field-end--
+# --field-start--
+fieldName=accreditor
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=teacher
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=investigator
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
