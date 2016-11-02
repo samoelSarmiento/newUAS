@@ -48,10 +48,15 @@ public class ProjDetailFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         List<Projects> proj=null;
+        boolean botonEdit=false;
         if (bundle != null){
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             proj= (List<Projects>) bundle.getSerializable("Proj");
+            botonEdit=bundle.getBoolean("BotonEdit");
         }
+
+        if(!botonEdit) projEdit.setVisibility(View.INVISIBLE);
+
         p=proj.get(0);
         projName.setText(proj.get(0).getNombre());
         projInitDate.setText(proj.get(0).getFechaIni());

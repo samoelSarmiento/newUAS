@@ -45,10 +45,15 @@ public class InvGroupDetailFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         List<InvGroups> invGroup=null;
+        boolean botonEdit=false;
         if (bundle != null){
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
+            botonEdit=bundle.getBoolean("BotonEdit");
             invGroup= (List<InvGroups>) bundle.getSerializable("InvGroup");
         }
+
+        if(!botonEdit) invGroupBut.setVisibility(View.INVISIBLE);
+
         invG=invGroup.get(0);
         invGroupName.setText(invGroup.get(0).getNombre());
         invGroupDesc.setText(invGroup.get(0).getDescripcion());

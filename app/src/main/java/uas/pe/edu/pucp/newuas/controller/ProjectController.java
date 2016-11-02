@@ -138,6 +138,7 @@ public class ProjectController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Proj", (Serializable)example);
+                    bundle.putBoolean("BotonEdit",true);
                     //bundle.putString("Investigators", spj);
 
                     ProjDetailFragment spFragment = new ProjDetailFragment();
@@ -161,6 +162,7 @@ public class ProjectController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Proj", (Serializable)proj);
+                    bundle.putBoolean("BotonEdit",false);
                     //bundle.putString("Investigators", spj);
 
                     ProjDetailFragment spFragment = new ProjDetailFragment();
@@ -194,7 +196,7 @@ public class ProjectController {
                 if (response.isSuccessful()) {
 
                 } else {
-                    //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
                 }
 
             }

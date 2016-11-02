@@ -139,6 +139,7 @@ public class InvestigatorController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Inv", (Serializable)example);
+                    bundle.putBoolean("BotonEdit",true);
                     //bundle.putString("Investigators", spj);
 
                     InvDetailFragment spFragment = new InvDetailFragment();
@@ -162,6 +163,7 @@ public class InvestigatorController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Inv", (Serializable)inv);
+                    bundle.putBoolean("BotonEdit",false);
                     //bundle.putString("Investigators", spj);
 
                     InvDetailFragment spFragment = new InvDetailFragment();
@@ -193,7 +195,7 @@ public class InvestigatorController {
                 if (response.isSuccessful()) {
 
                 } else {
-                    //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
                 }
 
             }

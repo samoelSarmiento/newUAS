@@ -140,7 +140,7 @@ public class InvGroupController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)example);
-                    
+                    bundle.putBoolean("BotonEdit",true);
 
                     InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
                     spFragment.setArguments(bundle);
@@ -165,7 +165,7 @@ public class InvGroupController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)invG);
-
+                    bundle.putBoolean("BotonEdit",false);
 
                     InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
                     spFragment.setArguments(bundle);
@@ -198,7 +198,7 @@ public class InvGroupController {
                 if (response.isSuccessful()) {
 
                 } else {
-                    //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
                 }
 
             }
