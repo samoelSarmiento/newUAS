@@ -15,6 +15,9 @@ public class StudentResult {
     @DatabaseField(id = true)
     private int idResultadoEstudiantil;
 
+    @DatabaseField
+    private int idObjetivoEduacional;
+
     @SerializedName("IdEspecialidad")
     @DatabaseField
     private int idEspecialidad;
@@ -32,6 +35,14 @@ public class StudentResult {
     private int estado;
 
     public StudentResult() {
+    }
+
+    public int getIdObjetivoEduacional() {
+        return idObjetivoEduacional;
+    }
+
+    public void setIdObjetivoEduacional(int idObjetivoEduacional) {
+        this.idObjetivoEduacional = idObjetivoEduacional;
     }
 
     public int getIdResultadoEstudiantil() {
