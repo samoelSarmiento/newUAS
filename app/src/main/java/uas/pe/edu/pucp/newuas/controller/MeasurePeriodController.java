@@ -64,6 +64,12 @@ public class MeasurePeriodController {
                     mplFragment.setArguments(bundle);
                     Log.d("TAG", response.body().toString());
 
+                    try {
+                        savePeriods(context,periods);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -80,6 +86,30 @@ public class MeasurePeriodController {
 
             @Override
             public void onFailure(Call<List<Period>> call, Throwable t) {
+                List<Period> per = null;
+                try {
+                    per = retrievePeriods(context);
+                    MeasurePeriodListFragment mplFragment = new MeasurePeriodListFragment();
+                    /*Gson gsonf = new Gson();
+                    String spj = gsonf.toJson(periods);
+                    System.out.println(spj);*/
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Periods", (Serializable) per);
+                    mplFragment.setArguments(bundle);
+
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, mplFragment)
+                            .commit();
+                    ((Activity) context).setTitle("Periodos de Medicion");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
 
             }
         });
@@ -129,7 +159,6 @@ public class MeasurePeriodController {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
 
 
                     ((Activity) context).getFragmentManager()
@@ -196,7 +225,7 @@ public class MeasurePeriodController {
                 periodDao.create(period);
             } else {
                 //si se encontro la actualizo
-                periodDao.updateId(period, find.getIdPeriodo());
+                periodDao.update(period);
             }
         }
 
@@ -217,7 +246,7 @@ public class MeasurePeriodController {
         if (find == null) {
             periodDao.create(period);
         } else {
-            periodDao.updateId(period, find.getIdPeriodo());
+            periodDao.update(period);
         }
 
     }
