@@ -81,7 +81,7 @@ public class TutStudentController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-            Call<List<AppointmentResponse>> call = restCon.getAppointment(data);
+        Call<List<AppointmentResponse>> call = restCon.getAppointment(data);
         call.enqueue(new Callback<List<AppointmentResponse>>() {
 
             @Override
@@ -103,6 +103,7 @@ public class TutStudentController {
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
                     listV.setAdapter(new AppointmentAdapter(context,sr));
+
                 }
 
             }

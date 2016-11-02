@@ -41,17 +41,18 @@ public class TutorAppointFragment extends Fragment {
 
         TutTutorController ts = new TutTutorController();
         ts.getAppointment(getActivity(),view, Configuration.LOGIN_USER.getUser().getIdUsuario());
+        Log.d("xd","RAFAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-        newAppointment = (Button) view.findViewById(R.id.btnNewAssignment);
+        newAppointment = (Button) view.findViewById(R.id.btnNewAssignmentTuto);
         newAppointment.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
                         Bundle bundle = new Bundle();
-                        AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
-                        ap.setArguments(bundle);
-                        getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
+                        //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
+                        //ap.setArguments(bundle);
+                        //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
                     }
                 }
         );

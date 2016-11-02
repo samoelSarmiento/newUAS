@@ -64,6 +64,16 @@
         </activity>
 
         <activity
+            android:name=".view.NavigationDrawerTutoriaTutor"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_navigation_drawer_tutoria_tutor"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+
+
+        </activity>
+
+        <activity
             android:name=".view.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
