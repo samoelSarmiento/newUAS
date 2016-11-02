@@ -21,8 +21,10 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AspectListFragment;
 import uas.pe.edu.pucp.newuas.fragment.EducationalObjectiveListFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
+import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
@@ -130,6 +132,32 @@ public class EducationalObjectiveController {
                 } catch (SQLException e) {
                     Toast.makeText(context, "Error al recuperar los datos", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+
+    public void getStudentResultAspects(final Context context, int idStudenResult) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Aspect>> call = restCon.getStudentResultAspects(idStudenResult, token);
+        call.enqueue(new Callback<List<Aspect>>() {
+            @Override
+            public void onResponse(Call<List<Aspect>> call, Response<List<Aspect>> response) {
+                if (response.isSuccessful()) {
+                    List<Aspect> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("aspects", (Serializable) list);
+                    AspectListFragment aspectListFragment = new AspectListFragment();
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, aspectListFragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Aspect>> call, Throwable t) {
+
             }
         });
     }

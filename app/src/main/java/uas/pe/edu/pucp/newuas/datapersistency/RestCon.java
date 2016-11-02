@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
+import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
@@ -68,10 +69,10 @@ public interface RestCon {
     Call<List<Schedule>> getCourseSchedules(@Path("course_id") int course_id,
                                             @Path("academic_cycle_id") int academic_cycle_id,
                                             @QueryMap Map<String, String> token);
-    /*0.
-    @GET("faculties/{faculty_id}/evaluated_courses")
-    Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
-    */
+
+    @GET("faculties/student_result/{sr_id}/aspects")
+    Call<List<Aspect>> getStudentResultAspects(@Path("sr_id") int idStudentResult,
+                                               @QueryMap Map<String, String> token);
 
     @GET("periods/{p_id}/{f_id}/objectives")
     Call<List<EducationalObjective>> getEducationalObjectivesByPeriodSpecialty(@Path("p_id") int period_id,

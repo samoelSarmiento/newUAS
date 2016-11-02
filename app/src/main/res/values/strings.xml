@@ -141,5 +141,7 @@
     <string name="btHorario">HORARIO</string>
     <string name="tvNumber">Numero:</string>
     <string name="btResultadoEstudiantil">RESULTADOS ESTUDIANTILES</string>
+    <string name="tvIdentificador">Identificador:</string>
+    <string name="tvAspecto">ASPECTOS</string>
 
 </resources>
