@@ -27,6 +27,7 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
@@ -169,6 +170,19 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
 
         } else if (id == R.id.nav_upgplan) {
+            ImprovementPlanController ipCont = new ImprovementPlanController();
+            if(Configuration.LOGIN_USER.getUser().getIdPerfil()==3){
+                ipCont.getImprovementPlansofSpecialty(this,Configuration.SPECIALTY.getIdEspecialidad());
+            }else{
+                if(Configuration.LOGIN_USER.getUser().getAccreditor()!=null){
+                    ipCont.getImprovementPlansofSpecialty(this,Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+                }
+                if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
+                    ipCont.getImprovementPlansofSpecialty(this,Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
+
+                }
+            }
+
 
         } else if (id == R.id.nav_consolidate) {
 
