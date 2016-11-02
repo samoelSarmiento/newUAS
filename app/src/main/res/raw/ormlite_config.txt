@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/02 02:24:42
+# generated on 2016/11/02 01:51:26
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -119,6 +119,29 @@ fieldName=nombre
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.EducationalObjective
+tableName=educationalobjective
+# --table-fields-start--
+# --field-start--
+fieldName=idObjetivoEducacional
+id=true
+# --field-end--
+# --field-start--
+fieldName=period_id
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=numero
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Faculty
 tableName=faculty
 # --table-fields-start--
@@ -174,7 +197,7 @@ fieldName=idArea
 fieldName=vigente
 # --field-end--
 # --field-start--
-fieldName=faculty
+fieldName=specialty
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
@@ -404,6 +427,7 @@ fieldName=coordinator
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -418,6 +442,32 @@ id=true
 # --field-end--
 # --field-start--
 fieldName=description
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.StudentResult
+tableName=studentresults
+# --table-fields-start--
+# --field-start--
+fieldName=idResultadoEstudiantil
+id=true
+# --field-end--
+# --field-start--
+fieldName=idObjetivoEduacional
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=identificador
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=estado
 # --field-end--
 # --table-fields-end--
 # --table-end--

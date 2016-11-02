@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 
 @DatabaseTable(tableName = "invGroup")
-public class InvGroups implements Serializable{
+public class InvGroups implements Serializable {
 
     @SerializedName("id")
     @DatabaseField(id = true)
@@ -38,8 +38,8 @@ public class InvGroups implements Serializable{
     private Integer idLider;
 
     @SerializedName("faculty")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
-    private Faculty faculty;
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
+    private Specialty faculty;
 
     @SerializedName("leader")
     private Professor leader;
@@ -47,7 +47,7 @@ public class InvGroups implements Serializable{
     public InvGroups() {
     }
 
-    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Faculty faculty, Professor leader) {
+    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Specialty faculty, Professor leader) {
         this.id = id;
         this.nombre = nombre;
         this.idEspecialidad = idEspecialidad;
@@ -106,11 +106,11 @@ public class InvGroups implements Serializable{
         this.idLider = idLider;
     }
 
-    public Faculty getFaculty() {
+    public Specialty getFaculty() {
         return faculty;
     }
 
-    public void setFaculty(Faculty faculty) {
+    public void setFaculty(Specialty faculty) {
         this.faculty = faculty;
     }
 

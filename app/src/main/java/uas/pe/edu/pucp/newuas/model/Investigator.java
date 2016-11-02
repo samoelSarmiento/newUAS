@@ -54,21 +54,17 @@ public class Investigator implements Serializable {
     private Integer vigente;
 
     @SerializedName("faculty")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
-    private Faculty faculty;
-
-    @SerializedName("user")
-    //@DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
-    private User user;
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
+    private Specialty specialty;
 
     @SerializedName("area")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Area area;
 
-    public Investigator(){
+    public Investigator() {
     }
 
-    public Investigator(Integer id, Integer idUsuario, String nombre, String apePaterno, String apeMaterno, String correo, String celular, Integer idEspecialidad, Integer idArea, Integer vigente, Faculty faculty, User user, Area area) {
+    public Investigator(Integer id, Integer idUsuario, String nombre, String apePaterno, String apeMaterno, String correo, String celular, Integer idEspecialidad, Integer idArea, Integer vigente, Specialty faculty, User user, Area area) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -79,25 +75,16 @@ public class Investigator implements Serializable {
         this.idEspecialidad = idEspecialidad;
         this.idArea = idArea;
         this.vigente = vigente;
-        this.faculty = faculty;
-        this.user = user;
+        this.specialty = faculty;
         this.area = area;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public Specialty getFaculty() {
+        return specialty;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setFaculty(Specialty faculty) {
+        this.specialty = faculty;
     }
 
     public Area getArea() {
@@ -107,8 +94,6 @@ public class Investigator implements Serializable {
     public void setArea(Area area) {
         this.area = area;
     }
-
-
 
     public Integer getId() {
         return id;

@@ -16,6 +16,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Area;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -36,7 +37,7 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "uas9.db";
+    private static final String DATABASE_NAME = "uas.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
@@ -49,6 +50,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Investigator, Integer> investigatorDao = null;
     private Dao<InvGroups, Integer> invGroupDao = null;
     private Dao<Projects, Integer> projDao = null;
+    private Dao<Area, Integer> areaDao;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -57,6 +59,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTableIfNotExists(connectionSource, Area.class);
             TableUtils.createTableIfNotExists(connectionSource, StudentResult.class);
             TableUtils.createTableIfNotExists(connectionSource, EducationalObjective.class);
             TableUtils.createTableIfNotExists(connectionSource, CourseResponse.class);
@@ -80,6 +83,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
+            TableUtils.dropTable(source, Area.class, true);
             TableUtils.dropTable(source, StudentResult.class, true);
             TableUtils.dropTable(source, EducationalObjective.class, true);
             TableUtils.dropTable(source, CourseResponse.class, true);
@@ -98,6 +102,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public Dao<Area, Integer> getAreaDao() throws SQLException {
+        if (areaDao == null) areaDao = getDao(Area.class);
+        return areaDao;
+    }
+
+    public void setAreaDao(Dao<Area, Integer> areaDao) {
+        this.areaDao = areaDao;
     }
 
     public Dao<StudentResult, Integer> getStudentResultDao() throws SQLException {
