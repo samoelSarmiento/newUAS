@@ -144,23 +144,16 @@
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
-<<<<<<< HEAD
-    <string name="title_activity_navigation_drawer_tutoria_tutor">NavigationDrawerTutoriaTutor
-    </string>
-=======
+    <string name="title_activity_navigation_drawer_tutoria_tutor">NavigationDrawerTutoriaTutor</string>
     <string name="pspGroup">Seleccionar grupo</string>
-<<<<<<< HEAD
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
     <string name="btHorario">HORARIO</string>
     <string name="tvNumber">Numero:</string>
     <string name="btResultadoEstudiantil">RESULTADOS ESTUDIANTILES</string>
->>>>>>> f2b0ffc2ee714b2aa80b830fcf8c68341893bf55
-=======
     <string name="nav_evaluaciones">Evaluaciones</string>
 
     <!-- TODO: Evaluations text -->
     <string name="evName">Nombre:</string>
->>>>>>> 785649666d60788ef21b55462febf44d87fc18bb
 
 </resources>

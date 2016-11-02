@@ -56,10 +56,10 @@ public class TutTutorController {
 
                 //MyStudentAppointmentFragment fragment = new MyStudentAppointmentFragment();
                 */
-                TutorAppointFragment fragment = new TutorAppointFragment();
-                Log.d("xd","SERA ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                //TutorAppointFragment fragment = new TutorAppointFragment();
+                //Log.d("xd","SERA ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
+                //((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
 
 
             }
