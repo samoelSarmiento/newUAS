@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
+        /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
+        if (idPerfil == 4 || idPerfil == 3) {
+            btModuleAcr.setVisibility(View.VISIBLE);
+        } else if (idPerfil == 1 || idPerfil == 2 || idPerfil == 5) {
+            btModulePsp.setVisibility(View.VISIBLE);
+            btModuleTutEv.setVisibility(View.VISIBLE);
+            btModuleInv.setVisibility(View.VISIBLE);
+        }*/
     }
 
     @Override
@@ -38,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.btModuleAcr:
-                intent = new Intent(this, NavigationDrawerAcreditacion.class);
-                startActivity(intent);
+                SpecialtyController specialtyController = new SpecialtyController();
+                specialtyController.getAllSpecialties(this);
                 break;
             case R.id.btModuleInv:
                 intent = new Intent(this, NavigationDrawerInvestigacion.class);

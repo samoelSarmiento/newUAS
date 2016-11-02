@@ -74,17 +74,20 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-
+            <Button
+                android:id="@+id/invGroupEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_login"
+                android:textColor="@color/white"
+                android:text="Editar"/>
 
         </LinearLayout>
 
     </ScrollView>
-    <Button
-        android:id="@+id/invGroupEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Editar"
-        android:background="@drawable/bg_button_login_selector"
-        android:textColor="@color/white"/>
+
+
+
+
 
 </LinearLayout>

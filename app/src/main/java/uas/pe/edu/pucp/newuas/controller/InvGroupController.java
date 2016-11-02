@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -108,12 +109,14 @@ public class InvGroupController {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)example);
-                    //bundle.putString("Investigators", spj);
+                    
 
                     InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
                     spFragment.setArguments(bundle);
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
                     ((Activity)context).setTitle("Grupos de Inv.");
+                    //Toast.makeText(context, "entre4", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -125,13 +128,38 @@ public class InvGroupController {
             @Override
             public void onFailure(Call<List<InvGroups>> call, Throwable t) {
                 t.printStackTrace();
-
             }
         });
-
 
         return  list;
     }
 
+    public void editInvGroup(final Context context,final InvGroups invG){
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<String> call = restCon.editInvGroup(invG.getId(),token,invG);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+
+                } else {
+                    //Toast.makeText(context, "entre2", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+    }
 }

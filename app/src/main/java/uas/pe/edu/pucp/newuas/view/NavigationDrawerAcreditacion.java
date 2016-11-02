@@ -6,19 +6,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
@@ -27,14 +32,21 @@ import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyListFragment;
+import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class NavigationDrawerAcreditacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static String[] niveles = {"5", "6", "7", "8", "9", "10"};
+    private List<Specialty> specialtyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundleIntent = getIntent().getExtras();
+        if (bundleIntent != null)
+            specialtyList = (List<Specialty>) bundleIntent.getSerializable("specialtyList");
+
         setContentView(R.layout.activity_navigation_drawer_acreditacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,7 +54,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -54,7 +66,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             //poner la lista de especialidades como la pantalla principal
             SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            bundle.putSerializable("specialties", (Serializable) specialtyList);
             specialtyListFragment.setArguments(bundle);
             getFragmentManager()
                     .beginTransaction()
@@ -70,6 +82,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
+
+
     }
 
     @Override
@@ -103,7 +117,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -119,7 +132,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_specialty_list) {
             SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("specialties", (Serializable) Configuration.LOGIN_USER.getSpecialtyList());
+            bundle.putSerializable("specialties", (Serializable) specialtyList);
             specialtyListFragment.setArguments(bundle);
             getFragmentManager()
                     .beginTransaction()
@@ -145,61 +158,19 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                 setTitle("Especialidad");
             } else {
                 SpecialtyController specialtyController = new SpecialtyController();
-                specialtyController.getSpecialties(this);
+                if (Configuration.LOGIN_USER.getUser().getAccreditor() != null)
+                    specialtyController.getSpecialties(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+                if (Configuration.LOGIN_USER.getUser().getTeacher() != null)
+                    specialtyController.getSpecialties(this, Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
             }
-
-
-            //while(Configuration.SPECIALTY == null);
-            //System.out.println(Configuration.SPECIALTY.getNombre());
-            //Specialty sp = specialtyController.getSpecialties(this);
-            //System.out.println(sp.getNombre());
-            //Specialty sp = Configuration.SPECIALTY;
-
-
-            /*
-            Gson gson = new Gson();
-            String spj = gson.toJson(sp);
-            System.out.println(spj);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Specialty", spj);
-            spFragment.setArguments(bundle); */
-
-
-        }
-        /*
-
-        else if (id == R.id.nav_courses) {
-            //obtener todos los cursos x especialidad
-            SpecialtyController specialtyController = new SpecialtyController();
-            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
-                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.SPECIALTY.getIdEspecialidad());
-            } else {
-                boolean result = specialtyController.getCoursesxSpecialy(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-            }
-//            if (result) {
-//                CourseFragment coursesFragment = new CourseFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, coursesFragment).commit();
-//            }else
-//                Toast.makeText(this,"Error de conexion",Toast.LENGTH_LONG).show();
-        }
-        else if (id == R.id.nav_eduobjectivo) {
-
-        } */ else if (id == R.id.nav_sizperiod) {
+        } else if (id == R.id.nav_sizperiod) {
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
             boolean result = measurePeriodController.getMeasurePeriods(this);
 
 
-        } /*else if (id == R.id.nav_studresult) {
+        } else if (id == R.id.nav_upgplan) {
 
-        } else if (id == R.id.nav_criteria) {
-
-        } */ else if (id == R.id.nav_upgplan) {
-
-        } /*else if (id == R.id.nav_efforttable) {
-
-        } else if (id == R.id.nav_sizeresult) {
-
-        } */ else if (id == R.id.nav_consolidate) {
+        } else if (id == R.id.nav_consolidate) {
 
         } else if (id == R.id.nav_signout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -211,6 +182,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                             Configuration.LOGIN_USER = null;
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
 

@@ -1,26 +1,60 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by samoe on 20/10/2016.
  */
-public class Schedules {
+@DatabaseTable(tableName = "schedule")
+public class Schedule implements Serializable {
     @SerializedName("IdHorario")
+    @DatabaseField(id = true, columnName = "schedule_id")
     private int idHorario;
 
+    @DatabaseField(columnName = "course_id")
+    private int idCurso;
+
+    @DatabaseField
+    private int idCicloAcademico;
+
     @SerializedName("IdCursoxCiclo")
+    @DatabaseField
     private int idCursoxCiclo;
 
     @SerializedName("Codigo")
+    @DatabaseField
     private String codigo;
 
     @SerializedName("TotalAlumnos")
+    @DatabaseField
     private int totalalumnos;
 
-    private ArrayList<Teacher> professors;
+    public Schedule() {
+    }
+
+    public int getIdCiclo() {
+        return idCicloAcademico;
+    }
+
+    public void setIdCiclo(int idCiclo) {
+        this.idCicloAcademico = idCiclo;
+    }
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    private List<Teacher> professors;
 
     private ArrayList<CoursesEvidences> evidences;
 
@@ -64,11 +98,11 @@ public class Schedules {
         this.totalalumnos = totalalumnos;
     }
 
-    public ArrayList<Teacher> getProfessors() {
+    public List<Teacher> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(ArrayList<Teacher> professors) {
+    public void setProfessors(List<Teacher> professors) {
         this.professors = professors;
     }
 }
