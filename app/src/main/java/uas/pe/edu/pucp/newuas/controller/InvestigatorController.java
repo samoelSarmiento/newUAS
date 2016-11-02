@@ -7,8 +7,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
@@ -60,6 +63,13 @@ public class InvestigatorController {
                     //Gson gsonf = new Gson();
                     //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
+                    try {
+                        saveAllInv(example, context);
+                    } catch (SQLException e) {
+                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Investigators", (Serializable)example);
                     //bundle.putString("Investigators", spj);
@@ -82,6 +92,19 @@ public class InvestigatorController {
                 t.printStackTrace();
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                try {
+                    List<Investigator> invList = retriveAllInv(context);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Investigators", (Serializable)invList);
+                    //bundle.putString("Investigators", spj);
+
+                    InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Investigadores");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -107,6 +130,13 @@ public class InvestigatorController {
 
                     List<Investigator> example = response.body();
 
+                    try {
+                        saveInv(example.get(0), context);
+                    } catch (SQLException e) {
+                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Inv", (Serializable)example);
                     //bundle.putString("Investigators", spj);
@@ -127,6 +157,21 @@ public class InvestigatorController {
             public void onFailure(Call<List<Investigator>> call, Throwable t) {
                 t.printStackTrace();
 
+                try {
+                    Investigator inv = getInv(id, context);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Inv", (Serializable)inv);
+                    //bundle.putString("Investigators", spj);
+
+                    InvDetailFragment spFragment = new InvDetailFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Investigadores");
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return  list;
@@ -159,5 +204,53 @@ public class InvestigatorController {
 
             }
         });
+    }
+
+
+
+    //Lista de inv
+    private void saveAllInv(List<Investigator> invList, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
+        //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
+        for (Investigator inv : invList) {
+            //veo si la especialidad existe
+            Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
+            Investigator find = invDao.queryForId(inv.getId());
+            Toast.makeText(context, "2", Toast.LENGTH_SHORT).show();
+            if (find == null) {
+                Toast.makeText(context, "3", Toast.LENGTH_SHORT).show();
+                invDao.create(inv);
+            } else {
+                //si se encontro la actualizo
+                Toast.makeText(context, "4", Toast.LENGTH_SHORT).show();
+                invDao.update(inv);
+            }
+        }
+    }
+    //Lista de inv
+    private List<Investigator> retriveAllInv(final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
+        return invDao.queryForAll();
+    }
+
+    private void saveInv(Investigator inv, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
+        Investigator find = invDao.queryForId(inv.getId());
+        if (find == null) {
+            Toast.makeText(context, "create", Toast.LENGTH_SHORT).show();
+            invDao.create(inv);
+        } else {
+            Toast.makeText(context, "update", Toast.LENGTH_SHORT).show();
+            invDao.update(inv);
+        }
+    }
+
+    private Investigator getInv(Integer id, final Context context) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
+        return invDao.queryForId(id);
     }
 }

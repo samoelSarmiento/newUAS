@@ -1,36 +1,43 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Andree on 25/10/2016.
  */
 
+
+@DatabaseTable(tableName = "projectStatus")
 public class ProjectStatus {
 
     @SerializedName("id")
-    private int id;
+    @DatabaseField(id = true)
+    private Integer id;
 
     @SerializedName("nombre")
+    @DatabaseField
     private String nombre;
 
     @SerializedName("tipo_estado")
-    private int tipoEstado;
+    @DatabaseField
+    private Integer tipoEstado;
 
-    @SerializedName("deleted_at")
-    private String deletedAt;
+    public ProjectStatus() {
+    }
 
-    @SerializedName("created_at")
-    private String createdAt;
+    public ProjectStatus(Integer id, String nombre, Integer tipoEstado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipoEstado = tipoEstado;
+    }
 
-    @SerializedName("updated_at")
-    private String updatedAt;
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,35 +49,12 @@ public class ProjectStatus {
         this.nombre = nombre;
     }
 
-    public int getTipoEstado() {
+    public Integer getTipoEstado() {
         return tipoEstado;
     }
 
-    public void setTipoEstado(int tipoEstado) {
+    public void setTipoEstado(Integer tipoEstado) {
         this.tipoEstado = tipoEstado;
     }
 
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

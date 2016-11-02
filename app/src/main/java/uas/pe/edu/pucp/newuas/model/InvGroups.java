@@ -1,6 +1,8 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
@@ -8,45 +10,59 @@ import java.io.Serializable;
  * Created by Andree on 25/10/2016.
  */
 
+@DatabaseTable(tableName = "invGroup")
 public class InvGroups implements Serializable{
+
     @SerializedName("id")
-    private int id;
+    @DatabaseField(id = true)
+    private Integer id;
 
     @SerializedName("nombre")
+    @DatabaseField
     private String nombre;
 
     @SerializedName("id_especialidad")
-    private int idEspecialidad;
+    @DatabaseField
+    private Integer idEspecialidad;
 
     @SerializedName("descripcion")
+    @DatabaseField
     private String descripcion;
 
     @SerializedName("imagen")
+    @DatabaseField
     private String imagen;
 
     @SerializedName("id_lider")
-    private int idLider;
-
-    @SerializedName("deleted_at")
-    private String deletedAt;
-
-    @SerializedName("created_at")
-    private String createdAt;
-
-    @SerializedName("updated_at")
-    private String updatedAt;
+    @DatabaseField
+    private Integer idLider;
 
     @SerializedName("faculty")
+    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private Faculty faculty;
 
     @SerializedName("leader")
     private Professor leader;
 
-    public int getId() {
+    public InvGroups() {
+    }
+
+    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Faculty faculty, Professor leader) {
+        this.id = id;
+        this.nombre = nombre;
+        this.idEspecialidad = idEspecialidad;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.idLider = idLider;
+        this.faculty = faculty;
+        this.leader = leader;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -58,11 +74,11 @@ public class InvGroups implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getIdEspecialidad() {
+    public Integer getIdEspecialidad() {
         return idEspecialidad;
     }
 
-    public void setIdEspecialidad(int idEspecialidad) {
+    public void setIdEspecialidad(Integer idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
     }
 
@@ -82,36 +98,12 @@ public class InvGroups implements Serializable{
         this.imagen = imagen;
     }
 
-    public int getIdLider() {
+    public Integer getIdLider() {
         return idLider;
     }
 
-    public void setIdLider(int idLider) {
+    public void setIdLider(Integer idLider) {
         this.idLider = idLider;
-    }
-
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public Faculty getFaculty() {
