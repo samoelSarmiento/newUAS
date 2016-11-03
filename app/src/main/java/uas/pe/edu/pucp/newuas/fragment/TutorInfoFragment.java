@@ -41,9 +41,6 @@ public class TutorInfoFragment extends Fragment {
 
         TUTInfoResponse tutG;
 
-        Log.d("xd","acaaaaaaaaaaaaa");
-        Log.d("xd","xDDDDD");
-
         View view =   inflater.inflate(R.layout.fragment_tutor_info, container, false);
 
         teacher_detail_nombre = (TextView)view.findViewById(R.id.teacher_detail_nombre);
@@ -56,7 +53,6 @@ public class TutorInfoFragment extends Fragment {
         Bundle bundle = this.getArguments();
         List<TUTInfoResponse> tutGroup= null;
         if (bundle != null){
-            //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             tutGroup= (List<TUTInfoResponse>) bundle.getSerializable("Tutoria");
         }
         tutG=tutGroup.get(0);
