@@ -21,7 +21,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 import okio.InflaterSource;
@@ -29,17 +32,24 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
+
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
+import uas.pe.edu.pucp.newuas.model.PSPGroup;
+import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.User;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+
 
 
     LayoutInflater layoutInflater;
@@ -53,7 +63,6 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
 
-
      //   setContentView(R.layout.activity_navigation_drawer_psp);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,7 +70,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -79,6 +88,14 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
     }
 
+/*
+    @Subscribe
+    public void onReceiveStudent(Student student){
+
+        Toast.makeText(this,"LLego al activity",Toast.LENGTH_SHORT).show();
+
+    }*/
+
     public void showGroupMenu(Menu menu){
 
 
@@ -88,12 +105,22 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
           break;
       case 0:
+
+
+
+          PSPController controller =  new PSPController();
+          controller.getStudentGroup(this);
+          //controller.getStudent(this);
+
             //STUDENTS
           menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
           menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+
+
+
 
          // menu.setGroupVisible(R.id.nav_psp_group_students, true);
           break;
@@ -147,7 +174,19 @@ public class NavigationDrawerPSP extends AppCompatActivity
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+       // mBus.register(this);
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+       // mBus.unregister(this);
+
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -224,11 +263,44 @@ public class NavigationDrawerPSP extends AppCompatActivity
     else if (id == R.id.nav_item_pspGroup_student){
 
 
+                Intent intent  = getIntent();
+
+            try {
+
+                Bundle bundle =  intent.getBundleExtra("PSPGroup");
+                if(bundle == null){
+
+                    Log.d("GROUP NAV", "BUNDLE  NO NULL");
+                    PSPController pspController = new PSPController();
+                    // pspController.getStudentGroup(this);
+                    pspController.getGroups(this);
 
 
-                PSPController pspController = new PSPController();
-                pspController.getStudentGroup(this);
-                //pspController.getGroups(this);
+                }else{
+
+                    Log.d("GROUP NAV", "BUNDLE  NULL");
+                    Fragment messagesFragment = new PSP_messagesFragment();
+                    Bundle bundleMessage = new Bundle();
+                    bundleMessage.putString("MESSAGE","Ya tiene grupo asignado");
+                    messagesFragment.setArguments(bundleMessage);
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,messagesFragment).addToBackStack(null).commit();
+                    setTitle("Grupos");
+
+
+                }
+
+
+
+
+
+
+            }catch(Exception ex){
+
+                        ex.printStackTrace();
+
+
+            }
+
 
 
         }
@@ -240,6 +312,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:

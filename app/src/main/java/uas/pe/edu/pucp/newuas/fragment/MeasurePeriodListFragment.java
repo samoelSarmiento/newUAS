@@ -23,6 +23,7 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.MeasurePeriodAdapter;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
 import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
@@ -36,7 +37,7 @@ public class MeasurePeriodListFragment extends Fragment {
 
     MeasurePeriodAdapter mpAdapter;
 
-    public MeasurePeriodListFragment(){
+    public MeasurePeriodListFragment() {
 
     }
 
@@ -45,93 +46,45 @@ public class MeasurePeriodListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-
-        getActivity().setTitle("Periodos de Medicion");
+                             Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_measureperiodlist, container, false);
 
         ListView lvPeriods = (ListView) view.findViewById(R.id.lvPeriods);
 
-        /*
-
-        TextView tvsplabel = (TextView) view.findViewById(R.id.tvSpecialtyLabel);
-        TextView tvspcode = (TextView) view.findViewById(R.id.tvSpecialtyCode);
-        TextView tvspcoord = (TextView) view.findViewById(R.id.tvSpecialtyCoord);
-        TextView tvspdesc = (TextView) view.findViewById(R.id.tvSpecialtyDesc);
-
-        */
-
         Bundle bundle = this.getArguments();
-        if (bundle != null){
+        if (bundle != null) {
 
             ArrayList<Period> str = (ArrayList<Period>) bundle.getSerializable("Periods");
             list = str;
-
-            /*
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonArray json = jp.parse(str).getAsJsonArray();
-            Log.d("TAG",json.getAsString());
             Context context = getActivity();
-            */
-            Context context = getActivity();
-            mpAdapter = new MeasurePeriodAdapter(context,list);
+            mpAdapter = new MeasurePeriodAdapter(context, list);
             lvPeriods.setAdapter(mpAdapter);
 
             lvPeriods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Period per = (Period) mpAdapter.getItem(position);
-                    Log.d("periodo",per.getIdEspecialidad()+ "");
+                    Log.d("periodo", per.getIdEspecialidad() + "");
 
-                    MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Period", per);
-                    mpvFragment.setArguments(bundle);
-
+                    MeasurePeriodController mpc = new MeasurePeriodController();
                     Context context = getActivity();
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
-                    ((Activity)context).setTitle("Periodo de Medicion");
+                    mpc.getMeasurePeriod(context, per.getIdPeriodo());
+
                 }
             });
-            /*
-            tvsplabel.setText(json.get("Nombre").getAsString());
-            tvspcode.setText(json.get("Codigo").getAsString());
-            JsonObject json2 = json.get("coordinator").getAsJsonObject();
-            tvspcoord.setText(json2.get("Nombre").getAsString() + " " + json2.get("ApellidoPaterno").getAsString() + " " + json2.get("ApellidoMaterno").getAsString());
-            tvspdesc.setText(json.get("Descripcion").getAsString());
-            Log.d("TAG",json.get("Nombre").getAsString());
-            //Log.d("TAG",json.getAsString());
-            */
         }
-
-
-
-
-
-
         return view;
 
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-
-
-
-
-
-
     }
-
 }

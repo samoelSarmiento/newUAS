@@ -58,25 +58,11 @@ public class PSPGroupAdapter extends BaseAdapter {
 
         View view = convertView;
         if(view ==null)
-            view = layoutInflater.inflate(R.layout.item_psp_has_group, null);
+            view = layoutInflater.inflate(R.layout.item_psp_groups, null);
 
         Log.d("Adapter", "LLego");
         Log.d("GRUPO", "" + items.get(position).getIdGroup());
         ViewHolder viewHolder =  new ViewHolder();
-        if(group){
-
-
-
-            viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group_2);
-            viewHolder.tvPspDescriptionGroup =  (TextView)  view.findViewById(R.id.tv_item_psp_description_group_2);
-
-            viewHolder.tvPspNumberGroup.setText(items.get(position).getNumero());
-            viewHolder.tvPspDescriptionGroup.setText(items.get(position).getDescription());
-
-        }else {
-
-
-
 
                 viewHolder.tvPspNumberGroup = (TextView) view.findViewById(R.id.tv_item_psp_number_group);
                 viewHolder.tvPspDescriptionGroup = (TextView) view.findViewById(R.id.tv_item_psp_description_group);
@@ -89,13 +75,8 @@ public class PSPGroupAdapter extends BaseAdapter {
                     public void onClick(View v) {
                         selectedPosition = (Integer) v.getTag();
                         notifyDataSetChanged();
-                    }
-                });
 
-
-
-        }
-
+                    }});
 
         viewHolder.tvPspNumberGroup.setText(items.get(position).getNumero());
         viewHolder.tvPspDescriptionGroup.setText(items.get(position).getDescription());

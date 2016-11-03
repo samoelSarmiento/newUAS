@@ -19,12 +19,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import uas.pe.edu.pucp.newuas.R;
 
 import retrofit2.Call;
@@ -62,7 +64,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -72,7 +74,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
 
         //
-
 
 
     }
@@ -113,7 +114,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment  = new Fragment();
+        Fragment fragment = new Fragment();
 
         int id = item.getItemId();
 
@@ -127,6 +128,12 @@ public class NavigationDrawerTutoria extends AppCompatActivity
             TutStudentController studentController = new TutStudentController();
             studentController.showTopics(this);
 
+        } else if (id == R.id.nav_evaluaciones) {
+            //Logica para abrir tu fragmnet
+
+
+
+
         } else if (id == R.id.nav_loginout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
@@ -136,6 +143,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
                             //Borra los shared preferences
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
 
@@ -153,7 +161,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         // Insert the fragment by replacing any existing fragment
 
 
-
         replaceFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -161,14 +168,13 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     }
 
 
-
     public void replaceFragment(Fragment fragment) {
 
+        // FragmentManager fragmentManager = getSupportFragmentManager();
+        // fragmentManager.beginTransaction()
+        //       .replace(R.id.fragment_container , fragment)
+        //      .commit();
 
-       // FragmentManager fragmentManager = getSupportFragmentManager();
-        //fragmentManager.beginTransaction()
-         //       .replace(R.id.fragment_container , fragment)
-          //      .commit();
 
 
     }

@@ -82,7 +82,7 @@ public class MeasurePeriodAdapter extends BaseAdapter{
         return view;
     }
 
-    public static class ViewHolder{
+    private static class ViewHolder{
         TextView tvPeriod;
         TextView tvPeriodStatus;
     }

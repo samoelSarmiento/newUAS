@@ -22,7 +22,7 @@ import uas.pe.edu.pucp.newuas.model.Projects;
 
 public class ProjDetailFragment extends Fragment {
 
-    TextView projName, projInitDate,projFinDate, projDeliv, projMembers;
+    TextView projName, projInitDate,projFinDate, projDeliv, projDesc;
     Button projEdit;
     Projects p;
 
@@ -42,7 +42,7 @@ public class ProjDetailFragment extends Fragment {
         projInitDate=(TextView) view.findViewById(R.id.projInitDate);
         projFinDate=(TextView) view.findViewById(R.id.projFinDate);
         projDeliv=(TextView) view.findViewById(R.id.projDeliv);
-        projMembers=(TextView) view.findViewById(R.id.projMembers);
+        projDesc=(TextView) view.findViewById(R.id.projDesc);
         projEdit=(Button) view.findViewById(R.id.projEdit);
 
         Bundle bundle = this.getArguments();
@@ -57,7 +57,7 @@ public class ProjDetailFragment extends Fragment {
         projFinDate.setText(proj.get(0).getFechaFin());
         String cantEnt="" + proj.get(0).getNumEntregables();
         projDeliv.setText(cantEnt);
-        //projMembers.setText(invGroup.get(0).getFaculty().getNombre());
+        projDesc.setText(proj.get(0).getDescripcion());
 
         projEdit.setOnClickListener(new View.OnClickListener() {
             @Override

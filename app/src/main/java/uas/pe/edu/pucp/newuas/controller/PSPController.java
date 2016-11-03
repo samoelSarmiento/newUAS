@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -106,10 +107,15 @@ public class PSPController {
                     String answer = response.body();
 
 
-                    SharedPreference shared = new SharedPreference(context);
-                    shared.setGroupStatus(Configuration.LOGIN_USER.getUser());
+
                     Toast.makeText(context, answer, Toast.LENGTH_SHORT).show();
 
+                    Intent intent =  new Intent();
+                    Bundle bundle = new Bundle();
+                    intent.putExtra("PSPGroup", bundle);
+                    ((Activity)context).setIntent(intent);
+                    ((Activity)context).getFragmentManager().popBackStack();
+                    ((Activity)context).setTitle("PSP");
 
                 } else {
 
@@ -223,36 +229,37 @@ public class PSPController {
         token.put("token", Configuration.LOGIN_USER.getToken());
 
 
-        Call<PSPGroup> call = restCon.getStudentGroup(token);
+        Call<List<PSPGroup>> call = restCon.getStudentGroup(token);
 
-        call.enqueue(new Callback<PSPGroup>() {
+        call.enqueue(new Callback<List<PSPGroup>>() {
             @Override
-            public void onResponse(Call<PSPGroup> call, Response<PSPGroup> response) {
+            public void onResponse(Call<List<PSPGroup>> call, Response<List<PSPGroup>> response) {
 
                 if (response.isSuccessful()) {
 
-                    PSPGroup group = response.body();
+                    List<PSPGroup> group = response.body();
 
-                    if (group != null) {
+                    if (!group.isEmpty()) {
 
 
                         Log.d("GROUP", "NO ES NULL");
+
+                        Intent intent =  new Intent();
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("PSPGroup", group);
-
-
-                        PSP_groupsFragment groupFragment = new PSP_groupsFragment();
-                        groupFragment.setArguments(bundle);
-
-
-                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupFragment).commit();
-                        ((Activity) context).setTitle("Grupos");
+                        bundle.putSerializable("PSPGroup",(Serializable)group);
+                        intent.putExtra("PSPGroup",bundle);
+                        ((Activity)context).setIntent(intent);
 
 
 
 
 
                     } else {
+
+                        Intent intent =  new Intent();
+                        Bundle bundle = null;
+                        intent.putExtra("PSPGroup",bundle);
+                        ((Activity)context).setIntent(intent);
 
                         Log.d("GROUP", "ES NULL");
 
@@ -266,10 +273,11 @@ public class PSPController {
 
 
             @Override
-            public void onFailure(Call<PSPGroup> call, Throwable t) {
+            public void onFailure(Call<List<PSPGroup>> call, Throwable t) {
 
+                t.printStackTrace();
 
-                getGroups(context);
+             //   getGroups(context);
 
             }
         });
@@ -277,4 +285,65 @@ public class PSPController {
         return  true;
 
     }
+
+
+
+    public boolean getStudent (final Context context) {
+
+        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String,String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<Student> call = restCon.getStudent(token);
+
+        call.enqueue(new Callback<Student>() {
+
+
+            @Override
+            public void onResponse(Call<Student> call, retrofit2.Response<Student> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+                    Student example = response.body();
+                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Bundle bundle =  new Bundle();
+                    bundle.putSerializable("Student",(Serializable) example);
+
+                    Intent intent =  new Intent();
+                    intent.putExtra("Student",(Serializable)example);
+                    ((Activity)context).setIntent(intent);
+
+                } else {
+
+                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
+                    // Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student> call, Throwable t) {
+
+                t.printStackTrace();
+                Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+
+        return true;
+
+    }
+
+    public boolean getPhaseById(Context context , PSPPhase phase){
+
+
+        
+
+        return true;
+
+    }
 }
+
+

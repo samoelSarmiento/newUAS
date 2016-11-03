@@ -54,10 +54,6 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_psp_groups, container, false);
 
-        btnChoose = (Button) view.findViewById(R.id.btn_psp_groups_choose);
-        btnCancel = (Button) view.findViewById(R.id.btn_psp_groups_cancel);
-
-        btnChoose.setOnClickListener(this);
         groupList = (ListView) view.findViewById(R.id.lv_psp_groups);
 
 /*        Log.d("OnCreateView", "LLEGO primero");
@@ -74,30 +70,19 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
         Bundle bundle = getArguments();
         if (bundle != null) {
 
-            PSPGroup group = (PSPGroup)bundle.getSerializable("PSPGroups");
-            ArrayList<PSPGroup> groups;
-            if(group != null){
+            Log.d("GROUPS_FRAGMENT","BUNDLE NO NULL");
+            if(bundle.containsKey("PSPGroups")){
 
+                btnChoose = (Button) view.findViewById(R.id.btn_psp_groups_choose);
+                btnCancel = (Button) view.findViewById(R.id.btn_psp_groups_cancel);
 
-                option =  true;
-                groups =  new ArrayList<>();
-                groups.add(group);
+                btnChoose.setOnClickListener(this);
 
-
-
-            }else{
-
-                groups = (ArrayList<PSPGroup>) bundle.getSerializable("PSPGroups");
-
+                Log.d("GROUPS_FRAGMENT","TIENE KEY");
+                ArrayList<PSPGroup> groups = (ArrayList<PSPGroup>)bundle.getSerializable("PSPGroups");
+                groupAdapter = new PSPGroupAdapter(getActivity(), groups , option);
+                groupList.setAdapter(groupAdapter);
             }
-
-
-
-
-            groupAdapter = new PSPGroupAdapter(getActivity(), groups , option);
-            groupList.setAdapter(groupAdapter);
-
-
 
 
         }
@@ -114,12 +99,11 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
             case R.id.btn_psp_groups_choose:
                 //Actualiza el grupo que pertenece el alumno
                 PSPController controller =  new PSPController();
-                SharedPreference shared = new SharedPreference(getActivity());
-                if(!shared.getGroupStatus(Configuration.LOGIN_USER.getUser())) {
+
                     int value = groupAdapter.getSelectedItem().getIdGroup();
                     Log.d("Selected", "" + value);
                     controller.updateGroup(getActivity(), value);
-                }
+
 
 
                 break;
