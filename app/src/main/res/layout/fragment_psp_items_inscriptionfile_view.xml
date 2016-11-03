@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspJefeDirecto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Jefe Directo"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspJefeDirectoValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspTelefonoJefeDirecto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Teléfono del jefe"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspTelefonoJefeDirectoValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspDireccionEmpresa"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Dirección Empresa"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspDireccionEmpresaValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspNombreDelArea"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Nombre del área"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspNombreDelAreaValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspPuesto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Puesto"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspPuestoValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspRazonSocial"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Razón Social"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspRazonSocialValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspUbicacionArea"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Ubicación del área"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspUbicacionAreaValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspActividadEconomica"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Actividad económica"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspActividadEconomicaValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspFechaInicio"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Fecha de Inicio"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspFechaInicioValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspFechaTermino"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Fecha de termino"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspFechaTerminoValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

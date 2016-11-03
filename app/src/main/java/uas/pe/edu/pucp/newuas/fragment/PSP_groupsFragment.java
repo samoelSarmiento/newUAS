@@ -74,7 +74,6 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
         if (bundle != null) {
 
             ArrayList<PSPGroup> groups = (ArrayList<PSPGroup>) bundle.getSerializable("PSPGroups");
-
             groupAdapter = new PSPGroupAdapter(getActivity(), groups);
             groupList.setAdapter(groupAdapter);
 

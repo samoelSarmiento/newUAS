@@ -15,7 +15,11 @@ import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
+
+import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
+
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 
@@ -177,10 +181,13 @@ public interface RestCon {
     @GET("psp/students/all")
     Call<List<Student>> getStudents(@QueryMap Map<String, String> token);
 
-
+    @GET("psp/students/inscriptioFile")
+    Call<List<InscriptionFilePSP>> getInscriptionFile(@QueryMap Map<String, String> token);
     //@GET("psp/students/{s_id}/documents")
     //Call<List<PSPDocument>> getDocumentsByStudent(@Path("s_id") int s_id ,@QueryMap Map<String,String> token);
 
+    @POST("psp/students/{id}/sendInscriptioFile")
+    Call<String> sendInscriptionFile( @Path("id") int inscriptionID,  @QueryMap Map<String, String> token , @Body InscriptionFilePSP inscription );
 
 
 
