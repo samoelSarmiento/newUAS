@@ -37,9 +37,13 @@ public class RetrofitHelper {
 // .baseUrl("http://52.89.227.55/api/")
 
     public static Retrofit apiConnector = new Retrofit.Builder()
+<<<<<<< HEAD
             .baseUrl("http://10.100.112.54/internetUAS/public/api/")
             
 
+=======
+            .baseUrl("http://10.101.0.31/internetUAS/public/api/")
+>>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())

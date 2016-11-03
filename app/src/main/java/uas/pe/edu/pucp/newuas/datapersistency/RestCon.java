@@ -16,6 +16,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
@@ -77,6 +78,13 @@ public interface RestCon {
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
+
+    @GET("faculties/{faculty_id}/improvement_plans")
+    Call<List<ImprovementPlan>> getImprovementPlansofSpecialty(@Path("faculty_id") int specId,  @QueryMap Map<String,String> token);
+
+    @GET("improvementplans/{ip_id}/view")
+    Call<ImprovementPlan> getImprovementPlanById(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
+
 
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
