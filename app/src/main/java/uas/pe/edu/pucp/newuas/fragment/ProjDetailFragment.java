@@ -23,7 +23,7 @@ import uas.pe.edu.pucp.newuas.model.Projects;
 public class ProjDetailFragment extends Fragment {
 
     TextView projName, projInitDate,projFinDate, projDeliv, projDesc;
-    Button projEdit;
+    Button projEdit,projSeeDel;
     Projects p;
 
     public ProjDetailFragment() {
@@ -44,13 +44,19 @@ public class ProjDetailFragment extends Fragment {
         projDeliv=(TextView) view.findViewById(R.id.projDeliv);
         projDesc=(TextView) view.findViewById(R.id.projDesc);
         projEdit=(Button) view.findViewById(R.id.projEdit);
+        projSeeDel=(Button)view.findViewById(R.id.projSeeDel);
 
         Bundle bundle = this.getArguments();
         List<Projects> proj=null;
+        boolean botonEdit=false;
         if (bundle != null){
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             proj= (List<Projects>) bundle.getSerializable("Proj");
+            botonEdit=bundle.getBoolean("BotonEdit");
         }
+
+        if(!botonEdit) projEdit.setVisibility(View.INVISIBLE);
+
         p=proj.get(0);
         projName.setText(proj.get(0).getNombre());
         projInitDate.setText(proj.get(0).getFechaIni());
@@ -71,6 +77,13 @@ public class ProjDetailFragment extends Fragment {
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
                 ((Activity)context).setTitle("Proyectos");
+            }
+        });
+        projSeeDel.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

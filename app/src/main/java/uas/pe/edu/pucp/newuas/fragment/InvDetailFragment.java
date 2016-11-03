@@ -53,10 +53,15 @@ public class InvDetailFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         List<Investigator> investigator=null;
+        boolean botonEdit=false;
         if (bundle != null){
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             investigator= (List<Investigator>) bundle.getSerializable("Inv");
+            botonEdit=bundle.getBoolean("BotonEdit");
         }
+
+        if(!botonEdit) editBut.setVisibility(View.INVISIBLE);
+
         inv=investigator.get(0);
         invName.setText(investigator.get(0).getNombre() + " " + investigator.get(0).getApePaterno() + " " + investigator.get(0).getApeMaterno());
         invMail.setText(investigator.get(0).getCorreo());

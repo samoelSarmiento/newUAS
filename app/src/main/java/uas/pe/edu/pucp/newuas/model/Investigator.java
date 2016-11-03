@@ -1,6 +1,8 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
@@ -8,93 +10,81 @@ import java.io.Serializable;
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "investigator")
 public class Investigator implements Serializable {
 
     @SerializedName("id")
-    private int id;
+    @DatabaseField(id = true)
+    private Integer id;
 
     @SerializedName("id_usuario")
-    private int idUsuario;
+    @DatabaseField
+    private Integer idUsuario;
 
     @SerializedName("nombre")
+    @DatabaseField
     private String nombre;
 
     @SerializedName("ape_paterno")
+    @DatabaseField
     private String apePaterno;
 
     @SerializedName("ape_materno")
+    @DatabaseField
     private String apeMaterno;
 
     @SerializedName("correo")
+    @DatabaseField
     private String correo;
 
     @SerializedName("celular")
+    @DatabaseField
     private String celular;
 
     @SerializedName("id_especialidad")
-    private int idEspecialidad;
+    @DatabaseField
+    private Integer idEspecialidad;
 
     @SerializedName("id_area")
-    private int idArea;
+    @DatabaseField
+    private Integer idArea;
 
     @SerializedName("Vigente")
-    private int vigente;
-
-    @SerializedName("deleted_at")
-    private Object deletedAt;
-    @SerializedName("created_at")
-    private String createdAt;
-    @SerializedName("updated_at")
-    private String updatedAt;
+    @DatabaseField
+    private Integer vigente;
 
     @SerializedName("faculty")
-
-    private Faculty faculty;
-
-    @SerializedName("user")
-    private User user;
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
+    private Specialty specialty;
 
     @SerializedName("area")
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Area area;
 
-    public Object getDeletedAt() {
-        return deletedAt;
+    public Investigator() {
     }
 
-    public void setDeletedAt(Object deletedAt) {
-        this.deletedAt = deletedAt;
+    public Investigator(Integer id, Integer idUsuario, String nombre, String apePaterno, String apeMaterno, String correo, String celular, Integer idEspecialidad, Integer idArea, Integer vigente, Specialty faculty, User user, Area area) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.correo = correo;
+        this.celular = celular;
+        this.idEspecialidad = idEspecialidad;
+        this.idArea = idArea;
+        this.vigente = vigente;
+        this.specialty = faculty;
+        this.area = area;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public Specialty getFaculty() {
+        return specialty;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Faculty getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setFaculty(Specialty faculty) {
+        this.specialty = faculty;
     }
 
     public Area getArea() {
@@ -105,21 +95,19 @@ public class Investigator implements Serializable {
         this.area = area;
     }
 
-
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -163,27 +151,27 @@ public class Investigator implements Serializable {
         this.celular = celular;
     }
 
-    public int getIdEspecialidad() {
+    public Integer getIdEspecialidad() {
         return idEspecialidad;
     }
 
-    public void setIdEspecialidad(int idEspecialidad) {
+    public void setIdEspecialidad(Integer idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
     }
 
-    public int getIdArea() {
+    public Integer getIdArea() {
         return idArea;
     }
 
-    public void setIdArea(int idArea) {
+    public void setIdArea(Integer idArea) {
         this.idArea = idArea;
     }
 
-    public int getVigente() {
+    public Integer getVigente() {
         return vigente;
     }
 
-    public void setVigente(int vigente) {
+    public void setVigente(Integer vigente) {
         this.vigente = vigente;
     }
 
