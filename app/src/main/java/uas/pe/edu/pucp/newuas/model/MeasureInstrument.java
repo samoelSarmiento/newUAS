@@ -2,6 +2,8 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
@@ -9,15 +11,19 @@ import java.io.Serializable;
  * Created by Marshall on 25/10/2016.
  */
 
+@DatabaseTable(tableName = "measureinstrument")
 public class MeasureInstrument implements Serializable {
     @SerializedName("IdFuenteMedicion")
     @Expose
+    @DatabaseField(id=true)
     private Integer idFuenteMedicion;
     @SerializedName("IdEspecialidad")
     @Expose
+    @DatabaseField
     private Integer idEspecialidad;
     @SerializedName("Nombre")
     @Expose
+    @DatabaseField
     private String nombre;
 
 

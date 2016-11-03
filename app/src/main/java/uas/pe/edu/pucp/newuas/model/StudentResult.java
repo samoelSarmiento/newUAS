@@ -4,12 +4,14 @@ import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by samoe on 01/11/2016.
  */
 
 @DatabaseTable(tableName = "studentresults")
-public class StudentResult {
+public class StudentResult implements Serializable {
 
     @SerializedName("IdResultadoEstudiantil")
     @DatabaseField(id = true)
