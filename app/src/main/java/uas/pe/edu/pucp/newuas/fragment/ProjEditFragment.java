@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -81,12 +85,14 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
                 changedProj.setNombre(projName.getText().toString());
                 changedProj.setDescripcion(projDesc.getText().toString());
                 String nEnt=projDeliv.getText().toString();
-                int cantEnt=Integer.parseInt(nEnt);
+                Integer cantEnt=Integer.parseInt(nEnt);
                 changedProj.setNumEntregables(cantEnt);
                 changedProj.setFechaIni(projInitDate.getText().toString());
                 changedProj.setFechaFin(projFinDate.getText().toString());
 
+
                 projectController.editProj(context,changedProj);
+
                 projectController.getProjectById(context,changedProj.getId());
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;

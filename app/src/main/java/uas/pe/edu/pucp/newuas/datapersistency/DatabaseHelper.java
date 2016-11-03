@@ -23,6 +23,7 @@ import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.ProjectStatus;
 import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
@@ -37,7 +38,7 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "uas.db";
+    private static final String DATABASE_NAME = "uas78.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
@@ -51,6 +52,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<InvGroups, Integer> invGroupDao = null;
     private Dao<Projects, Integer> projDao = null;
     private Dao<Area, Integer> areaDao;
+    private Dao<ProjectStatus,Integer> projStatDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -72,6 +74,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, Investigator.class);
             TableUtils.createTableIfNotExists(connectionSource, InvGroups.class);
             TableUtils.createTableIfNotExists(connectionSource, Projects.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProjectStatus.class);
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -96,6 +99,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, Investigator.class, true);
             TableUtils.dropTable(source, InvGroups.class, true);
             TableUtils.dropTable(source, Projects.class, true);
+            TableUtils.dropTable(source, ProjectStatus.class,true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
@@ -214,6 +218,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void setProjDao(Dao<Projects, Integer> projDao) {
         this.projDao = projDao;
     }
+
+    public Dao<ProjectStatus, Integer> getProjStatDao() throws SQLException {
+        if (projStatDao == null) projStatDao = getDao(ProjectStatus.class);
+        return projStatDao;
+    }
+
+    public void setProjStatDao(Dao<ProjectStatus, Integer> projStatDao) {
+        this.projStatDao = projStatDao;
+    }
+
 
     @Override
     public void close() {

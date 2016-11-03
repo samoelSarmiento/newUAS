@@ -42,12 +42,12 @@ public class InvGroups implements Serializable {
     private Specialty faculty;
 
     @SerializedName("leader")
-    private Professor leader;
+    private Teacher leader;
 
     public InvGroups() {
     }
 
-    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Specialty faculty, Professor leader) {
+    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Specialty faculty, Teacher leader) {
         this.id = id;
         this.nombre = nombre;
         this.idEspecialidad = idEspecialidad;
@@ -114,11 +114,11 @@ public class InvGroups implements Serializable {
         this.faculty = faculty;
     }
 
-    public Professor getLeader() {
+    public Teacher getLeader() {
         return leader;
     }
 
-    public void setLeader(Professor leader) {
+    public void setLeader(Teacher leader) {
         this.leader = leader;
     }
 }

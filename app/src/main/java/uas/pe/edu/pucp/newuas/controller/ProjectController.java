@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.j256.ormlite.dao.Dao;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -66,7 +67,7 @@ public class ProjectController {
                     try {
                         saveAllProj(example, context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                     Bundle bundle = new Bundle();
@@ -132,7 +133,7 @@ public class ProjectController {
                     try {
                         saveProj(example.get(0), context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -180,7 +181,7 @@ public class ProjectController {
         return  list;
     }
 
-    public void editProj(final Context context,final Projects proj){
+    public void editProj(final Context context,final Projects proj) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -195,8 +196,26 @@ public class ProjectController {
 
                 if (response.isSuccessful()) {
 
+/*
+                    try {
+                        saveProj(proj, context);
+                    } catch (SQLException e) {
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Proj", (Serializable)proj);
+                    bundle.putBoolean("BotonEdit",true);
+                    //bundle.putString("Investigators", spj);
+
+                    ProjDetailFragment spFragment = new ProjDetailFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Proyectos");
+*/
                 } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
@@ -204,9 +223,20 @@ public class ProjectController {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
+                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+/*
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Proj", (Serializable)unchangedP);
+                //bundle.putString("Investigators", spj);
 
+                ProjDetailFragment spFragment = new ProjDetailFragment();
+                spFragment.setArguments(bundle);
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                ((Activity)context).setTitle("Proyectos");*/
             }
         });
+
+
     }
     //Lista de proj
     private void saveAllProj(List<Projects> projList, final Context context) throws SQLException {
@@ -231,7 +261,7 @@ public class ProjectController {
         return projDao.queryForAll();
     }
 
-    private void saveProj(Projects proj, final Context context) throws SQLException {
+    public void saveProj(Projects proj, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         Projects find = projDao.queryForId(proj.getId());

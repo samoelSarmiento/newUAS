@@ -66,7 +66,7 @@ public class InvestigatorController {
                     try {
                         saveAllInv(example, context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -133,7 +133,7 @@ public class InvestigatorController {
                     try {
                         saveInv(example.get(0), context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -195,7 +195,7 @@ public class InvestigatorController {
                 if (response.isSuccessful()) {
 
                 } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
@@ -203,7 +203,7 @@ public class InvestigatorController {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
-
+                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -217,15 +217,15 @@ public class InvestigatorController {
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
         for (Investigator inv : invList) {
             //veo si la especialidad existe
-            Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
             Investigator find = invDao.queryForId(inv.getId());
-            Toast.makeText(context, "2", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "2", Toast.LENGTH_SHORT).show();
             if (find == null) {
-                Toast.makeText(context, "3", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "3", Toast.LENGTH_SHORT).show();
                 invDao.create(inv);
             } else {
                 //si se encontro la actualizo
-                Toast.makeText(context, "4", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "4", Toast.LENGTH_SHORT).show();
                 invDao.update(inv);
             }
         }
@@ -242,10 +242,10 @@ public class InvestigatorController {
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         Investigator find = invDao.queryForId(inv.getId());
         if (find == null) {
-            Toast.makeText(context, "create", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "create", Toast.LENGTH_SHORT).show();
             invDao.create(inv);
         } else {
-            Toast.makeText(context, "update", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "update", Toast.LENGTH_SHORT).show();
             invDao.update(inv);
         }
     }

@@ -66,7 +66,7 @@ public class InvGroupController {
                     try {
                         saveAllInvGroup(example, context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -134,7 +134,7 @@ public class InvGroupController {
                     try {
                         saveInvGroup(example.get(0), context);
                     } catch (SQLException e) {
-                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -198,7 +198,7 @@ public class InvGroupController {
                 if (response.isSuccessful()) {
 
                 } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
@@ -206,7 +206,7 @@ public class InvGroupController {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
-
+                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
         });
     }
