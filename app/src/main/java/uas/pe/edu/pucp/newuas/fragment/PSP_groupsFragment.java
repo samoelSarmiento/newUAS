@@ -75,13 +75,12 @@ public class PSP_groupsFragment extends Fragment implements View.OnClickListener
 
                 btnChoose = (Button) view.findViewById(R.id.btn_psp_groups_choose);
                 btnCancel = (Button) view.findViewById(R.id.btn_psp_groups_cancel);
+                ArrayList<PSPGroup> groups = (ArrayList<PSPGroup>) bundle.getSerializable("PSPGroups");
+                groupAdapter = new PSPGroupAdapter(getActivity(), groups , option);
+                groupList.setAdapter(groupAdapter);
 
                 btnChoose.setOnClickListener(this);
 
-                Log.d("GROUPS_FRAGMENT","TIENE KEY");
-                ArrayList<PSPGroup> groups = (ArrayList<PSPGroup>)bundle.getSerializable("PSPGroups");
-                groupAdapter = new PSPGroupAdapter(getActivity(), groups , option);
-                groupList.setAdapter(groupAdapter);
             }
 
 

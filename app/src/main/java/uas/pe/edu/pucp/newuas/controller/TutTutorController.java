@@ -59,7 +59,7 @@ public class TutTutorController {
                 TutorAppointFragment fragment = new TutorAppointFragment();
                 Log.d("xd","SERA ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
+                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, fragment).commit();
 
 
             }
@@ -79,10 +79,13 @@ public class TutTutorController {
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<List<AppointmentResponseTuto>> call = restCon.getTutorAppoints(id,data);
+        Log.d("xd","PIKI PIKI PIKI PIKI PIKI XDXDSAGASGSA");
+        Log.d("xd", call.request().url() + " ");
         call.enqueue(new Callback<List<AppointmentResponseTuto>>() {
 
             @Override
             public void onResponse(Call<List<AppointmentResponseTuto>> call, Response<List<AppointmentResponseTuto>> response) {
+
                 if (response.isSuccessful()){
 
                     List<AppointmentResponseTuto>  appointResponse = response.body();
@@ -95,10 +98,12 @@ public class TutTutorController {
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
+                        //Log.d("xd", nombreP);
                         sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP));
-                }
-                    ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
+                    }
+                    ListView listV = (ListView) view.findViewById(R.id.listViewCustomTuto);
                     listV.setAdapter(new AppointmentAdapterTutor(context,sr));
+                    Log.d("xd","TU MAMA KALATAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 }
 
             }

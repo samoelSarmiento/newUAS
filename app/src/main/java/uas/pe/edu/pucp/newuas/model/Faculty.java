@@ -1,29 +1,46 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Andree on 24/10/2016.
  */
 
+@DatabaseTable(tableName = "faculty")
 public class Faculty {
 
     @SerializedName("IdEspecialidad")
+    @DatabaseField(id = true)
     private Integer idEspecialidad;
+
     @SerializedName("Codigo")
+    @DatabaseField
     private String codigo;
+
     @SerializedName("Nombre")
+    @DatabaseField
     private String nombre;
+
     @SerializedName("Descripcion")
+    @DatabaseField
     private String descripcion;
-    @SerializedName("deleted_at")
-    private Object deletedAt;
-    @SerializedName("created_at")
-    private String createdAt;
-    @SerializedName("updated_at")
-    private String updatedAt;
+
     @SerializedName("IdDocente")
-    private int idDocente;
+    //@DatabaseField
+    private Integer idDocente;
+
+    public Faculty() {
+    }
+
+    public Faculty(Integer idEspecialidad, String codigo, String nombre, String descripcion, Integer idDocente) {
+        this.idEspecialidad = idEspecialidad;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.idDocente = idDocente;
+    }
 
     public Integer getIdEspecialidad() {
         return idEspecialidad;
@@ -57,35 +74,11 @@ public class Faculty {
         this.descripcion = descripcion;
     }
 
-    public Object getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Object deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public int getIdDocente() {
+    public Integer getIdDocente() {
         return idDocente;
     }
 
-    public void setIdDocente(int idDocente) {
+    public void setIdDocente(Integer idDocente) {
         this.idDocente = idDocente;
     }
 }
