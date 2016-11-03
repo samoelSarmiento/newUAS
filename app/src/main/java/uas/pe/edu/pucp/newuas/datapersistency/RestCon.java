@@ -133,12 +133,11 @@ public interface RestCon {
     @GET("getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String, String> token);
 
-    @GET("getAppointmentList")
-    Call<List<AppointmentResponse>> getAppointment(@QueryMap Map<String,String> token);
+    @GET("getAppointmentList/{id_usuario}")
+    Call<List<AppointmentResponse>> getAppointment(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
     @GET("getTutorInfo/{id_usuario}")
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
-
 
     @GET("getTutorAppoints/{id_usuario}")
     Call<List<AppointmentResponseTuto>> getTutorAppoints(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);

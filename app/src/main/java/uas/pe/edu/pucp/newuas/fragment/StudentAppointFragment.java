@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
@@ -46,7 +47,7 @@ public class StudentAppointFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_student_appoint, container, false);
 
         TutStudentController ts = new TutStudentController();
-        ts.getAppointment(getActivity(),view);
+        ts.getAppointment(getActivity(),view, Configuration.LOGIN_USER.getUser().getIdUsuario());
 
         newAppointment = (Button) view.findViewById(R.id.btnNewAssignment);
         newAppointment.setOnClickListener(
