@@ -24,7 +24,7 @@ public class PSP_enviar_comentario_informe_inscripcion extends Fragment implemen
 
 Button btEnviarComentario , btCancelar ;
  //  static InscriptionFilePSP inscription ;
-    EditText comentario ;
+    EditText comentario , comentarioAnterior ;
     Button guardarComentario, cancelarComentario;
 
 
@@ -42,9 +42,14 @@ Button btEnviarComentario , btCancelar ;
         getActivity().setTitle("Comentarios");
 
         comentario=(EditText) view.findViewById(R.id.editTextComentarioPSPinforme);
+        comentarioAnterior = (EditText) view.findViewById(R.id.editTextComentarioAnteriorPSPinforme);
         btEnviarComentario=(Button) view.findViewById(R.id.btEnviarComentarioPSPaccion);
         btCancelar=(Button) view.findViewById(R.id.btEnviarComentarioPSPcancelar);
 // //   inscription.setId(       PSPInscriptionFilesItemsAdapter.inscripcion.getId()   );
+
+
+       comentarioAnterior.setText(      PSPInscriptionFilesItemsAdapter.inscripcion.getRecomendaciones()  );
+
 
         btEnviarComentario.setOnClickListener(this);
         btCancelar.setOnClickListener(this);
