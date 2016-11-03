@@ -186,38 +186,7 @@ public class PSPController {
     }
 
 
-    public boolean getDocumentsByStudent(final Context context, int idStudent) {
 
-        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
-        Map<String, String> token = new HashMap<>();
-        token.put("token", Configuration.LOGIN_USER.getToken());
-
-        Call<List<Document>> call = restCon.getDocumentsByStudent(idStudent, token);
-        call.enqueue(new Callback<List<Document>>() {
-            @Override
-            public void onResponse(Call<List<Document>> call, Response<List<Document>> response) {
-
-                List<Document> pspPhaseList = response.body();
-                PSP_supDocumentsByStudent fragment = new PSP_supDocumentsByStudent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("PSPDocuments", (Serializable) pspPhaseList);
-                fragment.setArguments(bundle);
-                ((Activity) context).getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)//,R.animator.pop_enter,R.animator.pop_exit)
-                        .addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Document>> call, Throwable t) {
-
-                t.printStackTrace();
-            }
-        });
-
-        return true;
-    }
 
 
     public boolean getStudentGroup(final Context context) {
@@ -288,7 +257,7 @@ public class PSPController {
 
 
 
-    public boolean getStudent (final Context context) {
+   /* public boolean getStudent (final Context context) {
 
         RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String,String> token = new HashMap<>();
@@ -335,7 +304,7 @@ public class PSPController {
         return true;
 
     }
-
+*/
     public boolean getPhaseById(Context context , PSPPhase phase){
 
 
