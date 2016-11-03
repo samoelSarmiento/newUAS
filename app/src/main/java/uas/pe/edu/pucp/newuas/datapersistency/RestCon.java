@@ -15,42 +15,30 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
+import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
-
-
 import uas.pe.edu.pucp.newuas.model.Document;
-
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
-
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
-
+import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
-
-
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
-
-
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
-
+import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
-
-
 import uas.pe.edu.pucp.newuas.model.Projects;
-
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
-
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
-
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
@@ -73,10 +61,30 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
     */
+    Call<List<Specialty>> getAllSpecialties(@QueryMap Map<String, String> token);
+
+    @GET("periods/{p_id}/show")
+    Call<Period> getPeriod(@Path("p_id") int period_id, @QueryMap Map<String, String> token);
+
+    @GET("faculties/course/{course_id}/cycle/{academic_cycle_id}")
+    Call<List<Schedule>> getCourseSchedules(@Path("course_id") int course_id,
+                                            @Path("academic_cycle_id") int academic_cycle_id,
+                                            @QueryMap Map<String, String> token);
+
+    @GET("faculties/student_result/{sr_id}/aspects")
+    Call<List<Aspect>> getStudentResultAspects(@Path("sr_id") int idStudentResult,
+                                               @QueryMap Map<String, String> token);
 
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
+
+    @GET("faculties/{faculty_id}/improvement_plans")
+    Call<List<ImprovementPlan>> getImprovementPlansofSpecialty(@Path("faculty_id") int specId,  @QueryMap Map<String,String> token);
+
+    @GET("improvementplans/{ip_id}/view")
+    Call<ImprovementPlan> getImprovementPlanById(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
+
 
     /*Investigacion*/
     @GET("getAllInvestigators")

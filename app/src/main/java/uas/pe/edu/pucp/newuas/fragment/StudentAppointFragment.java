@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,12 +26,14 @@ import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 
 public class StudentAppointFragment extends Fragment {
 
     ListView listV;
     Button newAppointment;
+    ImageButton btnAceptar;
     public static ArrayList<SingleRow> list;
 
 
@@ -61,6 +64,20 @@ public class StudentAppointFragment extends Fragment {
                         getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
                     }
                 }
+        );
+
+        btnAceptar = (ImageButton)view.findViewById(R.id.icon1SingleRowTuto);
+        btnAceptar.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("xD","XDDDDDDDDDDDDDDDD");
+                        ((NavigationDrawerTutoriaTutor)getActivity()).showDialogFragment(new AcceptAppointmentStudentFragment());
+
+                    }
+                }
+
+
         );
 
         return view;

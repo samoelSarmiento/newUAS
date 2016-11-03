@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
@@ -28,6 +30,7 @@ import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 /**
  * Created by Wingerlion on 02/11/2016.
@@ -75,6 +78,8 @@ public class TutTutorController {
 
     public boolean getAppointment (final Context context, final View view, int id) {
 
+        final ImageButton[] b1 = new ImageButton[2] ;
+        final int[] icon1 = new int[2], icon2 = new int[2];
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -98,13 +103,17 @@ public class TutTutorController {
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
+                        if (estado.equals("Pendiente")){
+                             icon1[0] = R.drawable.ic_check;
+                             icon2[0] = R.drawable.ic_cross;
+                        }
                         //Log.d("xd", nombreP);
-                        sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP));
+                        sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP,icon1[0],icon2[0]));
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustomTuto);
                     listV.setAdapter(new AppointmentAdapterTutor(context,sr));
-                    Log.d("xd","TU MAMA KALATAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 }
+
 
             }
 
