@@ -20,16 +20,17 @@ import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 
-public class PSP_enviar_comentario_informe_inscripcion extends Fragment implements View.OnClickListener {
+public class PSP_enviar_comentario_informe_inscripcionFragment extends Fragment implements View.OnClickListener {
+
 
 Button btEnviarComentario , btCancelar ;
  //  static InscriptionFilePSP inscription ;
     EditText comentario , comentarioAnterior ;
+
     Button guardarComentario, cancelarComentario;
 
 
-
-    public PSP_enviar_comentario_informe_inscripcion(  ) {
+    public PSP_enviar_comentario_informe_inscripcionFragment() {
 
     }
 
@@ -41,10 +42,12 @@ Button btEnviarComentario , btCancelar ;
         View view = inflater.inflate(R.layout.fragment_psp_enviar_comentario_informe_inscripcion, container, false);
         getActivity().setTitle("Comentarios");
 
+
         comentario=(EditText) view.findViewById(R.id.editTextComentarioPSPinforme);
         comentarioAnterior = (EditText) view.findViewById(R.id.editTextComentarioAnteriorPSPinforme);
         btEnviarComentario=(Button) view.findViewById(R.id.btEnviarComentarioPSPaccion);
         btCancelar=(Button) view.findViewById(R.id.btEnviarComentarioPSPcancelar);
+
 // //   inscription.setId(       PSPInscriptionFilesItemsAdapter.inscripcion.getId()   );
 
 
@@ -54,7 +57,7 @@ Button btEnviarComentario , btCancelar ;
         btEnviarComentario.setOnClickListener(this);
         btCancelar.setOnClickListener(this);
 
-        return view ;
+        return view;
 
 
     }
@@ -63,16 +66,16 @@ Button btEnviarComentario , btCancelar ;
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btEnviarComentarioPSPaccion:
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
 
                 InscriptionFilePSP inscription = new InscriptionFilePSP();
-                inscription.setId( PSPInscriptionFilesItemsAdapter.inscripcion.getId()  );
-                inscription.setRecomendaciones(       comentario.getText().toString()   );
+                inscription.setId(PSPInscriptionFilesItemsAdapter.inscripcion.getId());
+                inscription.setRecomendaciones(comentario.getText().toString());
 
-                PSPControllerJ controller = new PSPControllerJ() ;
-                controller.enviarComentarioInforme( getActivity() , inscription);
+                PSPControllerJ controller = new PSPControllerJ();
+                controller.enviarComentarioInforme(getActivity(), inscription);
 
                 Intent intentPSP = new Intent(getActivity(), NavigationDrawerPSP.class);
                 startActivity(intentPSP);
@@ -87,8 +90,6 @@ Button btEnviarComentario , btCancelar ;
                 // investigatorController.getInvestigatorById(context,inv.getId());
                 break;
         }
-
-
 
 
     }

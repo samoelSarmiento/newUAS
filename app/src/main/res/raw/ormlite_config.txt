@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/02 04:04:38
+# generated on 2016/11/03 01:35:17
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -31,6 +31,41 @@ fieldName=correo
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Action
+tableName=action
+# --table-fields-start--
+# --field-start--
+fieldName=idPlanAccion
+id=true
+# --field-end--
+# --field-start--
+fieldName=idPlanMejora
+# --field-end--
+# --field-start--
+fieldName=idCicloAcademico
+# --field-end--
+# --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
+fieldName=comentario
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=idArchivoEntrada
+# --field-end--
+# --field-start--
+fieldName=porcentaje
+# --field-end--
+# --field-start--
+fieldName=estado
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Area
 tableName=area
 # --table-fields-start--
@@ -43,6 +78,23 @@ fieldName=nombre
 # --field-end--
 # --field-start--
 fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Aspect
+tableName=aspect
+# --table-fields-start--
+# --field-start--
+fieldName=idAspecto
+id=true
+# --field-end--
+# --field-start--
+fieldName=idResultadoEstudiantil
+# --field-end--
+# --field-start--
+fieldName=nombre
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -162,6 +214,84 @@ fieldName=descripcion
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlan
+tableName=improvementplan
+# --table-fields-start--
+# --field-start--
+fieldName=idPlanMejora
+id=true
+# --field-end--
+# --field-start--
+fieldName=idTipoPlanMejora
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idArchivoEntrada
+# --field-end--
+# --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
+fieldName=analisisCausal
+# --field-end--
+# --field-start--
+fieldName=hallazgo
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=fechaImplementacion
+# --field-end--
+# --field-start--
+fieldName=estado
+# --field-end--
+# --field-start--
+fieldName=fileUrl
+# --field-end--
+# --field-start--
+fieldName=typeImprovementPlan
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=teacher
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlanType
+tableName=improvementplantype
+# --table-fields-start--
+# --field-start--
+fieldName=idTipoPlanMejora
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=tema
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Investigator
 tableName=investigator
 # --table-fields-start--
@@ -242,6 +372,23 @@ foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
 foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.MeasureInstrument
+tableName=measureinstrument
+# --table-fields-start--
+# --field-start--
+fieldName=idFuenteMedicion
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=nombre
 # --field-end--
 # --table-fields-end--
 # --table-end--

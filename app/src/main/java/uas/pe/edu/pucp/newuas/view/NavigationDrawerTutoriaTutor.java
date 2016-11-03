@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -112,4 +113,9 @@ public class NavigationDrawerTutoriaTutor extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void showDialogFragment(DialogFragment d) {
+        d.show(getFragmentManager(), "tag");
+    }
+
 }

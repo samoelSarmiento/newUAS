@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="13dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="13dp">
+        android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/dateSingleRowTuto"
             style="@style/GeneralTextViewsSmall"
+            android:layout_marginTop="10dp"
             android:text="14/07/2016"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:id="@+id/dateSingleRowTuto"
 
             />
 
         <TextView
+            android:id="@+id/hourSingleRowTuto"
             style="@style/GeneralTextViewsSmall"
-            android:text="14:00:00"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="10dp"
+            android:text="14:00:00"
             android:textColor="@color/black"
-            android:id="@+id/hourSingleRowTuto"
 
             />
 
         <TextView
-            style="@style/GeneralTextViewsSmall"
-            android:text="Económico"
-            android:layout_width="80dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
             android:id="@+id/topicSingleRowTuto"
+            style="@style/GeneralTextViewsSmall"
+            android:layout_width="80dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="10dp"
+            android:text="Económico"
+            android:textColor="@color/black"
 
             />
-        <!--
-                <ImageButton
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                   -android:src="@drawable/ic_check"
-                    android:background="@android:color/transparent"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="26dp"
-                    android:scaleType="fitXY"
-                    android:id="@+id/icon1SingleRowTuto"
-                    />
 
-                <ImageButton
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_cross"
-                    android:background="@android:color/transparent"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="0dp"
-                    android:scaleType="fitXY"
-                    android:id="@+id/icon2SingleRowTuto"
-                    />
-        -->
+        <ImageButton
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:scaleType="fitXY"
+            android:id="@+id/icon1SingleRowTuto"
+            android:src="@drawable/ic_check"
+        />
+
+        <ImageButton
+            android:id="@+id/icon2SingleRowTuto"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_cross" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -72,22 +72,20 @@
 
         <TextView
             style="@style/GeneralTextViewsSmall"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="83dp"
             android:text="Alumno:"
             android:textColor="@color/black"
-            android:layout_marginLeft="83dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content" />
-
+            android:textStyle="bold" />
 
 
         <TextView
+            android:id="@+id/alumnSingleRowTuto"
             style="@style/GeneralTextViewsSmall"
+            android:layout_marginLeft="10dp"
             android:text="Gerardo Dávila García"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:id="@+id/alumnSingleRowTuto"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -99,22 +97,20 @@
 
         <TextView
             style="@style/GeneralTextViewsSmall"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="117dp"
             android:text="Estado:"
             android:textColor="@color/black"
-            android:layout_marginLeft="117dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content" />
-
+            android:textStyle="bold" />
 
 
         <TextView
+            android:id="@+id/stateSingleRowTuto"
             style="@style/GeneralTextViewsSmall"
+            android:layout_marginLeft="10dp"
             android:text="Sugerida"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:id="@+id/stateSingleRowTuto"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -122,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="3dp"
-        android:background="@android:color/black"/>
+        android:background="@android:color/black" />
 
 
 </LinearLayout>
