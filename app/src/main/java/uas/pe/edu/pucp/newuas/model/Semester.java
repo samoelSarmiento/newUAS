@@ -46,6 +46,8 @@ public class Semester implements Serializable {
     @DatabaseField
     private String fechaFin;
 
+    public Semester() {
+    }
 
     public int getIdCicloAcademico() {
         return idCicloAcademico;

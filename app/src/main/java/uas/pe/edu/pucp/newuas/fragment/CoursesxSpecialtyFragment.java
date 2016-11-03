@@ -74,8 +74,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String value = spnNivel.getItemAtPosition(position).toString();
-        int nivel = Integer.parseInt(value);
-        Configuration.CXE_ITEM_SHOW = nivel;
+        Configuration.CXE_ITEM_SHOW = Integer.parseInt(value);
         adapter.notifyDataSetChanged();
     }
 

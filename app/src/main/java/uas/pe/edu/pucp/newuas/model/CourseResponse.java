@@ -1,32 +1,62 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "course")
 public class CourseResponse implements Serializable {
 
     @SerializedName("IdCurso")
+    @DatabaseField(id = true, columnName = "course_id")
     private int idCurso;
 
+    @DatabaseField
+    private int idAcademicCycle;
+
     @SerializedName("IdEspecialidad")
+    @DatabaseField
     private int idEspecialidad;
 
     @SerializedName("NivelAcademico")
+    @DatabaseField
     private int nivelAcademico;
 
     @SerializedName("Codigo")
+    @DatabaseField
     private String codigo;
 
     @SerializedName("Nombre")
+    @DatabaseField
     private String nombre;
 
-    private ArrayList<Schedules> schedules = new ArrayList<Schedules>();
+    public CourseResponse() {
+
+
+    }
+
+    public int getIdAcademicCycle() {
+        return idAcademicCycle;
+    }
+
+    public void setIdAcademicCycle(int idAcademicCycle) {
+        this.idAcademicCycle = idAcademicCycle;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
+    private List<Schedule> schedules = new ArrayList<Schedule>();
 
     public int getIdCurso() {
         return idCurso;
@@ -68,11 +98,11 @@ public class CourseResponse implements Serializable {
         this.nombre = nombre;
     }
 
-    public ArrayList<Schedules> getSchedules() {
+    public List<Schedule> getSchedules() {
         return schedules;
     }
 
-    public void setSchedules(ArrayList<Schedules> schedules) {
+    public void setSchedules(ArrayList<Schedule> schedules) {
         this.schedules = schedules;
     }
 
