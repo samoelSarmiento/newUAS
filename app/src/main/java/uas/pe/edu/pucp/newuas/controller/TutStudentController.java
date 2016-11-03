@@ -76,12 +76,13 @@ public class TutStudentController {
         return true;
     }
 
-    public boolean getAppointment (final Context context, final View view) {
+    public boolean getAppointment (final Context context, final View view, int id) {
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<List<AppointmentResponse>> call = restCon.getAppointment(data);
+        Call<List<AppointmentResponse>> call = restCon.getAppointment(id,data);
+        Log.d("xd", call.request().url() + "traFIKANTE PUKEE  E");
         call.enqueue(new Callback<List<AppointmentResponse>>() {
 
             @Override
