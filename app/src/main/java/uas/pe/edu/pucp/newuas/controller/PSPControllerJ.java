@@ -17,9 +17,11 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.InscriptionFilePSPJ;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
 
+import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
@@ -33,21 +35,17 @@ public class PSPControllerJ {
         RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String,String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
+
         Call<List<Student>> call = restCon.getStudents(token);
-
         call.enqueue(new Callback<List<Student>>() {
-
 
             @Override
             public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
-                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
-
-                if (response.isSuccessful()) {
-                    List<Student> example = response.body();
+                        if (response.isSuccessful()) {
+                    List<Student> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-
                     Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Student",(Serializable) example);
+                    bundle.putSerializable("Students",(Serializable) listaEstudiantes);
                     PSP_supDocumentFragment spFragment = new PSP_supDocumentFragment();
                     spFragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
@@ -56,12 +54,8 @@ public class PSPControllerJ {
                 } else {
 
                     Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
-                    // Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
-                }
-
+                     }
             }
-
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
                 t.printStackTrace();
@@ -69,12 +63,81 @@ public class PSPControllerJ {
 
             }
         });
+        return true;
+
+    }
 
 
+    public boolean obtenerInforme (final Context context) {
+
+        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String,String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<InscriptionFilePSP>> call = restCon.getInscriptionFile(token);
+        call.enqueue(new Callback<List<InscriptionFilePSP>>() {
+
+            @Override
+            public void onResponse(Call<List<InscriptionFilePSP>> call, retrofit2.Response<List<InscriptionFilePSP>> response) {
+                if (response.isSuccessful()) {
+                    List<InscriptionFilePSP> informe = response.body();
+                    Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
+                    Bundle bundle =  new Bundle();
+                    bundle.putSerializable("InscriptionFilePSP",(Serializable) informe);
+                    InscriptionFilePSPJ fragment = new InscriptionFilePSPJ();
+                    fragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
+                    //((Activity)context).setTitle("Alumnos");
+
+                } else {
+
+                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<InscriptionFilePSP>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
+
+            }
+        });
         return true;
 
     }
 
 
 
-}
+
+
+    public void enviarComentarioInforme (final Context context , InscriptionFilePSP inscription ) {
+
+        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String,String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<String> call  = restCon.sendInscriptionFile( inscription.getId() ,token , inscription );
+
+
+        call.enqueue(new Callback<String>() {
+
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                if (response.isSuccessful()) {
+
+
+                } else {
+
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+           //     Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
+
+}}

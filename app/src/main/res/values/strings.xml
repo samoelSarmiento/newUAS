@@ -16,6 +16,16 @@
     <string name="ivLogo_description">Logo</string>
     <string name="tvNivel">Nivel: </string>
 
+    <string name="tvIpTitle">Titulo:</string>
+    <string name="tvIpType">Tipo de Plan de Mejora:</string>
+    <string name="tvIpFound">Hallazgo:</string>
+    <string name="tvIpCause">Análisis Causal:</string>
+    <string name="tvIpResp">Responsable:</string>
+    <string name="tvIpDate">Fecha de Implementación:</string>
+    <string name="tvIpStatus">Estado:</string>
+    <string name="btnActions">Ver actividades planteadas</string>
+    <string name="btnIpFile">Descargar archivo asociado</string>
+
 
     <!--Investigacion-->
     <string name="invModule">Módulo de Investigación</string>
@@ -51,6 +61,9 @@
     <string name="pspCycleDescription">Descripción</string>
     <string name="pspTotalTutors">Total de supervisores</string>
     <string name="pspTotalAlumnos">Total de alumnos</string>
+
+    <string name="pspSelectButtonInforme">Informacion de empresa</string>
+    <string name="pspSelectButtonDocument">Documento</string>
 
     <!--PSP Fin-->
 
@@ -117,8 +130,6 @@
     <!-- SPINNERS -->
 
 
-
-
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
     <string name="itdAcrMyself">Mi Perfil</string>
@@ -151,6 +162,8 @@
     <string name="btHorario">HORARIO</string>
     <string name="tvNumber">Numero:</string>
     <string name="btResultadoEstudiantil">RESULTADOS ESTUDIANTILES</string>
+    <string name="tvIdentificador">Identificador:</string>
+    <string name="tvAspecto">ASPECTOS</string>
     <string name="nav_evaluaciones">Evaluaciones</string>
 
     <!-- TODO: Evaluations text -->

@@ -20,6 +20,7 @@ public class Configuration {
     public static final String Q_SELECT_ALL = "SELECT * FROM ";
     public static int CXE_ITEM_SHOW = 5;
     public static UserResponse LOGIN_USER = null;
+    public static boolean connected = false;
     public static Specialty SPECIALTY = null;
 
     public static final String DATABASE_NAME = "UAS";

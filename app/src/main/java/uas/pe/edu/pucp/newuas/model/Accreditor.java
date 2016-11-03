@@ -1,6 +1,8 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
@@ -8,50 +10,71 @@ import java.io.Serializable;
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "accreditor")
 public class Accreditor implements Serializable {
 
     @SerializedName("IdAcreditador")
-    private int idAcreditador;
+    @DatabaseField(id = true)
+    private Integer idAcreditador;
 
     @SerializedName("IdEspecialidad")
-    private int idEspecialidad;
+    @DatabaseField
+    private Integer idEspecialidad;
 
     @SerializedName("IdUsuario")
-    private int idUsuario;
+    @DatabaseField
+    private Integer idUsuario;
 
     @SerializedName("Nombre")
+    @DatabaseField
     private String nombre;
 
     @SerializedName("ApellidoPaterno")
+    @DatabaseField
     private String apellidoPaterno;
 
     @SerializedName("ApellidoMaterno")
+    @DatabaseField
     private String apellidoMaterno;
 
     @SerializedName("Correo")
+    @DatabaseField
     private String correo;
 
-    public int getIdAcreditador() {
+    public Accreditor() {
+    }
+
+    public Accreditor(Integer idAcreditador, Integer idEspecialidad, Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo) {
+        this.idAcreditador = idAcreditador;
+        this.idEspecialidad = idEspecialidad;
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+    }
+
+    public Integer getIdAcreditador() {
         return idAcreditador;
     }
 
-    public void setIdAcreditador(int idAcreditador) {
+    public void setIdAcreditador(Integer idAcreditador) {
         this.idAcreditador = idAcreditador;
     }
 
-    public int getIdEspecialidad() {
+    public Integer getIdEspecialidad() {
         return idEspecialidad;
     }
 
-    public void setIdEspecialidad(int idEspecialidad) {
+    public void setIdEspecialidad(Integer idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
