@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -75,6 +76,7 @@ public class TutTutorController {
 
     public boolean getAppointment (final Context context, final View view, int id) {
 
+        final int[] icon1 = new int[2], icon2 = new int[2];
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -98,8 +100,12 @@ public class TutTutorController {
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
+                        if (estado.equals("Pendiente")){
+                             icon1[0] = R.drawable.ic_check;
+                             icon2[0] = R.drawable.ic_cross;
+                        }
                         //Log.d("xd", nombreP);
-                        sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP));
+                        sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP,icon1[0],icon2[0]));
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustomTuto);
                     listV.setAdapter(new AppointmentAdapterTutor(context,sr));

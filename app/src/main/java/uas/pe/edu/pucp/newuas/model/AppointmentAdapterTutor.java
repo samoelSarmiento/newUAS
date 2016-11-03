@@ -1,11 +1,13 @@
 package uas.pe.edu.pucp.newuas.model;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,8 +25,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         context = c;
         lista = sr;
-        Log.d("xd", sr.get(0).getNombreAlumno()+" ");
-        Log.d("xd","THE FAINAL COAUNTDOWWWN");
+
     }
 
     @Override
@@ -52,16 +53,17 @@ public class AppointmentAdapterTutor extends BaseAdapter {
         TextView titleTopic = (TextView) row.findViewById(R.id.topicSingleRowTuto);
         TextView titleState = (TextView) row.findViewById(R.id.stateSingleRowTuto);
         TextView nameState = (TextView) row.findViewById(R.id.alumnSingleRowTuto);
-
-        Log.d("xd", lista.size() +"  asasfasfafsfs");
-        Log.d("xd","THE FAINAL 66666666666666666666666666666666");
+        ImageButton icon1 = (ImageButton) row.findViewById(R.id.icon1SingleRowTuto);
+        ImageButton icon2 = (ImageButton) row.findViewById(R.id.icon2SingleRowTuto);
 
         SingleRowTuto temp = lista.get(position);
         titleDate.setText(temp.getFecha());
         titleHour.setText(temp.getHora());
         titleTopic.setText(temp.getTema());
         titleState.setText(temp.getEstado() );
-        nameState.setText(temp.getNombreAlumno() );
+        nameState.setText(temp.getNombreAlumno());
+        icon1.setImageResource(temp.getIcon1());
+        icon2.setImageResource(temp.getIcon2());
 
 
         return row;
