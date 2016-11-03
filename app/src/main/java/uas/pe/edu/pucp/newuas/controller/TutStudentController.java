@@ -138,7 +138,6 @@ public class TutStudentController {
                     tiFragment.setArguments(bundle);
                     ((Activity)context).setTitle("Tutoria");
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
-
                 }
             }
 
