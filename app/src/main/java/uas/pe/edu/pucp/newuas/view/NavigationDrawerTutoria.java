@@ -128,6 +128,12 @@ public class NavigationDrawerTutoria extends AppCompatActivity
             TutStudentController studentController = new TutStudentController();
             studentController.showTopics(this);
 
+        } else if (id == R.id.nav_evaluaciones) {
+            //Logica para abrir tu fragmnet
+
+
+
+
         } else if (id == R.id.nav_loginout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
@@ -164,11 +170,11 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
     public void replaceFragment(Fragment fragment) {
 
-
         // FragmentManager fragmentManager = getSupportFragmentManager();
-        //fragmentManager.beginTransaction()
+        // fragmentManager.beginTransaction()
         //       .replace(R.id.fragment_container , fragment)
         //      .commit();
+
 
 
     }

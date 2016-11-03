@@ -52,7 +52,35 @@
     <string name="pspTotalTutors">Total de supervisores</string>
     <string name="pspTotalAlumnos">Total de alumnos</string>
 
+    <string name="pspSelectButtonInforme">Informacion de empresa</string>
+    <string name="pspSelectButtonDocument">Documento</string>
+
     <!--PSP Fin-->
+
+    <!--Tutoria-->
+
+    <string-array name="hora">
+        <item>08:00</item>
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+    </string-array>
+
+    <string name="noCita">Atender\n
+    sin cita</string>
+
+    <!--Tutoria Fin-->
 
     <string name="btModuleAcr">Acreditacion</string>
     <string name="btModuleTutEv">Tutoría y Evaluacion</string>
@@ -91,23 +119,7 @@
 
     <!-- SPINNERS -->
 
-    <string-array name="hora">
-        <item>08:00</item>
-        <item>09:00</item>
-        <item>10:00</item>
-        <item>11:00</item>
-        <item>12:00</item>
-        <item>13:00</item>
-        <item>14:00</item>
-        <item>15:00</item>
-        <item>16:00</item>
-        <item>17:00</item>
-        <item>18:00</item>
-        <item>19:00</item>
-        <item>20:00</item>
-        <item>21:00</item>
-        <item>22:00</item>
-    </string-array>
+
 
 
     <string name="ivLogoAcr_description">Logo del modulo</string>
@@ -135,13 +147,21 @@
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
+    <string name="title_activity_navigation_drawer_tutoria_tutor">Tutoría</string>
     <string name="pspGroup">Seleccionar grupo</string>
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
     <string name="btHorario">HORARIO</string>
     <string name="tvNumber">Numero:</string>
     <string name="btResultadoEstudiantil">RESULTADOS ESTUDIANTILES</string>
+<<<<<<< HEAD
     <string name="tvIdentificador">Identificador:</string>
     <string name="tvAspecto">ASPECTOS</string>
+=======
+    <string name="nav_evaluaciones">Evaluaciones</string>
+
+    <!-- TODO: Evaluations text -->
+    <string name="evName">Nombre:</string>
+>>>>>>> 318d270b43f6f5ef58c3dce8c4fa3d38ee512349
 
 </resources>

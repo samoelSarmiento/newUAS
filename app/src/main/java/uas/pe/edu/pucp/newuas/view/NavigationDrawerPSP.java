@@ -98,12 +98,22 @@ public class NavigationDrawerPSP extends AppCompatActivity
          // menu.setGroupVisible(R.id.nav_psp_group_students, true);
           break;
       case 1:
-          //Teacher
+          //Coordinador
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+
+      case 2:
+          //Teacher
+          menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+          menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+          menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
+          menu.findItem(R.id.nav_item_pspDates).setVisible(false);
+          //menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+          //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
+          //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
 
 
   }
@@ -207,10 +217,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         }else if (id == R.id.nav_item_pspDocuments_teacher){
         try {
-
-
-
-            PSPControllerJ controller = new PSPControllerJ();
+     PSPControllerJ controller = new PSPControllerJ();
             controller.getStudents(this);
         }catch (Exception ex){
             ex.printStackTrace();

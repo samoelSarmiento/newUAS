@@ -81,6 +81,13 @@
                 android:background="@drawable/bg_button_login"
                 android:textColor="@color/white"
                 android:text="Editar"/>
+            <Button
+                android:id="@+id/invGroupSeeEv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_login"
+                android:textColor="@color/white"
+                android:text="Ver Eventos"/>
 
         </LinearLayout>
 

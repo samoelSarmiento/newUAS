@@ -8,52 +8,58 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by samoe on 20/10/2016.
  */
 
+@DatabaseTable(tableName = "user")
 public class User {
 
-    private int id;
-
     @SerializedName("IdUsuario")
-    private int idUsuario;
+    @DatabaseField(id = true)
+    private Integer idUsuario;
 
     @SerializedName("IdPerfil")
-    private int idPerfil;
+    @DatabaseField
+    private Integer idPerfil;
 
     @SerializedName("Usuario")
+    @DatabaseField
     private String usuario;
 
     @SerializedName("accreditor")
+    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private Accreditor accreditor;
 
     @SerializedName("professor")
+    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private Teacher teacher;
 
     @SerializedName("investigator")
+    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private Investigator investigator;
 
     public User(){
-
-    }
-    public int getId() {
-        return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(Integer idUsuario, Integer idPerfil, String usuario, Accreditor accreditor, Teacher teacher, Investigator investigator) {
+        this.idUsuario = idUsuario;
+        this.idPerfil = idPerfil;
+        this.usuario = usuario;
+        this.accreditor = accreditor;
+        this.teacher = teacher;
+        this.investigator = investigator;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdPerfil() {
+    public Integer getIdPerfil() {
         return idPerfil;
     }
 
-    public void setIdPerfil(int idPerfil) {
+    public void setIdPerfil(Integer idPerfil) {
         this.idPerfil = idPerfil;
     }
 
