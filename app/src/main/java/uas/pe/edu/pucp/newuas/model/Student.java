@@ -15,9 +15,9 @@ import java.io.Serializable;
 public class Student implements Serializable {
     @SerializedName("IdAlumno")
     private int IdAlumno;
-    @SerializedName("IdHorario")
+    //@SerializedName("IdHorario")
     private int IdHorario;
-    @SerializedName("Id")
+    //@SerializedName("id")
     private int Id;
     @SerializedName("Nombre")
     private String nombre;
@@ -25,24 +25,30 @@ public class Student implements Serializable {
     private String apellidoPaterno;
     @SerializedName("ApellidoMaterno")
     private String apellidoMaterno;
-    @SerializedName("telefono")
+   // @SerializedName("telefono")
     private String telefono;
-    @SerializedName("correo")
+    //@SerializedName("correo")
     private String correo;
-    @SerializedName("direccion")
+    //@SerializedName("direccion")
     private String direccion;
-    @SerializedName("codigo")
+    @SerializedName("Codigo")
     private String codigo;
-    @SerializedName("idUsuario")
+    //@SerializedName("IdUsuario")
     private int idUsuario;
-    @SerializedName("IdPspGroup")
+    @SerializedName("idPspGroup")
     private int IdPspGroup;
-    @SerializedName("IdEspecialidad")
+    //@SerializedName("IdEspecialidad")
     private int IdEspecialidad;
-    @SerializedName("IdSupervisor")
+    //@SerializedName("idSupervisor")
     private int IdSupervisor;
     @SerializedName("lleva_psp")
     private String lleva_psp;
+
+    public Student(){}
+
+    public Student (String nombre){
+        this.nombre = nombre;
+    }
 
 
     public int getIdAlumno() {
