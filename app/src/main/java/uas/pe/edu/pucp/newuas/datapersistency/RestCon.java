@@ -10,6 +10,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
+import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
+import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 
 
@@ -118,7 +120,7 @@ public interface RestCon {
 
 
     /*@GET("users/me")
-    Call<UserResponse> getInvestigator(@Body String token);*/
+    Call<UserResponse> getInvestigator( @Body String token);*/
 
     /*@GET("faculties")
     Call<List<Specialty>> getSpecialtyList(@QueryMap Map<String, String> token);*/
@@ -131,9 +133,15 @@ public interface RestCon {
     @GET("getTopics")
     Call<List<TopicResponse>> getTopics(@QueryMap Map<String, String> token);
 
+    @GET("getAppointmentList")
+    Call<List<AppointmentResponse>> getAppointment(@QueryMap Map<String,String> token);
+
     @GET("getTutorInfo/{id_usuario}")
-        //Call<List<TUTInfoResponse>>getTutorInfo
-    Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
+    Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
+
+
+    @GET("getTutorAppoints/{id_usuario}")
+    Call<List<AppointmentResponseTuto>> getTutorAppoints(@Path("id_usuario") int id_usuario, @QueryMap Map<String,String> token);
 
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
