@@ -17,8 +17,10 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanActionsFragment;
 import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanListFragment;
 import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanViewFragment;
+import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Period;
 
@@ -122,6 +124,55 @@ public class ImprovementPlanController {
         });
 
 
+
+
+
+    }
+
+
+    public void getActionsOfImprovementPlan(final Context context, Integer ipId){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Action>> call;
+        call = restCon.getActionsofImprovementPlan(ipId,token);
+
+        call.enqueue(new Callback<List<Action>>() {
+            @Override
+            public void onResponse(Call<List<Action>> call, Response<List<Action>> response) {
+                if(response.isSuccessful()){
+                    List<Action> list = response.body();
+
+                    ImprovementPlanActionsFragment ipaf = new ImprovementPlanActionsFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("actions",(Serializable)list);
+                    ipaf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, ipaf)
+                            .commit();
+                    ((Activity) context).setTitle("Acciones");
+
+
+
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Action>> call, Throwable t) {
+
+            }
+        });
 
 
 

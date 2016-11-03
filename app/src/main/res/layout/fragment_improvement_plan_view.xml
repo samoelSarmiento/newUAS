@@ -152,6 +152,7 @@
         android:text="@string/btnIpFile"
         android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
+        android:id="@+id/btnDownloadFile"
         android:layout_marginTop="15dp"/>
 
     <Button
@@ -160,6 +161,16 @@
         android:text="@string/btnActions"
         android:background="@drawable/bg_button_login_selector"
         android:textColor="@color/white"
+        android:id="@+id/btnActions"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnIpSug"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
+        android:id="@+id/btnSug"
         android:layout_marginTop="15dp"/>
 
 

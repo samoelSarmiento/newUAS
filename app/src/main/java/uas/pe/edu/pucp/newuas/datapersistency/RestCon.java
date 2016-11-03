@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
+import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
@@ -84,6 +85,11 @@ public interface RestCon {
 
     @GET("improvementplans/{ip_id}/view")
     Call<ImprovementPlan> getImprovementPlanById(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
+
+    @GET("improvementplans/{ip_id}/actions")
+    Call<List<Action>> getActionsofImprovementPlan(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
+
+
 
 
     /*Investigacion*/

@@ -25,6 +25,7 @@
     <string name="tvIpStatus">Estado:</string>
     <string name="btnActions">Ver actividades planteadas</string>
     <string name="btnIpFile">Descargar archivo asociado</string>
+    <string name="btnIpSug">Sugerencias al Plan</string>
 
 
     <!--Investigacion-->
