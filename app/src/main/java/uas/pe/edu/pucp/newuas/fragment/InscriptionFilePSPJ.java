@@ -1,6 +1,5 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,7 +50,7 @@ public class InscriptionFilePSPJ extends Fragment   {
             @Override
             public void onClick(View v) {
 
-               PSP_enviar_comentario_informe_inscripcion fragment = new PSP_enviar_comentario_informe_inscripcion();
+               PSP_enviar_comentario_informe_inscripcionFragment fragment = new PSP_enviar_comentario_informe_inscripcionFragment();
                 (getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
 
 

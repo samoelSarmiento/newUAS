@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class StudentResultListFragment extends Fragment {
         lvStudentResults = (ListView) view.findViewById(R.id.lvStudentResult);
         final Bundle bundle = getArguments();
         if (bundle != null) {
-            Context context = getActivity();
+            final Context context = getActivity();
             List<StudentResult> list = (List<StudentResult>) bundle.getSerializable("studentResult");
             adapter = new StudentResultAdapter(context, list);
             lvStudentResults.setAdapter(adapter);
@@ -47,9 +48,13 @@ public class StudentResultListFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     StudentResult result = adapter.getItem(position);
-                    Bundle bundleR = new Bundle();
-                    bundle.putSerializable("result",result);
-                    
+                    Bundle bundleResult = new Bundle();
+                    bundleResult.putSerializable("result", result);
+                    StudentResultFragment studentResultFragment = new StudentResultFragment();
+                    studentResultFragment.setArguments(bundleResult);
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, studentResultFragment).commit();
                 }
             });
         }

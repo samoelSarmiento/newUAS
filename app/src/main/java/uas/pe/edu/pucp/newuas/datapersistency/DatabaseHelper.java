@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.Area;
+import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -49,6 +50,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Area, Integer> areaDao;
     private Dao<ProjectStatus, Integer> projStatDao = null;
     private Dao<MeasureInstrument, Integer> measureinstrumentDao = null;
+    private Dao<Aspect, Integer> aspectDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -57,6 +59,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTableIfNotExists(connectionSource, Aspect.class);
             TableUtils.createTableIfNotExists(connectionSource, Area.class);
             TableUtils.createTableIfNotExists(connectionSource, StudentResult.class);
             TableUtils.createTableIfNotExists(connectionSource, EducationalObjective.class);
@@ -83,6 +86,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
+            TableUtils.dropTable(source, Aspect.class, true);
             TableUtils.dropTable(source, Area.class, true);
             TableUtils.dropTable(source, StudentResult.class, true);
             TableUtils.dropTable(source, EducationalObjective.class, true);
@@ -103,6 +107,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public Dao<Aspect, Integer> getAspectDao() throws SQLException {
+        if (aspectDao == null) aspectDao = getDao(Aspect.class);
+        return aspectDao;
+    }
+
+    public void setAspectDao(Dao<Aspect, Integer> aspectDao) {
+        this.aspectDao = aspectDao;
     }
 
     public Dao<Area, Integer> getAreaDao() throws SQLException {

@@ -1,23 +1,14 @@
 package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
-
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.Aspect;
-
-/**
- * Created by samoe on 02/11/2016.
- */
 
 public class AspectAdapter extends BaseAdapter {
     List<Aspect> items;

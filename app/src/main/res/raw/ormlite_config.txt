@@ -1,6 +1,5 @@
 #
-<<<<<<< HEAD
-# generated on 2016/11/02 04:04:38
+# generated on 2016/11/03 01:35:17
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -27,9 +26,10 @@ fieldName=apellidoMaterno
 # --field-end--
 # --field-start--
 fieldName=correo
-=======
-# generated on 2016/11/02 04:47:06
-#
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Action
 tableName=action
@@ -61,13 +61,11 @@ fieldName=porcentaje
 # --field-end--
 # --field-start--
 fieldName=estado
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 # --field-end--
 # --table-fields-end--
 # --table-end--
 #################################
 # --table-start--
-<<<<<<< HEAD
 dataClass=uas.pe.edu.pucp.newuas.model.Area
 tableName=area
 # --table-fields-start--
@@ -80,7 +78,11 @@ fieldName=nombre
 # --field-end--
 # --field-start--
 fieldName=descripcion
-=======
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Aspect
 tableName=aspect
 # --table-fields-start--
@@ -93,7 +95,6 @@ fieldName=idResultadoEstudiantil
 # --field-end--
 # --field-start--
 fieldName=nombre
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -193,7 +194,6 @@ fieldName=descripcion
 # --table-end--
 #################################
 # --table-start--
-<<<<<<< HEAD
 dataClass=uas.pe.edu.pucp.newuas.model.Faculty
 tableName=faculty
 # --table-fields-start--
@@ -206,6 +206,84 @@ fieldName=codigo
 # --field-end--
 # --field-start--
 fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlan
+tableName=improvementplan
+# --table-fields-start--
+# --field-start--
+fieldName=idPlanMejora
+id=true
+# --field-end--
+# --field-start--
+fieldName=idTipoPlanMejora
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=idArchivoEntrada
+# --field-end--
+# --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
+fieldName=analisisCausal
+# --field-end--
+# --field-start--
+fieldName=hallazgo
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --field-start--
+fieldName=fechaImplementacion
+# --field-end--
+# --field-start--
+fieldName=estado
+# --field-end--
+# --field-start--
+fieldName=fileUrl
+# --field-end--
+# --field-start--
+fieldName=typeImprovementPlan
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=teacher
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlanType
+tableName=improvementplantype
+# --table-fields-start--
+# --field-start--
+fieldName=idTipoPlanMejora
+id=true
+# --field-end--
+# --field-start--
+fieldName=idEspecialidad
+# --field-end--
+# --field-start--
+fieldName=codigo
+# --field-end--
+# --field-start--
+fieldName=tema
 # --field-end--
 # --field-start--
 fieldName=descripcion
@@ -250,58 +328,13 @@ fieldName=vigente
 # --field-end--
 # --field-start--
 fieldName=specialty
-=======
-dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlan
-tableName=improvementplan
-# --table-fields-start--
-# --field-start--
-fieldName=idPlanMejora
-id=true
-# --field-end--
-# --field-start--
-fieldName=idTipoPlanMejora
-# --field-end--
-# --field-start--
-fieldName=idEspecialidad
-# --field-end--
-# --field-start--
-fieldName=idArchivoEntrada
-# --field-end--
-# --field-start--
-fieldName=idDocente
-# --field-end--
-# --field-start--
-fieldName=analisisCausal
-# --field-end--
-# --field-start--
-fieldName=hallazgo
-# --field-end--
-# --field-start--
-fieldName=descripcion
-# --field-end--
-# --field-start--
-fieldName=fechaImplementacion
-# --field-end--
-# --field-start--
-fieldName=estado
-# --field-end--
-# --field-start--
-fieldName=fileUrl
-# --field-end--
-# --field-start--
-fieldName=typeImprovementPlan
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
 foreignAutoCreate=true
 # --field-end--
 # --field-start--
-<<<<<<< HEAD
 fieldName=area
-=======
-fieldName=teacher
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
@@ -311,7 +344,6 @@ foreignAutoCreate=true
 # --table-end--
 #################################
 # --table-start--
-<<<<<<< HEAD
 dataClass=uas.pe.edu.pucp.newuas.model.InvGroups
 tableName=invGroup
 # --table-fields-start--
@@ -324,28 +356,10 @@ fieldName=nombre
 # --field-end--
 # --field-start--
 fieldName=idEspecialidad
-=======
-dataClass=uas.pe.edu.pucp.newuas.model.ImprovementPlanType
-tableName=improvementplantype
-# --table-fields-start--
-# --field-start--
-fieldName=idTipoPlanMejora
-id=true
-# --field-end--
-# --field-start--
-fieldName=idEspecialidad
-# --field-end--
-# --field-start--
-fieldName=codigo
-# --field-end--
-# --field-start--
-fieldName=tema
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 # --field-end--
 # --field-start--
 fieldName=descripcion
 # --field-end--
-<<<<<<< HEAD
 # --field-start--
 fieldName=imagen
 # --field-end--
@@ -358,7 +372,7 @@ foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
 foreignAutoCreate=true
-=======
+# --field-end--
 # --table-fields-end--
 # --table-end--
 #################################
@@ -375,7 +389,6 @@ fieldName=idEspecialidad
 # --field-end--
 # --field-start--
 fieldName=nombre
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -567,7 +580,6 @@ foreignAutoCreate=true
 # --table-end--
 #################################
 # --table-start--
-<<<<<<< HEAD
 dataClass=uas.pe.edu.pucp.newuas.model.Status
 tableName=status
 # --table-fields-start--
@@ -582,8 +594,6 @@ fieldName=description
 # --table-end--
 #################################
 # --table-start--
-=======
->>>>>>> bdbc5bd208c2fe57e17d84f15d754968da2d0761
 dataClass=uas.pe.edu.pucp.newuas.model.StudentResult
 tableName=studentresults
 # --table-fields-start--

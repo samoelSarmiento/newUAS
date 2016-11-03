@@ -130,8 +130,6 @@
     <!-- SPINNERS -->
 
 
-
-
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
     <string name="itdAcrMyself">Mi Perfil</string>
@@ -164,14 +162,11 @@
     <string name="btHorario">HORARIO</string>
     <string name="tvNumber">Numero:</string>
     <string name="btResultadoEstudiantil">RESULTADOS ESTUDIANTILES</string>
-<<<<<<< HEAD
     <string name="tvIdentificador">Identificador:</string>
     <string name="tvAspecto">ASPECTOS</string>
-=======
     <string name="nav_evaluaciones">Evaluaciones</string>
 
     <!-- TODO: Evaluations text -->
     <string name="evName">Nombre:</string>
->>>>>>> 318d270b43f6f5ef58c3dce8c4fa3d38ee512349
 
 </resources>
