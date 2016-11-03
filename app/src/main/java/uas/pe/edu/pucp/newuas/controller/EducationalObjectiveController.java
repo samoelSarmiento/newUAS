@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.query.In;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -136,7 +137,7 @@ public class EducationalObjectiveController {
         });
     }
 
-    public void getStudentResultAspects(final Context context, int idStudenResult) {
+    public void getStudentResultAspects(final Context context, final int idStudenResult) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -147,9 +148,17 @@ public class EducationalObjectiveController {
             public void onResponse(Call<List<Aspect>> call, Response<List<Aspect>> response) {
                 if (response.isSuccessful()) {
                     List<Aspect> list = response.body();
+                    //guardar aspectos
+                    try {
+                        saveAspects(context, list);
+                    } catch (SQLException e) {
+                        Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                    }
+                    //--
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("aspects", (Serializable) list);
                     AspectListFragment aspectListFragment = new AspectListFragment();
+                    aspectListFragment.setArguments(bundle);
                     ((Activity) context).getFragmentManager().beginTransaction()
                             .addToBackStack(null).replace(R.id.fragment_container, aspectListFragment).commit();
                 }
@@ -157,9 +166,37 @@ public class EducationalObjectiveController {
 
             @Override
             public void onFailure(Call<List<Aspect>> call, Throwable t) {
-
+                try {
+                    List<Aspect> list = retrieveAspects(context, idStudenResult);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("aspects", (Serializable) list);
+                    AspectListFragment aspectListFragment = new AspectListFragment();
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, aspectListFragment).commit();
+                } catch (SQLException e) {
+                    Toast.makeText(context, "Error al recuperar los datos", Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+
+    private void saveAspects(final Context context, List<Aspect> list) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Aspect, Integer> aspectDao = helper.getAspectDao();
+        for (Aspect aspect : list) {
+            Aspect find = aspectDao.queryForId(aspect.getIdAspecto());
+            if (find == null) {
+                aspectDao.create(aspect);
+            } else {
+                aspectDao.update(aspect);
+            }
+        }
+    }
+
+    private List<Aspect> retrieveAspects(final Context context, int idStudenResult) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Aspect, Integer> aspectDao = helper.getAspectDao();
+        return aspectDao.queryBuilder().where().eq("idResultadoEstudiantil", idStudenResult).query();
     }
 
     private void saveStudenResult(final Context context, List<StudentResult> list, int idObjetivoEducacional) throws SQLException {

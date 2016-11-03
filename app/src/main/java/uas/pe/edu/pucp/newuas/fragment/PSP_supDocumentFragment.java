@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import uas.pe.edu.pucp.newuas.R;
 //import uas.pe.edu.pucp.newuas.adapter.PSPSupDocumentAdapter;
 import uas.pe.edu.pucp.newuas.adapter.PSPDocumentsAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 
@@ -25,6 +27,7 @@ public class PSP_supDocumentFragment extends Fragment {
 
     ListView lvStudents;
     PSPDocumentsAdapter documentsAdapter;
+    static Student studentSelected ;
     public  PSP_supDocumentFragment () {
 
     }
@@ -39,7 +42,7 @@ public class PSP_supDocumentFragment extends Fragment {
        lvStudents  = (ListView) view.findViewById(R.id.psp_studentList);
         Bundle bundle = this.getArguments();
         if (bundle != null){
-            ArrayList<Student> students = (ArrayList<Student>) bundle.getSerializable("Student");
+            ArrayList<Student> students = (ArrayList<Student>) bundle.getSerializable("Students");
             documentsAdapter = new PSPDocumentsAdapter(getActivity(), students);
             lvStudents.setAdapter(documentsAdapter);
 
@@ -47,12 +50,14 @@ public class PSP_supDocumentFragment extends Fragment {
         lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              Toast.makeText(getActivity(), "Proximamente", Toast.LENGTH_SHORT).show();
+        //      Toast.makeText(getActivity(), "Proximamente", Toast.LENGTH_SHORT).show();
 
-//                Student students = (Student) documentsAdapter.getItem(position);
-                //              PSPController documentsController = new PSPController();
-                //  documentsController.getDocumentsByStudent(getActivity(),students.getIdAlumno());
-                //        documentsController.getDocumentsByStudent(getActivity(), students.getIdAlumno() );
+              studentSelected = (Student) documentsAdapter.getItem(position);
+
+//una ventana más
+              PSP_selection_kind_documents fragmentCalled = new PSP_selection_kind_documents();
+              ( getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragmentCalled).commit();
+
             }
        });
         return view ;

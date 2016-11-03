@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -60,7 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                intent = new Intent(this, NavigationDrawerTutoria.class);
+                Log.d("tag","ENTRE ACAAAAAAA 1");
+                if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
+                    Log.d("tag", "ENTRE ACAAAAAAA 1123213");
+                    intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
+                }
+                else 
+                   intent = new Intent(this, NavigationDrawerTutoria.class);
                 startActivity(intent);
                 break;
         }

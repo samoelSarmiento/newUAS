@@ -43,5 +43,4 @@ public class RetrofitHelper {
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
             .build();
 
-
 }

@@ -119,6 +119,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                     @Override
 
                     public void onClick(View v) {
+                        valorTema[0] = spinnerTemas.getSelectedItem().toString();
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
                         solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -147,7 +148,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                                             dialog.cancel();
                                             Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
                                             TutStudentController tsc = new TutStudentController();
-                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0]);
+                                            tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0]);
                                         }
                                     }
                                 ).show();
