@@ -17,6 +17,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
@@ -51,6 +52,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<ProjectStatus, Integer> projStatDao = null;
     private Dao<MeasureInstrument, Integer> measureinstrumentDao = null;
     private Dao<Aspect, Integer> aspectDao = null;
+    private Dao<InvEvent,Integer> invEventDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -75,6 +77,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, Projects.class);
             TableUtils.createTableIfNotExists(connectionSource, ProjectStatus.class);
             TableUtils.createTableIfNotExists(connectionSource, MeasureInstrument.class);
+            TableUtils.createTableIfNotExists(connectionSource, InvEvent.class);
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -101,6 +104,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, InvGroups.class, true);
             TableUtils.dropTable(source, Projects.class, true);
             TableUtils.dropTable(source, ProjectStatus.class, true);
+            TableUtils.dropTable(source, InvEvent.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
@@ -246,6 +250,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public void setMeasureInstrumentDao(Dao<MeasureInstrument, Integer> measureinstrumentDao) {
         this.measureinstrumentDao = measureinstrumentDao;
+    }
+
+    public Dao<InvEvent, Integer> getInvEventDao() throws SQLException{
+        if (invEventDao == null) invEventDao = getDao(InvEvent.class);
+        return invEventDao;
+    }
+
+    public void setInvEventDao(Dao<InvEvent, Integer> invEventDao) {
+        this.invEventDao = invEventDao;
     }
 
     @Override
