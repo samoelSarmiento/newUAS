@@ -334,7 +334,8 @@ public class PSPController {
                     bundle.putSerializable("PSPStudents",(Serializable) students);
                     Fragment fragment =  new PSP_teacherStudentsList();
                     fragment.setArguments(bundle);
-                    ((Activity)(context)).getFragmentManager().beginTransaction().addToBackStack(null)
+
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null)
                             .replace(R.id.fragment_container_psp,fragment).commit();
 
                 } else {

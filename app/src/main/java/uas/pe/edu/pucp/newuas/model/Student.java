@@ -35,7 +35,7 @@ public class Student implements Serializable {
     private String codigo;
     //@SerializedName("IdUsuario")
     private int idUsuario;
-    @SerializedName("idPspGroup")
+  //  @SerializedName("idPspGroup")
     private int IdPspGroup;
     //@SerializedName("IdEspecialidad")
     private int IdEspecialidad;

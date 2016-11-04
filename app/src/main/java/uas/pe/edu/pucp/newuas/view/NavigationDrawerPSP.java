@@ -38,6 +38,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
@@ -240,6 +241,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_item_pspDates) {
 
+            fragment = new PSP_meetingsFragment();
+
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+            setTitle(item.getTitle());
+
+
+
 
         } else if (id == R.id.nav_item_pspPhases){
             try {
@@ -316,7 +324,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
             PSPController controller =  new PSPController();
-            controller.getTeacherStudents(getApplicationContext());
+            controller.getTeacherStudents(this);
             setTitle("Ver notas");
 
 
