@@ -53,7 +53,7 @@ public class CriterionLevelAdapter extends BaseAdapter {
         viewHolder.tvCritLevVal = (TextView)view.findViewById(R.id.tvCritLevVal);
 
         viewHolder.tvCritLevName.setText(items.get(position).getDescripcion());
-        viewHolder.tvCritLevName.setText(items.get(position).getValor()+"");
+        viewHolder.tvCritLevVal.setText(items.get(position).getValor()+"");
 
 
 
