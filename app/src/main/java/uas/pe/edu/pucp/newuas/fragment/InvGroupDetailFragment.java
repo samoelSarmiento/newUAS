@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 
@@ -33,6 +34,7 @@ public class InvGroupDetailFragment extends Fragment {
     Button invGroupBut,invGroupSeeEv;
     InvGroups invG;
     ImageView invGImage;
+    Context context;
 
     public InvGroupDetailFragment() {
         // Required empty public constructor
@@ -43,7 +45,7 @@ public class InvGroupDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inv_group_detail, container, false);
-
+        context = getActivity();
         getActivity().setTitle("Grupos de Inv.");
 
         invGroupName=(TextView) view.findViewById(R.id.invGroupName);
@@ -100,7 +102,8 @@ public class InvGroupDetailFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-
+                InvEventController invEventController = new InvEventController();
+                invEventController.getInvEvents(context,invG.getId());
             }
         });
 
