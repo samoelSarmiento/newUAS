@@ -143,6 +143,12 @@ public interface RestCon {
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 
+    @POST("updateStudentAppointment")
+    Call<String> updateAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("cancelStudentAppointment")
+    Call<String> cancelAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
     /*END SECTION*/
 
 
@@ -189,4 +195,5 @@ public interface RestCon {
 
 
 }
+
 
