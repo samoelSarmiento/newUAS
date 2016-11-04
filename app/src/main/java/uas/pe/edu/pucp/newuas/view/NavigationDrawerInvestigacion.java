@@ -103,9 +103,6 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
             InvestigatorsFragment invetigatorsFragment = new InvestigatorsFragment();
             getFragmentManager().beginTransaction().add(R.id.fragment_container, invetigatorsFragment).commit();
             setTitle(item.getTitle());*/
-        } else if (id == R.id.nav_back) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
         } else if (id == R.id.nav_logOut) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override

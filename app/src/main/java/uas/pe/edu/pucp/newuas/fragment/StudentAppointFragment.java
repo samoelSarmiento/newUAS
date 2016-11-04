@@ -56,6 +56,7 @@ public class StudentAppointFragment extends Fragment {
                 }
         );
 
+        /*
         btnAceptar = (ImageButton)view.findViewById(R.id.icon1SingleRowTuto);
         btnAceptar.setOnClickListener(
                 new View.OnClickListener(){
@@ -69,6 +70,7 @@ public class StudentAppointFragment extends Fragment {
 
 
         );
+        */
 
         return view;
     }

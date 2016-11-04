@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.media.VolumeProviderCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -118,6 +119,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
           menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+
 
 
 
@@ -307,6 +309,16 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
             }
+
+
+
+        }else if(id == R.id.nav_item_pspGrades){
+
+
+            PSPController controller =  new PSPController();
+            controller.getTeacherStudents(getApplicationContext());
+            setTitle("Ver notas");
+
 
 
 
