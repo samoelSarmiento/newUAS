@@ -2,6 +2,8 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -25,7 +27,9 @@ import uas.pe.edu.pucp.newuas.fragment.InvGroupDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 /**
  * Created by Andree on 25/10/2016.
@@ -188,14 +192,35 @@ public class InvGroupController {
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<String> call = restCon.editInvGroup(invG.getId(),token,invG);
+        InvGroupsRequest igr= new InvGroupsRequest(invG);
 
-        call.enqueue(new Callback<String>() {
+        Call<StringResponse> call = restCon.editInvGroup(invG.getId(),token,igr);
+
+        call.enqueue(new Callback<StringResponse>() {
             @Override
-            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+            public void onResponse(Call<StringResponse> call, retrofit2.Response<StringResponse> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
+
+                    try {
+                        saveInvGroup(invG, context);
+                        //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
+                    } catch (SQLException e) {
+                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+/*
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("InvGroup", (Serializable)invG);
+                    bundle.putBoolean("BotonEdit",true);
+                    //bundle.putString("Investigators", spj);
+
+                    InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
+                    spFragment.setArguments(bundle);
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Grupos de Inv.");*/
 
                 } else {
 
@@ -204,11 +229,24 @@ public class InvGroupController {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
                 //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
         });
+        ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState()== NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
+            //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
+            try {
+                saveInvGroup(invG, context);
+                //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
+            } catch (SQLException e) {
+                //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
     }
 
     //Lista de inv g.

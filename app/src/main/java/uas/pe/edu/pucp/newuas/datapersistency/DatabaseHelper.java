@@ -34,7 +34,7 @@ import uas.pe.edu.pucp.newuas.model.Teacher;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "uas78.db";
+    private static final String DATABASE_NAME = "uas100.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
