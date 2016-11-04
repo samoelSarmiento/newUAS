@@ -46,7 +46,7 @@ public class InvEvent implements Serializable{
     private Integer tipo;
 
     @SerializedName("imagen")
-    @DatabaseField
+    //@DatabaseField
     private Object imagen;
 
     @SerializedName("id_grupo")
