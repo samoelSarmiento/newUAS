@@ -51,13 +51,13 @@ public class InvEventController {
                     //SpecialtyResponse
                     List<InvEvent> example = response.body();
 
-
+/*
                     try {
                         saveAllInvEv(example, context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Events", (Serializable)example);
@@ -79,7 +79,7 @@ public class InvEventController {
             @Override
             public void onFailure(Call<List<InvEvent>> call, Throwable t) {
                 t.printStackTrace();
-
+/*
                 try {
                     List<InvEvent> invGList = retriveAllInvEv(context);
                     Bundle bundle = new Bundle();
@@ -93,7 +93,7 @@ public class InvEventController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
             }
 
@@ -115,13 +115,13 @@ public class InvEventController {
                 if (response.isSuccessful()) {
 
                     List<InvEvent> example = response.body();
-
+/*
                     try {
                         saveInvEv(example.get(0), context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Event", (Serializable)example);
@@ -144,7 +144,7 @@ public class InvEventController {
             @Override
             public void onFailure(Call<List<InvEvent>> call, Throwable t) {
                 t.printStackTrace();
-
+/*
                 try {
                     InvEvent invG = getInvEv(id, context);
 
@@ -161,7 +161,7 @@ public class InvEventController {
                 } catch (SQLException e) {
                     Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                }
+                }*/
             }
         });
     }
@@ -218,13 +218,13 @@ public class InvEventController {
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState()== NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
             //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
-            try {
+            /*try {
                 saveInvEv(invEvent, context);
                 //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
             } catch (SQLException e) {
                 Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
-            }
+            }*/
             Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
         }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
     }
