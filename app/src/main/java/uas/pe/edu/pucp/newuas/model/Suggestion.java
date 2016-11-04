@@ -23,7 +23,11 @@ public class Suggestion {
 
     @SerializedName("created")
     @DatabaseField
-    private String fecha;
+    private String creado;
+
+    @SerializedName("updated")
+    @DatabaseField
+    private String modificado;
 
     @SerializedName("title")
     @DatabaseField
@@ -60,12 +64,12 @@ public class Suggestion {
         this.nombre = nombre;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getCreado() {
+        return creado;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setCreado(String creado) {
+        this.creado = creado;
     }
 
     public String getTitulo() {
