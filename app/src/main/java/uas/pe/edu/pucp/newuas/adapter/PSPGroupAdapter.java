@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
-import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
 
 /**
  * Created by Franz on 26/10/2016.

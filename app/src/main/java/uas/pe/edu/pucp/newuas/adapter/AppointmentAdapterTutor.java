@@ -1,4 +1,4 @@
-package uas.pe.edu.pucp.newuas.model;
+package uas.pe.edu.pucp.newuas.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
+import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
@@ -79,7 +80,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
         icon1.setImageResource(temp.getIcon1());
         icon2.setImageResource(temp.getIcon2());
 
-        //final String solicitud = "Esta a punto de  confirmar una cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + "       ¿Desea continuar?";
+        //final String solicitud = "Esta a punto de  confirmar una cita con su alumno para el día " +  temp.getCreado()  + " a las " + temp.getHora() + "       ¿Desea continuar?";
         final String solicitud =    "Esta a punto de  confirmar una      cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + "                     ¿Desea continuar?";
 
         icon1.setOnClickListener(

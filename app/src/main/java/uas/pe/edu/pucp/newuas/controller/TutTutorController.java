@@ -19,18 +19,11 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
-import uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment;
-import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
-import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
-import uas.pe.edu.pucp.newuas.model.AppointmentAdapterTutor;
-import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
+import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapterTutor;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
-import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
-import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
-import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 /**
  * Created by Wingerlion on 02/11/2016.
