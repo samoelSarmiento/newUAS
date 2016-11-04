@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
@@ -73,7 +74,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         switch (v.getId()){
             case R.id.invEvSave:
 
-                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),invEvName.getText().toString() , Toast.LENGTH_SHORT).show();
 
                 InvEvent changedIE = invEv;
                 changedIE.setNombre(invEvName.getText().toString());
