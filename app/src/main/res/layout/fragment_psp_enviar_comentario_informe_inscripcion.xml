@@ -13,11 +13,14 @@
         android:text="Enviar Comentario"
         android:id="@+id/btEnviarComentarioPSPaccion"
         android:layout_weight="0.76"
-        android:layout_gravity="left|bottom" />
+        android:layout_gravity="left|bottom"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_width="146dp"
+        android:layout_height="109dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Comentario anterior"
         android:id="@+id/textView"
@@ -34,8 +37,8 @@
         android:editable="true" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="113dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nuevo comentario"
         android:id="@+id/textView2"
@@ -46,7 +49,10 @@
         android:layout_height="59dp"
         android:text="Aceptar"
         android:id="@+id/btEnviarComentarioPSPcancelar"
-        android:layout_gravity="right|bottom" />
+        android:layout_gravity="right|bottom"
+        android:background="@drawable/bg_button_login_selector"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/editTextComentarioPSPinforme"
