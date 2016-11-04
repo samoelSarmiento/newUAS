@@ -122,6 +122,7 @@ public interface RestCon {
     Call<List<Action>> getActionsofImprovementPlan(@Path("ip_id") int ipId, @QueryMap Map<String, String> token);
 
 
+
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
@@ -230,6 +231,7 @@ public interface RestCon {
     Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
 
 
+
     @GET("psp/students/inscriptioFile")
     Call<List<InscriptionFilePSP>> getInscriptionFile(@QueryMap Map<String, String> token);
     //@GET("psp/students/{s_id}/documents")
@@ -243,6 +245,7 @@ public interface RestCon {
 
     @GET("psp/student/{id)/grade")
     Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String, String> token);
+
 
     /*END SECTION*/
 }
