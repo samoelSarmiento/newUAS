@@ -243,7 +243,7 @@ public interface RestCon {
     @GET("psp/student/group")
     Call<List<PSPGroup>> getStudentGroup(@QueryMap Map<String, String> token);
 
-    @GET("psp/student/{id)/grade")
+    @GET("psp/student/{id}/grade")
     Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String, String> token);
 
 
