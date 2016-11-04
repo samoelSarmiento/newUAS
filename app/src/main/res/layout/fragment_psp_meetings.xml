@@ -42,7 +42,7 @@
             android:layout_marginLeft="70dp"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/dateText"
+            android:id="@+id/et_psp_meeting_date"
             />
 
 
@@ -52,7 +52,7 @@
             android:src="@drawable/ic_calendar"
             android:background="@android:color/transparent"
             android:layout_marginLeft="230dp"
-            android:id="@+id/btn_psp_calendar_meeting"
+            android:id="@+id/btn_psp_meeting_calendar"
             />
 
 
@@ -79,7 +79,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerHora"
+            android:id="@+id/cmb_psp_meeting_hour"
             android:layout_marginTop="32dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="5dp"
@@ -103,7 +103,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerTema"
+            android:id="@+id/cmb_psp_meeting_topic"
             android:layout_marginTop="32dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
