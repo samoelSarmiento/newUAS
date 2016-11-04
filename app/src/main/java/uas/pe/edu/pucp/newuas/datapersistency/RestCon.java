@@ -21,6 +21,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Criterion;
+import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -101,6 +102,9 @@ public interface RestCon {
 
     @GET("aspects/{id}/criterions")
     Call<List<Criterion>> getCriterionsofAspect(@Path("id") int idAspect, @QueryMap Map<String, String> toe);
+
+    @GET("criterions/{id}/levels")
+    Call<List<CriterionLevel>> getLevelsofCriterion(@Path("id") int idCriterion, @QueryMap Map<String,String> token);
 
 
     @GET("periods/{p_id}/{f_id}/objectives")

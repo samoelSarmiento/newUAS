@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.AspectAdapter;
 import uas.pe.edu.pucp.newuas.adapter.CriterionAdapter;
+import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 
 /**
@@ -44,9 +46,18 @@ public class CriterionListFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle!=null){
             List<Criterion> list = (List<Criterion>) bundle.getSerializable("crits");
+            final List<Criterion> listlev = list;
             Context context = getActivity();
             crAdapter = new CriterionAdapter(context,list);
             lvCrits.setAdapter(crAdapter);
+
+            lvCrits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    EducationalObjectiveController eoc = new EducationalObjectiveController();
+                    eoc.getLevelsofCriterion(getActivity(), listlev.get(position).getIdCriterio());
+                }
+            });
 
         }
 
