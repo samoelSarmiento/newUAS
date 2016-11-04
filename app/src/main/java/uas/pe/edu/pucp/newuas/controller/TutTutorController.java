@@ -19,6 +19,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
@@ -29,6 +30,7 @@ import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 /**
  * Created by Wingerlion on 02/11/2016.
@@ -76,6 +78,7 @@ public class TutTutorController {
 
     public boolean getAppointment (final Context context, final View view, int id) {
 
+        final ImageButton[] b1 = new ImageButton[2] ;
         final int[] icon1 = new int[2], icon2 = new int[2];
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
@@ -109,8 +112,8 @@ public class TutTutorController {
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustomTuto);
                     listV.setAdapter(new AppointmentAdapterTutor(context,sr));
-                    Log.d("xd","TU MAMA KALATAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 }
+
 
             }
 
