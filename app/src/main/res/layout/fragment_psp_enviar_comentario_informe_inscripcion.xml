@@ -7,27 +7,53 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <EditText
-        android:id="@+id/editTextComentarioPSPinforme"
-        android:text=""
-        android:layout_weight="0.7"
-        android:layout_width="250dp"
-        android:layout_height="206dp"
-        android:layout_gravity="center" />
-
     <Button
         android:layout_width="114dp"
         android:layout_height="65dp"
         android:text="Enviar Comentario"
         android:id="@+id/btEnviarComentarioPSPaccion"
         android:layout_weight="0.76"
+        android:layout_gravity="left|bottom" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Comentario anterior"
+        android:id="@+id/textView"
         android:layout_gravity="left|top" />
+
+    <EditText
+        android:id="@+id/editTextComentarioAnteriorPSPinforme"
+        android:text=""
+        android:layout_weight="0.7"
+        android:layout_width="166dp"
+        android:layout_height="143dp"
+        android:layout_gravity="right|top"
+        android:enabled="true"
+        android:editable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nuevo comentario"
+        android:id="@+id/textView2"
+        android:layout_gravity="left|center_vertical" />
 
     <Button
         android:layout_width="146dp"
         android:layout_height="59dp"
         android:text="Aceptar"
         android:id="@+id/btEnviarComentarioPSPcancelar"
-        android:layout_gravity="right|top" />
+        android:layout_gravity="right|bottom" />
+
+    <EditText
+        android:id="@+id/editTextComentarioPSPinforme"
+        android:text=""
+        android:layout_weight="0.7"
+        android:layout_width="168dp"
+        android:layout_height="149dp"
+        android:layout_gravity="right|center_vertical" />
 
 </FrameLayout>

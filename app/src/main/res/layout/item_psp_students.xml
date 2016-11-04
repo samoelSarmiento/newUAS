@@ -12,6 +12,7 @@
         >
 
         <TextView
+
             android:id="@+id/psp_identifier_student"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,12 +26,7 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_weight="0.4"
-        android:id="@+id/psp_name_teacher"
-        android:layout_width="0dp"
-        android:text="Profesor"
-        android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>
