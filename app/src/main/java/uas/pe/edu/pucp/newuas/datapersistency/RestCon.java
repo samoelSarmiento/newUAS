@@ -20,6 +20,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -74,6 +75,7 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
     */
+    @GET("faculties")
     Call<List<Specialty>> getAllSpecialties(@QueryMap Map<String, String> token);
 
     @GET("periods/{p_id}/show")
@@ -92,6 +94,9 @@ public interface RestCon {
     Call<List<StudentResult>> getStudentResults(@Path("faculty_id") int idSpecialty,
                                                 @Path("eos_id") int idEdObj,
                                                 @QueryMap Map<String, String> token);
+
+    @GET("aspects/{id}/criterions")
+    Call<List<Criterion>> getCriterionsofAspect(@Path("id") int idAspect, @QueryMap Map<String,String> toe);
 
 
     @GET("periods/{p_id}/{f_id}/objectives")
