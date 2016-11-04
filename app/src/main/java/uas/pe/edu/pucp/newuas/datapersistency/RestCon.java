@@ -23,7 +23,9 @@ import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
+import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
@@ -35,6 +37,7 @@ import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
@@ -101,15 +104,13 @@ public interface RestCon {
 
 
     /*Investigacion*/
-    @GET("getAllInvestigators")
+    @GET("investigation/getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String,String> token);
 
-    @GET("getAllInvGroups")
+    @GET("investigation/getAllInvGroups")
     Call<List<InvGroups>> getInvGroups(@QueryMap Map<String,String> token);
 
-
-
-    @GET("getAllProjects")
+    @GET("investigation/getAllProjects")
     Call<List<Projects>> getProjects(@QueryMap Map<String,String> token);
 
     @POST("investigation/{id}/projects")
@@ -122,14 +123,22 @@ public interface RestCon {
     Call<List<InvGroups>> getInvGroupById(@Path("id") int groupId, @QueryMap Map<String,String> token);
 
     @POST("investigation/{id}/groups")
-    Call<String> editInvGroup(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body InvGroups invGroups);
+    Call<StringResponse> editInvGroup(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body InvGroupsRequest invGroups);
 
     @POST("investigation/{id}/investigators")
     Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
 
-
     @GET("investigation/{id}/projects")
     Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/event")
+    Call<List<InvEvent>> getEvById(@Path("id") int id, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/events")
+    Call<List<InvEvent>> getEvByGroupId(@Path("id") int id, @QueryMap Map<String,String> token);
+
+    @POST("investigation/{id}/event")
+    Call<String> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
     /*--------------*/
 
 

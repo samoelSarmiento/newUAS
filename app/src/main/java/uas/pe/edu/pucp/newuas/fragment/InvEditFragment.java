@@ -83,7 +83,7 @@ public class InvEditFragment extends Fragment implements View.OnClickListener{
                 changedInv.setCorreo(invMail.getText().toString());
                 changedInv.setCelular(invTel.getText().toString());
                 investigatorController.editInv(context,changedInv);
-                investigatorController.getInvestigatorById(context,inv.getId());
+                //investigatorController.getInvestigatorById(context,inv.getId());
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
 
