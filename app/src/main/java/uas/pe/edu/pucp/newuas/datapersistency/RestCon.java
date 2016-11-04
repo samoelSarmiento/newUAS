@@ -20,6 +20,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -78,7 +79,7 @@ public interface RestCon {
     @GET("faculties/{faculty_id}/evaluated_courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("faculty_id") int faculty_id,@QueryMap Map<String, String> token);
     */
-    @GET("faculties/all")
+    @GET("faculties")
     Call<List<Specialty>> getAllSpecialties(@QueryMap Map<String, String> token);
 
     @GET("periods/{p_id}/show")
@@ -97,6 +98,9 @@ public interface RestCon {
     Call<List<StudentResult>> getStudentResults(@Path("faculty_id") int idSpecialty,
                                                 @Path("eos_id") int idEdObj,
                                                 @QueryMap Map<String, String> token);
+
+    @GET("aspects/{id}/criterions")
+    Call<List<Criterion>> getCriterionsofAspect(@Path("id") int idAspect, @QueryMap Map<String, String> toe);
 
 
     @GET("periods/{p_id}/{f_id}/objectives")
@@ -117,6 +121,9 @@ public interface RestCon {
     @GET("improvementplans/{ip_id}/actions")
     Call<List<Action>> getActionsofImprovementPlan(@Path("ip_id") int ipId, @QueryMap Map<String, String> token);
 
+
+
+    /*Investigacion*/
     @GET("investigation/getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
 
@@ -218,10 +225,11 @@ public interface RestCon {
 
 
     @GET("psp/students/all")
-    Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
+    Call<List<Student>> getStudents(@QueryMap Map<String, String> token);
 
     @GET("psp/teacher/students/all")
-    Call<List<Student>> getStudents(@QueryMap Map<String, String> token);
+    Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
+
 
 
     @GET("psp/students/inscriptioFile")
@@ -232,19 +240,13 @@ public interface RestCon {
     @POST("psp/students/{id}/sendInscriptioFile")
     Call<String> sendInscriptionFile(@Path("id") int inscriptionID, @QueryMap Map<String, String> token, @Body InscriptionFilePSP inscription);
 
-
     @GET("psp/student/group")
     Call<List<PSPGroup>> getStudentGroup(@QueryMap Map<String, String> token);
-
 
     @GET("psp/student/{id)/grade")
     Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String, String> token);
 
 
-
     /*END SECTION*/
-
-
 }
-
 
