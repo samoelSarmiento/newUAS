@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,10 +26,13 @@ import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
+import uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList;
 import uas.pe.edu.pucp.newuas.model.Document;
+import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
@@ -256,42 +260,93 @@ public class PSPController {
     }
 
 
+    public boolean getStudentGrades(final Context context , final Student student){
 
-   /* public boolean getStudent (final Context context) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<PSPGrade>> call = restCon.getStudentGrades(student.getIdAlumno(), token);
+
+        call.enqueue(new Callback<List<PSPGrade>>() {
+            @Override
+            public void onResponse(Call<List<PSPGrade>> call, Response<List<PSPGrade>> response) {
+
+                if(response.isSuccessful()){
+
+
+
+                    List<PSPGrade> lista = response.body();
+                    Fragment fragment =  new PSP_studentGradesDetail();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Grade", (Serializable) lista);
+                    fragment.setArguments(bundle);
+
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                            .setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
+                            .addToBackStack(null).commit();
+
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPGrade>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
+
+
+        return true;
+
+
+    }
+
+
+
+    public boolean getTeacherStudents (final Context context) {
 
         RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String,String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<Student> call = restCon.getStudent(token);
+        Call<List<Student>> call = restCon.getStudents(token);
 
-        call.enqueue(new Callback<Student>() {
+        call.enqueue(new Callback<List<Student>>() {
 
 
             @Override
-            public void onResponse(Call<Student> call, retrofit2.Response<Student> response) {
+            public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-                    Student example = response.body();
+                    List<Student> students = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
                     Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Student",(Serializable) example);
-
-                    Intent intent =  new Intent();
-                    intent.putExtra("Student",(Serializable)example);
-                    ((Activity)context).setIntent(intent);
+                    bundle.putSerializable("PSPStudents",(Serializable) students);
+                    Fragment fragment =  new PSP_teacherStudentsList();
+                    fragment.setArguments(bundle);
+                    ((Activity)(context)).getFragmentManager().beginTransaction().addToBackStack(null)
+                            .replace(R.id.fragment_container_psp,fragment).commit();
 
                 } else {
 
                     Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
-                    // Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
 
             @Override
-            public void onFailure(Call<Student> call, Throwable t) {
+            public void onFailure(Call<List<Student>> call, Throwable t) {
 
                 t.printStackTrace();
                 Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
@@ -304,7 +359,6 @@ public class PSPController {
         return true;
 
     }
-*/
     public boolean getPhaseById(Context context , PSPPhase phase){
 
 
