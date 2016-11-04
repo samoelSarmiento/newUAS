@@ -3,16 +3,24 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 
 /**
@@ -24,6 +32,7 @@ public class InvGroupDetailFragment extends Fragment {
     TextView invGroupName, invGroupDesc,invGroupEsp;
     Button invGroupBut,invGroupSeeEv;
     InvGroups invG;
+    ImageView invGImage;
 
     public InvGroupDetailFragment() {
         // Required empty public constructor
@@ -42,6 +51,7 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupEsp=(TextView) view.findViewById(R.id.invGroupEsp);
         invGroupBut=(Button) view.findViewById(R.id.invGroupEdit);
         invGroupSeeEv=(Button) view.findViewById(R.id.invGroupSeeEv);
+        invGImage=(ImageView) view.findViewById(R.id.invGImage);
 
         Bundle bundle = this.getArguments();
         List<InvGroups> invGroup=null;
@@ -58,6 +68,19 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupName.setText(invGroup.get(0).getNombre());
         invGroupDesc.setText(invGroup.get(0).getDescripcion());
         invGroupEsp.setText(invGroup.get(0).getFaculty().getNombre());
+
+        /*if(invGroup.get(0).getImagen()!=null) {
+            Bitmap bmp;
+            try{
+                InputStream in = new URL(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).openStream();
+                bmp = BitmapFactory.decodeStream(in);
+                invGImage.setImageBitmap(bmp);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }*/
 
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override

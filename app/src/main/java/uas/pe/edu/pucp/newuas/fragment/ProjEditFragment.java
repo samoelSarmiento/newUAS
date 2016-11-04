@@ -93,7 +93,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
 
                 projectController.editProj(context,changedProj);
 
-                projectController.getProjectById(context,changedProj.getId());
+                //projectController.getProjectById(context,changedProj.getId());
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
 
