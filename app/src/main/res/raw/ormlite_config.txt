@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/04 03:21:02
+# generated on 2016/11/04 04:02:12
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -61,6 +61,20 @@ fieldName=porcentaje
 # --field-end--
 # --field-start--
 fieldName=estado
+# --field-end--
+# --field-start--
+fieldName=teacher
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=cicle
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -166,6 +180,26 @@ fieldName=codigo
 # --field-end--
 # --field-start--
 fieldName=nombre
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Criterion
+tableName=criterion
+# --table-fields-start--
+# --field-start--
+fieldName=idCriterio
+id=true
+# --field-end--
+# --field-start--
+fieldName=idAspecto
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=estado
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -371,9 +405,6 @@ fieldName=duracion
 # --field-end--
 # --field-start--
 fieldName=tipo
-# --field-end--
-# --field-start--
-fieldName=imagen
 # --field-end--
 # --field-start--
 fieldName=idGrupo
@@ -660,6 +691,35 @@ fieldName=descripcion
 # --field-end--
 # --field-start--
 fieldName=estado
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Suggestion
+tableName=suggestion
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=idImprPlan
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=creado
+# --field-end--
+# --field-start--
+fieldName=modificado
+# --field-end--
+# --field-start--
+fieldName=titulo
+# --field-end--
+# --field-start--
+fieldName=descripcion
 # --field-end--
 # --table-fields-end--
 # --table-end--
