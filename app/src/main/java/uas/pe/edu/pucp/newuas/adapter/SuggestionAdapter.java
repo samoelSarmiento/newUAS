@@ -58,6 +58,9 @@ public class SuggestionAdapter extends BaseAdapter {
         viewHolder.tvWho.append(" " + suggestion.getNombre());
         viewHolder.tvTitle.append(" " + suggestion.getTitulo());
         viewHolder.tvDescription.append(" " + suggestion.getDescripcion());
+
+
+
         //parsear fecha de creacion y modificacion
         //si son diferentes
         //tvEdit -> visible y updeteo

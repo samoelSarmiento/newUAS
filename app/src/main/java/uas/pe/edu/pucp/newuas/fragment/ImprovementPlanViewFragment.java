@@ -45,7 +45,7 @@ public class ImprovementPlanViewFragment extends Fragment {
         TextView tvIpStatus = (TextView) view.findViewById(R.id.tvIpStatus);
 
         Button btActions = (Button) view.findViewById(R.id.btnActions);
-
+        Button btSugg = (Button) view.findViewById(R.id.btnSug);
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
@@ -65,12 +65,16 @@ public class ImprovementPlanViewFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     ImprovementPlanController ipc = new ImprovementPlanController();
-                    ipc.getActionsOfImprovementPlan(getActivity(),ip.getIdPlanMejora());
+                    ipc.getActionsOfImprovementPlan(getActivity(), ip.getIdPlanMejora());
                 }
             });
 
-
-
+            btSugg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
 
         }
 
