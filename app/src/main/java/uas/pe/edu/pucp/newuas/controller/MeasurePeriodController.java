@@ -34,7 +34,7 @@ import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class MeasurePeriodController {
 
-    public boolean getMeasurePeriods(final Context context) {
+    public boolean getMeasurePeriods(final Context context, final Integer idSpec) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -42,11 +42,14 @@ public class MeasurePeriodController {
 
         Call<List<Period>> call;
 
+        /*
         if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
             call = restCon.getPeriods(Configuration.SPECIALTY.getIdEspecialidad(), token);
         } else {
             call = restCon.getPeriods(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
         }
+        */
+        call = restCon.getPeriods(idSpec, token);
 
 
         call.enqueue(new Callback<List<Period>>() {
@@ -88,7 +91,7 @@ public class MeasurePeriodController {
             public void onFailure(Call<List<Period>> call, Throwable t) {
                 List<Period> per = null;
                 try {
-                    per = retrievePeriods(context);
+                    per = retrievePeriods(context, idSpec);
                     MeasurePeriodListFragment mplFragment = new MeasurePeriodListFragment();
                     /*Gson gsonf = new Gson();
                     String spj = gsonf.toJson(periods);
@@ -208,10 +211,10 @@ public class MeasurePeriodController {
     }
 
 
-    private List<Period> retrievePeriods(final Context context) throws SQLException {
+    private List<Period> retrievePeriods(final Context context, Integer idSpec) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
-        return periodDao.queryForAll();
+        return periodDao.queryBuilder().where().eq("idEspecialidad",idSpec).query();
 
     }
 
@@ -220,7 +223,7 @@ public class MeasurePeriodController {
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         for (Period period : periodList) {
             //veo si la especialidad existe
-            Period find = periodDao.queryForId(period.getIdEspecialidad());
+            Period find = periodDao.queryForId(period.getIdPeriodo());
             if (find == null) {
                 periodDao.create(period);
             } else {

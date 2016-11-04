@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import uas.pe.edu.pucp.newuas.R;
 
 
-public class single_row_tutor extends Fragment {
+public class Single_row_tutorFragment extends Fragment {
 
-    public single_row_tutor() {
+    public Single_row_tutorFragment() {
         // Required empty public constructor
     }
 

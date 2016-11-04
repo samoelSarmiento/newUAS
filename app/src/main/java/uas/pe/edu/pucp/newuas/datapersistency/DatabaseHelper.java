@@ -2,14 +2,10 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.TabLayout;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.stmt.query.In;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -17,11 +13,13 @@ import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.Area;
+import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.ProjectStatus;
 import uas.pe.edu.pucp.newuas.model.Projects;
@@ -30,8 +28,6 @@ import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Teacher;
-import uas.pe.edu.pucp.newuas.model.User;
-import uas.pe.edu.pucp.newuas.model.UserResponse;
 
 /**
  * Created by samoe on 27/10/2016.
@@ -52,7 +48,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<InvGroups, Integer> invGroupDao = null;
     private Dao<Projects, Integer> projDao = null;
     private Dao<Area, Integer> areaDao;
-    private Dao<ProjectStatus,Integer> projStatDao = null;
+    private Dao<ProjectStatus, Integer> projStatDao = null;
+    private Dao<MeasureInstrument, Integer> measureinstrumentDao = null;
+    private Dao<Aspect, Integer> aspectDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -61,6 +59,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTableIfNotExists(connectionSource, Aspect.class);
             TableUtils.createTableIfNotExists(connectionSource, Area.class);
             TableUtils.createTableIfNotExists(connectionSource, StudentResult.class);
             TableUtils.createTableIfNotExists(connectionSource, EducationalObjective.class);
@@ -75,6 +74,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, InvGroups.class);
             TableUtils.createTableIfNotExists(connectionSource, Projects.class);
             TableUtils.createTableIfNotExists(connectionSource, ProjectStatus.class);
+            TableUtils.createTableIfNotExists(connectionSource, MeasureInstrument.class);
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -86,6 +86,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource source, int oldVersion, int newVersion) {
         try {
             //Se borran todas las tablas
+            TableUtils.dropTable(source, Aspect.class, true);
             TableUtils.dropTable(source, Area.class, true);
             TableUtils.dropTable(source, StudentResult.class, true);
             TableUtils.dropTable(source, EducationalObjective.class, true);
@@ -99,13 +100,22 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, Investigator.class, true);
             TableUtils.dropTable(source, InvGroups.class, true);
             TableUtils.dropTable(source, Projects.class, true);
-            TableUtils.dropTable(source, ProjectStatus.class,true);
+            TableUtils.dropTable(source, ProjectStatus.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public Dao<Aspect, Integer> getAspectDao() throws SQLException {
+        if (aspectDao == null) aspectDao = getDao(Aspect.class);
+        return aspectDao;
+    }
+
+    public void setAspectDao(Dao<Aspect, Integer> aspectDao) {
+        this.aspectDao = aspectDao;
     }
 
     public Dao<Area, Integer> getAreaDao() throws SQLException {
@@ -228,6 +238,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         this.projStatDao = projStatDao;
     }
 
+
+    public Dao<MeasureInstrument, Integer> getMeasureInstrumentDao() throws SQLException {
+        if (measureinstrumentDao == null) measureinstrumentDao = getDao(MeasureInstrument.class);
+        return measureinstrumentDao;
+    }
+
+    public void setMeasureInstrumentDao(Dao<MeasureInstrument, Integer> measureinstrumentDao) {
+        this.measureinstrumentDao = measureinstrumentDao;
+    }
 
     @Override
     public void close() {

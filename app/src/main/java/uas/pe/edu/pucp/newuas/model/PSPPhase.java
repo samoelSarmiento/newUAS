@@ -2,13 +2,14 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Franz on 27/10/2016.
  */
 
-public class PSPPhase {
+public class PSPPhase implements Serializable {
     @SerializedName("id")
     private int idPhase;
     @SerializedName("numero")
