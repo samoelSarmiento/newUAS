@@ -2,27 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="70dp"
     android:background="@color/uas_plomo_fondo"
-    android:orientation="vertical"
-    android:paddingTop="70dp">
-
-
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_weight="0.80">
-
-
         <ListView
             android:id="@+id/psp_lstItemsIncriptionFiles"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </ListView>
-
-
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="34dp"
@@ -30,27 +22,25 @@
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1">
-
         <Button
-            android:id="@+id/btEnviarComentariopspSobreinscripcion"
             android:layout_width="181dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/bg_button_login_selector"
-            android:clickable="false"
-            android:enabled="true"
             android:text="Mandar comentario"
-            android:textColor="@color/white" />
-
+            android:id="@+id/btEnviarComentariopspSobreinscripcion"
+            android:layout_gravity="center_horizontal"
+            android:enabled="true"
+            android:clickable="false"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            />
         <Button
-            android:id="@+id/btAceptarpspSobreinscripcion"
             android:layout_width="183dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/bg_button_login_selector"
-            android:enabled="true"
             android:text="Aceptar"
+            android:id="@+id/btAceptarpspSobreinscripcion"
+            android:layout_gravity="center_horizontal"
+            android:enabled="true"
+            android:background="@drawable/bg_button_login_selector"
             android:textColor="@color/white" />
-
     </LinearLayout>
 </LinearLayout>
