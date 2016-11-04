@@ -28,6 +28,7 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
+import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
@@ -204,7 +205,7 @@ public interface RestCon {
 
 
 
-    @GET("psp/students/all")
+    @GET("psp/teacher/students/all")
     Call<List<Student>> getStudents(@QueryMap Map<String,String> token);
 
 
@@ -219,6 +220,10 @@ public interface RestCon {
 
     @GET("psp/student/group")
     Call<List<PSPGroup>> getStudentGroup(@QueryMap Map<String,String> token);
+
+
+    @GET("psp/student/{id)/grade")
+    Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String,String> token);
 
 
 
