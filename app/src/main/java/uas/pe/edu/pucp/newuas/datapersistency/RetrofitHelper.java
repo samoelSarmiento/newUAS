@@ -35,6 +35,11 @@ public class RetrofitHelper {
     //.baseUrl("http://35.161.73.236/api/")
     //"http://10.100.185.201/internetUAS/public/api/
 // .baseUrl("http://52.89.227.55/api/")
+    public static String serverURL = "http://52.89.227.55/";
+
+
+
+
 
 
 

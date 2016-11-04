@@ -14,8 +14,9 @@ public class SingleRowTuto {
     String nombreAlumno;
     int icon1;
     int icon2;
+    int idAppoint;
 
-    public SingleRowTuto(String fecha, String hora, String tema, String estado, String nombreAlumno,int icon1, int icon2){
+    public SingleRowTuto(String fecha, String hora, String tema, String estado, String nombreAlumno,int icon1, int icon2,int idAppoint){
         this.fecha = fecha;
         this.hora = hora;
         this.tema = tema;
@@ -23,6 +24,7 @@ public class SingleRowTuto {
         this.nombreAlumno = nombreAlumno;
         this.icon1 = icon1;
         this.icon2 = icon2;
+        this.idAppoint = idAppoint;
     }
 
     public String getFecha() {
@@ -45,6 +47,9 @@ public class SingleRowTuto {
     }
     public int getIcon2() {
         return icon2;
+    }
+    public int getIdAppoint() {
+        return idAppoint;
     }
 
 }

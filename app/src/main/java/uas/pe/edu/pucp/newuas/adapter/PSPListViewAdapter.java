@@ -56,7 +56,7 @@ public class PSPListViewAdapter extends BaseAdapter{
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvPspIdStudent = (TextView) view.findViewById(R.id.psp_identifier_student);
             viewHolder.tvPspNameStudent  = (TextView) view.findViewById(R.id.psp_name_student);
-            viewHolder.tvPspNameTeacher  = (TextView) view.findViewById(R.id.psp_name_teacher);
+           // viewHolder.tvPspNameTeacher  = (TextView) view.findViewById(R.id.psp_name_teacher);
 
 
             viewHolder.tvPspIdStudent .setText( "" + items.get(position).getCodigo());

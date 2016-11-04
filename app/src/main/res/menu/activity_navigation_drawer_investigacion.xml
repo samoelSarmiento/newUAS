@@ -20,11 +20,6 @@
                 android:title="@string/projects" />
 
             <item
-                android:id="@+id/nav_back"
-                android:icon="@drawable/ic_back"
-                android:title="@string/invBack" />
-
-            <item
                 android:id="@+id/nav_logOut"
                 android:icon="@drawable/ic_logout"
                 android:title="@string/invLogOut" />

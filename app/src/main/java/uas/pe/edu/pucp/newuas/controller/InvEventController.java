@@ -5,10 +5,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -24,62 +22,51 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
-import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
-import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
-import uas.pe.edu.pucp.newuas.fragment.MeasurePeriodListFragment;
-import uas.pe.edu.pucp.newuas.model.Investigator;
-import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.fragment.InvEventDetailFragment;
+import uas.pe.edu.pucp.newuas.fragment.InvEventFragment;
+import uas.pe.edu.pucp.newuas.model.InvEvent;
+import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 /**
- * Created by Andree on 24/10/2016.
+ * Created by Andree on 04/11/2016.
  */
 
-public class InvestigatorController {
+public class InvEventController {
 
-    Investigator list = null;
-
-    public Investigator getInvestigators(final Context context) {
-
+    public void getInvEvents(final Context context, Integer invGId){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<Investigator>> call = restCon.getInvestigators(token);
+        Call<List<InvEvent>> call = restCon.getEvByGroupId(invGId,token);
 
-        call.enqueue(new Callback<List<Investigator>>() {
+        call.enqueue(new Callback<List<InvEvent>>() {
             @Override
-            public void onResponse(Call<List<Investigator>> call, retrofit2.Response<List<Investigator>> response) {
+            public void onResponse(Call<List<InvEvent>> call, retrofit2.Response<List<InvEvent>> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
                     //okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
-                    List<Investigator> example = response.body();
-                    //Gson gson = new Gson();
+                    List<InvEvent> example = response.body();
 
-                    //UserResponse userr = Configuration.LOGIN_USER;
-                    //User user = userr.getUser();
 
-                    //Configuration.SPECIALTY = example;
-
-                    //Gson gsonf = new Gson();
-                    //String spj = gsonf.toJson(example);
-                    //System.out.println(spj);
                     try {
-                        saveAllInv(example, context);
+                        saveAllInvEv(example, context);
                     } catch (SQLException e) {
-                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Investigators", (Serializable)example);
-                    //bundle.putString("Investigators", spj);
+                    bundle.putSerializable("Events", (Serializable)example);
+                    //bundle.putString("Groups", spj);
 
-                    InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                    InvEventFragment spFragment = new InvEventFragment();
                     spFragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Investigadores");
+                    ((Activity)context).setTitle("Grupos de Inv. > Eventos");
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -90,64 +77,62 @@ public class InvestigatorController {
             }
 
             @Override
-            public void onFailure(Call<List<Investigator>> call, Throwable t) {
+            public void onFailure(Call<List<InvEvent>> call, Throwable t) {
                 t.printStackTrace();
-                //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
-                //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
-                try {
-                    List<Investigator> invList = retriveAllInv(context);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Investigators", (Serializable)invList);
-                    //bundle.putString("Investigators", spj);
 
-                    InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                try {
+                    List<InvEvent> invGList = retriveAllInvEv(context);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Events", (Serializable)invGList);
+                    //bundle.putString("Groups", spj);
+
+                    InvEventFragment spFragment = new InvEventFragment();
                     spFragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Investigadores");
+                    ((Activity)context).setTitle("Grupos de Inv. > Eventos");
                 } catch (SQLException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
 
         });
-
-        return list;
     }
-
-    public Investigator getInvestigatorById(final Context context, final int id){
-
+    public void getInvEvById(final Context context,final Integer id){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<Investigator>> call = restCon.getInvById(id,token);
+        Call<List<InvEvent>> call = restCon.getEvById(id,token);
 
-        call.enqueue(new Callback<List<Investigator>>() {
+        call.enqueue(new Callback<List<InvEvent>>() {
             @Override
-            public void onResponse(Call<List<Investigator>> call, retrofit2.Response<List<Investigator>> response) {
+            public void onResponse(Call<List<InvEvent>> call, retrofit2.Response<List<InvEvent>> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
 
-                    List<Investigator> example = response.body();
+                    List<InvEvent> example = response.body();
 
                     try {
-                        saveInv(example.get(0), context);
+                        saveInvEv(example.get(0), context);
                     } catch (SQLException e) {
-                        //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Inv", (Serializable)example);
+                    bundle.putSerializable("Event", (Serializable)example);
                     bundle.putBoolean("BotonEdit",true);
-                    //bundle.putString("Investigators", spj);
 
-                    InvDetailFragment spFragment = new InvDetailFragment();
+                    InvEventDetailFragment spFragment = new InvEventDetailFragment();
                     spFragment.setArguments(bundle);
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Investigadores");
+                    ((Activity)context).setTitle("Grupos de Inv. > Eventos");
+                    //Toast.makeText(context, "entre4", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -157,37 +142,39 @@ public class InvestigatorController {
             }
 
             @Override
-            public void onFailure(Call<List<Investigator>> call, Throwable t) {
+            public void onFailure(Call<List<InvEvent>> call, Throwable t) {
                 t.printStackTrace();
 
                 try {
-                    Investigator inv = getInv(id, context);
+                    InvEvent invG = getInvEv(id, context);
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Inv", (Serializable)inv);
+                    bundle.putSerializable("Event", (Serializable)invG);
                     bundle.putBoolean("BotonEdit",false);
-                    //bundle.putString("Investigators", spj);
 
-                    InvDetailFragment spFragment = new InvDetailFragment();
+                    InvEventDetailFragment spFragment = new InvEventDetailFragment();
                     spFragment.setArguments(bundle);
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Investigadores");
+                    ((Activity)context).setTitle("Grupos de Inv. > Eventos");
 
                 } catch (SQLException e) {
+                    Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
         });
-        return  list;
     }
 
-    public void editInv(final Context context,final Investigator inv){
+    public void editInvEv (final Context context, InvEvent invEvent){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<String> call = restCon.editInvestigator(inv.getId(),token,inv);
+        //InvGroupsRequest igr= new InvGroupsRequest(invG);
+
+        Call<String> call = restCon.editInvEv(invEvent.getId(),token,invEvent);
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -195,6 +182,25 @@ public class InvestigatorController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
+                    /*
+                    try {
+                        saveInvGroup(invG, context);
+                        //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
+                    } catch (SQLException e) {
+                        Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }*/
+/*
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("InvGroup", (Serializable)invG);
+                    bundle.putBoolean("BotonEdit",true);
+                    //bundle.putString("Investigators", spj);
+
+                    InvGroupDetailFragment spFragment = new InvGroupDetailFragment();
+                    spFragment.setArguments(bundle);
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Grupos de Inv.");*/
 
                 } else {
 
@@ -213,61 +219,53 @@ public class InvestigatorController {
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
             //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
             try {
-                saveInv(inv, context);
+                saveInvEv(invEvent, context);
                 //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
             } catch (SQLException e) {
-                //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
             Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
         }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
     }
 
-
-
-    //Lista de inv
-    private void saveAllInv(List<Investigator> invList, final Context context) throws SQLException {
+    private void saveAllInvEv(List<InvEvent> invGList, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
+        Dao<InvEvent, Integer> invGDao = helper.getInvEventDao();
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
-        for (Investigator inv : invList) {
+        for (InvEvent invG : invGList) {
             //veo si la especialidad existe
-            //Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
-            Investigator find = invDao.queryForId(inv.getId());
-            //Toast.makeText(context, "2", Toast.LENGTH_SHORT).show();
+            InvEvent find = invGDao.queryForId(invG.getId());
             if (find == null) {
-                //Toast.makeText(context, "3", Toast.LENGTH_SHORT).show();
-                invDao.create(inv);
+                invGDao.create(invG);
             } else {
                 //si se encontro la actualizo
-                //Toast.makeText(context, "4", Toast.LENGTH_SHORT).show();
-                invDao.update(inv);
+                invGDao.update(invG);
             }
         }
     }
-    //Lista de inv
-    private List<Investigator> retriveAllInv(final Context context) throws SQLException {
+    //Lista de inv g.
+    private List<InvEvent> retriveAllInvEv(final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
-        return invDao.queryForAll();
+        Dao<InvEvent, Integer> invGDao = helper.getInvEventDao();
+        return invGDao.queryForAll();
     }
 
-    private void saveInv(Investigator inv, final Context context) throws SQLException {
+    private void saveInvEv(InvEvent invG, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
-        Investigator find = invDao.queryForId(inv.getId());
+        Dao<InvEvent, Integer> invGDao = helper.getInvEventDao();
+        InvEvent find = invGDao.queryForId(invG.getId());
         if (find == null) {
-            //Toast.makeText(context, "create", Toast.LENGTH_SHORT).show();
-            invDao.create(inv);
+            invGDao.create(invG);
         } else {
-            //Toast.makeText(context, "update", Toast.LENGTH_SHORT).show();
-            invDao.update(inv);
+            invGDao.update(invG);
         }
     }
 
-    private Investigator getInv(Integer id, final Context context) throws SQLException {
+    private InvEvent getInvEv(Integer id, final Context context) throws SQLException {
         DatabaseHelper helper = new DatabaseHelper(context);
-        Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
-        return invDao.queryForId(id);
+        Dao<InvEvent, Integer> invGDao = helper.getInvEventDao();
+        return invGDao.queryForId(id);
     }
+
 }
