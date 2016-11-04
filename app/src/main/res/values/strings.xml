@@ -25,6 +25,7 @@
     <string name="tvIpStatus">Estado:</string>
     <string name="btnActions">Ver actividades planteadas</string>
     <string name="btnIpFile">Descargar archivo asociado</string>
+    <string name="btnIpSug">Sugerencias al Plan</string>
 
 
     <!--Investigacion-->
@@ -169,5 +170,9 @@
 
 
     <string name="evName">Nombre:</string>
+    <string name="tvWho">Por:</string>
+    <string name="tvWhen">El:</string>
+    <string name="tvTitle">Titulo:</string>
+    <string name="tvEdit">Última modificación:</string>
 
 </resources>
