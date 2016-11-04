@@ -24,11 +24,13 @@ import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AspectListFragment;
+import uas.pe.edu.pucp.newuas.fragment.CriterionLevelListFragment;
 import uas.pe.edu.pucp.newuas.fragment.CriterionListFragment;
 import uas.pe.edu.pucp.newuas.fragment.EducationalObjectiveListFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.Criterion;
+import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
@@ -224,6 +226,43 @@ public class EducationalObjectiveController {
 
 
 
+    }
+
+
+    public void getLevelsofCriterion(final Context context, Integer critId){
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<CriterionLevel>> call = restCon.getLevelsofCriterion(critId, token);
+        call.enqueue(new Callback<List<CriterionLevel>>() {
+            @Override
+            public void onResponse(Call<List<CriterionLevel>> call, Response<List<CriterionLevel>> response) {
+                if(response.isSuccessful()){
+                    List<CriterionLevel> cls = response.body();
+
+                    CriterionLevelListFragment cllf = new CriterionLevelListFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("critlevs",(Serializable)cls);
+                    cllf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, cllf).commit();
+
+
+
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CriterionLevel>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void saveAspects(final Context context, List<Aspect> list) throws SQLException {
