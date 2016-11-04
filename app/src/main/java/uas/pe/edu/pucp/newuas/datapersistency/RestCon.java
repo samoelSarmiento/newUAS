@@ -23,6 +23,7 @@ import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
+import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
@@ -128,6 +129,15 @@ public interface RestCon {
 
     @GET("investigation/{id}/projects")
     Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/event")
+    Call<List<InvEvent>> getEvById(@Path("id") int id, @QueryMap Map<String,String> token);
+
+    @GET("investigation/{id}/events")
+    Call<List<InvEvent>> getEvByGroupId(@Path("id") int id, @QueryMap Map<String,String> token);
+
+    @POST("investigation/{id}/event")
+    Call<String> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
     /*--------------*/
 
 
