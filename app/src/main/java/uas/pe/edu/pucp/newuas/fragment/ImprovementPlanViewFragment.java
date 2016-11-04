@@ -72,7 +72,8 @@ public class ImprovementPlanViewFragment extends Fragment {
             btSugg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    
+                    ImprovementPlanController controller = new ImprovementPlanController();
+                    controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
                 }
             });
 
