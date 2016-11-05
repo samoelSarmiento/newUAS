@@ -41,6 +41,7 @@ import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
 import uas.pe.edu.pucp.newuas.fragment.MyStudentAppointmentFragment;
+import uas.pe.edu.pucp.newuas.fragment.SearchEvaluationQueryFragment;
 import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
@@ -130,8 +131,8 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         } else if (id == R.id.nav_evaluaciones) {
             //Logica para abrir tu fragmnet
-
-
+            SearchEvaluationQueryFragment searchEvaluationQueryFragment = new SearchEvaluationQueryFragment();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,searchEvaluationQueryFragment).commit();
 
 
         } else if (id == R.id.nav_loginout) {
