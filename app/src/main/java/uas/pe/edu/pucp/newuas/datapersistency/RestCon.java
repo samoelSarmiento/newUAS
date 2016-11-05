@@ -14,6 +14,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
@@ -85,6 +86,9 @@ public interface RestCon {
     @GET("improvementplans/{ip_id}/view")
     Call<ImprovementPlan> getImprovementPlanById(@Path("ip_id") int ipId, @QueryMap Map<String,String> token);
 
+    /*Evaluaciones*/
+    @GET("investigation/getAllInvestigators")
+    Call<List<Evaluation>> getEvaluations(@QueryMap Map<String, String> token);
 
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
