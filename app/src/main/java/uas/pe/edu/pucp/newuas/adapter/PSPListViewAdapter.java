@@ -1,4 +1,4 @@
-package uas.pe.edu.pucp.newuas.model;
+package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
  * Created by Franz on 20/10/2016.
@@ -55,7 +56,7 @@ public class PSPListViewAdapter extends BaseAdapter{
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvPspIdStudent = (TextView) view.findViewById(R.id.psp_identifier_student);
             viewHolder.tvPspNameStudent  = (TextView) view.findViewById(R.id.psp_name_student);
-            viewHolder.tvPspNameTeacher  = (TextView) view.findViewById(R.id.psp_name_teacher);
+           // viewHolder.tvPspNameTeacher  = (TextView) view.findViewById(R.id.psp_name_teacher);
 
 
             viewHolder.tvPspIdStudent .setText( "" + items.get(position).getCodigo());

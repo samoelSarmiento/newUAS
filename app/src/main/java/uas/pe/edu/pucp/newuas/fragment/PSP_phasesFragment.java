@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -17,12 +19,12 @@ import uas.pe.edu.pucp.newuas.model.PSPPhase;
 
 
 public class PSP_phasesFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -40,7 +42,7 @@ public class PSP_phasesFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment PSP_phasesFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static PSP_phasesFragment newInstance(String param1, String param2) {
         PSP_phasesFragment fragment = new PSP_phasesFragment();
         Bundle args = new Bundle();
@@ -74,6 +76,24 @@ public class PSP_phasesFragment extends Fragment {
            phases = (ArrayList<PSPPhase>) bundle.getSerializable("PSPPhases");
             adapter = new PSPPhaseAdapter(getActivity(),phases);
             list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    PSPPhase phase  =   (PSPPhase) adapter.getItem(position);
+                    Fragment  fragment =  new PSP_phaseDetailFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PHASE", (Serializable) phase);
+                    fragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                            .setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
+                            .addToBackStack(null).commit();
+
+
+
+
+                }
+            });
+
 
         }
 

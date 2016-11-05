@@ -67,7 +67,7 @@ public class PSPInscriptionFilesItemsAdapter extends BaseAdapter {
         inscripcion.setId(  items.get(0).getId() );
         inscripcion.setJefeDirectoAux(     items.get(0).getJefeDirectoAux()   );
         inscripcion.setTelefJefeDirecto(       items.get(0).getTelefJefeDirecto()  );
-
+        inscripcion.setRecomendaciones( items.get(0).getRecomendaciones());
 
 
 

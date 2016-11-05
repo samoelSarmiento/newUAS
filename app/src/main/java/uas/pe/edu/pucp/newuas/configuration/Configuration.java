@@ -15,15 +15,9 @@ import uas.pe.edu.pucp.newuas.model.UserResponse;
 public class Configuration {
     public static final String SHARED_PREFERENCE_NAME = "sharedPreferences";
     public static final String USER_PREFERENCE = "userPrefs";
-    public static final String BASE_URL = "";
-    public static final String API_AUTHENTICATE = "authenticate";
-    public static final String Q_SELECT_ALL = "SELECT * FROM ";
+    public static final String BASE_URL = "http://52.89.227.55/api";
     public static int CXE_ITEM_SHOW = 5;
     public static UserResponse LOGIN_USER = null;
     public static boolean connected = false;
     public static Specialty SPECIALTY = null;
-
-    public static final String DATABASE_NAME = "UAS";
-    public static final Integer DATABASE_VERSION = 1;
-
 }

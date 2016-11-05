@@ -80,7 +80,7 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
                 changedIG.setNombre(invGroupName.getText().toString());
                 changedIG.setDescripcion(invGroupDesc.getText().toString());
                 invGroupController.editInvGroup(context,changedIG);
-                invGroupController.getInvGroupById(context,invG.getId());
+                //invGroupController.getInvGroupById(context,invG.getId());
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
 

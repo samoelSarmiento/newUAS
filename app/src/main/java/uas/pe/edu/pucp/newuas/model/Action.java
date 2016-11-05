@@ -29,7 +29,7 @@ public class Action implements Serializable{
     @SerializedName("IdDocente")
     @Expose
     @DatabaseField
-    private Object idDocente;
+    private Integer idDocente;
     @SerializedName("Comentario")
     @Expose
     @DatabaseField
@@ -50,6 +50,14 @@ public class Action implements Serializable{
     @Expose
     @DatabaseField
     private Object estado;
+    @SerializedName("teacher")
+    @Expose
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+    private Teacher teacher;
+    @SerializedName("cicle")
+    @Expose
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+    private Semester cicle;
 
     /**
      * No args constructor for use in serialization
@@ -60,18 +68,21 @@ public class Action implements Serializable{
 
     /**
      *
-     * @param porcentaje
-
-     * @param idPlanAccion
-     * @param estado
      * @param idDocente
-     * @param idArchivoEntrada
-     * @param idPlanMejora
      * @param descripcion
      * @param idCicloAcademico
      * @param comentario
+
+     * @param porcentaje
+     * @param idPlanAccion
+     * @param estado
+     * @param idArchivoEntrada
+     * @param idPlanMejora
+     * @param cicle
+
+     * @param teacher|
      */
-    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Object idDocente, Object comentario, String descripcion,  Object idArchivoEntrada, Object porcentaje, Object estado) {
+    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, Object comentario, String descripcion,  Object idArchivoEntrada, Object porcentaje, Object estado, Teacher teacher, Semester cicle) {
         this.idPlanAccion = idPlanAccion;
         this.idPlanMejora = idPlanMejora;
         this.idCicloAcademico = idCicloAcademico;
@@ -82,6 +93,8 @@ public class Action implements Serializable{
         this.idArchivoEntrada = idArchivoEntrada;
         this.porcentaje = porcentaje;
         this.estado = estado;
+        this.teacher = teacher;
+        this.cicle = cicle;
     }
 
     /**
@@ -143,7 +156,7 @@ public class Action implements Serializable{
      * @return
      * The idDocente
      */
-    public Object getIdDocente() {
+    public Integer getIdDocente() {
         return idDocente;
     }
 
@@ -152,7 +165,7 @@ public class Action implements Serializable{
      * @param idDocente
      * The IdDocente
      */
-    public void setIdDocente(Object idDocente) {
+    public void setIdDocente(Integer idDocente) {
         this.idDocente = idDocente;
     }
 
@@ -191,6 +204,12 @@ public class Action implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    /**
+     *
+     * @return
+     * The deletedAt
+     */
 
     /**
      *
@@ -244,6 +263,42 @@ public class Action implements Serializable{
      */
     public void setEstado(Object estado) {
         this.estado = estado;
+    }
+
+    /**
+     *
+     * @return
+     * The teacher
+     */
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    /**
+     *
+     * @param teacher
+     * The teacher
+     */
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     *
+     * @return
+     * The cicle
+     */
+    public Semester getSemester() {
+        return cicle;
+    }
+
+    /**
+     *
+     * @param cicle
+     * The cicle
+     */
+    public void setSemester(Semester cicle) {
+        this.cicle = cicle;
     }
 
 }

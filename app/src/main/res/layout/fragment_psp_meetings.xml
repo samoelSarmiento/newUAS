@@ -1,13 +1,144 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment">
+    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="80dp"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/general_bg_padding"
+        android:layout_marginLeft="30dp">
 
-</FrameLayout>
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Fecha:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        >
+
+        <EditText
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/et_psp_meeting_date"
+            />
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="230dp"
+            android:id="@+id/btn_psp_meeting_calendar"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Hora:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cmb_psp_meeting_hour"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/hora"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Tema:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cmb_psp_meeting_topic"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/btn_psp_cancel_meeting" />
+
+
+        <Button
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/btn_psp_register_meeting" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

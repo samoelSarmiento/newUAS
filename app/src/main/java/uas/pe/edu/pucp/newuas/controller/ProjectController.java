@@ -2,6 +2,8 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -235,7 +237,19 @@ public class ProjectController {
                 ((Activity)context).setTitle("Proyectos");*/
             }
         });
-
+        ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState()== NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
+            //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
+            try {
+                saveProj(proj, context);
+                //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
+            } catch (SQLException e) {
+                //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
 
     }
     //Lista de proj

@@ -11,9 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.adapter.PSPPhaseAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
-import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.adapter.PSPListViewAdapter;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 public class PSP_studentsFragment extends Fragment {

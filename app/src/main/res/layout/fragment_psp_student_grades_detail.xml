@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingTop="@dimen/general_bg_padding"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail">
+
+
+    <ListView
+        android:id="@+id/lv_psp_student_grades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </ListView>
+
+
+
+
+
+</FrameLayout>

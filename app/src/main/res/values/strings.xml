@@ -25,6 +25,7 @@
     <string name="tvIpStatus">Estado:</string>
     <string name="btnActions">Ver actividades planteadas</string>
     <string name="btnIpFile">Descargar archivo asociado</string>
+    <string name="btnIpSug">Sugerencias al Plan</string>
 
 
     <!--Investigacion-->
@@ -124,12 +125,9 @@
 
     <string name="title_activity_navigation_drawer_tutoria">Tutoría
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
 
 
     <!-- SPINNERS -->
-
-
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
     <string name="itdAcrMyself">Mi Perfil</string>
@@ -146,17 +144,21 @@
     <string name="tvAcrName">Nombre:</string>
     <string name="tvAcrSurnames">Apelldios:</string>
     <string name="tvAcreEmail">Correo:</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
     <string name="tvCicle">Ciclo:</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
-    <string name="title_activity_navigation_drawer_tutoria_tutor">Tutoría</string>
+
+    <string name="title_activity_navigation_drawer_tutoria_tutor">NavigationDrawerTutoriaTutor
+    </string>
+
     <string name="pspGroup">Seleccionar grupo</string>
+
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
     <string name="btHorario">HORARIO</string>
@@ -166,7 +168,11 @@
     <string name="tvAspecto">ASPECTOS</string>
     <string name="nav_evaluaciones">Evaluaciones</string>
 
-    <!-- TODO: Evaluations text -->
+
     <string name="evName">Nombre:</string>
+    <string name="tvWho">Por:</string>
+    <string name="tvWhen">El:</string>
+    <string name="tvTitle">Titulo:</string>
+    <string name="tvEdit">Última modificación:</string>
 
 </resources>
