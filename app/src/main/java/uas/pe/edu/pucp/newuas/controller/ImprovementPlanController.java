@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.fragment.SuggestionListFragment;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
@@ -184,20 +185,20 @@ public class ImprovementPlanController {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<String> call = restCon.sendSuggestion(idIp, request, token);
-        call.enqueue(new Callback<String>() {
+        Call<StringResponse> call = restCon.sendSuggestion(idIp, request, token);
+        call.enqueue(new Callback<StringResponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<StringResponse> call, Response<StringResponse> response) {
                 if (response.isSuccessful()) {
-                    String res = response.body();
-                    Toast.makeText(context, res, Toast.LENGTH_LONG).show();
+                    StringResponse res = response.body();
+                    Toast.makeText(context, res.getMensaje(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(context, "Ocurrió un error", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<StringResponse> call, Throwable t) {
                 Toast.makeText(context, "Error de conexion. Intente nuevamente", Toast.LENGTH_LONG).show();
             }
         });

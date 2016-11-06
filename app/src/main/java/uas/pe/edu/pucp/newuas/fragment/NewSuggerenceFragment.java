@@ -37,7 +37,7 @@ public class NewSuggerenceFragment extends Fragment {
         Button btSave = (Button) view.findViewById(R.id.btnSave);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            final int ipId = bundle.getInt("ipId");
+            final int ipId = bundle.getInt("idIp");
             btSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

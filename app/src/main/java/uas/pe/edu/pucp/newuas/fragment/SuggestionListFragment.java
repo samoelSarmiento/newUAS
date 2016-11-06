@@ -48,7 +48,7 @@ public class SuggestionListFragment extends Fragment {
         if (bundle != null) {
             List<Suggestion> list = (List<Suggestion>) bundle.getSerializable("suggestions");
             lvSuggestions = (ListView) view.findViewById(R.id.lvSuggestions);
-            ipId = bundle.getInt("ipId");
+            ipId = bundle.getInt("idIp");
             Context context = getActivity();
             adapter = new SuggestionAdapter(context, list);
             lvSuggestions.setAdapter(adapter);

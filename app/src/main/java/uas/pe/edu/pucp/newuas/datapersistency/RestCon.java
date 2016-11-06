@@ -68,7 +68,7 @@ public interface RestCon {
                                                  @QueryMap Map<String, String> token);
 
     @POST("improvementplans/{ip_id}/suggestions")
-    Call<String> sendSuggestion(@Path("ip_id") int idImprPlan,
+    Call<StringResponse> sendSuggestion(@Path("ip_id") int idImprPlan,
                                 @Body SuggestionRequest suggestionRequest,
                                 @QueryMap Map<String, String> token);
 
