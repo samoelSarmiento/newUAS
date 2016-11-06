@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.btModuleAcr:
+                ProgressDialog pd = new ProgressDialog(this );
+                pd.setMessage("Cargando...");
+                pd.show();
                 SpecialtyController specialtyController = new SpecialtyController();
                 specialtyController.getAllSpecialties(this);
                 break;
