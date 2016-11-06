@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Suggestion;
+import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
  * Created by Marshall on 2/11/2016.
@@ -151,7 +153,7 @@ public class ImprovementPlanController {
         });
     }
 
-    public void getImprovementPlanSuggestions(final Context context, Integer ipId) {
+    public void getImprovementPlanSuggestions(final Context context, final Integer ipId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -162,6 +164,7 @@ public class ImprovementPlanController {
                 if (response.isSuccessful()) {
                     List<Suggestion> list = response.body();
                     Bundle bundle = new Bundle();
+                    bundle.putInt("idIp", ipId);
                     bundle.putSerializable("suggestions", (Serializable) list);
                     SuggestionListFragment listFragment = new SuggestionListFragment();
                     listFragment.setArguments(bundle);
@@ -173,6 +176,29 @@ public class ImprovementPlanController {
             @Override
             public void onFailure(Call<List<Suggestion>> call, Throwable t) {
 
+            }
+        });
+    }
+
+    public void sendSuggestion(final Context context, int idIp, final SuggestionRequest request) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<String> call = restCon.sendSuggestion(idIp, request, token);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    String res = response.body();
+                    Toast.makeText(context, res, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(context, "Ocurrió un error", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, "Error de conexion. Intente nuevamente", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -72,7 +72,7 @@ public interface RestCon {
                                 @Body SuggestionRequest suggestionRequest,
                                 @QueryMap Map<String, String> token);
 
-    @GET("faculties/{f_id}/{s_id}/courses")
+    @GET("faculties/{f_id}/semesters/{s_id}/courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("f_id") int faculty_id,
                                                     @Path("s_id") int semester_id,
                                                     @QueryMap Map<String, String> token);
@@ -105,7 +105,7 @@ public interface RestCon {
     Call<List<Criterion>> getCriterionsofAspect(@Path("id") int idAspect, @QueryMap Map<String, String> toe);
 
     @GET("criterions/{id}/levels")
-    Call<List<CriterionLevel>> getLevelsofCriterion(@Path("id") int idCriterion, @QueryMap Map<String,String> token);
+    Call<List<CriterionLevel>> getLevelsofCriterion(@Path("id") int idCriterion, @QueryMap Map<String, String> token);
 
 
     @GET("periods/{p_id}/{f_id}/objectives")
@@ -237,7 +237,6 @@ public interface RestCon {
 
     @GET("psp/teacher/students/all")
     Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
-
 
 
     @GET("psp/students/inscriptioFile")

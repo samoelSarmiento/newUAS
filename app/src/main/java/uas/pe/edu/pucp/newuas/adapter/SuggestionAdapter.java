@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.Aspect;
@@ -59,12 +63,25 @@ public class SuggestionAdapter extends BaseAdapter {
         viewHolder.tvTitle.append(" " + suggestion.getTitulo());
         viewHolder.tvDescription.append(" " + suggestion.getDescripcion());
 
-
-
         //parsear fecha de creacion y modificacion
-        //si son diferentes
-        //tvEdit -> visible y updeteo
-        //si son iguales tvEdit se queda gone
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        SimpleDateFormat sdfDisplay = new SimpleDateFormat("dd MMM hh:mm a", new Locale("es", "ES"));
+        try {
+            Date when = sdf.parse(suggestion.getCreado());
+            viewHolder.tvWhen.append(" " + sdfDisplay.format(when));
+            Date update = sdf.parse(suggestion.getModificado());
+            //si son diferentes
+            if (!when.equals(update)) {
+                //tvEdit -> visible y updeteo
+                viewHolder.tvEdit.setVisibility(View.VISIBLE);
+                viewHolder.tvEdit.append(" " + sdfDisplay.format(update));
+            }
+            //si son iguales tvEdit se queda gone
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         return view;
     }
 

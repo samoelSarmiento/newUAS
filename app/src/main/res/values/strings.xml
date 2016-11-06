@@ -174,5 +174,9 @@
     <string name="tvWhen">El:</string>
     <string name="tvTitle">Titulo:</string>
     <string name="tvEdit">Última modificación:</string>
+    <string name="action_suggerence">Nueva</string>
+    <string name="tvSuggerence">Sugerencia:</string>
+    <string name="hintTitle">Titulo</string>
+    <string name="btSave">GUARDAR</string>
 
 </resources>
