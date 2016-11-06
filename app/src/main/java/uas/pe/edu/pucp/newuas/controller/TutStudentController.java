@@ -23,7 +23,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
-import uas.pe.edu.pucp.newuas.model.AppointmentAdapter;
+import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRow;

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPStudentsAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
-import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
+//import uas.pe.edu.pucp.newuas.model.PSPListViewAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
 
@@ -77,7 +77,7 @@ public class PSP_teacherStudentsList extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_psp_teacher_students_list, container, false);
-        lvPSPStudents = (ListView) view.findViewById(R.id.lv_psp_students);
+        lvPSPStudents = (ListView) view.findViewById(R.id.lv_psp_teacher_students);
 
 
         Bundle bundle =  getArguments();

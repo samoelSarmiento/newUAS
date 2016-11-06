@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.EducationalObjectiveAdapter;
+import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 
 /**
@@ -39,7 +40,7 @@ public class EducationalObjectiveListFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_educational_objective_list, container, false);
@@ -55,13 +56,8 @@ public class EducationalObjectiveListFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     EducationalObjective educationalObjective = eoAdapter.getItem(position);
-                    Bundle bundleEo = new Bundle();
-                    bundleEo.putSerializable("eo", (Serializable) educationalObjective);
-                    EducationalObjectiveFragment educationalObjectiveFragment = new EducationalObjectiveFragment();
-                    educationalObjectiveFragment.setArguments(bundleEo);
-                    ((Activity) context).getFragmentManager()
-                            .beginTransaction().addToBackStack(null)
-                            .replace(R.id.fragment_container, educationalObjectiveFragment).commit();
+                    EducationalObjectiveController controller = new EducationalObjectiveController();
+                    controller.getStudentResults(context, educationalObjective.getIdEspecialidad(), educationalObjective.getIdObjetivoEducacional());
                 }
             });
         }

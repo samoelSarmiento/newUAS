@@ -17,10 +17,14 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanActionsFragment;
 import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanListFragment;
 import uas.pe.edu.pucp.newuas.fragment.ImprovementPlanViewFragment;
+import uas.pe.edu.pucp.newuas.fragment.SuggestionListFragment;
+import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.Suggestion;
 
 /**
  * Created by Marshall on 2/11/2016.
@@ -28,24 +32,24 @@ import uas.pe.edu.pucp.newuas.model.Period;
 
 public class ImprovementPlanController {
 
-    public void getImprovementPlansofSpecialty(final Context context, Integer specId){
+    public void getImprovementPlansofSpecialty(final Context context, Integer specId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<ImprovementPlan>> call;
-        call = restCon.getImprovementPlansofSpecialty(specId,token);
+        call = restCon.getImprovementPlansofSpecialty(specId, token);
 
         call.enqueue(new Callback<List<ImprovementPlan>>() {
             @Override
             public void onResponse(Call<List<ImprovementPlan>> call, Response<List<ImprovementPlan>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<ImprovementPlan> list = response.body();
                     ImprovementPlanListFragment iplf = new ImprovementPlanListFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("ImprovementPlans",(Serializable)list);
+                    bundle.putSerializable("ImprovementPlans", (Serializable) list);
                     iplf.setArguments(bundle);
 
                     ((Activity) context).getFragmentManager()
@@ -54,15 +58,9 @@ public class ImprovementPlanController {
                             .replace(R.id.fragment_container, iplf)
                             .commit();
                     ((Activity) context).setTitle("Planes de Mejora");
-
-
-
-
-                }else{
-                    Log.d("wat",response.errorBody().toString());
-
+                } else {
+                    Log.d("wat", response.errorBody().toString());
                 }
-
             }
 
             @Override
@@ -70,31 +68,28 @@ public class ImprovementPlanController {
 
             }
         });
-
-
-
     }
 
-    public void getImprovementPlan(final Context context, Integer ipId ){
+    public void getImprovementPlan(final Context context, Integer ipId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<ImprovementPlan> call;
-        call = restCon.getImprovementPlanById(ipId,token);
+        call = restCon.getImprovementPlanById(ipId, token);
 
         call.enqueue(new Callback<ImprovementPlan>() {
             @Override
             public void onResponse(Call<ImprovementPlan> call, Response<ImprovementPlan> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     ImprovementPlan ip = response.body();
 
                     ImprovementPlanViewFragment ipvf = new ImprovementPlanViewFragment();
 
                     Bundle bundle = new Bundle();
 
-                    bundle.putSerializable("IPlan",ip);
+                    bundle.putSerializable("IPlan", ip);
                     ipvf.setArguments(bundle);
 
                     ((Activity) context).getFragmentManager()
@@ -103,15 +98,8 @@ public class ImprovementPlanController {
                             .replace(R.id.fragment_container, ipvf)
                             .commit();
                     ((Activity) context).setTitle("Plan de Mejora");
-
-
-
-
-
-
-
-                }else{
-                    Log.d("wat",response.errorBody().toString());
+                } else {
+                    Log.d("wat", response.errorBody().toString());
                 }
             }
 
@@ -120,13 +108,74 @@ public class ImprovementPlanController {
 
             }
         });
-
-
-
-
-
     }
 
+
+    public void getActionsOfImprovementPlan(final Context context, Integer ipId) {
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Action>> call;
+        call = restCon.getActionsofImprovementPlan(ipId, token);
+
+        call.enqueue(new Callback<List<Action>>() {
+            @Override
+            public void onResponse(Call<List<Action>> call, Response<List<Action>> response) {
+                if (response.isSuccessful()) {
+                    List<Action> list = response.body();
+
+                    ImprovementPlanActionsFragment ipaf = new ImprovementPlanActionsFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("actions", (Serializable) list);
+                    ipaf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, ipaf)
+                            .commit();
+                    ((Activity) context).setTitle("Acciones");
+                } else {
+                    Log.d("wat", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Action>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getImprovementPlanSuggestions(final Context context, Integer ipId) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Suggestion>> call = restCon.getImprPlanSuggestion(ipId, token);
+        call.enqueue(new Callback<List<Suggestion>>() {
+            @Override
+            public void onResponse(Call<List<Suggestion>> call, Response<List<Suggestion>> response) {
+                if (response.isSuccessful()) {
+                    List<Suggestion> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("suggestions", (Serializable) list);
+                    SuggestionListFragment listFragment = new SuggestionListFragment();
+                    listFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, listFragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Suggestion>> call, Throwable t) {
+
+            }
+        });
+    }
 }
 
 

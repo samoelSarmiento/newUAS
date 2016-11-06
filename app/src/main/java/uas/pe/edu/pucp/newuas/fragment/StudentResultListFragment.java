@@ -15,6 +15,8 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.StudentResultAdapter;
+import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 public class StudentResultListFragment extends Fragment {
@@ -48,13 +50,8 @@ public class StudentResultListFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     StudentResult result = adapter.getItem(position);
-                    Bundle bundleResult = new Bundle();
-                    bundleResult.putSerializable("result", result);
-                    StudentResultFragment studentResultFragment = new StudentResultFragment();
-                    studentResultFragment.setArguments(bundleResult);
-                    ((Activity) context).getFragmentManager().beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.fragment_container, studentResultFragment).commit();
+                    EducationalObjectiveController controller = new EducationalObjectiveController();
+                    controller.getStudentResultAspects(context, result.getIdResultadoEstudiantil());
                 }
             });
         }

@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 
 /**
@@ -42,10 +44,12 @@ public class ImprovementPlanViewFragment extends Fragment {
         TextView tvIpDate = (TextView) view.findViewById(R.id.tvIpDate);
         TextView tvIpStatus = (TextView) view.findViewById(R.id.tvIpStatus);
 
+        Button btActions = (Button) view.findViewById(R.id.btnActions);
+        Button btSugg = (Button) view.findViewById(R.id.btnSug);
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            ImprovementPlan ip = (ImprovementPlan) bundle.getSerializable("IPlan");
+            final ImprovementPlan ip = (ImprovementPlan) bundle.getSerializable("IPlan");
 
             tvIpTitle.setText(ip.getDescripcion());
             tvIpType.setText(ip.getImprovementPlanType().getCodigo() + " " + ip.getImprovementPlanType().getDescripcion());
@@ -57,6 +61,21 @@ public class ImprovementPlanViewFragment extends Fragment {
             tvIpDate.setText(ip.getFechaImplementacion());
             tvIpStatus.setText(ip.getEstado());
 
+            btActions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ImprovementPlanController ipc = new ImprovementPlanController();
+                    ipc.getActionsOfImprovementPlan(getActivity(), ip.getIdPlanMejora());
+                }
+            });
+
+            btSugg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ImprovementPlanController controller = new ImprovementPlanController();
+                    controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
+                }
+            });
 
         }
 

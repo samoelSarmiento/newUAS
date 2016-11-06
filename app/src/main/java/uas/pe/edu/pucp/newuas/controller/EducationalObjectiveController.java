@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.j256.ormlite.dao.Dao;
@@ -23,9 +24,13 @@ import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AspectListFragment;
+import uas.pe.edu.pucp.newuas.fragment.CriterionLevelListFragment;
+import uas.pe.edu.pucp.newuas.fragment.CriterionListFragment;
 import uas.pe.edu.pucp.newuas.fragment.EducationalObjectiveListFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.Aspect;
+import uas.pe.edu.pucp.newuas.model.Criterion;
+import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
@@ -176,6 +181,86 @@ public class EducationalObjectiveController {
                 } catch (SQLException e) {
                     Toast.makeText(context, "Error al recuperar los datos", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+
+
+    public void getCriterionsofAspect(final Context context, Integer idAspect){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Criterion>> call = restCon.getCriterionsofAspect(idAspect, token);
+
+        call.enqueue(new Callback<List<Criterion>>() {
+            @Override
+            public void onResponse(Call<List<Criterion>> call, Response<List<Criterion>> response) {
+                if(response.isSuccessful()){
+                    List<Criterion> crits = response.body();
+
+                    CriterionListFragment clf = new CriterionListFragment();
+
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("crits",(Serializable)crits);
+
+                    clf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, clf).commit();
+
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Criterion>> call, Throwable t) {
+
+            }
+        });
+
+
+
+    }
+
+
+    public void getLevelsofCriterion(final Context context, Integer critId){
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<CriterionLevel>> call = restCon.getLevelsofCriterion(critId, token);
+        call.enqueue(new Callback<List<CriterionLevel>>() {
+            @Override
+            public void onResponse(Call<List<CriterionLevel>> call, Response<List<CriterionLevel>> response) {
+                if(response.isSuccessful()){
+                    List<CriterionLevel> cls = response.body();
+
+                    CriterionLevelListFragment cllf = new CriterionLevelListFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("critlevs",(Serializable)cls);
+                    cllf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, cllf).commit();
+
+
+
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CriterionLevel>> call, Throwable t) {
+
             }
         });
     }

@@ -142,9 +142,8 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_myspecialty) {
             if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
-
+                
                 SpecialtyFragment spFragment = new SpecialtyFragment();
-
                 Gson gsonf = new Gson();
                 String spj = gsonf.toJson(Configuration.SPECIALTY);
                 System.out.println(spj);

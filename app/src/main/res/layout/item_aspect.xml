@@ -7,7 +7,8 @@
     <TextView
         android:id="@+id/tvAspect"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
+        android:layout_gravity="start|center"
         android:textAllCaps="true" />
 
 </LinearLayout>
