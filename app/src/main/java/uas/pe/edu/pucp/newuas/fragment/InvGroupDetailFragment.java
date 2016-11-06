@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -71,18 +73,8 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupDesc.setText(invGroup.get(0).getDescripcion());
         invGroupEsp.setText(invGroup.get(0).getFaculty().getNombre());
 
-        /*if(invGroup.get(0).getImagen()!=null) {
-            Bitmap bmp;
-            try{
-                InputStream in = new URL(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).openStream();
-                bmp = BitmapFactory.decodeStream(in);
-                invGImage.setImageBitmap(bmp);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
+        if(invGroup.get(0).getImagen()!=null)
+            Picasso.with(context).load(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).into(invGImage);
 
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override
