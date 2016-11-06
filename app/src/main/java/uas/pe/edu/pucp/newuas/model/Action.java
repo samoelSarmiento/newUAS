@@ -33,7 +33,7 @@ public class Action implements Serializable{
     @SerializedName("Comentario")
     @Expose
     @DatabaseField
-    private Object comentario;
+    private String comentario;
     @SerializedName("Descripcion")
     @Expose
     @DatabaseField
@@ -45,7 +45,7 @@ public class Action implements Serializable{
     @SerializedName("Porcentaje")
     @Expose
     @DatabaseField
-    private Object porcentaje;
+    private Integer porcentaje;
     @SerializedName("Estado")
     @Expose
     @DatabaseField
@@ -82,7 +82,7 @@ public class Action implements Serializable{
 
      * @param teacher|
      */
-    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, Object comentario, String descripcion,  Object idArchivoEntrada, Object porcentaje, Object estado, Teacher teacher, Semester cicle) {
+    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, String comentario, String descripcion,  Object idArchivoEntrada, Integer porcentaje, Object estado, Teacher teacher, Semester cicle) {
         this.idPlanAccion = idPlanAccion;
         this.idPlanMejora = idPlanMejora;
         this.idCicloAcademico = idCicloAcademico;
@@ -174,7 +174,7 @@ public class Action implements Serializable{
      * @return
      * The comentario
      */
-    public Object getComentario() {
+    public String getComentario() {
         return comentario;
     }
 
@@ -183,7 +183,7 @@ public class Action implements Serializable{
      * @param comentario
      * The Comentario
      */
-    public void setComentario(Object comentario) {
+    public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 
@@ -234,7 +234,7 @@ public class Action implements Serializable{
      * @return
      * The porcentaje
      */
-    public Object getPorcentaje() {
+    public Integer getPorcentaje() {
         return porcentaje;
     }
 
@@ -243,7 +243,7 @@ public class Action implements Serializable{
      * @param porcentaje
      * The Porcentaje
      */
-    public void setPorcentaje(Object porcentaje) {
+    public void setPorcentaje(Integer porcentaje) {
         this.porcentaje = porcentaje;
     }
 
