@@ -20,7 +20,7 @@ import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
  * A simple {@link Fragment} subclass.
  */
 public class NewSuggerenceFragment extends Fragment {
-    private final String regex = "[A-Za-záéíóú[ñ]]*";
+    private final String regex = "[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+";
 
     public NewSuggerenceFragment() {
         // Required empty public constructor
