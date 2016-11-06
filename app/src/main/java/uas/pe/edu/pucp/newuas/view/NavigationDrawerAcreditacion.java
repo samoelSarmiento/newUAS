@@ -83,8 +83,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
-
-
     }
 
     @Override
@@ -94,28 +92,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else {
             getFragmentManager().popBackStack();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -142,7 +118,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_myspecialty) {
             if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
-                
+
                 SpecialtyFragment spFragment = new SpecialtyFragment();
                 Gson gsonf = new Gson();
                 String spj = gsonf.toJson(Configuration.SPECIALTY);
@@ -166,31 +142,29 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
         } else if (id == R.id.nav_sizperiod) {
 
             MeasurePeriodController measurePeriodController = new MeasurePeriodController();
-            if(Configuration.LOGIN_USER.getUser().getIdPerfil()==3){
-                boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.SPECIALTY.getIdEspecialidad());
-            }else{
-                if(Configuration.LOGIN_USER.getUser().getAccreditor()!=null){
-                    boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+                boolean result = measurePeriodController.getMeasurePeriods(this, Configuration.SPECIALTY.getIdEspecialidad());
+            } else {
+                if (Configuration.LOGIN_USER.getUser().getAccreditor() != null) {
+                    boolean result = measurePeriodController.getMeasurePeriods(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
                 }
-                if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
-                    boolean result = measurePeriodController.getMeasurePeriods(this,Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
+                if (Configuration.LOGIN_USER.getUser().getTeacher() != null) {
+                    boolean result = measurePeriodController.getMeasurePeriods(this, Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
                 }
 
             }
 
 
-
-
         } else if (id == R.id.nav_upgplan) {
             ImprovementPlanController ipCont = new ImprovementPlanController();
-            if(Configuration.LOGIN_USER.getUser().getIdPerfil()==3){
-                ipCont.getImprovementPlansofSpecialty(this,Configuration.SPECIALTY.getIdEspecialidad());
-            }else{
-                if(Configuration.LOGIN_USER.getUser().getAccreditor()!=null){
-                    ipCont.getImprovementPlansofSpecialty(this,Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+                ipCont.getImprovementPlansofSpecialty(this, Configuration.SPECIALTY.getIdEspecialidad());
+            } else {
+                if (Configuration.LOGIN_USER.getUser().getAccreditor() != null) {
+                    ipCont.getImprovementPlansofSpecialty(this, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
                 }
-                if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
-                    ipCont.getImprovementPlansofSpecialty(this,Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
+                if (Configuration.LOGIN_USER.getUser().getTeacher() != null) {
+                    ipCont.getImprovementPlansofSpecialty(this, Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad());
 
                 }
             }

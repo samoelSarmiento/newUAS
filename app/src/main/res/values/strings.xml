@@ -174,6 +174,10 @@
     <string name="tvWhen">El:</string>
     <string name="tvTitle">Titulo:</string>
     <string name="tvEdit">Última modificación:</string>
+    <string name="action_suggerence">Nueva</string>
+    <string name="tvSuggerence">Sugerencia:</string>
+    <string name="hintTitle">Titulo</string>
+    <string name="btSave">GUARDAR</string>
     <string name="tvSeeRes">Presionar un criterio para observar sus resultados asociados</string>
     <string name="tvSeeAspects">Presionar un resultado para observar sus aspectos asociados</string>
     <string name="tvSeeCrits">Presionar un aspecto para ver sus criterios asociados.</string>
