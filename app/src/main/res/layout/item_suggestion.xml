@@ -57,6 +57,6 @@
         android:paddingTop="20dp"
         android:text="@string/tvEdit"
         android:textSize="12sp"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
 </LinearLayout>

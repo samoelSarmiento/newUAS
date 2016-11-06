@@ -181,7 +181,7 @@ public class ImprovementPlanController {
         });
     }
 
-    public void sendSuggestion(final Context context, int idIp, final SuggestionRequest request) {
+    public void sendSuggestion(final Context context, final int idIp, final SuggestionRequest request) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -195,6 +195,8 @@ public class ImprovementPlanController {
                 } else {
                     Toast.makeText(context, "Ocurrió un error", Toast.LENGTH_LONG).show();
                 }
+                ((Activity) context).getFragmentManager().popBackStack();
+                getImprovementPlanSuggestions(context, idIp);
             }
 
             @Override
