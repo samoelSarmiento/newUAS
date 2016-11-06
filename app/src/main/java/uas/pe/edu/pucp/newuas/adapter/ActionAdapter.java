@@ -19,7 +19,7 @@ import uas.pe.edu.pucp.newuas.model.Teacher;
 /**
  * Created by Marshall on 3/11/2016.
  */
-public class ActionAdapter extends BaseAdapter{
+public class ActionAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Action> items;
@@ -50,7 +50,7 @@ public class ActionAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.item_improvement_plan_action,null);
+        View view = layoutInflater.inflate(R.layout.item_improvement_plan_action, null);
         ViewHolder viewHolder = new ViewHolder();
 
         viewHolder.tvActSem = (TextView) view.findViewById(R.id.tvactionsemester);
@@ -61,7 +61,8 @@ public class ActionAdapter extends BaseAdapter{
         viewHolder.tvActDesc.setText(items.get(position).getDescripcion());
 
         Teacher tch = items.get(position).getTeacher();
-        viewHolder.tvActResp.setText("Por: " + tch.getNombre() + " " + tch.getApellidoPaterno() + " " + tch.getApellidoPaterno());
+        if (tch != null)
+            viewHolder.tvActResp.setText("Por: " + tch.getNombre() + " " + tch.getApellidoPaterno() + " " + tch.getApellidoPaterno());
 
 
         return view;
@@ -69,7 +70,7 @@ public class ActionAdapter extends BaseAdapter{
 
     }
 
-    private static class ViewHolder{
+    private static class ViewHolder {
         TextView tvActSem;
         TextView tvActDesc;
         TextView tvActResp;
