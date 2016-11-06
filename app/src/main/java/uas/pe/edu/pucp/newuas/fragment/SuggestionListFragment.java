@@ -63,7 +63,7 @@ public class SuggestionListFragment extends Fragment {
             case R.id.action_suggerence:
                 NewSuggerenceFragment fragment = new NewSuggerenceFragment();
                 Bundle bd = new Bundle();
-                bd.putInt("ipId", ipId);
+                bd.putInt("idIp", ipId);
                 fragment.setArguments(bd);
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
                 break;

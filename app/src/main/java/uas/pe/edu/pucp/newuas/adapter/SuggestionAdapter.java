@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,7 @@ public class SuggestionAdapter extends BaseAdapter {
             Date update = sdf.parse(suggestion.getModificado());
             //si son diferentes
             if (!when.equals(update)) {
+                Log.d("update", sdfDisplay.format(update));
                 //tvEdit -> visible y updeteo
                 viewHolder.tvEdit.setVisibility(View.VISIBLE);
                 viewHolder.tvEdit.append(" " + sdfDisplay.format(update));
