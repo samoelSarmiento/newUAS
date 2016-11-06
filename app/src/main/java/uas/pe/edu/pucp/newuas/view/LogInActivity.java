@@ -58,7 +58,7 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
                 String password = edtPassword.getText().toString();
 
                 ProgressDialog pd = new ProgressDialog(this );
-                pd.setMessage("loading");
+                pd.setMessage("Cargando...");
                 pd.show();
 
                 /*
