@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -186,7 +187,7 @@ public class EducationalObjectiveController {
     }
 
 
-    public void getCriterionsofAspect(final Context context, Integer idAspect){
+    public void getCriterionsofAspect(final Context context, final Integer idAspect){
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
@@ -202,6 +203,12 @@ public class EducationalObjectiveController {
 
                     CriterionListFragment clf = new CriterionListFragment();
 
+                    try {
+                        saveCriterions(context,crits);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("crits",(Serializable)crits);
@@ -215,11 +222,31 @@ public class EducationalObjectiveController {
 
                 }else{
                     Log.d("wat",response.errorBody().toString());
+
+
+
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<Criterion>> call, Throwable t) {
+
+                List<Criterion> crits = null;
+                try {
+                    crits = retrieveCriterionsfromAspect(context,idAspect);
+
+                    CriterionListFragment clf = new CriterionListFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("crits",(Serializable)crits);
+
+                    clf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, clf).commit();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -229,7 +256,7 @@ public class EducationalObjectiveController {
     }
 
 
-    public void getLevelsofCriterion(final Context context, Integer critId){
+    public void getLevelsofCriterion(final Context context, final Integer critId){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -240,6 +267,12 @@ public class EducationalObjectiveController {
             public void onResponse(Call<List<CriterionLevel>> call, Response<List<CriterionLevel>> response) {
                 if(response.isSuccessful()){
                     List<CriterionLevel> cls = response.body();
+
+                    try {
+                        saveCritLevs(context,cls);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
 
                     CriterionLevelListFragment cllf = new CriterionLevelListFragment();
                     Bundle bundle = new Bundle();
@@ -260,6 +293,24 @@ public class EducationalObjectiveController {
 
             @Override
             public void onFailure(Call<List<CriterionLevel>> call, Throwable t) {
+
+                List<CriterionLevel> cls = null;
+                try {
+                    cls = retrieveCritLevelsfromCriterion(context, critId);
+                    CriterionLevelListFragment cllf = new CriterionLevelListFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("critlevs",(Serializable)cls);
+                    cllf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, cllf).commit();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
 
             }
         });
@@ -327,4 +378,43 @@ public class EducationalObjectiveController {
         return eosDao.queryBuilder().where().eq("idEspecialidad", idSpecialty)
                 .and().eq("period_id", idPeriod).query();
     }
+
+    private List<Criterion> retrieveCriterionsfromAspect(final Context context, int idAspect) throws SQLException{
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Criterion, Integer> criterionDao = helper.getCriterionDao();
+        return criterionDao.queryBuilder().where().eq("IdAspecto",idAspect).query();
+    }
+
+    private void saveCriterions(final Context context, List<Criterion> crits) throws SQLException {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<Criterion,Integer> criterionDao = helper.getCriterionDao();
+        for (Criterion crit : crits){
+            Criterion find = criterionDao.queryForId(crit.getIdCriterio());
+            if(find==null){
+                criterionDao.create(crit);
+            }else{
+                criterionDao.update(crit);
+            }
+        }
+    }
+
+    private List<CriterionLevel> retrieveCritLevelsfromCriterion(final Context context, int idCriterion) throws SQLException{
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<CriterionLevel,Integer> critLevDao = helper.getCritLevDao();
+        return critLevDao.queryBuilder().where().eq("IdCriterio",idCriterion).query();
+    }
+
+    private void saveCritLevs(final Context context, List<CriterionLevel> criterionLevels) throws SQLException{
+        DatabaseHelper helper = new DatabaseHelper(context);
+        Dao<CriterionLevel,Integer> critLevDao = helper.getCritLevDao();
+        for(CriterionLevel cl : criterionLevels){
+            CriterionLevel find = critLevDao.queryForId(cl.getIdNivelCriterio());
+            if(find==null){
+                critLevDao.create(cl);
+            }else{
+                critLevDao.update(cl);
+            }
+        }
+    }
+
 }
