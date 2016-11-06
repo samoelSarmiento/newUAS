@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.query.In;
 
@@ -317,7 +318,7 @@ public class EducationalObjectiveController {
     }
 
     private void saveAspects(final Context context, List<Aspect> list) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Aspect, Integer> aspectDao = helper.getAspectDao();
         for (Aspect aspect : list) {
             Aspect find = aspectDao.queryForId(aspect.getIdAspecto());
@@ -330,13 +331,13 @@ public class EducationalObjectiveController {
     }
 
     private List<Aspect> retrieveAspects(final Context context, int idStudenResult) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Aspect, Integer> aspectDao = helper.getAspectDao();
         return aspectDao.queryBuilder().where().eq("idResultadoEstudiantil", idStudenResult).query();
     }
 
     private void saveStudenResult(final Context context, List<StudentResult> list, int idObjetivoEducacional) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<StudentResult, Integer> studentResultsDao = helper.getStudentResultDao();
         for (StudentResult studentResult : list) {
             studentResult.setIdObjetivoEduacional(idObjetivoEducacional);
@@ -351,7 +352,7 @@ public class EducationalObjectiveController {
     }
 
     private List<StudentResult> retrieveStudentResult(final Context context, int idSpecialty, int idObjetivoEducacional) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<StudentResult, Integer> studentResultDao = helper.getStudentResultDao();
         return studentResultDao.queryBuilder().where()
                 .eq("IdEspecialidad", idSpecialty)
@@ -359,7 +360,7 @@ public class EducationalObjectiveController {
     }
 
     private void saveEducationalObjectives(final Context context, List<EducationalObjective> list, int idPeriod) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<EducationalObjective, Integer> eosDao = helper.getEducationalObjectiveDao();
         for (EducationalObjective eos : list) {
             eos.setPeriod_id(idPeriod);
@@ -373,20 +374,20 @@ public class EducationalObjectiveController {
     }
 
     private List<EducationalObjective> retrieveEducationalObjectives(final Context context, int idSpecialty, int idPeriod) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<EducationalObjective, Integer> eosDao = helper.getEducationalObjectiveDao();
         return eosDao.queryBuilder().where().eq("idEspecialidad", idSpecialty)
                 .and().eq("period_id", idPeriod).query();
     }
 
     private List<Criterion> retrieveCriterionsfromAspect(final Context context, int idAspect) throws SQLException{
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Criterion, Integer> criterionDao = helper.getCriterionDao();
         return criterionDao.queryBuilder().where().eq("IdAspecto",idAspect).query();
     }
 
     private void saveCriterions(final Context context, List<Criterion> crits) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Criterion,Integer> criterionDao = helper.getCriterionDao();
         for (Criterion crit : crits){
             Criterion find = criterionDao.queryForId(crit.getIdCriterio());
@@ -399,13 +400,14 @@ public class EducationalObjectiveController {
     }
 
     private List<CriterionLevel> retrieveCritLevelsfromCriterion(final Context context, int idCriterion) throws SQLException{
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<CriterionLevel,Integer> critLevDao = helper.getCritLevDao();
         return critLevDao.queryBuilder().where().eq("IdCriterio",idCriterion).query();
     }
 
     private void saveCritLevs(final Context context, List<CriterionLevel> criterionLevels) throws SQLException{
-        DatabaseHelper helper = new DatabaseHelper(context);
+
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);  //OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<CriterionLevel,Integer> critLevDao = helper.getCritLevDao();
         for(CriterionLevel cl : criterionLevels){
             CriterionLevel find = critLevDao.queryForId(cl.getIdNivelCriterio());
