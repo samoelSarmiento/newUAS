@@ -50,12 +50,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.btModuleAcr:
+                /*
                 ProgressDialog pd = new ProgressDialog(this );
                 pd.setMessage("Cargando...");
                 pd.setCanceledOnTouchOutside(false);
                 pd.show();
+                */
                 SpecialtyController specialtyController = new SpecialtyController();
-                specialtyController.getAllSpecialties(this);
+                try {
+                    specialtyController.getAllSpecialties(this);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    //pd.hide();
+                }
                 break;
             case R.id.btModuleInv:
                 intent = new Intent(this, NavigationDrawerInvestigacion.class);

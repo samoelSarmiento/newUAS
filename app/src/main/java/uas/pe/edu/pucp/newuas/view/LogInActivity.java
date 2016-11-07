@@ -57,10 +57,12 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
                 String user = edtUser.getText().toString();
                 String password = edtPassword.getText().toString();
 
+                /*
                 ProgressDialog pd = new ProgressDialog(this );
                 pd.setMessage("Cargando...");
                 pd.setCanceledOnTouchOutside(false);
                 pd.show();
+                */
 
                 /*
                 YourAsyncTask yat = new YourAsyncTask(this, user, password);
@@ -71,9 +73,16 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
 
 
                 if (!user.isEmpty() && !password.isEmpty()) {
+
                     System.out.println("Log in antes");
-                    UserController userController = new UserController();
-                    userController.logIn(LogInActivity.this, user, password);
+                    try{
+                        UserController userController = new UserController();
+                        userController.logIn(LogInActivity.this, user, password);
+
+                    }catch (Exception e){
+                        //pd.hide();
+                    }
+
                 } else {
                     Toast.makeText(this, "Campos vacios. Intente nuevamente", Toast.LENGTH_SHORT).show();
                 }
