@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -114,7 +115,7 @@ public class MeasureInstrumentsController {
 
 
     private List<MeasureInstrument> retrieveMeaInstofPeriod(final Context context, Integer idPeriod) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
         return measureinstrumentDao.queryBuilder().where().eq("idPeriodo", idPeriod).query();
 
@@ -123,7 +124,7 @@ public class MeasureInstrumentsController {
 
 
     private void saveMeaInsts(final Context context, List<MeasureInstrument> mis) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
         for(MeasureInstrument mi : mis){
             MeasureInstrument find = measureinstrumentDao.queryForId(mi.getIdFuenteMedicion());

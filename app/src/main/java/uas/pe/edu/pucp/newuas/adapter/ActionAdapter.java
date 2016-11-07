@@ -56,13 +56,34 @@ public class ActionAdapter extends BaseAdapter {
         viewHolder.tvActSem = (TextView) view.findViewById(R.id.tvactionsemester);
         viewHolder.tvActDesc = (TextView) view.findViewById(R.id.tvactiondesc);
         viewHolder.tvActResp = (TextView) view.findViewById(R.id.tvactionresp);
+        viewHolder.tvActComm = (TextView) view.findViewById(R.id.tvactioncomm);
+        viewHolder.tvActPerc = (TextView) view.findViewById(R.id.tvactionperc);
 
         viewHolder.tvActSem.setText(items.get(position).getSemester().getDescripcion());
         viewHolder.tvActDesc.setText(items.get(position).getDescripcion());
 
+
         Teacher tch = items.get(position).getTeacher();
         if (tch != null)
             viewHolder.tvActResp.setText("Por: " + tch.getNombre() + " " + tch.getApellidoPaterno() + " " + tch.getApellidoPaterno());
+        else{
+            viewHolder.tvActResp.setText("Por: Todos");
+        }
+
+        if(items.get(position).getComentario()==null){
+            viewHolder.tvActComm.setText("Sin comentarios");
+        }else{
+            viewHolder.tvActComm.setText(items.get(position).getComentario());
+        }
+
+        if(items.get(position).getPorcentaje()==null){
+            viewHolder.tvActPerc.setText("0%");
+        }else{
+            viewHolder.tvActPerc.setText(items.get(position).getPorcentaje() + "%");
+        }
+
+
+
 
 
         return view;
@@ -74,6 +95,8 @@ public class ActionAdapter extends BaseAdapter {
         TextView tvActSem;
         TextView tvActDesc;
         TextView tvActResp;
+        TextView tvActComm;
+        TextView tvActPerc;
 
     }
 }

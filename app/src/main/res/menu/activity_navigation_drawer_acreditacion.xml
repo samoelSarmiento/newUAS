@@ -13,10 +13,16 @@
             android:title="@string/itdAcrSpecialty"
             android:visible="true" />
         <item
+            android:id="@+id/nav_mycourses"
+            android:icon="@drawable/ic_faculty_white"
+            android:title="@string/itdMyCourses"
+            android:visible="true" />
+
+        <item
             android:id="@+id/nav_specialty_list"
             android:icon="@drawable/ic_faculty_white"
             android:title="@string/itdAcrSpecialtyList"
-            android:visible="false" />
+            android:visible="true" />
 
         <item
             android:id="@+id/nav_sizperiod"

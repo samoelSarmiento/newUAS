@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 
@@ -69,13 +70,18 @@ public class ImprovementPlanViewFragment extends Fragment {
                 }
             });
 
-            btSugg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ImprovementPlanController controller = new ImprovementPlanController();
-                    controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
-                }
-            });
+            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1
+                    || Configuration.LOGIN_USER.getUser().getIdPerfil() == 2
+                    || Configuration.LOGIN_USER.getUser().getIdPerfil() == 5) {
+                btSugg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ImprovementPlanController controller = new ImprovementPlanController();
+                        controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
+                    }
+                });
+            }
+
 
         }
 

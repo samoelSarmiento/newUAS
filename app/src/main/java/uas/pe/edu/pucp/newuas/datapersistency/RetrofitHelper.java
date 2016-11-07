@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -31,13 +32,13 @@ public class RetrofitHelper {
     private static RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory
             .createWithScheduler(Schedulers.io());
 
-    public static String serverURL = "http://52.89.227.55/api";
+    public static String serverURL = "http://52.89.227.55/api/";
 
     public static Retrofit apiConnector = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.37/internetUAS/public/api/")
+            .baseUrl("http://10.100.224.173/internetUAS/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
-            .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
+            .client(new OkHttpClient.Builder().addInterceptor(interceptor).connectTimeout(30, TimeUnit.SECONDS).build())
             .build();
 
 

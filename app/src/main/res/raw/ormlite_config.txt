@@ -1,5 +1,9 @@
 #
+<<<<<<< HEAD
 # generated on 2016/11/06 07:21:14
+=======
+# generated on 2016/11/06 12:40:33
+>>>>>>> 4a5c4d9d84fcae4e06fa4cd916c987e572c2caea
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
