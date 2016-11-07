@@ -1,7 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -16,10 +15,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -41,6 +44,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
     Projects p;
     Context context;
     int dayI,monthI,yearI,dayF,monthF,yearF;
+    private static DatePickerDialog.OnDateSetListener selectorListener;
 
     public ProjEditFragment() {
         // Required empty public constructor
@@ -73,7 +77,27 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
         p=proj;
         projName.setText(proj.getNombre());
         projInitDate.setText(proj.getFechaIni());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date=null;
+        try{
+            date =format.parse(proj.getFechaIni());
+        }catch (ParseException e){
+        }
+        dayI=date.getDay();
+        monthI=date.getMonth();
+        yearI=date.getYear();
+        Toast.makeText(getActivity(), "" + dayI + "" + monthI + "" + yearI, Toast.LENGTH_SHORT).show();
+
         projFinDate.setText(proj.getFechaFin());
+        try{
+            date =format.parse(proj.getFechaFin());
+        }catch (ParseException e){
+        }
+        dayF=date.getDay();
+        monthF=date.getMonth();
+        yearF=date.getYear();
+        Toast.makeText(getActivity(), "" + dayF + "" + monthF + "" + yearF, Toast.LENGTH_SHORT).show();
+
         String cantEnt="" + proj.getNumEntregables();
         projDeliv.setText(cantEnt);
         projDesc.setText(proj.getDescripcion());
@@ -116,7 +140,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 projectController.getProjectById(context,p.getId());
                 break;
             case R.id.selInitDate:
-                DatePickerDialog datepicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener(){
+                /*DatePickerDialog datepicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener(){
 
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -125,7 +149,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 },Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH);//,year,month,day);
 
                 datepicker.setTitle("Fecha Inicial");
-                datepicker.show();
+                datepicker.show();*/
                 //DatePickerFragment fragment = new DatePickerFragment();
                 //fragment.show(getFragmentManager(),"holis");
                 break;
@@ -134,28 +158,4 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 break;
         }
     }
-    /*
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar calendar = new GregorianCalendar(year,month,dayOfMonth);
-        setDate(calendar);
-    }
-
-    private void setDate(final Calendar calendar){
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        projInitDate.setText(dateFormat.format(calendar.getTime()));
-    }
-
-    public static class DatePickerFragment extends DialogFragment{
-
-        @Override
-        public Dialog onCreateDialog (Bundle savedInstanceState){
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            return new DatePickerDialog(getActivity(),(DatePickerDialog.OnDateSetListener)getActivity(),year,month,day);
-        }
-    }*/
 }
