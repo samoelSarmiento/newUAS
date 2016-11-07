@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btModuleAcr:
                 ProgressDialog pd = new ProgressDialog(this );
                 pd.setMessage("Cargando...");
+                pd.setCanceledOnTouchOutside(false);
                 pd.show();
                 SpecialtyController specialtyController = new SpecialtyController();
                 specialtyController.getAllSpecialties(this);

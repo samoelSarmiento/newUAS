@@ -59,6 +59,7 @@ LogInActivity extends AppCompatActivity implements View.OnClickListener {
 
                 ProgressDialog pd = new ProgressDialog(this );
                 pd.setMessage("Cargando...");
+                pd.setCanceledOnTouchOutside(false);
                 pd.show();
 
                 /*
