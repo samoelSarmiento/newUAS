@@ -44,12 +44,17 @@
                     android:layout_weight="0.3"
                     android:text="@string/projInitDate" />
 
-                <EditText
+                <TextView
                     android:id="@+id/projInitDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.6"
                     android:text="" />
+                <Button
+                    android:id="@+id/selInitDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"/>
             </LinearLayout>
 
             <LinearLayout
@@ -64,12 +69,17 @@
                     android:layout_weight="0.3"
                     android:text="@string/projFinDate" />
 
-                <EditText
+                <TextView
                     android:id="@+id/projFinDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.6"
                     android:text="" />
+                <Button
+                    android:id="@+id/selFinDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"/>
             </LinearLayout>
 
             <LinearLayout

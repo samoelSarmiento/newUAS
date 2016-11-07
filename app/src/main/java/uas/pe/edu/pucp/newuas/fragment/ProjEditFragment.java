@@ -1,6 +1,9 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +19,10 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -25,12 +33,14 @@ import uas.pe.edu.pucp.newuas.model.Projects;
  * Created by Andree on 26/10/2016.
  */
 
-public class ProjEditFragment extends Fragment implements View.OnClickListener{
+public class ProjEditFragment extends Fragment implements View.OnClickListener{//, DatePickerDialog.OnDateSetListener{
 
-    EditText projName, projInitDate,projFinDate, projDeliv, projDesc;
-    Button projSave,projCancel;
+    EditText projName,  projDeliv, projDesc;
+    TextView projInitDate,projFinDate;
+    Button projSave,projCancel,selInit,selFin;
     Projects p;
     Context context;
+    int dayI,monthI,yearI,dayF,monthF,yearF;
 
     public ProjEditFragment() {
         // Required empty public constructor
@@ -45,12 +55,14 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
         getActivity().setTitle("Proyectos");
 
         projName=(EditText) view.findViewById(R.id.projName);
-        projInitDate=(EditText) view.findViewById(R.id.projInitDate);
-        projFinDate=(EditText) view.findViewById(R.id.projFinDate);
+        projInitDate=(TextView) view.findViewById(R.id.projInitDate);
+        projFinDate=(TextView) view.findViewById(R.id.projFinDate);
         projDeliv=(EditText) view.findViewById(R.id.projDeliv);
         projDesc=(EditText) view.findViewById(R.id.projDesc);
         projSave=(Button) view.findViewById(R.id.projSave);
         projCancel=(Button) view.findViewById(R.id.projCancel);
+        selInit=(Button)view.findViewById(R.id.selInitDate);
+        selFin=(Button)view.findViewById(R.id.selFinDate);
 
         Bundle bundle = this.getArguments();
         Projects proj=null;
@@ -68,6 +80,8 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
 
         projSave.setOnClickListener(this);
         projCancel.setOnClickListener(this);
+        selInit.setOnClickListener(this);
+        selFin.setOnClickListener(this);
 
         return view;
     }
@@ -89,7 +103,8 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
                 changedProj.setNumEntregables(cantEnt);
                 changedProj.setFechaIni(projInitDate.getText().toString());
                 changedProj.setFechaFin(projFinDate.getText().toString());
-
+                //Date date = new Date();
+                //date.getYear();
 
                 projectController.editProj(context,changedProj);
 
@@ -100,6 +115,47 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{
             case R.id.projCancel:
                 projectController.getProjectById(context,p.getId());
                 break;
+            case R.id.selInitDate:
+                DatePickerDialog datepicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener(){
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        projInitDate.setText(dayOfMonth + "/" + month + "/" + year);
+                    }
+                },Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH);//,year,month,day);
+
+                datepicker.setTitle("Fecha Inicial");
+                datepicker.show();
+                //DatePickerFragment fragment = new DatePickerFragment();
+                //fragment.show(getFragmentManager(),"holis");
+                break;
+            case R.id.selFinDate:
+
+                break;
         }
     }
+    /*
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar calendar = new GregorianCalendar(year,month,dayOfMonth);
+        setDate(calendar);
+    }
+
+    private void setDate(final Calendar calendar){
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        projInitDate.setText(dateFormat.format(calendar.getTime()));
+    }
+
+    public static class DatePickerFragment extends DialogFragment{
+
+        @Override
+        public Dialog onCreateDialog (Bundle savedInstanceState){
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(),(DatePickerDialog.OnDateSetListener)getActivity(),year,month,day);
+        }
+    }*/
 }
