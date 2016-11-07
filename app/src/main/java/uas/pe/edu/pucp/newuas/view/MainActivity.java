@@ -12,13 +12,14 @@ import android.widget.Button;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv;
+    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv, btCositaRara;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp = (Button) findViewById(R.id.btModulePsp);
         btModuleTutEv = (Button) findViewById(R.id.btModuleTutEv);
         btModuleInv = (Button) findViewById(R.id.btModuleInv);
-
+        btCositaRara = (Button) findViewById(R.id.btCosirara);
         //Listeners
         btModuleAcr.setOnClickListener(this);
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
+        btCositaRara.setOnClickListener(this);
         /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
         if (idPerfil == 4 || idPerfil == 3) {
             btModuleAcr.setVisibility(View.VISIBLE);
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
+            case R.id.btCosirara:
+                FileDownloadController.verifyStoragePermissions(this);
+                FileDownloadController.downloadCosa(this, "http://52.89.227.55/images/nofoto.png");
+                break;
             case R.id.btModuleAcr:
                 /*
                 ProgressDialog pd = new ProgressDialog(this );
@@ -75,13 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                Log.d("tag","ENTRE ACAAAAAAA 1");
+                Log.d("tag", "ENTRE ACAAAAAAA 1");
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
                     Log.d("tag", "ENTRE ACAAAAAAA 1123213");
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
-                }
-                else 
-                   intent = new Intent(this, NavigationDrawerTutoria.class);
+                } else
+                    intent = new Intent(this, NavigationDrawerTutoria.class);
                 startActivity(intent);
                 break;
         }
