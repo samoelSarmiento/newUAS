@@ -60,10 +60,10 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+        if (Configuration.isAdmin()) {
             //cambiar la visibilidad de los elementos
-            navigationView.getMenu().findItem(R.id.nav_specialty_list).setVisible(true);
             navigationView.getMenu().findItem(R.id.nav_myself).setVisible(false);
+            navigationView.getMenu().findItem(R.id.nav_mycourses).setVisible(false);
             //poner la lista de especialidades como la pantalla principal
             SpecialtyListFragment specialtyListFragment = new SpecialtyListFragment();
             Bundle bundle = new Bundle();
@@ -75,6 +75,19 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .replace(R.id.fragment_container, specialtyListFragment)
                     .commit();
         } else {
+            navigationView.getMenu().findItem(R.id.nav_specialty_list).setVisible(false);
+            //para profesor
+            if (Configuration.isTeacher() || Configuration.isTeacherAndInvestigator() || Configuration.isTeacherAndSupervisor()) {
+                navigationView.getMenu().findItem(R.id.nav_sizperiod).setVisible(false);
+            } else if (Configuration.isOnlyInvestigator() || Configuration.isOnlySupervisor()) {
+                navigationView.getMenu().findItem(R.id.nav_mycourses).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_sizperiod).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_upgplan).setVisible(false);
+            } else if (Configuration.isAccreditor()) {
+                navigationView.getMenu().findItem(R.id.nav_mycourses).setVisible(false);
+            }
+
+
             setTitle("Mi Perfil");
             getFragmentManager()
                     .beginTransaction()
@@ -83,6 +96,7 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
 
         }
+
     }
 
     @Override

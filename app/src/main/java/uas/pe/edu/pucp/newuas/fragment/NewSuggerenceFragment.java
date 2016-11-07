@@ -38,28 +38,32 @@ public class NewSuggerenceFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             final int ipId = bundle.getInt("idIp");
-            btSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String titulo = etTitulo.getText().toString();
-                    String sugerencia = etSuggerence.getText().toString();
-                    if (!titulo.isEmpty() && !sugerencia.isEmpty()) {
-                        if (titulo.matches(regex) && sugerencia.matches(regex)) {
-                            ImprovementPlanController controller = new ImprovementPlanController();
+            if (Configuration.isAdmin() || Configuration.isAccreditor()) {
+                btSave.setVisibility(View.GONE);
+            } else {
+                btSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String titulo = etTitulo.getText().toString();
+                        String sugerencia = etSuggerence.getText().toString();
+                        if (!titulo.isEmpty() && !sugerencia.isEmpty()) {
+                            if (titulo.matches(regex) && sugerencia.matches(regex)) {
+                                ImprovementPlanController controller = new ImprovementPlanController();
 
-                            SuggestionRequest request =
-                                    new SuggestionRequest(Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente(),
-                                            Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad(),
-                                            titulo, sugerencia);
-                            controller.sendSuggestion(getActivity(), ipId, request);
+                                SuggestionRequest request =
+                                        new SuggestionRequest(Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente(),
+                                                Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad(),
+                                                titulo, sugerencia);
+                                controller.sendSuggestion(getActivity(), ipId, request);
+                            } else {
+                                Toast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG).show();
+                            }
                         } else {
-                            Toast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Ingrese un titulo o sugerencia", Toast.LENGTH_LONG).show();
                         }
-                    } else {
-                        Toast.makeText(getActivity(), "Ingrese un titulo o sugerencia", Toast.LENGTH_LONG).show();
                     }
-                }
-            });
+                });
+            }
         }
         return view;
     }

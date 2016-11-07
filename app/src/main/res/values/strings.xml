@@ -182,5 +182,6 @@
     <string name="tvSeeAspects">Presionar un resultado para observar sus aspectos asociados</string>
     <string name="tvSeeCrits">Presionar un aspecto para ver sus criterios asociados.</string>
     <string name="tvSeeCLevs">Presionar un criterio para ver sus niveles asociados.</string>
+    <string name="itdMyCourses">Mis Cursos</string>
 
 </resources>

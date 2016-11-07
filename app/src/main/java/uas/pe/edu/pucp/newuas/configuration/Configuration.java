@@ -22,4 +22,32 @@ public class Configuration {
     public static boolean connected = false;
     public static Specialty SPECIALTY = null;
     //public static final DatabaseHelper HELPER;
+
+    public static boolean isAdmin() {
+        return LOGIN_USER.getUser().getIdPerfil() == 3;
+    }
+
+    public static boolean isTeacher() {
+        return LOGIN_USER.getUser().getIdPerfil() == 2;
+    }
+
+    public static boolean isTeacherAndInvestigator() {
+        return LOGIN_USER.getUser().getInvestigator() != null && LOGIN_USER.getUser().getTeacher() != null;
+    }
+
+    public static boolean isOnlyInvestigator() {
+        return LOGIN_USER.getUser().getInvestigator() != null && LOGIN_USER.getUser().getTeacher() == null;
+    }
+
+    public static boolean isAccreditor() {
+        return LOGIN_USER.getUser().getIdPerfil() == 4;
+    }
+
+    public static boolean isOnlySupervisor() {
+        return LOGIN_USER.getUser().getIdPerfil() == 6;
+    }
+
+    public static boolean isTeacherAndSupervisor() {
+        return LOGIN_USER.getUser().getIdPerfil() == 6;
+    }
 }
