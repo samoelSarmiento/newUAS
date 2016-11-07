@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -348,7 +349,12 @@ public class SpecialtyController {
         return true;
     }
 
-    public boolean getAllSpecialties(final Context context) {
+    public boolean getAllSpecialties(final Context context)  {
+        final ProgressDialog pd = new ProgressDialog(context );
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -369,14 +375,18 @@ public class SpecialtyController {
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) list);
                     context.startActivity(intent);
+                }else{
+                    if(pd.isShowing())  pd.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Specialty>> call, Throwable t) {
                 //Hay un error de conexion, deberia sacar las especialidades de la bd
+
                 try {
                     List<Specialty> specialtyList = retriveSpecialties(context);
+                    if(pd.isShowing())  pd.dismiss();
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) specialtyList);
                     context.startActivity(intent);
