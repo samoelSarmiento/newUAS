@@ -9,6 +9,11 @@
     android:paddingTop="70dp"
     tools:context="uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvSeeAspects"/>
+
     <ListView
         android:id="@+id/lvStudentResult"
         android:layout_width="match_parent"

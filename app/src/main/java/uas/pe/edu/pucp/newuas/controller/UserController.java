@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 
@@ -32,9 +33,18 @@ import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 public class UserController {
 
-    public boolean logIn(final Context context, final String user, String password) {
+
+
+
+
+    public boolean logIn(final Context context, final String user, String password){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<UserResponse> call = restCon.getUser(new UserRequest(user, password));
+
+        final ProgressDialog pd = new ProgressDialog(context );
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
 
         call.enqueue(new Callback<UserResponse>() {
             @Override
@@ -46,6 +56,8 @@ public class UserController {
                     context.startActivity(intent);
                 } else {
                     Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+
+                    if(pd.isShowing())  pd.dismiss();
                 }
             }
 
@@ -53,6 +65,7 @@ public class UserController {
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText(context, "Error de conexión.", Toast.LENGTH_SHORT).show();
+                if(pd.isShowing())  pd.dismiss();
             }
         });
 
