@@ -19,7 +19,7 @@ import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv, btCositaRara;
+    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp = (Button) findViewById(R.id.btModulePsp);
         btModuleTutEv = (Button) findViewById(R.id.btModuleTutEv);
         btModuleInv = (Button) findViewById(R.id.btModuleInv);
-        btCositaRara = (Button) findViewById(R.id.btCosirara);
         //Listeners
         btModuleAcr.setOnClickListener(this);
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
-        btCositaRara.setOnClickListener(this);
         /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
         if (idPerfil == 4 || idPerfil == 3) {
             btModuleAcr.setVisibility(View.VISIBLE);
@@ -51,10 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
-            case R.id.btCosirara:
-                FileDownloadController.verifyStoragePermissions(this);
-                FileDownloadController.downloadCosa(this, "http://52.89.227.55/images/nofoto.png");
-                break;
             case R.id.btModuleAcr:
                 /*
                 ProgressDialog pd = new ProgressDialog(this );
