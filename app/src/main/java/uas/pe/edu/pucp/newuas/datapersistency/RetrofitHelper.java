@@ -32,7 +32,7 @@ public class RetrofitHelper {
     private static RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory
             .createWithScheduler(Schedulers.io());
 
-    private static String serverURL = "http://52.89.227.55/api/";
+    public static String serverURL = "http://52.89.227.55/api/";
 
     public static Retrofit apiConnector = new Retrofit.Builder()
             .baseUrl("http://192.168.1.35/internetUAS/public/api/")

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +41,14 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
 
     EditText projName,  projDeliv, projDesc;
     TextView projInitDate,projFinDate;
-    Button projSave,projCancel,selInit,selFin;
+    Button projSave,projCancel;
+    ImageButton selInit,selFin;
     Projects p;
     Context context;
     int dayI,monthI,yearI,dayF,monthF,yearF;
-    private static DatePickerDialog.OnDateSetListener selectorListener;
+    //Calendar calI=Calendar.getInstance(),calF=Calendar.getInstance();
+    private static DatePickerDialog.OnDateSetListener selectorListener, selectorListener2;
+    Date date;
 
     public ProjEditFragment() {
         // Required empty public constructor
@@ -65,8 +69,8 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
         projDesc=(EditText) view.findViewById(R.id.projDesc);
         projSave=(Button) view.findViewById(R.id.projSave);
         projCancel=(Button) view.findViewById(R.id.projCancel);
-        selInit=(Button)view.findViewById(R.id.selInitDate);
-        selFin=(Button)view.findViewById(R.id.selFinDate);
+        selInit=(ImageButton)view.findViewById(R.id.selInitDate);
+        selFin=(ImageButton)view.findViewById(R.id.selFinDate);
 
         Bundle bundle = this.getArguments();
         Projects proj=null;
@@ -78,25 +82,34 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
         projName.setText(proj.getNombre());
         projInitDate.setText(proj.getFechaIni());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date=null;
+        date=new Date();
         try{
             date =format.parse(proj.getFechaIni());
+
         }catch (ParseException e){
         }
-        dayI=date.getDay();
-        monthI=date.getMonth();
-        yearI=date.getYear();
-        Toast.makeText(getActivity(), "" + dayI + "" + monthI + "" + yearI, Toast.LENGTH_SHORT).show();
+        //calI.setTime(date);
+        String day = (String) android.text.format.DateFormat.format("dd",date);
+        dayI=Integer.parseInt(day);
+        String month = (String) android.text.format.DateFormat.format("MM",date);
+        monthI=Integer.parseInt(month);
+        String year = (String) android.text.format.DateFormat.format("yyyy",date);
+        yearI = Integer.parseInt(year);
+
 
         projFinDate.setText(proj.getFechaFin());
         try{
             date =format.parse(proj.getFechaFin());
         }catch (ParseException e){
         }
-        dayF=date.getDay();
-        monthF=date.getMonth();
-        yearF=date.getYear();
-        Toast.makeText(getActivity(), "" + dayF + "" + monthF + "" + yearF, Toast.LENGTH_SHORT).show();
+        //calF.setTime(date);
+        day = (String) android.text.format.DateFormat.format("dd",date);
+        dayF=Integer.parseInt(day);
+        month = (String) android.text.format.DateFormat.format("MM",date);
+        monthF=Integer.parseInt(month);
+        year = (String) android.text.format.DateFormat.format("yyyy",date);
+        yearF=Integer.parseInt(year);
+
 
         String cantEnt="" + proj.getNumEntregables();
         projDeliv.setText(cantEnt);
@@ -106,6 +119,26 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
         projCancel.setOnClickListener(this);
         selInit.setOnClickListener(this);
         selFin.setOnClickListener(this);
+
+        selectorListener =  new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+                dayI = day; monthI = month+1; yearI = year;
+                String format = "%1$02d";
+                String date = year +  "-" + String.format(format, (month + 1)) + "-" + String.format(format, day);
+                projInitDate.setText(date);
+            }
+        };
+
+        selectorListener2 =  new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+                dayF = day; monthF = month+1; yearF = year;
+                String format = "%1$02d";
+                String date = year +  "-" + String.format(format, (month + 1)) + "-" + String.format(format, day);
+                projFinDate.setText(date);
+            }
+        };
 
         return view;
     }
@@ -140,6 +173,10 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 projectController.getProjectById(context,p.getId());
                 break;
             case R.id.selInitDate:
+                DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, yearI, monthI-1, dayI);
+                d.show(getActivity().getFragmentManager(), "");
+                //Toast.makeText(getActivity(), date.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), dayI + " " + monthI + " " + yearI, Toast.LENGTH_SHORT).show();
                 /*DatePickerDialog datepicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener(){
 
                     @Override
@@ -154,7 +191,8 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 //fragment.show(getFragmentManager(),"holis");
                 break;
             case R.id.selFinDate:
-
+                DatePickerDialog d2 = DatePickerDialog.newInstance(selectorListener2, yearF, monthF-1, dayF);
+                d2.show(getActivity().getFragmentManager(), "");
                 break;
         }
     }
