@@ -40,7 +40,7 @@
             android:id="@+id/nav_consolidate"
             android:icon="@drawable/ic_cursos"
             android:title="@string/itdAcrConsolidate"
-            android:visible="true" />
+            android:visible="false" />
 
         <item
             android:id="@+id/nav_signout"

@@ -70,17 +70,16 @@ public class ImprovementPlanViewFragment extends Fragment {
                 }
             });
 
-            if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1
-                    || Configuration.LOGIN_USER.getUser().getIdPerfil() == 2
-                    || Configuration.LOGIN_USER.getUser().getIdPerfil() == 5) {
-                btSugg.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ImprovementPlanController controller = new ImprovementPlanController();
-                        controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
-                    }
-                });
-            }
+            btSugg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ImprovementPlanController controller = new ImprovementPlanController();
+                    controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
+                }
+            });
+
+
+
 
 
         }
