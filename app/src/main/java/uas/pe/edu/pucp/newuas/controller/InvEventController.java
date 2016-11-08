@@ -50,15 +50,15 @@ public class InvEventController {
                     //okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
                     List<InvEvent> example = response.body();
-
 /*
+
                     try {
                         saveAllInvEv(example, context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }*/
-
+                    }
+*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Events", (Serializable)example);
                     //bundle.putString("Groups", spj);
@@ -93,8 +93,8 @@ public class InvEventController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
-                }*/
-
+                }
+*/
             }
 
 
@@ -121,8 +121,8 @@ public class InvEventController {
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }*/
-
+                    }
+*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Event", (Serializable)example);
                     bundle.putBoolean("BotonEdit",true);

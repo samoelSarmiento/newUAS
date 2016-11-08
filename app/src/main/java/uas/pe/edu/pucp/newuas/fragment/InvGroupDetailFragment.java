@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -71,18 +75,8 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupDesc.setText(invGroup.get(0).getDescripcion());
         invGroupEsp.setText(invGroup.get(0).getFaculty().getNombre());
 
-        /*if(invGroup.get(0).getImagen()!=null) {
-            Bitmap bmp;
-            try{
-                InputStream in = new URL(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).openStream();
-                bmp = BitmapFactory.decodeStream(in);
-                invGImage.setImageBitmap(bmp);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
+        if(invGroup.get(0).getImagen()!=null)
+            Picasso.with(context).load(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).into(invGImage);
 
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override
