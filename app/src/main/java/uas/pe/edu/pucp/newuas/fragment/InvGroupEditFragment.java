@@ -15,17 +15,20 @@ import android.widget.Toast;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
  * Created by Andree on 26/10/2016.
  */
 
 public class InvGroupEditFragment extends Fragment implements View.OnClickListener{
-
+    private final String regex = "[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+";
     EditText invGroupName, invGroupDesc;
     TextView invGroupEsp;
     Button saveBut,cancelBut;
@@ -75,11 +78,22 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
             case R.id.invGroupSave:
 
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                String nom = invGroupName.getText().toString();
+                String desc = invGroupDesc.getText().toString();
+                if (!nom.isEmpty() && !desc.isEmpty()) {
+                    if (nom.matches(regex) && desc.matches(regex)) {
+                        InvGroups changedIG = invG;
+                        changedIG.setNombre(invGroupName.getText().toString());
+                        changedIG.setDescripcion(invGroupDesc.getText().toString());
+                        invGroupController.editInvGroup(context,changedIG);
+                    } else {
+                        Toast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                }
 
-                InvGroups changedIG = invG;
-                changedIG.setNombre(invGroupName.getText().toString());
-                changedIG.setDescripcion(invGroupDesc.getText().toString());
-                invGroupController.editInvGroup(context,changedIG);
+
                 //invGroupController.getInvGroupById(context,invG.getId());
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
