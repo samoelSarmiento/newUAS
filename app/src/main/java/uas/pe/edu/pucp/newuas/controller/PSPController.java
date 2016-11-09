@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
@@ -64,16 +65,30 @@ public class PSPController {
 
                     List<PSPGroup> pspGroupList = response.body();
 
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
+                    if(!pspGroupList.isEmpty()) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
 
 
-                    PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
-                    groupsFragment.setArguments(bundle);
+                        PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
+                        groupsFragment.setArguments(bundle);
 
 
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
-                    ((Activity) context).setTitle("Seleccionar grupos");
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
+                        ((Activity) context).setTitle("Seleccionar grupos");
+                    }else{
+
+                        PSP_messagesFragment fragment = new PSP_messagesFragment();
+                        Bundle bundle =  new Bundle();
+                        bundle.putString("MESSAGE","No hay grupos");
+                        fragment.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
+                        ((Activity) context).setTitle("Seleccionar grupos");
+
+
+
+
+                    }
                 } else {
                     Toast.makeText(context, "Error en seleccionar grupo", Toast.LENGTH_SHORT).show();
                 }

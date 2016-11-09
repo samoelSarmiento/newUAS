@@ -287,6 +287,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 Bundle bundle =  intent.getBundleExtra("PSPGroup");
                 if(bundle == null){
 
+
+
                     Log.d("GROUP NAV", "BUNDLE  NO NULL");
                     PSPController pspController = new PSPController();
                     // pspController.getStudentGroup(this);
