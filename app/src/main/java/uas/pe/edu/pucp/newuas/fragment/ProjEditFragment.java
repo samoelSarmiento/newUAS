@@ -30,15 +30,18 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.ProjectController;
 import uas.pe.edu.pucp.newuas.model.Projects;
+import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
  * Created by Andree on 26/10/2016.
  */
 
 public class ProjEditFragment extends Fragment implements View.OnClickListener{//, DatePickerDialog.OnDateSetListener{
-
+    private final String regexNum = "[0-9]+";
     EditText projName,  projDeliv, projDesc;
     TextView projInitDate,projFinDate;
     Button projSave,projCancel;
@@ -152,21 +155,36 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
 
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
 
-                Projects changedProj = p;
-                changedProj.setNombre(projName.getText().toString());
-                changedProj.setDescripcion(projDesc.getText().toString());
-                String nEnt=projDeliv.getText().toString();
-                Integer cantEnt=Integer.parseInt(nEnt);
-                changedProj.setNumEntregables(cantEnt);
-                changedProj.setFechaIni(projInitDate.getText().toString());
-                changedProj.setFechaFin(projFinDate.getText().toString());
-                //Date date = new Date();
-                //date.getYear();
+                String nom = projName.getText().toString();
+                String desc = projDesc.getText().toString();
+                String ent = projDeliv.getText().toString();
+                if (!nom.isEmpty() && !desc.isEmpty()) {
+                    if (ent.matches(regexNum) ) {
+                        //falta validar fechas
+                        
+                        Projects changedProj = p;
+                        changedProj.setNombre(projName.getText().toString());
+                        changedProj.setDescripcion(projDesc.getText().toString());
+                        String nEnt=projDeliv.getText().toString();
+                        Integer cantEnt=Integer.parseInt(nEnt);
+                        changedProj.setNumEntregables(cantEnt);
+                        changedProj.setFechaIni(projInitDate.getText().toString());
+                        changedProj.setFechaFin(projFinDate.getText().toString());
+                        //Date date = new Date();
+                        //date.getYear();
 
-                projectController.editProj(context,changedProj);
+                        projectController.editProj(context,changedProj);
 
-                //projectController.getProjectById(context,changedProj.getId());
-                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                        //projectController.getProjectById(context,changedProj.getId());
+                        //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Cantidad de entregables", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                }
+
+
                 break;
 
             case R.id.projCancel:

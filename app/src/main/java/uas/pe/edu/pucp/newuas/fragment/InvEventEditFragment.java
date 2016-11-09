@@ -20,9 +20,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
  * Created by Andree on 04/11/2016.
@@ -113,17 +116,25 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
             case R.id.invEvSave:
 
                 //Toast.makeText(getActivity(),invEvName.getText().toString() , Toast.LENGTH_SHORT).show();
+                String nom = invEvName.getText().toString();
+                String desc = invEvDesc.getText().toString();
+                String ubic =invEvUbic.getText().toString();
+                if (!nom.isEmpty() && !desc.isEmpty() && !ubic.isEmpty()) {
+                    //validacion fecha y hora!!!!!!
+                    InvEvent changedIE = invEv;
+                    changedIE.setNombre(invEvName.getText().toString());
+                    changedIE.setDescripcion(invEvDesc.getText().toString());
+                    changedIE.setFecha(invEvFecha.getText().toString());
+                    changedIE.setHora(invEvHora.getText().toString());
+                    changedIE.setUbicacion(invEvUbic.getText().toString());
 
-                InvEvent changedIE = invEv;
-                changedIE.setNombre(invEvName.getText().toString());
-                changedIE.setDescripcion(invEvDesc.getText().toString());
-                changedIE.setFecha(invEvFecha.getText().toString());
-                changedIE.setHora(invEvHora.getText().toString());
-                changedIE.setUbicacion(invEvUbic.getText().toString());
+                    invEvController.editInvEv(context,changedIE);
+                    //invGroupController.getInvGroupById(context,invG.getId());
+                    //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                }
 
-                invEvController.editInvEv(context,changedIE);
-                //invGroupController.getInvGroupById(context,invG.getId());
-                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.invEvCancel:
