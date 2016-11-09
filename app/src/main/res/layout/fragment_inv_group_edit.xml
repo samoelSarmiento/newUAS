@@ -32,9 +32,11 @@
                 <EditText
                     android:id="@+id/invGroupName"
                     android:text=""
+                    android:maxLength="50"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
+                <!--android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZ1234567890 "-->
             </LinearLayout>
 
             <LinearLayout
@@ -73,6 +75,7 @@
                     android:id="@+id/invGroupDesc"
                     android:text=""
                     android:layout_weight="0.7"
+                    android:maxLength="200"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
 

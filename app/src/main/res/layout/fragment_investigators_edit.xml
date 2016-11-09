@@ -29,18 +29,24 @@
                     android:text=""
                     android:layout_weight="0.33"
                     android:layout_width="0dp"
+                    android:maxLength="50"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZ"
                     android:layout_height="40dp" />
                 <EditText
                     android:id="@+id/invApeP"
                     android:text=""
                     android:layout_weight="0.33"
                     android:layout_width="0dp"
+                    android:maxLength="50"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZ"
                     android:layout_height="40dp" />
                 <EditText
                     android:id="@+id/invApeM"
                     android:text=""
                     android:layout_weight="0.33"
                     android:layout_width="0dp"
+                    android:maxLength="50"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZ"
                     android:layout_height="40dp" />
 
             </LinearLayout>
@@ -102,6 +108,8 @@
                     android:text=""
                     android:layout_weight="0.7"
                     android:layout_width="0dp"
+                    android:maxLength="9"
+                    android:digits="1234567890"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
