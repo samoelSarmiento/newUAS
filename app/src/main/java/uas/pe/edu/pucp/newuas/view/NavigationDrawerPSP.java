@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -53,6 +54,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    int idPerfil;
+
 
 
 
@@ -61,6 +64,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_psp);
+
 
 
 
@@ -79,6 +83,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
+
+
+
+
+        if(Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
+            PSPController controller = new PSPController();
+            controller.getStudentGroup(this);
+        }
+
 
 
         showGroupMenu(menu);
@@ -112,8 +125,6 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
 
-          PSPController controller =  new PSPController();
-          controller.getStudentGroup(this);
           //controller.getStudent(this);
 
             //STUDENTS
@@ -288,6 +299,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
                 Bundle bundle =  intent.getBundleExtra("PSPGroup");
                 if(bundle == null){
+
+
 
                     Log.d("GROUP NAV", "BUNDLE  NO NULL");
                     PSPController pspController = new PSPController();

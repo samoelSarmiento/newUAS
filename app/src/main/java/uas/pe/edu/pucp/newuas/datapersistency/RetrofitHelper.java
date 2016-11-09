@@ -36,7 +36,9 @@ public class RetrofitHelper {
 
     public static Retrofit apiConnector = new Retrofit.Builder()
 
+
             .baseUrl("http://10.100.8.150/internetUAS/public/api/")
+
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
             .client(new OkHttpClient.Builder().addInterceptor(interceptor).connectTimeout(30, TimeUnit.SECONDS).build())

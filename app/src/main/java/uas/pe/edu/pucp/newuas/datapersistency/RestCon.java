@@ -35,6 +35,7 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
+import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Schedule;
@@ -223,7 +224,7 @@ public interface RestCon {
     Call<List<PSPGroup>> getGroupsPsp(@QueryMap Map<String, String> token);
 
     @POST("psp/groups/selectGroup/{g_id}")
-    Call<String> updateGroup(@Path("g_id") int idGroup, @QueryMap Map<String, String> token);
+    Call<PSPMessage> updateGroup(@Path("g_id") int idGroup, @QueryMap Map<String, String> token);
 
     @GET("psp/phases/all")
     Call<List<PSPPhase>> getPhasesPsp(@QueryMap Map<String, String> token);

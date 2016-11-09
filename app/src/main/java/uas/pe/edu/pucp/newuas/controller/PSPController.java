@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.controller;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +26,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
@@ -34,8 +36,10 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList;
 import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
+import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 
 import static android.R.attr.fragment;
 
@@ -64,16 +68,30 @@ public class PSPController {
 
                     List<PSPGroup> pspGroupList = response.body();
 
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
+                    if(!pspGroupList.isEmpty()) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
 
 
-                    PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
-                    groupsFragment.setArguments(bundle);
+                        PSP_groupsFragment groupsFragment = new PSP_groupsFragment();
+                        groupsFragment.setArguments(bundle);
 
 
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
-                    ((Activity) context).setTitle("Seleccionar grupos");
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
+                        ((Activity) context).setTitle("Seleccionar grupos");
+                    }else{
+
+                        PSP_messagesFragment fragment = new PSP_messagesFragment();
+                        Bundle bundle =  new Bundle();
+                        bundle.putString("MESSAGE","No hay grupos");
+                        fragment.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
+                        ((Activity) context).setTitle("Seleccionar grupos");
+
+
+
+
+                    }
                 } else {
                     Toast.makeText(context, "Error en seleccionar grupo", Toast.LENGTH_SHORT).show();
                 }
@@ -98,21 +116,21 @@ public class PSPController {
         token.put("token", Configuration.LOGIN_USER.getToken());
 
 
-        Call<String> call = restCon.updateGroup(idGroup, token);
-        call.enqueue(new Callback<String>() {
+        Call<PSPMessage> call = restCon.updateGroup(idGroup, token);
+        call.enqueue(new Callback<PSPMessage>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
                 if (response.isSuccessful()) {
 
 
                     Log.d("RESPONSE", response.message());
-                    Log.d("RESPONSE", response.body());
+
                     Log.d("RESPONSE", response.toString());
-                    String answer = response.body();
+                    PSPMessage answer = response.body();
 
 
 
-                    Toast.makeText(context, answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, answer.getMesssage(), Toast.LENGTH_SHORT).show();
 
                     Intent intent =  new Intent();
                     Bundle bundle = new Bundle();
@@ -128,7 +146,7 @@ public class PSPController {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
 
                 t.printStackTrace();
 
@@ -195,6 +213,13 @@ public class PSPController {
 
     public boolean getStudentGroup(final Context context) {
 
+        final ProgressDialog pd = new ProgressDialog(context );
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+
+
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -221,6 +246,9 @@ public class PSPController {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("PSPGroup",(Serializable)group);
                         intent.putExtra("PSPGroup",bundle);
+
+
+
                         ((Activity)context).setIntent(intent);
 
 
@@ -239,7 +267,7 @@ public class PSPController {
 
                     }
 
-
+                    pd.dismiss();
                 }
 
             }
@@ -284,9 +312,8 @@ public class PSPController {
                     bundle.putSerializable("Grade", (Serializable) lista);
                     fragment.setArguments(bundle);
 
-                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
-                            .setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
-                            .addToBackStack(null).commit();
+                    ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
 
 
 
