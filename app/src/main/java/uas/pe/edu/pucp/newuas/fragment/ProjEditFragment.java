@@ -51,7 +51,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
     int dayI,monthI,yearI,dayF,monthF,yearF;
     //Calendar calI=Calendar.getInstance(),calF=Calendar.getInstance();
     private static DatePickerDialog.OnDateSetListener selectorListener, selectorListener2;
-    Date date;
+    Date dateI,dateF;
 
     public ProjEditFragment() {
         // Required empty public constructor
@@ -85,32 +85,33 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
         projName.setText(proj.getNombre());
         projInitDate.setText(proj.getFechaIni());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        date=new Date();
+        dateI=new Date();
         try{
-            date =format.parse(proj.getFechaIni());
+            dateI =format.parse(proj.getFechaIni());
 
         }catch (ParseException e){
         }
         //calI.setTime(date);
-        String day = (String) android.text.format.DateFormat.format("dd",date);
+        String day = (String) android.text.format.DateFormat.format("dd",dateI);
         dayI=Integer.parseInt(day);
-        String month = (String) android.text.format.DateFormat.format("MM",date);
+        String month = (String) android.text.format.DateFormat.format("MM",dateI);
         monthI=Integer.parseInt(month);
-        String year = (String) android.text.format.DateFormat.format("yyyy",date);
+        String year = (String) android.text.format.DateFormat.format("yyyy",dateI);
         yearI = Integer.parseInt(year);
 
 
         projFinDate.setText(proj.getFechaFin());
+        dateF=new Date();
         try{
-            date =format.parse(proj.getFechaFin());
+            dateF =format.parse(proj.getFechaFin());
         }catch (ParseException e){
         }
         //calF.setTime(date);
-        day = (String) android.text.format.DateFormat.format("dd",date);
+        day = (String) android.text.format.DateFormat.format("dd",dateF);
         dayF=Integer.parseInt(day);
-        month = (String) android.text.format.DateFormat.format("MM",date);
+        month = (String) android.text.format.DateFormat.format("MM",dateF);
         monthF=Integer.parseInt(month);
-        year = (String) android.text.format.DateFormat.format("yyyy",date);
+        year = (String) android.text.format.DateFormat.format("yyyy",dateF);
         yearF=Integer.parseInt(year);
 
 
@@ -160,23 +161,27 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 String ent = projDeliv.getText().toString();
                 if (!nom.isEmpty() && !desc.isEmpty()) {
                     if (ent.matches(regexNum) ) {
-                        //falta validar fechas
-                        
-                        Projects changedProj = p;
-                        changedProj.setNombre(projName.getText().toString());
-                        changedProj.setDescripcion(projDesc.getText().toString());
-                        String nEnt=projDeliv.getText().toString();
-                        Integer cantEnt=Integer.parseInt(nEnt);
-                        changedProj.setNumEntregables(cantEnt);
-                        changedProj.setFechaIni(projInitDate.getText().toString());
-                        changedProj.setFechaFin(projFinDate.getText().toString());
-                        //Date date = new Date();
-                        //date.getYear();
+                        if(dateF.after(dateI)){
+                            Projects changedProj = p;
+                            changedProj.setNombre(projName.getText().toString());
+                            changedProj.setDescripcion(projDesc.getText().toString());
+                            String nEnt=projDeliv.getText().toString();
+                            Integer cantEnt=Integer.parseInt(nEnt);
+                            changedProj.setNumEntregables(cantEnt);
+                            changedProj.setFechaIni(projInitDate.getText().toString());
+                            changedProj.setFechaFin(projFinDate.getText().toString());
+                            //Date date = new Date();
+                            //date.getYear();
 
-                        projectController.editProj(context,changedProj);
+                            projectController.editProj(context,changedProj);
 
-                        //projectController.getProjectById(context,changedProj.getId());
-                        //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                            //projectController.getProjectById(context,changedProj.getId());
+                            //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG).show();
+                        }
+
+
                     } else {
                         Toast.makeText(getActivity(), "Cantidad de entregables", Toast.LENGTH_LONG).show();
                     }

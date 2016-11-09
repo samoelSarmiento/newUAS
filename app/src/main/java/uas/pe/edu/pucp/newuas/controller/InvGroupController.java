@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -252,7 +253,8 @@ public class InvGroupController {
 
     //Lista de inv g.
     private void saveAllInvGroup(List<InvGroups> invGList, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<InvGroups, Integer> invGDao = helper.getInvGroupDao();
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
         for (InvGroups invG : invGList) {
@@ -268,13 +270,15 @@ public class InvGroupController {
     }
     //Lista de inv g.
     private List<InvGroups> retriveAllInvG(final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<InvGroups, Integer> invGDao = helper.getInvGroupDao();
         return invGDao.queryForAll();
     }
 
     private void saveInvGroup(InvGroups invG, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<InvGroups, Integer> invGDao = helper.getInvGroupDao();
         InvGroups find = invGDao.queryForId(invG.getId());
         if (find == null) {
@@ -285,7 +289,8 @@ public class InvGroupController {
     }
 
     private InvGroups getInvGroup(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<InvGroups, Integer> invGDao = helper.getInvGroupDao();
         return invGDao.queryForId(id);
     }
