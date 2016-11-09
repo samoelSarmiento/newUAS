@@ -37,6 +37,7 @@ import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
+import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
@@ -243,9 +244,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
         } else if (id == R.id.nav_item_pspDates_supervisor) {
 
            // fragment = new PSP_meetingsFragment();
-
-            psp_dates_supervisor_jefe fragmentDateSupervisor = new psp_dates_supervisor_jefe();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDateSupervisor).commit();
+            PSP_dates_supervisor fragmentDates =  new PSP_dates_supervisor();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
             setTitle(item.getTitle());
 
 
