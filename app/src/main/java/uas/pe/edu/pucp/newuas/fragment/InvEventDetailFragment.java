@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
+import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 
@@ -48,6 +51,8 @@ public class InvEventDetailFragment extends Fragment {
         invEvBut=(Button) view.findViewById(R.id.invEvEdit) ;
         invEvImage=(ImageView) view.findViewById(R.id.invEvImage);
 
+
+
         Bundle bundle = this.getArguments();
         List<InvEvent> invEvento=null;
         boolean botonEdit=false;
@@ -65,6 +70,9 @@ public class InvEventDetailFragment extends Fragment {
         invEvFecha.setText(invEvento.get(0).getFecha());
         invEvHora.setText(invEvento.get(0).getHora());
         invEvUbic.setText(invEvento.get(0).getUbicacion());
+
+        if(invEvento.get(0).getImagen()!=null)
+            Picasso.with(context).load(RetrofitHelper.serverURL + invEvento.get(0).getImagen()).into(invEvImage);
 
         /*if(invGroup.get(0).getImagen()!=null) {
             Bitmap bmp;

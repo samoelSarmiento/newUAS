@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="16dp"
     android:paddingTop="70dp">
 
 
@@ -29,6 +32,7 @@
 
                 <EditText
                     android:id="@+id/invEvName"
+                    android:maxLength="50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -47,14 +51,19 @@
                     android:layout_weight="0.3"
                     android:text="Fecha" />
 
-                <EditText
+                <TextView
                     android:id="@+id/invEvFecha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.6"
                     android:text="" />
 
-
+                <ImageButton
+                    android:id="@+id/selFecha"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,6 +100,7 @@
                 <EditText
                     android:id="@+id/invEvUbic"
                     android:text=""
+                    android:maxLength="50"
                     android:layout_weight="0.7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -110,6 +120,7 @@
                 <EditText
                     android:id="@+id/invEvDesc"
                     android:text=""
+                    android:maxLength="200"
                     android:layout_weight="0.7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />

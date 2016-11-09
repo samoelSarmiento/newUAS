@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.textservice.SpellCheckerInfo;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -94,13 +95,13 @@ public class SemesterController {
 
 
     private List<Semester> getSemestersListofPeriod(final Context context, Integer periodId) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         return semesterDao.queryForEq("idPeriodo", periodId);
     }
 
     private void saveSemesters(final Context context, List<Semester> semesters) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         for (Semester semester : semesters) {
             Semester find = semesterDao.queryForId(semester.getIdCicloAcademico());
@@ -113,14 +114,14 @@ public class SemesterController {
     }
 
     private Semester getSemesterById(final Context context, Integer idSem) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         return semesterDao.queryForId(idSem);
 
     }
 
     private void saveSemester(final Context context, Semester semester) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         Semester find = semesterDao.queryForId(semester.getIdEspecialidad());
         if (find == null) {

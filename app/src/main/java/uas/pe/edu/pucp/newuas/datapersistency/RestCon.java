@@ -20,7 +20,9 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
+import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
@@ -66,11 +68,11 @@ public interface RestCon {
                                                  @QueryMap Map<String, String> token);
 
     @POST("improvementplans/{ip_id}/suggestions")
-    Call<String> sendSuggestion(@Path("ip_id") int idImprPlan,
+    Call<StringResponse> sendSuggestion(@Path("ip_id") int idImprPlan,
                                 @Body SuggestionRequest suggestionRequest,
                                 @QueryMap Map<String, String> token);
 
-    @GET("faculties/{f_id}/{s_id}/courses")
+    @GET("faculties/{f_id}/semester/{s_id}/courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("f_id") int faculty_id,
                                                     @Path("s_id") int semester_id,
                                                     @QueryMap Map<String, String> token);
@@ -102,6 +104,9 @@ public interface RestCon {
     @GET("aspects/{id}/criterions")
     Call<List<Criterion>> getCriterionsofAspect(@Path("id") int idAspect, @QueryMap Map<String, String> toe);
 
+    @GET("criterions/{id}/levels")
+    Call<List<CriterionLevel>> getLevelsofCriterion(@Path("id") int idCriterion, @QueryMap Map<String, String> token);
+
 
     @GET("periods/{p_id}/{f_id}/objectives")
     Call<List<EducationalObjective>> getEducationalObjectivesByPeriodSpecialty(@Path("p_id") int period_id,
@@ -122,6 +127,9 @@ public interface RestCon {
     Call<List<Action>> getActionsofImprovementPlan(@Path("ip_id") int ipId, @QueryMap Map<String, String> token);
 
 
+    /*Evaluaciones*/
+    @GET("investigation/getAllInvestigators")
+    Call<List<Evaluation>> getEvaluations(@QueryMap Map<String, String> token);
 
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
@@ -134,7 +142,7 @@ public interface RestCon {
     Call<List<Projects>> getProjects(@QueryMap Map<String, String> token);
 
     @POST("investigation/{id}/projects")
-    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Projects projects);
+    Call<StringResponse> editProject(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Projects projects);
 
     @GET("investigation/{id}/investigators")
     Call<List<Investigator>> getInvById(@Path("id") int invId, @QueryMap Map<String, String> token);
@@ -146,7 +154,7 @@ public interface RestCon {
     Call<StringResponse> editInvGroup(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body InvGroupsRequest invGroups);
 
     @POST("investigation/{id}/investigators")
-    Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
+    Call<StringResponse> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
 
     @GET("investigation/{id}/projects")
     Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String, String> token);
@@ -158,7 +166,7 @@ public interface RestCon {
     Call<List<InvEvent>> getEvByGroupId(@Path("id") int id, @QueryMap Map<String, String> token);
 
     @POST("investigation/{id}/event")
-    Call<String> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
+    Call<StringResponse> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
     /*--------------*/
 
 
@@ -229,7 +237,6 @@ public interface RestCon {
 
     @GET("psp/teacher/students/all")
     Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
-
 
 
     @GET("psp/students/inscriptioFile")

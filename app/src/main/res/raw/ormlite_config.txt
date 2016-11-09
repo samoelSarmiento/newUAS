@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/04 04:02:12
+# generated on 2016/11/08 12:07:40
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -205,6 +205,29 @@ fieldName=estado
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.CriterionLevel
+tableName=criterionlevel
+# --table-fields-start--
+# --field-start--
+fieldName=idNivelCriterio
+id=true
+# --field-end--
+# --field-start--
+fieldName=idCriterio
+# --field-end--
+# --field-start--
+fieldName=idPeriodo
+# --field-end--
+# --field-start--
+fieldName=valor
+# --field-end--
+# --field-start--
+fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.EducationalObjective
 tableName=educationalobjective
 # --table-fields-start--
@@ -405,6 +428,9 @@ fieldName=duracion
 # --field-end--
 # --field-start--
 fieldName=tipo
+# --field-end--
+# --field-start--
+fieldName=imagen
 # --field-end--
 # --field-start--
 fieldName=idGrupo

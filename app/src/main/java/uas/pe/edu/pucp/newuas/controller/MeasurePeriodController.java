@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -212,14 +213,14 @@ public class MeasurePeriodController {
 
 
     private List<Period> retrievePeriods(final Context context, Integer idSpec) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         return periodDao.queryBuilder().where().eq("idEspecialidad",idSpec).query();
 
     }
 
     private void savePeriods(final Context context, List<Period> periodList) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         for (Period period : periodList) {
             //veo si la especialidad existe
@@ -236,14 +237,14 @@ public class MeasurePeriodController {
 
 
     private Period getPeriod(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         return periodDao.queryForId(id);
     }
 
 
     private void savePeriod(Period period, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         Period find = periodDao.queryForId(period.getIdPeriodo());
         if (find == null) {

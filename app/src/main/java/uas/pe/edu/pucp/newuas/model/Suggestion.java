@@ -42,6 +42,14 @@ public class Suggestion implements Serializable{
     public Suggestion() {
     }
 
+    public String getModificado() {
+        return modificado;
+    }
+
+    public void setModificado(String modificado) {
+        this.modificado = modificado;
+    }
+
     public int getId() {
         return id;
     }
