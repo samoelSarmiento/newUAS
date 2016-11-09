@@ -47,14 +47,19 @@
                     android:layout_weight="0.3"
                     android:text="Fecha" />
 
-                <EditText
+                <TextView
                     android:id="@+id/invEvFecha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.6"
                     android:text="" />
 
-
+                <ImageButton
+                    android:id="@+id/selFecha"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
