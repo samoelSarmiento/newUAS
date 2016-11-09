@@ -14,6 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
@@ -232,7 +233,7 @@ public interface RestCon {
     //Call<List<PSPDocument>> getDocument(@QueryMap Map<String,String> token);
 
 
-    @GET("psp/students/all")
+    @GET("psp/studentsPSP/all")
     Call<List<Student>> getStudents(@QueryMap Map<String, String> token);
 
     @GET("psp/teacher/students/all")
@@ -252,6 +253,10 @@ public interface RestCon {
 
     @GET("psp/student/{id}/grade")
     Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String, String> token);
+
+    @POST("psp/date/supervisor/employer")
+    Call<String> realizarCitasPSPsupervJefe(@Body psp_dates_supervisor_jefe instancia, @QueryMap Map<String, String> token);
+
 
 
     /*END SECTION*/
