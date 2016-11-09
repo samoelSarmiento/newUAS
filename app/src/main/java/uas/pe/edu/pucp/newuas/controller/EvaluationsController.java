@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 /**
  * Created by Pedro on 04/11/2016.
@@ -177,11 +178,11 @@ public class EvaluationsController {
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<String> call = restCon.editInvestigator(inv.getId(),token,inv);
+        Call<StringResponse> call = restCon.editInvestigator(inv.getId(),token,inv);
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<StringResponse>() {
             @Override
-            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+            public void onResponse(Call<StringResponse> call, retrofit2.Response<StringResponse> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
@@ -193,7 +194,7 @@ public class EvaluationsController {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
                 //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }

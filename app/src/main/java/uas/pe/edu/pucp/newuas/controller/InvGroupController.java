@@ -210,6 +210,7 @@ public class InvGroupController {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
+                    //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
 /*
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)invG);
@@ -231,10 +232,10 @@ public class InvGroupController {
             @Override
             public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
-                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
         });
-        ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        /*ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState()== NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
             //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
@@ -246,7 +247,7 @@ public class InvGroupController {
                 e.printStackTrace();
             }
             Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
-        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();*/
     }
 
     //Lista de inv g.
