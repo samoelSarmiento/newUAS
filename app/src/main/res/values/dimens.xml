@@ -16,4 +16,7 @@
     <dimen name="general_bg_padding">10dp</dimen>
     <dimen name="info_bg_padding">30dp</dimen>
 
+
+    <dimen name="psp_item">20sp</dimen>
+
 </resources>
