@@ -46,8 +46,8 @@ public class InvEvent implements Serializable{
     private Integer tipo;
 
     @SerializedName("imagen")
-    //@DatabaseField
-    private Object imagen;
+    @DatabaseField
+    private String imagen;
 
     @SerializedName("id_grupo")
     @DatabaseField
@@ -60,7 +60,7 @@ public class InvEvent implements Serializable{
     public InvEvent() {
     }
 
-    public InvEvent(Integer id, String nombre, String ubicacion, String descripcion, String fecha, String hora, Integer duracion, Integer tipo, Object imagen, Integer idGrupo, InvGroups invGroups) {
+    public InvEvent(Integer id, String nombre, String ubicacion, String descripcion, String fecha, String hora, Integer duracion, Integer tipo, String imagen, Integer idGrupo, InvGroups invGroups) {
         this.id = id;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -138,11 +138,11 @@ public class InvEvent implements Serializable{
         this.tipo = tipo;
     }
 
-    public Object getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(Object imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 

@@ -16,6 +16,7 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.SuggestionAdapter;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
 
@@ -35,7 +36,13 @@ public class SuggestionListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setHasOptionsMenu(true);
+        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1
+                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 2
+                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 5
+                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+            super.setHasOptionsMenu(false);
+        } else super.setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -75,6 +82,7 @@ public class SuggestionListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+
         inflater.inflate(R.menu.navigation_drawer_acreditacion, menu);
     }
 
