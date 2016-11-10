@@ -69,7 +69,7 @@ public class FileDownloadController {
                         if (response.isSuccessful()) {
                             boolean writtenToDisk = false;
                             try {
-                                writtenToDisk = writeResponseBodyToDisk(context, response.body());
+                                writtenToDisk = writeResponseBodyToDisk(context, fileUrl, response.body());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -90,9 +90,11 @@ public class FileDownloadController {
 
     }
 
-    private static boolean writeResponseBodyToDisk(Context context, ResponseBody body) throws IOException {
-        String fileName = body.string().split("/")[-1];
+    private static boolean writeResponseBodyToDisk(Context context, String fileUrl, ResponseBody body) throws IOException {
+        String[] split = fileUrl.split("/");
+        String fileName = split[split.length - 1];
         String fileStoragePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + fileName;
+        Log.d("write", fileStoragePath);
         File file = new File(fileStoragePath);
 
         InputStream inputStream = null;
@@ -150,6 +152,7 @@ public class FileDownloadController {
 
     private static void inicioDescarga(final Context context, String fileStoragePath) {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Log.d("inicioDescarga", fileStoragePath);
         Intent intent = getOpenFileIntent(fileStoragePath);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         notificationBuilder = new NotificationCompat.Builder(context)
@@ -173,6 +176,7 @@ public class FileDownloadController {
         File file = new File(path);
         Uri uri = Uri.fromFile(file);
         MimeTypeMap mime = MimeTypeMap.getSingleton();
+        Log.d("Intent", path);
         String extension = fileExt(path);
         String type = mime.getMimeTypeFromExtension(extension);
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -181,7 +185,11 @@ public class FileDownloadController {
     }
 
     private static String fileExt(String path) {
+        Log.d("fileExt", path);
         String[] sep = path.split(".");
-        return sep[1];
+        for (String ext : sep) {
+            Log.d("extension", ext);
+        }
+        return sep[sep.length - 1];
     }
 }
