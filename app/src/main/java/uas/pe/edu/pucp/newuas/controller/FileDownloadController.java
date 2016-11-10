@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -56,9 +57,12 @@ public class FileDownloadController {
         }
     }
 
-    public static void downloadFile(final Context context, final String fileUrl) {
+
+    public static void downloadFile(final Context context, final String fileUrlParam) {
         final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
+        final String fileUrl = fileUrlParam;
         new AsyncTask<Void, Long, Void>() {
+
 
             @Override
             protected Void doInBackground(Void... params) {
@@ -67,12 +71,14 @@ public class FileDownloadController {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
+
                             boolean writtenToDisk = false;
                             try {
                                 writtenToDisk = writeResponseBodyToDisk(context, fileUrl, response.body());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+
                             Log.d("", "file download was a success? " + writtenToDisk);
                         } else {
                             Log.d("", "server contact failed");
@@ -84,6 +90,7 @@ public class FileDownloadController {
                         Log.e("", "error");
                     }
                 });
+
                 return null;
             }
         }.execute();

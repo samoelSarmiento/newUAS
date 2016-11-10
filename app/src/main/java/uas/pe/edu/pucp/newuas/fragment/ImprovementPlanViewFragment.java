@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 
@@ -47,6 +48,7 @@ public class ImprovementPlanViewFragment extends Fragment {
 
         Button btActions = (Button) view.findViewById(R.id.btnActions);
         Button btSugg = (Button) view.findViewById(R.id.btnSug);
+        Button btDownload = (Button) view.findViewById(R.id.btnDownloadFile);
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
@@ -77,6 +79,15 @@ public class ImprovementPlanViewFragment extends Fragment {
                     controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
                 }
             });
+
+            btDownload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FileDownloadController fdc = new FileDownloadController();
+                    fdc.downloadFile(getActivity(), Configuration.FILE_URL +  ip.getFile().getFilename() );
+                }
+            });
+
 
 
 
