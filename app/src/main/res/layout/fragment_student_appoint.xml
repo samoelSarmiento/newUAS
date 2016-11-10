@@ -20,7 +20,7 @@
 
 
         <Button
-            android:id="@+id/btnFilterAssignments"
+            android:id="@+id/btnStudentFilterAssignments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
