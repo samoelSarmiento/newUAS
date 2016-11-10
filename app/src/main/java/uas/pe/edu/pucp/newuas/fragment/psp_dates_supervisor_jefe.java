@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -39,8 +40,9 @@ public class psp_dates_supervisor_jefe extends Fragment {
     public String solicitud;
     ImageButton btnCalendar;
     Button btnSolicitar;
-    Spinner spinnerHoras, spinnerTemas;
+    Spinner spinnerHoras ; //, spinnerTemas;
     EditText txtFecha;
+    EditText txtLugar;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Calendar[] dates = new Calendar[2];
@@ -63,12 +65,14 @@ public class psp_dates_supervisor_jefe extends Fragment {
         getActivity().setTitle("PSP - Cita JEFE");
         final View view = inflater.inflate(R.layout.fragment_psp_dates_supervisor_jefe, container, false);
         txtFecha = (EditText) view.findViewById(R.id.dateText_psp_date_superv_jefe);
+        txtLugar = (EditText) view.findViewById(R.id.editText_psp_date_superv_jefe);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar_psp_date_superv_jefe);
         btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendar_psp_date_superv_jefe);
         spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora_psp_date_superv_jefe);
-        spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
+      //  spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
 
-        final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
+        final String [] valorFecha = new String[2], valorHora = new String[1]  , lugar = new String[1]; //, valorTema = new String[1];
+
         Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -82,25 +86,30 @@ public class psp_dates_supervisor_jefe extends Fragment {
         }
 
 
-        String[] lista = {"Jose ", "Eduardo", "XXX"};
+       // String[] lista = {"Jose ", "Eduardo", "XXX"};
 
-        Spinner s = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
-        s.setAdapter(null);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, lista);
-        s.setAdapter(adapter);
+      //  Spinner s = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
+     //   s.setAdapter(null);
+     //   ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, lista);
+     //   s.setAdapter(adapter);
 
         valorFecha[0] = txtFecha.getText().toString();
         valorHora[0] = spinnerHoras.getSelectedItem().toString();
-        valorTema[0] = spinnerTemas.getSelectedItem().toString();
+     //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
+        lugar[0] = txtLugar.getText().toString();
+
+        txtFecha.setText("     -     ");
 
                 selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
             public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
                 day = i2; month = i1; year = i;
                 String format = "%1$02d";
-                String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
-                txtFecha.setText(date);
-                valorFecha[0] = date.toString();
+                String dateShow = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
+                String date =    i +     "-"   + String.format(format, (i1 + 1)) + "-"  +   String.format(format, i2) ;
+                txtFecha.setText(dateShow);
+                valorFecha[0] = date;
+                valorFecha[1] = dateShow;
             }
         };
         btnCalendar.setOnClickListener(
@@ -122,9 +131,10 @@ public class psp_dates_supervisor_jefe extends Fragment {
                     @Override
 
                     public void onClick(View v) {
-                        valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                     //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                        lugar[0] =  txtLugar.getText().toString();
+                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[1] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -149,9 +159,16 @@ public class psp_dates_supervisor_jefe extends Fragment {
                                    public void onClick(DialogInterface dialog, int id) {
                                        dialog.cancel();
                                        Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
-                                    //    PSPControllerJ tsc = new PSPControllerJ();
-                                   //     tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0]);
-                                    }
+                                       PSPControllerJ tsc = new PSPControllerJ();
+                                 //       tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0],  1 );//idAlumno );
+                                       tsc.appointmentRequest(getActivity (), 1 ,valorFecha[0], valorHora[0] , PspGetStudentsForDateEmployer.studentSelected.getIdAlumno() ,lugar[0]);//idAlumno );
+
+
+                                       DateSupervisorStudentEmployer fragmentDates =  new DateSupervisorStudentEmployer();
+                                       (getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragmentDates).commit();
+
+
+                                   }
                                 }
                         ).show();
                     }
@@ -233,9 +250,6 @@ public class psp_dates_supervisor_jefe extends Fragment {
             cal1.add(Calendar.DAY_OF_WEEK,-1);
             cal2.add(Calendar.DAY_OF_WEEK,0);
         }
-
-
-
 
         // cal1.add(Calendar.DAY_OF_MONTH,Calendar.SATURDAY);
         //  cal2.add(Calendar.DAY_OF_MONTH,Calendar.SUNDAY);

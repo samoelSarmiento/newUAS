@@ -29,9 +29,6 @@ public class PSP_dates_supervisor extends Fragment {
 
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,11 +49,9 @@ public class PSP_dates_supervisor extends Fragment {
         dateStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(getActivity(), "Aqui comienza la cita con el alumno !", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         getActivity().setTitle("Tipo de documento");
         return view;

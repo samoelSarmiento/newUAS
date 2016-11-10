@@ -36,6 +36,7 @@ import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
+import uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
@@ -240,6 +241,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspStudents_Supervis) {
+       PSPControllerJ controller = new PSPControllerJ() ;
+            controller.getStudentsForSelectAll(this);
+
+
+
         } else if (id == R.id.nav_item_pspStudents) {
 
             try {
@@ -259,8 +266,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspDates_supervisor_employer_student) {
 
+            DateSupervisorStudentEmployer fragmentDates =  new DateSupervisorStudentEmployer();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
 
+        // pasar esto    PSPControllerJ controller = new PSPControllerJ() ;
+            // pasar esto     controller.getStudentsForDates(this);
 
         } else if (id == R.id.nav_item_pspPhases){
             try {
