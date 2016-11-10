@@ -129,7 +129,7 @@ public class FileDownloadController {
                 fileSizeDownloaded += read;
                 int progress = (int) ((fileSizeDownloaded * 100) / fileSize);
                 notificationBuilder.setProgress(100, progress, false);
-                Log.d("", "file download: " + fileSizeDownloaded + " of " + fileSize);
+                Log.d("Status", "file download: " + fileSizeDownloaded + " of " + fileSize);
             }
             finDescarga();
             outputStream.flush();
@@ -193,10 +193,8 @@ public class FileDownloadController {
 
     private static String fileExt(String path) {
         Log.d("fileExt", path);
-        String[] sep = path.split(".");
-        for (String ext : sep) {
-            Log.d("extension", ext);
-        }
-        return sep[sep.length - 1];
+        int idx = path.lastIndexOf(".");
+        String ext = path.substring(idx, path.length());
+        return ext;
     }
 }
