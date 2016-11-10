@@ -19,7 +19,7 @@ import uas.pe.edu.pucp.newuas.model.Specialty;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv, btCosi;
+    Button btModuleAcr, btModulePsp, btModuleTutEv, btModuleInv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp = (Button) findViewById(R.id.btModulePsp);
         btModuleTutEv = (Button) findViewById(R.id.btModuleTutEv);
         btModuleInv = (Button) findViewById(R.id.btModuleInv);
-        btCosi = (Button) findViewById(R.id.btCosi);
         //Listeners
         btModuleAcr.setOnClickListener(this);
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
-        btCosi.setOnClickListener(this);
         /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
         if (idPerfil == 4 || idPerfil == 3) {
             btModuleAcr.setVisibility(View.VISIBLE);
@@ -52,10 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         Log.d("cosi?", (v.getId() == R.id.btCosi) + "");
         switch (v.getId()) {
-            case R.id.btCosi:
-                FileDownloadController.verifyStoragePermissions(this);
-                FileDownloadController.downloadFile(this, "http://10.101.41.239/internetUAS/public/enhacementPlan/get/php835F.tmp.jpg");
-                break;
             case R.id.btModuleAcr:
                 /*
                 ProgressDialog pd = new ProgressDialog(this );

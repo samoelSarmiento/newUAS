@@ -10,13 +10,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="uas.pe.edu.pucp.newuas.view.MainActivity">
-    <Button
-        android:id="@+id/btCosi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_login_selector"
-        android:text="@string/btModuleAcr"
-        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btModuleAcr"
