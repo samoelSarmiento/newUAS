@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,13 +61,11 @@ public class FileDownloadController {
 
     public static void downloadFile(final Context context, final String fileUrlParam) {
         final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
-        final String fileUrl = fileUrlParam;
+
         new AsyncTask<Void, Long, Void>() {
-
-
             @Override
             protected Void doInBackground(Void... params) {
-                Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrl);
+                Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrlParam);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -74,7 +73,8 @@ public class FileDownloadController {
 
                             boolean writtenToDisk = false;
                             try {
-                                writtenToDisk = writeResponseBodyToDisk(context, fileUrl, response.body());
+                                writtenToDisk = writeResponseBodyToDisk(context, fileUrlParam, response.body());
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

@@ -48,15 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent;
-        Log.d("cosi?", (v.getId() == R.id.btCosi) + "");
         switch (v.getId()) {
             case R.id.btModuleAcr:
-                /*
-                ProgressDialog pd = new ProgressDialog(this );
-                pd.setMessage("Cargando...");
-                pd.setCanceledOnTouchOutside(false);
-                pd.show();
-                */
                 SpecialtyController specialtyController = new SpecialtyController();
                 try {
                     specialtyController.getAllSpecialties(this);
