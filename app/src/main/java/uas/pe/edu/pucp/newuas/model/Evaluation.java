@@ -33,4 +33,67 @@ public class Evaluation {
     @SerializedName("estado")
     private int Estado;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public Date getFecha_Inicio() {
+        return fecha_Inicio;
+    }
+
+    public void setFecha_Inicio(Date fecha_Inicio) {
+        this.fecha_Inicio = fecha_Inicio;
+    }
+
+    public Date getFecha_Fin() {
+        return fecha_Fin;
+    }
+
+    public void setFecha_Fin(Date fecha_Fin) {
+        this.fecha_Fin = fecha_Fin;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        Descripcion = descripcion;
+    }
+
+    public int getTiempo() {
+        return Tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        Tiempo = tiempo;
+    }
+
+    public int getId_Especialidad() {
+        return id_Especialidad;
+    }
+
+    public void setId_Especialidad(int id_Especialidad) {
+        this.id_Especialidad = id_Especialidad;
+    }
+
+    public int getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(int estado) {
+        Estado = estado;
+    }
 }

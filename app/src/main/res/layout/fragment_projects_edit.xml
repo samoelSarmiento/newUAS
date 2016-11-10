@@ -3,6 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="16dp"
     android:paddingTop="70dp"
     android:orientation="vertical">
 
@@ -24,6 +27,7 @@
 
                 <EditText
                     android:id="@+id/projName"
+                    android:maxLength="50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -98,6 +102,7 @@
 
                 <EditText
                     android:id="@+id/projDeliv"
+                    android:digits="0123456789"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
@@ -118,6 +123,7 @@
 
                 <EditText
                     android:id="@+id/projDesc"
+                    android:maxLength="100"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"

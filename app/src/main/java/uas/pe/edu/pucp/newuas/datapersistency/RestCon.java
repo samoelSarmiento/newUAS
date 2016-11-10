@@ -10,6 +10,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.Action;
+import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
@@ -133,7 +135,7 @@ public interface RestCon {
     Call<List<Projects>> getProjects(@QueryMap Map<String, String> token);
 
     @POST("investigation/{id}/projects")
-    Call<String> editProject(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Projects projects);
+    Call<StringResponse> editProject(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Projects projects);
 
     @GET("investigation/{id}/investigators")
     Call<List<Investigator>> getInvById(@Path("id") int invId, @QueryMap Map<String, String> token);
@@ -145,7 +147,7 @@ public interface RestCon {
     Call<StringResponse> editInvGroup(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body InvGroupsRequest invGroups);
 
     @POST("investigation/{id}/investigators")
-    Call<String> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
+    Call<StringResponse> editInvestigator(@Path("id") int groupId, @QueryMap Map<String, String> token, @Body Investigator investigator);
 
     @GET("investigation/{id}/projects")
     Call<List<Projects>> getProjById(@Path("id") int projId, @QueryMap Map<String, String> token);
@@ -157,7 +159,7 @@ public interface RestCon {
     Call<List<InvEvent>> getEvByGroupId(@Path("id") int id, @QueryMap Map<String, String> token);
 
     @POST("investigation/{id}/event")
-    Call<String> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
+    Call<StringResponse> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
     /*--------------*/
 
 
@@ -179,7 +181,6 @@ public interface RestCon {
     Call<List<AppointmentResponse>> getAppointment(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @GET("getTutorInfo/{id_usuario}")
-        //Call<List<TUTInfoResponse>>getTutorInfo
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @GET("getTutorAppoints/{id_usuario}")
@@ -187,6 +188,15 @@ public interface RestCon {
 
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("registerTutorAppointment")
+    Call<String> doAppointmentTutor(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @GET("getAppointInformationTuto/{id_usuario}")
+    Call<List<AppointInformationRegisterTuto>> getAppointInfoTuto(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
+
+    @POST("filterStudentAppointment")
+    Call<List<AppointmentResponse>> filterStudentAppointment(@Body AppointmentFilterRequest appointmentFilterRequest, @QueryMap Map<String, String> token);
 
     @POST("updateStudentAppointment")
     Call<String> updateAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
