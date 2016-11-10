@@ -50,11 +50,13 @@ public class TutorAppointFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
-                        Bundle bundle = new Bundle();
+                        //Bundle bundle = new Bundle();
                         //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
                         //ap.setArguments(bundle);
                         //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
+
+                        TutTutorController ttc = new TutTutorController();
+                        ttc.getAppointInformationTuto(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
                     }
                 }
         );

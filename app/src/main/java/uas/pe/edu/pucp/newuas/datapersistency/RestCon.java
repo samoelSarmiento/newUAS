@@ -15,6 +15,8 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.Action;
+import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
@@ -188,7 +190,6 @@ public interface RestCon {
     Call<List<AppointmentResponse>> getAppointment(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @GET("getTutorInfo/{id_usuario}")
-        //Call<List<TUTInfoResponse>>getTutorInfo
     Call<List<TUTInfoResponse>> getTutorInfo(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @GET("getTutorAppoints/{id_usuario}")
@@ -196,6 +197,15 @@ public interface RestCon {
 
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("registerTutorAppointment")
+    Call<String> doAppointmentTutor(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @GET("getAppointInformationTuto/{id_usuario}")
+    Call<List<AppointInformationRegisterTuto>> getAppointInfoTuto(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
+
+    @POST("filterStudentAppointment")
+    Call<List<AppointmentResponse>> filterStudentAppointment(@Body AppointmentFilterRequest appointmentFilterRequest, @QueryMap Map<String, String> token);
 
     @POST("updateStudentAppointment")
     Call<String> updateAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -24,20 +25,20 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 
 public class RetrofitHelper {
 
-    public static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    private static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
     public static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
     private static RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory
             .createWithScheduler(Schedulers.io());
 
-    public static String serverURL = "http://52.89.227.55/api";
+    public static String serverURL = "http://52.89.227.55/api/";
 
     public static Retrofit apiConnector = new Retrofit.Builder()
-            .baseUrl("http://52.89.227.55/api/")
+            .baseUrl("http://192.168.1.35/internetUAS/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(rxAdapter)
-            .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
+            .client(new OkHttpClient.Builder().addInterceptor(interceptor).connectTimeout(30, TimeUnit.SECONDS).build())
             .build();
 
 
