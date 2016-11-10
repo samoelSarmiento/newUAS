@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.IntegerRes;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -12,6 +13,8 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Action;
+import uas.pe.edu.pucp.newuas.model.ActionFile;
 import uas.pe.edu.pucp.newuas.model.Area;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
@@ -19,6 +22,8 @@ import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+import uas.pe.edu.pucp.newuas.model.FileGen;
+import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
@@ -57,6 +62,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<InvEvent, Integer> invEventDao = null;
     private Dao<Criterion, Integer> criterionDao = null;
     private Dao<CriterionLevel, Integer> critLevDao = null;
+    private Dao<ImprovementPlan, Integer> improvementPlanDao = null;
+    private Dao<Action,Integer> actionDao = null;
+    private Dao<FileGen,Integer> fileGenDao = null;
+    private Dao<ActionFile,Integer> actionFileDao = null;
 
     public DatabaseHelper(Context context) {
         //super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -85,6 +94,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, InvEvent.class);
             TableUtils.createTableIfNotExists(connectionSource, Criterion.class);
             TableUtils.createTableIfNotExists(connectionSource, CriterionLevel.class);
+            TableUtils.createTableIfNotExists(connectionSource, ImprovementPlan.class);
+            TableUtils.createTableIfNotExists(connectionSource, Action.class);
+            TableUtils.createTableIfNotExists(connectionSource, FileGen.class);
+            TableUtils.createTableIfNotExists(connectionSource, ActionFile.class);
+
+
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
             e.printStackTrace();
@@ -114,6 +129,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, InvEvent.class, true);
             TableUtils.dropTable(source, Criterion.class, true);
             TableUtils.dropTable(source, CriterionLevel.class, true);
+            TableUtils.dropTable(source, ImprovementPlan.class, true);
+            TableUtils.dropTable(source, Action.class, true);
+            TableUtils.dropTable(source, FileGen.class, true);
+            TableUtils.dropTable(source, ActionFile.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
@@ -287,6 +306,44 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void setCritLevDao(Dao<CriterionLevel,Integer> critLevDao){
         this.critLevDao = critLevDao;
     }
+
+    public Dao<ImprovementPlan,Integer> getImprovementPlanDao() throws SQLException{
+        if(improvementPlanDao == null) improvementPlanDao = getDao(ImprovementPlan.class);
+        return improvementPlanDao;
+    }
+
+    public void setImprovementPlanDao(Dao<ImprovementPlan,Integer> improvementPlanDao){
+        this.improvementPlanDao = improvementPlanDao;
+    }
+
+    public Dao<Action, Integer> getActionDao() throws SQLException{
+        if(actionDao == null) actionDao = getDao(Action.class);
+        return actionDao;
+    }
+
+    public void setActionDao(Dao<Action,Integer> actionDao){
+        this.actionDao = actionDao;
+    }
+
+    public Dao<FileGen,Integer> getFileGenDao() throws SQLException{
+        if(fileGenDao == null) fileGenDao = getDao(FileGen.class);
+        return fileGenDao;
+    }
+
+    public void setFileGenDao(Dao<FileGen,Integer> fileGenDao){
+        this.fileGenDao = fileGenDao;
+    }
+
+    public Dao<ActionFile,Integer> getActionFileDao() throws SQLException{
+        if(actionFileDao == null) actionFileDao = getDao(ActionFile.class);
+        return actionFileDao;
+
+    }
+
+    public void setActionFileDao(Dao<ActionFile,Integer> actionFileDao){
+        this.actionFileDao = actionFileDao;
+    }
+
 
     @Override
     public void close() {

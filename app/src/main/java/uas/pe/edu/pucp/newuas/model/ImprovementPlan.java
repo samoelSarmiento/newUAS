@@ -71,6 +71,12 @@ public class ImprovementPlan implements Serializable{
     @Expose
     @DatabaseField(foreign = true, foreignAutoRefresh =  true, foreignAutoCreate = true)
     private Teacher teacher;
+    @SerializedName("file")
+    @Expose
+    @DatabaseField(foreign = true, foreignAutoRefresh =  true, foreignAutoCreate = true)
+    private FileGen file;
+
+
     /*
     @SerializedName("actions")
     @Expose
@@ -105,7 +111,7 @@ public class ImprovementPlan implements Serializable{
      * @param idEspecialidad
 
      */
-    public ImprovementPlan(Integer idPlanMejora, Integer idTipoPlanMejora, Integer idEspecialidad, Integer idArchivoEntrada, Integer idDocente, Object identificador, String analisisCausal, String hallazgo, String descripcion, String fechaImplementacion, String estado,  String fileUrl, ImprovementPlanType typeImprovementPlan, Teacher teacher) {
+    public ImprovementPlan(Integer idPlanMejora, Integer idTipoPlanMejora, Integer idEspecialidad, Integer idArchivoEntrada, Integer idDocente, Object identificador, String analisisCausal, String hallazgo, String descripcion, String fechaImplementacion, String estado,  String fileUrl, ImprovementPlanType typeImprovementPlan, Teacher teacher, FileGen file) {
         this.idPlanMejora = idPlanMejora;
         this.idTipoPlanMejora = idTipoPlanMejora;
         this.idEspecialidad = idEspecialidad;
@@ -120,6 +126,7 @@ public class ImprovementPlan implements Serializable{
         this.fileUrl = fileUrl;
         this.typeImprovementPlan = typeImprovementPlan;
         this.teacher = teacher;
+        this.file = file;
 
     }
 
@@ -374,6 +381,15 @@ public class ImprovementPlan implements Serializable{
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
+    public FileGen getFile(){
+        return file;
+    }
+
+    public void setFile(FileGen file){
+        this.file = file;
+    }
+
 
 
 

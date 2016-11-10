@@ -374,6 +374,7 @@ public class SpecialtyController {
                     //
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) list);
+                    if(pd.isShowing())  pd.dismiss();
                     context.startActivity(intent);
                 }else{
                     if(pd.isShowing())  pd.dismiss();

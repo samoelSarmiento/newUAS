@@ -58,6 +58,10 @@ public class Action implements Serializable{
     @Expose
     @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Semester cicle;
+    @SerializedName("file")
+    @Expose
+    @DatabaseField(foreign = true, foreignAutoRefresh =  true, foreignAutoCreate = true)
+    private ActionFile actionFile;
 
     /**
      * No args constructor for use in serialization
@@ -82,7 +86,7 @@ public class Action implements Serializable{
 
      * @param teacher|
      */
-    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, String comentario, String descripcion,  Object idArchivoEntrada, Integer porcentaje, Object estado, Teacher teacher, Semester cicle) {
+    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, String comentario, String descripcion,  Object idArchivoEntrada, Integer porcentaje, Object estado, Teacher teacher, Semester cicle, ActionFile actionFile) {
         this.idPlanAccion = idPlanAccion;
         this.idPlanMejora = idPlanMejora;
         this.idCicloAcademico = idCicloAcademico;
@@ -95,6 +99,7 @@ public class Action implements Serializable{
         this.estado = estado;
         this.teacher = teacher;
         this.cicle = cicle;
+        this.actionFile = actionFile;
     }
 
     /**
@@ -299,6 +304,14 @@ public class Action implements Serializable{
      */
     public void setSemester(Semester cicle) {
         this.cicle = cicle;
+    }
+
+    public ActionFile getActionFile(){
+        return actionFile;
+    }
+
+    public void setActionFile(ActionFile actionFile){
+        this.actionFile = actionFile;
     }
 
 }

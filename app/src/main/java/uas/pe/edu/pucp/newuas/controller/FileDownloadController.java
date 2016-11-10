@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
@@ -51,25 +52,36 @@ public class FileDownloadController {
         }
     }
 
-    public static void downloadCosa(final Context context, String fileUrl) {
-        FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
-        Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrl);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    boolean writtenToDisk = writeResponseBodyToDisk(context, response.body());
-                    Log.d("", "file download was a success? " + writtenToDisk);
-                } else {
-                    Log.d("", "server contact failed");
-                }
-            }
+    public static void downloadCosa(final Context context, String fileUrlParam) {
+        final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
+        final String fileUrl = fileUrlParam;
+
+        new AsyncTask<Void,Long,Void>(){
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("", "error");
+            protected Void doInBackground(Void... params) {
+                Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrl);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            boolean writtenToDisk = writeResponseBodyToDisk(context, response.body());
+                            Log.d("", "file download was a success? " + writtenToDisk);
+                        } else {
+                            Log.d("", "server contact failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("", "error");
+                    }
+                });
+
+                return null;
             }
-        });
+        }.execute();
+
     }
 
     private static boolean writeResponseBodyToDisk(Context context, ResponseBody body) {
