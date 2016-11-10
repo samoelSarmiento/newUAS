@@ -3,12 +3,17 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.Manifest;
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,30 +56,44 @@ public class FileDownloadController {
         }
     }
 
-    public static void downloadCosa(final Context context, String fileUrl) {
-        FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
-        Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrl);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    boolean writtenToDisk = writeResponseBodyToDisk(context, response.body());
-                    Log.d("", "file download was a success? " + writtenToDisk);
-                } else {
-                    Log.d("", "server contact failed");
-                }
-            }
+    public static void downloadFile(final Context context, final String fileUrl) {
+        final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
+        new AsyncTask<Void, Long, Void>() {
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("", "error");
+            protected Void doInBackground(Void... params) {
+                Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrl);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            boolean writtenToDisk = false;
+                            try {
+                                writtenToDisk = writeResponseBodyToDisk(context, response.body());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Log.d("", "file download was a success? " + writtenToDisk);
+                        } else {
+                            Log.d("", "server contact failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("", "error");
+                    }
+                });
+                return null;
             }
-        });
+        }.execute();
+
     }
 
-    private static boolean writeResponseBodyToDisk(Context context, ResponseBody body) {
-        // todo change the file location/name according to your needs
-        File futureStudioIconFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + "cosi.png");
+    private static boolean writeResponseBodyToDisk(Context context, ResponseBody body) throws IOException {
+        String fileName = body.string().split("/")[-1];
+        String fileStoragePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + fileName;
+        File file = new File(fileStoragePath);
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -86,8 +105,8 @@ public class FileDownloadController {
             long fileSizeDownloaded = 0;
 
             inputStream = body.byteStream();
-            outputStream = new FileOutputStream(futureStudioIconFile);
-            inicioDescarga(context);
+            outputStream = new FileOutputStream(file);
+            inicioDescarga(context, fileStoragePath);
 
             while (true) {
                 int read = inputStream.read(fileReader);
@@ -129,13 +148,15 @@ public class FileDownloadController {
         }
     }
 
-    private static void inicioDescarga(final Context context) {
+    private static void inicioDescarga(final Context context, String fileStoragePath) {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
+        Intent intent = getOpenFileIntent(fileStoragePath);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_get_app_white_36dp)
                 .setContentTitle("Descargando")
                 .setContentText("Descargando...")
+                .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
         notificationManager.notify(0, notificationBuilder.build());
     }
@@ -145,5 +166,22 @@ public class FileDownloadController {
         notificationBuilder.setProgress(0, 0, false);
         notificationBuilder.setContentText("Descarga Completa.");
         notificationManager.notify(0, notificationBuilder.build());
+
+    }
+
+    private static Intent getOpenFileIntent(String path) {
+        File file = new File(path);
+        Uri uri = Uri.fromFile(file);
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        String extension = fileExt(path);
+        String type = mime.getMimeTypeFromExtension(extension);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, type);
+        return intent;
+    }
+
+    private static String fileExt(String path) {
+        String[] sep = path.split(".");
+        return sep[1];
     }
 }
