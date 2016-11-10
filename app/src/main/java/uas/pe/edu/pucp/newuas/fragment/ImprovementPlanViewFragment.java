@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 
@@ -76,6 +77,10 @@ public class ImprovementPlanViewFragment extends Fragment {
                     controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
                 }
             });
+
+
+
+
 
         }
 

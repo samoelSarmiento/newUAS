@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 /**
  * Created by Pedro on 04/11/2016.
@@ -176,11 +178,11 @@ public class EvaluationsController {
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<String> call = restCon.editInvestigator(inv.getId(),token,inv);
+        Call<StringResponse> call = restCon.editInvestigator(inv.getId(),token,inv);
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<StringResponse>() {
             @Override
-            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+            public void onResponse(Call<StringResponse> call, retrofit2.Response<StringResponse> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
@@ -192,7 +194,7 @@ public class EvaluationsController {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
                 //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
@@ -203,7 +205,7 @@ public class EvaluationsController {
 
     //Lista de inv
     private void saveAllInv(List<Investigator> invList, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
         for (Investigator inv : invList) {
@@ -223,13 +225,13 @@ public class EvaluationsController {
     }
     //Lista de inv
     private List<Investigator> retriveAllInv(final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         return invDao.queryForAll();
     }
 
     private void saveInv(Investigator inv, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         Investigator find = invDao.queryForId(inv.getId());
         if (find == null) {
@@ -242,7 +244,7 @@ public class EvaluationsController {
     }
 
     private Investigator getInv(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);;
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         return invDao.queryForId(id);
     }

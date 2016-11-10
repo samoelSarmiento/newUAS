@@ -50,15 +50,15 @@ public class InvEventController {
                     //okhttp3.Response raw = response.raw();
                     //SpecialtyResponse
                     List<InvEvent> example = response.body();
-
 /*
+
                     try {
                         saveAllInvEv(example, context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }*/
-
+                    }
+*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Events", (Serializable)example);
                     //bundle.putString("Groups", spj);
@@ -93,8 +93,8 @@ public class InvEventController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
-                }*/
-
+                }
+*/
             }
 
 
@@ -121,8 +121,8 @@ public class InvEventController {
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }*/
-
+                    }
+*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Event", (Serializable)example);
                     bundle.putBoolean("BotonEdit",true);
@@ -166,7 +166,7 @@ public class InvEventController {
         });
     }
 
-    public void editInvEv (final Context context, InvEvent invEvent){
+    public void editInvEv (final Context context,final InvEvent invEvent){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -174,22 +174,23 @@ public class InvEventController {
 
         //InvGroupsRequest igr= new InvGroupsRequest(invG);
 
-        Call<String> call = restCon.editInvEv(invEvent.getId(),token,invEvent);
+        Call<StringResponse> call = restCon.editInvEv(invEvent.getId(),token,invEvent);
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<StringResponse>() {
             @Override
-            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+            public void onResponse(Call<StringResponse> call, retrofit2.Response<StringResponse> response) {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-                    /*
-                    try {
-                        saveInvGroup(invG, context);
+                    /*try {
+                        saveInvEv(invEvent, context);
                         //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
                     } catch (SQLException e) {
                         Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }*/
+                   // Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
+
 /*
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)invG);
@@ -209,24 +210,24 @@ public class InvEventController {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
-                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
             }
         });
-        ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        /*ConnectivityManager connectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState()== NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState()==NetworkInfo.State.CONNECTED){
             //Toast.makeText(context, "conectado", Toast.LENGTH_SHORT).show();
-            /*try {
+            try {
                 saveInvEv(invEvent, context);
                 //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
             } catch (SQLException e) {
                 Toast.makeText(context, "catched", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
-            }*/
+            }
             Toast.makeText(context, "Se guardo correctamente", Toast.LENGTH_SHORT).show();
-        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();*/
     }
 
     private void saveAllInvEv(List<InvEvent> invGList, final Context context) throws SQLException {
