@@ -41,15 +41,11 @@ public class Action implements Serializable{
     @SerializedName("IdArchivoEntrada")
     @Expose
     @DatabaseField
-    private Object idArchivoEntrada;
+    private Integer idArchivoEntrada;
     @SerializedName("Porcentaje")
     @Expose
     @DatabaseField
     private Integer porcentaje;
-    @SerializedName("Estado")
-    @Expose
-    @DatabaseField
-    private Object estado;
     @SerializedName("teacher")
     @Expose
     @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
@@ -79,14 +75,14 @@ public class Action implements Serializable{
 
      * @param porcentaje
      * @param idPlanAccion
-     * @param estado
+
      * @param idArchivoEntrada
      * @param idPlanMejora
      * @param cicle
 
      * @param teacher|
      */
-    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, String comentario, String descripcion,  Object idArchivoEntrada, Integer porcentaje, Object estado, Teacher teacher, Semester cicle, ActionFile actionFile) {
+    public Action(Integer idPlanAccion, Integer idPlanMejora, Integer idCicloAcademico, Integer idDocente, String comentario, String descripcion,  Integer idArchivoEntrada, Integer porcentaje, Teacher teacher, Semester cicle, ActionFile actionFile) {
         this.idPlanAccion = idPlanAccion;
         this.idPlanMejora = idPlanMejora;
         this.idCicloAcademico = idCicloAcademico;
@@ -96,7 +92,7 @@ public class Action implements Serializable{
 
         this.idArchivoEntrada = idArchivoEntrada;
         this.porcentaje = porcentaje;
-        this.estado = estado;
+
         this.teacher = teacher;
         this.cicle = cicle;
         this.actionFile = actionFile;
@@ -221,7 +217,7 @@ public class Action implements Serializable{
      * @return
      * The idArchivoEntrada
      */
-    public Object getIdArchivoEntrada() {
+    public Integer getIdArchivoEntrada() {
         return idArchivoEntrada;
     }
 
@@ -230,7 +226,7 @@ public class Action implements Serializable{
      * @param idArchivoEntrada
      * The IdArchivoEntrada
      */
-    public void setIdArchivoEntrada(Object idArchivoEntrada) {
+    public void setIdArchivoEntrada(Integer idArchivoEntrada) {
         this.idArchivoEntrada = idArchivoEntrada;
     }
 
@@ -252,23 +248,7 @@ public class Action implements Serializable{
         this.porcentaje = porcentaje;
     }
 
-    /**
-     *
-     * @return
-     * The estado
-     */
-    public Object getEstado() {
-        return estado;
-    }
 
-    /**
-     *
-     * @param estado
-     * The Estado
-     */
-    public void setEstado(Object estado) {
-        this.estado = estado;
-    }
 
     /**
      *
