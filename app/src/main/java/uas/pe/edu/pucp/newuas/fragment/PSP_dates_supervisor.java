@@ -40,6 +40,10 @@ public class PSP_dates_supervisor extends Fragment {
         dateStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PSP_SupStudentNewMeetingFragment supxstudent = new PSP_SupStudentNewMeetingFragment();
+
+
                 Toast.makeText(getActivity(), "Aqui comienza la cita con el alumno !", Toast.LENGTH_SHORT).show();
             }
         });

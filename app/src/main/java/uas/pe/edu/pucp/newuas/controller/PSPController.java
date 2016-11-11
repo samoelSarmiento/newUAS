@@ -33,6 +33,7 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
+import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Student;
@@ -426,7 +427,7 @@ public class PSPController {
 
                 }else{
 
-
+                    pd.dismiss();
                     Toast.makeText(context,"Algo paso", Toast.LENGTH_SHORT).show();
 
                 }
@@ -465,21 +466,36 @@ public class PSPController {
 
                    ArrayList<PSPMeeting> lista = (ArrayList)response.body();
 
-                   Log.d("MEETINGS","by students");
-                   Fragment fragment = new PSP_SupxStudentMeetingsFragment();
-                   Bundle bundle = new Bundle();
-                   bundle.putSerializable("Student", student);
-                   bundle.putSerializable("Meetings",lista);
-                   fragment.setArguments(bundle);
+                   if(!lista.isEmpty()) {
 
-                   ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
-                           .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
+                       Log.d("MEETINGS", "by students");
+                       Fragment fragment = new PSP_SupxStudentMeetingsFragment();
+                       Bundle bundle = new Bundle();
+                       bundle.putSerializable("Student", student);
+                       bundle.putSerializable("Meetings", lista);
+                       fragment.setArguments(bundle);
+
+                       ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                               .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                   } else {
+
+
+                       Fragment fragment=  new PSP_messagesFragment();
+                       Bundle bundle =  new Bundle();
+                       bundle.putString("MESSAGE", "No tiene citas asignadas");
+                       ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                               .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
 
+                   }
 
 
                }else{
+
+                   Toast.makeText(context, "Error con servidor", Toast.LENGTH_SHORT).show();
 
 
 
@@ -534,6 +550,55 @@ public class PSPController {
 
             }
         });
+
+        return true;
+
+    }
+
+
+
+    public boolean insertSupStudentMeeting(final Context context, final PSPMeetingRequest request){
+
+        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String,String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<PSPMessage> call = restCon.storeSupStudentMeeting(request,token);
+
+        call.enqueue(new Callback<PSPMessage>() {
+            @Override
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
+
+
+                if(response.isSuccessful()){
+
+                    PSPMessage message =  response.body();
+
+                    Toast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT).show();
+
+
+                    ((Activity)context).getFragmentManager().popBackStack();
+
+
+
+
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
+
+            }
+        });
+
+
+
+
 
         return true;
 
