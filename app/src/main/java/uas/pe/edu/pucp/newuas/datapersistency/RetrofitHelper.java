@@ -36,7 +36,6 @@ public class RetrofitHelper {
 
     public static String serverURL = Configuration.BASE_URL + "/api/"; //http://192.168.1.33/internetUAS/public/api/" //"http://52.89.227.55/api/";
 
-
     public static Retrofit apiConnector = new Retrofit.Builder()
             .baseUrl(serverURL)
             .addConverterFactory(GsonConverterFactory.create())

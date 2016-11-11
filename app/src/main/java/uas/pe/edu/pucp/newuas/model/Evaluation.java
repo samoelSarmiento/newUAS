@@ -2,21 +2,22 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Pedro on 04/11/2016.
  */
 
-public class Evaluation {
+public class Evaluation implements Serializable{
     @SerializedName("id")
     private int Id;
 
     @SerializedName("fecha_inicio")
-    private Date fecha_Inicio;
+    private String fecha_Inicio;
 
     @SerializedName("fecha_fin")
-    private Date fecha_Fin;
+    private String fecha_Fin;
 
     @SerializedName("nombre")
     private String Nombre;
@@ -41,19 +42,19 @@ public class Evaluation {
         Id = id;
     }
 
-    public Date getFecha_Inicio() {
+    public String getFecha_Inicio() {
         return fecha_Inicio;
     }
 
-    public void setFecha_Inicio(Date fecha_Inicio) {
+    public void setFecha_Inicio(String fecha_Inicio) {
         this.fecha_Inicio = fecha_Inicio;
     }
 
-    public Date getFecha_Fin() {
+    public String getFecha_Fin() {
         return fecha_Fin;
     }
 
-    public void setFecha_Fin(Date fecha_Fin) {
+    public void setFecha_Fin(String fecha_Fin) {
         this.fecha_Fin = fecha_Fin;
     }
 

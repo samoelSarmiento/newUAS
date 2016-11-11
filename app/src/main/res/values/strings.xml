@@ -184,6 +184,11 @@
     <string name="tvSeeCrits">Presionar un aspecto para ver sus criterios asociados.</string>
     <string name="tvSeeCLevs">Presionar un criterio para ver sus niveles asociados.</string>
     <string name="itdMyCourses">Mis Cursos</string>
+    <string name="estado">Estado:</string>
+    <string name="titulo">Estado          Nombre         Vigencia</string>
+    <string name="tEstado">Estado</string>
+    <string name="tNombre">Nombre</string>
+    <string name="tVigencia">Vigencia</string>
     <string name="tvNoCourses">No cuenta con cursos este ciclo.</string>
     <string name="newSugerence">Nueva Sugerencia</string>
     <string name="itdModule">Cambiar de Módulo</string>
