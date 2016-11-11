@@ -53,6 +53,7 @@ public class UserController {
                     UserResponse user = response.body();
                     Configuration.LOGIN_USER = user;
                     Intent intent = new Intent(context, MainActivity.class);
+                    if(pd.isShowing())  pd.dismiss();
                     context.startActivity(intent);
                 } else {
                     Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();

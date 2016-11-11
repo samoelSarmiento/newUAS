@@ -5,14 +5,9 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
@@ -25,7 +20,6 @@ import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
-import uas.pe.edu.pucp.newuas.model.Document;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
@@ -42,7 +36,6 @@ import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
-import uas.pe.edu.pucp.newuas.model.SpecialtyResponse;
 import uas.pe.edu.pucp.newuas.model.StringResponse;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
@@ -50,7 +43,6 @@ import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
-import uas.pe.edu.pucp.newuas.model.UserMe;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
@@ -64,20 +56,23 @@ public interface RestCon {
     @POST("authenticate")
     Call<UserResponse> getUser(@Body UserRequest userRequest);
 
-
     @GET("improvementplans/{ip_id}/suggestions")
     Call<List<Suggestion>> getImprPlanSuggestion(@Path("ip_id") int idImprPlan,
                                                  @QueryMap Map<String, String> token);
 
     @POST("improvementplans/{ip_id}/suggestions")
     Call<StringResponse> sendSuggestion(@Path("ip_id") int idImprPlan,
-                                @Body SuggestionRequest suggestionRequest,
-                                @QueryMap Map<String, String> token);
+                                        @Body SuggestionRequest suggestionRequest,
+                                        @QueryMap Map<String, String> token);
 
     @GET("faculties/{f_id}/semester/{s_id}/courses")
     Call<List<CourseResponse>> getCoursesxSpecialty(@Path("f_id") int faculty_id,
                                                     @Path("s_id") int semester_id,
                                                     @QueryMap Map<String, String> token);
+
+    @GET("faculties/teacher/{teacher_id}/courses")
+    Call<List<CourseResponse>> getTeacherCourses(@Path("teacher_id") int teacher_id,
+                                                 @QueryMap Map<String, String> token);
 
     /*
     @GET("faculties/{faculty_id}/evaluated_courses")

@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp = (Button) findViewById(R.id.btModulePsp);
         btModuleTutEv = (Button) findViewById(R.id.btModuleTutEv);
         btModuleInv = (Button) findViewById(R.id.btModuleInv);
-
         //Listeners
         btModuleAcr.setOnClickListener(this);
         btModulePsp.setOnClickListener(this);
@@ -50,12 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.btModuleAcr:
-                /*
-                ProgressDialog pd = new ProgressDialog(this );
-                pd.setMessage("Cargando...");
-                pd.setCanceledOnTouchOutside(false);
-                pd.show();
-                */
                 SpecialtyController specialtyController = new SpecialtyController();
                 try {
                     specialtyController.getAllSpecialties(this);
@@ -75,13 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                Log.d("tag","ENTRE ACAAAAAAA 1");
+                Log.d("tag", "ENTRE ACAAAAAAA 1");
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
                     Log.d("tag", "ENTRE ACAAAAAAA 1123213");
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
-                }
-                else 
-                   intent = new Intent(this, NavigationDrawerTutoria.class);
+                } else
+                    intent = new Intent(this, NavigationDrawerTutoria.class);
                 startActivity(intent);
                 break;
         }
