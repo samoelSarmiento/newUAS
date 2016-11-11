@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/08 12:07:40
+# generated on 2016/11/11 01:16:36
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -60,9 +60,6 @@ fieldName=idArchivoEntrada
 fieldName=porcentaje
 # --field-end--
 # --field-start--
-fieldName=estado
-# --field-end--
-# --field-start--
 fieldName=teacher
 foreign=true
 foreignAutoRefresh=true
@@ -75,6 +72,39 @@ foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
 foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=actionFile
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.ActionFile
+tableName=actionfile
+# --table-fields-start--
+# --field-start--
+fieldName=idArchivoEntrada
+id=true
+# --field-end--
+# --field-start--
+fieldName=filename
+# --field-end--
+# --field-start--
+fieldName=mime
+# --field-end--
+# --field-start--
+fieldName=originalFilename
+# --field-end--
+# --field-start--
+fieldName=createdAt
+# --field-end--
+# --field-start--
+fieldName=updatedAt
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -170,6 +200,9 @@ id=true
 fieldName=idAcademicCycle
 # --field-end--
 # --field-start--
+fieldName=idDocente
+# --field-end--
+# --field-start--
 fieldName=idEspecialidad
 # --field-end--
 # --field-start--
@@ -228,6 +261,39 @@ fieldName=descripcion
 # --table-end--
 #################################
 # --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.Deliverable
+tableName=deliverable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+id=true
+# --field-end--
+# --field-start--
+fieldName=nombre
+# --field-end--
+# --field-start--
+fieldName=idProyecto
+# --field-end--
+# --field-start--
+fieldName=fechaInicio
+# --field-end--
+# --field-start--
+fieldName=fechaLimite
+# --field-end--
+# --field-start--
+fieldName=porcenAvance
+# --field-end--
+# --field-start--
+fieldName=projects
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.EducationalObjective
 tableName=educationalobjective
 # --table-fields-start--
@@ -266,6 +332,32 @@ fieldName=nombre
 # --field-end--
 # --field-start--
 fieldName=descripcion
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=uas.pe.edu.pucp.newuas.model.FileGen
+tableName=file
+# --table-fields-start--
+# --field-start--
+fieldName=idArchivoEntrada
+id=true
+# --field-end--
+# --field-start--
+fieldName=filename
+# --field-end--
+# --field-start--
+fieldName=mime
+# --field-end--
+# --field-start--
+fieldName=originalFilename
+# --field-end--
+# --field-start--
+fieldName=createdAt
+# --field-end--
+# --field-start--
+fieldName=updatedAt
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -317,6 +409,13 @@ foreignAutoCreate=true
 # --field-end--
 # --field-start--
 fieldName=teacher
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=file
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2

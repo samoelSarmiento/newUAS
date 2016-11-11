@@ -42,21 +42,21 @@
             />
 
         <ImageButton
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:background="@android:color/transparent"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="05dp"
             android:scaleType="fitXY"
             android:id="@+id/icon1SingleRowTuto"
             android:src="@drawable/ic_check"
-        />
+            />
 
         <ImageButton
             android:id="@+id/icon2SingleRowTuto"
-            android:layout_width="20dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="34dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="4dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
@@ -67,7 +67,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginLeft="-16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -98,7 +99,7 @@
         <TextView
             style="@style/GeneralTextViewsSmall"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="117dp"
+            android:layout_marginLeft="97dp"
             android:text="Estado:"
             android:textColor="@color/black"
             android:textStyle="bold" />

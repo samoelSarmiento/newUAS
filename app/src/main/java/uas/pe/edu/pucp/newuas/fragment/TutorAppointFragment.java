@@ -24,7 +24,7 @@ import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 public class TutorAppointFragment extends Fragment {
 
     ListView listV;
-    Button newAppointment;
+    Button newAppointment, newNoAppointment;
     public static ImageButton btnAceptar;
     public static ArrayList<SingleRow> list;
 
@@ -46,15 +46,35 @@ public class TutorAppointFragment extends Fragment {
         ts.getAppointment(getActivity(),view, Configuration.LOGIN_USER.getUser().getIdUsuario());
 
         newAppointment = (Button) view.findViewById(R.id.btnNewAssignmentTuto);
+        newNoAppointment = (Button) view.findViewById(R.id.btnNoNewAssignmentTuto);
+
         newAppointment.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
-                        Bundle bundle = new Bundle();
+                        //Bundle bundle = new Bundle();
                         //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
                         //ap.setArguments(bundle);
                         //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
+
+                        TutTutorController ttc = new TutTutorController();
+                        ttc.getAppointInformationTuto(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
+                    }
+                }
+        );
+
+        newNoAppointment.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Bundle bundle = new Bundle();
+                        //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
+                        //ap.setArguments(bundle);
+                        //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
+
+                        TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
+                        getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, ttc).commit();
+                        //ttc.getAppointInformationTuto(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
                     }
                 }
         );

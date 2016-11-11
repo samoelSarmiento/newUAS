@@ -188,5 +188,6 @@
     <string name="tEstado">Estado</string>
     <string name="tNombre">Nombre</string>
     <string name="tVigencia">Vigencia</string>
+    <string name="tvNoCourses">No cuenta con cursos este ciclo.</string>
 
 </resources>

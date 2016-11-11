@@ -17,6 +17,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -120,7 +121,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 String desc = invEvDesc.getText().toString();
                 String ubic =invEvUbic.getText().toString();
                 if (!nom.isEmpty() && !desc.isEmpty() && !ubic.isEmpty()) {
-                    //validacion fecha y hora!!!!!!
+                    //fecha y hora!!!!!!
+
                     InvEvent changedIE = invEv;
                     changedIE.setNombre(invEvName.getText().toString());
                     changedIE.setDescripcion(invEvDesc.getText().toString());
@@ -142,6 +144,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.selFecha:
                 DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month-1, day);
+                //Calendar c = Calendar.getInstance();
+                //d.setMinDate(c);
                 d.show(getActivity().getFragmentManager(), "");
                 break;
         }
