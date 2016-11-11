@@ -36,13 +36,16 @@ import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
 import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
+import uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
+import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
+import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -151,7 +154,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-          menu.findItem(R.id.nav_item_pspDates).setVisible(false);
+          //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
           //menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
           //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
@@ -243,6 +246,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspStudents_Supervis) {
+       PSPControllerJ controller = new PSPControllerJ() ;
+            controller.getStudentsForSelectAll(this);
+
+
+
         } else if (id == R.id.nav_item_pspStudents) {
 
             try {
@@ -255,15 +264,18 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             }
 
-        } else if (id == R.id.nav_item_pspDates) {
+        } else if (id == R.id.nav_item_pspDates_supervisor) {
 
-            fragment = new PSP_meetingsFragment();
-
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+           // fragment = new PSP_meetingsFragment();
+            PSP_dates_supervisor fragmentDates =  new PSP_dates_supervisor();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspDates_supervisor_employer_student) {
 
 
+            PSPControllerJ controller = new PSPControllerJ() ;
+                controller.getDatesSupervisorEmployerStudent(this);
 
         } else if (id == R.id.nav_item_pspPhases){
             try {

@@ -5,6 +5,13 @@
         android:id="@+id/nav_psp_groupsss"
         android:checkableBehavior="single"
         android:visible="true">
+
+        <item
+            android:id="@+id/nav_item_pspStudents_Supervis"
+            android:icon="@drawable/ic_resultados_eval"
+            android:title="Estudiantes"
+            />
+
         <item
             android:id="@+id/nav_item_pspCycle"
             android:icon="@drawable/ic_resultados_eval"
@@ -18,10 +25,16 @@
             android:id="@+id/nav_item_pspStudents"
             android:icon="@drawable/ic_objetivos_ed"
             android:title="@string/pspStudents" />
+
         <item
-            android:id="@+id/nav_item_pspDates"
+            android:id="@+id/nav_item_pspDates_supervisor"
             android:icon="@drawable/ic_mejora_cont"
-            android:title="@string/pspDates" />
+            android:title="Administrar Citas" />
+
+        <item
+            android:id="@+id/nav_item_pspDates_supervisor_employer_student"
+            android:icon="@drawable/ic_mejora_cont"
+            android:title="Citas Jefe" />
 
         <item
             android:id="@+id/nav_item_pspDocuments_teacher"
