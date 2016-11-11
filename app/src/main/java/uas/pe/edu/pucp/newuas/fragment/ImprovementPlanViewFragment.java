@@ -1,6 +1,9 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -80,7 +83,9 @@ public class ImprovementPlanViewFragment extends Fragment {
                 }
             });
 
-            if (ip.getIdArchivoEntrada() != null){
+
+
+            if (ip.getIdArchivoEntrada() != null || Configuration.isConnected(getActivity()) ){
 
                 btDownload.setEnabled(true);
 

@@ -87,7 +87,7 @@ public class ActionAdapter extends BaseAdapter {
         }
 
 
-        if(items.get(position).getIdArchivoEntrada() != null){
+        if(items.get(position).getIdArchivoEntrada() != null || Configuration.isConnected(context)){
             viewHolder.btDownloadFileAction.setEnabled(true);
 
             final String arch = items.get(position).getActionFile().getFilename();
