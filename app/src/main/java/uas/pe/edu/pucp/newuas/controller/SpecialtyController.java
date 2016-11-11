@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -31,6 +32,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
 import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.CoursexScheduleFragment;
+import uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Schedule;
@@ -237,7 +239,7 @@ public class SpecialtyController {
                     List<CourseResponse> courseResponse = response.body();
                     final List<CourseResponse> crf = courseResponse;
                     //-guardar los cursos
-                    new AsyncTask<Void,Long,Void>(){
+                    new AsyncTask<Void, Long, Void>() {
 
                         @Override
                         protected Void doInBackground(Void... params) {
@@ -251,8 +253,6 @@ public class SpecialtyController {
 
                         }
                     }.execute();
-
-
 
 
                     //
@@ -349,8 +349,8 @@ public class SpecialtyController {
         return true;
     }
 
-    public boolean getAllSpecialties(final Context context)  {
-        final ProgressDialog pd = new ProgressDialog(context );
+    public boolean getAllSpecialties(final Context context) {
+        final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Cargando...");
         pd.setCanceledOnTouchOutside(false);
         pd.show();
@@ -374,10 +374,10 @@ public class SpecialtyController {
                     //
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) list);
-                    if(pd.isShowing())  pd.dismiss();
+                    if (pd.isShowing()) pd.dismiss();
                     context.startActivity(intent);
-                }else{
-                    if(pd.isShowing())  pd.dismiss();
+                } else {
+                    if (pd.isShowing()) pd.dismiss();
                 }
             }
 
@@ -387,7 +387,7 @@ public class SpecialtyController {
 
                 try {
                     List<Specialty> specialtyList = retriveSpecialties(context);
-                    if(pd.isShowing())  pd.dismiss();
+                    if (pd.isShowing()) pd.dismiss();
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) specialtyList);
                     context.startActivity(intent);
@@ -399,8 +399,39 @@ public class SpecialtyController {
         return true;
     }
 
+    public boolean getTeacherCourses(final Context context, int teacher_id) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<CourseResponse>> call = restCon.getTeacherCourses(teacher_id, token);
+
+        call.enqueue(new Callback<List<CourseResponse>>() {
+            @Override
+            public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<CourseResponse> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("courses", (Serializable) list);
+                    MyCoursesFragment fragment = new MyCoursesFragment();
+                    fragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null)
+                            .replace(R.id.fragment_container, fragment).commit();
+                } else {
+                    Toast.makeText(context, "Hubo un error", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
+                Toast.makeText(context, "Error de conexión", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return true;
+    }
+
     private void saveCourseSchedule(final Context context, List<Schedule> scheduleList, int idCourse, int idAcademicCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
         Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
         for (Schedule schedule : scheduleList) {
@@ -429,7 +460,7 @@ public class SpecialtyController {
     }
 
     private List<Schedule> retrieveCourseSchedules(final Context context, int idCourse, int idCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
         Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
         List<Schedule> list = scheduleDao.queryBuilder()
@@ -445,7 +476,7 @@ public class SpecialtyController {
     }
 
     private void saveCourses(final Context context, List<CourseResponse> courseResponse, int idCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
         for (CourseResponse crs : courseResponse) {
             crs.setIdAcademicCycle(idCycle);
@@ -459,7 +490,7 @@ public class SpecialtyController {
     }
 
     private List<CourseResponse> retrieveCourses(final Context context, int idCycle, int idSpecialty) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
         return courseDao.queryBuilder()
                 .where().eq("idEspecialidad", idSpecialty)
@@ -467,7 +498,7 @@ public class SpecialtyController {
     }
 
     private void saveSpecialties(List<Specialty> specialtyList, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         for (Specialty specialty : specialtyList) {
             //veo si la especialidad existe
@@ -482,13 +513,13 @@ public class SpecialtyController {
     }
 
     private List<Specialty> retriveSpecialties(final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         return specialtyDao.queryForAll();
     }
 
     private void saveSpecialty(Specialty specialty, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
         if (find == null) {
@@ -500,7 +531,7 @@ public class SpecialtyController {
     }
 
     private Specialty getSpecialty(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
         return specialtyDao.queryForId(id);
     }
