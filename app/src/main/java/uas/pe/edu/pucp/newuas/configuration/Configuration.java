@@ -1,5 +1,8 @@
 package uas.pe.edu.pucp.newuas.configuration;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -54,5 +57,18 @@ public class Configuration {
 
     public static boolean isTeacherAndSupervisor() {
         return LOGIN_USER.getUser().getIdPerfil() == 6;
+    }
+
+    public static boolean isConnected(Context context){
+
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        return isConnected;
+
     }
 }

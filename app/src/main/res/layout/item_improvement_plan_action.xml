@@ -53,7 +53,8 @@
             android:textAlignment="center"
             android:drawableTop="@drawable/ic_get_app_white_36dp"
             android:text="@string/btArchAction"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:id="@+id/btnDownloadFileAction"/>
 
 
 
