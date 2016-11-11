@@ -17,12 +17,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 
 public class NavigationDrawerTutoriaTutor extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static ArrayList<String> nameTopicsList = new ArrayList<String>();
+    public static String[] nameTopic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
