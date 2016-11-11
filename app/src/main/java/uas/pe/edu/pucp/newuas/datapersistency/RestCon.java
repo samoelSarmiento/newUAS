@@ -17,6 +17,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
@@ -164,6 +165,13 @@ public interface RestCon {
 
     @POST("investigation/{id}/event")
     Call<StringResponse> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
+
+    @GET("investigation/{id}/deliverable")
+    Call<List<Deliverable>> getDelById(@Path("id") int id, @QueryMap Map<String, String> token);
+
+    @GET("investigation/{id}/deliverables")
+    Call<List<Deliverable>> getDelByProjId(@Path("id") int id, @QueryMap Map<String, String> token);
+
     /*--------------*/
 
 
