@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
+import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
@@ -56,9 +57,11 @@ public class TutStudentController {
                 for (TopicResponse topic : topicResponses) {
                     NavigationDrawerTutoria.nameTopicsList.add(topic.getNombre());
                 }
-                NavigationDrawerTutoria.nameTopic = new String[NavigationDrawerTutoria.nameTopicsList.size()];
+                NavigationDrawerTutoria.nameTopic = new String[NavigationDrawerTutoria.nameTopicsList.size()+1];
                 for (int i = 0; i < NavigationDrawerTutoria.nameTopicsList.size(); i++)
                     NavigationDrawerTutoria.nameTopic[i] = NavigationDrawerTutoria.nameTopicsList.get(i);
+                NavigationDrawerTutoria.nameTopic[NavigationDrawerTutoria.nameTopicsList.size()] = "";
+
 
                 //MyStudentAppointmentFragment fragment = new MyStudentAppointmentFragment();
                 StudentAppointFragment fragment = new StudentAppointFragment();
@@ -87,8 +90,8 @@ public class TutStudentController {
 
             @Override
             public void onResponse(Call<List<AppointmentResponse>> call, Response<List<AppointmentResponse>> response) {
-                if (response.isSuccessful()){
 
+               if (response.isSuccessful()){
                     List<AppointmentResponse>  appointResponse = response.body();
                     List<SingleRow> sr = new  ArrayList<SingleRow>();
 
@@ -104,9 +107,7 @@ public class TutStudentController {
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
                     listV.setAdapter(new AppointmentAdapter(context,sr));
-
                 }
-
             }
 
             @Override
@@ -158,10 +159,9 @@ public class TutStudentController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Log.d("tag","CONTEXTOO " + hora + " " +  " " + motivo);
-
-        Call<String> call = restCon.doAppointment(new AppointmentRequest(idUser,fecha,hora,motivo),data);
-       // Log.d("xd",  "ke pasa aca " + call.request().url() );
+        //Log.d("tag","CONTEXTOO " + hora + " " +  " " + motivo);
+        Call<String> call = restCon.doAppointment(new AppointmentRequest(idUser,fecha,hora,motivo,null),data);
+        // Log.d("xd",  "ke pasa aca " + call.request().url() );
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -177,8 +177,53 @@ public class TutStudentController {
                 ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
+
+        return true;
+    }
+
+    public boolean filterAppointment(final Context context, final View view, int idUser, String fechaI, String fechaF, String motivo){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<AppointmentResponse>> call = restCon.filterStudentAppointment(new AppointmentFilterRequest(idUser,fechaI,fechaF,motivo),data);
+        // Log.d("xd",  "ke pasa aca " + call.request().url() );
+
+        call.enqueue(new Callback<List<AppointmentResponse>>() {
+            @Override
+            public void onResponse(Call<List<AppointmentResponse>> call, Response<List<AppointmentResponse>> response) {
+
+                if (response.isSuccessful()){
+
+
+                    List<AppointmentResponse>  appointResponse = response.body();
+                    List<SingleRow> sr = new  ArrayList<SingleRow>();
+
+                    for (AppointmentResponse ap : appointResponse){
+                        String fechaHoraInicio =  ap.getInicio();
+                        String fechaI = fechaHoraInicio.substring(0,10);
+                        String horaI  = fechaHoraInicio.substring(11);
+                        String tema = ap.getNombreTema();
+                        String estado = ap.getNombreEstado();
+                        sr.add(new SingleRow(fechaI,horaI,tema,estado));
+                        Log.d("tag", fechaI + horaI + tema + estado);
+
+                    }
+                    ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
+                    listV.setAdapter(new AppointmentAdapter(context,sr));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<AppointmentResponse>> call, Throwable t) {
+
+
+            }
+        });
         return true;
     }
 
 
 }
+
