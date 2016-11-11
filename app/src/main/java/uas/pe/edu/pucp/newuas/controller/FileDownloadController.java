@@ -31,10 +31,6 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.datapersistency.FileDownloadService;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
-/**
- * Created by samoe on 06/11/2016.
- */
-
 public class FileDownloadController {
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -45,11 +41,9 @@ public class FileDownloadController {
     private static NotificationCompat.Builder notificationBuilder;
 
     public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,
@@ -78,7 +72,6 @@ public class FileDownloadController {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
                             Log.d("", "file download was a success? " + writtenToDisk);
                         } else {
                             Log.d("", "server contact failed");
