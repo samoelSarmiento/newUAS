@@ -128,7 +128,7 @@ public interface RestCon {
 
 
     /*Evaluaciones*/
-    @GET("investigation/getAllInvestigators")
+    @GET("evaluation/getAllEvaluations")
     Call<List<Evaluation>> getEvaluations(@QueryMap Map<String, String> token);
 
     /*Investigacion*/
