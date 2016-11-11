@@ -88,6 +88,7 @@ public class ActionAdapter extends BaseAdapter {
 
 
         if(items.get(position).getIdArchivoEntrada() != null){
+            viewHolder.btDownloadFileAction.setEnabled(true);
 
             final String arch = items.get(position).getActionFile().getFilename();
             viewHolder.btDownloadFileAction.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,9 @@ public class ActionAdapter extends BaseAdapter {
 
                 }
             });
+
+        }else{
+            viewHolder.btDownloadFileAction.setEnabled(false);
 
         }
 

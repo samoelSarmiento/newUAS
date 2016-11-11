@@ -80,13 +80,24 @@ public class ImprovementPlanViewFragment extends Fragment {
                 }
             });
 
-            btDownload.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FileDownloadController fdc = new FileDownloadController();
-                    fdc.downloadFile(getActivity(), Configuration.FILE_URL +  ip.getFile().getFilename() );
-                }
-            });
+            if (ip.getIdArchivoEntrada() != null){
+
+                btDownload.setEnabled(true);
+
+                btDownload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FileDownloadController fdc = new FileDownloadController();
+                        fdc.downloadFile(getActivity(), Configuration.FILE_URL +  ip.getFile().getFilename() );
+                    }
+                });
+
+            }else{
+                btDownload.setEnabled(false);
+
+            }
+
+
 
 
 
