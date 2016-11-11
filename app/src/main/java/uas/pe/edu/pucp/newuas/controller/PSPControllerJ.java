@@ -27,6 +27,7 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
 import uas.pe.edu.pucp.newuas.fragment.PspGetStudentsForDateEmployer;
 import uas.pe.edu.pucp.newuas.fragment.PspStudentSelectAll;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
+import uas.pe.edu.pucp.newuas.fragment.checkStudentDetailPsp;
 import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
@@ -34,6 +35,7 @@ import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentPsp;
+import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 
 /**
  * Created by jemarroquin on 30/10/2016.
@@ -270,18 +272,20 @@ String motivo  = "Motivo académicofv" ;
         RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String,String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-int idAlumno = 5 ;
-        Call<List<StudentPsp>> call = restCon.getInformationStudentPSP(idAlumno, token);
-        call.enqueue(new Callback<List<StudentPsp>>() {
+        int idAlumno = PspStudentSelectAll.studentSelected.getIdAlumno();
+
+
+        Call<List<TutStudentForPsp>> call = restCon.getTutStudentDetail( idAlumno ,token);
+        call.enqueue(new Callback<List<TutStudentForPsp>>() {
 
             @Override
-            public void onResponse(Call<List<StudentPsp>> call, retrofit2.Response<List<StudentPsp>> response) {
+            public void onResponse(Call<List<TutStudentForPsp>> call, retrofit2.Response<List<TutStudentForPsp>> response) {
                 if (response.isSuccessful()) {
-                    List<StudentPsp> informe = response.body();
-                    Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
+                    List<TutStudentForPsp> informe = response.body();
+            //        Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
                     Bundle bundle =  new Bundle();
-                    bundle.putSerializable("InscriptionFilePSP",(Serializable) informe);
-                    InscriptionFilePSPJ fragment = new InscriptionFilePSPJ();
+                    bundle.putSerializable("tutstudentpsp",(Serializable) informe);
+                    checkStudentDetailPsp fragment = new checkStudentDetailPsp();
                     fragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
                     //((Activity)context).setTitle("Alumnos");
@@ -292,7 +296,7 @@ int idAlumno = 5 ;
                 }
             }
             @Override
-            public void onFailure(Call<List<StudentPsp>> call, Throwable t) {
+            public void onFailure(Call<List<TutStudentForPsp>> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
 

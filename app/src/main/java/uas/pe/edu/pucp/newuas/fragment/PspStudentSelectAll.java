@@ -27,7 +27,7 @@ public class PspStudentSelectAll extends Fragment {
 
     ListView lvStudents;
     PSPDocumentsAdapter documentsAdapter;
-    static Student studentSelected ;
+    public static Student studentSelected ;
     public PspStudentSelectAll() {
         // Required empty public constructor
     }
