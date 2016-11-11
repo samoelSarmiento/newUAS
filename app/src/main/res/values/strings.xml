@@ -167,6 +167,7 @@
     <string name="tvIdentificador">Identificador:</string>
     <string name="tvAspecto">ASPECTOS</string>
     <string name="nav_evaluaciones">Evaluaciones</string>
+    <string name="btArchAction">Archivo</string>
 
 
     <string name="evName">Nombre:</string>
