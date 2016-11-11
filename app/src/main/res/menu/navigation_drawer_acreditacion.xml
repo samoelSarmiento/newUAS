@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:title="@string/newSugerence"
         android:id="@+id/action_suggerence"
         android:icon="@drawable/ic_note_add_white_36dp"
         android:orderInCategory="100"
