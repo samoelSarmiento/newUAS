@@ -21,6 +21,7 @@ import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
+import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.FileGen;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
@@ -66,6 +67,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Action,Integer> actionDao = null;
     private Dao<FileGen,Integer> fileGenDao = null;
     private Dao<ActionFile,Integer> actionFileDao = null;
+    private Dao<Deliverable,Integer> deliverableDao = null;
 
     public DatabaseHelper(Context context) {
         //super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -98,7 +100,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTableIfNotExists(connectionSource, Action.class);
             TableUtils.createTableIfNotExists(connectionSource, FileGen.class);
             TableUtils.createTableIfNotExists(connectionSource, ActionFile.class);
-
+            TableUtils.createTableIfNotExists(connectionSource, Deliverable.class);
 
         } catch (SQLException e) {
             Log.e("DBEror", "Error de base de datos");
@@ -133,6 +135,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, Action.class, true);
             TableUtils.dropTable(source, FileGen.class, true);
             TableUtils.dropTable(source, ActionFile.class, true);
+            TableUtils.dropTable(source, Deliverable.class, true);
             //Se crean denuevo
             onCreate(db, source);
         } catch (SQLException e) {
@@ -344,6 +347,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         this.actionFileDao = actionFileDao;
     }
 
+    public Dao<Deliverable, Integer> getDeliverableDao() throws  SQLException{
+        if(deliverableDao==null) deliverableDao=getDao(Deliverable.class);
+        return deliverableDao;
+    }
+
+    public void setDeliverableDao(Dao<Deliverable, Integer> deliverableDao) {
+        this.deliverableDao = deliverableDao;
+    }
 
     @Override
     public void close() {

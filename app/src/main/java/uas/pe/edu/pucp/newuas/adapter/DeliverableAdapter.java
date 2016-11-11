@@ -10,19 +10,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 
 /**
- * Created by Andree on 04/11/2016.
+ * Created by Andree on 11/11/2016.
  */
 
-public class InvEventAdapter extends BaseAdapter{
+public class DeliverableAdapter extends BaseAdapter{
 
-    ArrayList<InvEvent> items;
+    ArrayList<Deliverable> items;
     Context context;
     LayoutInflater layoutInflater;
 
-    public InvEventAdapter(Context context, ArrayList<InvEvent> items) {
+    public DeliverableAdapter(Context context, ArrayList<Deliverable> items) {
         this.context = context;
         this.items = items;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,18 +46,19 @@ public class InvEventAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.fragment_inv_event_item,null);
-        InvEventAdapter.ViewHolder viewHolder = new InvEventAdapter.ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.fragment_deliverable_item,null);
+        DeliverableAdapter.ViewHolder viewHolder = new DeliverableAdapter.ViewHolder(view);
 
-        viewHolder.invEvName.setText(items.get(position).getNombre());
+        viewHolder.delivName.setText(items.get(position).getNombre());
         return view;
     }
 
     public static class ViewHolder{
-        TextView invEvName;
+        TextView delivName;
 
         public ViewHolder(View view) {
-            invEvName = (TextView)view.findViewById(R.id.invEv_name);
+            delivName = (TextView)view.findViewById(R.id.deliv_name);
         }
     }
+
 }
