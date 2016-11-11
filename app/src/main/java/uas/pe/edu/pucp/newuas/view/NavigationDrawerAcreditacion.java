@@ -169,6 +169,9 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             }
 
 
+        } else if (id == R.id.nav_mycourses) {
+            SpecialtyController controller = new SpecialtyController();
+            controller.getTeacherCourses(this, Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente());
         } else if (id == R.id.nav_upgplan) {
             ImprovementPlanController ipCont = new ImprovementPlanController();
             if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {

@@ -8,7 +8,7 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="30dp"
-    android:id="@+id/fragment_container"
+    android:id="@+id/fragment_container_tutor"
     tools:context="uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment">}
 
 
