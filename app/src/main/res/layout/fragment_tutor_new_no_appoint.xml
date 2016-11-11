@@ -1,0 +1,172 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.TutorNewNoAppointFragment"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="40dp"
+    android:id="@+id/fragment_container"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Alumno:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tutorStudentSpinner"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Hora inicio:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerHoraINoAppoint"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/hora"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Hora fin:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerHoraFNoAppoint"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp"
+            android:entries="@array/hora"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Tema:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerTema"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="5dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Observación:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tutoTextObsNoAppoint"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="5dp"
+            android:lines = '3'
+
+        />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/buttonCancelarTutorNewNoAssigmentReg" />
+
+
+        <Button
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/buttonSolicitarTutorNewNoAssignmentReg" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
