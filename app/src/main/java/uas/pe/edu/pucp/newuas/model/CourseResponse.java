@@ -25,7 +25,7 @@ public class CourseResponse implements Serializable {
 
     @DatabaseField
     private int idDocente;
-    
+
     @SerializedName("IdEspecialidad")
     @DatabaseField
     private int idEspecialidad;
@@ -43,8 +43,6 @@ public class CourseResponse implements Serializable {
     private String nombre;
 
     public CourseResponse() {
-
-
     }
 
     public int getIdDocente() {
