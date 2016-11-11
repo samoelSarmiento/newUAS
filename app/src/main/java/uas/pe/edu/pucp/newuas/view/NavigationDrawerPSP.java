@@ -2,54 +2,40 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.media.VolumeProviderCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 
-import java.util.ArrayList;
-import java.util.zip.Inflater;
-
-import okio.InflaterSource;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
-import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
-import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
-import uas.pe.edu.pucp.newuas.model.PSPGroup;
-import uas.pe.edu.pucp.newuas.model.Student;
-import uas.pe.edu.pucp.newuas.model.User;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    int idPerfil;
 
 
 
@@ -59,6 +45,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_psp);
+
 
 
 
@@ -77,6 +64,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
+
+
+
+
+        if(Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
+            PSPController controller = new PSPController();
+            controller.getStudentGroup(this);
+        }
+
 
 
         showGroupMenu(menu);
@@ -110,8 +106,6 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
 
-          PSPController controller =  new PSPController();
-          controller.getStudentGroup(this);
           //controller.getStudent(this);
 
             //STUDENTS
@@ -140,10 +134,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
           menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
           menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
           menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-          menu.findItem(R.id.nav_item_pspDates).setVisible(false);
+          //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
           //menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
           //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+
+      case 6:
+
+          //Supervisor
+          menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
 
 
   }
@@ -227,6 +226,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspStudents_Supervis) {
+       PSPControllerJ controller = new PSPControllerJ() ;
+            controller.getStudentsForSelectAll(this);
+
+
+
         } else if (id == R.id.nav_item_pspStudents) {
 
             try {
@@ -239,15 +244,18 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             }
 
-        } else if (id == R.id.nav_item_pspDates) {
+        } else if (id == R.id.nav_item_pspDates_supervisor) {
 
-            fragment = new PSP_meetingsFragment();
-
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragment).commit();
+           // fragment = new PSP_meetingsFragment();
+            PSP_dates_supervisor fragmentDates =  new PSP_dates_supervisor();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
             setTitle(item.getTitle());
 
+        } else if (id == R.id.nav_item_pspDates_supervisor_employer_student) {
 
 
+            PSPControllerJ controller = new PSPControllerJ() ;
+                controller.getDatesSupervisorEmployerStudent(this);
 
         } else if (id == R.id.nav_item_pspPhases){
             try {
@@ -286,6 +294,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
                 Bundle bundle =  intent.getBundleExtra("PSPGroup");
                 if(bundle == null){
+
+
 
                     Log.d("GROUP NAV", "BUNDLE  NO NULL");
                     PSPController pspController = new PSPController();
@@ -328,6 +338,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
             setTitle("Ver notas");
 
 
+
+
+        }else if(id == R.id.nav_items_pspSupxStudenMeeting){
+
+            PSPController controller = new PSPController();
+            controller.getSupStudents(this);
 
 
         }

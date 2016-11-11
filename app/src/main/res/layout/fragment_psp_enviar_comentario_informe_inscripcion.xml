@@ -9,20 +9,25 @@
 
     <Button
         android:id="@+id/btEnviarComentarioPSPaccion"
-        android:layout_width="114dp"
-        android:layout_height="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start|bottom"
         android:background="@drawable/bg_button_login_selector"
         android:text="Enviar Comentario"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_width="116dp"
+        android:layout_height="68dp"
         android:layout_gravity="start|top"
         android:text="Comentario anterior"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/editTextComentarioAnteriorPSPinforme"
@@ -30,30 +35,36 @@
         android:layout_height="143dp"
         android:layout_gravity="end|top"
         android:enabled="true"
-        android:text="" />
+        android:text=""
+        android:layout_marginRight="25dp"/>
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="143dp"
+        android:layout_height="75dp"
         android:layout_gravity="start|center_vertical"
         android:text="Nuevo comentario"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/btEnviarComentarioPSPcancelar"
-        android:layout_width="146dp"
-        android:layout_height="59dp"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:background="@drawable/bg_button_login_selector"
         android:text="Aceptar"
-        android:textColor="@color/white" />
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/editTextComentarioPSPinforme"
         android:layout_width="168dp"
         android:layout_height="149dp"
         android:layout_gravity="end|center_vertical"
-        android:text="" />
+        android:layout_marginRight="25dp"/>
 
 </FrameLayout>

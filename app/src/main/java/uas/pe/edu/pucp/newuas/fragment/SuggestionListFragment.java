@@ -36,13 +36,14 @@ public class SuggestionListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1
-                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 2
-                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 5
-                || Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
+        if (Configuration.isOnlyInvestigator()
+                || Configuration.isAccreditor()
+                || Configuration.isAdmin()
+                || Configuration.isOnlySupervisor()) {
             super.setHasOptionsMenu(false);
-        } else super.setHasOptionsMenu(true);
-
+        }else{
+            super.setHasOptionsMenu(true);
+        }
     }
 
     @Override

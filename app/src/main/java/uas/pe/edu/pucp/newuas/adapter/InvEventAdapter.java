@@ -50,8 +50,6 @@ public class InvEventAdapter extends BaseAdapter{
 
         viewHolder.invEvName.setText(items.get(position).getNombre());
         return view;
-
-
     }
 
     public static class ViewHolder{

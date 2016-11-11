@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,8 @@ public class TutorNewAppointFragment extends Fragment {
             tutGroup= (List<AppointInformationRegisterTuto>) bundle.getSerializable("Tutoria");
         }
 
+        final int numeroDias = tutGroup.get(0).getNumberDays();
+
         List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup);
         Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
         studentName.setAdapter(null);
@@ -108,9 +111,10 @@ public class TutorNewAppointFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
+                        Calendar now = Calendar.getInstance();
+                        now.add(Calendar.DAY_OF_YEAR, numeroDias);
                         d.setMinDate(Calendar.getInstance());
-                        // d.setMaxDate(maxTime);
-                        //d.setDisabledDays(dates);
+                        d.setMaxDate(now);
                         d.show(getActivity().getFragmentManager(), "Datepickerdialog");
                     }
                 }

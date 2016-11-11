@@ -34,6 +34,10 @@ public class AppointInformationRegisterTuto {
     private String updatedAt;
     @SerializedName("fullName")
     private String fullName;
+    @SerializedName("duracionCita")
+    private Integer duracionCita;
+    @SerializedName("numberDays")
+    private Integer numberDays;
 
     /**
      *
@@ -269,5 +273,39 @@ public class AppointInformationRegisterTuto {
         this.fullName = fullName;
     }
 
+    /**
+     *
+     * @return
+     * The duracionCita
+     */
+    public Integer getDuracionCita() {
+        return duracionCita;
+    }
 
+    /**
+     *
+     * @param duracionCita
+     * The duracionCita
+     */
+    public void setDuracionCita(Integer duracionCita) {
+        this.duracionCita = duracionCita;
+    }
+
+    /**
+     *
+     * @return
+     * The numberDays
+     */
+    public Integer getNumberDays() {
+        return numberDays;
+    }
+
+    /**
+     *
+     * @param numberDays
+     * The numberDays
+     */
+    public void setNumberDays(Integer numberDays) {
+        this.numberDays = numberDays;
+    }
 }

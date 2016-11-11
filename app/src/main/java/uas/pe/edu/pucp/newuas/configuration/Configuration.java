@@ -1,5 +1,7 @@
 package uas.pe.edu.pucp.newuas.configuration;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class Configuration {
     }
 
     public static boolean isOnlyInvestigator() {
+        Log.d("mmm",(LOGIN_USER.getUser().getInvestigator() != null )+ "");
+        Log.d("mmm2",(LOGIN_USER.getUser().getTeacher() == null )+ "");
         return LOGIN_USER.getUser().getInvestigator() != null && LOGIN_USER.getUser().getTeacher() == null;
     }
 
