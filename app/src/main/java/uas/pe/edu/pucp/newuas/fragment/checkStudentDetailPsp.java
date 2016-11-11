@@ -21,9 +21,9 @@ import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 
 
-public class checkStudentDetailPsp extends Fragment {
+public class CheckStudentDetailPsp extends Fragment {
 
-    public checkStudentDetailPsp() {
+    public CheckStudentDetailPsp() {
         // Required empty public constructor
     }
 

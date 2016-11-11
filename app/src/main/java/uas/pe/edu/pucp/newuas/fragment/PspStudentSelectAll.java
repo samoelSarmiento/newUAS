@@ -60,7 +60,7 @@ public class PspStudentSelectAll extends Fragment {
                 PSPControllerJ controller = new PSPControllerJ();
                 controller.getInformationStudent(getActivity() );
 
-              //  pspSelectAllStudentsDetail fragmentCalled = new pspSelectAllStudentsDetail() ;
+              //  PspSelectAllStudentsDetail fragmentCalled = new PspSelectAllStudentsDetail() ;
                //  ( getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragmentCalled).commit();
 
             }

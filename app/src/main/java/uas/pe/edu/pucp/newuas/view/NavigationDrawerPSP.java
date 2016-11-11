@@ -2,53 +2,33 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.media.VolumeProviderCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 
-import java.util.ArrayList;
-import java.util.zip.Inflater;
-
-import okio.InflaterSource;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
-import uas.pe.edu.pucp.newuas.datapersistency.SharedPreference;
-import uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
-import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_meetingsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
-import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
-import uas.pe.edu.pucp.newuas.model.PSPGroup;
-import uas.pe.edu.pucp.newuas.model.Student;
-import uas.pe.edu.pucp.newuas.model.User;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity

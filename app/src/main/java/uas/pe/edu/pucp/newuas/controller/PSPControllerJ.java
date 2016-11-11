@@ -3,7 +3,6 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -22,19 +21,14 @@ import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer;
 import uas.pe.edu.pucp.newuas.fragment.InscriptionFilePSPJ;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_supDocumentsByStudent;
 
 import uas.pe.edu.pucp.newuas.fragment.PspGetStudentsForDateEmployer;
 import uas.pe.edu.pucp.newuas.fragment.PspStudentSelectAll;
-import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
-import uas.pe.edu.pucp.newuas.fragment.checkStudentDetailPsp;
-import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
-import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
+import uas.pe.edu.pucp.newuas.fragment.CheckStudentDetailPsp;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.Student;
-import uas.pe.edu.pucp.newuas.model.StudentPsp;
 import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 
 /**
@@ -285,7 +279,7 @@ String motivo  = "Motivo académicofv" ;
             //        Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
                     Bundle bundle =  new Bundle();
                     bundle.putSerializable("tutstudentpsp",(Serializable) informe);
-                    checkStudentDetailPsp fragment = new checkStudentDetailPsp();
+                    CheckStudentDetailPsp fragment = new CheckStudentDetailPsp();
                     fragment.setArguments(bundle);
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
                     //((Activity)context).setTitle("Alumnos");

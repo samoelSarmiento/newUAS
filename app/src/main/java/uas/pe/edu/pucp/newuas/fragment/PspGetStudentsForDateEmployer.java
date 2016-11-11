@@ -1,9 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -18,8 +15,6 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 //import uas.pe.edu.pucp.newuas.adapter.PSPSupDocumentAdapter;
 import uas.pe.edu.pucp.newuas.adapter.PSPDocumentsAdapter;
-import uas.pe.edu.pucp.newuas.controller.PSPController;
-import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 
@@ -55,7 +50,7 @@ public class PspGetStudentsForDateEmployer extends Fragment {
                 studentSelected = (Student) documentsAdapter.getItem(position);
 //una ventana más
                 Toast.makeText(getActivity(), "id alumno:" + studentSelected.getId() , Toast.LENGTH_SHORT).show();
-                psp_dates_supervisor_jefe psp = new psp_dates_supervisor_jefe();
+                Psp_dates_supervisor_jefe psp = new Psp_dates_supervisor_jefe();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, psp).commit();
 
 

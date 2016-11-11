@@ -34,7 +34,7 @@ import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 
-public class psp_dates_supervisor_jefe extends Fragment {
+public class Psp_dates_supervisor_jefe extends Fragment {
 
 
     public String solicitud;
@@ -51,7 +51,7 @@ public class psp_dates_supervisor_jefe extends Fragment {
     Calendar maxTime = Calendar.getInstance();
     //String infoSolicitar = "Está a punto de confirmar una cita con su tutor para el 09/11/2016 a las 10:00  \n ¿Desea continuar?";
 
-    public psp_dates_supervisor_jefe() {
+    public Psp_dates_supervisor_jefe() {
         // Required empty public constructor
     }
 

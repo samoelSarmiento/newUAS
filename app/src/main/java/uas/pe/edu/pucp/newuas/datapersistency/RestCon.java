@@ -9,7 +9,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
-import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
