@@ -66,7 +66,6 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
         String date = simpleDateFormat.format(items.get(position).getFecha());
 
         viewHolder.date.append(date);
-        simpleDateFormat.applyPattern("hh:mm");
         viewHolder.idMeeting.append("" + items.get(position).getIdMeeting());
       // String atHour = simpleDateFormat.format(items.get(position).getHora_inicio());
         viewHolder.atHour.append(items.get(position).getHora_inicio());

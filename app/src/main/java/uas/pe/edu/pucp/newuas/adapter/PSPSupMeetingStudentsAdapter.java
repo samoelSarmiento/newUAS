@@ -1,17 +1,23 @@
 package uas.pe.edu.pucp.newuas.adapter;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupStudentNewMeetingFragment;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
@@ -50,7 +56,7 @@ public class PSPSupMeetingStudentsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
 
 
         View view = layoutInflater.inflate(R.layout.item_psp_sup_meeting_students,null);
@@ -70,6 +76,39 @@ public class PSPSupMeetingStudentsAdapter extends BaseAdapter {
         viewHolder.identifier.setText(items.get(position).getCodigo());
         Log.d("Codigo", items.get(position).getCodigo());
         viewHolder.mail.setText(items.get(position).getCorreo());
+        viewHolder.icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    PopupMenu popup = new PopupMenu(context,v);
+                    popup.getMenuInflater().inflate(R.menu.supstudentmeeting_popup, popup.getMenu());
+                    popup.show();
+
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch (item.getItemId()){
+
+                                case R.id.menu_item_student_showMeeting:
+                                    Toast.makeText(context,"Ver citas", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                case R.id.menu_item_student_requestMeeting:
+
+                                    Fragment fragment = PSP_SupStudentNewMeetingFragment.newInstance(items.get(position));
+                                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                                            .addToBackStack(null).commit();
+                                    Toast.makeText(context,"Add meeting", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                            }
+                            return true;
+                        }
+                    });
+
+
+            }
+        });
+
         return view;
     }
 

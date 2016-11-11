@@ -1,24 +1,15 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
-import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
-import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
-import uas.pe.edu.pucp.newuas.view.NavigationDrawerInvestigacion;
-import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
-import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 public class PSP_dates_supervisor extends Fragment {
 
@@ -49,6 +40,10 @@ public class PSP_dates_supervisor extends Fragment {
         dateStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PSP_SupStudentNewMeetingFragment supxstudent = new PSP_SupStudentNewMeetingFragment();
+
+
                 Toast.makeText(getActivity(), "Aqui comienza la cita con el alumno !", Toast.LENGTH_SHORT).show();
             }
         });
