@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Projects;
 
 /**
@@ -25,6 +26,7 @@ public class ProjDetailFragment extends Fragment {
     TextView projName, projInitDate,projFinDate, projDeliv, projDesc;
     Button projEdit,projSeeDel;
     Projects p;
+    Context context;
 
     public ProjDetailFragment() {
         // Required empty public constructor
@@ -37,6 +39,7 @@ public class ProjDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_projects_detail, container, false);
 
         getActivity().setTitle("Proyectos");
+        context = getActivity();
 
         projName=(TextView) view.findViewById(R.id.projName);
         projInitDate=(TextView) view.findViewById(R.id.projInitDate);
@@ -83,7 +86,8 @@ public class ProjDetailFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-
+                DeliverableController deliverableController = new DeliverableController();
+                deliverableController.getDeliv(context,p.getId());
             }
         });
 

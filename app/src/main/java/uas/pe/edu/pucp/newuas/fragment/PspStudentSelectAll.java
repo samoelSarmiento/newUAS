@@ -27,7 +27,7 @@ public class PspStudentSelectAll extends Fragment {
 
     ListView lvStudents;
     PSPDocumentsAdapter documentsAdapter;
-    static Student studentSelected ;
+    public static Student studentSelected ;
     public PspStudentSelectAll() {
         // Required empty public constructor
     }
@@ -60,7 +60,7 @@ public class PspStudentSelectAll extends Fragment {
                 PSPControllerJ controller = new PSPControllerJ();
                 controller.getInformationStudent(getActivity() );
 
-              //  pspSelectAllStudentsDetail fragmentCalled = new pspSelectAllStudentsDetail() ;
+              //  PspSelectAllStudentsDetail fragmentCalled = new PspSelectAllStudentsDetail() ;
                //  ( getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragmentCalled).commit();
 
             }

@@ -9,7 +9,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
-import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
@@ -18,6 +17,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
@@ -50,6 +50,7 @@ import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
+import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 import uas.pe.edu.pucp.newuas.model.UserMeResponse;
 import uas.pe.edu.pucp.newuas.model.TokenRequest;
 import uas.pe.edu.pucp.newuas.model.UserRequest;
@@ -171,6 +172,13 @@ public interface RestCon {
 
     @POST("investigation/{id}/event")
     Call<StringResponse> editInvEv(@Path("id") int id, @QueryMap Map<String, String> token, @Body InvEvent invEvent);
+
+    @GET("investigation/{id}/deliverable")
+    Call<List<Deliverable>> getDelById(@Path("id") int id, @QueryMap Map<String, String> token);
+
+    @GET("investigation/{id}/deliverables")
+    Call<List<Deliverable>> getDelByProjId(@Path("id") int id, @QueryMap Map<String, String> token);
+
     /*--------------*/
 
 
@@ -291,6 +299,15 @@ public interface RestCon {
 
     @GET("psp/date/super/employer/all")
     Call<List<Psp_dates_supervisor_employers_get>> getDatesSuperEmployerPsp(@QueryMap Map<String, String> token);
+
+    @GET("psp/pspstudent/{id}/detail")
+    Call<List<Psp_dates_supervisor_employers_get>> getPspStudentDetail(@Path("id") int idStudent,@QueryMap Map<String, String> token);
+
+    @GET("psp/student/{id}/detail")
+    Call<List<Psp_dates_supervisor_employers_get>> getStudentDetail(@Path("id") int idStudent,@QueryMap Map<String, String> token);
+
+    @GET("psp/tutstudent/{id}/detail")
+    Call<List<TutStudentForPsp>> getTutStudentDetail(@Path("id") int idStudent, @QueryMap Map<String, String> token);
 
 
 

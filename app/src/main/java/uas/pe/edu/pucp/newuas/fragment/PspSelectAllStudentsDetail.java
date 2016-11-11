@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import uas.pe.edu.pucp.newuas.R;
 
 
-public class pspSelectAllStudentsDetail extends Fragment {
+public class PspSelectAllStudentsDetail extends Fragment {
 
-    public pspSelectAllStudentsDetail() {
+    public PspSelectAllStudentsDetail() {
         // Required empty public constructor
     }
 

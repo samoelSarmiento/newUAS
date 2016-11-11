@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.IOException;
@@ -250,7 +251,8 @@ public class ProjectController {
     }
     //Lista de proj
     private void saveAllProj(List<Projects> projList, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
         for (Projects proj : projList) {
@@ -266,13 +268,15 @@ public class ProjectController {
     }
     //Lista de proj.
     private List<Projects> retriveAllProj(final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         return projDao.queryForAll();
     }
 
     public void saveProj(Projects proj, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         Projects find = projDao.queryForId(proj.getId());
         if (find == null) {
@@ -283,7 +287,8 @@ public class ProjectController {
     }
 
     private Projects getProj(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         return projDao.queryForId(id);
     }

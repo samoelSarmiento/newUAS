@@ -30,7 +30,7 @@ public class PSP_dates_supervisor extends Fragment {
         dateEmployer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                psp_dates_supervisor_jefe psp = new psp_dates_supervisor_jefe();
+                Psp_dates_supervisor_jefe psp = new Psp_dates_supervisor_jefe();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, psp).commit();
                 //    controller.obtenerInforme(getActivity() );
 
