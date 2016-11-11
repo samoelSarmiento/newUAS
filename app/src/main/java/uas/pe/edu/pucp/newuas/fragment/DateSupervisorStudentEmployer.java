@@ -1,29 +1,48 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.DatesSuperEmployerAdapter;
+import uas.pe.edu.pucp.newuas.adapter.PSPDocumentsAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
+import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
+import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
+import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
+import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentPsp;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 public class DateSupervisorStudentEmployer extends Fragment {
 
-    ListView listV;
+    ListView listDates;
+    DatesSuperEmployerAdapter adapter;
+
     Button newAppointment;
     ImageButton btnAceptar;
     public static ArrayList<SingleRow> list;
@@ -37,12 +56,33 @@ public class DateSupervisorStudentEmployer extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        final View view = inflater.inflate(R.layout.fragment_date_supervisor_student_employer, container, false);
+        View view = inflater.inflate(R.layout.fragment_date_supervisor_student_employer, container, false);
 
 
 
-        TutStudentController ts = new TutStudentController();
-        ts.getAppointment(getActivity(),view, Configuration.LOGIN_USER.getUser().getIdUsuario());
+
+
+        getActivity().setTitle("Citas con Jefes");
+        listDates  = (ListView) view.findViewById(R.id.listViewCustom_psp_dates_sup_emp);
+
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+
+
+            ArrayList<Psp_dates_supervisor_employers_get> students = (ArrayList<Psp_dates_supervisor_employers_get>) bundle.getSerializable("DateSuperEmployerPSP");
+            adapter = new DatesSuperEmployerAdapter(getActivity(), students);
+            listDates.setAdapter(adapter);
+
+
+
+
+
+        }
+
+
+
+
         newAppointment = (Button) view.findViewById(R.id.btnNewAssignment_psp_dates_sup_emp);
         newAppointment.setOnClickListener(
                 new View.OnClickListener() {
@@ -50,8 +90,8 @@ public class DateSupervisorStudentEmployer extends Fragment {
                     public void onClick(View v) {
                         //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
 
-                            PSPControllerJ controller = new PSPControllerJ() ;
-                             controller.getStudentsForDates(getActivity());
+                        PSPControllerJ controller = new PSPControllerJ() ;
+                        controller.getStudentsForDates(getActivity());
 
 
                     }
@@ -59,7 +99,9 @@ public class DateSupervisorStudentEmployer extends Fragment {
         );
 
 
-        return view;
-    }
 
-}
+
+        return view;
+        }
+
+        }

@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Psp_dates_supervisor_employers implements Serializable {
 
+
+
     @SerializedName("idUser")
     private int idUser;
     @SerializedName("fecha")
@@ -36,5 +38,16 @@ public class Psp_dates_supervisor_employers implements Serializable {
         return idAlumno;
     }
 
+    public String getLugar() {
+        return lugar;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
 
 }

@@ -268,11 +268,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_item_pspDates_supervisor_employer_student) {
 
-            DateSupervisorStudentEmployer fragmentDates =  new DateSupervisorStudentEmployer();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
 
-        // pasar esto    PSPControllerJ controller = new PSPControllerJ() ;
-            // pasar esto     controller.getStudentsForDates(this);
+            PSPControllerJ controller = new PSPControllerJ() ;
+                controller.getDatesSupervisorEmployerStudent(this);
 
         } else if (id == R.id.nav_item_pspPhases){
             try {

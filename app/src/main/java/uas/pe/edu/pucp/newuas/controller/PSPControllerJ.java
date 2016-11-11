@@ -31,6 +31,7 @@ import uas.pe.edu.pucp.newuas.fragment.psp_dates_supervisor_jefe;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
+import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentPsp;
 
@@ -190,7 +191,7 @@ public class PSPControllerJ {
 String motivo  = "Motivo académicofv" ;
         Psp_dates_supervisor_employers psdse = new Psp_dates_supervisor_employers( idUser,fecha,hora,motivo,idAlumno,lugar );
 
-        Toast.makeText(context , fecha +" " +  psdse.getIdAlumno(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context , fecha +" " +  psdse.getIdAlumno(), Toast.LENGTH_SHORT).show();
 
 
         Call<String> call = restCon.realizarCitasPSPsupervJefe(   token , psdse ); //colocar los parámetros que s e enviarán.
@@ -300,6 +301,48 @@ int idAlumno = 5 ;
         return true;
 
     }
+
+
+
+    public boolean getDatesSupervisorEmployerStudent (final Context context) {
+
+        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String,String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<Psp_dates_supervisor_employers_get>> call = restCon.getDatesSuperEmployerPsp(token);
+        call.enqueue(new Callback<List<Psp_dates_supervisor_employers_get>>() {
+
+            @Override
+            public void onResponse(Call<List<Psp_dates_supervisor_employers_get>> call, retrofit2.Response<List<Psp_dates_supervisor_employers_get>> response) {
+                if (response.isSuccessful()) {
+                    List<Psp_dates_supervisor_employers_get> listaEstudiantes = response.body();
+                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Bundle bundle =  new Bundle();
+                    bundle.putSerializable("DateSuperEmployerPSP",(Serializable) listaEstudiantes);
+                    DateSupervisorStudentEmployer spFragment = new DateSupervisorStudentEmployer();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
+                    ((Activity)context).setTitle("Citas");
+
+                } else {
+
+                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Psp_dates_supervisor_employers_get>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        return true;
+
+    }
+
+
+
 
 
 

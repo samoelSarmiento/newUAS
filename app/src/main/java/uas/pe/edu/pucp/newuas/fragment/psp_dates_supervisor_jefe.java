@@ -163,10 +163,8 @@ public class psp_dates_supervisor_jefe extends Fragment {
                                  //       tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0],  1 );//idAlumno );
                                        tsc.appointmentRequest(getActivity (), 1 ,valorFecha[0], valorHora[0] , PspGetStudentsForDateEmployer.studentSelected.getIdAlumno() ,lugar[0]);//idAlumno );
 
-
-                                       DateSupervisorStudentEmployer fragmentDates =  new DateSupervisorStudentEmployer();
-                                       (getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragmentDates).commit();
-
+                                       PSPControllerJ controller = new PSPControllerJ() ;
+                                       controller.getDatesSupervisorEmployerStudent(getActivity());
 
                                    }
                                 }
