@@ -156,6 +156,11 @@ public class NavigationDrawerPSP extends AppCompatActivity
           //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
           //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
 
+      case 6:
+
+          //Supervisor
+          menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
+
 
   }
 
@@ -341,6 +346,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
             setTitle("Ver notas");
 
 
+
+
+        }else if(id == R.id.nav_items_pspSupxStudenMeeting){
+
+            PSPController controller = new PSPController();
+            controller.getSupStudents(this);
 
 
         }

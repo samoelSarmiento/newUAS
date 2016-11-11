@@ -42,6 +42,11 @@
             android:icon="@drawable/ic_objetivos_ed"
             android:title="Ver notas" />
         <item
+            android:id="@+id/nav_items_pspSupxStudenMeeting"
+            android:icon="@drawable/ic_calendar"
+            android:title="Reuniones" />
+
+        <item
             android:id="@+id/nav_pspExit"
             android:icon="@drawable/ic_logout"
             android:title="@string/pspExit" />

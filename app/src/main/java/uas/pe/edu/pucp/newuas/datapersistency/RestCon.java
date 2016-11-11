@@ -34,6 +34,7 @@ import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
+import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.Period;
@@ -253,6 +254,16 @@ public interface RestCon {
 
     @GET("psp/student/{id}/grade")
     Call<List<PSPGrade>> getStudentGrades(@Path("id") int idStudent, @QueryMap Map<String, String> token);
+
+    @GET("psp/supervisor/students")
+    Call<List<Student>> getSupStudents(@QueryMap Map<String, String> token);
+
+    @GET("psp/meeting/student/{id}")
+    Call<List<PSPMeeting>> getSupMeetingByStudent(@Path("id") int idStudent, @QueryMap Map<String, String> token);
+
+    @POST("psp/update/meeting")
+    Call<PSPMessage> updateMeetingDetail(@Body PSPMeeting meeting, @QueryMap Map<String, String> token);
+
 
 
     /*END SECTION*/
