@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
@@ -236,7 +237,8 @@ public class InvestigatorController {
 
     //Lista de inv
     private void saveAllInv(List<Investigator> invList, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         //Toast.makeText(context, "entreDB", Toast.LENGTH_SHORT).show();
         for (Investigator inv : invList) {
@@ -256,13 +258,15 @@ public class InvestigatorController {
     }
     //Lista de inv
     private List<Investigator> retriveAllInv(final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         return invDao.queryForAll();
     }
 
     private void saveInv(Investigator inv, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+       // DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         Investigator find = invDao.queryForId(inv.getId());
         if (find == null) {
@@ -275,7 +279,8 @@ public class InvestigatorController {
     }
 
     private Investigator getInv(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = new DatabaseHelper(context);
+        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
+        //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         return invDao.queryForId(id);
     }

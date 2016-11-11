@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment">
 
-            <ListView android:layout_weight="1"
+            <ListView
                 android:id="@+id/lv_psp_phases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
