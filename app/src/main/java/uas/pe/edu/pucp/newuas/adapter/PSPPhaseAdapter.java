@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -69,7 +70,7 @@ public class PSPPhaseAdapter extends BaseAdapter{
             viewHolder.tvPspPhaseNumber = (TextView) view.findViewById(R.id.tv_item_psp_phase);
             viewHolder.tvPspPhaseStartDate = (TextView)  view.findViewById(R.id.tv_item_psp_starting_date);
             viewHolder.tvPspPhaseEndDate = (TextView) view.findViewById(R.id.tv_item_psp_end_date);
-
+            viewHolder.icon  = (ImageView)view.findViewById(R.id.iv_item_psp_phase);
 
 
             viewHolder.tvPspPhaseNumber .setText( String.valueOf(items.get(position).getNumero()));
@@ -91,6 +92,7 @@ public class PSPPhaseAdapter extends BaseAdapter{
 
     public static class ViewHolder{
         TextView tvPspPhaseNumber, tvPspPhaseStartDate, tvPspPhaseEndDate;
+        ImageView icon;
 
     }
 }

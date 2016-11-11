@@ -31,7 +31,7 @@ public class CourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
-        TextView tvValueCurso = (TextView) view.findViewById(R.id.tvValueCourse);
+        TextView tvValueCurso = (TextView) view.findViewById(R.id.codigoPspStudentTutValue);
         TextView tvValueCode = (TextView) view.findViewById(R.id.tvValueCode);
         TextView tvValueLevel = (TextView) view.findViewById(R.id.tvValueLevel);
 

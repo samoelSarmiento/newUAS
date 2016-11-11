@@ -1,0 +1,85 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="30dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="30dp"
+    android:id="@+id/fragment_containerStudent"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer">}
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <Button
+            android:id="@+id/btnNewAssignment_psp_dates_sup_emp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="106dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:text="Nueva Cita"
+            android:layout_weight="0.31" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="115dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Fecha"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Hora"
+            android:textColor="@color/black"
+            android:layout_marginLeft="50dp"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Lugar"
+            android:textColor="@color/black"
+            android:layout_marginLeft="50dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="140dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewCustom_psp_dates_sup_emp"
+        android:layout_marginTop="140dp"
+        android:listSelector="@android:color/transparent"
+        >
+
+    </ListView>
+
+
+
+</FrameLayout>
