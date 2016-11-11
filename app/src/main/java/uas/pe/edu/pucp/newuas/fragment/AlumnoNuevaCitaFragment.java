@@ -104,8 +104,10 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
-                            d.setMinDate(Calendar.getInstance());
-                            d.setMaxDate(maxTime);
+                            Calendar now = Calendar.getInstance();
+                            //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
+                            d.setMinDate(now);
+                            // d.setMaxDate(maxTime);
                             //d.setDisabledDays(dates);
                             d.show(getActivity().getFragmentManager(), "Datepickerdialog");
                         }

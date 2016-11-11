@@ -11,6 +11,8 @@ import android.widget.ListView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,7 +118,6 @@ public class TutTutorController {
             public void onResponse(Call<List<AppointInformationRegisterTuto>> call, Response<List<AppointInformationRegisterTuto>> response) {
 
                 List<AppointInformationRegisterTuto> generalInformation = response.body();
-                Log.d("tag"," asddasdsad" + generalInformation.toString());
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
@@ -207,6 +208,7 @@ public class TutTutorController {
                 if (response.isSuccessful()){
 
                     List<AppointmentResponseTuto>  appointResponse = response.body();
+                    //Collections.reverse(appointResponse);
                     List<SingleRowTuto> sr = new ArrayList<SingleRowTuto>();
                     for (AppointmentResponseTuto ap : appointResponse){
                         String fechaHoraInicio =  ap.getInicio();
