@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -12,6 +13,8 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.model.Action;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
 import uas.pe.edu.pucp.newuas.model.Teacher;
@@ -58,6 +61,7 @@ public class ActionAdapter extends BaseAdapter {
         viewHolder.tvActResp = (TextView) view.findViewById(R.id.tvactionresp);
         viewHolder.tvActComm = (TextView) view.findViewById(R.id.tvactioncomm);
         viewHolder.tvActPerc = (TextView) view.findViewById(R.id.tvactionperc);
+        viewHolder.btDownloadFileAction = (Button) view.findViewById(R.id.btnDownloadFileAction);
 
         viewHolder.tvActSem.setText(items.get(position).getSemester().getDescripcion());
         viewHolder.tvActDesc.setText(items.get(position).getDescripcion());
@@ -83,6 +87,20 @@ public class ActionAdapter extends BaseAdapter {
         }
 
 
+        if(items.get(position).getIdArchivoEntrada() != null){
+
+            final String arch = items.get(position).getActionFile().getFilename();
+            viewHolder.btDownloadFileAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FileDownloadController fdc = new FileDownloadController();
+                    fdc.downloadFile(context, Configuration.FILE_URL + arch );
+
+                }
+            });
+
+        }
+
 
 
 
@@ -97,6 +115,7 @@ public class ActionAdapter extends BaseAdapter {
         TextView tvActResp;
         TextView tvActComm;
         TextView tvActPerc;
+        Button btDownloadFileAction;
 
     }
 }
