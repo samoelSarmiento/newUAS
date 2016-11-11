@@ -167,6 +167,7 @@
     <string name="tvIdentificador">Identificador:</string>
     <string name="tvAspecto">ASPECTOS</string>
     <string name="nav_evaluaciones">Evaluaciones</string>
+    <string name="btArchAction">Archivo</string>
 
 
     <string name="evName">Nombre:</string>
@@ -189,5 +190,6 @@
     <string name="tNombre">Nombre</string>
     <string name="tVigencia">Vigencia</string>
     <string name="tvNoCourses">No cuenta con cursos este ciclo.</string>
+    <string name="newSugerence">Nueva Sugerencia</string>
 
 </resources>
