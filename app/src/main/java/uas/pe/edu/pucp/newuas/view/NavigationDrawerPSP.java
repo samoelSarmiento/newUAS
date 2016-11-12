@@ -15,7 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import uas.pe.edu.pucp.newuas.R;
@@ -36,9 +40,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
     int idPerfil;
-
-
-
+    private int hot_number =  5;
+    private TextView ui_hot;
 
     LayoutInflater layoutInflater;
     @Override
@@ -94,6 +97,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
     }*/
 
+
     public void showGroupMenu(Menu menu){
 
 
@@ -143,6 +147,10 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
           //Supervisor
           menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
+          menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+          menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+          menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
+          menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
 
 
   }
@@ -163,12 +171,66 @@ public class NavigationDrawerPSP extends AppCompatActivity
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
+
+            showNotificationIcons(menu);
          getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
+
+
         return true;
     }
+
+
+    public void showNotificationIcons(Menu menu){
+
+
+        if(Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.student_notificationbar, menu);
+            View menu_holist = menu.findItem(R.id.menu_hotlist).getActionView();
+            menu_holist.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(getApplicationContext(), "Tiene " + hot_number + "reuniones pendientes ", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+            if (menu_holist != null) {
+                ui_hot = (TextView) menu_holist.findViewById(R.id.hotlist_hot);
+            } else
+                Log.d("MENU", "ES NULL");
+            updateHotCount(hot_number);
+
+        }
+
+    }
+
+    public void updateHotCount(final int new_number){
+        if(ui_hot == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(new_number ==0 )
+                    ui_hot.setVisibility(View.INVISIBLE);
+                else{
+
+                    ui_hot.setVisibility(View.VISIBLE);
+                    ui_hot.setText(Integer.toString(new_number));
+
+                }
+            }
+        });
+
+
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -372,4 +434,5 @@ public class NavigationDrawerPSP extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

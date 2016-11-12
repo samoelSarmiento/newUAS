@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:clickable="true"
+    style="@style/Widget.AppCompat.ActionButton">
+
+<ImageView
+    android:id="@+id/hotlist_cal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/calendar_128m"git />
+
+ <TextView
+     android:id="@+id/hotlist_hot"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:minWidth="26sp"
+     android:minHeight="26sp"
+     android:textSize="13sp"
+     android:textStyle="bold"
+     android:textColor="#ffffff"
+     android:gravity="center"
+     android:text="320"
+     android:layout_alignTop="@+id/hotlist_cal"
+     android:layout_alignRight="@+id/hotlist_cal"
+     android:layout_alignEnd="@+id/hotlist_cal"
+     android:layout_marginRight="0dp"
+     android:layout_marginEnd="5dp"
+     android:layout_marginTop="5dp"
+     android:paddingEnd="0dp"
+     android:paddingRight="0dp"
+     android:paddingLeft="8dp"
+     android:paddingStart="1dp"
+     android:background="@drawable/rounded_square"
+
+
+     />
+
+
+</RelativeLayout>
