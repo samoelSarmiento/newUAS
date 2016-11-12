@@ -37,10 +37,10 @@ import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 public class PSPControllerJ {
 
 
-    public boolean getStudents (final Context context) {
+    public boolean getStudents(final Context context) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<Student>> call = restCon.getStudents(token);
@@ -48,21 +48,22 @@ public class PSPControllerJ {
 
             @Override
             public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
-                        if (response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Students",(Serializable) listaEstudiantes);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PSP_supDocumentFragment spFragment = new PSP_supDocumentFragment();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
-                    ((Activity)context).setTitle("Alumnos");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, spFragment).commit();
+                    ((Activity) context).setTitle("Alumnos");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
-                     }
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
+                }
             }
+
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
                 t.printStackTrace();
@@ -75,10 +76,10 @@ public class PSPControllerJ {
     }
 
 
-    public boolean obtenerInforme (final Context context) {
+    public boolean obtenerInforme(final Context context) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<InscriptionFilePSP>> call = restCon.getInscriptionFile(token);
@@ -89,18 +90,19 @@ public class PSPControllerJ {
                 if (response.isSuccessful()) {
                     List<InscriptionFilePSP> informe = response.body();
                     Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("InscriptionFilePSP",(Serializable) informe);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("InscriptionFilePSP", (Serializable) informe);
                     InscriptionFilePSPJ fragment = new InscriptionFilePSPJ();
                     fragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
                     //((Activity)context).setTitle("Alumnos");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<InscriptionFilePSP>> call, Throwable t) {
                 t.printStackTrace();
@@ -112,12 +114,12 @@ public class PSPControllerJ {
 
     }
 
-    public void enviarComentarioInforme (final Context context , InscriptionFilePSP inscription ) {
+    public void enviarComentarioInforme(final Context context, InscriptionFilePSP inscription) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<String> call  = restCon.sendInscriptionFile( inscription.getId() ,token , inscription );
+        Call<String> call = restCon.sendInscriptionFile(inscription.getId(), token, inscription);
 
 
         call.enqueue(new Callback<String>() {
@@ -131,19 +133,20 @@ public class PSPControllerJ {
 
                 }
             }
+
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
-           //     Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
+                //     Toast.makeText(context, "Fallo la conexión", Toast.LENGTH_SHORT).show();
 
             }
         });
     }
 
-    public boolean getStudentsForDates (final Context context) {
+    public boolean getStudentsForDates(final Context context) {
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<Student>> call = restCon.getStudents(token);
@@ -154,18 +157,19 @@ public class PSPControllerJ {
                 if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Students",(Serializable) listaEstudiantes);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PspGetStudentsForDateEmployer spFragment = new PspGetStudentsForDateEmployer();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
-                    ((Activity)context).setTitle("Alumnos");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, spFragment).commit();
+                    ((Activity) context).setTitle("Alumnos");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
                 t.printStackTrace();
@@ -177,51 +181,50 @@ public class PSPControllerJ {
 
     }
 
-    public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, int idAlumno, String lugar){
+    public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, int idAlumno, String lugar) {
 
 //falta mandar el idAlumno !
-        Toast.makeText(context , "Lugar " + lugar , Toast.LENGTH_SHORT).show();
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        Toast.makeText(context, "Lugar " + lugar, Toast.LENGTH_SHORT).show();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-String motivo  = "Motivo académicofv" ;
-        Psp_dates_supervisor_employers psdse = new Psp_dates_supervisor_employers( idUser,fecha,hora,motivo,idAlumno,lugar );
+        String motivo = "Motivo académicofv";
+        idUser = 40;
+        idAlumno = 41;
+        Psp_dates_supervisor_employers psdse = new Psp_dates_supervisor_employers(idUser, fecha, hora, motivo, idAlumno, lugar);
 
-       // Toast.makeText(context , fecha +" " +  psdse.getIdAlumno(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(context , fecha +" " +  psdse.getIdAlumno(), Toast.LENGTH_SHORT).show();
 
 
-        Call<String> call = restCon.realizarCitasPSPsupervJefe(   token , psdse ); //colocar los parámetros que s e enviarán.
-
-
+        Call<String> call = restCon.realizarCitasPSPsupervJefe(token, psdse); //colocar los parámetros que s e enviarán.
 
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                Toast.makeText(context , "Se registro la cita con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Se registro la cita con éxito", Toast.LENGTH_SHORT).show();
 
-                     //    StudentAppointFragment mp = new StudentAppointFragment();
-             //   ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+                //    StudentAppointFragment mp = new StudentAppointFragment();
+                //   ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
 
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-             //   Toast.makeText(context , "No hay conexión", Toast.LENGTH_SHORT).show();
-             //   StudentAppointFragment mp = new StudentAppointFragment();
-             //   ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+                //   Toast.makeText(context , "No hay conexión", Toast.LENGTH_SHORT).show();
+                //   StudentAppointFragment mp = new StudentAppointFragment();
+                //   ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
         return true;
     }
 
 
+    public boolean getStudentsForSelectAll(final Context context) {
 
-    public boolean getStudentsForSelectAll (final Context context) {
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<Student>> call = restCon.getStudents(token);
@@ -232,18 +235,19 @@ String motivo  = "Motivo académicofv" ;
                 if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("Students",(Serializable) listaEstudiantes);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PspStudentSelectAll spFragment = new PspStudentSelectAll();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
-                    ((Activity)context).setTitle("Alumnos");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, spFragment).commit();
+                    ((Activity) context).setTitle("Alumnos");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
                 t.printStackTrace();
@@ -256,39 +260,35 @@ String motivo  = "Motivo académicofv" ;
     }
 
 
+    public boolean getInformationStudent(final Context context) {
 
-
-
-
-
-    public boolean getInformationStudent (final Context context) {
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
         int idAlumno = PspStudentSelectAll.studentSelected.getIdAlumno();
 
 
-        Call<List<TutStudentForPsp>> call = restCon.getTutStudentDetail( idAlumno ,token);
+        Call<List<TutStudentForPsp>> call = restCon.getTutStudentDetail(idAlumno, token);
         call.enqueue(new Callback<List<TutStudentForPsp>>() {
 
             @Override
             public void onResponse(Call<List<TutStudentForPsp>> call, retrofit2.Response<List<TutStudentForPsp>> response) {
                 if (response.isSuccessful()) {
                     List<TutStudentForPsp> informe = response.body();
-            //        Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("tutstudentpsp",(Serializable) informe);
+                    //        Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("tutstudentpsp", (Serializable) informe);
                     CheckStudentDetailPsp fragment = new CheckStudentDetailPsp();
                     fragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
                     //((Activity)context).setTitle("Alumnos");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<TutStudentForPsp>> call, Throwable t) {
                 t.printStackTrace();
@@ -301,11 +301,10 @@ String motivo  = "Motivo académicofv" ;
     }
 
 
+    public boolean getDatesSupervisorEmployerStudent(final Context context) {
 
-    public boolean getDatesSupervisorEmployerStudent (final Context context) {
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
         Call<List<Psp_dates_supervisor_employers_get>> call = restCon.getDatesSuperEmployerPsp(token);
@@ -316,18 +315,19 @@ String motivo  = "Motivo académicofv" ;
                 if (response.isSuccessful()) {
                     List<Psp_dates_supervisor_employers_get> listaEstudiantes = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("DateSuperEmployerPSP",(Serializable) listaEstudiantes);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("DateSuperEmployerPSP", (Serializable) listaEstudiantes);
                     DateSupervisorStudentEmployer spFragment = new DateSupervisorStudentEmployer();
                     spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp,spFragment).commit();
-                    ((Activity)context).setTitle("Citas");
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, spFragment).commit();
+                    ((Activity) context).setTitle("Citas");
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<Psp_dates_supervisor_employers_get>> call, Throwable t) {
                 t.printStackTrace();
@@ -338,10 +338,6 @@ String motivo  = "Motivo académicofv" ;
         return true;
 
     }
-
-
-
-
 
 
 }

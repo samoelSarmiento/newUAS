@@ -196,6 +196,7 @@ public class ImprovementPlanController {
                     Toast.makeText(context, "Ocurrió un error", Toast.LENGTH_LONG).show();
                 }
                 ((Activity) context).getFragmentManager().popBackStack();
+                ((Activity) context).getFragmentManager().popBackStack();
                 getImprovementPlanSuggestions(context, idIp);
             }
 

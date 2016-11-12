@@ -42,8 +42,6 @@ public class Configuration {
     }
 
     public static boolean isOnlyInvestigator() {
-        Log.d("mmm",(LOGIN_USER.getUser().getInvestigator() != null )+ "");
-        Log.d("mmm2",(LOGIN_USER.getUser().getTeacher() == null )+ "");
         return LOGIN_USER.getUser().getInvestigator() != null && LOGIN_USER.getUser().getTeacher() == null;
     }
 
@@ -59,10 +57,10 @@ public class Configuration {
         return LOGIN_USER.getUser().getIdPerfil() == 6;
     }
 
-    public static boolean isConnected(Context context){
+    public static boolean isConnected(Context context) {
 
         ConnectivityManager cm =
-                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
