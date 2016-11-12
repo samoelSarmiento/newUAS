@@ -55,22 +55,28 @@ public class EvaluationAdapter extends BaseAdapter {
 
             uas.pe.edu.pucp.newuas.adapter.EvaluationAdapter.ViewHolder viewHolder = new uas.pe.edu.pucp.newuas.adapter.EvaluationAdapter.ViewHolder();
 
+
             viewHolder.estado = (TextView) view.findViewById(R.id.estado);
             viewHolder.nombre = (TextView) view.findViewById(R.id.nombre);
             viewHolder.fechaInicio = (TextView) view.findViewById(R.id.fechaInicio);
             viewHolder.fechaFin = (TextView)view.findViewById(R.id.fechaFin);
 
             Evaluation evaluation = items.get(position);
-            viewHolder.estado.append(" " + evaluation.getEstado());
-            viewHolder.nombre.append(" " + evaluation.getNombre());
+            if(evaluation.getEstado()==0) viewHolder.estado.setText("NO VIGENTE");
+            else   viewHolder.estado.setText("VIGENTE");
+
+            viewHolder.nombre.setText(" " + evaluation.getNombre());
 
             //parsear fecha de creacion y modificacion
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             SimpleDateFormat sdfDisplay = new SimpleDateFormat("dd MMM hh:mm a", new Locale("es", "ES"));
             try {
-                Date when = sdf.parse(evaluation.getFecha_Inicio());
-                viewHolder.fechaInicio.append(" " + sdfDisplay.format(when));
-                Date update = sdf.parse(evaluation.getFecha_Fin());
+                Date fechaI = sdf.parse(evaluation.getFecha_Inicio());
+                Date fechaFin = sdf.parse(evaluation.getFecha_Fin());
+                viewHolder.fechaInicio.setText(" " + sdfDisplay.format(fechaI));
+                viewHolder.fechaFin.setText(" " + sdfDisplay.format(fechaFin));
+                //Date update = sdf.parse(evaluation.getFecha_Fin());
+
 
             } catch (ParseException e) {
                 e.printStackTrace();
