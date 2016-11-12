@@ -192,5 +192,7 @@
     <string name="tvNoCourses">No cuenta con cursos este ciclo.</string>
     <string name="newSugerence">Nueva Sugerencia</string>
     <string name="itdModule">Cambiar de Módulo</string>
+    <string name="tvInactivo">INACTIVO</string>
+    <string name="tvActivo">ACTIVO</string>
 
 </resources>

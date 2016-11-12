@@ -31,82 +31,69 @@ import uas.pe.edu.pucp.newuas.model.Period;
  */
 
 public class MeasureInstrumentsController {
-    public boolean getMeasureInstrumentsOfPeriod(final Integer idPeriod, final Context context){
-
+    public boolean getMeasureInstrumentsOfPeriod(final Integer idPeriod, final Context context) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
         Call<List<MeasureInstrument>> call = restCon.getMeaInstofPer(idPeriod, token);
 
-
         call.enqueue(new Callback<List<MeasureInstrument>>() {
             @Override
             public void onResponse(Call<List<MeasureInstrument>> call, Response<List<MeasureInstrument>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<MeasureInstrument> lmi = response.body();
 
                     MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("MeasureInst",(Serializable)lmi);
+                    bundle.putSerializable("MeasureInst", (Serializable) lmi);
                     mif.setArguments(bundle);
 
                     try {
-                        saveMeaInsts(context,lmi);
+                        saveMeaInsts(context, lmi, idPeriod);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
 
-                    ((Activity)context).getFragmentManager()
+                    ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.fragment_container,mif)
+                            .replace(R.id.fragment_container, mif)
                             .commit();
-                    ((Activity)context).setTitle("Instrumentos de Medicion");
+                    ((Activity) context).setTitle("Instrumentos de Medicion");
 
-                }else{
-                    Log.d("TAG",response.errorBody().toString());
+                } else {
+                    Log.d("TAG", response.errorBody().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<List<MeasureInstrument>> call, Throwable t) {
-
-
                 try {
-                    List<MeasureInstrument> lmi = retrieveMeaInstofPeriod(context,idPeriod);
+                    List<MeasureInstrument> lmi = retrieveMeaInstofPeriod(context, idPeriod);
 
                     MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("MeasureInst",(Serializable)lmi);
+                    bundle.putSerializable("MeasureInst", (Serializable) lmi);
                     mif.setArguments(bundle);
 
                     try {
-                        saveMeaInsts(context,lmi);
+                        retrieveMeaInstofPeriod(context, idPeriod);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
 
-                    ((Activity)context).getFragmentManager()
+                    ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.fragment_container,mif)
+                            .replace(R.id.fragment_container, mif)
                             .commit();
-                    ((Activity)context).setTitle("Instrumentos de Medicion");
-
-
+                    ((Activity) context).setTitle("Instrumentos de Medicion");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
                 t.printStackTrace();
-
-
             }
         });
-
-
-
 
 
         return true;
@@ -115,26 +102,26 @@ public class MeasureInstrumentsController {
 
 
     private List<MeasureInstrument> retrieveMeaInstofPeriod(final Context context, Integer idPeriod) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
-        Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
         return measureinstrumentDao.queryBuilder().where().eq("idPeriodo", idPeriod).query();
 
 
     }
 
 
-    private void saveMeaInsts(final Context context, List<MeasureInstrument> mis) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
-        Dao<MeasureInstrument,Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
-        for(MeasureInstrument mi : mis){
+    private void saveMeaInsts(final Context context, List<MeasureInstrument> mis, Integer idPeriod) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        for (MeasureInstrument mi : mis) {
+            mi.setIdPeriodo(idPeriod);
             MeasureInstrument find = measureinstrumentDao.queryForId(mi.getIdFuenteMedicion());
-            if(find==null){
+            if (find == null) {
                 measureinstrumentDao.create(mi);
-            }else{
+            } else {
                 measureinstrumentDao.update(mi);
             }
         }
-
 
 
     }

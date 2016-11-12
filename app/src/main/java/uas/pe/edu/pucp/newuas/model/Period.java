@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Marshall on 23/10/2016.
  */
 
-@DatabaseTable(tableName="period")
+@DatabaseTable(tableName = "period")
 public class Period implements Serializable {
 
     @SerializedName("IdPeriodo")
@@ -30,7 +30,7 @@ public class Period implements Serializable {
     private Integer vigente;
 
     @SerializedName("configuration")
-    @DatabaseField(foreign=true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private ConfSpeciality configuration;
 
     public Integer getIdPeriodo() {
@@ -56,16 +56,6 @@ public class Period implements Serializable {
     public void setVigente(Integer vigente) {
         this.vigente = vigente;
     }
-    /*
-
-    public List<Semester> getSemesters() {
-        return semesters;
-    }
-
-    public void setSemesters(List<Semester> semesters) {
-        this.semesters = semesters;
-    }
-    */
 
     public ConfSpeciality getConfiguration() {
         return configuration;

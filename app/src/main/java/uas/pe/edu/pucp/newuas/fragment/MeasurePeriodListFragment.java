@@ -58,9 +58,7 @@ public class MeasurePeriodListFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-
-            ArrayList<Period> str = (ArrayList<Period>) bundle.getSerializable("Periods");
-            list = str;
+            list = (ArrayList<Period>) bundle.getSerializable("Periods");
             Context context = getActivity();
             mpAdapter = new MeasurePeriodAdapter(context, list);
             lvPeriods.setAdapter(mpAdapter);

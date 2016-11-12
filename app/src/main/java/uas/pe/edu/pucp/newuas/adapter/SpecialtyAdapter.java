@@ -50,28 +50,30 @@ public class SpecialtyAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.item_specialty, null);
-        ViewHolder viewHolder = new ViewHolder();
-        viewHolder.specialty = (Button) view.findViewById(R.id.btnSpecialtyDisplay);
-        viewHolder.specialty.setId(position);
-        viewHolder.specialty.setText(items.get(position).getNombre());
-        viewHolder.specialty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Configuration.SPECIALTY = items.get(position);
-                SpecialtyFragment specialtyFragment = new SpecialtyFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("specialty", items.get(position));
-                specialtyFragment.setArguments(bundle);
-                ((Activity) context).getFragmentManager()
-                        .beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, specialtyFragment)
-                        .commit();
-                ((Activity) context).setTitle("Mi Especialidad");
-            }
-        });
-        return view;
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.item_specialty, parent, false);
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.specialty = (Button) convertView.findViewById(R.id.btnSpecialtyDisplay);
+            viewHolder.specialty.setId(position);
+            viewHolder.specialty.setText(items.get(position).getNombre());
+            viewHolder.specialty.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Configuration.SPECIALTY = items.get(position);
+                    SpecialtyFragment specialtyFragment = new SpecialtyFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("specialty", items.get(position));
+                    specialtyFragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, specialtyFragment)
+                            .commit();
+                    ((Activity) context).setTitle("Mi Especialidad");
+                }
+            });
+        }
+        return convertView;
     }
 
     private static class ViewHolder {
