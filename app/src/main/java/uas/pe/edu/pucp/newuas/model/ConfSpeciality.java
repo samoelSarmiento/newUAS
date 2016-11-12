@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ConfSpeciality implements Serializable {
 
     @SerializedName("IdConfEspecialidad")
-    @DatabaseField(id = true)
+    @DatabaseField(id = true, columnName = "IdConfEspecialidad")
     private Integer idConfEspecialidad;
 
     @SerializedName("IdEspecialidad")

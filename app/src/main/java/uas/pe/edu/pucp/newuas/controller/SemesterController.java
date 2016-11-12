@@ -36,10 +36,8 @@ public class SemesterController {
 
     public boolean getSemestersofPeriod(final Context context, final Integer periodId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-
         Call<List<Semester>> call = restCon.getSemofPer(periodId, token);
 
         call.enqueue(new Callback<List<Semester>>() {
@@ -54,29 +52,10 @@ public class SemesterController {
                     slf.setArguments(bundle);
 
                     try {
-                        DatabaseHelperOperations.saveSemesters(context, semList);
+                        DatabaseHelperOperations.saveSemesters(context, semList, periodId);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
-                    ((Activity) context).setTitle("Semestres");
-
-
-                } else {
-                    Log.d("TAG", response.errorBody().toString());
-
-                    List<Semester> semList = null;
-                    try {
-                        semList = DatabaseHelperOperations.getSemestersListofPeriod(context, periodId);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-
-                    SemesterListFragment slf = new SemesterListFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Semesters", (Serializable) semList);
-                    slf.setArguments(bundle);
 
                     ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
                     ((Activity) context).setTitle("Semestres");
@@ -86,7 +65,20 @@ public class SemesterController {
             @Override
             public void onFailure(Call<List<Semester>> call, Throwable t) {
                 t.printStackTrace();
+                List<Semester> semList = null;
+                try {
+                    semList = DatabaseHelperOperations.getSemestersListofPeriod(context, periodId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
+                SemesterListFragment slf = new SemesterListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Semesters", (Serializable) semList);
+                slf.setArguments(bundle);
+
+                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
+                ((Activity) context).setTitle("Semestres");
             }
         });
 

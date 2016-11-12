@@ -1,8 +1,6 @@
 package uas.pe.edu.pucp.newuas.datapersistency;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -11,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
+import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Semester;
 
@@ -46,7 +45,6 @@ public class DatabaseHelperOperations {
                 //saveConfSpecialty(context, period.getConfiguration());
                 periodDao.create(period);
             } else {
-                //si se encontro la actualizo(?, no se si actualiza todo)
                 //si no existe, creo su confspecialty
                 period.getConfiguration().setIdPeriodo(period.getIdPeriodo());
                 //confDao.update(period.getConfiguration());
@@ -79,10 +77,11 @@ public class DatabaseHelperOperations {
         return semesterDao.queryForEq("idPeriodo", periodId);
     }
 
-    public static void saveSemesters(final Context context, List<Semester> semesters) throws SQLException {
+    public static void saveSemesters(final Context context, List<Semester> semesters, Integer periodId) throws SQLException {
         DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Semester, Integer> semesterDao = helper.getSemesterDao();
         for (Semester semester : semesters) {
+            semester.setIdPeriodo(periodId);
             Semester find = semesterDao.queryForId(semester.getIdCicloAcademico());
             if (find == null) {
                 semesterDao.create(semester);
@@ -134,6 +133,28 @@ public class DatabaseHelperOperations {
             confDao.create(confSpeciality);
         } else {
             confDao.update(confSpeciality);
+        }
+    }
+
+    /*MEASUREMENT INSTRUMENTS*/
+    public static List<MeasureInstrument> retrieveMeaInstofPeriod(final Context context, Integer idPeriod) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        return measureinstrumentDao.queryBuilder().where().eq("idPeriodo", idPeriod).query();
+    }
+
+
+    public static void saveMeaInsts(final Context context, List<MeasureInstrument> mis, Integer idPeriod) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
+        for (MeasureInstrument mi : mis) {
+            mi.setIdPeriodo(idPeriod);
+            MeasureInstrument find = measureinstrumentDao.queryForId(mi.getIdFuenteMedicion());
+            if (find == null) {
+                measureinstrumentDao.create(mi);
+            } else {
+                measureinstrumentDao.update(mi);
+            }
         }
     }
 

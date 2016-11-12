@@ -66,12 +66,9 @@ public class MeasurePeriodController {
                             .replace(R.id.fragment_container, mplFragment)
                             .commit();
                     ((Activity) context).setTitle("Periodos de Medicion");
-
-
                 } else {
                     Log.d("tag", response.errorBody().toString());
                 }
-
             }
 
             @Override
@@ -108,12 +105,12 @@ public class MeasurePeriodController {
             public void onResponse(Call<Period> call, Response<Period> response) {
                 if (response.isSuccessful()) {
                     Period periods = response.body();
+
                     MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Period", (Serializable) periods);
                     mpvFragment.setArguments(bundle);
                     Log.d("TAG", response.body().toString());
-
 
                     try {
                         DatabaseHelperOperations.savePeriod(periods, context);
@@ -121,34 +118,25 @@ public class MeasurePeriodController {
                         e.printStackTrace();
                     }
 
-
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.fragment_container, mpvFragment)
                             .commit();
                     ((Activity) context).setTitle("Periodos de Medicion");
-
-
                 } else {
                     Log.d("tag", response.errorBody().toString());
                 }
-
             }
 
             @Override
             public void onFailure(Call<Period> call, Throwable t) {
                 try {
                     Period per = DatabaseHelperOperations.getPeriod(idPeriod, context);
-
                     MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
-                    /*Gson gsonf = new Gson();
-                    String spj = gsonf.toJson(periods);
-                    System.out.println(spj);*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Period", (Serializable) per);
                     mpvFragment.setArguments(bundle);
-
 
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
@@ -159,14 +147,8 @@ public class MeasurePeriodController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
-
-
         return true;
     }
-
-
 }

@@ -20,6 +20,7 @@ import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelperOperations;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.MeasureInstrumentsFragment;
@@ -49,7 +50,7 @@ public class MeasureInstrumentsController {
                     mif.setArguments(bundle);
 
                     try {
-                        saveMeaInsts(context, lmi, idPeriod);
+                        DatabaseHelperOperations.saveMeaInsts(context, lmi, idPeriod);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -69,18 +70,12 @@ public class MeasureInstrumentsController {
             @Override
             public void onFailure(Call<List<MeasureInstrument>> call, Throwable t) {
                 try {
-                    List<MeasureInstrument> lmi = retrieveMeaInstofPeriod(context, idPeriod);
+                    List<MeasureInstrument> lmi = DatabaseHelperOperations.retrieveMeaInstofPeriod(context, idPeriod);
 
                     MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("MeasureInst", (Serializable) lmi);
                     mif.setArguments(bundle);
-
-                    try {
-                        retrieveMeaInstofPeriod(context, idPeriod);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
 
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
@@ -94,37 +89,6 @@ public class MeasureInstrumentsController {
                 t.printStackTrace();
             }
         });
-
-
         return true;
-
     }
-
-
-    private List<MeasureInstrument> retrieveMeaInstofPeriod(final Context context, Integer idPeriod) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
-        return measureinstrumentDao.queryBuilder().where().eq("idPeriodo", idPeriod).query();
-
-
-    }
-
-
-    private void saveMeaInsts(final Context context, List<MeasureInstrument> mis, Integer idPeriod) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<MeasureInstrument, Integer> measureinstrumentDao = helper.getMeasureInstrumentDao();
-        for (MeasureInstrument mi : mis) {
-            mi.setIdPeriodo(idPeriod);
-            MeasureInstrument find = measureinstrumentDao.queryForId(mi.getIdFuenteMedicion());
-            if (find == null) {
-                measureinstrumentDao.create(mi);
-            } else {
-                measureinstrumentDao.update(mi);
-            }
-        }
-
-
-    }
-
-
 }
