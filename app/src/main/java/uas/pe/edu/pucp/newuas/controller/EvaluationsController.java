@@ -98,4 +98,71 @@ public class EvaluationsController {
 
         return list;
     }
+
+    public Evaluation getAEByF(final Context context, String name, int st, int id) {
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Evaluation>> call =  restCon.getEvaluationsByFilter(name, st, id, token);  //
+
+        call.enqueue(new Callback<List<Evaluation>>() {
+            @Override
+            public void onResponse(Call<List<Evaluation>> call, retrofit2.Response<List<Evaluation>> response) {
+                //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+                    List<Evaluation> evaluation = response.body();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("evaluation", (Serializable)evaluation);
+
+                    EvaluationResultListFragment fragment = new EvaluationResultListFragment();
+                    fragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container,fragment).commit();
+                    //bundle.putString("Investigators", spj);
+
+                    /*InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Evaluaciones");*/
+                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
+                    //Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Evaluation>> call, Throwable t) {
+                t.printStackTrace();
+                //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
+                //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                /*try {
+                    List<Investigator> invList = retriveAllInv(context);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Investigators", (Serializable)invList);
+                    //bundle.putString("Investigators", spj);
+
+                    InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                    spFragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                    ((Activity)context).setTitle("Investigadores");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }*/
+            }
+
+
+        });
+
+        return list;
+    }
+
+
+
 }

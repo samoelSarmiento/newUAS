@@ -136,11 +136,16 @@ public interface RestCon {
     @GET("evaluation/getAllEvaluations")
     Call<List<Evaluation>> getEvaluations(@QueryMap Map<String, String> token);
 
+    @GET("evaluation/getEvaluationsByFilter/{name}/{state}/{id}")
+    Call<List<Evaluation>> getEvaluationsByFilter(@Path("name") String name, @Path("state") int status, @Path("id") int specId, @QueryMap Map<String,String> token);
+
+
     /*Investigacion*/
     @GET("investigation/getAllInvestigators")
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
 
-    @GET("investigation/getAllInvGroups")
+
+@GET("investigation/getAllInvGroups")
     Call<List<InvGroups>> getInvGroups(@QueryMap Map<String, String> token);
 
     @GET("investigation/getAllProjects")
