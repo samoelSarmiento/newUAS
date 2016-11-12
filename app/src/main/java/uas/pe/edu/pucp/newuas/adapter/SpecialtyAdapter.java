@@ -60,16 +60,15 @@ public class SpecialtyAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Configuration.SPECIALTY = items.get(position);
                 SpecialtyFragment specialtyFragment = new SpecialtyFragment();
-                Gson gsonf = new Gson();
-                String spj = gsonf.toJson(items.get(position));
                 Bundle bundle = new Bundle();
-                bundle.putString("Specialty", spj);
+                bundle.putSerializable("specialty", items.get(position));
                 specialtyFragment.setArguments(bundle);
                 ((Activity) context).getFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
                         .replace(R.id.fragment_container, specialtyFragment)
                         .commit();
+                ((Activity) context).setTitle("Mi Especialidad");
             }
         });
         return view;
