@@ -12,7 +12,7 @@
     android:id="@+id/hotlist_cal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@drawable/calendar_128m"git />
+    android:src="@drawable/calendar_128m"/>
 
  <TextView
      android:id="@+id/hotlist_hot"

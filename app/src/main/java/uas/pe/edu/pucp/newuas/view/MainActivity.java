@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-
+        moveTaskToBack(true);
+        /*
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -104,6 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Cerrar sesión?").setNegativeButton("No", dialogClickListener)
                 .setPositiveButton("Si", dialogClickListener).show();
-
+*/
     }
 }

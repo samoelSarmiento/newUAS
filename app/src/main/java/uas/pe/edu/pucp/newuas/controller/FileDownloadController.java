@@ -40,7 +40,7 @@ public class FileDownloadController {
     private static NotificationManager notificationManager;
     private static NotificationCompat.Builder notificationBuilder;
 
-    public static void verifyStoragePermissions(Activity activity) {
+    private static void verifyStoragePermissions(Activity activity) {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -54,11 +54,13 @@ public class FileDownloadController {
 
 
     public static void downloadFile(final Context context, final String fileUrlParam) {
-        final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
 
+        final FileDownloadService downloadService = RetrofitHelper.apiConnector.create(FileDownloadService.class);
+        verifyStoragePermissions((Activity) context);
         new AsyncTask<Void, Long, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
+
                 Call<ResponseBody> call = downloadService.downloadFileWithDynamicUrlSync(fileUrlParam);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override

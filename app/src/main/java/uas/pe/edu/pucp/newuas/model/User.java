@@ -35,6 +35,9 @@ public class User {
     @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private Investigator investigator;
 
+    @SerializedName("tut_student")
+    private TutStudentForPsp tutStudentForPsp;
+
     public User(){
     }
 
@@ -93,5 +96,13 @@ public class User {
 
     public void setInvestigator(Investigator investigator) {
         this.investigator = investigator;
+    }
+
+    public TutStudentForPsp getTutStudentForPsp() {
+        return tutStudentForPsp;
+    }
+
+    public void setTutStudentForPsp(TutStudentForPsp tutStudentForPsp) {
+        this.tutStudentForPsp = tutStudentForPsp;
     }
 }
