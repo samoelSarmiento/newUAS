@@ -23,7 +23,7 @@ public class ConfSpeciality implements Serializable {
 
     @SerializedName("IdPeriodo")
     @DatabaseField
-    private Integer idPeriodo;
+    private int idPeriodo;
 
     @SerializedName("IdCicloInicio")
     @DatabaseField

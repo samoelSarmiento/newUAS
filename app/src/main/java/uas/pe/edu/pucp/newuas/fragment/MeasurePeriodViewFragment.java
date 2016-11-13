@@ -62,38 +62,41 @@ public class MeasurePeriodViewFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             final Period str = (Period) bundle.getSerializable("Period");
-            tvMeasureResStartSemester.setText(str.getConfiguration().getCycleAcademicStart().getDescripcion());
-            tvMeasureResEndSemester.setText(str.getConfiguration().getCycleAcademicEnd().getDescripcion());
-            tvMeasureCritLevel.setText(str.getConfiguration().getCantNivelCriterio() + "");
-            tvMeasureAccLevel.setText(str.getConfiguration().getNivelEsperado() + "");
-            tvMeasureAccPerc.setText(str.getConfiguration().getUmbralAceptacion() + "%");
-            this.period = str;
-            this.idPeriod = period.getIdPeriodo();
+            if (str != null) {
+                tvMeasureResStartSemester.setText(str.getConfiguration().getCycleAcademicStart().getDescripcion());
+                tvMeasureResEndSemester.setText(str.getConfiguration().getCycleAcademicEnd().getDescripcion());
+                tvMeasureCritLevel.setText(str.getConfiguration().getCantNivelCriterio() + "");
+                tvMeasureAccLevel.setText(str.getConfiguration().getNivelEsperado() + "");
+                tvMeasureAccPerc.setText(str.getConfiguration().getUmbralAceptacion() + "%");
 
-            btnMeaInst.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MeasureInstrumentsController mic = new MeasureInstrumentsController();
-                    mic.getMeasureInstrumentsOfPeriod(str.getIdPeriodo(), getActivity());
-                }
-            });
+                this.period = str;
+                this.idPeriod = period.getIdPeriodo();
 
-            btnSemPer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SemesterController sc = new SemesterController();
-                    sc.getSemestersofPeriod(getActivity(), str.getIdPeriodo());
+                btnMeaInst.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MeasureInstrumentsController mic = new MeasureInstrumentsController();
+                        mic.getMeasureInstrumentsOfPeriod(str.getIdPeriodo(), getActivity());
+                    }
+                });
 
-                }
-            });
+                btnSemPer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SemesterController sc = new SemesterController();
+                        sc.getSemestersofPeriod(getActivity(), str.getIdPeriodo());
 
-            btnEduObj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EducationalObjectiveController eoc = new EducationalObjectiveController();
-                    eoc.getEducationalObjectivesofPeriodSpec(getActivity(), str.getIdPeriodo(), str.getIdEspecialidad());
-                }
-            });
+                    }
+                });
+
+                btnEduObj.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EducationalObjectiveController eoc = new EducationalObjectiveController();
+                        eoc.getEducationalObjectivesofPeriodSpec(getActivity(), str.getIdPeriodo(), str.getIdEspecialidad());
+                    }
+                });
+            }
         }
         return view;
     }
