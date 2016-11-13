@@ -24,12 +24,12 @@ public class DatabaseHelperOperations {
         DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         Dao<Period, Integer> periodDao = helper.getPeriodDao();
         List<Period> result = periodDao.queryBuilder().where().eq("idEspecialidad", idSpec).query();
-        Dao<ConfSpeciality, Integer> confDao = helper.getConfSpecialtyDao();
+        /*Dao<ConfSpeciality, Integer> confDao = helper.getConfSpecialtyDao();
         Log.d("ESTOY AQUI??", "SIII");
         for (Period period : result) {
             Log.d("CONF DAOS??? NULL", "" + (period.getConfiguration() == null));
             confDao.refresh(period.getConfiguration());
-        }
+        }*/
         return result;
     }
 
@@ -43,12 +43,12 @@ public class DatabaseHelperOperations {
             if (find == null) {
                 //si no existe, creo su confspecialty
                 period.getConfiguration().setIdPeriodo(period.getIdPeriodo());
-                saveConfSpecialty(context, period.getConfiguration());
+                //saveConfSpecialty(context, period.getConfiguration());
                 periodDao.create(period);
             } else {
                 //si no existe, creo su confspecialty
                 period.getConfiguration().setIdPeriodo(period.getIdPeriodo());
-                confDao.update(period.getConfiguration());
+                //confDao.update(period.getConfiguration());
                 periodDao.update(period);
             }
         }
@@ -128,8 +128,8 @@ public class DatabaseHelperOperations {
         confSpeciality.getCycleAcademicStart().setIdEspecialidad(confSpeciality.getIdEspecialidad());
         confSpeciality.getCycleAcademicEnd().setIdEspecialidad(confSpeciality.getIdEspecialidad());
         //
-        saveSemester(context, confSpeciality.getCycleAcademicStart());
-        saveSemester(context, confSpeciality.getCycleAcademicEnd());
+        //saveSemester(context, confSpeciality.getCycleAcademicStart());
+        //saveSemester(context, confSpeciality.getCycleAcademicEnd());
         if (find == null) {
             confDao.create(confSpeciality);
         } else {
