@@ -196,5 +196,7 @@
     <string name="tvActivo">ACTIVO</string>
     <string name="everyone">Por: Todos</string>
     <string name="no_comment">Sin comentarios</string>
+    <string name="connection_error">Error de conexión</string>
+    <string name="no_student">El curso no cuenta con alumnos.</string>
 
 </resources>

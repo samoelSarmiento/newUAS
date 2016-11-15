@@ -35,7 +35,6 @@ import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.Student;
-import uas.pe.edu.pucp.newuas.model.StudentPsp;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 public class DateSupervisorStudentEmployer extends Fragment {

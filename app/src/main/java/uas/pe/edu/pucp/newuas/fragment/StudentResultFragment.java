@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
-import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 /**
  * A simple {@link Fragment} subclass.
