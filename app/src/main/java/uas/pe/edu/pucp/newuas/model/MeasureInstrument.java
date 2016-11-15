@@ -14,90 +14,58 @@ import java.io.Serializable;
 @DatabaseTable(tableName = "measureinstrument")
 public class MeasureInstrument implements Serializable {
     @SerializedName("IdFuenteMedicion")
-    @Expose
-    @DatabaseField(id=true)
+    @DatabaseField(id = true)
     private Integer idFuenteMedicion;
+
     @SerializedName("IdEspecialidad")
-    @Expose
     @DatabaseField
     private Integer idEspecialidad;
+
     @SerializedName("Nombre")
-    @Expose
     @DatabaseField
     private String nombre;
 
+    @DatabaseField(columnName = "idPeriodo")
+    private int idPeriodo;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public MeasureInstrument() {
     }
 
-    /**
-
-     * @param idFuenteMedicion
-     * @param idEspecialidad
-     */
     public MeasureInstrument(Integer idFuenteMedicion, Integer idEspecialidad, String nombre) {
         this.idFuenteMedicion = idFuenteMedicion;
         this.idEspecialidad = idEspecialidad;
         this.nombre = nombre;
     }
 
-    /**
-     *
-     * @return
-     * The idFuenteMedicion
-     */
     public Integer getIdFuenteMedicion() {
         return idFuenteMedicion;
     }
 
-    /**
-     *
-     * @param idFuenteMedicion
-     * The IdFuenteMedicion
-     */
     public void setIdFuenteMedicion(Integer idFuenteMedicion) {
         this.idFuenteMedicion = idFuenteMedicion;
     }
 
-    /**
-     *
-     * @return
-     * The idEspecialidad
-     */
     public Integer getIdEspecialidad() {
         return idEspecialidad;
     }
 
-    /**
-     *
-     * @param idEspecialidad
-     * The IdEspecialidad
-     */
     public void setIdEspecialidad(Integer idEspecialidad) {
         this.idEspecialidad = idEspecialidad;
     }
 
-    /**
-     *
-     * @return
-     * The nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     *
-     * @param nombre
-     * The Nombre
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
 
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
+    }
 }

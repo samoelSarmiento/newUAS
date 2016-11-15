@@ -132,20 +132,16 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_myspecialty) {
             if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3) {
-
                 SpecialtyFragment spFragment = new SpecialtyFragment();
-                Gson gsonf = new Gson();
-                String spj = gsonf.toJson(Configuration.SPECIALTY);
-                System.out.println(spj);
                 Bundle bundle = new Bundle();
-                bundle.putString("Specialty", spj);
+                bundle.putSerializable("specialty", Configuration.SPECIALTY);
                 spFragment.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
                         .replace(R.id.fragment_container, spFragment)
                         .commit();
-                setTitle("Especialidad");
+                setTitle("Mi Especialidad");
             } else {
                 SpecialtyController specialtyController = new SpecialtyController();
                 if (Configuration.LOGIN_USER.getUser().getAccreditor() != null)

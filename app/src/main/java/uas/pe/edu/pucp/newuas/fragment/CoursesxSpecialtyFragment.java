@@ -42,7 +42,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("Cursos de la especialidad");
+        getActivity().setTitle("Cursos de la Especialidad");
 
         View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
         ListView coursesxspecialty = (ListView) view.findViewById(R.id.lvCourses);

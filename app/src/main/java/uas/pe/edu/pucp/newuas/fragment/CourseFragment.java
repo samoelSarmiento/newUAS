@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class CourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
-        TextView tvValueCurso = (TextView) view.findViewById(R.id.codigoPspStudentTutValue);
+        TextView tvValueCurso = (TextView) view.findViewById(R.id.tvValueCourse);
         TextView tvValueCode = (TextView) view.findViewById(R.id.tvValueCode);
         TextView tvValueLevel = (TextView) view.findViewById(R.id.tvValueLevel);
 
@@ -46,7 +47,7 @@ public class CourseFragment extends Fragment {
                 tvValueCode.setText(courseResponse.getCodigo());
                 String nivelAcademico = courseResponse.getNivelAcademico() + "";
                 tvValueLevel.setText(nivelAcademico);
-                if (courseResponse.getSchedules() != null) {
+                if (courseResponse.getSchedules() != null && courseResponse.getSchedules().size() != 0) {
                     Button btHorario = (Button) view.findViewById(R.id.btSchedules);
                     btHorario.setVisibility(View.VISIBLE);
                     final Context context = getActivity();
