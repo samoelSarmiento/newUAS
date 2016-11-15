@@ -18,6 +18,9 @@
         android:id="@+id/lvStudents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
         android:visibility="gone">
 
     </ListView>
