@@ -9,6 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="start|center"
-        android:textAllCaps="true" />
+        android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
+        android:textAllCaps="true"
+        android:textColor="@color/black" />
 
 </LinearLayout>

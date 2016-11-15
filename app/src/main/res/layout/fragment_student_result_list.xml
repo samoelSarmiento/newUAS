@@ -12,7 +12,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tvSeeAspects"/>
+        android:layout_marginBottom="@dimen/divider"
+        android:text="@string/tvSeeAspects" />
 
     <ListView
         android:id="@+id/lvStudentResult"

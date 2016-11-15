@@ -56,6 +56,7 @@ public class SpecialtyAdapter extends BaseAdapter {
             viewHolder.specialty = (Button) convertView.findViewById(R.id.btnSpecialtyDisplay);
             viewHolder.specialty.setId(position);
             viewHolder.specialty.setText(items.get(position).getNombre());
+            viewHolder.specialty.setTop(20);
             viewHolder.specialty.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
