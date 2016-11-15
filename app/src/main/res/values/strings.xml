@@ -194,5 +194,7 @@
     <string name="itdModule">Cambiar de Módulo</string>
     <string name="tvInactivo">INACTIVO</string>
     <string name="tvActivo">ACTIVO</string>
+    <string name="everyone">Por: Todos</string>
+    <string name="no_comment">Sin comentarios</string>
 
 </resources>
