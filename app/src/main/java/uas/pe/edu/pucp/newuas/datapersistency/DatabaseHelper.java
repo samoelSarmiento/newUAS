@@ -43,8 +43,8 @@ import uas.pe.edu.pucp.newuas.model.Teacher;
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "uas100.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "uas111.db";
+    private static final int DATABASE_VERSION = 2;
     private Dao<Specialty, Integer> specialtyDao = null;
     private Dao<Teacher, Integer> teacherDao = null;
     private Dao<Period, Integer> periodDao = null;
@@ -64,10 +64,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Criterion, Integer> criterionDao = null;
     private Dao<CriterionLevel, Integer> critLevDao = null;
     private Dao<ImprovementPlan, Integer> improvementPlanDao = null;
-    private Dao<Action,Integer> actionDao = null;
-    private Dao<FileGen,Integer> fileGenDao = null;
-    private Dao<ActionFile,Integer> actionFileDao = null;
-    private Dao<Deliverable,Integer> deliverableDao = null;
+    private Dao<Action, Integer> actionDao = null;
+    private Dao<FileGen, Integer> fileGenDao = null;
+    private Dao<ActionFile, Integer> actionFileDao = null;
+    private Dao<Deliverable, Integer> deliverableDao = null;
+    private Dao<ConfSpeciality, Integer> confSpecialtyDao = null;
 
     public DatabaseHelper(Context context) {
         //super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -144,6 +145,24 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
+    public Dao<MeasureInstrument, Integer> getMeasureinstrumentDao() throws SQLException {
+        if (measureinstrumentDao == null) measureinstrumentDao = getDao(MeasureInstrument.class);
+        return measureinstrumentDao;
+    }
+
+    public void setMeasureinstrumentDao(Dao<MeasureInstrument, Integer> measureinstrumentDao) {
+        this.measureinstrumentDao = measureinstrumentDao;
+    }
+
+    public Dao<ConfSpeciality, Integer> getConfSpecialtyDao() throws SQLException {
+        if (confSpecialtyDao == null) confSpecialtyDao = getDao(ConfSpeciality.class);
+        return confSpecialtyDao;
+    }
+
+    public void setConfSpecialtyDao(Dao<ConfSpeciality, Integer> confSpecialtyDao) {
+        this.confSpecialtyDao = confSpecialtyDao;
+    }
+
     public Dao<Aspect, Integer> getAspectDao() throws SQLException {
         if (aspectDao == null) aspectDao = getDao(Aspect.class);
         return aspectDao;
@@ -213,11 +232,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return teacherDao;
     }
 
-
     public void setTeacherDao(Dao<Teacher, Integer> teacherDao) {
         this.teacherDao = teacherDao;
     }
-
 
     public Dao<Period, Integer> getPeriodDao() throws SQLException {
         if (periodDao == null) periodDao = getDao(Period.class);
@@ -273,7 +290,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         this.projStatDao = projStatDao;
     }
 
-
     public Dao<MeasureInstrument, Integer> getMeasureInstrumentDao() throws SQLException {
         if (measureinstrumentDao == null) measureinstrumentDao = getDao(MeasureInstrument.class);
         return measureinstrumentDao;
@@ -292,63 +308,63 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         this.invEventDao = invEventDao;
     }
 
-    public Dao<Criterion,Integer> getCriterionDao() throws SQLException{
-        if(criterionDao==null) criterionDao = getDao(Criterion.class);
+    public Dao<Criterion, Integer> getCriterionDao() throws SQLException {
+        if (criterionDao == null) criterionDao = getDao(Criterion.class);
         return criterionDao;
     }
 
-    public void setCriterionDao(Dao<Criterion,Integer> criterionDao){
+    public void setCriterionDao(Dao<Criterion, Integer> criterionDao) {
         this.criterionDao = criterionDao;
     }
 
-    public Dao<CriterionLevel,Integer> getCritLevDao() throws SQLException{
-        if(critLevDao==null) critLevDao = getDao(CriterionLevel.class);
+    public Dao<CriterionLevel, Integer> getCritLevDao() throws SQLException {
+        if (critLevDao == null) critLevDao = getDao(CriterionLevel.class);
         return critLevDao;
     }
 
-    public void setCritLevDao(Dao<CriterionLevel,Integer> critLevDao){
+    public void setCritLevDao(Dao<CriterionLevel, Integer> critLevDao) {
         this.critLevDao = critLevDao;
     }
 
-    public Dao<ImprovementPlan,Integer> getImprovementPlanDao() throws SQLException{
-        if(improvementPlanDao == null) improvementPlanDao = getDao(ImprovementPlan.class);
+    public Dao<ImprovementPlan, Integer> getImprovementPlanDao() throws SQLException {
+        if (improvementPlanDao == null) improvementPlanDao = getDao(ImprovementPlan.class);
         return improvementPlanDao;
     }
 
-    public void setImprovementPlanDao(Dao<ImprovementPlan,Integer> improvementPlanDao){
+    public void setImprovementPlanDao(Dao<ImprovementPlan, Integer> improvementPlanDao) {
         this.improvementPlanDao = improvementPlanDao;
     }
 
-    public Dao<Action, Integer> getActionDao() throws SQLException{
-        if(actionDao == null) actionDao = getDao(Action.class);
+    public Dao<Action, Integer> getActionDao() throws SQLException {
+        if (actionDao == null) actionDao = getDao(Action.class);
         return actionDao;
     }
 
-    public void setActionDao(Dao<Action,Integer> actionDao){
+    public void setActionDao(Dao<Action, Integer> actionDao) {
         this.actionDao = actionDao;
     }
 
-    public Dao<FileGen,Integer> getFileGenDao() throws SQLException{
-        if(fileGenDao == null) fileGenDao = getDao(FileGen.class);
+    public Dao<FileGen, Integer> getFileGenDao() throws SQLException {
+        if (fileGenDao == null) fileGenDao = getDao(FileGen.class);
         return fileGenDao;
     }
 
-    public void setFileGenDao(Dao<FileGen,Integer> fileGenDao){
+    public void setFileGenDao(Dao<FileGen, Integer> fileGenDao) {
         this.fileGenDao = fileGenDao;
     }
 
-    public Dao<ActionFile,Integer> getActionFileDao() throws SQLException{
-        if(actionFileDao == null) actionFileDao = getDao(ActionFile.class);
+    public Dao<ActionFile, Integer> getActionFileDao() throws SQLException {
+        if (actionFileDao == null) actionFileDao = getDao(ActionFile.class);
         return actionFileDao;
 
     }
 
-    public void setActionFileDao(Dao<ActionFile,Integer> actionFileDao){
+    public void setActionFileDao(Dao<ActionFile, Integer> actionFileDao) {
         this.actionFileDao = actionFileDao;
     }
 
-    public Dao<Deliverable, Integer> getDeliverableDao() throws  SQLException{
-        if(deliverableDao==null) deliverableDao=getDao(Deliverable.class);
+    public Dao<Deliverable, Integer> getDeliverableDao() throws SQLException {
+        if (deliverableDao == null) deliverableDao = getDao(Deliverable.class);
         return deliverableDao;
     }
 

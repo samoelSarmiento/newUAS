@@ -46,7 +46,18 @@ public class Semester implements Serializable {
     @DatabaseField
     private String fechaFin;
 
+    @DatabaseField(columnName = "IdConfEspecialidad")
+    private int idConfEspecialidad;
+
     public Semester() {
+    }
+
+    public int getIdConfEspecialidad() {
+        return idConfEspecialidad;
+    }
+
+    public void setIdConfEspecialidad(int idConfEspecialidad) {
+        this.idConfEspecialidad = idConfEspecialidad;
     }
 
     public int getIdCicloAcademico() {

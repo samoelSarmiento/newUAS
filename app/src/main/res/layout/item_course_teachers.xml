@@ -7,50 +7,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/divider"
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvHorario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:orientation="vertical">
+            android:layout_weight="0.5"
+            android:paddingEnd="@dimen/divider"
+            android:paddingStart="@dimen/divider"
+            android:text="@string/tvHorario" />
 
-            <TextView
-                android:id="@+id/tvHorario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tvHorario" />
-
-            <TextView
-                android:id="@+id/tvValueHorario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:orientation="vertical">
+            android:layout_weight="0.5"
+            android:paddingEnd="@dimen/divider"
+            android:paddingStart="@dimen/divider"
+            android:text="@string/tvProfessor" />
 
-            <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tvProfessor" />
+    </LinearLayout>
 
-            <ListView
-                android:id="@+id/lvTeacherList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp"
-                android:paddingTop="15dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-            </ListView>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvValueHorario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
 
+        <ListView
+            android:id="@+id/lvTeacherList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="15dp">
+
+        </ListView>
     </LinearLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,9 @@ import uas.pe.edu.pucp.newuas.model.SpecialtyxCourseDisplay;
  * Created by Marshall on 23/10/2016.
  */
 
-public class MeasurePeriodAdapter extends BaseAdapter{
+public class MeasurePeriodAdapter extends BaseAdapter {
 
-    private Context context;
+    Context context;
     private ArrayList<Period> items;
     private LayoutInflater layoutInflater;
 
@@ -32,8 +33,6 @@ public class MeasurePeriodAdapter extends BaseAdapter{
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
-
-
 
 
     @Override
@@ -53,36 +52,29 @@ public class MeasurePeriodAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.item_measureperiod, parent, false);
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.tvPeriod = (TextView) convertView.findViewById(R.id.tvPeriod);
+            viewHolder.tvPeriodStatus = (TextView) convertView.findViewById(R.id.tvPeriodStatus);
 
-        View view = layoutInflater.inflate(R.layout.item_measureperiod,null);
-        ViewHolder viewHolder = new ViewHolder();
-
-        viewHolder.tvPeriod = (TextView) view.findViewById(R.id.tvPeriod);
-
-        viewHolder.tvPeriodStatus = (TextView)view.findViewById(R.id.tvPeriodStatus);
-
-        viewHolder.tvPeriod.setText(items.get(position).getConfiguration().getCycleAcademicStart().getDescripcion() + " - " + items.get(position).getConfiguration().getCycleAcademicEnd().getDescripcion());
-        Integer vigente = items.get(position).getVigente();
-        if (vigente == 0){
-            viewHolder.tvPeriodStatus.setTextColor(Color.RED);
-            viewHolder.tvPeriodStatus.setText("INACTIVO");
+            Log.d("CONF ES NULL??", "" + (items.get(position).getConfiguration() == null));
+            if (items.get(position).getConfiguration() != null) {
+                viewHolder.tvPeriod.setText(items.get(position).getConfiguration().getCycleAcademicStart().getDescripcion() + " - " + items.get(position).getConfiguration().getCycleAcademicEnd().getDescripcion());
+                Integer vigente = items.get(position).getVigente();
+                if (vigente == 0) {
+                    viewHolder.tvPeriodStatus.setTextColor(Color.RED);
+                    viewHolder.tvPeriodStatus.setText(R.string.tvInactivo);
+                } else {
+                    viewHolder.tvPeriodStatus.setTextColor(Color.rgb(164, 198, 57));
+                    viewHolder.tvPeriodStatus.setText(R.string.tvActivo);
+                }
+            }
         }
-        else {
-
-            viewHolder.tvPeriodStatus.setTextColor(Color.rgb(164,198,57));
-            viewHolder.tvPeriodStatus.setText("ACTIVO");
-        }
-
-/*
-
-        viewHolder.tvPeriod = (ListView) view.findViewById(R.id.tvUserName);
-
-        viewHolder.tvPeriod.setText(items.get(position).getNombre());
-        */
-        return view;
+        return convertView;
     }
 
-    private static class ViewHolder{
+    private static class ViewHolder {
         TextView tvPeriod;
         TextView tvPeriodStatus;
     }

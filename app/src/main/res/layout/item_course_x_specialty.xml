@@ -12,15 +12,18 @@
         <TextView
             android:id="@+id/tvCode"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_height="36dp"
+            android:layout_weight="0.25"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/tvNameCurso"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.75"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:maxLines="2"
             android:textAlignment="center" />
     </LinearLayout>
 </LinearLayout>

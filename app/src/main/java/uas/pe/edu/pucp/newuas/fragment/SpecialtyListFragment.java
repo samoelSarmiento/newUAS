@@ -53,21 +53,6 @@ public class SpecialtyListFragment extends Fragment {
         return view;
     }
 
-    /*
-
-    @Override
-    public void onHiddenChanged(boolean hidden){
-        super.onHiddenChanged(hidden);
-        if (!hidden){
-            ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
-
-        }else{
-            ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-        }
-
-    }
-    */
-
     @Override
     public void onResume(){
         super.onResume();
