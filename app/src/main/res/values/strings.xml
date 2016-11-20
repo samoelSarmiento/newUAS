@@ -202,6 +202,7 @@
 
     <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord
     </string>
+    <string name="btContribution">Aporte del curso</string>
 
 
 </resources>

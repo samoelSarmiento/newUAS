@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 /**
  * Created by samoe on 01/11/2016.

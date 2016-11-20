@@ -37,10 +37,12 @@ import uas.pe.edu.pucp.newuas.fragment.CoursexScheduleFragment;
 import uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentListFragment;
+import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
@@ -349,6 +351,47 @@ public class SpecialtyController {
             }
         });
         return true;
+    }
+
+
+    public void getCourseContribution(final Context context , int course_id, int semester_id){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<StudentResult>> call = restCon.getCourseContribution(course_id,semester_id,token);
+
+        call.enqueue(new Callback<List<StudentResult>>() {
+            @Override
+            public void onResponse(Call<List<StudentResult>> call, Response<List<StudentResult>> response) {
+                if(response.isSuccessful()){
+                    List<StudentResult> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("studentResult",(Serializable)list);
+
+                    StudentResultListFragment srlf = new StudentResultListFragment();
+                    srlf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, srlf)
+                            .commit();
+
+
+                }else{
+                    Log.d("wat",response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<StudentResult>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
     }
 
 }

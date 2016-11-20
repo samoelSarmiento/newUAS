@@ -122,6 +122,9 @@ public interface RestCon {
                                                                                @Path("f_id") int faculty_id,
                                                                                @QueryMap Map<String, String> token);
 
+    @GET("faculties/course/{c_id}/{s_id}/contributions")
+    Call<List<StudentResult>> getCourseContribution(@Path("c_id") int course_id, @Path("s_id") int semester_id, @QueryMap Map<String,String> token);
+
 
     @POST("users/me")
     Call<UserMeResponse> getInvestigator(@Body TokenRequest token);
