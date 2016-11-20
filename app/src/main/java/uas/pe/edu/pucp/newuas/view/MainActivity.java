@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentPSP);
                 break;
             case R.id.btModuleTutEv:
-                Log.d("tag", "ENTRE ACAAAAAAA 1");
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
-                    Log.d("tag", "ENTRE ACAAAAAAA 1123213");
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
-                } else
+                } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1) {
                     intent = new Intent(this, NavigationDrawerTutoria.class);
+                }
+                else intent = new Intent(this, NavigationDrawerTutoriaCoord.class);
                 startActivity(intent);
                 break;
         }
