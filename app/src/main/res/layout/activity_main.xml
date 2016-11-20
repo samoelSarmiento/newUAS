@@ -15,44 +15,52 @@
         android:id="@+id/btModuleAcr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_main_yellow"
+       android:background="@drawable/btn_main_yellow"
+
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+
+
         android:text="@string/btModuleAcr"
         android:textColor="@color/white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
 
     <Button
         android:id="@+id/btModulePsp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@drawable/btn_main_red"
+
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+
         android:text="@string/btModulePsp"
         android:textColor="@color/white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
 
     <Button
         android:id="@+id/btModuleTutEv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_main_green"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+
         android:text="@string/btModuleTutEv"
         android:textColor="@color/white"
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
 
     <Button
         android:id="@+id/btModuleInv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@drawable/btn_main_blue"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+
         android:text="@string/btModuleInv"
 
         android:textColor="@color/white" />
