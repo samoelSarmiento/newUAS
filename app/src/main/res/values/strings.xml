@@ -194,5 +194,7 @@
     <string name="itdModule">Cambiar de Módulo</string>
     <string name="tvInactivo">INACTIVO</string>
     <string name="tvActivo">ACTIVO</string>
+    <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord
+    </string>
 
 </resources>
