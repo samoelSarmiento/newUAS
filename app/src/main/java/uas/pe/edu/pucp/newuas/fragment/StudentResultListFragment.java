@@ -14,6 +14,7 @@ import java.util.List;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.StudentResultAdapter;
 import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 public class StudentResultListFragment extends Fragment {
 

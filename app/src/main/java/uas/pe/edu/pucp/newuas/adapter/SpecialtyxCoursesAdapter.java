@@ -49,17 +49,18 @@ public class SpecialtyxCoursesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        View view = layoutInflater.inflate(R.layout.item_course_x_specialty, null);
-        ViewHolder viewHolder = new ViewHolder();
-        viewHolder.tvCode = (TextView) view.findViewById(R.id.tvCode);
-        viewHolder.tvCourse = (TextView) view.findViewById(R.id.tvNameCurso);
-        viewHolder.tvCode.setText(items.get(position).getCodigo());
-        viewHolder.tvCourse.setText(items.get(position).getNombre());
-        if (items.get(position).getNivelAcademico() != Configuration.CXE_ITEM_SHOW) {
-            return new View(view.getContext());
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.item_course_x_specialty, parent, false);
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.tvCode = (TextView) convertView.findViewById(R.id.tvCode);
+            viewHolder.tvCourse = (TextView) convertView.findViewById(R.id.tvNameCurso);
+            viewHolder.tvCode.setText(items.get(position).getCodigo());
+            viewHolder.tvCourse.setText(items.get(position).getNombre());
+            if (items.get(position).getNivelAcademico() != Configuration.CXE_ITEM_SHOW) {
+                return new View(convertView.getContext());
+            }
         }
-        return view;
+        return convertView;
     }
 
 

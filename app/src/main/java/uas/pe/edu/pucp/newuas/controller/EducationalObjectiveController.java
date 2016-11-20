@@ -32,6 +32,7 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 /**
  * Created by Marshall on 31/10/2016.
