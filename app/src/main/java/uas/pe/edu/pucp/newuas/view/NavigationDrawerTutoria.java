@@ -40,6 +40,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.InvGroupFragment;
+import uas.pe.edu.pucp.newuas.fragment.MySelfFragment;
 import uas.pe.edu.pucp.newuas.fragment.MyStudentAppointmentFragment;
 import uas.pe.edu.pucp.newuas.fragment.SearchEvaluationQueryFragment;
 import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
@@ -47,6 +48,7 @@ import uas.pe.edu.pucp.newuas.fragment.ShowAssignmentStudentFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
+import uas.pe.edu.pucp.newuas.model.TutStudentForPsp;
 
 
 public class NavigationDrawerTutoria extends AppCompatActivity
@@ -74,6 +76,19 @@ public class NavigationDrawerTutoria extends AppCompatActivity
 
         //getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.fragment_container, new MyStudentAppointmentFragment()).commit();
 
+        TutorInfoFragment ti = new TutorInfoFragment();
+        Bundle bundle = new Bundle();
+        ti.setArguments(bundle);
+        //setTitle("Perfil del Tutor");
+
+        /*
+        getFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.fragment_container, ti)
+                .commit();
+
+                */
 
         //
 

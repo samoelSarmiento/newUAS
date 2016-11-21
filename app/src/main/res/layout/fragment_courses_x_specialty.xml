@@ -9,6 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/fragment_top">
 
+    <TextView
+        android:id="@+id/tvNoCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_curses"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

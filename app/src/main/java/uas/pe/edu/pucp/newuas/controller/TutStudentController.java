@@ -21,6 +21,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
@@ -152,6 +153,35 @@ public class TutStudentController {
     }
 
 
+    public boolean getInfoSchedule(final Context context, int id){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<TUTInfoResponse>> call = restCon.getTutorInfo(id,data);
+
+        call.enqueue(new Callback<List<TUTInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<TUTInfoResponse>> call, Response<List<TUTInfoResponse>> response) {
+                if(response.isSuccessful()) {
+                    List<TUTInfoResponse> tutoInformation = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Tutoria", (Serializable)tutoInformation);
+                    AlumnoNuevaCitaFragment tiFragment = new AlumnoNuevaCitaFragment();
+                    tiFragment.setArguments(bundle);
+                    ((Activity)context).setTitle("Tutoria");
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TUTInfoResponse>> call, Throwable t) {
+
+            }
+        });
+
+        return true;
+    }
 
 
     public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, String motivo){

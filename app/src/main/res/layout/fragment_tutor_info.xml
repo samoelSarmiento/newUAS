@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/uas_plomo"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="115dp"
+    android:paddingTop="60dp"
     tools:context="uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment">
 
 
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
         android:id="@+id/unMundo"
-        >
+        android:layout_width="385dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="-20dp"
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical">
@@ -36,46 +35,51 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/general_bg_padding">
+                    android:layout_marginTop="@dimen/general_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
+                        android:layout_marginLeft="30dp"
                         android:text="Nombre:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_nombre"
+                    <TextView
+                        android:id="@+id/teacher_detail_nombre"
                         style="@style/GeneralTextViewsSmall"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="32dp"/>
+                        android:layout_marginLeft="32dp"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/info_bg_padding">
+                    android:layout_marginTop="@dimen/info_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
+                        android:layout_marginLeft="30dp"
                         android:text="Apellido:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_Apellido"
+                    <TextView
+                        android:id="@+id/teacher_detail_Apellido"
                         style="@style/GeneralTextViewsSmall"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="@dimen/info_bg_padding"/>
+                        android:layout_marginLeft="@dimen/info_bg_padding"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/info_bg_padding">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="@dimen/info_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
@@ -83,10 +87,11 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_email"
+                    <TextView
+                        android:id="@+id/teacher_detail_email"
                         style="@style/GeneralTextViewsSmall"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="42dp"/>
+                        android:layout_marginLeft="42dp"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -94,27 +99,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/info_bg_padding">
+                    android:layout_marginTop="@dimen/info_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
+                        android:layout_marginLeft="30dp"
                         android:text="Oficina:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_oficina"
+                    <TextView
+                        android:id="@+id/teacher_detail_oficina"
                         style="@style/GeneralTextViewsSmall"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="38dp"/>
+                        android:layout_marginLeft="38dp"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/info_bg_padding">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="@dimen/info_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
@@ -122,10 +130,11 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_anexo"
+                    <TextView
+                        android:id="@+id/teacher_detail_anexo"
                         style="@style/GeneralTextViewsSmall"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="47dp"/>
+                        android:layout_marginLeft="47dp"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -133,25 +142,1039 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/info_bg_padding">
+                    android:layout_marginTop="@dimen/info_bg_padding"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
+                        android:layout_marginLeft="30dp"
                         android:text="Telefono:"
+
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/teacher_detail_telefono"
+                    <TextView
+                        android:id="@+id/teacher_detail_telefono"
                         style="@style/GeneralTextViewsSmall"
+                        android:layout_marginLeft="25dp"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/GeneralTextViewsMedium"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Horario de atención:"
                         android:textColor="@color/black"
-                        android:layout_marginLeft="25dp"/>
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="440dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginTop="10dp"
+                            android:text="Horas"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="20dp"
+
+                            android:layout_marginTop="10dp"
+                            android:text="Lun"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Mar"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Mie"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Jue"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Vie"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/GeneralTextViewsMedium"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Sab"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
 
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="08:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu8"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma8"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi8"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju8"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi8"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa8"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="09:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:id="@+id/lu9"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma9"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi9"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju9"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi9"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa9"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="10:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:id="@+id/lu10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="--"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa10"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="11:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:id="@+id/lu11"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma11"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi11"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju11"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi11"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa11"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="12:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu12"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma12"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi12"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju12"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi12"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa12"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="13:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa13"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="14:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu14"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma14"
+                                    android:text="--"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi14"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju14"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi14"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="--"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa14"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="15:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="--"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa15"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="16:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa16"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="17:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa17"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="18:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa18"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="19:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa19"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="20:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="36dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa20"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginTop="10dp"
+                                    android:text="21:00"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/lu21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="30dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ma21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="36dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/mi21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="40dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ju21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:layout_marginLeft="33dp"
+                                    android:text="--"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/vi21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                                <TextView
+                                    android:id="@+id/sa21"
+                                    style="@style/GeneralTextViewsMedium"
+                                    android:text="--"
+                                    android:layout_marginLeft="33dp"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
 
             </LinearLayout>
+
 
         </LinearLayout>
 
