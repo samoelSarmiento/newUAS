@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class TUTInfoResponse {
 
+
     @SerializedName("IdDocente")
     private Integer idDocente;
     @SerializedName("IdEspecialidad")
@@ -48,8 +49,20 @@ public class TUTInfoResponse {
     private String createdAt;
     @SerializedName("updated_at")
     private String updatedAt;
+    @SerializedName("direccion")
+    private Object direccion;
+    @SerializedName("es_adminpsp")
+    private Object esAdminpsp;
+    @SerializedName("es_supervisorpsp")
+    private Object esSupervisorpsp;
+    @SerializedName("numberDays")
+    private Integer numberDays;
+    @SerializedName("duracionCita")
+    private Integer duracionCita;
     @SerializedName("scheduleInfo")
     private List<ScheduleInfoResponse> scheduleInfo = new ArrayList<ScheduleInfoResponse>();
+    @SerializedName("scheduleMeeting")
+    private List<ScheduleMeetingResponse> scheduleMeeting = new ArrayList<ScheduleMeetingResponse>();
 
     /**
      *
@@ -396,8 +409,65 @@ public class TUTInfoResponse {
     /**
      *
      * @return
+     * The direccion
+     */
+    public Object getDireccion() {
+        return direccion;
+    }
+
+    /**
+     *
+     * @param direccion
+     * The direccion
+     */
+    public void setDireccion(Object direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     *
+     * @return
+     * The esAdminpsp
+     */
+    public Object getEsAdminpsp() {
+        return esAdminpsp;
+    }
+
+    /**
+     *
+     * @param esAdminpsp
+     * The es_adminpsp
+     */
+    public void setEsAdminpsp(Object esAdminpsp) {
+        this.esAdminpsp = esAdminpsp;
+    }
+
+    /**
+     *
+     * @return
+     * The esSupervisorpsp
+     */
+    public Object getEsSupervisorpsp() {
+        return esSupervisorpsp;
+    }
+
+    /**
+     *
+     * @param esSupervisorpsp
+     * The es_supervisorpsp
+     */
+    public void setEsSupervisorpsp(Object esSupervisorpsp) {
+        this.esSupervisorpsp = esSupervisorpsp;
+    }
+
+    /**
+     *
+     * @return
      * The scheduleInfo
      */
+
+
+
     public List<ScheduleInfoResponse> getScheduleInfo() {
         return scheduleInfo;
     }
@@ -411,5 +481,64 @@ public class TUTInfoResponse {
         this.scheduleInfo = scheduleInfo;
     }
 
+    /**
+     *
+     * @return
+     * The scheduleMeeting
+     */
+    public List<ScheduleMeetingResponse> getScheduleMeeting() {
+        return scheduleMeeting;
+    }
+
+    /**
+     *
+     * @param scheduleMeeting
+     * The scheduleMeeting
+     */
+    public void setScheduleMeeting(List<ScheduleMeetingResponse> scheduleMeeting) {
+        this.scheduleMeeting = scheduleMeeting;
+    }
+
+
+    /**
+     *
+     * @return
+     * The numberDays
+     */
+    public Integer getNumberDays() {
+        return numberDays;
+    }
+
+    /**
+     *
+     * @param numberDays
+     * The numberDays
+     */
+    public void setNumberDays(Integer numberDays) {
+        this.numberDays = numberDays;
+    }
+
+    /**
+     *
+     * @return
+     * The duracionCita
+     */
+    public Integer getDuracionCita() {
+        return duracionCita;
+    }
+
+    /**
+     *
+     * @param duracionCita
+     * The duracionCita
+     */
+    public void setDuracionCita(Integer duracionCita) {
+        this.duracionCita = duracionCita;
+    }
+
+
 }
+
+
+
 

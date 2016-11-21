@@ -214,6 +214,9 @@ public interface RestCon {
     @GET("getCoordinatorStudent ")
     Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
 
+    //@GET("getCoordinatorStudent ")
+    //Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
+
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 

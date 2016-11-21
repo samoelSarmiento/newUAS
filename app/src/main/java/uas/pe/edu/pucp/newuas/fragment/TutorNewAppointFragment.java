@@ -29,6 +29,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
@@ -76,8 +77,9 @@ public class TutorNewAppointFragment extends Fragment {
         if (bundle != null){
             tutGroup= (List<AppointInformationRegisterTuto>) bundle.getSerializable("Tutoria");
         }
-
+        // Disponibilidad de las citas
         final int numeroDias = tutGroup.get(0).getNumberDays();
+
 
         List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup);
         Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
