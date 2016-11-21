@@ -45,6 +45,7 @@ import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.StringResponse;
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentEffort;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
@@ -67,6 +68,13 @@ public interface RestCon {
     @GET("faculties/schedule/{schedule_id}/students")
     Call<List<Student>> getStudentsbySchedule(@Path("schedule_id") int schedule_id,
                                               @QueryMap Map<String, String> token);
+
+    @GET("faculties/effort_table/cycle/{academic_cycle_id}/course/{course_id}/schedule/{schedule_id}/student/{student_id}")
+    Call<List<StudentEffort>> getEffortResultsbyStudent(@Path("academic_cycle_id") int idCicloAcademico,
+                                                        @Path("course_id") int idCurso,
+                                                        @Path("schedule_id") int idHorario,
+                                                        @Path("student_id") int idAlumno,
+                                                        @QueryMap Map<String, String> token);
 
     @GET("improvementplans/{ip_id}/suggestions")
     Call<List<Suggestion>> getImprPlanSuggestion(@Path("ip_id") int idImprPlan,
@@ -123,7 +131,7 @@ public interface RestCon {
                                                                                @QueryMap Map<String, String> token);
 
     @GET("faculties/course/{c_id}/{s_id}/contributions")
-    Call<List<StudentResult>> getCourseContribution(@Path("c_id") int course_id, @Path("s_id") int semester_id, @QueryMap Map<String,String> token);
+    Call<List<StudentResult>> getCourseContribution(@Path("c_id") int course_id, @Path("s_id") int semester_id, @QueryMap Map<String, String> token);
 
 
     @POST("users/me")

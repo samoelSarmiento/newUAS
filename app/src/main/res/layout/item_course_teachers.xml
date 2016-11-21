@@ -10,10 +10,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_marginTop="@dimen/divider"
             android:id="@+id/tvValueHorario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider"
             android:layout_weight="0.25"
             android:textAlignment="center"
             android:textColor="@color/black" />
@@ -28,5 +28,15 @@
             android:paddingTop="15dp">
 
         </ListView>
+
+        <TextView
+            android:layout_marginTop="@dimen/divider"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20" />
     </LinearLayout>
+
+
 </LinearLayout>

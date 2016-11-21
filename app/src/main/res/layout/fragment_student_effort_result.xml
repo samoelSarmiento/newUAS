@@ -9,6 +9,15 @@
     android:paddingTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.StudentEffortResultFragment">
 
+    <TextView
+        android:id="@+id/tvNoCriterios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/divider"
+        android:text="@string/no_criterio"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/lvResults"
         android:layout_width="match_parent"
@@ -16,7 +25,7 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:divider="@color/uas_plomo"
-        android:dividerHeight="@dimen/divider">
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 </LinearLayout>

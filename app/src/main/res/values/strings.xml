@@ -204,6 +204,8 @@
 
     <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord</string>
     <string name="results">Presione en un alumno para visualizar los resultados de desempeño del alumno.</string>
+    <string name="no_criterio">El alumno aun no ha sido evaluado</string>
+    <string name="no_curses">El semestre no cuenta con cursos activos este ciclo.</string>
 
 
 </resources>

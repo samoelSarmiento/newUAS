@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -57,9 +58,18 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         if (bundle != null) {
             idCicloAcademico = bundle.getInt("cicloAcademico");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
-            Context context = getActivity();
-            adapter = new SpecialtyxCoursesAdapter(context, list);
-            coursesxspecialty.setAdapter(adapter);
+            if (list != null && !list.isEmpty()) {
+                Context context = getActivity();
+                adapter = new SpecialtyxCoursesAdapter(context, list);
+                coursesxspecialty.setAdapter(adapter);
+            } else {
+                TextView tvNoCourses = (TextView) view.findViewById(R.id.tvNoCourses);
+                TextView tvNivel = (TextView) view.findViewById(R.id.tvNivel);
+                tvNivel.setVisibility(View.GONE);
+                tvNoCourses.setVisibility(View.VISIBLE);
+                spnNivel.setVisibility(View.GONE);
+                coursesxspecialty.setVisibility(View.GONE);
+            }
         }
         return view;
     }

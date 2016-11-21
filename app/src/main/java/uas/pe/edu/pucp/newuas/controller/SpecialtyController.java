@@ -36,12 +36,14 @@ import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.CoursexScheduleFragment;
 import uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
+import uas.pe.edu.pucp.newuas.fragment.StudentEffortResultFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentListFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentEffort;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -204,6 +206,8 @@ public class SpecialtyController {
                     }
                     //
                     Bundle bundle = new Bundle();
+                    bundle.putInt("cicloAcademico", idAcademicCycle);
+                    bundle.putInt("curso", idCourse);
                     bundle.putSerializable("ScheduleList", (Serializable) list);
                     //Fragment
                     CoursexScheduleFragment csFragment = new CoursexScheduleFragment();
@@ -322,7 +326,7 @@ public class SpecialtyController {
         return true;
     }
 
-    public boolean getStudentsbySchedule(final Context context, int schedule_id) {
+    public boolean getStudentsbySchedule(final Context context, final int schedule_id, final int idCicloAcademico, final int idCurso) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -335,7 +339,9 @@ public class SpecialtyController {
                     List<Student> result = response.body();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("students", (Serializable) result);
-
+                    bundle.putInt("cicloAcademico", idCicloAcademico);
+                    bundle.putInt("curso", idCurso);
+                    bundle.putInt("horario", schedule_id);
                     StudentListFragment fragment = new StudentListFragment();
                     fragment.setArguments(bundle);
 
@@ -354,20 +360,20 @@ public class SpecialtyController {
     }
 
 
-    public void getCourseContribution(final Context context , int course_id, int semester_id){
+    public void getCourseContribution(final Context context, int course_id, int semester_id) {
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<StudentResult>> call = restCon.getCourseContribution(course_id,semester_id,token);
+        Call<List<StudentResult>> call = restCon.getCourseContribution(course_id, semester_id, token);
 
         call.enqueue(new Callback<List<StudentResult>>() {
             @Override
             public void onResponse(Call<List<StudentResult>> call, Response<List<StudentResult>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<StudentResult> list = response.body();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("studentResult",(Serializable)list);
+                    bundle.putSerializable("studentResult", (Serializable) list);
 
                     StudentResultListFragment srlf = new StudentResultListFragment();
                     srlf.setArguments(bundle);
@@ -379,8 +385,8 @@ public class SpecialtyController {
                             .commit();
 
 
-                }else{
-                    Log.d("wat",response.errorBody().toString());
+                } else {
+                    Log.d("wat", response.errorBody().toString());
                 }
             }
 
@@ -390,8 +396,32 @@ public class SpecialtyController {
 
             }
         });
-
-
     }
 
+    public void getStudentEffort(final Context context, int idCicloAcademico, int idCurso, int idHorario, int idAlumno) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<StudentEffort>> call = restCon.getEffortResultsbyStudent(idCicloAcademico, idCurso, idHorario, idAlumno, token);
+        call.enqueue(new Callback<List<StudentEffort>>() {
+            @Override
+            public void onResponse(Call<List<StudentEffort>> call, Response<List<StudentEffort>> response) {
+                if (response.isSuccessful()) {
+                    List<StudentEffort> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("effort", (Serializable) list);
+                    StudentEffortResultFragment fragment = new StudentEffortResultFragment();
+                    fragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<StudentEffort>> call, Throwable t) {
+
+            }
+        });
+    }
 }
