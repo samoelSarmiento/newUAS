@@ -14,6 +14,12 @@
         android:layout_height="wrap_content"
         android:text="@string/no_student" />
 
+    <TextView
+        android:id="@+id/tvResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/results" />
+
     <ListView
         android:id="@+id/lvStudents"
         android:layout_width="match_parent"

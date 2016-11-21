@@ -47,7 +47,7 @@ public class CourseFragment extends Fragment {
                 tvValueCode.setText(courseResponse.getCodigo());
                 String nivelAcademico = courseResponse.getNivelAcademico() + "";
                 tvValueLevel.setText(nivelAcademico);
-                if (courseResponse.getSchedules() != null && courseResponse.getSchedules().size() != 0) {
+                if (courseResponse.getSchedules() != null &&     courseResponse.getSchedules().size() != 0) {
                     Button btHorario = (Button) view.findViewById(R.id.btSchedules);
                     btHorario.setVisibility(View.VISIBLE);
                     final Context context = getActivity();

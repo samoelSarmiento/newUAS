@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import uas.pe.edu.pucp.newuas.adapter.SpecialtyxCoursesAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
-
 
 public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
@@ -68,7 +68,6 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     public void onStart() {
         super.onStart();
     }
-
 
     //Para el spinner cambia el list view
     @Override

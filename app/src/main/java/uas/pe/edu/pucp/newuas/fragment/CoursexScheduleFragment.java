@@ -1,6 +1,5 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -15,9 +14,6 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.CoursexTeacherAdapter;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CoursexScheduleFragment extends Fragment {
 
     List<Schedule> list;
