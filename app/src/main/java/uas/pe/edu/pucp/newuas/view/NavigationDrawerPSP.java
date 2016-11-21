@@ -127,7 +127,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
                 menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
 
@@ -137,12 +137,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
                 //Supervisor
+         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
                 menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
                 menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
                 menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
                 menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
                 menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
 
         }
 

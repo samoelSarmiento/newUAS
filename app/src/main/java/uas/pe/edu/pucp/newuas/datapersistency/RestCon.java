@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
+import uas.pe.edu.pucp.newuas.model.DocumentStudentPsp;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
@@ -264,10 +265,11 @@ public interface RestCon {
     Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
 
 
-    @GET("psp/students/inscriptioFile")
-    Call<List<InscriptionFilePSP>> getInscriptionFile(@QueryMap Map<String, String> token);
-    //@GET("psp/students/{s_id}/documents")
-    //Call<List<PSPDocument>> getDocumentsByStudent(@Path("s_id") int s_id ,@QueryMap Map<String,String> token);
+    @GET("psp/getInscriptions/{id}/byStudent")
+    Call<List<InscriptionFilePSP>> getInscriptionFile( @Path("id") int idStudent ,@QueryMap Map<String, String> token);
+
+    @GET("psp/getDocument/{id}/full")
+    Call<List<DocumentStudentPsp>> getDocumentStudent( @Path("id") int idDocument ,@QueryMap Map<String, String> token);
 
     @POST("psp/students/{id}/sendInscriptioFile")
     Call<String> sendInscriptionFile(@Path("id") int inscriptionID, @QueryMap Map<String, String> token, @Body InscriptionFilePSP inscription);
@@ -291,11 +293,6 @@ public interface RestCon {
     @POST("psp/meeting/supervisor/student/store")
     Call<PSPMessage> storeSupStudentMeeting(@Body PSPMeetingRequest meeting ,@QueryMap Map<String, String> token);
 
-
-
-
-
-
     @POST("psp/date/supervisor/employer")
     Call<String> realizarCitasPSPsupervJefe(    @QueryMap Map<String, String> token , @Body Psp_dates_supervisor_employers inscription  );
 
@@ -314,7 +311,8 @@ public interface RestCon {
     @GET("psp/tutstudent/{id}/detail")
     Call<List<TutStudentForPsp>> getTutStudentDetail(@Path("id") int idStudent, @QueryMap Map<String, String> token);
 
-
+    @GET("psp/student/{id}/getDocumentsAll")
+    Call<List<DocumentStudentPsp>> getDocumentsByStudentPSP( @Path("id") int idStudent, @QueryMap Map<String, String> token);
 
     /*END SECTION*/
 }
