@@ -9,6 +9,25 @@
     android:paddingTop="70dp">
 
     <TextView
+        android:id="@+id/tvNoEvidence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_evidence"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btEvidence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+        android:background="@drawable/bg_button_login_selector"
+        android:text="@string/btEvidence"
+        android:textColor="@color/white" />
+
+    <TextView
         android:id="@+id/tvNoStudents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +38,9 @@
         android:id="@+id/tvResults"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/results" />
+        android:paddingTop="@dimen/divider"
+        android:text="@string/results"
+        android:textColor="@color/black" />
 
     <ListView
         android:id="@+id/lvStudents"

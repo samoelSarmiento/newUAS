@@ -44,6 +44,7 @@ public class CourseResponse implements Serializable {
 
     private List<Schedule> schedule;
 
+
     public CourseResponse() {
     }
 

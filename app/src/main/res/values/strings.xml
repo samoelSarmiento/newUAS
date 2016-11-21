@@ -206,6 +206,8 @@
     <string name="results">Presione en un alumno para visualizar los resultados de desempeño del alumno.</string>
     <string name="no_criterio">El alumno aun no ha sido evaluado</string>
     <string name="no_curses">El semestre no cuenta con cursos activos este ciclo.</string>
+    <string name="btEvidence">EVIDENCIA DEL HORARIO</string>
+    <string name="no_evidence">El curso no cuenta con evidencias registradas.</string>
 
 
 </resources>

@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;

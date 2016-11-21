@@ -15,7 +15,9 @@ import java.util.List;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.CoursexTeacherAdapter;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
+import uas.pe.edu.pucp.newuas.model.CoursesEvidences;
 import uas.pe.edu.pucp.newuas.model.Faculty;
+import uas.pe.edu.pucp.newuas.model.FileGen;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 
 public class CoursexScheduleFragment extends Fragment {
@@ -47,10 +49,14 @@ public class CoursexScheduleFragment extends Fragment {
             lvSchedules.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    List<FileGen> evidences = list.get(position).getCourse_evidences();
+                    Log.d("evidences null?", "" + (evidences == null));
                     SpecialtyController controller = new SpecialtyController();
-                    controller.getStudentsbySchedule(getActivity(), adapter.getItem(position).getIdHorario(), idCicloAcademico,idCurso);
+                    controller.getStudentsbySchedule(getActivity(), adapter.getItem(position).getIdHorario(), idCicloAcademico, idCurso, evidences);
                 }
             });
+
+
         }
         return view;
     }

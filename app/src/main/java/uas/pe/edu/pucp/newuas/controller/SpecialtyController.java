@@ -40,6 +40,8 @@ import uas.pe.edu.pucp.newuas.fragment.StudentEffortResultFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentListFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.CoursesEvidences;
+import uas.pe.edu.pucp.newuas.model.FileGen;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Student;
@@ -326,11 +328,10 @@ public class SpecialtyController {
         return true;
     }
 
-    public boolean getStudentsbySchedule(final Context context, final int schedule_id, final int idCicloAcademico, final int idCurso) {
+    public boolean getStudentsbySchedule(final Context context, final int schedule_id, final int idCicloAcademico, final int idCurso, final List<FileGen> evidences) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-
         Call<List<Student>> call = restCon.getStudentsbySchedule(schedule_id, token);
         call.enqueue(new Callback<List<Student>>() {
             @Override
@@ -342,6 +343,7 @@ public class SpecialtyController {
                     bundle.putInt("cicloAcademico", idCicloAcademico);
                     bundle.putInt("curso", idCurso);
                     bundle.putInt("horario", schedule_id);
+                    bundle.putSerializable("evidences", (Serializable) evidences);
                     StudentListFragment fragment = new StudentListFragment();
                     fragment.setArguments(bundle);
 

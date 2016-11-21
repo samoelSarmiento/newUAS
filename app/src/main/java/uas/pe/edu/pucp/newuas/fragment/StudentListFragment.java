@@ -7,14 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.StudentAdapter;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
+import uas.pe.edu.pucp.newuas.model.CoursesEvidences;
+import uas.pe.edu.pucp.newuas.model.FileGen;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 public class StudentListFragment extends Fragment {
@@ -53,11 +57,35 @@ public class StudentListFragment extends Fragment {
                         controller.getStudentEffort(getActivity(), idCicloAcademico, idCurso, idHorario, student.getIdAlumno());
                     }
                 });
+
+
             } else {
                 TextView tvResults = (TextView) view.findViewById(R.id.tvResults);
                 tvResults.setVisibility(View.GONE);
                 TextView tvNoStudes = (TextView) view.findViewById(R.id.tvNoStudents);
                 tvNoStudes.setVisibility(View.VISIBLE);
+            }
+            final List<FileGen> coursesEvidences = (List<FileGen>) bundle.getSerializable("evidences");
+
+            if (coursesEvidences != null && !coursesEvidences.isEmpty()) {
+
+                Button btEvidence = (Button) view.findViewById(R.id.btEvidence);
+                btEvidence.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putSerializable("evidence", (Serializable) coursesEvidences);
+                        CourseEvidenceFragment fragment = new CourseEvidenceFragment();
+                        fragment.setArguments(bundle1);
+                        getActivity().setTitle("Evidencias del Horario");
+                        getActivity().getFragmentManager().beginTransaction()
+                                .addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
+                    }
+                });
+
+            } else {
+                TextView tvNoEvidence = (TextView) view.findViewById(R.id.tvNoEvidence);
+                tvNoEvidence.setVisibility(View.VISIBLE);
             }
         }
         return view;
