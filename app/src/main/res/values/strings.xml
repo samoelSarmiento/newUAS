@@ -198,7 +198,12 @@
     <string name="no_comment">Sin comentarios</string>
     <string name="connection_error">Error de conexión</string>
     <string name="no_student">El curso no cuenta con alumnos.</string>
+
+    <string name="btContribution">Aporte del curso</string>
+
+
     <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord</string>
     <string name="results">Presione en un alumno para visualizar los resultados de desempeño del alumno.</string>
+
 
 </resources>
