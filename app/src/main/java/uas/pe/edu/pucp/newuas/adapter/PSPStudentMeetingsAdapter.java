@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -53,18 +54,13 @@ public class PSPStudentMeetingsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null)
-            view = layoutInflater.inflate(R.layout.item_psp_student_meeting, null);
+
+        View  view = layoutInflater.inflate(R.layout.item_psp_student_meeting, null);
 
         Log.d("Adapter", "LLego");
 
         try {
-            ViewHolder viewHolder = new ViewHolder();
-            viewHolder.tvSupName = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_sup_name);
-            viewHolder.tvDateMeeting = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_date);
-            viewHolder.tvHourMeeting = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_hour);
-
+            ViewHolder viewHolder = new ViewHolder(view);
 
             viewHolder.tvSupName.append(String.valueOf(position + 1));
             String date = simpleDateFormat.format(items.get(position).getFecha());
@@ -85,6 +81,21 @@ public class PSPStudentMeetingsAdapter extends BaseAdapter {
 
     public static class ViewHolder {
         TextView tvSupName, tvDateMeeting,  tvHourMeeting;
+        ImageView icon;
+
+
+        public ViewHolder(View view){
+
+            tvSupName = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_sup_name);
+            tvDateMeeting = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_date);
+            tvHourMeeting = (TextView) view.findViewById(R.id.tv_item_psp_student_meeting_hour);
+            icon= (ImageView) view.findViewById(R.id.iv_item_psp_student_meeting_arrow);
+
+
+
+
+
+        }
 
     }
 

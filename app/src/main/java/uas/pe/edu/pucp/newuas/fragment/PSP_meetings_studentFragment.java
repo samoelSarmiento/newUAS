@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -82,6 +83,20 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
 
               ListView listView = (ListView) view.findViewById(R.id.lv_psp_student_meetings);
               listView.setAdapter(adapter);
+
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            PSPController controller = new PSPController();
+                            PSPMeeting meeting =  meetings.get(position);
+                            controller.getStudentForStudentMeetingDetail(getActivity(),meeting);
+
+
+
+                    }
+                });
         }
 
 

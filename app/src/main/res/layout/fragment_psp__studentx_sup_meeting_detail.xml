@@ -6,7 +6,7 @@
     android:paddingTop="70dp"
     android:gravity="center"
     android:background="@color/mdtp_neutral_pressed"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment">
+    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -72,41 +72,42 @@
 
             <TextView
                 android:text="Reunion"
-                android:id="@+id/tv_psp_sup_meeting_number"
+                android:id="@+id/tv_psp_student_meeting_number"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 />
 
             <TextView
                 android:text="ALumno"
-                android:id="@+id/tv_psp_sup_meeting_student_name"
+                android:id="@+id/tv_psp_student_meeting_student_name"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Codigo"
-                android:id="@+id/tv_psp_sup_meeting_student_id"
+                android:id="@+id/tv_psp_student_meeting_student_id"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Fecha"
-                android:id="@+id/tv_psp_sup_meeting_date"
+                android:id="@+id/tv_psp_student_meeting_date"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
-                android:id="@+id/tv_psp_sup_meeting_at_hour"
+                android:id="@+id/tv_psp_student_meeting_at_hour"
                 android:text="Hora Inicio"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Hora Fin"
-                android:id="@+id/tv_psp_sup_meeting_to_hour"
+                android:id="@+id/tv_psp_student_meeting_to_hour"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <EditText
 
-                android:id="@+id/et_psp_sup_meeting_place"
+                android:id="@+id/et_psp_student_meeting_place"
                 android:inputType="text"
+                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -138,7 +139,8 @@
             android:minHeight="40dp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/et_psp_sup_meeting_observations" />
+            android:enabled="false"
+            android:id="@+id/et_psp_student_meeting_observations" />
         <TextView
             android:textStyle="bold"
             android:text="Retroalimentacion"
@@ -151,21 +153,18 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:minHeight="40dp"
-            android:id="@+id/et_psp_sup_meeting_feedback" />
+            android:enabled="false"
+            android:id="@+id/et_psp_student_meeting_feedback" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:gravity="end"
             android:layout_height="wrap_content">
-            <Button
-                android:text="Editar"
-                android:id="@+id/btn_psp_sup_meeting_detail_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
             <Button
                 android:text="Cancelar"
-                android:id="@+id/btn_psp_sup_meeting_detail_cancel"
+                android:id="@+id/btn_psp_student_meeting_detail_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -180,3 +179,4 @@
 
 
 </LinearLayout>
+

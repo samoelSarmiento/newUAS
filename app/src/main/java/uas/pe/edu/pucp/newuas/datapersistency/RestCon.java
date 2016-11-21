@@ -327,8 +327,10 @@ public interface RestCon {
     @POST("psp/meetings/notification/student/{id}")
     Call<PSPMessage> supSendNotificationToStudent(@Path("id") int idStudent,   @QueryMap Map<String, String> token);
 
+    @GET("psp/student")
+    Call<Student> getStudentForMeetingDetail(@QueryMap Map<String, String> token);
 
-   
+
 
 
 

@@ -89,6 +89,34 @@
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Alumno:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:id="@+id/cmb_psp_sup_student_meeting_students"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp">
+
+        </Spinner>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -101,13 +129,15 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_psp_sup_student_meeting_place" />
+
 
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_psp_sup_student_meeting_place" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
