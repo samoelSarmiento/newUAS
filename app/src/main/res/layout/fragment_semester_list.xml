@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="70dp">
 
+
     <ListView
         android:id="@+id/lvSemester"
         android:layout_width="match_parent"

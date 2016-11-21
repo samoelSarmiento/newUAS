@@ -2,7 +2,6 @@ package uas.pe.edu.pucp.newuas.datapersistency;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.IntegerRes;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;

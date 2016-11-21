@@ -11,13 +11,13 @@
         <TextView
             android:id="@+id/tvCodigo"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.35" />
 
         <TextView
             android:id="@+id/tvCourse"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.65" />
     </LinearLayout>
 </LinearLayout>

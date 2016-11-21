@@ -2,27 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/fragment_top"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment">
-
-    <TextView
-        android:id="@+id/tvNoCourses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tvNoCourses"
-        android:visibility="gone" />
+    tools:context="uas.pe.edu.pucp.newuas.fragment.CourseEvidenceFragment">
 
     <ListView
-        android:id="@+id/lvCourses"
+        android:id="@+id/lvEvidence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp">
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:divider="@color/uas_plomo"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
+
 </LinearLayout>
