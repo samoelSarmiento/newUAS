@@ -29,6 +29,7 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
+import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
@@ -291,7 +292,19 @@ public interface RestCon {
     @POST("psp/meeting/supervisor/student/store")
     Call<PSPMessage> storeSupStudentMeeting(@Body PSPMeetingRequest meeting ,@QueryMap Map<String, String> token);
 
+    @POST("psp/supervisor/freehour/store")
+    Call<PSPMessage> storeSupFreehour(@Body PSPFreeHour freeHour , @QueryMap Map<String, String> token);
 
+    @GET("psp/meetings/student")
+    Call<List<PSPMeeting>>  getStudentMeetings(@QueryMap  Map<String, String> token);
+
+    @GET("psp/supervisor/freehour")
+    Call<List<PSPFreeHour>> getSupervisorFreeHour(@QueryMap  Map<String, String> token);
+
+    @POST("psp/meetings/student/store")
+    Call<PSPMessage> storeStudentMeeting(@Body PSPFreeHour freeHour, @QueryMap Map<String, String> token );
+    @POST("psp/meetings/notification/student/{id}")
+    Call<PSPMessage> supSendNotificationToStudent(@Path("id") int idStudent,   @QueryMap Map<String, String> token);
 
 
 

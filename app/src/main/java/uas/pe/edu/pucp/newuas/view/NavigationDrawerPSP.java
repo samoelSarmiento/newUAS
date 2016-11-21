@@ -27,9 +27,11 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupSetFreeHoursFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
+import uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
@@ -290,6 +292,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
             }
 
+        }else if(id  == R.id.nav_item_pspStudentMeetings){
+
+
+            PSPController controller =  new PSPController();
+            controller.getStudentMeetings(this);
+
+
         } else if (id == R.id.nav_item_pspDates_supervisor) {
 
             // fragment = new PSP_meetingsFragment();
@@ -371,6 +380,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
         } else if (id == R.id.nav_items_pspSupxStudenMeeting) {
+
+            /*
+            Fragment fragmentDates = new PSP_SupSetFreeHoursFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
+            setTitle(item.getTitle());*/
+
 
             PSPController controller = new PSPController();
             controller.getSupStudents(this);

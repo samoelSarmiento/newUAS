@@ -79,13 +79,13 @@ public class PSP_SupxStudentMeetingsFragment extends Fragment {
             ArrayList<PSPMeeting> meetings = (ArrayList<PSPMeeting>) bundle.getSerializable("Meetings");
             Log.d("SupxStudent", "" + meetings.size());
             final Student student = (Student) bundle.getSerializable("Student");
-            adapter = new PSPSupxStudentMeetingAdapter(getActivity(),meetings);
+            adapter = new PSPSupxStudentMeetingAdapter(getActivity(),meetings, student);
 
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    /*
                     PSPMeeting meeting= (PSPMeeting)adapter.getItem(position);
                     Fragment fragment = new PSP_SupxStudentMeetingDetailFragment();
                     Bundle bundle = new Bundle();
@@ -97,7 +97,7 @@ public class PSP_SupxStudentMeetingsFragment extends Fragment {
                     getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
                             .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
 
-
+                */
                 }
             });
 
