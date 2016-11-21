@@ -85,7 +85,7 @@ public class TutTutorController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<String> call = restCon.updateAppointment(new AppointmentRequest(idAppoint,"","","",""), data);
+        Call<String> call = restCon.updateAppointment(new AppointmentRequest(idAppoint,"","","","","",12213123), data);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -145,7 +145,7 @@ public class TutTutorController {
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
          Log.d("tag","CONTEXTOO " + studentFullName + " " +  " " );
-        Call<String> call = restCon.doAppointmentTutor(new AppointmentRequest(idUser,fecha,hora,motivo,studentFullName),data);
+        Call<String> call = restCon.doAppointmentTutor(new AppointmentRequest(idUser,fecha,"",hora,motivo,studentFullName,123132),data);
          Log.d("tag",  "ke pasa aca " + call.request().url() );
         call.enqueue(new Callback<String>() {
             @Override
@@ -171,7 +171,7 @@ public class TutTutorController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<String> call = restCon.cancelAppointment(new AppointmentRequest(idAppoint,"","","",""), data);
+        Call<String> call = restCon.cancelAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -231,7 +231,11 @@ public class TutTutorController {
                             icon1[0] = R.drawable.ic_nullresource;
                             icon2[0] = R.drawable.ic_nullresource;
 
+                        }else if (estado.equals("Sugerida")){
+                            icon1[0] = R.drawable.ic_check;
+                            icon2[0] = R.drawable.ic_cross;
                         }
+
                         sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP,icon1[0],icon2[0],idAppoint));
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustomTuto);

@@ -37,8 +37,8 @@ public class CoursexTeacherAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public Schedule getItem(int position) {
+        return items.get(position);
     }
 
     @Override
@@ -63,10 +63,17 @@ public class CoursexTeacherAdapter extends BaseAdapter {
         teacherNames.toArray(arrayTeacherNames);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, arrayTeacherNames);
         lvTeacherList.setAdapter(arrayAdapter);
+        lvTeacherList.setFocusable(false);
+        lvTeacherList.setEnabled(false);
         return view;
     }
 
     private static class ViewHolder {
         TextView tvHorario;
+    }
+
+    @Override
+    public boolean areAllItemsEnabled() {
+        return true;
     }
 }

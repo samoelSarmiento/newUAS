@@ -72,6 +72,7 @@
         android:text="@string/tvNoSchedules"
         android:visibility="gone" />
 
+
     <Button
         android:id="@+id/btSchedules"
         android:layout_width="match_parent"
@@ -83,4 +84,15 @@
         android:text="@string/btHorario"
         android:textColor="@color/white"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btContribution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+        android:background="@drawable/bg_button_login_selector"
+        android:text="@string/btContribution"
+        android:textColor="@color/white" />
 </LinearLayout>

@@ -20,12 +20,15 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.SupStudentsNewMeetingSpinnerAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.Student;
 
@@ -39,9 +42,8 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
     public String solicitud;
     ImageButton btnCalendar;
     Button btnSolicitar;
-    Spinner spinnerHoras, spinnerTemas;
-    EditText txtFecha;
-    EditText txtLugar;
+    Spinner spinnerHoras, spinnerStudents;
+    EditText txtFecha, txtLugar;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Calendar[] dates = new Calendar[2];
@@ -49,7 +51,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
 
-
+    ArrayList<Student> studentsList;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -93,7 +95,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         }
 
 
-        Log.d("STUDENT", student.getNombre());
+
 
     }
 
@@ -113,6 +115,25 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         btnCalendar = (ImageButton) view.findViewById(R.id.btn_psp_sup_student_meeting_calendar);
         spinnerHoras = (Spinner) view.findViewById(R.id.sp_psp_sup_student_meeting_hours);
         txtLugar = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_place);
+        spinnerStudents = (Spinner) view.findViewById(R.id.cmb_psp_sup_student_meeting_students);
+
+
+
+
+        if(getArguments()!= null){
+
+            studentsList =  (ArrayList<Student>)getArguments().getSerializable("PSPStudents");
+            if(!studentsList.isEmpty()) {
+                SupStudentsNewMeetingSpinnerAdapter adapter = new SupStudentsNewMeetingSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, studentsList);
+                spinnerStudents.setAdapter(adapter);
+            }
+
+
+
+        }
+
+
+
 
         //spinnerTemas = (Spinner) view.findViewById(R.id.cmb_psp_meeting_topic);
 
@@ -131,7 +152,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
             e.printStackTrace();
         }
 
-        String[] lista = {"tema 1", "tema 2", "tema 3"};
+        final String[] lista = {"tema 1", "tema 2", "tema 3"};
 /*
         Spinner s = (Spinner) view.findViewById(R.id.cmb_psp_meeting_topic);
         s.setAdapter(null);
@@ -200,10 +221,20 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
                                         PSPController controller = new PSPController();
 
                                         PSPMeetingRequest meeting=  new PSPMeetingRequest();
+                                        int position  = spinnerStudents.getSelectedItemPosition();
+                                        Log.d("NewMeetingPOSition", "" + position);
+                                        if(position == 0){
+
+                                            Toast.makeText(getActivity(), "Seleccione un alumno", Toast.LENGTH_LONG).show();
+
+                                            return;
+                                        }
+
+                                        Student student = studentsList.get(position -1);
+
                                         meeting.setIdAlumno(student.getIdAlumno());
                                         meeting.setFecha(valorFecha[0]);
                                         meeting.setHora(valorHora[0]);

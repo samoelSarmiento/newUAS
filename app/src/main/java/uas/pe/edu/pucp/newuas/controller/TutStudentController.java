@@ -21,6 +21,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
@@ -84,8 +85,8 @@ public class TutStudentController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        final int[] icon1 = new int[2], icon2 = new int[2];
         Call<List<AppointmentResponse>> call = restCon.getAppointment(id,data);
-        Log.d("xd", call.request().url() + "traFIKANTE PUKEE  E");
         call.enqueue(new Callback<List<AppointmentResponse>>() {
 
             @Override
@@ -101,10 +102,29 @@ public class TutStudentController {
                         String horaI  = fechaHoraInicio.substring(11);
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
-                        sr.add(new SingleRow(fechaI,horaI,tema,estado));
-                        Log.d("tag", fechaI + horaI + tema + estado);
+                        if (estado.equals("Pendiente")){
+                            icon1[0] = R.drawable.ic_check;
+                            icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Confirmada")){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_cross;
 
+                        }
+                        else if (estado.equals("Cancelada")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("Sugerida")){
+                            icon1[0] = R.drawable.ic_check;
+                            icon2[0] = R.drawable.ic_cross;
+                        }
+
+                        int idAppoint = ap.getId();
+                        sr.add(new SingleRow(fechaI,horaI,tema,estado,icon1[0],icon2[0], idAppoint));
+                        Log.d("tag", fechaI + horaI + tema + estado);
                     }
+
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
                     listV.setAdapter(new AppointmentAdapter(context,sr));
                 }
@@ -152,15 +172,59 @@ public class TutStudentController {
     }
 
 
-
-
-    public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, String motivo){
+    public boolean getInfoSchedule(final Context context, int id){
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        //Log.d("tag","CONTEXTOO " + hora + " " +  " " + motivo);
-        Call<String> call = restCon.doAppointment(new AppointmentRequest(idUser,fecha,hora,motivo,null),data);
+        Call<List<TUTInfoResponse>> call = restCon.getTutorInfo(id,data);
+
+        call.enqueue(new Callback<List<TUTInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<TUTInfoResponse>> call, Response<List<TUTInfoResponse>> response) {
+                if(response.isSuccessful()) {
+                    List<TUTInfoResponse> tutoInformation = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Tutoria", (Serializable)tutoInformation);
+                    AlumnoNuevaCitaFragment tiFragment = new AlumnoNuevaCitaFragment();
+                    tiFragment.setArguments(bundle);
+                    ((Activity)context).setTitle("Tutoria");
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TUTInfoResponse>> call, Throwable t) {
+
+            }
+        });
+
+        return true;
+    }
+
+
+    public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, String motivo, int duracionCita){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        //obtenemos la hora de fin
+        String minFin = hora.substring(3,5);
+        int minFinInt = Integer.parseInt(minFin);
+        int horaFinInt = Integer.parseInt(hora.substring(0,2));
+        int minToCheck = minFinInt + duracionCita;
+        if (minToCheck == 60) {
+            horaFinInt = horaFinInt + 1;
+            minFin = "00";
+        }
+        else minFin = minToCheck + "";
+        String hoF = horaFinInt + "";
+        if (hoF.length() == 1 ) hoF = "0"+ hoF;
+        String horaF = hoF + ":" + minFin;
+        //fin de la obtencion de la hora F
+
+
+        Call<String> call = restCon.doAppointment(new AppointmentRequest(idUser,fecha,hora,horaF,motivo,null,duracionCita),data);
         // Log.d("xd",  "ke pasa aca " + call.request().url() );
         call.enqueue(new Callback<String>() {
             @Override
@@ -205,7 +269,7 @@ public class TutStudentController {
                         String horaI  = fechaHoraInicio.substring(11);
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
-                        sr.add(new SingleRow(fechaI,horaI,tema,estado));
+                        //sr.add(new SingleRow(fechaI,horaI,tema,estado,icon1[0],icon2[0]));
                         Log.d("tag", fechaI + horaI + tema + estado);
 
                     }

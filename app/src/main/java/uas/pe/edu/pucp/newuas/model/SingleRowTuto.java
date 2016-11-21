@@ -1,6 +1,6 @@
 package uas.pe.edu.pucp.newuas.model;
 
-import android.widget.ImageButton;
+        import android.widget.ImageButton;
 
 /**
  * Created by Wingerlion on 02/11/2016.

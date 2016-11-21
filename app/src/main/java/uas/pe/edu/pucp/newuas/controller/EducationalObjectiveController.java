@@ -3,13 +3,11 @@ package uas.pe.edu.pucp.newuas.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.query.In;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -34,7 +32,6 @@ import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
-import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 /**

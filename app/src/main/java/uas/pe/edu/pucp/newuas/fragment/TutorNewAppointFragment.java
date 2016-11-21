@@ -22,6 +22,8 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -29,6 +31,8 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
+import uas.pe.edu.pucp.newuas.model.ScheduleMeetingResponse;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
@@ -42,23 +46,29 @@ public class TutorNewAppointFragment extends Fragment {
     Button btnSolicitar;
     Spinner spinnerHoras, spinnerTemas, spinnerAlumnos;
     EditText txtFecha;
-    int day, year, month;
+    int day, year, month,duracionCita;
+    int ndays[] = new int[1];
     private static DatePickerDialog.OnDateSetListener selectorListener;
-    Calendar[] dates = new Calendar[2];
+    //Calendar[] dates = new Calendar[2];
+    List<Calendar> dates = new ArrayList<Calendar>();
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
+    public static List<ScheduleInfoResponse> sir ;
+    public static List<ScheduleMeetingResponse> smr ;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tutor_new_appoint, container, false);
+        final View view = inflater.inflate(R.layout.fragment_tutor_new_appoint, container, false);
         getActivity().setTitle("Tutoría");
         txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewAssignmentReg);
         btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendarTutorNewAppoint);
-        spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora);
+        spinnerHoras = (Spinner) view.findViewById(R.id.spinnerTutHora);
         spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
         spinnerAlumnos = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
 
@@ -76,8 +86,12 @@ public class TutorNewAppointFragment extends Fragment {
         if (bundle != null){
             tutGroup= (List<AppointInformationRegisterTuto>) bundle.getSerializable("Tutoria");
         }
+        // Disponibilidad de las citas
 
-        final int numeroDias = tutGroup.get(0).getNumberDays();
+        ndays[0] = tutGroup.get(0).getNumberDays();
+        duracionCita = tutGroup.get(0).getDuracionCita();
+        sir = tutGroup.get(0).getScheduleInfo();
+        smr = tutGroup.get(0).getScheduleMeeting();
 
         List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup);
         Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
@@ -91,7 +105,7 @@ public class TutorNewAppointFragment extends Fragment {
         s.setAdapter(adapter);
 
         valorFecha[0] = txtFecha.getText().toString();
-        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+        //valorHora[0] = spinnerHoras.getSelectedItem().toString();
         valorTema[0] = spinnerTemas.getSelectedItem().toString();
         valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
 
@@ -103,6 +117,14 @@ public class TutorNewAppointFragment extends Fragment {
                 String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
                 txtFecha.setText(date);
                 valorFecha[0] = date.toString();
+
+                Spinner hora = (Spinner) view.findViewById(R.id.spinnerTutHora);
+                List<String> horasDispo = obtenerHorasDisponible(sir,smr,duracionCita,date.toString());
+                hora.setAdapter(null);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDispo);
+                hora.setAdapter(adapter);
+
+
             }
         };
 
@@ -110,12 +132,17 @@ public class TutorNewAppointFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        
                         DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
                         Calendar now = Calendar.getInstance();
-                        now.add(Calendar.DAY_OF_YEAR, numeroDias);
-                        d.setMinDate(Calendar.getInstance());
-                        d.setMaxDate(now);
+                        //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
+                        d.setMinDate(now);
+                        //Calendar rekt = Calendar.getInstance();
+                        dates = obtenerFechasDisponibles(ndays[0],sir);
+                        Calendar [] cdates =  dates.toArray(new Calendar[dates.size()]);
+                        d.setSelectableDays(cdates);
                         d.show(getActivity().getFragmentManager(), "Datepickerdialog");
+
                     }
                 }
         );
@@ -171,6 +198,59 @@ public class TutorNewAppointFragment extends Fragment {
         return view;
     }
 
+    public List<Calendar> obtenerFechasDisponibles(int dia, List<ScheduleInfoResponse> listaHorarios){
+
+        List<Calendar> fechas = new ArrayList<Calendar>();
+        List<Integer> diaL = new ArrayList<Integer>();
+        List<Integer> mesL = new ArrayList<Integer>();
+        List<Integer> anhoL = new ArrayList<Integer>();
+
+        int totalSemanas = dia / 7;
+        Calendar now = Calendar.getInstance();
+        int dayToday = now.get(Calendar.DAY_OF_WEEK);
+        if (dayToday == 1 ) dayToday = 7;
+        else if (dayToday == 7) dayToday = 6;
+        else if (dayToday == 6) dayToday = 5;
+        else if (dayToday == 5) dayToday = 4;
+        else if (dayToday == 4) dayToday = 3;
+        else if (dayToday == 3) dayToday = 2;
+        else if (dayToday == 2) dayToday = 1;
+
+        for (int i = 0; i<listaHorarios.size(); i++){
+            int dayNeeded =  listaHorarios.get(i).getDia();
+            int finalDay = dayToday - dayNeeded;
+            if (finalDay > 0 ) {
+                Calendar kaka = Calendar.getInstance();
+                now = Calendar.getInstance();
+                now.add(Calendar.DAY_OF_MONTH, -1 * finalDay);
+                diaL.add(now.get(Calendar.DAY_OF_MONTH));
+                mesL.add(now.get(Calendar.MONTH));
+                anhoL.add(now.get(Calendar.YEAR));
+            }
+            else{
+                finalDay = dayNeeded - dayToday;
+                Calendar kaka = Calendar.getInstance();
+                now = Calendar.getInstance();
+                now.add(Calendar.DAY_OF_MONTH, finalDay);
+                diaL.add(now.get(Calendar.DAY_OF_MONTH));
+                mesL.add(now.get(Calendar.MONTH));
+                anhoL.add(now.get(Calendar.YEAR));
+            }
+        }
+
+        List<Calendar> calendarArray = new ArrayList<Calendar>();
+        for (int i = 0; i< diaL.size(); i++) {
+            for (int j = 0; j < totalSemanas; j++) {
+                Calendar c1 = new GregorianCalendar(anhoL.get(i), mesL.get(i), diaL.get(i));
+                c1.add(Calendar.DAY_OF_YEAR, 7 * j);
+                fechas.add(c1);
+            }
+        }
+
+
+        return fechas;
+    }
+
     public void showDate(){
         String format = "%1$02d";
         String fecha =String.format(format,day)+"/"+String.format(format,(month+1))+"/"+year;
@@ -185,6 +265,77 @@ public class TutorNewAppointFragment extends Fragment {
         }
 
         return retornar;
+    }
+
+
+    public List<String> obtenerHorasDisponible(List<ScheduleInfoResponse> sir, List<ScheduleMeetingResponse> smr, int duracionCita, String paramString)
+    {
+
+        List<String> horaInicio = new ArrayList<String>();
+
+        int dia = Integer.parseInt(paramString.substring(0, 2));
+        int mes = Integer.parseInt(paramString.substring(3, 5));
+        int anho = Integer.parseInt(paramString.substring(6, 10));
+        Calendar c = new GregorianCalendar(anho, mes - 1, dia);
+        int dayToday = c.get(Calendar.DAY_OF_WEEK);
+        if (dayToday == 1 ) dayToday = 7;
+        else if (dayToday == 7) dayToday = 6;
+        else if (dayToday == 6) dayToday = 5;
+        else if (dayToday == 5) dayToday = 4;
+        else if (dayToday == 4) dayToday = 3;
+        else if (dayToday == 3) dayToday = 2;
+        else if (dayToday == 2) dayToday = 1;
+
+
+        int intervalo = 60 / duracionCita;
+
+        for (int i = 0; i<sir.size(); i++){
+            if (sir.get(i).getDia() == dayToday){
+                String h = sir.get(i).getHoraInicio().substring(0,2);
+                String m = sir.get(i).getHoraInicio().substring(3,5);
+                String addHM = h + ":" + m;
+                horaInicio.add(addHM);
+                for (int j=1; j< intervalo; j++){
+                    String tiempo = sir.get(i).getHoraInicio();
+                    String hora = tiempo.substring(0,2);
+                    int minInt = Integer.parseInt(tiempo.substring(3,5));
+                    int minAddInt = minInt + duracionCita*j;
+                    String minAddStr = "" + minAddInt;
+                    String tiempoAgregar = hora + ":" + minAddStr;
+                    horaInicio.add(tiempoAgregar);
+                }
+            }
+        }
+
+        Collections.sort(horaInicio);
+
+        for (int i = 0; i < smr.size();  i++){
+            String tiempoEliminar = smr.get(i).getInicio();
+            String fechaGuion = tiempoEliminar.substring(0,10);
+            Log.d("xd","moosstrar" + fechaGuion);
+
+            int anhoWeek =  Integer.parseInt(fechaGuion.substring(0,4));
+            int mesWeek = Integer.parseInt(fechaGuion.substring(5,7));
+            int diaWeek = Integer.parseInt(fechaGuion.substring(8,10));
+
+
+            if (anho == anhoWeek && mes == mesWeek && dia == diaWeek){
+                String horaMin = tiempoEliminar.substring(11,16);
+                int posEliminar = 0;
+                for (int h = 0; h<horaInicio.size();h++){
+                    if (horaMin.equals(horaInicio.get(h)))  {
+                        Log.d("xd", horaMin + " xxaffsafsfsaf " + horaInicio );
+                        posEliminar = h;
+                        break;
+                    }
+                }
+                Log.d("xd", "LLEGUE ACAAA " + posEliminar);
+                horaInicio.remove(posEliminar);
+            }
+        }
+
+        return horaInicio;
+
     }
 
 }
