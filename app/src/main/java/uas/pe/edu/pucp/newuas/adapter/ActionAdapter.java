@@ -42,7 +42,7 @@ public class ActionAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Action getItem(int position) {
         return items.get(position);
     }
 
@@ -70,47 +70,41 @@ public class ActionAdapter extends BaseAdapter {
         Teacher tch = items.get(position).getTeacher();
         if (tch != null)
             viewHolder.tvActResp.setText("Por: " + tch.getNombre() + " " + tch.getApellidoPaterno() + " " + tch.getApellidoPaterno());
-        else{
-            viewHolder.tvActResp.setText("Por: Todos");
+        else {
+            viewHolder.tvActResp.setText(R.string.everyone);
         }
 
-        if(items.get(position).getComentario()==null){
-            viewHolder.tvActComm.setText("Sin comentarios");
-        }else{
+        if (items.get(position).getComentario() == null) {
+            viewHolder.tvActComm.setText(R.string.no_comment);
+        } else {
             viewHolder.tvActComm.setText(items.get(position).getComentario());
         }
 
-        if(items.get(position).getPorcentaje()==null){
+        if (items.get(position).getPorcentaje() == null) {
             viewHolder.tvActPerc.setText("0%");
-        }else{
-            viewHolder.tvActPerc.setText(items.get(position).getPorcentaje() + "%");
+        } else {
+            String porcentaje = items.get(position).getPorcentaje() + "%";
+            viewHolder.tvActPerc.setText(porcentaje);
         }
 
 
-        if(items.get(position).getIdArchivoEntrada() != null || Configuration.isConnected(context)){
+        if (items.get(position).getIdArchivoEntrada() != null || Configuration.isConnected(context)) {
             viewHolder.btDownloadFileAction.setEnabled(true);
-
-            final String arch = items.get(position).getActionFile().getFilename();
-            viewHolder.btDownloadFileAction.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FileDownloadController fdc = new FileDownloadController();
-                    fdc.downloadFile(context, Configuration.FILE_URL + arch );
-
-                }
-            });
-
-        }else{
+            if (items.get(position).getActionFile() != null) {
+                final String arch = items.get(position).getActionFile().getFilename();
+                viewHolder.btDownloadFileAction.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FileDownloadController.downloadFile(context, Configuration.FILE_URL + arch);
+                    }
+                });
+            } else {
+                viewHolder.btDownloadFileAction.setEnabled(false);
+            }
+        } else {
             viewHolder.btDownloadFileAction.setEnabled(false);
-
         }
-
-
-
-
         return view;
-
-
     }
 
     private static class ViewHolder {

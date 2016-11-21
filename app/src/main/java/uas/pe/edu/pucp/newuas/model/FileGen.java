@@ -12,10 +12,10 @@ import java.io.Serializable;
  */
 
 @DatabaseTable(tableName = "file")
-public class FileGen implements Serializable{
+public class FileGen implements Serializable {
     @SerializedName("IdArchivoEntrada")
     @Expose
-    @DatabaseField(id=true)
+    @DatabaseField(id = true)
     private Integer idArchivoEntrada;
     @SerializedName("filename")
     @Expose
@@ -41,15 +41,23 @@ public class FileGen implements Serializable{
     @DatabaseField
     private String updatedAt;
 
+    @SerializedName("file_name")
+    @Expose
+    @DatabaseField
+    private String file_name;
+
+    @SerializedName("file_url")
+    @Expose
+    @DatabaseField
+    private String file_url;
+
     /**
      * No args constructor for use in serialization
-     *
      */
     public FileGen() {
     }
 
     /**
-     *
      * @param updatedAt
      * @param idArchivoEntrada
      * @param createdAt
@@ -69,129 +77,116 @@ public class FileGen implements Serializable{
     }
 
     /**
-     *
-     * @return
-     * The idArchivoEntrada
+     * @return The idArchivoEntrada
      */
     public Integer getIdArchivoEntrada() {
         return idArchivoEntrada;
     }
 
     /**
-     *
-     * @param idArchivoEntrada
-     * The IdArchivoEntrada
+     * @param idArchivoEntrada The IdArchivoEntrada
      */
     public void setIdArchivoEntrada(Integer idArchivoEntrada) {
         this.idArchivoEntrada = idArchivoEntrada;
     }
 
     /**
-     *
-     * @return
-     * The filename
+     * @return The filename
      */
     public String getFilename() {
         return filename;
     }
 
     /**
-     *
-     * @param filename
-     * The filename
+     * @param filename The filename
      */
     public void setFilename(String filename) {
         this.filename = filename;
     }
 
     /**
-     *
-     * @return
-     * The mime
+     * @return The mime
      */
     public String getMime() {
         return mime;
     }
 
     /**
-     *
-     * @param mime
-     * The mime
+     * @param mime The mime
      */
     public void setMime(String mime) {
         this.mime = mime;
     }
 
     /**
-     *
-     * @return
-     * The originalFilename
+     * @return The originalFilename
      */
     public String getOriginalFilename() {
         return originalFilename;
     }
 
     /**
-     *
-     * @param originalFilename
-     * The original_filename
+     * @param originalFilename The original_filename
      */
     public void setOriginalFilename(String originalFilename) {
         this.originalFilename = originalFilename;
     }
 
     /**
-     *
-     * @return
-     * The deletedAt
+     * @return The deletedAt
      */
     public Object getDeletedAt() {
         return deletedAt;
     }
 
     /**
-     *
-     * @param deletedAt
-     * The deleted_at
+     * @param deletedAt The deleted_at
      */
     public void setDeletedAt(Object deletedAt) {
         this.deletedAt = deletedAt;
     }
 
     /**
-     *
-     * @return
-     * The createdAt
+     * @return The createdAt
      */
     public String getCreatedAt() {
         return createdAt;
     }
 
     /**
-     *
-     * @param createdAt
-     * The created_at
+     * @param createdAt The created_at
      */
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
     /**
-     *
-     * @return
-     * The updatedAt
+     * @return The updatedAt
      */
     public String getUpdatedAt() {
         return updatedAt;
     }
 
     /**
-     *
-     * @param updatedAt
-     * The updated_at
+     * @param updatedAt The updated_at
      */
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
+    public String getFile_name() {
+        return file_name;
+    }
+
+    public void setFile_name(String file_name) {
+        this.file_name = file_name;
+    }
+
+    public String getFile_url() {
+        return file_url;
+    }
+
+    public void setFile_url(String file_url) {
+        this.file_url = file_url;
+    }
 }

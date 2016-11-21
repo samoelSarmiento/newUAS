@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="70dp">
+
+    <TextView
+        android:id="@+id/tvNoEvidence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_evidence"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btEvidence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
+        android:background="@drawable/bg_button_login_selector"
+        android:text="@string/btEvidence"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvNoStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_student"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/divider"
+        android:text="@string/results"
+        android:textColor="@color/black" />
+
+    <ListView
+        android:id="@+id/lvStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/uas_plomo"
+        android:dividerHeight="0dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:visibility="gone">
+
+    </ListView>
+
+</LinearLayout>

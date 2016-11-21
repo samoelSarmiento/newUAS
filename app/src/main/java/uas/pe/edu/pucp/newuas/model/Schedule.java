@@ -35,6 +35,8 @@ public class Schedule implements Serializable {
     @DatabaseField
     private int totalalumnos;
 
+    private List<FileGen> course_evidences;
+
     public Schedule() {
     }
 
@@ -104,5 +106,13 @@ public class Schedule implements Serializable {
 
     public void setProfessors(List<Teacher> professors) {
         this.professors = professors;
+    }
+
+    public List<FileGen> getCourse_evidences() {
+        return course_evidences;
+    }
+
+    public void setCourse_evidences(List<FileGen> course_evidences) {
+        this.course_evidences = course_evidences;
     }
 }
