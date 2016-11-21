@@ -132,7 +132,7 @@ public class TutorNewAppointFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        
+
                         DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
                         Calendar now = Calendar.getInstance();
                         //Calendar future = now.add(Calendar.DAY_OF_YEAR,);

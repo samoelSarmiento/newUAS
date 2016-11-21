@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
     Button saveBut,cancelBut;
     InvGroups invG;
     Context context;
+    ImageView invGImage;
 
     public InvGroupEditFragment() {
         // Required empty public constructor
@@ -52,6 +56,7 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
         invGroupEsp=(TextView) view.findViewById(R.id.invGroupEsp);
         saveBut=(Button) view.findViewById(R.id.invGroupSave);
         cancelBut=(Button) view.findViewById(R.id.invGroupCancel);
+        invGImage=(ImageView) view.findViewById(R.id.invGImage);
 
         Bundle bundle = this.getArguments();
         InvGroups invGroup=null;
@@ -63,6 +68,9 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
         invGroupName.setText(invGroup.getNombre());
         invGroupDesc.setText(invGroup.getDescripcion());
         invGroupEsp.setText(invGroup.getFaculty().getNombre());
+
+        if(invGroup.getImagen()!=null)
+            Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.getImagen()).into(invGImage);
 
         saveBut.setOnClickListener(this);
         cancelBut.setOnClickListener(this);

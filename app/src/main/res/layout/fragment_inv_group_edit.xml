@@ -12,6 +12,7 @@
 
 
     <ImageView
+        android:id="@+id/invGImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/invGroupImage" />
 

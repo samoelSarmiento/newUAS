@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.text.ParseException;
@@ -40,6 +41,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
     ImageButton selFecha;
     InvEvent invEv;
     Context context;
+    ImageView invEvImage;
     int day,month,year;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Date date;
@@ -63,6 +65,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         saveBut=(Button) view.findViewById(R.id.invEvSave);
         cancelBut=(Button) view.findViewById(R.id.invEvCancel);
         selFecha = (ImageButton)view.findViewById(R.id.selFecha);
+        invEvImage=(ImageView) view.findViewById(R.id.invEvImage);
 
         Bundle bundle = this.getArguments();
         InvEvent invEvent=null;
@@ -91,6 +94,9 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
 
         invEvHora.setText(invEvent.getHora());
         invEvUbic.setText(invEvent.getUbicacion());
+
+        if(invEvent.getImagen()!=null)
+            Picasso.with(context).load(Configuration.BASE_URL + "/"+ invEvent.getImagen()).into(invEvImage);
 
         saveBut.setOnClickListener(this);
         cancelBut.setOnClickListener(this);

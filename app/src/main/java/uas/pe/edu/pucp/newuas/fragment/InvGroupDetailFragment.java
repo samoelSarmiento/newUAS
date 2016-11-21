@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
@@ -76,7 +77,7 @@ public class InvGroupDetailFragment extends Fragment {
         invGroupEsp.setText(invGroup.get(0).getFaculty().getNombre());
 
         if(invGroup.get(0).getImagen()!=null)
-            Picasso.with(context).load(RetrofitHelper.serverURL + invGroup.get(0).getImagen()).into(invGImage);
+            Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.get(0).getImagen()).into(invGImage);
 
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override
