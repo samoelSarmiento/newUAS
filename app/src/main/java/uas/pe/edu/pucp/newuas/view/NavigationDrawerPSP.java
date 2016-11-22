@@ -36,6 +36,7 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
@@ -267,11 +268,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
         if (id == R.id.nav_item_pspCycle) {
+
+
+
+            /*
             PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
 
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, psp_cycleFragment).commit();
             setTitle(item.getTitle());
-
+*/
         } else if (id == R.id.nav_item_pspTutors) {
 
 

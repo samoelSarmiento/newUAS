@@ -34,6 +34,7 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail;
 import uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
@@ -546,7 +547,7 @@ public class PSPController {
 
                     PSPMessage message = response.body();
 
-                    Toast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT).show();
+                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
 
 
                     ((Activity) context).getFragmentManager().popBackStack();
@@ -659,7 +660,9 @@ public class PSPController {
 
                     PSPMessage message = response.body();
 
-                    Toast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT).show();
+
+                    MyToast.makeText(context, "Se ha registrado hora disponible", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+
 
 
                     ((Activity) context).getFragmentManager().popBackStack();

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,18 @@ public class PSP_SupFreeHours extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        Log.d("SUP_FREE_HOURS", "volvi");
+
+
+
+
+
+    }
 
     @Override
     public void onClick(View v) {

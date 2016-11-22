@@ -25,6 +25,7 @@ import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 
@@ -189,7 +190,6 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha registrado hora disponible", Toast.LENGTH_LONG).show();
                                         PSPController controller = new PSPController();
                                         PSPFreeHour freeHour = new PSPFreeHour();
                                         freeHour.setFecha(valorFecha[0]);

@@ -130,6 +130,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:enabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_psp_sup_student_meeting_place" />

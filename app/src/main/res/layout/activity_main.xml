@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-       android:background="@drawable/btn_main_yellow"
+       android:background="@drawable/btn_main_uas"
 
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
 
 
-        android:background="@drawable/btn_main_red"
+        android:background="@drawable/btn_main_uas"
 
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:background="@drawable/btn_main_green"
+        android:background="@drawable/btn_main_uas"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
 
 
-        android:background="@drawable/btn_main_blue"
+        android:background="@drawable/btn_main_uas"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"

@@ -28,6 +28,7 @@ import java.util.Locale;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.SupStudentsNewMeetingSpinnerAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.Student;
 
@@ -42,8 +43,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
     ImageButton btnCalendar;
     Button btnSolicitar;
     Spinner spinnerHoras, spinnerStudents;
-    EditText txtFecha;
-    EditText txtLugar;
+    EditText txtFecha, txtLugar;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Calendar[] dates = new Calendar[2];
@@ -116,6 +116,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         spinnerHoras = (Spinner) view.findViewById(R.id.sp_psp_sup_student_meeting_hours);
         txtLugar = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_place);
         spinnerStudents = (Spinner) view.findViewById(R.id.cmb_psp_sup_student_meeting_students);
+
 
 
 
@@ -220,7 +221,6 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
                                         PSPController controller = new PSPController();
 
                                         PSPMeetingRequest meeting=  new PSPMeetingRequest();
