@@ -7,22 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/fragment_top"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment">
+    tools:context="uas.pe.edu.pucp.newuas.fragment.StudentEffortResultFragment">
 
     <TextView
-        android:id="@+id/tvNoCourses"
+        android:id="@+id/tvNoCriterios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tvNoCourses"
+        android:paddingBottom="@dimen/divider"
+        android:text="@string/no_criterio"
+        android:textColor="@color/black"
         android:visibility="gone" />
 
     <ListView
-        android:id="@+id/lvCourses"
+        android:id="@+id/lvResults"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp">
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:divider="@color/uas_plomo"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 </LinearLayout>

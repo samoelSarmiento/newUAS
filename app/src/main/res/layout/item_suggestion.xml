@@ -25,6 +25,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_weight="0.5"
+            android:gravity="end"
             android:text="@string/tvWhen"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -36,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:gravity="center"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="@dimen/half_divider"
+        android:paddingTop="@dimen/half_divider"
         android:text="@string/tvTitle"
         android:textColor="@color/black"
         android:textStyle="bold" />
@@ -46,7 +47,8 @@
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end" />
+        android:layout_gravity="end"
+        android:maxLines="3" />
 
     <TextView
         android:id="@+id/tvEdit"
@@ -54,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:gravity="end"
-        android:paddingTop="20dp"
+        android:paddingTop="@dimen/divider"
         android:text="@string/tvEdit"
         android:textSize="12sp"
         android:visibility="gone" />

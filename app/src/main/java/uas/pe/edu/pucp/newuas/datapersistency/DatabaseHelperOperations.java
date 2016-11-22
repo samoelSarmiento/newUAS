@@ -10,9 +10,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.model.ConfSpeciality;
+import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
 import uas.pe.edu.pucp.newuas.model.Period;
+import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
+import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.Teacher;
 
 /**
  * Created by samoe on 12/11/2016.
@@ -157,6 +161,114 @@ public class DatabaseHelperOperations {
                 measureinstrumentDao.update(mi);
             }
         }
+    }
+
+    /*COURSES*/
+    public static void saveCourseSchedule(final Context context, List<Schedule> scheduleList, int idCourse, int idAcademicCycle) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
+        Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
+        for (Schedule schedule : scheduleList) {
+            schedule.setIdCiclo(idAcademicCycle);
+            schedule.setIdCurso(idCourse);
+            Schedule find = scheduleDao.queryForId(schedule.getIdHorario());
+            if (find == null) {
+                scheduleDao.create(schedule);
+            } else {
+                scheduleDao.update(schedule);
+            }
+            //guardamos sus profesores
+            List<Teacher> teachers = schedule.getProfessors();
+            if (teachers != null) {
+                for (Teacher teacher : teachers) {
+                    teacher.setIdSchedule(schedule.getIdHorario());
+                    Teacher findT = teacherDao.queryForId(teacher.getIdDocente());
+                    if (findT == null) {
+                        teacherDao.create(teacher);
+                    } else {
+                        teacherDao.update(teacher);
+                    }
+                }
+            }
+        }
+    }
+
+    public static List<Schedule> retrieveCourseSchedules(final Context context, int idCourse, int idCycle) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
+        Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
+        List<Schedule> list = scheduleDao.queryBuilder()
+                .where().eq("course_id", idCourse)
+                .and().eq("idCicloAcademico", idCycle).query();
+        for (Schedule schedule : list) {
+            Log.d("COSI", schedule.getIdHorario() + "");
+            List<Teacher> teacherList = teacherDao.queryBuilder()
+                    .where().eq("schedule_id", schedule.getIdHorario()).query();
+            schedule.setProfessors(teacherList);
+        }
+        return list;
+    }
+
+    public static void saveCourses(final Context context, List<CourseResponse> courseResponse, int idCycle) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
+        for (CourseResponse crs : courseResponse) {
+            crs.setIdAcademicCycle(idCycle);
+            CourseResponse find = courseDao.queryForId(crs.getIdCurso());
+            if (find == null) {
+                courseDao.create(crs);
+            } else {
+                courseDao.update(crs);
+            }
+        }
+    }
+
+    public static List<CourseResponse> retrieveCourses(final Context context, int idCycle, int idSpecialty) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
+        return courseDao.queryBuilder()
+                .where().eq("idEspecialidad", idSpecialty)
+                .and().eq("idAcademicCycle", idCycle).query();
+    }
+
+    /*SPECIALTY*/
+    public static void saveSpecialties(List<Specialty> specialtyList, final Context context) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        for (Specialty specialty : specialtyList) {
+            //veo si la especialidad existe
+            Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
+            if (find == null) {
+                specialtyDao.create(specialty);
+            } else {
+                //si se encontro la actualizo
+                specialtyDao.update(specialty);
+            }
+        }
+    }
+
+    public static List<Specialty> retriveSpecialties(final Context context) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        return specialtyDao.queryForAll();
+    }
+
+    public static void saveSpecialty(Specialty specialty, final Context context) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
+        if (find == null) {
+            specialtyDao.create(specialty);
+        } else {
+            specialtyDao.update(specialty);
+        }
+
+    }
+
+    public static Specialty getSpecialty(Integer id, final Context context) throws SQLException {
+        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
+        return specialtyDao.queryForId(id);
     }
 
 }

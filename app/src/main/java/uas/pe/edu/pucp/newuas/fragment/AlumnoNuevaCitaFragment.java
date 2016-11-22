@@ -20,13 +20,19 @@ import android.widget.Toast;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
+import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
+import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
@@ -40,13 +46,15 @@ public class AlumnoNuevaCitaFragment extends Fragment {
     Spinner spinnerHoras, spinnerTemas;
     EditText txtFecha;
     int day, year, month;
+    int ndays[] = new int[1];
     private static DatePickerDialog.OnDateSetListener selectorListener;
-    Calendar[] dates = new Calendar[2];
+    //Calendar[] dates = new Calendar[1];
+    List<Calendar> dates = new ArrayList<Calendar>();
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
     //String infoSolicitar = "Está a punto de confirmar una cita con su tutor para el 09/11/2016 a las 10:00  \n ¿Desea continuar?";
-
+    public static List<ScheduleInfoResponse> sir ;
 
 
     public AlumnoNuevaCitaFragment() {
@@ -67,17 +75,30 @@ public class AlumnoNuevaCitaFragment extends Fragment {
 
             final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
 
+            Bundle bundle = this.getArguments();
+            List<TUTInfoResponse> tutGroup= null;
+            if (bundle != null){
+                tutGroup= (List<TUTInfoResponse>) bundle.getSerializable("Tutoria");
+            }
+
+
+            ndays[0] = tutGroup.get(0).getNumberDays();
+            sir = tutGroup.get(0).getScheduleInfo();
+            //sir.get(0).
             Calendar c = Calendar.getInstance();
             year = c.get(Calendar.YEAR);
             month = c.get(Calendar.MONTH);
             day = c.get(Calendar.DAY_OF_MONTH);
             showDate();
             gettingMaxTime();
+
+        /*
             try {
                 dates = gettingDisabledDays();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+         */
 
             Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
             s.setAdapter(null);
@@ -107,6 +128,11 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                             Calendar now = Calendar.getInstance();
                             //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
                             d.setMinDate(now);
+                            //Calendar rekt = Calendar.getInstance();
+                            dates = obtenerFechasDisponibles(ndays[0],sir);
+                            Calendar [] cdates =  dates.toArray(new Calendar[dates.size()]);
+                            d.setSelectableDays(cdates);
+                            //d.setHighlightedDays(cdates);
                             // d.setMaxDate(maxTime);
                             //d.setDisabledDays(dates);
                             d.show(getActivity().getFragmentManager(), "Datepickerdialog");
@@ -184,72 +210,60 @@ public class AlumnoNuevaCitaFragment extends Fragment {
         maxTime.setTime(dateObj);
     }
 
-    public Calendar[] gettingDisabledDays() throws ParseException {
+    public List<Calendar> obtenerFechasDisponibles(int dia, List<ScheduleInfoResponse> listaHorarios){
 
-        // cal1.add(Calendar.DAY_OF_WEEK,Calendar.SATURDAY);
-        // cal2.add(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
-        // cal1.setFirstDayOfWeek(Calendar.SUNDAY);
-        // cal2.setFirstDayOfWeek(Calendar.SUNDAY);
-        // cal1.add(Calendar.DAY_OF_WEEK_IN_MONTH,29);
-        // cal2.add(Calendar.DAY_OF_YEAR,7);
-        // OBTENEMOS EL DIA ACTUAL //
+        List<Calendar> fechas = new ArrayList<Calendar>();
+        List<Integer> diaL = new ArrayList<Integer>();
+        List<Integer> mesL = new ArrayList<Integer>();
+        List<Integer> anhoL = new ArrayList<Integer>();
 
-        String dateString = String.format("%d-%d-%d", year, month + 1, day);
-        Date date = new SimpleDateFormat("yyyy-M-d").parse(dateString);
-        // Then get the day of week from the Date based on specific locale.
-        String dayOfWeek = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date);
-        String day1 = new String ("Monday");
-        String day2 = new String ("Tuesday");
-        String day3 = new String ("Wednesday");
-        String day4 = new String ("Thursday");
-        String day5 = new String ("Friday");
-        String day6 = new String ("Saturday");
-        String day7 = new String ("Sunday");
+        int totalSemanas = dia / 7;
+        Calendar now = Calendar.getInstance();
+        int dayToday = now.get(Calendar.DAY_OF_WEEK);
+        if (dayToday == 1 ) dayToday = 7;
+        else if (dayToday == 7) dayToday = 6;
+        else if (dayToday == 6) dayToday = 5;
+        else if (dayToday == 5) dayToday = 4;
+        else if (dayToday == 4) dayToday = 3;
+        else if (dayToday == 3) dayToday = 2;
+        else if (dayToday == 2) dayToday = 1;
 
-        if (day1.equals(dayOfWeek)){
-            cal1.add(Calendar.DAY_OF_WEEK,5);
-            cal2.add(Calendar.DAY_OF_WEEK,6);
+        for (int i = 0; i<listaHorarios.size(); i++){
+            int dayNeeded =  listaHorarios.get(i).getDia();
+            int finalDay = dayToday - dayNeeded;
+            if (finalDay > 0 ) {
+                Calendar kaka = Calendar.getInstance();
+                now = Calendar.getInstance();
+                now.add(Calendar.DAY_OF_MONTH, -1 * finalDay);
+                diaL.add(now.get(Calendar.DAY_OF_MONTH));
+                mesL.add(now.get(Calendar.MONTH));
+                anhoL.add(now.get(Calendar.YEAR));
+            }
+            else{
+                finalDay = dayNeeded - dayToday;
+                Calendar kaka = Calendar.getInstance();
+                now = Calendar.getInstance();
+                now.add(Calendar.DAY_OF_MONTH, finalDay);
+                diaL.add(now.get(Calendar.DAY_OF_MONTH));
+                mesL.add(now.get(Calendar.MONTH));
+                anhoL.add(now.get(Calendar.YEAR));
+            }
         }
-        else if (day2.equals(dayOfWeek)){
-            cal1.add(Calendar.DAY_OF_WEEK,4);
-            cal2.add(Calendar.DAY_OF_WEEK,5);
-        }
-        else if (day3.equals(dayOfWeek)) {
-            cal1.add(Calendar.DAY_OF_WEEK,3);
-            cal2.add(Calendar.DAY_OF_WEEK,4);
-        }
-        else if (day4.equals(dayOfWeek)) {
-           //  cal1.add(Calendar.DAY_OF_WEEK,2);
-           //  cal2.add(Calendar.DAY_OF_WEEK,3);
 
-            cal1.add(Calendar.DAY_OF_WEEK,9);
-            cal2.add(Calendar.DAY_OF_WEEK,10);
-        }
-        else if (day5.equals(dayOfWeek)){
-            cal1.add(Calendar.DAY_OF_WEEK,1);
-            cal2.add(Calendar.DAY_OF_WEEK,2);
-        }
-        else if (day6.equals(dayOfWeek)) {
-            cal1.add(Calendar.DAY_OF_WEEK,0);
-            cal2.add(Calendar.DAY_OF_WEEK,1);
-        }
-        else if (day7.equals(dayOfWeek)) {
-            cal1.add(Calendar.DAY_OF_WEEK,-1);
-            cal2.add(Calendar.DAY_OF_WEEK,0);
+        List<Calendar> calendarArray = new ArrayList<Calendar>();
+        for (int i = 0; i< diaL.size(); i++) {
+            for (int j = 0; j < totalSemanas; j++) {
+                Calendar c1 = new GregorianCalendar(anhoL.get(i), mesL.get(i), diaL.get(i));
+                c1.add(Calendar.DAY_OF_YEAR, 7 * j);
+                fechas.add(c1);
+            }
         }
 
 
 
+        return fechas;
 
-        // cal1.add(Calendar.DAY_OF_MONTH,Calendar.SATURDAY);
-        //  cal2.add(Calendar.DAY_OF_MONTH,Calendar.SUNDAY);
-        //  Log.d("MyTag","" + Calendar.`);
-        dates[0] = cal1;
-        dates[1] = cal2;
-        return dates;
     }
-
-
 }
 
 

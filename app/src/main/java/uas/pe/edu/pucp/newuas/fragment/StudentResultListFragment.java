@@ -1,10 +1,9 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import java.util.List;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.StudentResultAdapter;
 import uas.pe.edu.pucp.newuas.controller.EducationalObjectiveController;
-import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.model.StudentResult;
 
 public class StudentResultListFragment extends Fragment {
@@ -46,14 +44,18 @@ public class StudentResultListFragment extends Fragment {
             List<StudentResult> list = (List<StudentResult>) bundle.getSerializable("studentResult");
             adapter = new StudentResultAdapter(context, list);
             lvStudentResults.setAdapter(adapter);
+
+
             lvStudentResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     StudentResult result = adapter.getItem(position);
+
                     EducationalObjectiveController controller = new EducationalObjectiveController();
                     controller.getStudentResultAspects(context, result.getIdResultadoEstudiantil());
                 }
             });
+
         }
         return view;
     }

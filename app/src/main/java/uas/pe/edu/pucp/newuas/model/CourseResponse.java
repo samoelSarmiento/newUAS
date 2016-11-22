@@ -42,6 +42,9 @@ public class CourseResponse implements Serializable {
     @DatabaseField
     private String nombre;
 
+    private List<Schedule> schedule;
+
+
     public CourseResponse() {
     }
 
@@ -60,12 +63,6 @@ public class CourseResponse implements Serializable {
     public void setIdAcademicCycle(int idAcademicCycle) {
         this.idAcademicCycle = idAcademicCycle;
     }
-
-    public void setSchedules(List<Schedule> schedules) {
-        this.schedules = schedules;
-    }
-
-    private List<Schedule> schedules = new ArrayList<Schedule>();
 
     public int getIdCurso() {
         return idCurso;
@@ -108,11 +105,10 @@ public class CourseResponse implements Serializable {
     }
 
     public List<Schedule> getSchedules() {
-        return schedules;
+        return schedule;
     }
 
-    public void setSchedules(ArrayList<Schedule> schedules) {
-        this.schedules = schedules;
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedule = schedules;
     }
-
 }
