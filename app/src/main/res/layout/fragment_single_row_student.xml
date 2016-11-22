@@ -39,14 +39,14 @@
             android:id="@+id/topicSingleRow"
 
             />
-<!--
+
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
-           -android:src="@drawable/ic_check"
+            android:src="@drawable/ic_check"
             android:background="@android:color/transparent"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="2dp"
             android:scaleType="fitXY"
             android:id="@+id/icon1SingleRow"
             />
@@ -61,13 +61,13 @@
             android:scaleType="fitXY"
             android:id="@+id/icon2SingleRow"
             />
--->
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal">
 
         <TextView
