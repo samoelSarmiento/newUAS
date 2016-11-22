@@ -88,7 +88,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         final Context contextAdapter = viewGroup.getContext();
 
-        if (temp.getEstado().equals("Pendiente") ) {
+        if (temp.getEstado().equals("Sugerida") ) {
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -182,6 +182,46 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         }
 
+        else if (temp.getEstado().equals("Pendiente")){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setTitle("Cancelación de cita");
+                            builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.cancelListTutor(context, idAppoint);
+                                        }
+                                    }
+                            ).show();
+
+                        }
+                    }
+            );
+
+
+        }
 
         return row;
 

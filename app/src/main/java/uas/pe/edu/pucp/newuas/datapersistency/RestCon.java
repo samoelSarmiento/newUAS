@@ -265,6 +265,9 @@ public interface RestCon {
     @POST("cancelStudentAppointment")
     Call<String> cancelAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 
+    @POST("refuseStudentAppointment")
+    Call<String> refuseAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
     /*END SECTION*/
 
 

@@ -176,15 +176,16 @@ public class TutTutorController {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
 
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
             }
         });
 
@@ -217,10 +218,17 @@ public class TutTutorController {
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
+                        int idCreador = ap.getCreador();
                         int idAppoint = ap.getId();
+
                         if (estado.equals("Pendiente")){
-                             icon1[0] = R.drawable.ic_check;
+                             icon1[0] = R.drawable.ic_nullresource;
                              icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Confirmada") ){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_cross;
+
                         }
                         else if (estado.equals("Confirmada")){
                             icon1[0] = R.drawable.ic_eye;
@@ -231,9 +239,21 @@ public class TutTutorController {
                             icon1[0] = R.drawable.ic_nullresource;
                             icon2[0] = R.drawable.ic_nullresource;
 
-                        }else if (estado.equals("Sugerida")){
+                        }else if (estado.equals("Sugerida") ){
                             icon1[0] = R.drawable.ic_check;
                             icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Rechazada")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("Asistida")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("No asistida")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
                         }
 
                         sr.add(new SingleRowTuto(fechaI,horaI,tema,estado,nombreP,icon1[0],icon2[0],idAppoint));
