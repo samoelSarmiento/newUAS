@@ -322,6 +322,11 @@ public interface RestCon {
     @GET("psp/supervisor/freehour")
     Call<List<PSPFreeHour>> getSupervisorFreeHour(@QueryMap  Map<String, String> token);
 
+    @GET("psp/supervisor/freehours")
+    Call<List<PSPFreeHour>> getSupervisorFreeHours(@QueryMap  Map<String, String> token);
+
+
+
     @POST("psp/meetings/student/store")
     Call<PSPMessage> storeStudentMeeting(@Body PSPFreeHour freeHour, @QueryMap Map<String, String> token );
     @POST("psp/meetings/notification/student/{id}")

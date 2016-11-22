@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -113,7 +114,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
                 menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
                 menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student);
+                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
 
                 // menu.setGroupVisible(R.id.nav_psp_group_students, true);
                 break;
@@ -124,6 +126,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
                 menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
 
             case 2:
                 //Teacher
@@ -393,7 +396,14 @@ public class NavigationDrawerPSP extends AppCompatActivity
             controller.getSupStudents(this);
 
 
-        } else if (id == R.id.nav_pspExit) {
+        } else if(id == R.id.nav_item_pspSupFreeHours){
+
+            PSPController controller =  new PSPController();
+            controller.getSupFreeHours(this);
+
+
+        }
+        else if (id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -417,5 +427,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 
 }

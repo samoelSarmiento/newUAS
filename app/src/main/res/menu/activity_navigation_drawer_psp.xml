@@ -64,6 +64,10 @@
             android:id="@+id/nav_item_pspStudentMeetings"
             android:icon="@drawable/ic_calendar"
             android:title="Reservar Cita" />
+        <item android:id="@+id/nav_item_pspSupFreeHours"
+            android:icon="@drawable/ic_calendar"
+            android:title="Disponibilidad" />
+
 
         <item
             android:id="@+id/nav_pspExit"

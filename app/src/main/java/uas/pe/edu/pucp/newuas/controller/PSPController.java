@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.PSP_StudentNewMeetingSup;
 import uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupFreeHours;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupMeetingsStudentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupStudentNewMeetingFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingsFragment;
@@ -931,6 +932,61 @@ public class PSPController {
 
 
         return true;
+
+
+    }
+
+
+
+    public boolean getSupFreeHours(final Context  context){
+
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<PSPFreeHour>> call = restCon.getSupervisorFreeHours( token);
+
+        call.enqueue(new Callback<List<PSPFreeHour>>(){
+            @Override
+            public void onResponse(Call<List<PSPFreeHour>> call, Response<List<PSPFreeHour>> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    ArrayList<PSPFreeHour> freeHours = (ArrayList<PSPFreeHour>) response.body();
+                    Bundle  bundle =  new Bundle();
+                    bundle.putSerializable("freeHours", freeHours);
+
+                    Fragment fragment  = new PSP_SupFreeHours();
+
+                    fragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPFreeHour>> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+
+
+
 
 
     }
