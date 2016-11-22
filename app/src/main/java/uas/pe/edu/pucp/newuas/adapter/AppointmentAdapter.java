@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
 
@@ -73,7 +74,7 @@ public class AppointmentAdapter extends BaseAdapter {
             final int idAppoint = temp.getIdAppoint();
 
 
-            if (temp.getEstado().equals("Pendiente") ) {
+            if (temp.getEstado().equals("Sugerida") ) {
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -90,7 +91,7 @@ public class AppointmentAdapter extends BaseAdapter {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
                                                 Toast.makeText(context, "Se ha confirmado la cita con el alumno", Toast.LENGTH_LONG).show();
-                                                TutTutorController tsc = new TutTutorController();
+                                                TutStudentController tsc = new TutStudentController();
                                                 tsc.refreshListTutor(context, idAppoint);
                                             }
                                         }
@@ -116,8 +117,9 @@ public class AppointmentAdapter extends BaseAdapter {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
                                                 Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
-                                                TutTutorController tsc = new TutTutorController();
-                                                tsc.cancelListTutor(context, idAppoint);
+                                                TutStudentController tsc = new TutStudentController();
+                                                tsc.rechazarListTutor(context,idAppoint);
+                                                //tsc.cancelListTutor(context, idAppoint);
                                             }
                                         }
                                 ).show();
@@ -154,8 +156,49 @@ public class AppointmentAdapter extends BaseAdapter {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
                                                 Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
-                                                TutTutorController tsc = new TutTutorController();
+                                                TutStudentController tsc = new TutStudentController();
                                                 tsc.cancelListTutor(context, idAppoint);
+                                            }
+                                        }
+                                ).show();
+
+                            }
+                        }
+                );
+
+            }
+
+            else if (temp.getEstado().equals("Pendiente")){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setTitle("Cancelación de cita");
+                                builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                                TutStudentController tsc = new TutStudentController();
+                                                tsc.rechazarListTutor(context,idAppoint);
+                                                //tsc.cancelListTutor(context, idAppoint);
                                             }
                                         }
                                 ).show();

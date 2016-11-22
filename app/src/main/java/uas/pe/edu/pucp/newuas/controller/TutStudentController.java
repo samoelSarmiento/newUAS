@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
+import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
@@ -99,14 +101,29 @@ public class TutStudentController {
                     for (AppointmentResponse ap : appointResponse){
                         String fechaHoraInicio =  ap.getInicio();
                         String fechaI = fechaHoraInicio.substring(0,10);
+                        Calendar c = Calendar.getInstance();
+                        int year       = c.get(Calendar.YEAR);
+                        int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+                        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+                        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+
                         String horaI  = fechaHoraInicio.substring(11);
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
+
+                        int idCreador = ap.getCreador();
                         if (estado.equals("Pendiente")){
-                            icon1[0] = R.drawable.ic_check;
+                            icon1[0] = R.drawable.ic_nullresource;
                             icon2[0] = R.drawable.ic_cross;
                         }
-                        else if (estado.equals("Confirmada")){
+                        else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
+                            Log.d("xd","aaaaaaaaaaaaaaaa");
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_cross;
+
+                        }
+                        else if (estado.equals("Confirmada") && !actualDate.equals(fechaI)){
+                            Log.d("xd","bbbbbbbbbbbbbbbbbbbbb");
                             icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
 
@@ -118,6 +135,18 @@ public class TutStudentController {
                         else if (estado.equals("Sugerida")){
                             icon1[0] = R.drawable.ic_check;
                             icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Rechazada")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("Asistida")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("No asistida")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_nullresource;
                         }
 
                         int idAppoint = ap.getId();
@@ -285,6 +314,91 @@ public class TutStudentController {
 
             }
         });
+        return true;
+    }
+
+    public boolean cancelListTutor(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.cancelAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+        });
+
+
+        return true;
+    }
+
+
+    public boolean rechazarListTutor(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.refuseAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+        });
+
+
+        return true;
+    }
+
+
+    public boolean refreshListTutor(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.updateAppointment(new AppointmentRequest(idAppoint,"","","","","",12213123), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                StudentAppointFragment mp = new StudentAppointFragment();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                StudentAppointFragment mp = new StudentAppointFragment();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+
+            }
+        });
+
         return true;
     }
 
