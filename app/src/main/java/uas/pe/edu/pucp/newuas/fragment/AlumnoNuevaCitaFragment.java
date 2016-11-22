@@ -89,7 +89,6 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             ndays[0] = tutGroup.get(0).getNumberDays();
             sir = tutGroup.get(0).getScheduleInfo();
             smr = tutGroup.get(0).getScheduleMeeting();
-
             duracionCita = tutGroup.get(0).getDuracionCita();
             //sir.get(0).
             Calendar c = Calendar.getInstance();
@@ -147,8 +146,6 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                             dates = obtenerFechasDisponibles(ndays[0],sir);
                             Calendar [] cdates =  dates.toArray(new Calendar[dates.size()]);
                             d.setSelectableDays(cdates);
-
-
                             d.show(getActivity().getFragmentManager(), "Datepickerdialog");
                         }
                     }
@@ -326,24 +323,6 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             int anhoWeek =  Integer.parseInt(fechaGuion.substring(0,4));
             int mesWeek = Integer.parseInt(fechaGuion.substring(5,7));
             int diaWeek = Integer.parseInt(fechaGuion.substring(8,10));
-
-            /*
-            Log.d("xd","moosstrar" + anhoWeek + " " + mesWeek );
-            Log.d("xd","SOY EL DIAAAAAAAAAA " + diaWeek );
-
-
-
-            Calendar d = new GregorianCalendar(anhoWeek,mesWeek-1,diaWeek);
-            int dayWeek = d.get(Calendar.DAY_OF_WEEK);
-            if (dayWeek == 1 ) dayWeek = 7;
-            else if (dayWeek == 7) dayWeek = 6;
-            else if (dayWeek == 6) dayWeek = 5;
-            else if (dayWeek == 5) dayWeek = 4;
-            else if (dayWeek == 4) dayWeek = 3;
-            else if (dayWeek == 3) dayWeek = 2;
-            else if (dayWeek == 2) dayWeek = 1;
-            Log.d("xd", "DAY TODAY Y DAYWEEK " + dayToday + " " + dayWeek );
-            */
 
 
             if (anho == anhoWeek && mes == mesWeek && dia == diaWeek){
