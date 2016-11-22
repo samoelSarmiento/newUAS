@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Andree on 11/11/2016.
@@ -41,10 +42,34 @@ public class Deliverable implements Serializable{
     @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Projects projects;
 
+    @SerializedName("versions")
+    private List<InvDocument> invDocuments;
+
+    @SerializedName("investigators")
+    private List<Investigator> investigator;
+
+
+
+    public List<InvDocument> getInvDocuments() {
+        return invDocuments;
+    }
+
+    public void setInvDocuments(List<InvDocument> invDocuments) {
+        this.invDocuments = invDocuments;
+    }
+
+    public List<Investigator> getInvestigator() {
+        return investigator;
+    }
+
+    public void setInvestigator(List<Investigator> investigator) {
+        this.investigator = investigator;
+    }
+
     public Deliverable() {
     }
 
-    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects) {
+    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects, List<InvDocument> invDocuments, List<Investigator> investigator) {
         this.id = id;
         this.nombre = nombre;
         this.idProyecto = idProyecto;
@@ -52,6 +77,8 @@ public class Deliverable implements Serializable{
         this.fechaLimite = fechaLimite;
         this.porcenAvance = porcenAvance;
         this.projects = projects;
+        this.invDocuments = invDocuments;
+        this.investigator = investigator;
     }
 
     public Integer getId() {

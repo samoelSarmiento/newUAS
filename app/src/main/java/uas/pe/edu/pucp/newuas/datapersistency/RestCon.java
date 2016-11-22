@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.model.CriterionLevel;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.EducationalObjective;
 import uas.pe.edu.pucp.newuas.model.ImprovementPlan;
+import uas.pe.edu.pucp.newuas.model.InvDocument;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
@@ -184,6 +185,21 @@ public interface RestCon {
 
     @GET("investigation/{id}/deliverables")
     Call<List<Deliverable>> getDelByProjId(@Path("id") int id, @QueryMap Map<String, String> token);
+
+    @POST("investigation/{id}/deliverable")
+    Call<StringResponse> editDeliv(@Path("id") int id, @QueryMap Map<String, String> token,@Body Deliverable deliverable);
+
+    @GET("investigation/{id}/versions")
+    Call <List<InvDocument>> getAllVersions(@Path("id") int it, @QueryMap Map<String, String> token);
+
+    @GET("investigation/{id}/responsibles")
+    Call <List<Investigator>> getAllResponsibles(@Path("id") int it, @QueryMap Map<String, String> token);
+
+    @GET("investigation/{id}/observation")
+    Call <List<InvDocument>> getObservation(@Path("id") int it, @QueryMap Map<String, String> token);
+
+    @POST("investigation/{id}/observation")
+    Call <StringResponse> registerObs(@Path("id") int it, @QueryMap Map<String, String> token, @Body InvDocument invDocument);
 
     /*--------------*/
 
