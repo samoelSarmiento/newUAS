@@ -115,7 +115,17 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
         delivRegObs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("DelObs", del);
+                bundle.putSerializable("InvDoc",selectedVersion);
 
+                DelivObsFragment mpvFragment = new DelivObsFragment();
+                mpvFragment.setArguments(bundle);
+
+                Context context = getActivity();
+                //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
+                ((Activity)context).setTitle("Proyectos > Entregables");
             }
         });
         delivEdit.setOnClickListener(new View.OnClickListener() {
