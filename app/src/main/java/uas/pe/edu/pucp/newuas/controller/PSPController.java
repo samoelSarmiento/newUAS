@@ -42,6 +42,7 @@ import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
@@ -755,8 +756,9 @@ public class PSPController {
                     PSPMessage message = (PSPMessage) response.body();
 
 
-                    Toast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT).show();
+                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
 
+                    ((Activity)context).getFragmentManager().popBackStack();
 
                 }
 
@@ -985,6 +987,67 @@ public class PSPController {
         return true;
 
 
+
+
+
+
+
+
+
+    }
+
+
+    public boolean getStudentSupFinalScores(final Context context){
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<List<PSPStudentFinalGrade>> call = restCon.getStudentsFinalScore(token);
+
+        call.enqueue(new Callback<List<PSPStudentFinalGrade>>() {
+            @Override
+            public void onResponse(Call<List<PSPStudentFinalGrade>> call, Response<List<PSPStudentFinalGrade>> response) {
+                if(response.isSuccessful()){
+                    pd.dismiss();
+                    ArrayList<PSPStudentFinalGrade> lista = ( ArrayList<PSPStudentFinalGrade> )response.body();
+
+                    Bundle bundle =  new Bundle();
+                    bundle.putSerializable("FinalScores", lista);
+                    Fragment fragment = new PSP_studentGradesDetail();
+                    fragment.setArguments(bundle);
+
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                            .addToBackStack(null).commit();
+
+
+
+
+
+
+                }else{
+                    pd.dismiss();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPStudentFinalGrade>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
+
+
+        return true;
 
 
 

@@ -130,7 +130,6 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
                 menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
-
                 break;
             case 6: //Supervisor PSP
                 menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(true);
@@ -138,6 +137,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
                 break;
+
         }
 
 
@@ -159,7 +159,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
-          showNotificationIcons(menu);
+        //  showNotificationIcons(menu);
          getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
 
         return true;
@@ -370,8 +370,14 @@ public class NavigationDrawerPSP extends AppCompatActivity
         } else if (id == R.id.nav_item_pspGrades) {
 
 
+
+
+
+
             PSPController controller = new PSPController();
-            controller.getTeacherStudents(this);
+            controller.getStudentSupFinalScores(this);
+
+          //  controller.getTeacherStudents(this);
             setTitle("Ver notas");
 
 

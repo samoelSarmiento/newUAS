@@ -27,14 +27,19 @@ public class SupFreeHoursSpinerAdapter extends ArrayAdapter<String> {
 
     @Override
     public int getCount() {
-        return lista.size();
+        return lista.size() + 1;
     }
 
     @Nullable
     @Override
     public String getItem(int position) {
+        String cadena  = null;
 
-        String cadena  = lista.get(position).getFecha() + " " + lista.get(position).getHoraIni()+ ":00" +
+        position = position- 1;
+        if(position< 0)
+            cadena = "--Seleccionar--";
+        else
+            cadena  = lista.get(position).getFecha() + " " + lista.get(position).getHoraIni()+ ":00" +
                 " - " + lista.get(position).getSupervisor().getName() + " " + lista.get(position).getSupervisor().getApellidoPaterno();
 
         return cadena;
