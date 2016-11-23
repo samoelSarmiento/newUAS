@@ -162,8 +162,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                         if(h.length()==1) h= "0" + h;
                         if(m.length()==1) m = "0" + m;
 
-                        String fecha= yearEv+ "-" + monthEv + "-" + dayEv + " " + h + ":" + m + ":00";
-                        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                        String fecha= yearEv+ "-" + monthEv + "-" + dayEv;// + " " + h + ":" + m + ":00";
+                        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
                         Date dateEv= new Date();
                         try {
                             dateEv = format2.parse(fecha);
@@ -188,7 +188,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                             //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
 
                         }else{
-                            Toast.makeText(getActivity(), "La fecha y hora debe ser después de hoy", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "La fecha debe ser posterior a hoy", Toast.LENGTH_LONG).show();
                         }
                     }else{
                         Toast.makeText(getActivity(), "Verifique la hora", Toast.LENGTH_LONG).show();
