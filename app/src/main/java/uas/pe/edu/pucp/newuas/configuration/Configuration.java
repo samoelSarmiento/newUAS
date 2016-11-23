@@ -22,7 +22,9 @@ public class Configuration {
     public static final String SHARED_PREFERENCE_NAME = "sharedPreferences";
     public static final String USER_PREFERENCE = "userPrefs";
 
+
     public static final String BASE_URL = "http://52.89.227.55/api";//"http://192.168.1.35/internetUAS/public";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
+
 
     public static final String FILE_URL = BASE_URL + "/uploads/";
     public static int CXE_ITEM_SHOW = 5;
