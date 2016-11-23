@@ -35,7 +35,7 @@ import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 public class InvEventEditFragment extends Fragment implements View.OnClickListener{
 
-    EditText invEvName, invEvDesc, invEvHora, invEvUbic;
+    EditText invEvName, invEvDesc, invEvHora, invEvMin, invEvUbic;
     TextView invEvFecha;
     Button saveBut,cancelBut;
     ImageButton selFecha;
@@ -43,6 +43,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
     Context context;
     ImageView invEvImage;
     int day,month,year;
+    String day2,month2, year2;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Date date;
 
@@ -61,6 +62,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         invEvDesc=(EditText) view.findViewById(R.id.invEvDesc);
         invEvFecha=(TextView) view.findViewById(R.id.invEvFecha);
         invEvHora=(EditText) view.findViewById(R.id.invEvHora);
+        invEvMin =(EditText) view.findViewById(R.id.invEvMin);
         invEvUbic=(EditText) view.findViewById(R.id.invEvUbic);
         saveBut=(Button) view.findViewById(R.id.invEvSave);
         cancelBut=(Button) view.findViewById(R.id.invEvCancel);
@@ -92,7 +94,24 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         String yearEv = (String) android.text.format.DateFormat.format("yyyy",date);
         year = Integer.parseInt(yearEv);
 
-        invEvHora.setText(invEvent.getHora());
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date2=new Date();
+        try{
+            date2 =format2.parse(invEvent.getHora());
+
+        }catch (ParseException e){
+        }
+        String hour = (String) android.text.format.DateFormat.format("hh",date2);
+        Integer hourEv=Integer.parseInt(hour);
+        String minute = (String) android.text.format.DateFormat.format("mm",date2);
+        Integer minuteEv=Integer.parseInt(minute);
+        day2 = (String) android.text.format.DateFormat.format("dd",date2);
+        month2 = (String) android.text.format.DateFormat.format("MM",date2);
+        year2 = (String) android.text.format.DateFormat.format("yyyy",date2);
+
+        invEvHora.setText(hour);
+        invEvMin.setText(minute);
+
         invEvUbic.setText(invEvent.getUbicacion());
 
         if(invEvent.getImagen()!=null)
@@ -133,7 +152,11 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                     changedIE.setNombre(invEvName.getText().toString());
                     changedIE.setDescripcion(invEvDesc.getText().toString());
                     changedIE.setFecha(invEvFecha.getText().toString());
-                    changedIE.setHora(invEvHora.getText().toString());
+                    String h =invEvHora.getText().toString();
+                    String m=invEvMin.getText().toString();
+                    changedIE.setHora(year2+ "-" + month2 + "-" + day2 + " " + h + ":" + m + ":00");
+
+
                     changedIE.setUbicacion(invEvUbic.getText().toString());
 
                     invEvController.editInvEv(context,changedIE);
