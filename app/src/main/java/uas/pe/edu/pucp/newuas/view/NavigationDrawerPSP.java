@@ -96,63 +96,48 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
     public void showGroupMenu(Menu menu) {
 
+        menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+        menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
+        menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
+        menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudentMeetings).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(false);
+        menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
+        menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
+        menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+        menu.findItem(R.id.nav_pspExit).setVisible(true); //visible para todos los casos
 
         switch (Configuration.LOGIN_USER.getUser().getIdPerfil()) {
-            case 3:
-                //ADMIN
+            case 0: //Alumno
+
 
                 break;
-            case 0:
+            case 1: // Coordinador
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
-
-                //controller.getStudent(this);
-
-                //STUDENTS
-                menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
-                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
-
-                // menu.setGroupVisible(R.id.nav_psp_group_students, true);
                 break;
-            case 1:
-                //Coordinador
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
-                menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
+            case 2: //Profesor
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
-            case 2:
-                //Teacher
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+                break;
+            case 3: //Administrador
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
 
+                break;
+            case 6: //Supervisor PSP
+                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(true);
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
-            case 6:
-
-
-                //Supervisor
-         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
-         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-
+                break;
         }
 
 
