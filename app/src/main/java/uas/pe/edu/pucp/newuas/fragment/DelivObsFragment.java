@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,10 +81,16 @@ public class DelivObsFragment extends Fragment {
         delivSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InvDocument invDocument = selectedVersion;
-                invDocument.setObservacion(delivObs.getText().toString());
-                DeliverableController deliverableController = new DeliverableController();
-                deliverableController.registerObs(context,invDocument);
+                String obs = delivObs.getText().toString();
+                if (!obs.isEmpty() ) {
+                    InvDocument invDocument = selectedVersion;
+                    invDocument.setObservacion(delivObs.getText().toString());
+                    DeliverableController deliverableController = new DeliverableController();
+                    deliverableController.registerObs(context,invDocument);
+                }else {
+                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
         delivCancel.setOnClickListener(new View.OnClickListener() {
