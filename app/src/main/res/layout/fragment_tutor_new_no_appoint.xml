@@ -57,35 +57,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
+           />
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp">
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Hora fin:"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnerHoraFNoAppoint"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
