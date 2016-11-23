@@ -117,13 +117,11 @@ public class TutStudentController {
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
-                            Log.d("xd","aaaaaaaaaaaaaaaa");
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
 
                         }
                         else if (estado.equals("Confirmada") && !actualDate.equals(fechaI)){
-                            Log.d("xd","bbbbbbbbbbbbbbbbbbbbb");
                             icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
 
@@ -141,7 +139,7 @@ public class TutStudentController {
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("Asistida")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("No asistida")){

@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -73,6 +74,11 @@ public class AppointmentAdapter extends BaseAdapter {
             final String solicitud2 = "Esta a punto de  cancelar una  cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + "                     ¿Desea continuar?";
             final int idAppoint = temp.getIdAppoint();
 
+            Calendar c = Calendar.getInstance();
+            int year       = c.get(Calendar.YEAR);
+            int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+            int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+            String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
 
             if (temp.getEstado().equals("Sugerida") ) {
                 icon1.setOnClickListener(
@@ -128,7 +134,46 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
             }
-            else if (temp.getEstado().equals("Confirmada")){
+            else if (temp.getEstado().equals("Confirmada") && actualDate.equals(temp.getFecha())){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setTitle("Cancelación de cita");
+                                builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                                TutStudentController tsc = new TutStudentController();
+                                                tsc.cancelListTutor(context, idAppoint);
+                                            }
+                                        }
+                                ).show();
+
+                            }
+                        }
+                );
+
+            }
+
+            else if (temp.getEstado().equals("Confirmada") && !actualDate.equals(temp.getFecha())){
 
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
