@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.AtenderCitaFragment;
 import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapterTutor;
@@ -166,6 +168,40 @@ public class TutTutorController {
         return true;
     }
 
+    public boolean RealizarCitaConfirmada(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+
+        //((Activity)context).getFragmentManager().popBackStack();
+        AtenderCitaFragment mp = new AtenderCitaFragment();
+        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+
+        /*
+        Call<String> call = restCon.cancelAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                TutorAppointFragment mp = new TutorAppointFragment();
+
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+        });
+        */
+
+        return true;
+    }
+
+
     public boolean cancelListTutor(final Context context,  int idAppoint ){
 
         Map<String, String> data = new HashMap<>();
@@ -215,6 +251,14 @@ public class TutTutorController {
                         String fechaHoraInicio =  ap.getInicio();
                         String fechaI = fechaHoraInicio.substring(0,10);
                         String horaI  = fechaHoraInicio.substring(11);
+
+                        Calendar c = Calendar.getInstance();
+                        int year       = c.get(Calendar.YEAR);
+                        int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+                        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+                        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+
+
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
@@ -225,12 +269,12 @@ public class TutTutorController {
                              icon1[0] = R.drawable.ic_nullresource;
                              icon2[0] = R.drawable.ic_cross;
                         }
-                        else if (estado.equals("Confirmada") ){
-                            icon1[0] = R.drawable.ic_nullresource;
+                        else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
+                            icon1[0] = R.drawable.ic_atendercita;
                             icon2[0] = R.drawable.ic_cross;
 
                         }
-                        else if (estado.equals("Confirmada")){
+                        else if (estado.equals("Confirmada") && !actualDate.equals(fechaI)){
                             icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
 
