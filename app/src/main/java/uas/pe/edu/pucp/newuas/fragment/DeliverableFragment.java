@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,7 @@ public class DeliverableFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Deliverable deliv = (Deliverable) deliverableAdapter.getItem(position);
-
+                //Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
                 DeliverableController deliverableController = new DeliverableController();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 deliverableController.getDelivById(getActivity(),deliv.getId());

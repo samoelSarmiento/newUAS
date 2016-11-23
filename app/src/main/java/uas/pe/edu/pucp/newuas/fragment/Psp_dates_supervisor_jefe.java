@@ -31,6 +31,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 
@@ -159,12 +160,17 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                                    public void onClick(DialogInterface dialog, int id) {
                                        dialog.cancel();
                                        Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
+                                       //Lo guardo
                                        PSPControllerJ tsc = new PSPControllerJ();
-                                 //       tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0],  1 );//idAlumno );
-                                       tsc.appointmentRequest(getActivity (), 1 ,valorFecha[0], valorHora[0] , PspGetStudentsForDateEmployer.studentSelected.getIdAlumno() ,lugar[0]);//idAlumno );
+                                       tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario()  ,valorFecha[0], valorHora[0] , PspGetStudentsForDateEmployer.studentSelected.getIdAlumno() ,lugar[0]);//idAlumno );
+                                        //Mando a la pantalla de inicio.
 
-                                       PSPControllerJ controller = new PSPControllerJ() ;
-                                       controller.getDatesSupervisorEmployerStudent(getActivity());
+
+                                       Intent  intentPSP = new Intent(getActivity(), NavigationDrawerPSP.class);
+                                       startActivity(intentPSP);
+
+                                     //  PSPControllerJ controller = new PSPControllerJ() ;
+                                    //   controller.getDatesSupervisorEmployerStudent(getActivity());
 
                                    }
                                 }

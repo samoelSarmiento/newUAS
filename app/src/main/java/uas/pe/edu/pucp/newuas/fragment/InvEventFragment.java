@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class InvEventFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 InvEvent invEvent = (InvEvent) invEventAdapter.getItem(position);
-
+                //Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
                 InvEventController invController = new InvEventController();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                 invController.getInvEvById(getActivity(),invEvent.getId());

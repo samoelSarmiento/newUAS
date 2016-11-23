@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
@@ -72,7 +73,7 @@ public class InvEventDetailFragment extends Fragment {
         invEvUbic.setText(invEvento.get(0).getUbicacion());
 
         if(invEvento.get(0).getImagen()!=null)
-            Picasso.with(context).load(RetrofitHelper.serverURL + invEvento.get(0).getImagen()).into(invEvImage);
+            Picasso.with(context).load(Configuration.BASE_URL + "/"+ invEvento.get(0).getImagen()).into(invEvImage);
 
         /*if(invGroup.get(0).getImagen()!=null) {
             Bitmap bmp;

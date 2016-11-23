@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/pspNombreDocumentoFull"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Jefe Directo"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pspNombreDocumentoFullValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/psp_esObligatorio"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Teléfono del jefe"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/psp_esObligatorioValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -17,10 +17,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Seleccione el boton" />
 
 
         <Button
@@ -36,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_login_selector"
+            android:layout_marginTop="@dimen/divider"
             android:text="@string/pspSelectButtonDocument"
             android:textColor="@color/white" />
 

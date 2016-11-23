@@ -27,7 +27,7 @@ public class PSP_supDocumentFragment extends Fragment {
 
     ListView lvStudents;
     PSPDocumentsAdapter documentsAdapter;
-    static Student studentSelected ;
+    public static Student studentSelected ;
     public  PSP_supDocumentFragment () {
 
     }

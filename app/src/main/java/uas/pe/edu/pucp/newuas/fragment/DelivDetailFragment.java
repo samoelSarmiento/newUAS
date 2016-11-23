@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
+import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.InvDocument;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
@@ -145,7 +147,8 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
         delivDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FileDownloadController fileDownloadController= new FileDownloadController();
+                fileDownloadController.downloadFile(context, Configuration.BASE_URL + "/" + selectedVersion.getRuta());
             }
         });
         delivRegObs.setVisibility(View.INVISIBLE);
@@ -164,7 +167,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             if(invDocs.get(i).getVersion()==value){
                 delivObs.setText(invDocs.get(i).getObservacion());
                 selectedVersion=invDocs.get(i);
-                if(i==invDocs.size()-1)
+                if(i==0) // ultima version
                     delivRegObs.setVisibility(View.VISIBLE);
                 else delivRegObs.setVisibility(View.INVISIBLE);
                 break;

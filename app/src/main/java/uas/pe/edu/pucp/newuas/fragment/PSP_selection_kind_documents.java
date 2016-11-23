@@ -28,38 +28,28 @@ public class PSP_selection_kind_documents extends Fragment  {
     Button informe , documentos;
     public PSP_selection_kind_documents() {
 
-
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_psp_selection_kind_documents, container, false);
-
         documentos = (Button)view.findViewById(R.id.psp_boton_documentos_supervisor);
         informe = (Button)view.findViewById(R.id.psp_boton_informe_supervisor);
-
         informe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 PSPControllerJ controller = new PSPControllerJ();
                 controller.obtenerInforme(getActivity() );
-
             }
         });
-
         documentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        Toast.makeText(getActivity(), "Proximamente, en el segundo Sprint :)", Toast.LENGTH_SHORT).show();
+                PSPControllerJ controller = new PSPControllerJ();
+                controller.getDocumentsStudentSup(getActivity() );
             }
         });
-
-
         getActivity().setTitle("Tipo de documento");
         return view;
     }

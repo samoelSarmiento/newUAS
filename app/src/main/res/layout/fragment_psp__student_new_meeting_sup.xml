@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="80dp"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_StudentNewMeetingSup">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cita"
+            style="@style/GeneralTextViewsMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+
+        <Spinner
+            android:id="@+id/cmb_psp_student_new_meeting"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/btn_psp_student_new_meeting_cancel" />
+
+
+        <Button
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:background="@drawable/bg_button_login_selector"
+            android:textColor="@color/white"
+            android:id="@+id/btn_psp_student_new_meeting_register" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

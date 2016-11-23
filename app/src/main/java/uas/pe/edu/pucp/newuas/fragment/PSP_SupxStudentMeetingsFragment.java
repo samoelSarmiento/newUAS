@@ -79,9 +79,11 @@ public class PSP_SupxStudentMeetingsFragment extends Fragment {
             ArrayList<PSPMeeting> meetings = (ArrayList<PSPMeeting>) bundle.getSerializable("Meetings");
             Log.d("SupxStudent", "" + meetings.size());
             final Student student = (Student) bundle.getSerializable("Student");
-            adapter = new PSPSupxStudentMeetingAdapter(getActivity(),meetings);
+            adapter = new PSPSupxStudentMeetingAdapter(getActivity(),meetings, student);
 
             listView.setAdapter(adapter);
+
+            /*
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -99,7 +101,7 @@ public class PSP_SupxStudentMeetingsFragment extends Fragment {
 
 
                 }
-            });
+            });*/
 
 
         }
