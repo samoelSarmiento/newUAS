@@ -30,10 +30,12 @@ import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapterTutor;
 import uas.pe.edu.pucp.newuas.fragment.TutorNewAppointFragment;
+import uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
+import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
@@ -146,8 +148,9 @@ public class TutTutorController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-         Log.d("tag","CONTEXTOO " + studentFullName + " " +  " " );
-        Call<String> call = restCon.doAppointmentTutor(new AppointmentRequest(idUser,fecha,"",hora,motivo,studentFullName,123132),data);
+
+        Log.d("xd", "fechaaa y horaa " + fecha+ " " + hora);
+        Call<String> call = restCon.doAppointmentTutor(new AppointmentRequest(idUser,fecha,hora,"",motivo,studentFullName,123132),data);
          Log.d("tag",  "ke pasa aca " + call.request().url() );
         call.enqueue(new Callback<String>() {
             @Override
@@ -173,30 +176,88 @@ public class TutTutorController {
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<CitaInfoResponse>> call = restCon.obtenerDatosCitaConfirmada(idAppoint,data);
+        call.enqueue(new Callback<List<CitaInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<CitaInfoResponse>> call, Response<List<CitaInfoResponse>> response) {
 
-        //((Activity)context).getFragmentManager().popBackStack();
-        AtenderCitaFragment mp = new AtenderCitaFragment();
-        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                List<CitaInfoResponse> generalInformation = response.body();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
+                AtenderCitaFragment mp = new AtenderCitaFragment();
+                mp.setArguments(bundle);
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+            }
 
-        /*
-        Call<String> call = restCon.cancelAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
+            @Override
+            public void onFailure(Call<List<CitaInfoResponse>> call, Throwable t) {
+
+
+                AtenderCitaFragment mp = new AtenderCitaFragment();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+            }
+        });
+
+
+        return true;
+    }
+
+    public boolean atencionCita(final Context context,  int idAppoint, String obsCita ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.atenderCita(new AppointmentRequest(idAppoint,obsCita,"","","","", 123213), data);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
                 ((Activity)context).getFragmentManager().popBackStack();
                 showTopics(context);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                TutorAppointFragment mp = new TutorAppointFragment();
-
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
                 ((Activity)context).getFragmentManager().popBackStack();
                 showTopics(context);
             }
         });
-        */
+
+
+        return true;
+    }
+
+    public boolean visualizarCitaConfirmada(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<CitaInfoResponse>> call = restCon.obtenerDatosCitaConfirmada(idAppoint,data);
+        call.enqueue(new Callback<List<CitaInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<CitaInfoResponse>> call, Response<List<CitaInfoResponse>> response) {
+
+                List<CitaInfoResponse> generalInformation = response.body();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
+                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                mp.setArguments(bundle);
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+            }
+
+            @Override
+            public void onFailure(Call<List<CitaInfoResponse>> call, Throwable t) {
+
+
+                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+            }
+        });
+
 
         return true;
     }
@@ -280,7 +341,7 @@ public class TutTutorController {
 
                         }
                         else if (estado.equals("Cancelada")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
 
                         }else if (estado.equals("Sugerida") ){
@@ -288,15 +349,15 @@ public class TutTutorController {
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Rechazada")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("Asistida")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("No asistida")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
 

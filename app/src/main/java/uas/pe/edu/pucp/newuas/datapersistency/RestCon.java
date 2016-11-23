@@ -16,6 +16,7 @@ import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
+import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.CoordinatorStudentsResponse;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
@@ -244,8 +245,8 @@ public interface RestCon {
     @GET("getCoordinatorStudent ")
     Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
 
-    //@GET("getCoordinatorStudent ")
-    //Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
+    @GET("obtenerDatosCitaConfirmada/{id_usuario}")
+    Call<List<CitaInfoResponse>> obtenerDatosCitaConfirmada(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
@@ -264,6 +265,9 @@ public interface RestCon {
 
     @POST("cancelStudentAppointment")
     Call<String> cancelAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("atenderCita")
+    Call<String> atenderCita(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 
     @POST("refuseStudentAppointment")
     Call<String> refuseAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
