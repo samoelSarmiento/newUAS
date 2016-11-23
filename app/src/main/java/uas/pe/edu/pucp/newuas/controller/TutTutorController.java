@@ -30,12 +30,14 @@ import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapterTutor;
 import uas.pe.edu.pucp.newuas.fragment.TutorNewAppointFragment;
+import uas.pe.edu.pucp.newuas.fragment.TutorNewNoAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
+import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
@@ -109,6 +111,32 @@ public class TutTutorController {
         return true;
     }
 
+    public boolean obtenerInformacionNoCita(final Context context,  int id ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<NoAppointmentResponse>> call = restCon.obtenerInformacionNoCita(id,data);
+        call.enqueue(new Callback<List<NoAppointmentResponse>>() {
+            @Override
+            public void onResponse(Call<List<NoAppointmentResponse>> call, Response<List<NoAppointmentResponse>> response) {
+
+                List<NoAppointmentResponse> generalInformation = response.body();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
+                TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
+                ttc.setArguments(bundle);
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, ttc).commit();
+            }
+
+            @Override
+            public void onFailure(Call<List<NoAppointmentResponse>> call, Throwable t) {
+
+            }
+        });
+
+        return true;
+    }
 
     public boolean getAppointInformationTuto(final Context context,  int id ){
 

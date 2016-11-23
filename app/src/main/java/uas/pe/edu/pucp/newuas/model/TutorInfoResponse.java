@@ -3,14 +3,11 @@ package uas.pe.edu.pucp.newuas.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by Wingerlion on 27/10/2016.
+ * Created by Wingerlion on 23/11/2016.
  */
-public class TUTInfoResponse  implements Serializable {
-
+public class TutorInfoResponse implements Serializable {
 
     @SerializedName("IdDocente")
     private Integer idDocente;
@@ -56,14 +53,6 @@ public class TUTInfoResponse  implements Serializable {
     private Object esAdminpsp;
     @SerializedName("es_supervisorpsp")
     private Object esSupervisorpsp;
-    @SerializedName("numberDays")
-    private Integer numberDays;
-    @SerializedName("duracionCita")
-    private Integer duracionCita;
-    @SerializedName("scheduleInfo")
-    private List<ScheduleInfoResponse> scheduleInfo = new ArrayList<ScheduleInfoResponse>();
-    @SerializedName("scheduleMeeting")
-    private List<ScheduleMeetingResponse> scheduleMeeting = new ArrayList<ScheduleMeetingResponse>();
 
     /**
      *
@@ -461,85 +450,5 @@ public class TUTInfoResponse  implements Serializable {
         this.esSupervisorpsp = esSupervisorpsp;
     }
 
-    /**
-     *
-     * @return
-     * The scheduleInfo
-     */
-
-
-
-    public List<ScheduleInfoResponse> getScheduleInfo() {
-        return scheduleInfo;
-    }
-
-    /**
-     *
-     * @param scheduleInfo
-     * The scheduleInfo
-     */
-    public void setScheduleInfo(List<ScheduleInfoResponse> scheduleInfo) {
-        this.scheduleInfo = scheduleInfo;
-    }
-
-    /**
-     *
-     * @return
-     * The scheduleMeeting
-     */
-    public List<ScheduleMeetingResponse> getScheduleMeeting() {
-        return scheduleMeeting;
-    }
-
-    /**
-     *
-     * @param scheduleMeeting
-     * The scheduleMeeting
-     */
-    public void setScheduleMeeting(List<ScheduleMeetingResponse> scheduleMeeting) {
-        this.scheduleMeeting = scheduleMeeting;
-    }
-
-
-    /**
-     *
-     * @return
-     * The numberDays
-     */
-    public Integer getNumberDays() {
-        return numberDays;
-    }
-
-    /**
-     *
-     * @param numberDays
-     * The numberDays
-     */
-    public void setNumberDays(Integer numberDays) {
-        this.numberDays = numberDays;
-    }
-
-    /**
-     *
-     * @return
-     * The duracionCita
-     */
-    public Integer getDuracionCita() {
-        return duracionCita;
-    }
-
-    /**
-     *
-     * @param duracionCita
-     * The duracionCita
-     */
-    public void setDuracionCita(Integer duracionCita) {
-        this.duracionCita = duracionCita;
-    }
-
 
 }
-
-
-
-

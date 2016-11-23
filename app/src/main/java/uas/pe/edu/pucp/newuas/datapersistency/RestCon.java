@@ -33,6 +33,7 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
+import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
@@ -258,6 +259,9 @@ public interface RestCon {
 
     @GET("getAppointInformationTuto/{id_usuario}")
     Call<List<AppointInformationRegisterTuto>> getAppointInfoTuto(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
+
+    @GET("obtenerInformacionNoCita/{id_usuario}")
+    Call<List<NoAppointmentResponse>> obtenerInformacionNoCita(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @POST("filterStudentAppointment")
     Call<List<AppointmentResponse>> filterStudentAppointment(@Body AppointmentFilterRequest appointmentFilterRequest, @QueryMap Map<String, String> token);
