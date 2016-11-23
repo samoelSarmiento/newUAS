@@ -15,9 +15,12 @@
         android:id="@+id/btModuleAcr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+       android:background="@drawable/btn_main_uas"
+
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
-        android:background="@drawable/bg_button_login_selector"
+
         android:text="@string/btModuleAcr"
         android:textColor="@color/white" />
 
@@ -25,10 +28,14 @@
         android:id="@+id/btModulePsp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+
+        android:background="@drawable/btn_main_uas"
+
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
+
         android:text="@string/btModulePsp"
         android:textColor="@color/white" />
 
@@ -36,10 +43,12 @@
         android:id="@+id/btModuleTutEv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:background="@drawable/btn_main_uas"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
+
         android:text="@string/btModuleTutEv"
         android:textColor="@color/white" />
 
@@ -47,10 +56,12 @@
         android:id="@+id/btModuleInv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+
+        android:background="@drawable/btn_main_uas"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btModuleInv"
         android:textColor="@color/white" />
 </LinearLayout>

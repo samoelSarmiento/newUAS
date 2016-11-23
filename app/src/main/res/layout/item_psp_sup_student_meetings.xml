@@ -63,11 +63,21 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_item_psp_sup_student_meeting_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_arrow_lv"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="0.1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_item_psp_sup_student_meeting_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_options_icon_psp"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

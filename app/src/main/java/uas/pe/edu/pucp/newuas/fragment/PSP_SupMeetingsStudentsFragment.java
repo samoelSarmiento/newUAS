@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
@@ -7,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,7 +20,7 @@ import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 
-public class PSP_SupMeetingsStudentsFragment extends Fragment {
+public class PSP_SupMeetingsStudentsFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +30,7 @@ public class PSP_SupMeetingsStudentsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     PSPSupMeetingStudentsAdapter adapter;
+    Button btnNewMeeting;
 
     public PSP_SupMeetingsStudentsFragment() {
         // Required empty public constructor
@@ -66,8 +70,8 @@ public class PSP_SupMeetingsStudentsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_psp__sup_meetings_students, container, false);
         final ListView listView = (ListView)view.findViewById(R.id.lv_psp_sup_meeting_students);
-
-
+        btnNewMeeting = (Button) view.findViewById(R.id.btn_psp_meetings_students_newmeeting);
+        btnNewMeeting.setOnClickListener(this);
 
         Bundle bundle = getArguments();
 
@@ -96,5 +100,18 @@ public class PSP_SupMeetingsStudentsFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
 
+            case R.id.btn_psp_meetings_students_newmeeting:
+
+                PSPController controller =  new PSPController();
+                controller.getSupStudentsForNewMeeting(getActivity());
+               break;
+
+
+
+        }
+    }
 }

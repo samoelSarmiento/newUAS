@@ -2,6 +2,7 @@ package uas.pe.edu.pucp.newuas.view;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -15,7 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import uas.pe.edu.pucp.newuas.R;
@@ -23,12 +28,15 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupSetFreeHoursFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
 
 import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
+import uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
@@ -36,6 +44,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
     int idPerfil;
+    private int hot_number =  5;
+    private TextView ui_hot;
 
 
     LayoutInflater layoutInflater;
@@ -83,6 +93,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
     }*/
 
+
     public void showGroupMenu(Menu menu) {
 
 
@@ -102,7 +113,10 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
                 menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-
+                menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
+                menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
+                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
 
                 // menu.setGroupVisible(R.id.nav_psp_group_students, true);
                 break;
@@ -113,6 +127,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
                 menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
 
             case 2:
                 //Teacher
@@ -120,15 +135,23 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
                 menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
                 //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
 
+
+
             case 6:
 
-                //Supervisor
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
 
+                //Supervisor
+         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
+                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
+                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+                menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
+         //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
 
         }
 
@@ -146,12 +169,64 @@ public class NavigationDrawerPSP extends AppCompatActivity
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
+          showNotificationIcons(menu);
+         getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
+
         return true;
     }
+
+
+    public void showNotificationIcons(Menu menu){
+
+
+        if(Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.student_notificationbar, menu);
+            View menu_holist = menu.findItem(R.id.menu_hotlist).getActionView();
+            menu_holist.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(getApplicationContext(), "Tiene " + hot_number + "reuniones pendientes ", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+            if (menu_holist != null) {
+                ui_hot = (TextView) menu_holist.findViewById(R.id.hotlist_hot);
+            } else
+                Log.d("MENU", "ES NULL");
+            updateHotCount(hot_number);
+
+        }
+
+    }
+
+    public void updateHotCount(final int new_number){
+        if(ui_hot == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(new_number ==0 )
+                    ui_hot.setVisibility(View.INVISIBLE);
+                else{
+
+                    ui_hot.setVisibility(View.VISIBLE);
+                    ui_hot.setText(Integer.toString(new_number));
+
+                }
+            }
+        });
+
+
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -194,11 +269,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
 
         if (id == R.id.nav_item_pspCycle) {
+
+
+
+            /*
             PSP_cycleFragment psp_cycleFragment = new PSP_cycleFragment();
 
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, psp_cycleFragment).commit();
             setTitle(item.getTitle());
-
+*/
         } else if (id == R.id.nav_item_pspTutors) {
 
 
@@ -223,6 +302,13 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 ex.printStackTrace();
 
             }
+
+        }else if(id  == R.id.nav_item_pspStudentMeetings){
+
+
+            PSPController controller =  new PSPController();
+            controller.getStudentMeetings(this);
+
 
         } else if (id == R.id.nav_item_pspDates_supervisor) {
 
@@ -306,11 +392,24 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
         } else if (id == R.id.nav_items_pspSupxStudenMeeting) {
 
+            /*
+            Fragment fragmentDates = new PSP_SupSetFreeHoursFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, fragmentDates).commit();
+            setTitle(item.getTitle());*/
+
+
             PSPController controller = new PSPController();
             controller.getSupStudents(this);
 
 
-        } else if (id == R.id.nav_pspExit) {
+        } else if(id == R.id.nav_item_pspSupFreeHours){
+
+            PSPController controller =  new PSPController();
+            controller.getSupFreeHours(this);
+
+
+        }
+        else if (id == R.id.nav_pspExit) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -334,4 +433,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
+
 }
