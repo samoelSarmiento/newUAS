@@ -49,6 +49,8 @@ public class TutStudentController {
 
     public boolean showTopics (final Context context) {
 
+        NavigationDrawerTutoria.nameTopic = null;
+        NavigationDrawerTutoria.nameTopicsList = null;
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);

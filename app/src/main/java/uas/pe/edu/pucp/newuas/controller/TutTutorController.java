@@ -38,8 +38,10 @@ import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
 import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
+import uas.pe.edu.pucp.newuas.model.NoCitaRequest;
 import uas.pe.edu.pucp.newuas.model.SingleRowTuto;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
+import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 /**
@@ -51,6 +53,8 @@ public class TutTutorController {
 
     public boolean showTopics (final Context context) {
 
+        NavigationDrawerTutoria.nameTopic = null;
+        NavigationDrawerTutoria.nameTopicsList = null;
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -236,6 +240,35 @@ public class TutTutorController {
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<String> call = restCon.atenderCita(new AppointmentRequest(idAppoint,obsCita,"","","","", 123213), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+        });
+
+
+        return true;
+    }
+
+    public boolean atencionNoConfirmada(final Context context,  int idUsuario, String fechaActual, String hora, String tema, String obs, int idAlumno, int duracionCita ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.atenderNoCita(new NoCitaRequest(idUsuario,fechaActual,hora,tema,obs,idAlumno, duracionCita), data);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
