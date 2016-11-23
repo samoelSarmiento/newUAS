@@ -38,6 +38,7 @@ import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
@@ -350,6 +351,11 @@ public interface RestCon {
 
     @GET("psp/student")
     Call<Student> getStudentForMeetingDetail(@QueryMap Map<String, String> token);
+
+
+    @GET("psp/students/finalScore")
+    Call<List<PSPStudentFinalGrade>>  getStudentsFinalScore(@QueryMap Map<String, String> token);
+
 
 
 

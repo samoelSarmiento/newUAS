@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
+import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
@@ -21,12 +22,12 @@ import uas.pe.edu.pucp.newuas.model.Student;
 public class PSPStudentGradesAdapter   extends BaseAdapter {
 
 
-    private ArrayList<PSPGrade> items;
+    private ArrayList<PSPStudentFinalGrade> items;
     private Context context;
     private LayoutInflater layoutInflater;
 
 
-    public PSPStudentGradesAdapter(Context context, ArrayList<PSPGrade> items) {
+    public PSPStudentGradesAdapter(Context context, ArrayList<PSPStudentFinalGrade> items) {
         this.items = items;
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,20 +51,25 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null)
-            view = layoutInflater.inflate(R.layout.psp_item_student_grades, null);
+
+
+        View view = layoutInflater.inflate(R.layout.psp_item_student_grades, null);
 
         Log.d("Adapter", "LLego");
 
         try {
            ViewHolder viewHolder = new ViewHolder();
-            viewHolder.tvViewIdentifierGrade = (TextView) view.findViewById(R.id.tv_item_psp_grade_description);
-            viewHolder.tvGrade = (TextView) view.findViewById(R.id.tv_item_psp_grade);
+            viewHolder.tvStudentName = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_name);
+            viewHolder.tvGrade = (TextView) view.findViewById(R.id.tv_item_psp_grade_finalscore);
+            viewHolder.tvStudentId = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_id);
 
-
-            viewHolder.tvViewIdentifierGrade.setText("Nota " + (position+1));
-            viewHolder.tvGrade.setText(String.valueOf(items.get(position).getNota()) );
+            viewHolder.tvStudentName.setText(items.get(position).getNombre() + " "
+                    + items.get(position).getApellidoPaterno() + " "
+                    + items.get(position).getApellidoMaterno());
+            viewHolder.tvStudentId.setText(items.get(position).getCodigo());
+            int grade = items.get(position).getGrade();
+            if(grade >= 0 )
+                 viewHolder.tvGrade.setText(String.valueOf(items.get(position).getGrade()) );
 
 
         } catch (Exception ex) {
@@ -78,7 +84,7 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
 
 
     public static class ViewHolder {
-        TextView tvViewIdentifierGrade, tvGrade;
+        TextView tvStudentName, tvGrade , tvStudentId;
 
     }
 }
