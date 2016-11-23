@@ -43,7 +43,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
     Context context;
     ImageView invEvImage;
     int day,month,year;
-    String day2,month2, year2;
+    String day2,month2, year2, dayEv,monthEv,yearEv;
+    Integer hourEv,minuteEv;
     private static DatePickerDialog.OnDateSetListener selectorListener;
     Date date;
 
@@ -87,11 +88,11 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         }catch (ParseException e){
         }
         //calI.setTime(date);
-        String dayEv = (String) android.text.format.DateFormat.format("dd",date);
+        dayEv = (String) android.text.format.DateFormat.format("dd",date);
         day=Integer.parseInt(dayEv);
-        String monthEv = (String) android.text.format.DateFormat.format("MM",date);
+        monthEv = (String) android.text.format.DateFormat.format("MM",date);
         month=Integer.parseInt(monthEv);
-        String yearEv = (String) android.text.format.DateFormat.format("yyyy",date);
+        yearEv = (String) android.text.format.DateFormat.format("yyyy",date);
         year = Integer.parseInt(yearEv);
 
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -102,9 +103,9 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         }catch (ParseException e){
         }
         String hour = (String) android.text.format.DateFormat.format("hh",date2);
-        Integer hourEv=Integer.parseInt(hour);
+        hourEv=Integer.parseInt(hour);
         String minute = (String) android.text.format.DateFormat.format("mm",date2);
-        Integer minuteEv=Integer.parseInt(minute);
+        minuteEv=Integer.parseInt(minute);
         day2 = (String) android.text.format.DateFormat.format("dd",date2);
         month2 = (String) android.text.format.DateFormat.format("MM",date2);
         year2 = (String) android.text.format.DateFormat.format("yyyy",date2);
@@ -123,10 +124,13 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
 
         selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
-            public void onDateSet(DatePickerDialog datePickerDialog, int yearEv, int monthEv, int dayEv) {
-                day = dayEv; month = monthEv+1; year = yearEv;
+            public void onDateSet(DatePickerDialog datePickerDialog, int yearEve, int monthEve, int dayEve) {
+                day = dayEve; month = monthEve+1; year = yearEve;
                 String format = "%1$02d";
                 String date = year +  "-" + String.format(format, (month)) + "-" + String.format(format, day);
+                dayEv=String.format(format, day);
+                monthEv=String.format(format, (month));
+                yearEv= year+ "";
                 invEvFecha.setText(date);
             }
         };
@@ -145,23 +149,51 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 String nom = invEvName.getText().toString();
                 String desc = invEvDesc.getText().toString();
                 String ubic =invEvUbic.getText().toString();
-                if (!nom.isEmpty() && !desc.isEmpty() && !ubic.isEmpty()) {
-                    //fecha y hora!!!!!!
+                String h =invEvHora.getText().toString();
+                hourEv = Integer.parseInt(h);
+                String m=invEvMin.getText().toString();
+                minuteEv = Integer.parseInt(m);
 
-                    InvEvent changedIE = invEv;
-                    changedIE.setNombre(invEvName.getText().toString());
-                    changedIE.setDescripcion(invEvDesc.getText().toString());
-                    changedIE.setFecha(invEvFecha.getText().toString());
-                    String h =invEvHora.getText().toString();
-                    String m=invEvMin.getText().toString();
-                    changedIE.setHora(year2+ "-" + month2 + "-" + day2 + " " + h + ":" + m + ":00");
+                Date now = new Date();
+                //Toast.makeText(getActivity(),now.toString() , Toast.LENGTH_SHORT).show();
+
+                if (!nom.isEmpty() && !desc.isEmpty() && !ubic.isEmpty() && !h.isEmpty() && !m.isEmpty()) {
+                    if(hourEv<24 && minuteEv<60){
+                        if(h.length()==1) h= "0" + h;
+                        if(m.length()==1) m = "0" + m;
+
+                        String fecha= yearEv+ "-" + monthEv + "-" + dayEv;// + " " + h + ":" + m + ":00";
+                        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateEv= new Date();
+                        try {
+                            dateEv = format2.parse(fecha);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(dateEv.after(now)){
+
+                            InvEvent changedIE = invEv;
+                            changedIE.setNombre(invEvName.getText().toString());
+                            changedIE.setDescripcion(invEvDesc.getText().toString());
+                            changedIE.setFecha(invEvFecha.getText().toString());
+
+                            changedIE.setHora(year2+ "-" + month2 + "-" + day2 + " " + h + ":" + m + ":00");
 
 
-                    changedIE.setUbicacion(invEvUbic.getText().toString());
+                            changedIE.setUbicacion(invEvUbic.getText().toString());
 
-                    invEvController.editInvEv(context,changedIE);
-                    //invGroupController.getInvGroupById(context,invG.getId());
-                    //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                            invEvController.editInvEv(context,changedIE);
+                            //invGroupController.getInvGroupById(context,invG.getId());
+                            //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            Toast.makeText(getActivity(), "La fecha debe ser posterior a hoy", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(getActivity(), "Verifique la hora", Toast.LENGTH_LONG).show();
+                    }
+
                 } else {
                     Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
                 }

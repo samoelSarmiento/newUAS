@@ -159,10 +159,30 @@ public class DelivEditFragment extends Fragment {
                 d.setFechaInicio(delivFechaIni.getText().toString());
                 d.setFechaLimite(delivFechaLim.getText().toString());
 
+                String projFI=d.getProjects().getFechaIni();
+                String projFF=d.getProjects().getFechaFin();
+                SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+                Date dateFI= new Date();
+                Date dateFF=new Date();
+                try {
+                    dateFI = format2.parse(projFI);
+                    dateFF= format2.parse(projFF);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 if(dateF.after(dateI)){
-                    DeliverableController deliverableController = new DeliverableController();
-                    //Toast.makeText(getActivity(), "Hmm", Toast.LENGTH_LONG).show();
-                    deliverableController.editDeliv(context,d);
+                    if(!dateFF.after(dateF)){
+                        if(!dateFI.after(dateI)){
+                            DeliverableController deliverableController = new DeliverableController();
+                            //Toast.makeText(getActivity(), "Hmm", Toast.LENGTH_LONG).show();
+                            deliverableController.editDeliv(context,d);
+                        }else{
+                            Toast.makeText(getActivity(), "Le fecha inicio debe ser posterior a la fecha inicio del proyecto", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(getActivity(), "Le fecha límite debe ser anterior a la fecha fin del proyecto", Toast.LENGTH_LONG).show();
+                    }
                 }else{
                     Toast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG).show();
                 }
