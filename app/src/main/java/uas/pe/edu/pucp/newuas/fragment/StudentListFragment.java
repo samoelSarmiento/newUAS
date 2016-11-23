@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -66,10 +67,8 @@ public class StudentListFragment extends Fragment {
                 tvNoStudes.setVisibility(View.VISIBLE);
             }
             final List<FileGen> coursesEvidences = (List<FileGen>) bundle.getSerializable("evidences");
-
+            Button btEvidence = (Button) view.findViewById(R.id.btEvidence);
             if (coursesEvidences != null && !coursesEvidences.isEmpty()) {
-
-                Button btEvidence = (Button) view.findViewById(R.id.btEvidence);
                 btEvidence.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -82,10 +81,10 @@ public class StudentListFragment extends Fragment {
                                 .addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
                     }
                 });
-
             } else {
                 TextView tvNoEvidence = (TextView) view.findViewById(R.id.tvNoEvidence);
                 tvNoEvidence.setVisibility(View.VISIBLE);
+                btEvidence.setVisibility(View.GONE);
             }
         }
         return view;

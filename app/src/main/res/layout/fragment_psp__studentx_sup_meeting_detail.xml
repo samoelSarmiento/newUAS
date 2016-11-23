@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:paddingTop="70dp"
     android:gravity="center"
-    android:background="@color/mdtp_neutral_pressed"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -78,13 +77,13 @@
                 />
 
             <TextView
-                android:text="ALumno"
-                android:id="@+id/tv_psp_student_meeting_student_name"
+                android:text="Codigo"
+                android:id="@+id/tv_psp_student_meeting_student_id"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
-                android:text="Codigo"
-                android:id="@+id/tv_psp_student_meeting_student_id"
+                android:text="Alumno"
+                android:id="@+id/tv_psp_student_meeting_student_name"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp" />
             <TextView
