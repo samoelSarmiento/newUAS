@@ -134,12 +134,15 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
             }
-            else if (temp.getEstado().equals("Confirmada") && actualDate.equals(temp.getFecha())){
+            else if (temp.getEstado().equals("Confirmada")){
 
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.visualizarCitaConfirmada(context,idAppoint);
 
                             }
                         }
@@ -173,45 +176,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             }
 
-            else if (temp.getEstado().equals("Confirmada") && !actualDate.equals(temp.getFecha())){
 
-                icon1.setOnClickListener(
-                        new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-
-                            }
-                        }
-                );
-
-                icon2.setOnClickListener(
-                        new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                                builder.setTitle("Cancelación de cita");
-                                builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-
-                                    }
-                                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                                Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
-                                                TutStudentController tsc = new TutStudentController();
-                                                tsc.cancelListTutor(context, idAppoint);
-                                            }
-                                        }
-                                ).show();
-
-                            }
-                        }
-                );
-
-            }
 
             else if (temp.getEstado().equals("Pendiente")){
 
@@ -252,6 +217,99 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
 
+            }
+
+            else if (temp.getEstado().equals("Cancelada") ){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.visualizarCitaConfirmada(context,idAppoint);
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }
+                );
+            }
+
+
+            else if (temp.getEstado().equals("Rechazada") ){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.visualizarCitaConfirmada(context,idAppoint);
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }
+                );
+            }
+
+            else if (temp.getEstado().equals("Asistida") ){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.visualizarCitaConfirmada(context,idAppoint);
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }
+                );
+            }
+
+            else if (temp.getEstado().equals("No asistida") ){
+
+                icon1.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.visualizarCitaConfirmada(context,idAppoint);
+                            }
+                        }
+                );
+
+                icon2.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }
+                );
             }
 
 

@@ -27,9 +27,11 @@ import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
+import uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
+import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TopicResponse;
@@ -111,6 +113,8 @@ public class TutStudentController {
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
 
+                        Log.d("tag", fechaI + " "  + " " + horaI + " " + estado);
+
                         int idCreador = ap.getCreador();
                         if (estado.equals("Pendiente")){
                             icon1[0] = R.drawable.ic_nullresource;
@@ -127,7 +131,7 @@ public class TutStudentController {
 
                         }
                         else if (estado.equals("Cancelada")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("Sugerida")){
@@ -135,7 +139,7 @@ public class TutStudentController {
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Rechazada")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("Asistida")){
@@ -143,13 +147,12 @@ public class TutStudentController {
                             icon2[0] = R.drawable.ic_nullresource;
                         }
                         else if (estado.equals("No asistida")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
                         }
 
                         int idAppoint = ap.getId();
                         sr.add(new SingleRow(fechaI,horaI,tema,estado,icon1[0],icon2[0], idAppoint));
-                        Log.d("tag", fechaI + horaI + tema + estado);
                     }
 
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
@@ -166,6 +169,37 @@ public class TutStudentController {
         return true;
     }
 
+
+    public boolean visualizarCitaConfirmada(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<List<CitaInfoResponse>> call = restCon.obtenerDatosCitaConfirmada(idAppoint,data);
+        call.enqueue(new Callback<List<CitaInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<CitaInfoResponse>> call, Response<List<CitaInfoResponse>> response) {
+
+                List<CitaInfoResponse> generalInformation = response.body();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
+                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                mp.setArguments(bundle);
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+            }
+
+            @Override
+            public void onFailure(Call<List<CitaInfoResponse>> call, Throwable t) {
+
+
+                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+            }
+        });
+
+
+        return true;
+    }
 
     public boolean showTutoInfo(final Context context, int id){
 
@@ -314,6 +348,9 @@ public class TutStudentController {
         });
         return true;
     }
+
+
+
 
     public boolean cancelListTutor(final Context context,  int idAppoint ){
 
