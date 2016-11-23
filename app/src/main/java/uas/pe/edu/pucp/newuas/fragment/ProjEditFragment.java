@@ -130,6 +130,14 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 dayI = day; monthI = month+1; yearI = year;
                 String format = "%1$02d";
                 String date = year +  "-" + String.format(format, (month + 1)) + "-" + String.format(format, day);
+
+                SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    dateI = format2.parse(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 projInitDate.setText(date);
             }
         };
@@ -140,6 +148,14 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 dayF = day; monthF = month+1; yearF = year;
                 String format = "%1$02d";
                 String date = year +  "-" + String.format(format, (month + 1)) + "-" + String.format(format, day);
+
+                SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    dateF = format2.parse(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 projFinDate.setText(date);
             }
         };
@@ -159,29 +175,58 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                 String nom = projName.getText().toString();
                 String desc = projDesc.getText().toString();
                 String ent = projDeliv.getText().toString();
+                Date now = new Date();
+
                 if (!nom.isEmpty() && !desc.isEmpty()) {
                     if (ent.matches(regexNum) ) {
                         if(dateF.after(dateI)){
-                            Projects changedProj = p;
-                            changedProj.setNombre(projName.getText().toString());
-                            changedProj.setDescripcion(projDesc.getText().toString());
-                            String nEnt=projDeliv.getText().toString();
-                            Integer cantEnt=Integer.parseInt(nEnt);
-                            changedProj.setNumEntregables(cantEnt);
-                            changedProj.setFechaIni(projInitDate.getText().toString());
-                            changedProj.setFechaFin(projFinDate.getText().toString());
-                            //Date date = new Date();
-                            //date.getYear();
+                            Integer cant= Integer.parseInt(ent);
+                            if(cant>p.getDeliverableList().size()){
+                                if(dateI.after(now)){
+                                    boolean funciona = true;
+                                    for(int i=0;i<p.getDeliverableList().size();i++){
+                                        String delFF= p.getDeliverableList().get(i).getFechaLimite();
+                                        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+                                        Date dateDeliv= new Date();
+                                        try {
+                                            dateDeliv = format2.parse(delFF);
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+                                        if(!dateF.after(dateDeliv)){
+                                            funciona=false;
+                                            break;
+                                        }
+                                    }
+                                    if(!funciona){
+                                        Projects changedProj = p;
+                                        changedProj.setNombre(projName.getText().toString());
+                                        changedProj.setDescripcion(projDesc.getText().toString());
+                                        String nEnt=projDeliv.getText().toString();
+                                        Integer cantEnt=Integer.parseInt(nEnt);
+                                        changedProj.setNumEntregables(cantEnt);
+                                        changedProj.setFechaIni(projInitDate.getText().toString());
+                                        changedProj.setFechaFin(projFinDate.getText().toString());
+                                        //Date date = new Date();
+                                        //date.getYear();
 
-                            projectController.editProj(context,changedProj);
+                                        projectController.editProj(context,changedProj);
 
-                            //projectController.getProjectById(context,changedProj.getId());
-                            //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                                        //projectController.getProjectById(context,changedProj.getId());
+                                        //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(getActivity(), "Existen entregables con fecha límite posterior al proyecto", Toast.LENGTH_LONG).show();
+                                    }
+
+                                }else{
+                                    Toast.makeText(getActivity(), "La fecha inicial debe ser posterior a hoy", Toast.LENGTH_LONG).show();
+                                }
+                            }else {
+                                Toast.makeText(getActivity(), "No puede reducir la cantidad de entregables", Toast.LENGTH_LONG).show();
+                            }
                         }else{
                             Toast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG).show();
                         }
-
-
                     } else {
                         Toast.makeText(getActivity(), "Cantidad de entregables", Toast.LENGTH_LONG).show();
                     }
