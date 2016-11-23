@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -88,7 +89,14 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         final Context contextAdapter = viewGroup.getContext();
 
-        if (temp.getEstado().equals("Pendiente") ) {
+
+        Calendar c = Calendar.getInstance();
+        int year       = c.get(Calendar.YEAR);
+        int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+
+        if (temp.getEstado().equals("Sugerida") ) {
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -130,9 +138,9 @@ public class AppointmentAdapterTutor extends BaseAdapter {
                             }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.cancel();
-                                            Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
-                                            TutTutorController tsc = new TutTutorController();
-                                            tsc.cancelListTutor(context, idAppoint);
+                                            Toast.makeText(context, "Se ha rechazado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                                TutTutorController tsc = new TutTutorController();
+                                                tsc.cancelListTutor(context, idAppoint);
                                         }
                                     }
                             ).show();
@@ -141,14 +149,15 @@ public class AppointmentAdapterTutor extends BaseAdapter {
                     }
             );
         }
-        else if (temp.getEstado().equals("Confirmada")){
+        else if (temp.getEstado().equals("Confirmada")  && actualDate.equals(temp.getFecha()) ){
 
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
-
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.RealizarCitaConfirmada(context,idAppoint);
                         }
                     }
             );
@@ -178,10 +187,180 @@ public class AppointmentAdapterTutor extends BaseAdapter {
                         }
                     }
             );
-
-
         }
 
+        else if (temp.getEstado().equals("Confirmada") && !actualDate.equals(temp.getFecha()) ) {
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setTitle("Cancelación de cita");
+                            builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(context, "Se ha cancelado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.cancelListTutor(context, idAppoint);
+                                        }
+                                    }
+                            ).show();
+
+                        }
+                    }
+            );
+        }
+
+
+
+        else if (temp.getEstado().equals("Pendiente")){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setTitle("Cancelación de cita");
+                            builder.setMessage(solicitud2).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(context, "Se ha rechazado la cita con el alumno", Toast.LENGTH_LONG).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.cancelListTutor(context, idAppoint);
+                                        }
+                                    }
+                            ).show();
+
+                        }
+                    }
+            );
+        }
+
+        else if (temp.getEstado().equals("Cancelada") ){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }
+            );
+        }
+
+
+        else if (temp.getEstado().equals("Rechazada") ){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }
+            );
+        }
+
+        else if (temp.getEstado().equals("Asistida") ){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }
+            );
+        }
+
+        else if (temp.getEstado().equals("No asistida") ){
+
+            icon1.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
+                        }
+                    }
+            );
+
+            icon2.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }
+            );
+        }
 
         return row;
 

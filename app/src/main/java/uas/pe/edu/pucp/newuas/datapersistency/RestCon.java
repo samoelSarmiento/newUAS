@@ -16,9 +16,11 @@ import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.Aspect;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.AppointmentResponseTuto;
+import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.CoordinatorStudentsResponse;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
+import uas.pe.edu.pucp.newuas.model.DocumentStudentPsp;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
 import uas.pe.edu.pucp.newuas.model.Criterion;
 import uas.pe.edu.pucp.newuas.model.CriterionLevel;
@@ -31,6 +33,7 @@ import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.InvGroupsRequest;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MeasureInstrument;
+import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
@@ -246,8 +249,8 @@ public interface RestCon {
     @GET("getCoordinatorStudent ")
     Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
 
-    //@GET("getCoordinatorStudent ")
-    //Call<List<CoordinatorStudentsResponse>> getCoordinatorStudent(@QueryMap Map<String, String> token);
+    @GET("obtenerDatosCitaConfirmada/{id_usuario}")
+    Call<List<CitaInfoResponse>> obtenerDatosCitaConfirmada(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
     @POST("registerStudentAppointment")
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
@@ -258,6 +261,9 @@ public interface RestCon {
     @GET("getAppointInformationTuto/{id_usuario}")
     Call<List<AppointInformationRegisterTuto>> getAppointInfoTuto(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
 
+    @GET("obtenerInformacionNoCita/{id_usuario}")
+    Call<List<NoAppointmentResponse>> obtenerInformacionNoCita(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);
+
     @POST("filterStudentAppointment")
     Call<List<AppointmentResponse>> filterStudentAppointment(@Body AppointmentFilterRequest appointmentFilterRequest, @QueryMap Map<String, String> token);
 
@@ -266,6 +272,12 @@ public interface RestCon {
 
     @POST("cancelStudentAppointment")
     Call<String> cancelAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("atenderCita")
+    Call<String> atenderCita(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+
+    @POST("refuseStudentAppointment")
+    Call<String> refuseAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 
     /*END SECTION*/
 
@@ -303,10 +315,11 @@ public interface RestCon {
     Call<List<Student>> getStudents2(@QueryMap Map<String, String> token);
 
 
-    @GET("psp/students/inscriptioFile")
-    Call<List<InscriptionFilePSP>> getInscriptionFile(@QueryMap Map<String, String> token);
-    //@GET("psp/students/{s_id}/documents")
-    //Call<List<PSPDocument>> getDocumentsByStudent(@Path("s_id") int s_id ,@QueryMap Map<String,String> token);
+    @GET("psp/getInscriptions/{id}/byStudent")
+    Call<List<InscriptionFilePSP>> getInscriptionFile( @Path("id") int idStudent ,@QueryMap Map<String, String> token);
+
+    @GET("psp/getDocument/{id}/full")
+    Call<List<DocumentStudentPsp>> getDocumentStudent( @Path("id") int idDocument ,@QueryMap Map<String, String> token);
 
     @POST("psp/students/{id}/sendInscriptioFile")
     Call<String> sendInscriptionFile(@Path("id") int inscriptionID, @QueryMap Map<String, String> token, @Body InscriptionFilePSP inscription);
@@ -330,6 +343,7 @@ public interface RestCon {
     @POST("psp/meeting/supervisor/student/store")
     Call<PSPMessage> storeSupStudentMeeting(@Body PSPMeetingRequest meeting ,@QueryMap Map<String, String> token);
 
+
     @POST("psp/supervisor/freehour/store")
     Call<PSPMessage> storeSupFreehour(@Body PSPFreeHour freeHour , @QueryMap Map<String, String> token);
 
@@ -342,8 +356,6 @@ public interface RestCon {
     @GET("psp/supervisor/freehours")
     Call<List<PSPFreeHour>> getSupervisorFreeHours(@QueryMap  Map<String, String> token);
 
-
-
     @POST("psp/meetings/student/store")
     Call<PSPMessage> storeStudentMeeting(@Body PSPFreeHour freeHour, @QueryMap Map<String, String> token );
     @POST("psp/meetings/notification/student/{id}")
@@ -353,9 +365,9 @@ public interface RestCon {
     Call<Student> getStudentForMeetingDetail(@QueryMap Map<String, String> token);
 
 
+
     @GET("psp/students/finalScore")
     Call<List<PSPStudentFinalGrade>>  getStudentsFinalScore(@QueryMap Map<String, String> token);
-
 
 
 
@@ -380,7 +392,8 @@ public interface RestCon {
     @GET("psp/tutstudent/{id}/detail")
     Call<List<TutStudentForPsp>> getTutStudentDetail(@Path("id") int idStudent, @QueryMap Map<String, String> token);
 
-
+    @GET("psp/student/{id}/getDocumentsAll")
+    Call<List<DocumentStudentPsp>> getDocumentsByStudentPSP( @Path("id") int idStudent, @QueryMap Map<String, String> token);
 
     /*END SECTION*/
 }

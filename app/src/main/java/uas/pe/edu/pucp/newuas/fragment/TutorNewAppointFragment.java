@@ -132,7 +132,7 @@ public class TutorNewAppointFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        
+
                         DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
                         Calendar now = Calendar.getInstance();
                         //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
@@ -157,7 +157,7 @@ public class TutorNewAppointFragment extends Fragment {
                         valorTema[0] = spinnerTemas.getSelectedItem().toString();
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
                         valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
-                        solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                        solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

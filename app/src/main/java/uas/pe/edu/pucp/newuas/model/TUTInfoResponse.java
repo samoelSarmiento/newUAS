@@ -2,13 +2,14 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Wingerlion on 27/10/2016.
  */
-public class TUTInfoResponse {
+public class TUTInfoResponse  implements Serializable {
 
 
     @SerializedName("IdDocente")

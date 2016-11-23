@@ -16,6 +16,8 @@
         android:id="@+id/tvNota"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
+        android:layout_gravity="end"
         android:layout_weight="0.25"
+        android:gravity="end"
         android:textColor="@color/black" />
 </LinearLayout>

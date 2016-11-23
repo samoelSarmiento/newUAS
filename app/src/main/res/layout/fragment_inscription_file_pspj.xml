@@ -32,6 +32,7 @@
             android:clickable="false"
             android:background="@drawable/bg_button_login_selector"
             android:textColor="@color/white"
+
             />
         <Button
             android:layout_width="183dp"
@@ -39,6 +40,8 @@
             android:text="Aceptar"
             android:id="@+id/btAceptarpspSobreinscripcion"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/divider"
+            android:layout_marginBottom="@dimen/divider"
             android:enabled="true"
             android:background="@drawable/bg_button_login_selector"
             android:textColor="@color/white" />
