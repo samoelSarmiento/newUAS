@@ -196,7 +196,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                     public void onClick(View v) {
 
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                        solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                        solicitud = "Está a punto de confirmar una cita  para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -228,7 +228,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                                         Log.d("NewMeetingPOSition", "" + position);
                                         if(position == 0){
 
-                                            Toast.makeText(getActivity(), "Seleccione un alumno", Toast.LENGTH_LONG).show();
+                                            MyToast.makeText(getActivity(), "Seleccione un alumno", Toast.LENGTH_LONG, MyToast.infoAlert).show();
 
                                             return;
                                         }
