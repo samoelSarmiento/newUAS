@@ -168,9 +168,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
         //  showNotificationIcons(menu);
-        getMenuInflater().inflate(R.menu.navigation_drawer_acreditacion, menu);
+        
 
-        return true;
+        return false;
     }
 
 
