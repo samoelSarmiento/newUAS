@@ -182,6 +182,7 @@ public class InvEventController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
                     /*try {
                         saveInvEv(invEvent, context);
                         //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();

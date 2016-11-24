@@ -67,12 +67,13 @@ public class InvestigatorController {
                     //Gson gsonf = new Gson();
                     //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
+                    /*
                     try {
                         saveAllInv(example, context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Investigators", (Serializable)example);
@@ -96,6 +97,7 @@ public class InvestigatorController {
                 t.printStackTrace();
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                /*
                 try {
                     List<Investigator> invList = retriveAllInv(context);
                     Bundle bundle = new Bundle();
@@ -108,7 +110,7 @@ public class InvestigatorController {
                     ((Activity)context).setTitle("Investigadores");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
 
 
@@ -133,13 +135,13 @@ public class InvestigatorController {
                 if (response.isSuccessful()) {
 
                     List<Investigator> example = response.body();
-
+/*
                     try {
                         saveInv(example.get(0), context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Inv", (Serializable)example);
@@ -161,7 +163,7 @@ public class InvestigatorController {
             @Override
             public void onFailure(Call<List<Investigator>> call, Throwable t) {
                 t.printStackTrace();
-
+/*
                 try {
                     Investigator inv = getInv(id, context);
 
@@ -177,7 +179,7 @@ public class InvestigatorController {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         });
         return  list;
@@ -197,14 +199,15 @@ public class InvestigatorController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
+/*
                     try {
                         saveInv(inv, context);
                         //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
                     //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -236,6 +239,7 @@ public class InvestigatorController {
 
 
     //Lista de inv
+    /*
     private void saveAllInv(List<Investigator> invList, final Context context) throws SQLException {
         DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         //DatabaseHelper helper = new DatabaseHelper(context);
@@ -283,5 +287,5 @@ public class InvestigatorController {
         //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Investigator, Integer> invDao = helper.getInvestigatorDao();
         return invDao.queryForId(id);
-    }
+    }*/
 }

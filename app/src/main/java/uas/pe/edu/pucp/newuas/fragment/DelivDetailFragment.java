@@ -148,7 +148,8 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
                 FileDownloadController fileDownloadController= new FileDownloadController();
-                fileDownloadController.downloadFile(context, Configuration.BASE_URL + "/" + selectedVersion.getRuta());
+                if(selectedVersion.getRuta()!=null)
+                    fileDownloadController.downloadFile(context, Configuration.BASE_URL + "/" + selectedVersion.getRuta());
             }
         });
         delivRegObs.setVisibility(View.INVISIBLE);
