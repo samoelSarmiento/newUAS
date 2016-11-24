@@ -81,14 +81,9 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
         viewHolder.atHour.append(items.get(position).getHora_inicio());
         //String toHour = simpleDateFormat.format(items.get(position).getHore_fin());
         viewHolder.toHour.append(items.get(position).getHora_fin());
-        String status;
-        int tipo_estado = items.get(position).getStatus().getIdStatus();
-        if(tipo_estado== 1)
-            status = "Pendiente";
-        else if(tipo_estado == 2)
-            status = "Realizada";
-        else
-            status = "Cancelado";
+
+        String status = items.get(position).getStatus().getDescription();
+
 
         viewHolder.status.append(status);
 
@@ -107,17 +102,9 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
 
                                 PSPMeeting meeting = items.get(position);
 
-                                Fragment fragment = new PSP_SupxStudentMeetingDetailFragment();
-                                Bundle bundle = new Bundle();
 
-                                bundle.putSerializable("PSPMeeting",meeting);
-                                bundle.putSerializable("Student", student);
-                                fragment.setArguments(bundle);
-
-
-                                ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
-                                        .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
-
+                                PSPController controller1 =  new PSPController();
+                                controller1.showSupXStudentMeetingDetail(context,student,meeting);
 
 
 
