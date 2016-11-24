@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
@@ -24,6 +27,8 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
     private ArrayList<PSPFreeHour> items;
     private Context context;
     private LayoutInflater layoutInflater;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+    private SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
 
     public PSPSupFreeHoursAdapter(Context context, ArrayList<PSPFreeHour> items) {
@@ -60,8 +65,8 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
             viewHolder.tvFecha = (TextView) view.findViewById(R.id.tv_item_psp_sup_freehour_date);
             viewHolder.tvHora = (TextView) view.findViewById(R.id.tv_item_psp_sup_freehour_hour);
 
-
-            viewHolder.tvFecha.append(items.get(position).getFecha());
+            Date date  =simpleDateFormat.parse(items.get(position).getFecha());
+            viewHolder.tvFecha.append(simpleDateFormat2.format(date));
             viewHolder.tvHora.append(items.get(position).getHoraIni());
 
 
@@ -71,6 +76,11 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
 
 
         return view;
+
+
+    }
+    public void setItems(ArrayList<PSPFreeHour> freeHours){
+        items = freeHours;
 
 
     }

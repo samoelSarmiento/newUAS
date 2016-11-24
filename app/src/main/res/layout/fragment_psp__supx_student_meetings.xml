@@ -1,3 +1,4 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,9 @@
     <ListView
         android:id="@+id/lv_psp_sup_student_meetings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:divider="@color/uas_plomo"
+        android:dividerHeight="3dp">>
 
     </ListView>
 </LinearLayout>

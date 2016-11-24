@@ -47,12 +47,13 @@ Button btEnviarComentario , btCancelar ;
         comentarioAnterior = (EditText) view.findViewById(R.id.editTextComentarioAnteriorPSPinforme);
         btEnviarComentario=(Button) view.findViewById(R.id.btEnviarComentarioPSPaccion);
         btCancelar=(Button) view.findViewById(R.id.btEnviarComentarioPSPcancelar);
-
 // //   inscription.setId(       PSPInscriptionFilesItemsAdapter.inscripcion.getId()   );
-
-
-       comentarioAnterior.setText(      PSPInscriptionFilesItemsAdapter.inscripcion.getRecomendaciones()  );
-
+        String recomendaciones = PSPInscriptionFilesItemsAdapter.inscripcion.getRecomendaciones() ;
+            if ( (recomendaciones != null) && (!recomendaciones.equals("")) ) {
+                comentarioAnterior.setText(      PSPInscriptionFilesItemsAdapter.inscripcion.getRecomendaciones()  );
+        } else {
+                 comentarioAnterior.setText(     "No hay recomendaciones previas"  );
+        }
 
         btEnviarComentario.setOnClickListener(this);
         btCancelar.setOnClickListener(this);

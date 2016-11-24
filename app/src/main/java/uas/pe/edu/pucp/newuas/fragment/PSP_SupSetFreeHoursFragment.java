@@ -192,7 +192,13 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
                                         dialog.cancel();
                                         PSPController controller = new PSPController();
                                         PSPFreeHour freeHour = new PSPFreeHour();
+
+
+
+
                                         freeHour.setFecha(valorFecha[0]);
+
+
                                         freeHour.setHoraIni(valorHora[0]);
 
                                         controller.setSupFreeHour(getActivity(),freeHour);

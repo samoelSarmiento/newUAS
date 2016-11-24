@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPSupFreeHoursAdapter;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 
 
@@ -28,8 +29,8 @@ public class PSP_SupFreeHours extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
+    ListView listView;
+    PSPSupFreeHoursAdapter adapter;
     Button btnRegisterNewFreeHour;
 
     public PSP_SupFreeHours() {
@@ -70,14 +71,14 @@ public class PSP_SupFreeHours extends Fragment implements View.OnClickListener {
 
         View view  = inflater.inflate(R.layout.fragment_psp__sup_free_hours, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.lv_psp_sup_freeHours);
+         listView = (ListView) view.findViewById(R.id.lv_psp_sup_freeHours);
         btnRegisterNewFreeHour  =(Button) view.findViewById(R.id.btn_psp_sup_new_free_hour);
 
         btnRegisterNewFreeHour.setOnClickListener(this);
 
         if (getArguments() != null) {
             ArrayList<PSPFreeHour> lista  = ( ArrayList<PSPFreeHour>) getArguments().getSerializable("freeHours");
-            PSPSupFreeHoursAdapter adapter =  new PSPSupFreeHoursAdapter(getActivity(),lista);
+            adapter =  new PSPSupFreeHoursAdapter(getActivity(),lista);
             listView.setAdapter(adapter);
 
 
@@ -95,6 +96,10 @@ public class PSP_SupFreeHours extends Fragment implements View.OnClickListener {
 
 
         Log.d("SUP_FREE_HOURS", "volvi");
+
+
+        PSPController controller =  new PSPController();
+        controller.refreshFreeHours(getActivity(), adapter);
 
 
 
