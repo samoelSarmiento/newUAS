@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
 
 
     Button btnNewMeeting;
-
+    PSPStudentMeetingsAdapter  adapter;
     ArrayList<PSPMeeting>  meetings;
 
     public PSP_meetings_studentFragment() {
@@ -78,8 +79,8 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
         btnNewMeeting.setOnClickListener(this);
 
 
-        if(!meetings.isEmpty()){
-            PSPStudentMeetingsAdapter  adapter  = new PSPStudentMeetingsAdapter(getActivity(),meetings);
+        if(meetings!= null){
+             adapter = new PSPStudentMeetingsAdapter(getActivity(),meetings);
 
               ListView listView = (ListView) view.findViewById(R.id.lv_psp_student_meetings);
               listView.setAdapter(adapter);
@@ -90,7 +91,7 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                             PSPController controller = new PSPController();
-                            PSPMeeting meeting =  meetings.get(position);
+                            PSPMeeting meeting =  (PSPMeeting) adapter.getItem(position);
                             controller.getStudentForStudentMeetingDetail(getActivity(),meeting);
 
 
@@ -103,6 +104,15 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        PSPController controller = new PSPController();
+        controller.refreshStudentMeetings(getActivity(),  adapter);
+       
+
+    }
 
     @Override
     public void onClick(View v) {
