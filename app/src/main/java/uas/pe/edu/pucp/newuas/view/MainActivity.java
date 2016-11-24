@@ -47,14 +47,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //estudiante normal
                 if (Configuration.isStudent()) {
                     btModuleTutEv.setVisibility(View.VISIBLE);
+                    //si lleva psp
                     if (Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
                         btModulePsp.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    btModuleAcr.setVisibility(View.VISIBLE);
-                    btModulePsp.setVisibility(View.VISIBLE);
-                    btModuleTutEv.setVisibility(View.VISIBLE);
-                    btModuleInv.setVisibility(View.VISIBLE);
+                    //solo supervisor
+                    if (Configuration.isOnlySupervisor()) {
+                        btModulePsp.setVisibility(View.VISIBLE);
+                    } else {
+                        btModuleAcr.setVisibility(View.VISIBLE);
+                        btModulePsp.setVisibility(View.VISIBLE);
+                        btModuleTutEv.setVisibility(View.VISIBLE);
+                        btModuleInv.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         }
