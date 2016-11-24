@@ -44,7 +44,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
 
     public String solicitud;
     ImageButton btnCalendar;
-    Button btnSolicitar;
+    Button btnSolicitar,btnCancelar;
     Spinner spinnerHoras, spinnerTemas;
     EditText txtFecha;
     int day, year, month;
@@ -73,6 +73,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             final View view = inflater.inflate(R.layout.fragment_alumno_nueva_cita, container, false);
             txtFecha = (EditText) view.findViewById(R.id.dateText);
             btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar);
+            btnCancelar = (Button) view.findViewById(R.id.buttonCancelar);
             btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendar);
             spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora);
             spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
@@ -95,7 +96,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             year = c.get(Calendar.YEAR);
             month = c.get(Calendar.MONTH);
             day = c.get(Calendar.DAY_OF_MONTH);
-            showDate();
+            //showDate();
             gettingMaxTime();
 
         /*
@@ -158,44 +159,64 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                         @Override
 
                         public void onClick(View v) {
-                            valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                            valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                            solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
-                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    switch (which) {
-                                        case DialogInterface.BUTTON_POSITIVE:
-                                            //Borra los shared preferences
-                                            //regresa al login
-                                            break;
 
-                                        case DialogInterface.BUTTON_NEGATIVE:
-                                            //Nada pasa
-                                            break;
+
+                            if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
+                                Toast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                valorHora[0] = spinnerHoras.getSelectedItem().toString();
+                                valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                                solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                //Borra los shared preferences
+                                                //regresa al login
+                                                break;
+
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                //Nada pasa
+                                                break;
+                                        }
                                     }
-                                }
-                            };
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                     dialog.cancel();
+                                };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
 
-                                            }
-                                 }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                    }
+                                }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
                                                 Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
                                                 TutStudentController tsc = new TutStudentController();
-                                                tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0], duracionCita);
+                                                tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], duracionCita);
 
                                             }
                                         }
-                                    ).show();
+                                ).show();
+                            }
                         }
                     }
 
             );
+
+        btnCancelar.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        TutStudentController tsc = new TutStudentController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
+
 
 
 
@@ -316,27 +337,35 @@ public class AlumnoNuevaCitaFragment extends Fragment {
         Collections.sort(horaInicio);
 
         for (int i = 0; i < smr.size();  i++){
-            String tiempoEliminar = smr.get(i).getInicio();
-            String fechaGuion = tiempoEliminar.substring(0,10);
-            Log.d("xd","moosstrar" + fechaGuion);
 
-            int anhoWeek =  Integer.parseInt(fechaGuion.substring(0,4));
-            int mesWeek = Integer.parseInt(fechaGuion.substring(5,7));
-            int diaWeek = Integer.parseInt(fechaGuion.substring(8,10));
+            //String fechaCompToda = smr.get(0).getInicio();
+            //String fechaComp = fechaCompToda.substring()
+
+            if (true) {
+
+                String tiempoEliminar = smr.get(i).getInicio();
+                String fechaGuion = tiempoEliminar.substring(0, 10);
+                Log.d("xd", "moosstrar" + fechaGuion);
+                int anhoWeek = Integer.parseInt(fechaGuion.substring(0, 4));
+                int mesWeek = Integer.parseInt(fechaGuion.substring(5, 7));
+                int diaWeek = Integer.parseInt(fechaGuion.substring(8, 10));
 
 
-            if (anho == anhoWeek && mes == mesWeek && dia == diaWeek){
-                String horaMin = tiempoEliminar.substring(11,16);
-                int posEliminar = 0;
-                for (int h = 0; h<horaInicio.size();h++){
-                    if (horaMin.equals(horaInicio.get(h)))  {
-                        Log.d("xd", horaMin + " xxaffsafsfsaf " + horaInicio );
-                        posEliminar = h;
-                        break;
+                if (anho == anhoWeek && mes == mesWeek && dia == diaWeek) {
+                    String horaMin = tiempoEliminar.substring(11, 16);
+                    int posEliminar = 0;
+                    for (int h = 0; h < horaInicio.size(); h++) {
+                        if (horaMin.equals(horaInicio.get(h))) {
+                            Log.d("xd", horaMin + " xxaffsafsfsaf " + horaInicio);
+                            posEliminar = h;
+                            break;
+                        }
                     }
+                    Log.d("xd", "LLEGUE ACAAA " + posEliminar);
+                    horaInicio.remove(posEliminar);
                 }
-                Log.d("xd", "LLEGUE ACAAA " + posEliminar);
-                horaInicio.remove(posEliminar);
+
+
             }
         }
 

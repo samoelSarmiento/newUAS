@@ -49,8 +49,8 @@ public class TutStudentController {
 
     public boolean showTopics (final Context context) {
 
-        NavigationDrawerTutoria.nameTopic = null;
-        NavigationDrawerTutoria.nameTopicsList = null;
+        //NavigationDrawerTutoria.nameTopic = null;
+        //NavigationDrawerTutoria.nameTopicsList = null;
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -311,9 +311,11 @@ public class TutStudentController {
     public boolean filterAppointment(final Context context, final View view, int idUser, String fechaI, String fechaF, String motivo){
 
         Map<String, String> data = new HashMap<>();
+        final int[] icon1 = new int[2], icon2 = new int[2];
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<List<AppointmentResponse>> call = restCon.filterStudentAppointment(new AppointmentFilterRequest(idUser,fechaI,fechaF,motivo),data);
+        Log.d("xd","sayonara bye bye bye bye");
         // Log.d("xd",  "ke pasa aca " + call.request().url() );
 
         call.enqueue(new Callback<List<AppointmentResponse>>() {
@@ -329,12 +331,56 @@ public class TutStudentController {
                     for (AppointmentResponse ap : appointResponse){
                         String fechaHoraInicio =  ap.getInicio();
                         String fechaI = fechaHoraInicio.substring(0,10);
+                        Calendar c = Calendar.getInstance();
+                        int year       = c.get(Calendar.YEAR);
+                        int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+                        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+                        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+
                         String horaI  = fechaHoraInicio.substring(11);
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
-                        //sr.add(new SingleRow(fechaI,horaI,tema,estado,icon1[0],icon2[0]));
-                        Log.d("tag", fechaI + horaI + tema + estado);
 
+                        Log.d("tag", fechaI + " "  + " " + horaI + " " + estado);
+
+                        int idCreador = ap.getCreador();
+                        if (estado.equals("Pendiente")){
+                            icon1[0] = R.drawable.ic_nullresource;
+                            icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_cross;
+
+                        }
+                        else if (estado.equals("Confirmada") && !actualDate.equals(fechaI)){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_cross;
+
+                        }
+                        else if (estado.equals("Cancelada")){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("Sugerida")){
+                            icon1[0] = R.drawable.ic_check;
+                            icon2[0] = R.drawable.ic_cross;
+                        }
+                        else if (estado.equals("Rechazada")){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("Asistida")){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+                        else if (estado.equals("No asistida")){
+                            icon1[0] = R.drawable.ic_eye;
+                            icon2[0] = R.drawable.ic_nullresource;
+                        }
+
+                        int idAppoint = ap.getId();
+                        sr.add(new SingleRow(fechaI,horaI,tema,estado,icon1[0],icon2[0], idAppoint));
                     }
                     ListView listV = (ListView) view.findViewById(R.id.listViewCustom);
                     listV.setAdapter(new AppointmentAdapter(context,sr));
