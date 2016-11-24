@@ -131,7 +131,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = new Fragment();
 
         int id = item.getItemId();
 
@@ -178,7 +177,7 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         // Insert the fragment by replacing any existing fragment
 
 
-        replaceFragment(fragment);
+        //replaceFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

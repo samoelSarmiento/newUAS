@@ -43,7 +43,7 @@ public class TutorNewAppointFragment extends Fragment {
 
     public String solicitud;
     ImageButton btnCalendar;
-    Button btnSolicitar;
+    Button btnSolicitar,btnCancelar;
     Spinner spinnerHoras, spinnerTemas, spinnerAlumnos;
     EditText txtFecha;
     int day, year, month,duracionCita;
@@ -67,6 +67,7 @@ public class TutorNewAppointFragment extends Fragment {
         getActivity().setTitle("Tutoría");
         txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewAssignmentReg);
+        btnCancelar = (Button) view.findViewById(R.id.buttonCancelarTutorNewAssigmentReg);
         btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendarTutorNewAppoint);
         spinnerHoras = (Spinner) view.findViewById(R.id.spinnerTutHora);
         spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
@@ -79,7 +80,6 @@ public class TutorNewAppointFragment extends Fragment {
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
-        showDate();
 
         Bundle bundle = this.getArguments();
         List<AppointInformationRegisterTuto> tutGroup= null;
@@ -154,45 +154,64 @@ public class TutorNewAppointFragment extends Fragment {
                     @Override
 
                     public void onClick(View v) {
-                        valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                        valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                        valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
-                        solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        //Borra los shared preferences
-                                        //regresa al login
-                                        break;
+                        if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
+                            Toast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                            valorHora[0] = spinnerHoras.getSelectedItem().toString();
+                            valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+                            solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which) {
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            //Borra los shared preferences
+                                            //regresa al login
+                                            break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //Nada pasa
-                                        break;
-                                }
-                            }
-                        };
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-
-                            }
-                        }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
-                                        TutTutorController tsc = new TutTutorController();
-                                        tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),valorFecha[0], valorHora[0],valorTema[0],valorNombre[0]);
-
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            //Nada pasa
+                                            break;
                                     }
                                 }
-                        ).show();
+                            };
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
+
+                                        }
+                                    }
+                            ).show();
+                        }
                     }
                 }
 
         );
+
+
+        btnCancelar.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        TutTutorController tsc = new TutTutorController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
+
 
 
         return view;

@@ -43,7 +43,7 @@ public class TutorNewNoAppointFragment extends Fragment {
 
     public String solicitud;
     ImageButton btnTime;
-    Button btnSolicitar;
+    Button btnSolicitar,btnCancelar;
     Spinner spinnerHorasI, spinnerHorasF, spinnerTemas, spinnerAlumnos;
     EditText txtFecha, txtObservacion,txtHora;
     int day, year, month , idAlumno;
@@ -74,6 +74,7 @@ public class TutorNewNoAppointFragment extends Fragment {
 
         txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewNoAssignmentReg);
+        btnCancelar = (Button) view.findViewById(R.id.buttonCancelarTutorNewNoAssigmentReg);
         spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
         spinnerAlumnos = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
         txtObservacion = (EditText) view.findViewById(R.id.tutoTextObsNoAppoint);
@@ -144,6 +145,18 @@ public class TutorNewNoAppointFragment extends Fragment {
         //TIMEE PICKEEEEEEEEEEEEEEEEEEEEEEER
 
 
+
+        btnCancelar.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        TutTutorController tsc = new TutTutorController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
 
         btnSolicitar.setOnClickListener(
 
@@ -259,32 +272,6 @@ public class TutorNewNoAppointFragment extends Fragment {
 
         Collections.sort(horaInicio);
 
-        /*
-        for (int i = 0; i < smr.size();  i++){
-            String tiempoEliminar = smr.get(i).getInicio();
-            String fechaGuion = tiempoEliminar.substring(0,10);
-            Log.d("xd","moosstrar" + fechaGuion);
-
-            int anhoWeek =  Integer.parseInt(fechaGuion.substring(0,4));
-            int mesWeek = Integer.parseInt(fechaGuion.substring(5,7));
-            int diaWeek = Integer.parseInt(fechaGuion.substring(8,10));
-
-
-            if (anho == anhoWeek && mes == mesWeek && dia == diaWeek){
-                String horaMin = tiempoEliminar.substring(11,16);
-                int posEliminar = 0;
-                for (int h = 0; h<horaInicio.size();h++){
-                    if (horaMin.equals(horaInicio.get(h)))  {
-                        Log.d("xd", horaMin + " xxaffsafsfsaf " + horaInicio );
-                        posEliminar = h;
-                        break;
-                    }
-                }
-                Log.d("xd", "LLEGUE ACAAA " + posEliminar);
-                horaInicio.remove(posEliminar);
-            }
-        }
-*/
         return horaInicio;
 
     }

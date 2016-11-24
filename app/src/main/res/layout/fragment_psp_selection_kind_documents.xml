@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_selection_kind_documents"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_selection_kind_documents">
+    android:paddingTop="@dimen/fragment_top">
 
 
 
@@ -23,18 +24,18 @@
             android:id="@+id/psp_boton_informe_supervisor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login_selector"
             android:text="@string/pspSelectButtonInforme"
-            android:textColor="@color/white" />
+            android:background="@drawable/btn_main_uas"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/psp_boton_documentos_supervisor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login_selector"
             android:layout_marginTop="@dimen/divider"
             android:text="@string/pspSelectButtonDocument"
-            android:textColor="@color/white" />
+            android:background="@drawable/btn_main_uas"
+            android:textColor="@color/white"/>
 
 
     </LinearLayout>
