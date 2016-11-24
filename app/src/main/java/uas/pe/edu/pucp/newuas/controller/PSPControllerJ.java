@@ -192,21 +192,11 @@ public class PSPControllerJ {
         token.put("token", Configuration.LOGIN_USER.getToken());
         String motivo = "Motivo académico";
         Psp_dates_supervisor_employers psdse = new Psp_dates_supervisor_employers(idUser, fecha, hora, motivo, idAlumno, lugar);
-
-        Toast.makeText(context , "No hay conexión" + idUser , Toast.LENGTH_SHORT).show();
-
         Call<String> call = restCon.realizarCitasPSPsupervJefe(token, psdse); //colocar los parámetros que s e enviarán.
-
-
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-
                 Toast.makeText(context, "Se registro la cita con éxito", Toast.LENGTH_SHORT).show();
-
-                //    StudentAppointFragment mp = new StudentAppointFragment();
-                //   ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
-
             }
 
             @Override
@@ -313,7 +303,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<Psp_dates_supervisor_employers_get>> call, retrofit2.Response<List<Psp_dates_supervisor_employers_get>> response) {
                 if (response.isSuccessful()) {
                     List<Psp_dates_supervisor_employers_get> listaEstudiantes = response.body();
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "Lista de citas", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("DateSuperEmployerPSP", (Serializable) listaEstudiantes);
                     DateSupervisorStudentEmployer spFragment = new DateSupervisorStudentEmployer();

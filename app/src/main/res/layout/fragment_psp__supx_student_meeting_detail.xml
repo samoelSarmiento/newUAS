@@ -61,6 +61,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="Estado"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
 
         </LinearLayout>
 
@@ -109,6 +116,13 @@
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <Spinner
+                android:minWidth="40dp"
+                android:id="@+id/cmb_psp_sup_meeting_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </Spinner>
 
 
         </LinearLayout>
@@ -152,6 +166,7 @@
             android:ems="10"
             android:minHeight="40dp"
             android:id="@+id/et_psp_sup_meeting_feedback" />
+
 
         <LinearLayout
             android:orientation="horizontal"

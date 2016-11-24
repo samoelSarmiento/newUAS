@@ -66,6 +66,15 @@
     <string name="pspSelectButtonInforme">Informacion de empresa</string>
     <string name="pspSelectButtonDocument">Documento</string>
 
+
+    <string-array name="MeetingStatus">
+
+        <item>--Seleccionar--</item>
+        <item>Cancelada</item>
+        <item>Pendiente</item>
+        <item>Realizada</item>
+
+    </string-array>
     <!--PSP Fin-->
 
     <!--Tutoria-->
@@ -87,6 +96,9 @@
         <item>21:00</item>
         <item>22:00</item>
     </string-array>
+
+
+
 
     <string name="noCita">Atender\n
     sin cita</string>
@@ -142,7 +154,7 @@
     <string name="itdAcrConsolidate">Consolidados</string>
     <string name="itdAcrSignOut">Cerrar Sesión</string>
     <string name="tvAcrName">Nombre:</string>
-    <string name="tvAcrSurnames">Apelldios:</string>
+    <string name="tvAcrSurnames">Apellidos:</string>
     <string name="tvAcreEmail">Correo:</string>
 
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>

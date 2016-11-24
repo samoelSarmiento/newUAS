@@ -35,14 +35,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btModulePsp.setOnClickListener(this);
         btModuleTutEv.setOnClickListener(this);
         btModuleInv.setOnClickListener(this);
-        /*int idPerfil = Configuration.LOGIN_USER.getUser().getIdPerfil();
-        if (idPerfil == 4 || idPerfil == 3) {
+
+        //acreditador y administrador pueden entrar solo a acreditacion
+        if (Configuration.isAccreditor() || Configuration.isAdmin()) {
             btModuleAcr.setVisibility(View.VISIBLE);
-        } else if (idPerfil == 1 || idPerfil == 2 || idPerfil == 5) {
-            btModulePsp.setVisibility(View.VISIBLE);
-            btModuleTutEv.setVisibility(View.VISIBLE);
-            btModuleInv.setVisibility(View.VISIBLE);
-        }*/
+        } else {
+            //investigaor normal
+            if (Configuration.isOnlyInvestigator()) {
+                btModuleInv.setVisibility(View.VISIBLE);
+            } else {
+                //estudiante normal
+                if (Configuration.isStudent()) {
+                    btModuleTutEv.setVisibility(View.VISIBLE);
+                    //si lleva psp
+                    if (Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
+                        btModulePsp.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    //solo supervisor
+                    if (Configuration.isOnlySupervisor()) {
+                        btModulePsp.setVisibility(View.VISIBLE);
+                    } else {
+                        btModuleAcr.setVisibility(View.VISIBLE);
+                        btModulePsp.setVisibility(View.VISIBLE);
+                        btModuleTutEv.setVisibility(View.VISIBLE);
+                        btModuleInv.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        }
+
+
     }
 
     @Override
@@ -73,8 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
                 } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1) {
                     intent = new Intent(this, NavigationDrawerTutoria.class);
-                }
-                else intent = new Intent(this, NavigationDrawerTutoriaCoord.class);
+                } else intent = new Intent(this, NavigationDrawerTutoriaCoord.class);
                 startActivity(intent);
                 break;
         }

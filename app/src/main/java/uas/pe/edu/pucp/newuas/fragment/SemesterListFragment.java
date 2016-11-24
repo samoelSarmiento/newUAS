@@ -67,7 +67,8 @@ public class SemesterListFragment extends Fragment {
                     if (Configuration.isAdmin()) {
                         sc.getCoursesxSpecialyxCycle(context, Configuration.SPECIALTY.getIdEspecialidad(), sem.getIdCicloAcademico());
                     } else {
-                        sc.getCoursesxSpecialyxCycle(context, Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), sem.getIdCicloAcademico());
+                        int idEspecialidad = Configuration.getIdEspecialidad();
+                        sc.getCoursesxSpecialyxCycle(context, idEspecialidad, sem.getIdCicloAcademico());
                     }
                 }
             });
