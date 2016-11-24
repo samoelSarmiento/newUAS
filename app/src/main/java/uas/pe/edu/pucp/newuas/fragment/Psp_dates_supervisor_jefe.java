@@ -37,7 +37,6 @@ import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 public class Psp_dates_supervisor_jefe extends Fragment {
 
-
     public String solicitud;
     ImageButton btnCalendar;
     Button btnSolicitar;
@@ -55,9 +54,6 @@ public class Psp_dates_supervisor_jefe extends Fragment {
     public Psp_dates_supervisor_jefe() {
         // Required empty public constructor
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,20 +82,12 @@ public class Psp_dates_supervisor_jefe extends Fragment {
             e.printStackTrace();
         }
 
-
-       // String[] lista = {"Jose ", "Eduardo", "XXX"};
-
-      //  Spinner s = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
-     //   s.setAdapter(null);
-     //   ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, lista);
-     //   s.setAdapter(adapter);
-
         valorFecha[0] = txtFecha.getText().toString();
         valorHora[0] = spinnerHoras.getSelectedItem().toString();
      //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
         lugar[0] = txtLugar.getText().toString();
 
-        txtFecha.setText("     -     ");
+        txtFecha.setText("Seleccione la fecha");
 
                 selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
@@ -132,10 +120,22 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                     @Override
 
                     public void onClick(View v) {
-                     //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
+
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
                         lugar[0] =  txtLugar.getText().toString();
-                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[1] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+
+                    //    Toast.makeText(getActivity(), txtFecha.getText().toString() , Toast.LENGTH_LONG).show();
+                        if ( txtFecha.getText().toString().compareTo("Seleccione la fecha")  == 0) {
+                            Toast.makeText(getActivity(), "Por favor registre la fecha", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
+                     //   Toast.makeText(getActivity(), lugar[0] , Toast.LENGTH_LONG).show();
+                        if ( (txtLugar.getText().toString() == null) || (txtLugar.getText().toString().equals("")) ) {
+                            Toast.makeText(getActivity(), "Por favor registre el lugar", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
+
+                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[1] + " a las " + valorHora[0] + "¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

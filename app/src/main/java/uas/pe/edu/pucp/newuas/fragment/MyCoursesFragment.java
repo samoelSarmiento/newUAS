@@ -49,8 +49,8 @@ public class MyCoursesFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         CourseResponse courseResponse = adapter.getItem(position);
                         SpecialtyController controller = new SpecialtyController();
-                        
-                        controller.getStudentsbySchedule(getActivity(),);
+
+                        //controller.getStudentsbySchedule(getActivity(),);
                     }
                 });
             }

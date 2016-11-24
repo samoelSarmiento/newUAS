@@ -50,6 +50,7 @@ import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Semester;
 import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.Status;
 import uas.pe.edu.pucp.newuas.model.StringResponse;
 import uas.pe.edu.pucp.newuas.model.Student;
 import uas.pe.edu.pucp.newuas.model.StudentEffort;
@@ -373,6 +374,8 @@ public interface RestCon {
     @GET("psp/students/finalScore")
     Call<List<PSPStudentFinalGrade>>  getStudentsFinalScore(@QueryMap Map<String, String> token);
 
+    @GET("psp/meeting/status")
+    Call<List<Status>> getStautesForSupxStudentDetail(@QueryMap Map<String, String> token);
 
 
 

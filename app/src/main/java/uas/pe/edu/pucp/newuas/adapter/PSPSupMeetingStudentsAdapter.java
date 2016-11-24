@@ -94,10 +94,11 @@ public class PSPSupMeetingStudentsAdapter extends BaseAdapter {
 
                                 case R.id.menu_item_student_requestMeeting:
 
+                                    /*
                                     Fragment fragment = PSP_SupStudentNewMeetingFragment.newInstance(items.get(position));
                                     ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
                                             .addToBackStack(null).commit();
-                                    Toast.makeText(context,"Add meeting", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context,"Add meeting", Toast.LENGTH_SHORT).show();*/
                                     break;
 
                             }

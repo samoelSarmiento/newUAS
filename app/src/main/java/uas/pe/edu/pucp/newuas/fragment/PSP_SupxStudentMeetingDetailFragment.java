@@ -6,21 +6,27 @@ import android.net.Uri;
 import android.os.Bundle;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.SpinnerSupxStudentMeetingDetailAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
+import uas.pe.edu.pucp.newuas.model.Status;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 
@@ -38,6 +44,8 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
     PSPMeeting meetings;
     Student student;
     EditText place,  observation, feedback;
+    Spinner spinner;
+    ArrayList<Status> status;
 
 
 
@@ -88,6 +96,7 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
 
              meetings = (PSPMeeting) bundle.getSerializable("PSPMeeting");
              student = (Student)bundle.getSerializable("Student");
+            status = (ArrayList<Status>)bundle.getSerializable("Status");
 
 
 
@@ -100,6 +109,19 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
              place = (EditText) view.findViewById(R.id.et_psp_sup_meeting_place);
              observation = (EditText)view.findViewById(R.id.et_psp_sup_meeting_observations);
              feedback = (EditText)view.findViewById(R.id.et_psp_sup_meeting_feedback);
+            spinner = (Spinner)view.findViewById(R.id.cmb_psp_sup_meeting_status);
+
+
+            SpinnerSupxStudentMeetingDetailAdapter adapter =  new SpinnerSupxStudentMeetingDetailAdapter(getActivity(),
+                    android.R.layout.simple_spinner_item,status);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            int position =  adapter.getPosition(meetings.getStatus().getDescription());
+
+            spinner.setSelection(position);
+
 
 
             edit = (Button)view.findViewById(R.id.btn_psp_sup_meeting_detail_edit);
@@ -155,10 +177,20 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
                 meetings.setLugar(etPlace);
                 meetings.setObservaciones(etObservation);
                 meetings.setRetroalimentacion(etFeedback);
+                int pos =  spinner.getSelectedItemPosition() - 1;
+                Log.d("POSITION","" + pos);
+                if(pos>= 0)
+                    meetings.getStatus().setIdStatus(status.get(pos).getIdStatus());
+                else{
+
+                    MyToast.makeText(getActivity(),"No ha seleccionado un estado" , Toast.LENGTH_SHORT, MyToast.errorAlert).show();
+                    return;
+                }
 
 
                 PSPController controller = new PSPController();
                 controller.updateMeetingDetail(getActivity(),meetings);
+                getFragmentManager().popBackStack();
 
 
                 break;

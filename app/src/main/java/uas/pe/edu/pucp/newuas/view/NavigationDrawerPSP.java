@@ -96,67 +96,55 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
     public void showGroupMenu(Menu menu) {
 
+        menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
+        menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+        menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
+        menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
+        menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudentMeetings).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
+        menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(false);
+        menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
+        menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
+        menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+        menu.findItem(R.id.nav_changeModulePSP).setVisible(true);//visible para todos los casos
+        menu.findItem(R.id.nav_pspExit).setVisible(true); //visible para todos los casos
 
         switch (Configuration.LOGIN_USER.getUser().getIdPerfil()) {
-            case 3:
-                //ADMIN
+            case 0: //Alumno
+
+                menu.findItem(R.id.nav_item_pspGroup_student).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudentMeetings).setVisible(true);
 
                 break;
-            case 0:
+            case 1: // Coordinador
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
-
-                //controller.getStudent(this);
-
-                //STUDENTS
-                menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(false);
-                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
-                menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(false);
-                menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
-                // menu.setGroupVisible(R.id.nav_psp_group_students, true);
+            case 2: //Profesor
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
+                menu.findItem(R.id.nav_item_pspPhases).setVisible(true);
                 break;
-            case 1:
-                //Coordinador
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
-                menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
-
-            case 2:
-                //Teacher
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspStudents).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspDates_supervisor).setVisible(false);
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspGroup_student).setVisible(false);
-                //menu.findItem(R.id.nav_item_pspPhases).setVisible(false);
-
-
-            case 6:
-
-
-                //Supervisor
-                //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
-                menu.findItem(R.id.nav_items_pspSupxStudenMeeting);
-                menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
-                menu.findItem(R.id.nav_item_pspCycle).setVisible(false);
-
-                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
-
+            case 3: //Administrador
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
                 menu.findItem(R.id.nav_item_pspGrades).setVisible(false);
                 //       menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(false);
+                menu.findItem(R.id.nav_item_pspPhases).setVisible(true);
 
+                break;
+            case 6: //Supervisor PSP
+                menu.findItem(R.id.nav_item_pspDates_supervisor_employer_student).setVisible(true);
+                menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
+
+                menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(true);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(true);
+                menu.findItem(R.id.nav_item_pspGrades).setVisible(true);
+                break;
 
         }
 
@@ -432,6 +420,10 @@ public class NavigationDrawerPSP extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
+        } else if (id == R.id.nav_changeModulePSP) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
