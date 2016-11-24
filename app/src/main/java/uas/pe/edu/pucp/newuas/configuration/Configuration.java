@@ -30,6 +30,7 @@ public class Configuration {
     public static UserResponse LOGIN_USER = null;
     public static boolean connected = false;
     public static Specialty SPECIALTY = null;
+    private static int idEspecialidad;
     //public static final DatabaseHelper HELPER;
 
     public static boolean isAdmin() {
@@ -46,6 +47,10 @@ public class Configuration {
 
     public static boolean isOnlyInvestigator() {
         return LOGIN_USER.getUser().getInvestigator() != null && LOGIN_USER.getUser().getTeacher() == null;
+    }
+
+    public static boolean isCoordinator() {
+        return LOGIN_USER.getUser().getIdPerfil() == 1;
     }
 
     public static boolean isAccreditor() {
@@ -79,5 +84,20 @@ public class Configuration {
 
         return isConnected;
 
+    }
+
+    public static int getIdEspecialidad() {
+        int idEspecialidad = 0;
+        Log.d("acreditador", "" + Configuration.isAccreditor());
+        Log.d("profe", "" + Configuration.isTeacher());
+        Log.d("coordianto" , "" + Configuration.isCoordinator());
+        if (Configuration.isAccreditor()) {
+            idEspecialidad = Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad();
+        } else {
+            if (Configuration.isTeacher() || Configuration.isCoordinator()) {
+                idEspecialidad = Configuration.LOGIN_USER.getUser().getTeacher().getIdEspecialidad();
+            }
+        }
+        return idEspecialidad;
     }
 }
