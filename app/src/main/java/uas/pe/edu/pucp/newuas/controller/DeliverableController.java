@@ -173,7 +173,7 @@ public class DeliverableController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
                 //Toast.makeText(context,"entre", Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
-                    //Toast.makeText(context,"entre2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
 
 /*
                     try {

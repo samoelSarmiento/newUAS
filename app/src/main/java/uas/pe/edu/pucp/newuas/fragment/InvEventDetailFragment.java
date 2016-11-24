@@ -119,6 +119,8 @@ public class InvEventDetailFragment extends Fragment {
                 ((Activity)context).setTitle("Grupos de Inv. > Eventos");
             }
         });
+        Date now = new Date();
+        if(now.after(date)) invEvBut.setVisibility(View.INVISIBLE);
 
 
         return view;
