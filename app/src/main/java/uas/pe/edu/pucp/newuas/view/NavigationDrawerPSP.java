@@ -144,7 +144,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
                 menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(true);
                 menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(true);
-                menu.findItem(R.id.nav_item_pspGrades).setVisible(true);
+                menu.findItem(R.id.nav_item_pspGrades).setVisible(true );
                 break;
 
         }
@@ -387,7 +387,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
             controller.getStudentSupFinalScores(this);
 
           //  controller.getTeacherStudents(this);
-            setTitle("Ver notas");
+
 
 
         } else if (id == R.id.nav_items_pspSupxStudenMeeting) {
