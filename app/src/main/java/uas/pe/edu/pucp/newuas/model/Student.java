@@ -156,4 +156,12 @@ public class Student implements Serializable {
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
+
+    public String getLleva_psp() {
+        return lleva_psp;
+    }
+
+    public void setLleva_psp(String lleva_psp) {
+        this.lleva_psp = lleva_psp;
+    }
 }

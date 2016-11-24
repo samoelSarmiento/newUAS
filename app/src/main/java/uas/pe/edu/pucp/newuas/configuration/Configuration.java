@@ -23,7 +23,7 @@ public class Configuration {
     public static final String USER_PREFERENCE = "userPrefs";
 
 
-    public static final String BASE_URL = "http://52.89.227.55/api";//"http://192.168.1.35/internetUAS/public";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
+    public static final String BASE_URL = "http://192.168.43.6/internetUAS/public";//"http://192.168.1.35/internetUAS/public";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
 
 
     public static final String FILE_URL = BASE_URL + "/uploads/";
@@ -59,6 +59,14 @@ public class Configuration {
 
     public static boolean isTeacherAndSupervisor() {
         return LOGIN_USER.getUser().getIdPerfil() == 6;
+    }
+
+    public static boolean isStudent() {
+        return LOGIN_USER.getUser().getIdPerfil() == 0;
+    }
+
+    public static boolean isStudentPsp() {
+        return LOGIN_USER.getUser().getTutStudentForPsp() != null;
     }
 
     public static boolean isConnected(Context context) {
