@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (Configuration.isStudent()) {
                     btModuleTutEv.setVisibility(View.VISIBLE);
                     //si lleva psp
-                    if (Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
+                    if (Configuration.LOGIN_USER.getUser().getStudent() != null && Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
                         btModulePsp.setVisibility(View.VISIBLE);
                     }
                 } else {
