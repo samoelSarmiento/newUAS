@@ -53,6 +53,7 @@ public class PSPInscriptionFilesItemsAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.fragment_psp_items_inscriptionfile_view,null);
         ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.jefeDirecto.setText(items.get(position).getJefeDirectoAux() ) ;
+        viewHolder.correoJefeDirect.setText(items.get(position).getCorreoJefeDirecto() ) ;
         viewHolder.telefonoJefeDirecto.setText(items.get(position).getTelefJefeDirecto() ) ;
         viewHolder.direccionEmpresa.setText(items.get(position).getDireccionEmpresa() ) ;
         viewHolder.nombreArea.setText(items.get(position).getNombreArea() ) ;
@@ -76,9 +77,10 @@ public class PSPInscriptionFilesItemsAdapter extends BaseAdapter {
 
     }
     public static class ViewHolder{
-        TextView jefeDirecto, telefonoJefeDirecto , direccionEmpresa , nombreArea , puesto , razonsocial, ubicacionArea , actividadEconomica, fechaInicio, fechatermino;
+        TextView jefeDirecto, correoJefeDirect,telefonoJefeDirecto , direccionEmpresa , nombreArea , puesto , razonsocial, ubicacionArea , actividadEconomica, fechaInicio, fechatermino;
         public ViewHolder(View view) {
             jefeDirecto = (TextView)view.findViewById(R.id.pspJefeDirectoValor);
+            correoJefeDirect = (TextView)view.findViewById(R.id.pspCorreoJefeDirectoValor);
             telefonoJefeDirecto= (TextView)view.findViewById(R.id.pspTelefonoJefeDirectoValor);
             direccionEmpresa = (TextView)view.findViewById(R.id.pspDireccionEmpresaValor);
             nombreArea = (TextView)view.findViewById(R.id.pspNombreDelAreaValor);

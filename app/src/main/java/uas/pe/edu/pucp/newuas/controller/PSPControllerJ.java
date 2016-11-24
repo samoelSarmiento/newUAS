@@ -346,8 +346,6 @@ public class PSPControllerJ {
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("DocumentsPSP", (Serializable) listaEstudiantes);
-
-
                     DescargaDeDocumentosAlumnosSuperv spFragment = new DescargaDeDocumentosAlumnosSuperv();
                     spFragment.setArguments(bundle);
 

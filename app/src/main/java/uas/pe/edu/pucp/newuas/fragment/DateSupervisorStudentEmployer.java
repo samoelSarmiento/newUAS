@@ -41,7 +41,7 @@ public class DateSupervisorStudentEmployer extends Fragment {
 
     ListView listDates;
     DatesSuperEmployerAdapter adapter;
-
+    public static ArrayList<Psp_dates_supervisor_employers_get> datesSupEmp = new  ArrayList<Psp_dates_supervisor_employers_get> ();
     Button newAppointment;
     ImageButton btnAceptar;
     public static ArrayList<SingleRow> list;
@@ -59,17 +59,12 @@ public class DateSupervisorStudentEmployer extends Fragment {
 
         getActivity().setTitle("Citas con Jefes");
         listDates  = (ListView) view.findViewById(R.id.listViewCustom_psp_dates_sup_emp);
-
-
         Bundle bundle = this.getArguments();
+
         if (bundle != null) {
-
-
-            ArrayList<Psp_dates_supervisor_employers_get> students = (ArrayList<Psp_dates_supervisor_employers_get>) bundle.getSerializable("DateSuperEmployerPSP");
-            adapter = new DatesSuperEmployerAdapter(getActivity(), students);
+            datesSupEmp  = (ArrayList<Psp_dates_supervisor_employers_get>) bundle.getSerializable("DateSuperEmployerPSP");
+            adapter = new DatesSuperEmployerAdapter(getActivity(), datesSupEmp);
             listDates.setAdapter(adapter);
-
-
         }
 
         newAppointment = (Button) view.findViewById(R.id.btnNewAssignment_psp_dates_sup_emp);

@@ -81,8 +81,8 @@ if (file.isEmpty()) {
             @Override
             public void onClick(View v) {
 
-
-
+                Intent intentPSP = new Intent(getActivity(), NavigationDrawerPSP.class);
+                startActivity(intentPSP);
 
             }
         });
