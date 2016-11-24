@@ -114,6 +114,8 @@ public class NavigationDrawerPSP extends AppCompatActivity
         switch (Configuration.LOGIN_USER.getUser().getIdPerfil()) {
             case 0: //Alumno
 
+                menu.findItem(R.id.nav_item_pspGroup_student).setVisible(true);
+                menu.findItem(R.id.nav_item_pspStudentMeetings).setVisible(true);
 
                 break;
             case 1: // Coordinador
@@ -124,11 +126,15 @@ public class NavigationDrawerPSP extends AppCompatActivity
             case 2: //Profesor
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
                 menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
+                menu.findItem(R.id.nav_item_pspPhases).setVisible(true);
+
 
                 break;
             case 3: //Administrador
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
                 menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
+
+                menu.findItem(R.id.nav_item_pspPhases).setVisible(true);
 
                 break;
             case 6: //Supervisor PSP
@@ -136,6 +142,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 menu.findItem(R.id.nav_item_pspDocuments_teacher).setVisible(true);
                 menu.findItem(R.id.nav_item_pspStudents_Supervis).setVisible(true);
 
+                menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(true);
+                menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(true);
+                menu.findItem(R.id.nav_item_pspGrades).setVisible(true);
                 break;
 
         }

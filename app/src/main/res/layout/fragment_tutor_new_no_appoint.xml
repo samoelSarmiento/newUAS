@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp">
 
         <TextView
@@ -50,17 +50,38 @@
             android:textStyle="bold" />
 
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnerHoraINoAppoint"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
-           />
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        >
+
+        <EditText
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/timeText"
+            />
+
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="230dp"
+            android:id="@+id/btnClock"
+            />
+
+
+
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -92,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp">
 
         <TextView
