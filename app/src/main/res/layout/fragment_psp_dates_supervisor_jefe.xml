@@ -21,6 +21,7 @@
         <TextView
             style="@style/GeneralTextViewsMedium"
             android:text="Fecha:"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -39,12 +40,14 @@
         <EditText
             android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
             android:inputType="date"
             android:ems="10"
             android:editable="false"
             android:id="@+id/dateText_psp_date_superv_jefe"
-            android:enabled="false" />
+            android:enabled="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/btnCalendar_psp_date_superv_jefe" />
 
 
         <ImageButton

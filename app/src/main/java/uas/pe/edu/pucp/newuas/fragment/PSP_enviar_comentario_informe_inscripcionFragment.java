@@ -54,7 +54,7 @@ Button btEnviarComentario , btCancelar ;
         } else {
                  comentarioAnterior.setText(     "No hay recomendaciones previas"  );
         }
-        
+
         btEnviarComentario.setOnClickListener(this);
         btCancelar.setOnClickListener(this);
 

@@ -109,6 +109,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(false);
         menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(false);
         menu.findItem(R.id.nav_item_pspTutors).setVisible(false);
+        menu.findItem(R.id.nav_changeModulePSP).setVisible(true);//visible para todos los casos
         menu.findItem(R.id.nav_pspExit).setVisible(true); //visible para todos los casos
 
         switch (Configuration.LOGIN_USER.getUser().getIdPerfil()) {
@@ -427,7 +428,11 @@ public class NavigationDrawerPSP extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
-        }
+        }        else if (id == R.id.nav_changeModulePSP ) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
