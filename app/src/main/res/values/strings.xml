@@ -154,7 +154,7 @@
     <string name="itdAcrConsolidate">Consolidados</string>
     <string name="itdAcrSignOut">Cerrar Sesión</string>
     <string name="tvAcrName">Nombre:</string>
-    <string name="tvAcrSurnames">Apelldios:</string>
+    <string name="tvAcrSurnames">Apellidos:</string>
     <string name="tvAcreEmail">Correo:</string>
 
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>

@@ -24,21 +24,24 @@ public class User {
     private String usuario;
 
     @SerializedName("accreditor")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Accreditor accreditor;
 
     @SerializedName("professor")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Teacher teacher;
 
     @SerializedName("investigator")
-    @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Investigator investigator;
 
     @SerializedName("tut_student")
     private TutStudentForPsp tutStudentForPsp;
 
-    public User(){
+    @SerializedName("psp_student")
+    private Student student;
+
+    public User() {
     }
 
     public User(Integer idUsuario, Integer idPerfil, String usuario, Accreditor accreditor, Teacher teacher, Investigator investigator) {
@@ -104,5 +107,13 @@ public class User {
 
     public void setTutStudentForPsp(TutStudentForPsp tutStudentForPsp) {
         this.tutStudentForPsp = tutStudentForPsp;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
