@@ -10,6 +10,8 @@ import java.io.Serializable;
 public class Psp_dates_supervisor_employers_get implements Serializable {
 
 
+    @SerializedName("nombrealumno")
+    private String nombrealumno;
     @SerializedName("id")
     private Integer id;
     @SerializedName("idtipoestado")
@@ -122,6 +124,16 @@ public class Psp_dates_supervisor_employers_get implements Serializable {
     public void setAsistencia(String asistencia) {
         this.asistencia = asistencia;
     }
+
+
+    public String getNombreAlumno() {
+        return nombrealumno;
+    }
+
+    public void setNombreAlumno(String nombrealumno) {
+        this.nombrealumno = nombrealumno;
+    }
+
 
 
     public String getLugar() {

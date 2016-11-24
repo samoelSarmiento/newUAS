@@ -8,7 +8,7 @@
 
         <item
             android:id="@+id/nav_item_pspStudents_Supervis"
-            android:icon="@drawable/ic_resultados_eval"
+            android:icon="@drawable/ic_objetivos_ed"
             android:title="Estudiantes"
             />
 
@@ -34,7 +34,7 @@
         <item
             android:id="@+id/nav_item_pspDates_supervisor_employer_student"
             android:icon="@drawable/ic_mejora_cont"
-            android:title="Citas Jefe" />
+            android:title="Citas con Empleadores" />
 
         <item
             android:id="@+id/nav_item_pspDocuments_teacher"
@@ -68,15 +68,14 @@
             android:icon="@drawable/ic_calendar"
             android:title="Disponibilidad" />
 
+        <item
+            android:id="@+id/nav_changeModulePSP"
+            android:icon="@drawable/ic_back"
+            android:title="@string/itdModule"  />
 
         <item
             android:id="@+id/nav_pspExit"
             android:icon="@drawable/ic_logout"
             android:title="@string/pspExit" />
-
-    </group>
-
-
-
-
+ </group>
 </menu>

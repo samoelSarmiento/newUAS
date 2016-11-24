@@ -37,13 +37,10 @@ public class ImprovementPlanController {
 
     public void getImprovementPlansofSpecialty(final Context context, Integer specId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<List<ImprovementPlan>> call;
-        call = restCon.getImprovementPlansofSpecialty(specId, token);
-
+        Call<List<ImprovementPlan>> call = restCon.getImprovementPlansofSpecialty(specId, token);
         call.enqueue(new Callback<List<ImprovementPlan>>() {
             @Override
             public void onResponse(Call<List<ImprovementPlan>> call, Response<List<ImprovementPlan>> response) {
@@ -68,30 +65,25 @@ public class ImprovementPlanController {
 
             @Override
             public void onFailure(Call<List<ImprovementPlan>> call, Throwable t) {
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void getImprovementPlan(final Context context, Integer ipId) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<ImprovementPlan> call;
-        call = restCon.getImprovementPlanById(ipId, token);
-
+        Call<ImprovementPlan> call = restCon.getImprovementPlanById(ipId, token);
         call.enqueue(new Callback<ImprovementPlan>() {
             @Override
             public void onResponse(Call<ImprovementPlan> call, Response<ImprovementPlan> response) {
                 if (response.isSuccessful()) {
                     ImprovementPlan ip = response.body();
-
                     ImprovementPlanViewFragment ipvf = new ImprovementPlanViewFragment();
 
                     Bundle bundle = new Bundle();
-
                     bundle.putSerializable("IPlan", ip);
                     ipvf.setArguments(bundle);
 
@@ -108,28 +100,23 @@ public class ImprovementPlanController {
 
             @Override
             public void onFailure(Call<ImprovementPlan> call, Throwable t) {
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }
 
 
     public void getActionsOfImprovementPlan(final Context context, Integer ipId) {
-
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<List<Action>> call;
-        call = restCon.getActionsofImprovementPlan(ipId, token);
-
+        Call<List<Action>> call = restCon.getActionsofImprovementPlan(ipId, token);
         call.enqueue(new Callback<List<Action>>() {
             @Override
             public void onResponse(Call<List<Action>> call, Response<List<Action>> response) {
                 if (response.isSuccessful()) {
                     List<Action> list = response.body();
-
                     ImprovementPlanActionsFragment ipaf = new ImprovementPlanActionsFragment();
 
                     Bundle bundle = new Bundle();
@@ -149,7 +136,7 @@ public class ImprovementPlanController {
 
             @Override
             public void onFailure(Call<List<Action>> call, Throwable t) {
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -176,7 +163,7 @@ public class ImprovementPlanController {
 
             @Override
             public void onFailure(Call<List<Suggestion>> call, Throwable t) {
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -202,7 +189,7 @@ public class ImprovementPlanController {
 
             @Override
             public void onFailure(Call<StringResponse> call, Throwable t) {
-                Toast.makeText(context, "Error de conexion. Intente nuevamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }

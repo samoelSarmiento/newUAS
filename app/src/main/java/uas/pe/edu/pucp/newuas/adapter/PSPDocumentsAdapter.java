@@ -47,7 +47,7 @@ public class PSPDocumentsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.fragment_psp_documents_item,null);
-       ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.studentName.setText(items.get(position).getNombre() + " " + items.get(position).getApellidoPaterno() + " " + items.get(position).getApellidoMaterno());
         return view;
     }

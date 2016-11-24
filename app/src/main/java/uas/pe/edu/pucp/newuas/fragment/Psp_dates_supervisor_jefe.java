@@ -30,6 +30,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
+import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
@@ -37,10 +38,9 @@ import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
 public class Psp_dates_supervisor_jefe extends Fragment {
 
-
     public String solicitud;
     ImageButton btnCalendar;
-    Button btnSolicitar;
+    Button btnSolicitar , btnVolver;
     Spinner spinnerHoras ; //, spinnerTemas;
     EditText txtFecha;
     EditText txtLugar;
@@ -56,9 +56,6 @@ public class Psp_dates_supervisor_jefe extends Fragment {
         // Required empty public constructor
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +65,8 @@ public class Psp_dates_supervisor_jefe extends Fragment {
         txtFecha = (EditText) view.findViewById(R.id.dateText_psp_date_superv_jefe);
         txtLugar = (EditText) view.findViewById(R.id.editText_psp_date_superv_jefe);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar_psp_date_superv_jefe);
+        btnVolver = (Button) view.findViewById(R.id.buttonVolver_psp_date_superv_jefe);
+
         btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendar_psp_date_superv_jefe);
         spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora_psp_date_superv_jefe);
       //  spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
@@ -86,20 +85,12 @@ public class Psp_dates_supervisor_jefe extends Fragment {
             e.printStackTrace();
         }
 
-
-       // String[] lista = {"Jose ", "Eduardo", "XXX"};
-
-      //  Spinner s = (Spinner) view.findViewById(R.id.spinnerTema_psp_date_superv_jefe);
-     //   s.setAdapter(null);
-     //   ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, lista);
-     //   s.setAdapter(adapter);
-
         valorFecha[0] = txtFecha.getText().toString();
         valorHora[0] = spinnerHoras.getSelectedItem().toString();
      //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
         lugar[0] = txtLugar.getText().toString();
 
-        txtFecha.setText("     -     ");
+        txtFecha.setText("Seleccione la fecha");
 
                 selectorListener =  new DatePickerDialog.OnDateSetListener(){
             @Override
@@ -132,10 +123,45 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                     @Override
 
                     public void onClick(View v) {
-                     //   valorTema[0] = spinnerTemas.getSelectedItem().toString();
+
                         valorHora[0] = spinnerHoras.getSelectedItem().toString();
                         lugar[0] =  txtLugar.getText().toString();
-                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[1] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+
+                    //    Toast.makeText(getActivity(), txtFecha.getText().toString() , Toast.LENGTH_LONG).show();
+                        if ( txtFecha.getText().toString().compareTo("Seleccione la fecha")  == 0) {
+                            Toast.makeText(getActivity(), "Por favor registre la fecha", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
+                     //   Toast.makeText(getActivity(), lugar[0] , Toast.LENGTH_LONG).show();
+                        if ( (txtLugar.getText().toString() == null) || (txtLugar.getText().toString().equals("")) ) {
+                            Toast.makeText(getActivity(), "Por favor registre el lugar", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
+
+                    //Ya posee una cita registrada al mismo dia y hora
+                        //buscamos que no tenga una cita el mismo dia y hora
+
+                        String auxFecha =  valorFecha[1];
+                        String aux =  auxFecha;
+                        aux  ="";
+                        aux  = aux  + auxFecha.charAt(6) + auxFecha.charAt(7) +auxFecha.charAt(8) + auxFecha.charAt(9) + '-'  ;
+                        aux = aux  + auxFecha.charAt(3) +auxFecha.charAt(4) + '-' ;
+                        aux = aux  + auxFecha.charAt(0) +auxFecha.charAt(1) ;
+
+                        String fechaElegida=  aux +" "+  valorHora[0]+":00" ; //valor Fecha : 30/11/2016
+
+                        //2016-11-30
+                      for ( int i = 0 ; i <    DateSupervisorStudentEmployer.datesSupEmp.size() ; i++  ) {
+                          Psp_dates_supervisor_employers_get date =   DateSupervisorStudentEmployer.datesSupEmp.get(i);
+                          String fechaCita = date.getFecha() +" "+ date.getHoraInicio();
+                              if(  fechaElegida.compareTo(fechaCita) == 0  ) {
+                              Toast.makeText(getActivity(), "Ya posee una cita a la misma fecha con el jefe del alumno " + date.getNombreAlumno()  , Toast.LENGTH_LONG).show();
+                                return ;
+                          }
+
+                      }
+
+                        solicitud = "Está a punto de confirmar una cita para el " + valorFecha[1] + " a las " + valorHora[0] + "¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -178,7 +204,21 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                     }
                 }
 
+
+
         );
+
+        btnVolver.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentPSP = new Intent(getActivity(), NavigationDrawerPSP.class);
+                        startActivity(intentPSP);
+                    }
+                }
+        );
+
+
         return view;
     }
 

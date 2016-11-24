@@ -48,7 +48,10 @@ public class DatesSuperEmployerAdapter  extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.dates_super_employer_item,null);
         ViewHolder viewHolder = new ViewHolder(view);
-        viewHolder.studentName.setText(items.get(position).getFecha() + " " + items.get(position).getHoraInicio() + " " + items.get(position).getLugar());
+        if(items.get(position).getTiporeunion() == 2 )
+        viewHolder.studentName.setText(items.get(position).getFecha() + "\t" + items.get(position).getHoraInicio()  + "\t"+ "Lugar : " + items.get(position).getLugar() + "\n" + "Con el jefe del alumno: " +  items.get(position).getNombreAlumno());
+        else
+        viewHolder.studentName.setText(items.get(position).getFecha() + "\t" + items.get(position).getHoraInicio()  + "\t"+ "Lugar : " + items.get(position).getLugar() + "\n" + "Con el alumno: " +  items.get(position).getNombreAlumno());
         return view;
     }
     public static class ViewHolder{

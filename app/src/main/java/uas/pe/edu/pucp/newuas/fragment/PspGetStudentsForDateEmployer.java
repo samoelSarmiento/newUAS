@@ -33,7 +33,7 @@ public class PspGetStudentsForDateEmployer extends Fragment {
         // Inflate the layout for this fragment
 
         View view  = inflater.inflate(R.layout.fragment_psp_documents, container, false);
-        getActivity().setTitle("Seleccione el alumno");
+        getActivity().setTitle("Selec. al alumno");
         lvStudents  = (ListView) view.findViewById(R.id.psp_studentList);
         Bundle bundle = this.getArguments();
         if (bundle != null){
@@ -45,20 +45,11 @@ public class PspGetStudentsForDateEmployer extends Fragment {
         lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //      Toast.makeText(getActivity(), "Proximamente", Toast.LENGTH_SHORT).show();
-
-                studentSelected = (Student) documentsAdapter.getItem(position);
-//una ventana más
-                Toast.makeText(getActivity(), "id alumno:" + studentSelected.getId() , Toast.LENGTH_SHORT).show();
-                Psp_dates_supervisor_jefe psp = new Psp_dates_supervisor_jefe();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, psp).commit();
-
-
+               studentSelected = (Student) documentsAdapter.getItem(position);
+               Psp_dates_supervisor_jefe psp = new Psp_dates_supervisor_jefe();
+               getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, psp).commit();
             }
         });
         return view ;
-
     }
-
-
 }

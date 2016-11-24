@@ -53,8 +53,8 @@ public class TutTutorController {
 
     public boolean showTopics (final Context context) {
 
-        NavigationDrawerTutoria.nameTopic = null;
-        NavigationDrawerTutoria.nameTopicsList = null;
+       // NavigationDrawerTutoria.nameTopic = null;
+        // NavigationDrawerTutoria.nameTopicsList = null;
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -66,6 +66,8 @@ public class TutTutorController {
 
 
                 List<TopicResponse> topicResponses = response.body();
+                NavigationDrawerTutoriaTutor.nameTopicsList.clear();
+
                 for (TopicResponse topic : topicResponses) {
                     NavigationDrawerTutoriaTutor.nameTopicsList.add(topic.getNombre());
                 }
@@ -76,7 +78,7 @@ public class TutTutorController {
                 //MyStudentAppointmentFragment fragment = new MyStudentAppointmentFragment();
 
                 TutorAppointFragment fragment = new TutorAppointFragment();
-                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, fragment).commit();
+                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
 
             }
 
@@ -130,7 +132,7 @@ public class TutTutorController {
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
                 TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
                 ttc.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, ttc).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ttc).commit();
             }
 
             @Override
@@ -159,7 +161,7 @@ public class TutTutorController {
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
                 TutorNewAppointFragment tnap = new TutorNewAppointFragment();
                 tnap.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, tnap).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();
 
             }
 
@@ -189,14 +191,14 @@ public class TutTutorController {
             public void onResponse(Call<String> call, Response<String> response) {
 
                 TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
 
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
 
@@ -218,7 +220,7 @@ public class TutTutorController {
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
                 AtenderCitaFragment mp = new AtenderCitaFragment();
                 mp.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
 
             @Override
@@ -226,7 +228,7 @@ public class TutTutorController {
 
 
                 AtenderCitaFragment mp = new AtenderCitaFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
 
@@ -307,7 +309,7 @@ public class TutTutorController {
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
                 VisualizarCitaFragment mp = new VisualizarCitaFragment();
                 mp.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
 
             @Override
@@ -315,7 +317,7 @@ public class TutTutorController {
 
 
                 VisualizarCitaFragment mp = new VisualizarCitaFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
 

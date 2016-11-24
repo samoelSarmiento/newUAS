@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -47,19 +48,15 @@ public class MeasurePeriodController {
             public void onResponse(Call<List<Period>> call, Response<List<Period>> response) {
                 if (response.isSuccessful()) {
                     List<Period> periods = response.body();
-
                     MeasurePeriodListFragment mplFragment = new MeasurePeriodListFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Periods", (Serializable) periods);
                     mplFragment.setArguments(bundle);
-                    Log.d("TAG", response.body().toString());
-
-                    try {
+                    /*try {
                         DatabaseHelperOperations.savePeriods(context, periods);
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
-
+                    }*/
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -73,7 +70,7 @@ public class MeasurePeriodController {
 
             @Override
             public void onFailure(Call<List<Period>> call, Throwable t) {
-                try {
+                /*try {
                     List<Period> per = DatabaseHelperOperations.retrievePeriods(context, idSpec);
                     MeasurePeriodListFragment mplFragment = new MeasurePeriodListFragment();
                     Bundle bundle = new Bundle();
@@ -88,7 +85,8 @@ public class MeasurePeriodController {
                     ((Activity) context).setTitle("Periodos de Medicion");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
         return true;
@@ -112,11 +110,11 @@ public class MeasurePeriodController {
                     mpvFragment.setArguments(bundle);
                     Log.d("TAG", response.body().toString());
 
-                    try {
+                    /*try {
                         DatabaseHelperOperations.savePeriod(periods, context);
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
@@ -131,7 +129,7 @@ public class MeasurePeriodController {
 
             @Override
             public void onFailure(Call<Period> call, Throwable t) {
-                try {
+                /*try {
                     Period per = DatabaseHelperOperations.getPeriod(idPeriod, context);
                     MeasurePeriodViewFragment mpvFragment = new MeasurePeriodViewFragment();
                     Bundle bundle = new Bundle();
@@ -146,7 +144,8 @@ public class MeasurePeriodController {
                     ((Activity) context).setTitle("Periodo de Medicion");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
         return true;
