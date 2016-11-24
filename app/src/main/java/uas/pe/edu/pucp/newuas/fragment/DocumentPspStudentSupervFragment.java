@@ -46,40 +46,21 @@ public class DocumentPspStudentSupervFragment extends Fragment {
             lv.setAdapter(adapter);
         }
 
-
-
         btDescargarDocumento = (Button)view.findViewById(R.id.btDescargarDocumentoPsp );
         btAceptar = (Button)view.findViewById(R.id.btAceptarpspSobreDocumento);
         btDescargarDocumento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-String rutaDocumento = DocumentInformationFullAdapter.documento.getRuta() ;
-
-
+        String rutaDocumento = DocumentInformationFullAdapter.documento.getRuta() ;
                 if ( (rutaDocumento != null) && (!rutaDocumento.equals("")) ) {
                     Toast.makeText(getActivity(), Configuration.BASE_URL + "/"+ rutaDocumento , Toast.LENGTH_SHORT).show();
-
                          //Descargamos el documento
                          FileDownloadController fdc = new FileDownloadController();
                          fdc.downloadFile(getActivity(), Configuration.BASE_URL + "/"+ rutaDocumento  );
-
-
                 } else {
-
-                    Toast.makeText(getActivity(), "No se ha subido el documento" , Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getActivity(), "El alumno aún no sube el documento" , Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
-
-
-
-
-
-            }
+           }
         });
 
         btAceptar.setOnClickListener(new View.OnClickListener() {

@@ -17,7 +17,7 @@
             android:id="@+id/pspNombreDocumentoFull"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Jefe Directo"
+            android:text="Nombre del documento"
             android:layout_weight="0.25"
             android:gravity="left|center"
             android:textStyle="bold" />
@@ -30,8 +30,6 @@
             android:gravity="center"
             android:textStyle="italic" />
 
-
-
     </LinearLayout>
 
 
@@ -43,13 +41,82 @@
             android:id="@+id/psp_esObligatorio"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Teléfono del jefe"
+            android:text="Obligatorio"
             android:layout_weight="0.25"
             android:gravity="left|center"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/psp_esObligatorioValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/psp_fechaLimitedoc"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Fecha limite"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/psp_fechaLimitedocValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/psp_documentoEntregado"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Documento entregado"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/psp_documentoEntregadoValor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.63"
+            android:gravity="center"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:id="@+id/psp_observacionesDoc"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Observacion"
+            android:layout_weight="0.25"
+            android:gravity="left|center"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/psp_observacionesDocValor"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.63"
