@@ -57,12 +57,16 @@ public class StudentFilterAppointmentFragment extends Fragment {
         btnCalendarInicio = (ImageButton) view.findViewById(R.id.btnCalendarBeginFilterStudent);
         btnCalendarFin = (ImageButton) view.findViewById(R.id.btnCalendarEndFilterStudent);
         btnAceptar = (Button) view.findViewById(R.id.buttonSolicitarFilterStudent);
+        btnCancelar = (Button) view.findViewById(R.id.buttonCancelarFilterStudent);
+
         final String [] valorFechaI = new String[1], valorFechaF = new String[1];
 
         s = (Spinner) view.findViewById(R.id.spinnerMotivoFilter);
         s.setAdapter(null);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoria.nameTopic);
-        listaSpinner.add("Pendiente"); listaSpinner.add("Confirmada"); listaSpinner.add("Cancelada"); listaSpinner.add("Sugerida"); listaSpinner.add("");
+        listaSpinner.add("Pendiente"); listaSpinner.add("Confirmada"); listaSpinner.add("Cancelada"); listaSpinner.add("Sugerida");
+        listaSpinner.add("Rechazada"); listaSpinner.add("Asistida"); listaSpinner.add("No asistida"); listaSpinner.add("");
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,listaSpinner);
         s.setAdapter(adapter);
 
@@ -124,7 +128,7 @@ public class StudentFilterAppointmentFragment extends Fragment {
                         @Override
 
                         public void onClick(View v) {
-                            if ((txtFechaInicio.toString().matches("") && txtFechaFin.toString().matches("")) || (!(txtFechaInicio.toString()).isEmpty() && !(txtFechaFin.toString()).isEmpty())) {
+                            if ((txtFechaInicio.getText().toString().matches("") && txtFechaFin.getText().toString().matches("")) || (!(txtFechaInicio.getText().toString()).isEmpty() && !(txtFechaFin.getText().toString()).isEmpty())) {
                                 String motivo = s.getSelectedItem().toString();
                                 Toast.makeText(getActivity(), "Se ha filtrado correctamente", Toast.LENGTH_LONG).show();
                                 AppointmentRequestMirror appointFilterInfo = new AppointmentRequestMirror(Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFechaI[0], valorFechaF[0], motivo, 2);
@@ -142,6 +146,18 @@ public class StudentFilterAppointmentFragment extends Fragment {
                     }
 
             );
+
+        btnCancelar.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        TutStudentController tsc = new TutStudentController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
 
 
         return view;
