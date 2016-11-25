@@ -22,6 +22,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.InvDocument;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 
 /**
  * Created by Andree on 21/11/2016.
@@ -86,9 +87,10 @@ public class DelivObsFragment extends Fragment {
                     InvDocument invDocument = selectedVersion;
                     invDocument.setObservacion(delivObs.getText().toString());
                     DeliverableController deliverableController = new DeliverableController();
+
                     deliverableController.registerObs(context, invDocument);
                 } else {
-                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                 }
 
             }

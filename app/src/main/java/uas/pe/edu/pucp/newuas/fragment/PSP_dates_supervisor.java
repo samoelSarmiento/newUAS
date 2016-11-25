@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 
 public class PSP_dates_supervisor extends Fragment {
 
@@ -44,7 +45,7 @@ public class PSP_dates_supervisor extends Fragment {
                 PSP_SupStudentNewMeetingFragment supxstudent = new PSP_SupStudentNewMeetingFragment();
 
 
-                Toast.makeText(getActivity(), "Aqui comienza la cita con el alumno !", Toast.LENGTH_SHORT).show();
+                MyToast.makeText(getActivity(), "Aqui comienza la cita con el alumno !", Toast.LENGTH_SHORT, MyToast.infoAlert).show();
             }
         });
 
