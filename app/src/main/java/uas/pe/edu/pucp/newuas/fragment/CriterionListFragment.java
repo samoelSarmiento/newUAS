@@ -58,10 +58,7 @@ public class CriterionListFragment extends Fragment {
                     eoc.getLevelsofCriterion(getActivity(), listlev.get(position).getIdCriterio());
                 }
             });
-
         }
-
-
         return view;
     }
 
