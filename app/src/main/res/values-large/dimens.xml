@@ -8,7 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!--Investigacion-->
-    <dimen name="invGroupImage">200dp</dimen>
+    <dimen name="invGroupImage">300dp</dimen>
     <dimen name="general_bg_padding">10dp</dimen>
     <dimen name="info_bg_padding">30dp</dimen>
     <dimen name="psp_item">20sp</dimen>
@@ -20,5 +20,6 @@
     <dimen name="left_right_padding">175dp</dimen>
     <dimen name="fragment_top">85dp</dimen>
     <dimen name="list_item_height">48dp</dimen>
+    <dimen name="margin_top_detail_linear_layout">30dp</dimen>
 
 </resources>
