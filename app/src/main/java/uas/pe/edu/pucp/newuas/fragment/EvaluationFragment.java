@@ -39,7 +39,7 @@ public class EvaluationFragment extends Fragment {
             TextView tvValueFechaInicio = (TextView) view.findViewById(R.id.tvValueFechaInicio);
             TextView tvValueFechaFin = (TextView) view.findViewById(R.id.tvValueFechaFin);
             TextView tvValueDescription = (TextView) view.findViewById(R.id.tvValueDescription);
-
+            TextView tvValueTime = (TextView) view.findViewById(R.id.tvValueTime);
             if (eva != null) {
                 tvNameEvaluation.setText(eva.getNombre());
                 tvValueEstado.setText(eva.getEstado());
@@ -56,6 +56,8 @@ public class EvaluationFragment extends Fragment {
                     e.printStackTrace();
                 }
                 tvValueDescription.setText(eva.getDescripcion());
+                String tiempo = eva.getTiempo() + " minutos";
+                tvValueTime.setText(tiempo);
             }
         }
         return view;

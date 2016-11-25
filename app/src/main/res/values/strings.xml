@@ -224,6 +224,7 @@
     <string name="nombre_evaluacion">Nombre Evaluación</string>
     <string name="tvFechaInicio">Fecha de Inicio:</string>
     <string name="tvFechaFin">Fecha Fin:</string>
+    <string name="tvTime">Tiempo:</string>
 
 
 </resources>
