@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -43,25 +44,21 @@ public class MeasureInstrumentsController {
             public void onResponse(Call<List<MeasureInstrument>> call, Response<List<MeasureInstrument>> response) {
                 if (response.isSuccessful()) {
                     List<MeasureInstrument> lmi = response.body();
-
                     MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("MeasureInst", (Serializable) lmi);
                     mif.setArguments(bundle);
-
-                    try {
+                    /*try {
                         DatabaseHelperOperations.saveMeaInsts(context, lmi, idPeriod);
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
-
+                    }*/
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.fragment_container, mif)
                             .commit();
                     ((Activity) context).setTitle("Instrumentos de Medicion");
-
                 } else {
                     Log.d("TAG", response.errorBody().toString());
                 }
@@ -69,14 +66,12 @@ public class MeasureInstrumentsController {
 
             @Override
             public void onFailure(Call<List<MeasureInstrument>> call, Throwable t) {
-                try {
+                /*try {
                     List<MeasureInstrument> lmi = DatabaseHelperOperations.retrieveMeaInstofPeriod(context, idPeriod);
-
                     MeasureInstrumentsFragment mif = new MeasureInstrumentsFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("MeasureInst", (Serializable) lmi);
                     mif.setArguments(bundle);
-
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -85,7 +80,8 @@ public class MeasureInstrumentsController {
                     ((Activity) context).setTitle("Instrumentos de Medicion");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });

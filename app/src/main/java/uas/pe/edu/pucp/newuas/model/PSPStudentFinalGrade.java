@@ -36,8 +36,7 @@ public class PSPStudentFinalGrade {
     private String codigo;
 
     @SerializedName("final_score")
-    private
-    int grade;
+    private  int grade;
 
     public int getIdAlumno() {
         return IdAlumno;

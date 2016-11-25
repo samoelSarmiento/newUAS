@@ -21,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.PSPStudentMeetingsAdapter;
 import uas.pe.edu.pucp.newuas.adapter.PSPSupFreeHoursAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
@@ -45,6 +46,7 @@ import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
+import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Status;
@@ -598,22 +600,22 @@ public class PSPController {
                 if (response.isSuccessful()) {
 
                     pd.dismiss();
-                    ArrayList<PSPMeeting> lista = (ArrayList) response.body();
+                    ArrayList<PSPMeeting> lista = (ArrayList<PSPMeeting>) response.body();
 
-                 //   if (!lista.isEmpty()) {
+                    //   if (!lista.isEmpty()) {
 
-                        Log.d("MEETINGS", "student has meetings");
-                        Fragment fragment = new PSP_meetings_studentFragment();
-                        Bundle bundle = new Bundle();
+                    Log.d("MEETINGS", "student has meetings");
+                    Fragment fragment = new PSP_meetings_studentFragment();
+                    Bundle bundle = new Bundle();
 
-                        bundle.putSerializable("Meetings", lista);
-                        fragment.setArguments(bundle);
+                    bundle.putSerializable("Meetings", lista);
+                    fragment.setArguments(bundle);
 
-                        ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
-                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
-                //    } else {
+                    //    } else {
 
                         /*
 
@@ -625,7 +627,7 @@ public class PSPController {
                                 .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 */
 
-                   // }
+                    // }
 
 
                 } else {
@@ -641,6 +643,8 @@ public class PSPController {
 
             @Override
             public void onFailure(Call<List<PSPMeeting>> call, Throwable t) {
+                pd.dismiss();
+                t.printStackTrace();
 
             }
         });
@@ -648,6 +652,59 @@ public class PSPController {
         return true;
 
     }
+
+    public boolean refreshStudentMeetings(final Context context, final PSPStudentMeetingsAdapter adapter) {
+
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<PSPMeeting>> call = restCon.getStudentMeetings(token);
+
+        call.enqueue(new Callback<List<PSPMeeting>>() {
+            @Override
+            public void onResponse(Call<List<PSPMeeting>> call, Response<List<PSPMeeting>> response) {
+
+                if (response.isSuccessful()) {
+
+                    ArrayList<PSPMeeting> lista = (ArrayList<PSPMeeting>) response.body();
+
+                    if(!lista.isEmpty()){
+
+                        adapter.setItems(lista);
+                        adapter.notifyDataSetChanged();
+                        //   if (!lista.isEmpty()) {
+
+
+                    }
+
+
+
+
+                } else {
+
+
+                    Toast.makeText(context, "Error con servidor", Toast.LENGTH_SHORT).show();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPMeeting>> call, Throwable t) {
+
+                t.printStackTrace();
+
+            }
+        });
+
+        return true;
+
+    }
+
 
 
     public boolean setSupFreeHour(final Context context, PSPFreeHour request){
@@ -734,6 +791,8 @@ public class PSPController {
 
             }
         });
+
+
 
 
         return true;
@@ -1020,9 +1079,14 @@ public class PSPController {
 
                 if (response.isSuccessful()) {
 
+
                     ArrayList<PSPFreeHour> freeHours = (ArrayList<PSPFreeHour>) response.body();
-                    adapter.setItems(freeHours);
-                    adapter.notifyDataSetChanged();
+                    if(!freeHours.isEmpty()){
+                        adapter.setItems(freeHours);
+                        adapter.notifyDataSetChanged();
+
+                    }
+
 
 
 
@@ -1170,6 +1234,46 @@ public class PSPController {
 
 
     }
+
+    public boolean notififyScore(final Context context, PSPNotificationScpreRequest score){
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<PSPMessage> call =  restCon.notifyScore(score,token);
+        call.enqueue(new Callback<PSPMessage>() {
+            @Override
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
+
+                if (response.isSuccessful()){
+
+
+                    PSPMessage message =  (PSPMessage)response.body();
+
+                    if(!message.getMesssage().contains("error"))
+                        MyToast.makeText(context,message.getMesssage(),Toast.LENGTH_SHORT,MyToast.checkAlert).show();
+                    else
+                        MyToast.makeText(context,message.getMesssage(),Toast.LENGTH_SHORT,MyToast.errorAlert).show();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
+
+            }
+        });
+
+
+            return true;
+
+    }
+
 
 
 }

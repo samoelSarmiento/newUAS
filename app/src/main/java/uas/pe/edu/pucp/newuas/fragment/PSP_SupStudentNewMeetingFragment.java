@@ -41,7 +41,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
 
     public String solicitud;
     ImageButton btnCalendar;
-    Button btnSolicitar;
+    Button btnSolicitar, btnCancel;
     Spinner spinnerHoras, spinnerStudents;
     EditText txtFecha, txtLugar;
     int day, year, month;
@@ -116,6 +116,8 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         spinnerHoras = (Spinner) view.findViewById(R.id.sp_psp_sup_student_meeting_hours);
         txtLugar = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_place);
         spinnerStudents = (Spinner) view.findViewById(R.id.cmb_psp_sup_student_meeting_students);
+        btnCancel  = (Button) view.findViewById(R.id.btn_psp_sup_student_meeting_cancel);
+
 
 
 
@@ -233,14 +235,30 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                                             return;
                                         }
 
-                                        Student student = studentsList.get(position -1);
+                                        if(!studentsList.isEmpty()){
 
-                                        meeting.setIdAlumno(student.getIdAlumno());
-                                        meeting.setFecha(valorFecha[0]);
-                                        meeting.setHora(valorHora[0]);
-                                        meeting.setLugar(txtLugar.getText().toString());
+                                            Student student = studentsList.get(position -1);
 
-                                        controller.insertSupStudentMeeting(getActivity(),meeting);
+                                            meeting.setIdAlumno(student.getIdAlumno());
+                                            meeting.setFecha(valorFecha[0]);
+                                            meeting.setHora(valorHora[0]);
+                                            meeting.setLugar(txtLugar.getText().toString());
+
+                                            controller.insertSupStudentMeeting(getActivity(),meeting);
+
+
+
+                                        }else{
+                                            MyToast.makeText(getActivity(), "Seleccione un alumno", Toast.LENGTH_LONG, MyToast.infoAlert).show();
+
+                                            return;
+
+
+
+                                        }
+
+
+
 
 
                                       /*  TutStudentController tsc = new TutStudentController();
@@ -254,7 +272,14 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         );
 
 
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                getFragmentManager().popBackStack();
+
+            }
+        });
 
 
         return  view;
