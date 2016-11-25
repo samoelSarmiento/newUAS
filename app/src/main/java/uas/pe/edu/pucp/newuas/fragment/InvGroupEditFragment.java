@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
@@ -95,10 +96,10 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
                         changedIG.setDescripcion(invGroupDesc.getText().toString());
                         invGroupController.editInvGroup(context,changedIG);
                     } else {
-                        Toast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG).show();
+                        MyToast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG , MyToast.errorAlert).show();
                     }
                 } else {
-                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG,MyToast.errorAlert).show();
                 }
 
 

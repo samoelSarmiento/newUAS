@@ -21,6 +21,7 @@ import uas.pe.edu.pucp.newuas.adapter.PSPDocumentsAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.model.DocumentStudentPsp;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 public class DescargaDeDocumentosAlumnosSuperv extends Fragment {
@@ -51,7 +52,7 @@ public class DescargaDeDocumentosAlumnosSuperv extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
            //     Toast.makeText(getActivity(), "Proximamente", Toast.LENGTH_SHORT).show();
                 documentSelected = (DocumentStudentPsp) documentsAdapter.getItem(position);
-                Toast.makeText(getActivity(), "Item seleccionado " + documentSelected.getId() , Toast.LENGTH_SHORT).show();
+                MyToast.makeText(getActivity(), "Item seleccionado " + documentSelected.getId() , Toast.LENGTH_SHORT, MyToast.infoAlert).show();
 
                 PSPControllerJ controller = new PSPControllerJ();
                 controller.obtenerDocumentosFullAlumnoSuperv(  getActivity() ,documentSelected.getId()  );

@@ -30,6 +30,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleMeetingResponse;
@@ -195,7 +196,7 @@ public class TutorNewNoAppointFragment extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG).show();
+                                        MyToast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                         TutTutorController tsc = new TutTutorController();
                                         tsc.atencionNoConfirmada(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),date, hora,valorTema[0], txtObservacion.getText().toString(),idAlumno, duracionCita);
 

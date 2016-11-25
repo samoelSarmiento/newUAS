@@ -13,6 +13,7 @@ import android.widget.Toast;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Suggestion;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
@@ -56,10 +57,10 @@ public class NewSuggerenceFragment extends Fragment {
                                                 titulo, sugerencia);
                                 controller.sendSuggestion(getActivity(), ipId, request);
                             } else {
-                                Toast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG).show();
+                                MyToast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                             }
                         } else {
-                            Toast.makeText(getActivity(), "Ingrese un titulo o sugerencia", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Ingrese un titulo o sugerencia", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                         }
                     }
                 });
