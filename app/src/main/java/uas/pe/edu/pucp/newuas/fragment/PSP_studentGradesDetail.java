@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPStudentGradesAdapter;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
+import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 
 /**
@@ -32,7 +35,7 @@ public class PSP_studentGradesDetail extends Fragment {
     private String mParam2;
     PSPStudentGradesAdapter adapter;
 
-
+    ListView  listView;
     public PSP_studentGradesDetail() {
         // Required empty public constructor
     }
@@ -73,25 +76,24 @@ public class PSP_studentGradesDetail extends Fragment {
 
        View view =  inflater.inflate(R.layout.fragment_psp_student_grades_detail, container, false);
 
-        ListView  listView =  (ListView) view.findViewById(R.id.lv_psp_student_grades);
+         listView =  (ListView) view.findViewById(R.id.lv_psp_student_grades);
 
 
 
 
 
-        Bundle listaNotas =  getArguments();
-        if(listaNotas!= null){
+
+        if(getArguments()!= null){
+
+            Bundle bundle = getArguments();
+            ArrayList<PSPStudentFinalGrade> list  =   (ArrayList<PSPStudentFinalGrade>) bundle.getSerializable("FinalScores");
 
 
-            ArrayList<PSPStudentFinalGrade> list  =   (ArrayList<PSPStudentFinalGrade>) listaNotas.getSerializable("FinalScores");
-
-           if(!list.isEmpty()){
                adapter =  new PSPStudentGradesAdapter(getActivity(), list);
                listView.setAdapter(adapter);
 
 
 
-           }
 
 
         }

@@ -41,6 +41,7 @@ import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
+import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Period;
@@ -376,6 +377,9 @@ public interface RestCon {
 
     @GET("psp/meeting/status")
     Call<List<Status>> getStautesForSupxStudentDetail(@QueryMap Map<String, String> token);
+
+    @POST("psp/student/notification/score")
+    Call<PSPMessage> notifyScore(@Body PSPNotificationScpreRequest freeHour , @QueryMap Map<String, String> token);
 
 
 

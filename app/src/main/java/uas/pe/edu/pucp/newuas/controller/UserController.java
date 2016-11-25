@@ -33,10 +33,6 @@ import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 public class UserController {
 
-
-
-
-
     public boolean logIn(final Context context, final String user, String password){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<UserResponse> call = restCon.getUser(new UserRequest(user, password));
@@ -69,7 +65,6 @@ public class UserController {
                 if(pd.isShowing())  pd.dismiss();
             }
         });
-
         return true;
     }
 

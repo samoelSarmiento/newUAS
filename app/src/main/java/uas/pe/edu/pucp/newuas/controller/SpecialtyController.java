@@ -79,11 +79,11 @@ public class SpecialtyController {
                     bundle.putSerializable("specialty", example);
                     spFragment.setArguments(bundle);
 
-                    try {
+                    /*try {
                         DatabaseHelperOperations.saveSpecialty(example, context);
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
@@ -97,7 +97,7 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<Specialty> call, Throwable t) {
-                t.printStackTrace();
+                /*t.printStackTrace();
                 try {
                     Specialty spec = DatabaseHelperOperations.getSpecialty(specId, context);
                     Configuration.SPECIALTY = spec;
@@ -116,7 +116,8 @@ public class SpecialtyController {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
         return list;
@@ -135,7 +136,7 @@ public class SpecialtyController {
                     List<CourseResponse> courseResponse = response.body();
                     final List<CourseResponse> crf = courseResponse;
                     //-guardar los cursos
-                    new AsyncTask<Void, Long, Void>() {
+                    /*new AsyncTask<Void, Long, Void>() {
 
                         @Override
                         protected Void doInBackground(Void... params) {
@@ -146,12 +147,8 @@ public class SpecialtyController {
                                 e.printStackTrace();
                             }
                             return null;
-
                         }
-                    }.execute();
-
-
-                    //
+                    }.execute();*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CourseList", (Serializable) courseResponse);
                     bundle.putInt("cicloAcademico", idCycle);
@@ -169,7 +166,7 @@ public class SpecialtyController {
             @Override
             public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
                 //leo los cursos
-                try {
+                /*try {
                     List<CourseResponse> list = DatabaseHelperOperations.retrieveCourses(context, idCycle, idEspecialiad);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CourseList", (Serializable) list);
@@ -184,7 +181,8 @@ public class SpecialtyController {
                             .commit();
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
         return true;
@@ -201,11 +199,11 @@ public class SpecialtyController {
                 if (response.isSuccessful()) {
                     List<Schedule> list = response.body();
                     //--guaradmos los horarios
-                    try {
+                    /*try {
                         DatabaseHelperOperations.saveCourseSchedule(context, list, idCourse, idAcademicCycle);
                     } catch (SQLException e) {
                         Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                     //
                     Bundle bundle = new Bundle();
                     bundle.putInt("cicloAcademico", idAcademicCycle);
@@ -226,7 +224,7 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<List<Schedule>> call, Throwable t) {
-                try {
+                /*try {
                     List<Schedule> list = DatabaseHelperOperations.retrieveCourseSchedules(context, idCourse, idAcademicCycle);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("ScheduleList", (Serializable) list);
@@ -240,7 +238,8 @@ public class SpecialtyController {
                             .commit();
                 } catch (SQLException e) {
                     Toast.makeText(context, "No se pudo recuperar los datos", Toast.LENGTH_LONG).show();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -263,12 +262,12 @@ public class SpecialtyController {
                 if (response.isSuccessful()) {
                     List<Specialty> list = response.body();
                     //--guardas todas las especialidades
-                    try {
+                    /*try {
                         DatabaseHelperOperations.saveSpecialties(list, context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
                     //
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) list);
@@ -282,8 +281,7 @@ public class SpecialtyController {
             @Override
             public void onFailure(Call<List<Specialty>> call, Throwable t) {
                 //Hay un error de conexion, deberia sacar las especialidades de la bd
-
-                try {
+                /*try {
                     List<Specialty> specialtyList = DatabaseHelperOperations.retriveSpecialties(context);
                     if (pd.isShowing()) pd.dismiss();
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
@@ -291,7 +289,8 @@ public class SpecialtyController {
                     context.startActivity(intent);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
         return true;
@@ -363,7 +362,6 @@ public class SpecialtyController {
 
 
     public void getCourseContribution(final Context context, int course_id, int semester_id) {
-
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
@@ -385,8 +383,6 @@ public class SpecialtyController {
                             .addToBackStack(null)
                             .replace(R.id.fragment_container, srlf)
                             .commit();
-
-
                 } else {
                     Log.d("wat", response.errorBody().toString());
                 }
@@ -395,7 +391,7 @@ public class SpecialtyController {
             @Override
             public void onFailure(Call<List<StudentResult>> call, Throwable t) {
                 t.printStackTrace();
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -422,7 +418,7 @@ public class SpecialtyController {
 
             @Override
             public void onFailure(Call<List<StudentEffort>> call, Throwable t) {
-
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
     }

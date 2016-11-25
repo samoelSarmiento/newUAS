@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.textservice.SpellCheckerInfo;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -51,11 +52,11 @@ public class SemesterController {
                     bundle.putSerializable("Semesters", (Serializable) semList);
                     slf.setArguments(bundle);
 
-                    try {
+                    /*try {
                         DatabaseHelperOperations.saveSemesters(context, semList, periodId);
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                     ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
                     ((Activity) context).setTitle("Semestres");
@@ -65,7 +66,7 @@ public class SemesterController {
             @Override
             public void onFailure(Call<List<Semester>> call, Throwable t) {
                 t.printStackTrace();
-                List<Semester> semList = null;
+                /*List<Semester> semList = null;
                 try {
                     semList = DatabaseHelperOperations.getSemestersListofPeriod(context, periodId);
                 } catch (SQLException e) {
@@ -78,14 +79,11 @@ public class SemesterController {
                 slf.setArguments(bundle);
 
                 ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, slf).commit();
-                ((Activity) context).setTitle("Semestres");
+                ((Activity) context).setTitle("Semestres");*/
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
         });
-
         return true;
-
     }
-
-
 }
 

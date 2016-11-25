@@ -77,6 +77,19 @@ public class PSPStudentMeetingsAdapter extends BaseAdapter {
 
 
     }
+    public void setItems( ArrayList<PSPMeeting> lista){
+
+        this.items = lista;
+
+
+
+    }
+    public ArrayList<PSPMeeting> getItems(){
+
+
+        return items;
+
+    }
 
 
     public static class ViewHolder {

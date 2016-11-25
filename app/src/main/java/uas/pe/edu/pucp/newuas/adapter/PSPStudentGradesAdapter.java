@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
+import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Student;
 
@@ -50,7 +53,7 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         View view = layoutInflater.inflate(R.layout.psp_item_student_grades, null);
@@ -62,6 +65,21 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
             viewHolder.tvStudentName = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_name);
             viewHolder.tvGrade = (TextView) view.findViewById(R.id.tv_item_psp_grade_finalscore);
             viewHolder.tvStudentId = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_id);
+            viewHolder.mail = (ImageView)view.findViewById(R.id.iv_item_psp_grade_mail);
+
+            viewHolder.mail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PSPNotificationScpreRequest score = new PSPNotificationScpreRequest();
+
+                    Log.d("POSITION","" + position);
+                    score.setCodigo(items.get(position).getIdAlumno());
+                    score.setScore(items.get(position).getGrade());
+                    PSPController controller = new PSPController();
+                    controller.notififyScore(context,score);
+
+                }
+            });
 
             viewHolder.tvStudentName.setText(items.get(position).getNombre() + " "
                     + items.get(position).getApellidoPaterno() + " "
@@ -85,6 +103,7 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
 
     public static class ViewHolder {
         TextView tvStudentName, tvGrade , tvStudentId;
+        ImageView mail;
 
     }
 }
