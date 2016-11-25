@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,11 +21,10 @@ import uas.pe.edu.pucp.newuas.model.CriterionLevel;
  * Created by Marshall on 4/11/2016.
  */
 
-public class CriterionLevelListFragment extends Fragment{
+public class CriterionLevelListFragment extends Fragment {
 
     ListView lvCritLevs = null;
     CriterionLevelAdapter crlAdapter;
-
 
 
     public CriterionLevelListFragment() {
@@ -45,23 +45,22 @@ public class CriterionLevelListFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setTitle("Niveles de criterio");
-        View view = inflater.inflate(R.layout.fragment_criterion_level_list,container,false);
+        View view = inflater.inflate(R.layout.fragment_criterion_level_list, container, false);
         lvCritLevs = (ListView) view.findViewById(R.id.lvCritLevs);
         Bundle bundle = this.getArguments();
-        if(bundle!=null){
-            List<CriterionLevel> list = (List<CriterionLevel>)bundle.getSerializable("critlevs");
-            Context context = getActivity();
-            crlAdapter = new CriterionLevelAdapter(context,list);
-            lvCritLevs.setAdapter(crlAdapter);
-
-
-
+        if (bundle != null) {
+            List<CriterionLevel> list = (List<CriterionLevel>) bundle.getSerializable("critlevs");
+            if (list != null && !list.isEmpty()) {
+                Context context = getActivity();
+                crlAdapter = new CriterionLevelAdapter(context, list);
+                lvCritLevs.setAdapter(crlAdapter);
+            } else {
+                TextView tvNoCriterionLevel = (TextView) view.findViewById(R.id.tvNoCriterionLevel);
+                tvNoCriterionLevel.setVisibility(View.VISIBLE);
+                lvCritLevs.setVisibility(View.GONE);
+            }
 
         }
-
-
         return view;
-
-        //return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

@@ -220,6 +220,7 @@
     <string name="no_curses">El semestre no cuenta con cursos activos este ciclo.</string>
     <string name="btEvidence">EVIDENCIA DEL HORARIO</string>
     <string name="no_evidence">El curso no cuenta con evidencias registradas.</string>
+    <string name="no_criterio_level">El criterio no cuenta con niveles.</string>
 
 
 </resources>

@@ -30,13 +30,13 @@ import uas.pe.edu.pucp.newuas.model.InvDocument;
 public class DelivObsFragment extends Fragment {
 
     Context context;
-    TextView delivName,delivFechaIni,delivFechaLim,delivAvance,delivResp, delivVersion;
+    TextView delivName, delivFechaIni, delivFechaLim, delivAvance, delivResp, delivVersion;
     EditText delivObs;
-    Button delivSave,delivCancel;
+    Button delivSave, delivCancel;
     Deliverable del;
     InvDocument selectedVersion;
 
-    public DelivObsFragment (){
+    public DelivObsFragment() {
 
     }
 
@@ -47,34 +47,34 @@ public class DelivObsFragment extends Fragment {
         context = getActivity();
         getActivity().setTitle("Proyectos > Entregables");
 
-        delivName= (TextView) view.findViewById(R.id.delivName);
-        delivFechaIni=(TextView) view.findViewById(R.id.delivFechaIni);
-        delivFechaLim=(TextView) view.findViewById(R.id.delivFechaLim);
-        delivAvance=(TextView) view.findViewById(R.id.delivAvance);
-        delivVersion=(TextView) view.findViewById(R.id.delivVersion);
-        delivResp=(TextView) view.findViewById(R.id.delivResp);
-        delivObs=(EditText) view.findViewById(R.id.delivObs);
-        delivSave=(Button) view.findViewById(R.id.delivSave);
-        delivCancel=(Button) view.findViewById(R.id.delivCancel);
+        delivName = (TextView) view.findViewById(R.id.delivName);
+        delivFechaIni = (TextView) view.findViewById(R.id.delivFechaIni);
+        delivFechaLim = (TextView) view.findViewById(R.id.delivFechaLim);
+        delivAvance = (TextView) view.findViewById(R.id.delivAvance);
+        delivVersion = (TextView) view.findViewById(R.id.delivVersion);
+        delivResp = (TextView) view.findViewById(R.id.delivResp);
+        delivObs = (EditText) view.findViewById(R.id.delivObs);
+        delivSave = (Button) view.findViewById(R.id.delivSave);
+        delivCancel = (Button) view.findViewById(R.id.delivCancel);
 
         Bundle bundle = this.getArguments();
-        Deliverable deliverable=null;
+        Deliverable deliverable = null;
         InvDocument invD = null;
         //boolean botonEdit=false;
-        if (bundle != null){
+        if (bundle != null) {
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             //botonEdit=bundle.getBoolean("BotonEdit");
-            deliverable= (Deliverable) bundle.getSerializable("DelObs");
-            invD= (InvDocument) bundle.getSerializable("InvDoc");
+            deliverable = (Deliverable) bundle.getSerializable("DelObs");
+            invD = (InvDocument) bundle.getSerializable("InvDoc");
         }
         del = deliverable;
-        selectedVersion=invD;
+        selectedVersion = invD;
 
         delivName.setText(deliverable.getNombre());
         delivFechaIni.setText(deliverable.getFechaInicio());
         delivFechaLim.setText(deliverable.getFechaLimite());
-        delivAvance.setText(deliverable.getPorcenAvance()+"");
-        delivVersion.setText(selectedVersion.getVersion()+"");
+        delivAvance.setText(deliverable.getPorcenAvance() + "");
+        delivVersion.setText(selectedVersion.getVersion() + "");
 
         delivObs.setText(selectedVersion.getObservacion());
 
@@ -82,12 +82,12 @@ public class DelivObsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String obs = delivObs.getText().toString();
-                if (!obs.isEmpty() ) {
+                if (!obs.isEmpty()) {
                     InvDocument invDocument = selectedVersion;
                     invDocument.setObservacion(delivObs.getText().toString());
                     DeliverableController deliverableController = new DeliverableController();
-                    deliverableController.registerObs(context,invDocument);
-                }else {
+                    deliverableController.registerObs(context, invDocument);
+                } else {
                     Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
                 }
 
@@ -97,7 +97,7 @@ public class DelivObsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDelivById(context,del.getId());
+                deliverableController.getDelivById(context, del.getId(), false);
             }
         });
 

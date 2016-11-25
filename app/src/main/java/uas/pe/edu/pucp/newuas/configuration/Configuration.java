@@ -92,9 +92,6 @@ public class Configuration {
 
     public static int getIdEspecialidad() {
         int idEspecialidad = 0;
-        Log.d("acreditador", "" + Configuration.isAccreditor());
-        Log.d("profe", "" + Configuration.isTeacher());
-        Log.d("coordianto" , "" + Configuration.isCoordinator());
         if (Configuration.isAccreditor()) {
             idEspecialidad = Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad();
         } else {
