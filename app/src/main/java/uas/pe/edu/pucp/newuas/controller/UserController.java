@@ -23,6 +23,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -52,7 +53,7 @@ public class UserController {
                     if (pd.isShowing()) pd.dismiss();
                     context.startActivity(intent);
                 } else {
-                    Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG, MyToast.errorAlert).show();
                     if (pd.isShowing()) pd.dismiss();
                 }
             }
@@ -60,7 +61,7 @@ public class UserController {
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(context, "Error de conexión.", Toast.LENGTH_SHORT).show();
+                MyToast.makeText(context, "Error de conexión", Toast.LENGTH_LONG, MyToast.errorAlert).show();
                 if (pd.isShowing()) pd.dismiss();
             }
         });
