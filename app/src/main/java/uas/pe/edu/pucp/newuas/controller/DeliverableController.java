@@ -31,7 +31,7 @@ import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 public class DeliverableController {
 
-    public void getDeliv(final Context context, Integer projId){
+    public void getDeliv(final Context context, Integer projId,final Boolean editEvAvailability){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -57,6 +57,7 @@ public class DeliverableController {
 */
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Deliverables", (Serializable)example);
+                    bundle.putBoolean("editEvAvailability",editEvAvailability);
                     //bundle.putString("Groups", spj);
 
                     DeliverableFragment spFragment = new DeliverableFragment();
@@ -94,7 +95,7 @@ public class DeliverableController {
             }
         });
     }
-    public void getDelivById(final Context context,final Integer id){
+    public void getDelivById(final Context context,final Integer id, final Boolean editEvAvailability){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -119,6 +120,7 @@ public class DeliverableController {
 */
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Deliverable", (Serializable)example);
+                    bundle.putBoolean("editEvAvailability",editEvAvailability);
                     //bundle.putBoolean("BotonEdit",true);
 
                     DelivDetailFragment spFragment = new DelivDetailFragment();
