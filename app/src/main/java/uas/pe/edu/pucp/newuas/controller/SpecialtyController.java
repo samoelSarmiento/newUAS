@@ -128,7 +128,7 @@ public class SpecialtyController {
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
         //Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, token);
-        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, idCycle - 1, token);
+        Call<List<CourseResponse>> call = restCon.getCoursesxSpecialty(idEspecialiad, idCycle, token);
         call.enqueue(new Callback<List<CourseResponse>>() {
             @Override
             public void onResponse(Call<List<CourseResponse>> call, Response<List<CourseResponse>> response) {
@@ -192,7 +192,7 @@ public class SpecialtyController {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<Schedule>> call = restCon.getCourseSchedules(idCourse, idAcademicCycle - 1, token);
+        Call<List<Schedule>> call = restCon.getCourseSchedules(idCourse, idAcademicCycle, token);
         call.enqueue(new Callback<List<Schedule>>() {
             @Override
             public void onResponse(Call<List<Schedule>> call, Response<List<Schedule>> response) {
@@ -206,7 +206,7 @@ public class SpecialtyController {
                     }*/
                     //
                     Bundle bundle = new Bundle();
-                    bundle.putInt("cicloAcademico", idAcademicCycle - 1);
+                    bundle.putInt("cicloAcademico", idAcademicCycle);
                     bundle.putInt("curso", idCourse);
                     bundle.putSerializable("ScheduleList", (Serializable) list);
                     //Fragment
@@ -339,7 +339,7 @@ public class SpecialtyController {
                     List<Student> result = response.body();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("students", (Serializable) result);
-                    bundle.putInt("cicloAcademico", idCicloAcademico - 1);
+                    bundle.putInt("cicloAcademico", idCicloAcademico);
                     bundle.putInt("curso", idCurso);
                     bundle.putInt("horario", schedule_id);
                     bundle.putSerializable("evidences", (Serializable) evidences);
