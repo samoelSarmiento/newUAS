@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,11 +14,14 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
 import uas.pe.edu.pucp.newuas.model.StudentInfoResponse;
 
 
 public class VisualizarCitaFragment extends Fragment {
+
+    Button btnRegresar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +29,7 @@ public class VisualizarCitaFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_visualizar_cita, container, false);
 
+        getActivity().setTitle("Visualizar cita");
 
         TextView codigoCita = (TextView) view.findViewById(R.id.VerCodigoAtenderCita);
         TextView alumnoCita = (TextView) view.findViewById(R.id.VerAlumnoAtenderCita);
@@ -33,21 +38,23 @@ public class VisualizarCitaFragment extends Fragment {
         TextView lugarCita = (TextView) view.findViewById(R.id.VerLugarAtenderCita);
         TextView extraCita = (TextView) view.findViewById(R.id.VerExtraAtenderCita);
         TextView obsCita = (TextView) view.findViewById(R.id.VerObsAtenderCita);
+        btnRegresar = (Button) view.findViewById(R.id.btnRegresarVisualizar);
+
 
         Bundle bundle = this.getArguments();
-        List<CitaInfoResponse> tutGroup= null;
-        if (bundle != null){
-            tutGroup= (List<CitaInfoResponse>) bundle.getSerializable("Tutoria");
+        List<CitaInfoResponse> tutGroup = null;
+        if (bundle != null) {
+            tutGroup = (List<CitaInfoResponse>) bundle.getSerializable("Tutoria");
         }
-        List<StudentInfoResponse> infoAlumno =  tutGroup.get(0).getStudentInfo();
+        List<StudentInfoResponse> infoAlumno = tutGroup.get(0).getStudentInfo();
 
         String idCita = tutGroup.get(0).getId() + "";
         String codigoNombreAlumno = infoAlumno.get(0).getCodigo() + "-" + infoAlumno.get(0).getNombre() + " " + infoAlumno.get(0).getApePaterno();
-        String fechaCompleta =  tutGroup.get(0).getInicio();
-        String fecha = fechaCompleta.substring(0,10);
-        String hora = fechaCompleta.substring(11,16);
-        int horaEnt = Integer.parseInt(hora.substring(0,2));
-        if(horaEnt < 12) hora = hora + " am";
+        String fechaCompleta = tutGroup.get(0).getInicio();
+        String fecha = fechaCompleta.substring(0, 10);
+        String hora = fechaCompleta.substring(11, 16);
+        int horaEnt = Integer.parseInt(hora.substring(0, 2));
+        if (horaEnt < 12) hora = hora + " am";
         else hora = hora + " pm";
 
         String lugarC = tutGroup.get(0).getLugar();
@@ -63,10 +70,21 @@ public class VisualizarCitaFragment extends Fragment {
         extraCita.setText(extra);
         obsCita.setText(obs);
 
+        btnRegresar.setOnClickListener(
+
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TutTutorController tsc = new TutTutorController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
+
         return view;
 
 
     }
-
 
 }

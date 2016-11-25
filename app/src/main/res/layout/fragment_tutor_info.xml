@@ -13,10 +13,10 @@
 
     <LinearLayout
         android:id="@+id/unMundo"
-        android:layout_width="385dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="-20dp"
+        android:gravity="center"
         android:orientation="vertical">
 
 
@@ -41,6 +41,7 @@
                     <TextView
                         style="@style/GeneralTextViewsMedium"
                         android:layout_marginLeft="30dp"
+                        android:gravity="center"
                         android:text="Nombre:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -164,13 +165,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
-                        android:layout_marginLeft="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="30dp"
                         android:text="Horario de atención:"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -178,6 +181,7 @@
                         android:layout_width="440dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="12dp"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <TextView
@@ -245,11 +249,11 @@
 
 
                 <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
 
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

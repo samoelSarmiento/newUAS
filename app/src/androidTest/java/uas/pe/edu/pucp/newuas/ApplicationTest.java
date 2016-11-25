@@ -32,7 +32,7 @@ public class ApplicationTest {
     }
 
     @Test
-    public void LogInUsuarioFalla() {
+    public void LogInUsuarioFalla() throws InterruptedException {
         //escribe usuario incorrectos
         onView(withId(R.id.edtName))
                 .perform(typeText("admin"), closeSoftKeyboard());
@@ -41,11 +41,26 @@ public class ApplicationTest {
         //click al login
         onView(withId(R.id.btnLogin)).perform(click());
 
+        Thread.sleep(3000);
         //probar
         onView(withText(R.string.tvErrorLogin))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().peekDecorView())))
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void LogInUsuarioFunciona() throws InterruptedException {
+        //escribe usuario incorrectos
+        onView(withId(R.id.edtName))
+                .perform(typeText("admin"), closeSoftKeyboard());
+        onView(withId(R.id.edtPassword))
+                .perform(typeText("secret"), closeSoftKeyboard());
+        //click al login
+        onView(withId(R.id.btnLogin)).perform(click());
+
+        Thread.sleep(3000);
+        //probar
+        onView(withId(R.id.activity_main)).check(matches(isDisplayed()));
+    }
 
 }

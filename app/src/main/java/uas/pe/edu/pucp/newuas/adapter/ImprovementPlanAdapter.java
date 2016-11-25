@@ -50,21 +50,26 @@ public class ImprovementPlanAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.item_improvement_plan,null);
+        View view = layoutInflater.inflate(R.layout.item_improvement_plan, null);
         ViewHolder viewHolder = new ViewHolder();
-        viewHolder.tvIpDesc = (TextView)view.findViewById(R.id.tviplistname);
-        viewHolder.tvIpUser = (TextView)view.findViewById(R.id.tviplistuser);
-        viewHolder.tvIpStatus = (TextView)view.findViewById(R.id.tvipliststatus);
+        viewHolder.tvIpDesc = (TextView) view.findViewById(R.id.tviplistname);
+        viewHolder.tvIpUser = (TextView) view.findViewById(R.id.tviplistuser);
+        viewHolder.tvIpStatus = (TextView) view.findViewById(R.id.tvipliststatus);
 
         viewHolder.tvIpDesc.setText(items.get(position).getDescripcion());
-        viewHolder.tvIpUser.setText(items.get(position).getTeacher().getNombre() + " " + items.get(position).getTeacher().getApellidoPaterno() + " " + items.get(position).getTeacher().getApellidoMaterno());
+        if (items.get(position).getTeacher() == null) {
+            String todos = "Todos";
+            viewHolder.tvIpUser.setText(todos);
+        } else {
+            viewHolder.tvIpUser.setText(items.get(position).getTeacher().getNombre() + " " + items.get(position).getTeacher().getApellidoPaterno() + " " + items.get(position).getTeacher().getApellidoMaterno());
+        }
         viewHolder.tvIpStatus.setText(items.get(position).getEstado());
 
 
         return view;
     }
 
-    private static class ViewHolder{
+    private static class ViewHolder {
         TextView tvIpDesc;
         TextView tvIpUser;
         TextView tvIpStatus;

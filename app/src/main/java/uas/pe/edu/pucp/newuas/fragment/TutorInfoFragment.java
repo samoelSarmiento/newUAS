@@ -49,6 +49,8 @@ public class TutorInfoFragment extends Fragment {
 
         TUTInfoResponse tutG;
 
+        getActivity().setTitle("Horario del Tutor");
+
         View view =   inflater.inflate(R.layout.fragment_tutor_info, container, false);
 
         teacher_detail_nombre = (TextView)view.findViewById(R.id.teacher_detail_nombre);

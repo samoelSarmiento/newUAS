@@ -65,7 +65,7 @@ public class TutorNewAppointFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_tutor_new_appoint, container, false);
-        getActivity().setTitle("Tutoría");
+        getActivity().setTitle("Solicitud de una nueva cita");
         txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
         btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewAssignmentReg);
         btnCancelar = (Button) view.findViewById(R.id.buttonCancelarTutorNewAssigmentReg);
