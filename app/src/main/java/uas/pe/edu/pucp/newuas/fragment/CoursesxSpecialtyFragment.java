@@ -59,8 +59,8 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         if (bundle != null) {
             idCicloAcademico = bundle.getInt("cicloAcademico");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
+            spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
             if (list != null && !list.isEmpty()) {
-                spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
                 spnNivel.setOnItemSelectedListener(this);
                 Set<String> niveles = retornarNiveles(list);
                 String[] sniveles = niveles.toArray(new String[niveles.size()]);
