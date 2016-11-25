@@ -27,6 +27,7 @@ import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.InvGroups;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
@@ -189,20 +190,20 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                             //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
 
                         }else{
-                            Toast.makeText(getActivity(), "La fecha debe ser posterior a hoy", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "La fecha debe ser posterior a hoy", Toast.LENGTH_LONG, MyToast.errorAlert).show();
                         }
                     }else{
-                        Toast.makeText(getActivity(), "Verifique la hora", Toast.LENGTH_LONG).show();
+                        MyToast.makeText(getActivity(), "Verifique la hora", Toast.LENGTH_LONG, MyToast.errorAlert).show();
                     }
 
                 } else {
-                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG,MyToast.infoAlert).show();
                 }
 
                 break;
 
             case R.id.invEvCancel:
-                invEvController.getInvEvById(context,invEv.getId());
+                invEvController.getInvEvById(context,invEv.getId(), true);
                 break;
             case R.id.selFecha:
                 DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month-1, day);

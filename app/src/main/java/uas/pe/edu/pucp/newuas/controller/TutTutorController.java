@@ -163,6 +163,7 @@ public class TutTutorController {
             public void onResponse(Call<List<AppointInformationRegisterTuto>> call, Response<List<AppointInformationRegisterTuto>> response) {
 
                 List<AppointInformationRegisterTuto> generalInformation = response.body();
+
                 if (generalInformation == null || generalInformation.isEmpty()){
                     Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
                 }

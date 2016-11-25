@@ -20,6 +20,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
 import uas.pe.edu.pucp.newuas.model.DocumentStudentPsp;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 
 public class DocumentPspStudentSupervFragment extends Fragment {
@@ -58,7 +59,7 @@ public class DocumentPspStudentSupervFragment extends Fragment {
                          FileDownloadController fdc = new FileDownloadController();
                          fdc.downloadFile(getActivity(), Configuration.BASE_URL + "/"+ rutaDocumento  );
                 } else {
-                    Toast.makeText(getActivity(), "El alumno aún no sube el documento" , Toast.LENGTH_SHORT).show();
+                    MyToast.makeText(getActivity(), "El alumno aún no sube el documento" , Toast.LENGTH_SHORT, MyToast.errorAlert).show();
                 }
            }
         });

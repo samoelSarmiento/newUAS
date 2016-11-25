@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.CitaInfoResponse;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.StudentInfoResponse;
 
 
@@ -113,7 +114,7 @@ public class AtenderCitaFragment extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-                                        Toast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG).show();
+                                        MyToast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                         TutTutorController tsc = new TutTutorController();
                                         tsc.atencionCita(getActivity (), Integer.parseInt(idCita),obsCita.getText().toString());
                                     }

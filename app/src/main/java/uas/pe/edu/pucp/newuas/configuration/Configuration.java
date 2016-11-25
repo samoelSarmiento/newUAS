@@ -22,8 +22,8 @@ public class Configuration {
     public static final String SHARED_PREFERENCE_NAME = "sharedPreferences";
     public static final String USER_PREFERENCE = "userPrefs";
 
-
-    public static final String BASE_URL = "http://52.89.227.55";//"http://192.168.1.35/internetUAS/public";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
+//"http://52.89.227.55";
+    public static final String BASE_URL = "http://192.168.0.10/internetUAS/public";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
 
     public static final String FILE_URL = BASE_URL + "/uploads/";
     public static int CXE_ITEM_SHOW = 5;
@@ -71,6 +71,10 @@ public class Configuration {
 
     public static boolean isStudentPsp() {
         return LOGIN_USER.getUser().getTutStudentForPsp() != null;
+    }
+
+    public static int getIdUsuario(){
+        return LOGIN_USER.getUser().getIdUsuario();
     }
 
     public static boolean isConnected(Context context) {

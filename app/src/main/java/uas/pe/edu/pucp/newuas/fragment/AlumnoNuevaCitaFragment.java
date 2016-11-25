@@ -32,6 +32,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleMeetingResponse;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
@@ -162,7 +163,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
 
 
                             if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
-                                Toast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG).show();
+                                MyToast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                             }
                             else{
                                 valorHora[0] = spinnerHoras.getSelectedItem().toString();
@@ -192,7 +193,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                                 }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
-                                                Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
+                                                MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                                 TutStudentController tsc = new TutStudentController();
                                                 tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], duracionCita);
 

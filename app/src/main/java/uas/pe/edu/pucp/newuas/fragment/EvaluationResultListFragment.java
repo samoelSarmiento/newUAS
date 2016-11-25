@@ -1,19 +1,28 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.Serializable;
 import java.util.List;
 
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.EvaluationAdapter;
+import uas.pe.edu.pucp.newuas.adapter.EvaluationNameStateAdapter;
+import uas.pe.edu.pucp.newuas.controller.EvaluationsController;
+import uas.pe.edu.pucp.newuas.controller.MeasurePeriodController;
+import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.Evaluation;
+import uas.pe.edu.pucp.newuas.model.Period;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +31,7 @@ public class EvaluationResultListFragment extends Fragment {
 
     ListView lvEvaluations;
     EvaluationAdapter adapter;
+    EvaluationNameStateAdapter evaluacionNameState;
     int ipId = 0;
 
     public EvaluationResultListFragment() {
@@ -39,9 +49,41 @@ public class EvaluationResultListFragment extends Fragment {
             List<Evaluation> list = (List<Evaluation>) bundle.getSerializable("evaluation");
             lvEvaluations = (ListView) view.findViewById(R.id.lvEvaluation);
             ipId = bundle.getInt("idIp");
-            Context context = getActivity();
+            final Context context = getActivity();
             adapter = new EvaluationAdapter(context, list);
             lvEvaluations.setAdapter(adapter);
+
+            lvEvaluations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            /*
+                    List<AppointInformationRegisterTuto> generalInformation = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Tutoria", (Serializable)generalInformation);
+                    TutorNewAppointFragment tnap = new TutorNewAppointFragment();
+                    tnap.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, tnap).commit();
+             */
+
+                    Evaluation per = (Evaluation) adapter.getItem(position);
+                    Log.d("evaluation", per.getId() + "");
+
+                    Bundle eva = new Bundle();
+                    eva.putSerializable("Evaluacion", (Serializable) per);
+                    EvaluationFragment fragment = new EvaluationFragment();
+                    getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_tutor, fragment).commit();
+
+
+                /*
+                    EvaluationsController mpc = new EvaluationsController();
+                    Context context = getActivity();
+
+                    mpc.getAllEvaluations(context, per.getId());
+                */
+
+                }
+            });
+
 
         }
         return view;

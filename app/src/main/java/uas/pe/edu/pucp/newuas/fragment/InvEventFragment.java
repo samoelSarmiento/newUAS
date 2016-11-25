@@ -25,6 +25,7 @@ public class InvEventFragment extends Fragment {
 
     ListView lvInvEv;
     InvEventAdapter invEventAdapter;
+    Boolean editEvAvailability;
 
     public InvEventFragment() {
     }
@@ -40,7 +41,7 @@ public class InvEventFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null){
             ArrayList<InvEvent> invEv = (ArrayList<InvEvent>) bundle.getSerializable("Events");
-
+            editEvAvailability= bundle.getBoolean("editEvAvailability");
             invEventAdapter= new InvEventAdapter(getActivity(), invEv);
             lvInvEv.setAdapter(invEventAdapter);
         }
@@ -51,7 +52,7 @@ public class InvEventFragment extends Fragment {
                 //Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
                 InvEventController invController = new InvEventController();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
-                invController.getInvEvById(getActivity(),invEvent.getId());
+                invController.getInvEvById(getActivity(),invEvent.getId(),editEvAvailability);
 
             }
         });

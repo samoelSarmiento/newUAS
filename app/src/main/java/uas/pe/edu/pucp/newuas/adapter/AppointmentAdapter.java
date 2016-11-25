@@ -259,7 +259,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
                 icon2.setVisibility(View.GONE);
 
-                icon2.setOnClickListener(   
+                icon2.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

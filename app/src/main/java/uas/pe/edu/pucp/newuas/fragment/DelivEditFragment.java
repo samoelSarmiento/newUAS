@@ -24,6 +24,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 
 /**
  * Created by Andree on 20/11/2016.
@@ -178,13 +179,13 @@ public class DelivEditFragment extends Fragment {
                             //Toast.makeText(getActivity(), "Hmm", Toast.LENGTH_LONG).show();
                             deliverableController.editDeliv(context,d);
                         }else{
-                            Toast.makeText(getActivity(), "Le fecha inicio debe ser posterior a la fecha inicio del proyecto", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Le fecha inicio debe ser posterior a la fecha inicio del proyecto", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                         }
                     }else{
-                        Toast.makeText(getActivity(), "Le fecha límite debe ser anterior a la fecha fin del proyecto", Toast.LENGTH_LONG).show();
+                        MyToast.makeText(getActivity(), "Le fecha límite debe ser anterior a la fecha fin del proyecto", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                     }
                 }else{
-                    Toast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                 }
             }
         });
@@ -192,7 +193,7 @@ public class DelivEditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDelivById(context,deliv.getId());
+                deliverableController.getDelivById(context,deliv.getId(),true);
             }
         });
 
