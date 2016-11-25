@@ -226,6 +226,7 @@
     <string name="tvFechaFin">Fecha Fin:</string>
     <string name="tvTime">Tiempo:</string>
     <string name="no_criterio_level">El criterio no cuenta con niveles.</string>
+    <string name="no_file">El Plan de Mejora no cuenta con un archivo asociado.</string>
 
 
 </resources>
