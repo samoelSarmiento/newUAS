@@ -27,6 +27,7 @@ public class DeliverableFragment extends Fragment {
 
     ListView delivList;
     DeliverableAdapter deliverableAdapter;
+    Boolean editEvAvailability;
 
     public DeliverableFragment() {
     }
@@ -42,7 +43,7 @@ public class DeliverableFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null){
             ArrayList<Deliverable> delivs = (ArrayList<Deliverable>) bundle.getSerializable("Deliverables");
-
+            editEvAvailability=bundle.getBoolean("editEvAvailability");
             deliverableAdapter= new DeliverableAdapter(getActivity(), delivs);
             delivList.setAdapter(deliverableAdapter);
         }
@@ -53,7 +54,7 @@ public class DeliverableFragment extends Fragment {
                 //Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
                 DeliverableController deliverableController = new DeliverableController();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
-                deliverableController.getDelivById(getActivity(),deliv.getId());
+                deliverableController.getDelivById(getActivity(),deliv.getId(),editEvAvailability);
 
             }
         });

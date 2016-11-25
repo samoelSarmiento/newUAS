@@ -68,12 +68,13 @@ public class ProjectController {
                     //Gson gsonf = new Gson();
                     //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
+                    /*
                     try {
                         saveAllProj(example, context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Projects", (Serializable)example);
                     //bundle.putString("Projects", spj);
@@ -96,6 +97,7 @@ public class ProjectController {
                 t.printStackTrace();
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
+                /*
                 try {
                     List<Projects> projList = retriveAllProj(context);
                     Bundle bundle = new Bundle();
@@ -108,7 +110,7 @@ public class ProjectController {
                     ((Activity)context).setTitle("Proyectos");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
 
 
@@ -133,13 +135,13 @@ public class ProjectController {
                 if (response.isSuccessful()) {
 
                     List<Projects> example = response.body();
-
+/*
                     try {
                         saveProj(example.get(0), context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Proj", (Serializable)example);
@@ -161,7 +163,7 @@ public class ProjectController {
             @Override
             public void onFailure(Call<List<Projects>> call, Throwable t) {
                 t.printStackTrace();
-
+/*
                 try {
                     Projects proj = getProj(id, context);
 
@@ -177,7 +179,7 @@ public class ProjectController {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         });
 
@@ -199,14 +201,15 @@ public class ProjectController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
+/*
 
                     try {
                         saveProj(proj, context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
                     //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
 /*
                     Bundle bundle = new Bundle();
@@ -250,6 +253,7 @@ public class ProjectController {
 
     }
     //Lista de proj
+    /*
     private void saveAllProj(List<Projects> projList, final Context context) throws SQLException {
         DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         //DatabaseHelper helper = new DatabaseHelper(context);
@@ -291,5 +295,5 @@ public class ProjectController {
         //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<Projects, Integer> projDao = helper.getProjDao();
         return projDao.queryForId(id);
-    }
+    }*/
 }

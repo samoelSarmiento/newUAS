@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +38,16 @@ public class SearchEvaluationQueryFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ename.getText().toString().equals("") || est.getText().toString().equals("")){
+                if(ename.getText().toString().equals("") && est.getText().toString().equals("")){
                     EvaluationsController controller = new EvaluationsController();
                     controller.getAllEvaluations(getActivity());
+                    System.out.println("Campos Nombre y Estado Vacios");
                 }else{
                     EvaluationsController controller = new EvaluationsController();
-                    controller.getAEByF(getActivity(), ename.getText().toString(), Integer.parseInt(est.getText().toString()), 1);
+                    if(est.getText().toString().equals(""))
+                         controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), 10);
+                    else controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), Integer.parseInt(est.getText().toString()));
+
                 }
 
             }

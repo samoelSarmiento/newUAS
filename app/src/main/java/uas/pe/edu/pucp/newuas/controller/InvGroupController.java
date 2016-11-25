@@ -68,12 +68,13 @@ public class InvGroupController {
                     //Gson gsonf = new Gson();
                     //String spj = gsonf.toJson(example);
                     //System.out.println(spj);
+                    /*
                     try {
                         saveAllInvGroup(example, context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Groups", (Serializable)example);
@@ -97,7 +98,7 @@ public class InvGroupController {
                 t.printStackTrace();
                 //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
                 //Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
-                try {
+                /*try {
                     List<InvGroups> invGList = retriveAllInvG(context);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Groups", (Serializable)invGList);
@@ -109,7 +110,7 @@ public class InvGroupController {
                     ((Activity)context).setTitle("Grupos de Inv.");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
 
             }
 
@@ -135,13 +136,13 @@ public class InvGroupController {
                 if (response.isSuccessful()) {
 
                     List<InvGroups> example = response.body();
-
+/*
                     try {
                         saveInvGroup(example.get(0), context);
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("InvGroup", (Serializable)example);
@@ -164,7 +165,7 @@ public class InvGroupController {
             @Override
             public void onFailure(Call<List<InvGroups>> call, Throwable t) {
                 t.printStackTrace();
-
+/*
                 try {
                     InvGroups invG = getInvGroup(id, context);
 
@@ -180,7 +181,7 @@ public class InvGroupController {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         });
 
@@ -203,14 +204,15 @@ public class InvGroupController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
-
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
+/*
                     try {
                         saveInvGroup(invG, context);
                         //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();
                     } catch (SQLException e) {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                    }
+                    }*/
                     //Toast.makeText(context, "entre3", Toast.LENGTH_SHORT).show();
 /*
                     Bundle bundle = new Bundle();
@@ -252,6 +254,8 @@ public class InvGroupController {
     }
 
     //Lista de inv g.
+
+    /*
     private void saveAllInvGroup(List<InvGroups> invGList, final Context context) throws SQLException {
         DatabaseHelper helper = OpenHelperManager.getHelper(context,DatabaseHelper.class);
         //DatabaseHelper helper = new DatabaseHelper(context);
@@ -293,5 +297,5 @@ public class InvGroupController {
         //DatabaseHelper helper = new DatabaseHelper(context);
         Dao<InvGroups, Integer> invGDao = helper.getInvGroupDao();
         return invGDao.queryForId(id);
-    }
+    }*/
 }

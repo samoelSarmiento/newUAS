@@ -135,6 +135,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
             }
         };
 
+
         return view;
     }
 
@@ -201,7 +202,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 break;
 
             case R.id.invEvCancel:
-                invEvController.getInvEvById(context,invEv.getId());
+                invEvController.getInvEvById(context,invEv.getId(), true);
                 break;
             case R.id.selFecha:
                 DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month-1, day);
