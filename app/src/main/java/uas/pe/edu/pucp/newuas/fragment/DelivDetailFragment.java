@@ -46,6 +46,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
     ArrayList<Integer> versionesArray;
     List<InvDocument> invDocs;
     InvDocument selectedVersion;
+    Boolean editEvAvailability;
 
     public DelivDetailFragment (){
 
@@ -80,6 +81,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             //botonEdit=bundle.getBoolean("BotonEdit");
             deliverable= (List<Deliverable>) bundle.getSerializable("Deliverable");
+            editEvAvailability=bundle.getBoolean("editEvAvailability");
         }
         del = deliverable.get(0);
         delivName.setText(deliverable.get(0).getNombre());
@@ -153,6 +155,13 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             }
         });
         delivRegObs.setVisibility(View.INVISIBLE);
+
+        //permisos
+        if(editEvAvailability){
+            delivRegObs.setVisibility(View.INVISIBLE);
+            delivEdit.setVisibility(View.INVISIBLE);
+        }
+
         return view;
     }
 

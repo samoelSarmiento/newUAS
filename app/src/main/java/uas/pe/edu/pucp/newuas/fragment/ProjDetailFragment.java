@@ -28,6 +28,7 @@ public class ProjDetailFragment extends Fragment {
     Button projEdit,projSeeDel;
     Projects p;
     Context context;
+    Boolean editEvAvailability;
 
     public ProjDetailFragment() {
         // Required empty public constructor
@@ -69,10 +70,18 @@ public class ProjDetailFragment extends Fragment {
         projDeliv.setText(cantEnt);
         projDesc.setText(proj.get(0).getDescripcion());
 
-        if(proj.get(0).getGroup().getIdLider()!= Configuration.getIdUsuario())
+        editEvAvailability=true;
+
+        if(proj.get(0).getGroup().getIdLider()!= Configuration.getIdUsuario()){
+            editEvAvailability=false;
             projEdit.setVisibility(View.INVISIBLE);
-        if(Configuration.isAdmin())
+        }
+
+        if(Configuration.isAdmin()){
+            editEvAvailability=true;
             projEdit.setVisibility(View.VISIBLE);
+        }
+
 
 
         projEdit.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +103,7 @@ public class ProjDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDeliv(context,p.getId());
+                deliverableController.getDeliv(context,p.getId(),editEvAvailability);
             }
         });
 

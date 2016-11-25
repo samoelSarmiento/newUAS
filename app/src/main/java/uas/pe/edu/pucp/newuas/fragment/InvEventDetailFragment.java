@@ -36,6 +36,7 @@ public class InvEventDetailFragment extends Fragment {
     InvEvent invEv;
     ImageView invEvImage;
     Context context;
+    Boolean editEvAvailability;
 
     public InvEventDetailFragment() {
     }
@@ -63,6 +64,7 @@ public class InvEventDetailFragment extends Fragment {
         if (bundle != null){
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             botonEdit=bundle.getBoolean("BotonEdit");
+            editEvAvailability=bundle.getBoolean("editEvAvailability");
             invEvento= (List<InvEvent>) bundle.getSerializable("Event");
         }
 
@@ -121,6 +123,10 @@ public class InvEventDetailFragment extends Fragment {
         });
         Date now = new Date();
         if(now.after(date)) invEvBut.setVisibility(View.INVISIBLE);
+        else {//permisos!
+            if(!editEvAvailability)
+                invEvBut.setVisibility(View.INVISIBLE);
+        }
 
 
         return view;
