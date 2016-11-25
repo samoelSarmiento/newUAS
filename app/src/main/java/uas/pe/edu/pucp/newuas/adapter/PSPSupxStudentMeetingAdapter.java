@@ -1,11 +1,16 @@
 package uas.pe.edu.pucp.newuas.adapter;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -13,6 +18,8 @@ import java.util.List;
 import java.util.Locale;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.controller.PSPController;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.Student;
 
@@ -25,11 +32,14 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
 
     List<PSPMeeting> items;
     Context context;
+    Student student;
     LayoutInflater layoutInflater;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
 
-    public PSPSupxStudentMeetingAdapter(Context context , List<PSPMeeting> items){
+    public PSPSupxStudentMeetingAdapter(Context context , List<PSPMeeting> items, Student student ){
+
+        this.student = student;
 
         this.context = context;
         this.items = items;
@@ -56,7 +66,7 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
 
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         View view = layoutInflater.inflate(R.layout.item_psp_sup_student_meetings,null);
@@ -71,16 +81,51 @@ public class PSPSupxStudentMeetingAdapter extends BaseAdapter{
         viewHolder.atHour.append(items.get(position).getHora_inicio());
         //String toHour = simpleDateFormat.format(items.get(position).getHore_fin());
         viewHolder.toHour.append(items.get(position).getHora_fin());
-        String status;
-        int tipo_estado = items.get(position).getStatus().getIdStatus();
-        if(tipo_estado== 1)
-            status = "Pendiente";
-        else if(tipo_estado == 2)
-            status = "Realizada";
-        else
-            status = "Cancelado";
+
+        String status = items.get(position).getStatus().getDescription();
+
 
         viewHolder.status.append(status);
+
+        viewHolder.icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup =  new PopupMenu(context,v);
+                popup.getMenuInflater().inflate(R.menu.supxstudentmeeting_popup, popup.getMenu());
+                popup.show();
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch(item.getItemId()){
+                            case R.id.menu_item_meeting_student_showDetails:
+
+                                PSPMeeting meeting = items.get(position);
+
+
+                                PSPController controller1 =  new PSPController();
+                                controller1.showSupXStudentMeetingDetail(context,student,meeting);
+
+
+
+                                break;
+
+                            case R.id.menu_item_meeting_student_notification:
+
+                                PSPController controller =  new PSPController();
+                                controller.supSendNotificationToStudent(context,student);
+                                break;
+
+                        }
+
+                        return true;
+                    }
+                });
+
+
+            }
+        });
+
 
 
         return view;

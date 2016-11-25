@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,6 +10,11 @@
     android:paddingTop="40dp"
     android:id="@+id/fragment_container"
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp">
 
         <TextView
@@ -50,42 +55,39 @@
             android:textStyle="bold" />
 
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnerHoraINoAppoint"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
-
     </LinearLayout>
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        >
 
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Hora fin:"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-
-        <Spinner
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerHoraFNoAppoint"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/timeText"
+            />
 
-    </LinearLayout>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="230dp"
+            android:id="@+id/btnClock"
+            />
+
+
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp">
 
         <TextView
@@ -168,5 +170,5 @@
 
     </LinearLayout>
 
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

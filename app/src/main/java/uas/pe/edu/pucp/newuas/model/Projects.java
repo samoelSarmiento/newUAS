@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Andree on 25/10/2016.
@@ -60,6 +61,17 @@ public class Projects implements Serializable{
     @SerializedName("status")
     @DatabaseField(foreign = true,foreignAutoCreate = true, foreignAutoRefresh = true)
     private ProjectStatus status;
+
+    @SerializedName("deliverables")
+    private List<Deliverable> deliverableList;
+
+    public List<Deliverable> getDeliverableList() {
+        return deliverableList;
+    }
+
+    public void setDeliverableList(List<Deliverable> deliverableList) {
+        this.deliverableList = deliverableList;
+    }
 
     public Projects() {
     }

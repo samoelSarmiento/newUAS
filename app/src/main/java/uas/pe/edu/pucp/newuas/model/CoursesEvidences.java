@@ -30,6 +30,10 @@ public class CoursesEvidences implements Serializable {
     @SerializedName("file_name")
     private String fileName;
 
+    public CoursesEvidences() {
+
+    }
+
     public int getIdEvidencia() {
         return idEvidencia;
     }

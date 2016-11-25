@@ -8,7 +8,7 @@
 
         <item
             android:id="@+id/nav_item_pspStudents_Supervis"
-            android:icon="@drawable/ic_resultados_eval"
+            android:icon="@drawable/ic_objetivos_ed"
             android:title="Estudiantes"
             />
 
@@ -59,14 +59,23 @@
             android:icon="@drawable/ic_calendar"
             android:title="Reuniones" />
 
+
+        <item
+            android:id="@+id/nav_item_pspStudentMeetings"
+            android:icon="@drawable/ic_calendar"
+            android:title="Reservar Cita" />
+        <item android:id="@+id/nav_item_pspSupFreeHours"
+            android:icon="@drawable/ic_calendar"
+            android:title="Disponibilidad" />
+
+        <item
+            android:id="@+id/nav_changeModulePSP"
+            android:icon="@drawable/ic_back"
+            android:title="@string/itdModule"  />
+
         <item
             android:id="@+id/nav_pspExit"
             android:icon="@drawable/ic_logout"
             android:title="@string/pspExit" />
-
-    </group>
-
-
-
-
+ </group>
 </menu>

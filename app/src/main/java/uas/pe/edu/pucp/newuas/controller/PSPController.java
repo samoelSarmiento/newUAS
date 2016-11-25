@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -19,23 +21,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.PSPSupFreeHoursAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
-import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_StudentNewMeetingSup;
+import uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupFreeHours;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupMeetingsStudentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupStudentNewMeetingFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_groupsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentGradesDetail;
 import uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList;
+import uas.pe.edu.pucp.newuas.model.MyToast;
+import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
 import uas.pe.edu.pucp.newuas.model.PSPGroup;
 import uas.pe.edu.pucp.newuas.model.PSPMeeting;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
+import uas.pe.edu.pucp.newuas.model.Status;
 import uas.pe.edu.pucp.newuas.model.Student;
 
 /**
@@ -63,7 +75,7 @@ public class PSPController {
 
                     List<PSPGroup> pspGroupList = response.body();
 
-                    if(!pspGroupList.isEmpty()) {
+                    if (!pspGroupList.isEmpty()) {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("PSPGroups", (Serializable) pspGroupList);
 
@@ -74,16 +86,14 @@ public class PSPController {
 
                         ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, groupsFragment).commit();
                         ((Activity) context).setTitle("Seleccionar grupos");
-                    }else{
+                    } else {
 
                         PSP_messagesFragment fragment = new PSP_messagesFragment();
-                        Bundle bundle =  new Bundle();
-                        bundle.putString("MESSAGE","No hay grupos");
+                        Bundle bundle = new Bundle();
+                        bundle.putString("MESSAGE", "No hay grupos");
                         fragment.setArguments(bundle);
                         ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
                         ((Activity) context).setTitle("Seleccionar grupos");
-
-
 
 
                     }
@@ -124,15 +134,14 @@ public class PSPController {
                     PSPMessage answer = response.body();
 
 
-
                     Toast.makeText(context, answer.getMesssage(), Toast.LENGTH_SHORT).show();
 
-                    Intent intent =  new Intent();
+                    Intent intent = new Intent();
                     Bundle bundle = new Bundle();
                     intent.putExtra("PSPGroup", bundle);
-                    ((Activity)context).setIntent(intent);
-                    ((Activity)context).getFragmentManager().popBackStack();
-                    ((Activity)context).setTitle("PSP");
+                    ((Activity) context).setIntent(intent);
+                    ((Activity) context).getFragmentManager().popBackStack();
+                    ((Activity) context).setTitle("PSP");
 
                 } else {
 
@@ -203,16 +212,12 @@ public class PSPController {
     }
 
 
-
-
-
     public boolean getStudentGroup(final Context context) {
 
-        final ProgressDialog pd = new ProgressDialog(context );
+        final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Cargando...");
         pd.setCanceledOnTouchOutside(false);
         pd.show();
-
 
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
@@ -237,25 +242,21 @@ public class PSPController {
 
                         Log.d("GROUP", "NO ES NULL");
 
-                        Intent intent =  new Intent();
+                        Intent intent = new Intent();
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("PSPGroup",(Serializable)group);
-                        intent.putExtra("PSPGroup",bundle);
+                        bundle.putSerializable("PSPGroup", (Serializable) group);
+                        intent.putExtra("PSPGroup", bundle);
 
 
-
-                        ((Activity)context).setIntent(intent);
-
-
-
+                        ((Activity) context).setIntent(intent);
 
 
                     } else {
 
-                        Intent intent =  new Intent();
+                        Intent intent = new Intent();
                         Bundle bundle = null;
-                        intent.putExtra("PSPGroup",bundle);
-                        ((Activity)context).setIntent(intent);
+                        intent.putExtra("PSPGroup", bundle);
+                        ((Activity) context).setIntent(intent);
 
                         Log.d("GROUP", "ES NULL");
 
@@ -273,17 +274,17 @@ public class PSPController {
 
                 t.printStackTrace();
 
-             //   getGroups(context);
+                //   getGroups(context);
 
             }
         });
 
-        return  true;
+        return true;
 
     }
 
 
-    public boolean getStudentGrades(final Context context , final Student student){
+    public boolean getStudentGrades(final Context context, final Student student) {
 
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
@@ -297,20 +298,17 @@ public class PSPController {
             @Override
             public void onResponse(Call<List<PSPGrade>> call, Response<List<PSPGrade>> response) {
 
-                if(response.isSuccessful()){
-
+                if (response.isSuccessful()) {
 
 
                     List<PSPGrade> lista = response.body();
-                    Fragment fragment =  new PSP_studentGradesDetail();
+                    Fragment fragment = new PSP_studentGradesDetail();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Grade", (Serializable) lista);
                     fragment.setArguments(bundle);
 
-                    ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
-                            .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
-
-
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
                 }
@@ -326,19 +324,16 @@ public class PSPController {
         });
 
 
-
-
         return true;
 
 
     }
 
 
+    public boolean getTeacherStudents(final Context context) {
 
-    public boolean getTeacherStudents (final Context context) {
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
         Call<List<Student>> call = restCon.getStudents(token);
 
@@ -352,17 +347,17 @@ public class PSPController {
                 if (response.isSuccessful()) {
                     List<Student> students = response.body();
                     Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
-                    Bundle bundle =  new Bundle();
-                    bundle.putSerializable("PSPStudents",(Serializable) students);
-                    Fragment fragment =  new PSP_teacherStudentsList();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PSPStudents", (Serializable) students);
+                    Fragment fragment = new PSP_teacherStudentsList();
                     fragment.setArguments(bundle);
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null)
-                            .replace(R.id.fragment_container_psp,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null)
+                            .replace(R.id.fragment_container_psp, fragment).commit();
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -382,26 +377,24 @@ public class PSPController {
         return true;
 
     }
-    public boolean getPhaseById(Context context , PSPPhase phase){
 
+    public boolean getPhaseById(Context context, PSPPhase phase) {
 
-        
 
         return true;
 
     }
 
-    public boolean getSupStudents(final Context context){
+    public boolean getSupStudents(final Context context) {
 
-        final ProgressDialog pd = new ProgressDialog(context );
+        final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Cargando...");
         pd.setCanceledOnTouchOutside(false);
         pd.show();
 
 
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
         Call<List<Student>> call = restCon.getSupStudents(token);
 
@@ -409,30 +402,28 @@ public class PSPController {
             @Override
             public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
 
                     pd.dismiss();
                     ArrayList<Student> lista = (ArrayList<Student>) response.body();
 
-                    Fragment fragment =  new PSP_SupMeetingsStudentsFragment();
+                    Fragment fragment = new PSP_SupMeetingsStudentsFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("PSPStudents",lista);
+                    bundle.putSerializable("PSPStudents", lista);
                     fragment.setArguments(bundle);
 
 
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null)
-                            .replace(R.id.fragment_container_psp,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null)
+                            .replace(R.id.fragment_container_psp, fragment).commit();
 
 
-                }else{
+                } else {
 
                     pd.dismiss();
-                    Toast.makeText(context,"Algo paso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Algo paso", Toast.LENGTH_SHORT).show();
 
                 }
-
-
 
 
             }
@@ -444,101 +435,92 @@ public class PSPController {
         });
 
 
-
         return true;
 
     }
 
 
-    public boolean getSupMeetingByStudent(final Context context, final Student student){
+    public boolean getSupMeetingByStudent(final Context context, final Student student) {
 
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Call<List<PSPMeeting>> call = restCon.getSupMeetingByStudent(student.getIdAlumno(),token);
+        Call<List<PSPMeeting>> call = restCon.getSupMeetingByStudent(student.getIdAlumno(), token);
 
-       call.enqueue(new Callback<List<PSPMeeting>>() {
-           @Override
-           public void onResponse(Call<List<PSPMeeting>> call, Response<List<PSPMeeting>> response) {
+        call.enqueue(new Callback<List<PSPMeeting>>() {
+            @Override
+            public void onResponse(Call<List<PSPMeeting>> call, Response<List<PSPMeeting>> response) {
 
-               if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
-                   ArrayList<PSPMeeting> lista = (ArrayList)response.body();
+                    ArrayList<PSPMeeting> lista = (ArrayList) response.body();
 
-                   if(!lista.isEmpty()) {
+                    if (!lista.isEmpty()) {
 
-                       Log.d("MEETINGS", "by students");
-                       Fragment fragment = new PSP_SupxStudentMeetingsFragment();
-                       Bundle bundle = new Bundle();
-                       bundle.putSerializable("Student", student);
-                       bundle.putSerializable("Meetings", lista);
-                       fragment.setArguments(bundle);
+                        Log.d("MEETINGS", "by students");
+                        Fragment fragment = new PSP_SupxStudentMeetingsFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Student", student);
+                        bundle.putSerializable("Meetings", lista);
+                        fragment.setArguments(bundle);
 
-                       ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
-                               .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
-
-
-                   } else {
+                        ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
-                       Fragment fragment=  new PSP_messagesFragment();
-                       Bundle bundle =  new Bundle();
-                       bundle.putString("MESSAGE", "No tiene citas asignadas");
-                       ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
-                               .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+                    } else {
 
 
-
-                   }
-
-
-               }else{
-
-                   Toast.makeText(context, "Error con servidor", Toast.LENGTH_SHORT).show();
-
+                        Fragment fragment = new PSP_messagesFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("MESSAGE", "No tiene citas asignadas");
+                        fragment.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
-               }
+                    }
 
 
+                } else {
 
-           }
+                    Toast.makeText(context, "Error con servidor", Toast.LENGTH_SHORT).show();
 
-           @Override
-           public void onFailure(Call<List<PSPMeeting>> call, Throwable t) {
 
-           }
-       });
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPMeeting>> call, Throwable t) {
+
+            }
+        });
 
 
         return true;
 
     }
 
-    public boolean updateMeetingDetail(Context context, PSPMeeting meeting){
+    public boolean updateMeetingDetail(final Context context, PSPMeeting meeting) {
 
 
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
 
-
-
-        Call<PSPMessage> call = restCon.updateMeetingDetail(meeting,token);
+        Call<PSPMessage> call = restCon.updateMeetingDetail(meeting, token);
         call.enqueue(new Callback<PSPMessage>() {
             @Override
             public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     PSPMessage message = response.body();
-
-
-
-
-
+                    MyToast.makeText(context,message.getMesssage(),Toast.LENGTH_SHORT,MyToast.checkAlert).show();
 
 
                 }
@@ -556,35 +538,281 @@ public class PSPController {
     }
 
 
+    public boolean insertSupStudentMeeting(final Context context, final PSPMeetingRequest request) {
 
-    public boolean insertSupStudentMeeting(final Context context, final PSPMeetingRequest request){
-
-        RestCon restCon  = RetrofitHelper.apiConnector.create(RestCon.class);
-        Map<String,String> token = new HashMap<>();
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
 
-        Call<PSPMessage> call = restCon.storeSupStudentMeeting(request,token);
+        Call<PSPMessage> call = restCon.storeSupStudentMeeting(request, token);
 
         call.enqueue(new Callback<PSPMessage>() {
             @Override
             public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
 
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
-                    PSPMessage message =  response.body();
+                    PSPMessage message = response.body();
+
+                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
+
+
+                    ((Activity) context).getFragmentManager().popBackStack();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+    }
+
+
+    public boolean getStudentMeetings(final Context context) {
+
+
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<PSPMeeting>> call = restCon.getStudentMeetings(token);
+
+        call.enqueue(new Callback<List<PSPMeeting>>() {
+            @Override
+            public void onResponse(Call<List<PSPMeeting>> call, Response<List<PSPMeeting>> response) {
+
+                if (response.isSuccessful()) {
+
+                    pd.dismiss();
+                    ArrayList<PSPMeeting> lista = (ArrayList) response.body();
+
+                 //   if (!lista.isEmpty()) {
+
+                        Log.d("MEETINGS", "student has meetings");
+                        Fragment fragment = new PSP_meetings_studentFragment();
+                        Bundle bundle = new Bundle();
+
+                        bundle.putSerializable("Meetings", lista);
+                        fragment.setArguments(bundle);
+
+                        ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                //    } else {
+
+                        /*
+
+                        Fragment fragment = new PSP_messagesFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("MESSAGE", "No tiene citas asignadas");
+                        fragment.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+*/
+
+                   // }
+
+
+                } else {
+
+                    pd.dismiss();
+                    Toast.makeText(context, "Error con servidor", Toast.LENGTH_SHORT).show();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPMeeting>> call, Throwable t) {
+
+            }
+        });
+
+        return true;
+
+    }
+
+
+    public boolean setSupFreeHour(final Context context, PSPFreeHour request){
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<PSPMessage> call = restCon.storeSupFreehour(request, token);
+
+        call.enqueue(new Callback<PSPMessage>() {
+            @Override
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    PSPMessage message = response.body();
+
+                    if(message.getMesssage().contains("maximo"))
+                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.errorAlert).show();
+                    else
+                        MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.checkAlert).show();
+
+
+                    ((Activity) context).getFragmentManager().popBackStack();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+    }
+
+    public boolean getSupFreeHourForStudent (final Context context){
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<PSPFreeHour>> call = restCon.getSupervisorFreeHour( token);
+
+        call.enqueue(new Callback<List<PSPFreeHour>>(){
+            @Override
+            public void onResponse(Call<List<PSPFreeHour>> call, Response<List<PSPFreeHour>> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    ArrayList<PSPFreeHour> freeHours = (ArrayList<PSPFreeHour>) response.body();
+                    Bundle  bundle =  new Bundle();
+                    bundle.putSerializable("freeHours", freeHours);
+
+                    Fragment fragment  = new PSP_StudentNewMeetingSup();
+
+                    fragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPFreeHour>> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+    }
+
+
+    public boolean storeMeetingByStudent(final Context context , PSPFreeHour freeHour){
+
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<PSPMessage> call = restCon.storeStudentMeeting( freeHour , token);
+
+        call.enqueue(new Callback<PSPMessage>(){
+            @Override
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    PSPMessage message = (PSPMessage) response.body();
+
+
+                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
+
+                    ((Activity)context).getFragmentManager().popBackStack();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PSPMessage> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+
+
+
+
+    }
+
+
+    public boolean supSendNotificationToStudent(final Context context, Student student){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<PSPMessage> call = restCon.supSendNotificationToStudent( student.getIdAlumno() , token);
+
+        call.enqueue(new Callback<PSPMessage>(){
+            @Override
+            public void onResponse(Call<PSPMessage> call, Response<PSPMessage> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    PSPMessage message = (PSPMessage) response.body();
+
 
                     Toast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT).show();
 
 
-                    ((Activity)context).getFragmentManager().popBackStack();
-
-
-
-
-
-
-
                 }
 
 
@@ -597,12 +825,352 @@ public class PSPController {
         });
 
 
+        return true;
 
+
+
+
+
+
+
+    }
+
+
+
+    public boolean getSupStudentsForNewMeeting(final Context context) {
+
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Student>> call = restCon.getSupStudents(token);
+
+        call.enqueue(new Callback<List<Student>>() {
+            @Override
+            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+
+                if (response.isSuccessful()) {
+
+
+                    pd.dismiss();
+                    ArrayList<Student> lista = (ArrayList<Student>) response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PSPStudents", lista);
+
+
+                    Fragment fragment = new PSP_SupStudentNewMeetingFragment();
+                    fragment.setArguments(bundle);
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                            .addToBackStack(null).commit();
+
+
+
+
+
+                } else {
+
+                    pd.dismiss();
+                    Toast.makeText(context, "Algo paso", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Student>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
 
         return true;
 
     }
+
+
+
+
+    public boolean getStudentForStudentMeetingDetail(final Context context, final PSPMeeting meeting){
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<Student> call = restCon.getStudentForMeetingDetail(token);
+
+        call.enqueue(new Callback<Student>() {
+            @Override
+            public void onResponse(Call<Student> call, Response<Student> response) {
+
+                if(response.isSuccessful()) {
+                    pd.dismiss();
+                    Student student = response.body();
+
+                    Fragment fragment = new PSP_StudentxSupMeetingDetailFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Student", student);
+                    bundle.putSerializable("PSPMeeting", meeting);
+                    fragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                }else{
+
+                    pd.dismiss();
+                    Toast.makeText(context, "Algo paso", Toast.LENGTH_SHORT).show();
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+    }
+
+
+
+    public boolean getSupFreeHours(final Context  context){
+
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<PSPFreeHour>> call = restCon.getSupervisorFreeHours( token);
+
+        call.enqueue(new Callback<List<PSPFreeHour>>(){
+            @Override
+            public void onResponse(Call<List<PSPFreeHour>> call, Response<List<PSPFreeHour>> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    ArrayList<PSPFreeHour> freeHours = (ArrayList<PSPFreeHour>) response.body();
+                    Bundle  bundle =  new Bundle();
+                    bundle.putSerializable("freeHours", freeHours);
+
+                    Fragment fragment  = new PSP_SupFreeHours();
+
+                    fragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPFreeHour>> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+
+
+
+
+
+    }
+    public boolean refreshFreeHours(final Context  context, final PSPSupFreeHoursAdapter adapter){
+
+
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<PSPFreeHour>> call = restCon.getSupervisorFreeHours( token);
+
+        call.enqueue(new Callback<List<PSPFreeHour>>(){
+            @Override
+            public void onResponse(Call<List<PSPFreeHour>> call, Response<List<PSPFreeHour>> response) {
+
+
+                if (response.isSuccessful()) {
+
+                    ArrayList<PSPFreeHour> freeHours = (ArrayList<PSPFreeHour>) response.body();
+                    adapter.setItems(freeHours);
+                    adapter.notifyDataSetChanged();
+
+
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPFreeHour>> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+    public boolean getStudentSupFinalScores(final Context context){
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<List<PSPStudentFinalGrade>> call = restCon.getStudentsFinalScore(token);
+
+        call.enqueue(new Callback<List<PSPStudentFinalGrade>>() {
+            @Override
+            public void onResponse(Call<List<PSPStudentFinalGrade>> call, Response<List<PSPStudentFinalGrade>> response) {
+                if(response.isSuccessful()){
+                    pd.dismiss();
+                    ArrayList<PSPStudentFinalGrade> lista = ( ArrayList<PSPStudentFinalGrade> )response.body();
+
+                    Bundle bundle =  new Bundle();
+                    bundle.putSerializable("FinalScores", lista);
+                    Fragment fragment = new PSP_studentGradesDetail();
+                    fragment.setArguments(bundle);
+
+                    ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp,fragment)
+                            .addToBackStack(null).commit();
+
+
+
+
+
+
+                }else{
+                    pd.dismiss();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPStudentFinalGrade>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
+
+
+        return true;
+
+
+
+
+
+
+
+    }
+
+    public boolean showSupXStudentMeetingDetail(final Context context, final Student student, final PSPMeeting meeting){
+
+        final ProgressDialog pd = new ProgressDialog(context);
+        pd.setMessage("Cargando...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+        Call<List<Status>> call = restCon.getStautesForSupxStudentDetail(token);
+        call.enqueue(new Callback<List<Status>>() {
+            @Override
+            public void onResponse(Call<List<Status>> call, Response<List<Status>> response) {
+
+                if(response.isSuccessful()){
+
+                    pd.dismiss();
+                    ArrayList<Status> status =(ArrayList<Status>)response.body();
+
+                    Fragment fragment = new PSP_SupxStudentMeetingDetailFragment();
+                    Bundle bundle = new Bundle();
+
+                    bundle.putSerializable("PSPMeeting",meeting);
+                    bundle.putSerializable("Student", student);
+                    bundle.putSerializable("Status", status);
+                    fragment.setArguments(bundle);
+
+
+                    ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter,R.animator.exit,R.animator.slide_out_right,R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp,fragment).addToBackStack(null).commit();
+
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Status>> call, Throwable t) {
+                t.printStackTrace();
+                pd.dismiss();
+
+            }
+        });
+
+
+        return true;
+
+
+
+    }
+
 
 }
 

@@ -13,9 +13,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.InvEventController;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
@@ -68,11 +72,25 @@ public class InvEventDetailFragment extends Fragment {
         invEvName.setText(invEvento.get(0).getNombre());
         invEvDesc.setText(invEvento.get(0).getDescripcion());
         invEvFecha.setText(invEvento.get(0).getFecha());
-        invEvHora.setText(invEvento.get(0).getHora());
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date=new Date();
+        try{
+            date =format.parse(invEvento.get(0).getHora());
+
+        }catch (ParseException e){
+        }
+        String hour = (String) android.text.format.DateFormat.format("hh",date);
+        Integer hourEv=Integer.parseInt(hour);
+        String minute = (String) android.text.format.DateFormat.format("mm",date);
+        Integer minuteEv=Integer.parseInt(minute);
+
+
+        invEvHora.setText(hour + ":" + minute);
         invEvUbic.setText(invEvento.get(0).getUbicacion());
 
         if(invEvento.get(0).getImagen()!=null)
-            Picasso.with(context).load(RetrofitHelper.serverURL + invEvento.get(0).getImagen()).into(invEvImage);
+            Picasso.with(context).load(Configuration.BASE_URL + "/"+ invEvento.get(0).getImagen()).into(invEvImage);
 
         /*if(invGroup.get(0).getImagen()!=null) {
             Bitmap bmp;

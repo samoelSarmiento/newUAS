@@ -66,6 +66,15 @@
     <string name="pspSelectButtonInforme">Informacion de empresa</string>
     <string name="pspSelectButtonDocument">Documento</string>
 
+
+    <string-array name="MeetingStatus">
+
+        <item>--Seleccionar--</item>
+        <item>Cancelada</item>
+        <item>Pendiente</item>
+        <item>Realizada</item>
+
+    </string-array>
     <!--PSP Fin-->
 
     <!--Tutoria-->
@@ -87,6 +96,9 @@
         <item>21:00</item>
         <item>22:00</item>
     </string-array>
+
+
+
 
     <string name="noCita">Atender\n
     sin cita</string>
@@ -142,7 +154,7 @@
     <string name="itdAcrConsolidate">Consolidados</string>
     <string name="itdAcrSignOut">Cerrar Sesión</string>
     <string name="tvAcrName">Nombre:</string>
-    <string name="tvAcrSurnames">Apelldios:</string>
+    <string name="tvAcrSurnames">Apellidos:</string>
     <string name="tvAcreEmail">Correo:</string>
 
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
@@ -192,5 +204,22 @@
     <string name="tvNoCourses">No cuenta con cursos este ciclo.</string>
     <string name="newSugerence">Nueva Sugerencia</string>
     <string name="itdModule">Cambiar de Módulo</string>
+    <string name="tvInactivo">INACTIVO</string>
+    <string name="tvActivo">ACTIVO</string>
+    <string name="everyone">Por: Todos</string>
+    <string name="no_comment">Sin comentarios</string>
+    <string name="connection_error">Error de conexión</string>
+    <string name="no_student">El curso no cuenta con alumnos.</string>
+
+    <string name="btContribution">Aporte del curso</string>
+
+
+    <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord</string>
+    <string name="results">Presione en un alumno para visualizar los resultados de desempeño del alumno.</string>
+    <string name="no_criterio">El alumno aun no ha sido evaluado</string>
+    <string name="no_curses">El semestre no cuenta con cursos activos este ciclo.</string>
+    <string name="btEvidence">EVIDENCIA DEL HORARIO</string>
+    <string name="no_evidence">El curso no cuenta con evidencias registradas.</string>
+
 
 </resources>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import retrofit2.Response;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
+import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelperOperations;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 
@@ -34,9 +36,17 @@ import uas.pe.edu.pucp.newuas.fragment.CoursesxSpecialtyFragment;
 import uas.pe.edu.pucp.newuas.fragment.CoursexScheduleFragment;
 import uas.pe.edu.pucp.newuas.fragment.MyCoursesFragment;
 import uas.pe.edu.pucp.newuas.fragment.SpecialtyFragment;
+import uas.pe.edu.pucp.newuas.fragment.StudentEffortResultFragment;
+import uas.pe.edu.pucp.newuas.fragment.StudentListFragment;
+import uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
+import uas.pe.edu.pucp.newuas.model.CoursesEvidences;
+import uas.pe.edu.pucp.newuas.model.FileGen;
 import uas.pe.edu.pucp.newuas.model.Schedule;
 import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentEffort;
+import uas.pe.edu.pucp.newuas.model.StudentResult;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
 import uas.pe.edu.pucp.newuas.model.UserResponse;
@@ -51,107 +61,50 @@ public class SpecialtyController {
     Specialty list = null;
 
     public Specialty getSpecialties(final Context context, final Integer specId) {
-
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-        Specialty specialty;
-
-        /*
-        if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
-            return Configuration.SPECIALTY;
-            */
-        /*
-        Call<Specialty> call = null;
-        if (Configuration.LOGIN_USER.getUser().getAccreditor() != null){
-            call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
-        }
-        if (Configuration.LOGIN_USER.getUser().getTeacher() != null){
-            call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
-        }*/
-
         Call<Specialty> call = restCon.getSpecialtyById(specId, token);
-
 
         call.enqueue(new Callback<Specialty>() {
             @Override
             public void onResponse(Call<Specialty> call, retrofit2.Response<Specialty> response) {
-                Log.d("LOG", response.isSuccessful() + "");
-
                 if (response.isSuccessful()) {
-                    okhttp3.Response raw = response.raw();
-                    //SpecialtyResponse
                     Specialty example = response.body();
-                    Log.d("LOG", String.valueOf(response.code()));
-                    Log.d("LOG", response.body().toString());
-                    Log.d("LOG", response.message());
-
-                    Log.d("llego", "llego");
-                    Gson gson = new Gson();
-                    Log.d("wat ", gson.toJson(example));
-                    Log.d("llego", "llego");
-                    UserResponse userr = Configuration.LOGIN_USER;
-                    User user = userr.getUser();
-
+                    Log.d("COSI", "" + (example == null));
                     Configuration.SPECIALTY = example;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
-                    //DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
-                    //dbHandler.addSpecialty(example);
 
-
-                    Gson gsonf = new Gson();
-                    String spj = gsonf.toJson(example);
-                    System.out.println(spj);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Specialty", spj);
+                    bundle.putSerializable("specialty", example);
                     spFragment.setArguments(bundle);
 
                     try {
-                        saveSpecialty(example, context);
+                        DatabaseHelperOperations.saveSpecialty(example, context);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
-
                     ((Activity) context).getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.fragment_container, spFragment)
                             .commit();
                     ((Activity) context).setTitle("Especialidad");
-
-
                 } else {
-                    Log.d("wat", response.errorBody().toString());
-
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
-                    Toast.makeText(context, "fuepe", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override
             public void onFailure(Call<Specialty> call, Throwable t) {
-                //Log.d("wat", t.getMessage());
-                //Log.d("wat", t.getMessage());
-
                 t.printStackTrace();
-
                 try {
-                    Specialty spec = getSpecialty(specId, context);
-
-
+                    Specialty spec = DatabaseHelperOperations.getSpecialty(specId, context);
+                    Configuration.SPECIALTY = spec;
                     SpecialtyFragment spFragment = new SpecialtyFragment();
 
-
-                    Gson gsonf = new Gson();
-                    String spj = gsonf.toJson(spec);
-                    System.out.println(spj);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Specialty", spj);
+                    bundle.putSerializable("specialty", spec);
                     spFragment.setArguments(bundle);
 
                     ((Activity) context).getFragmentManager()
@@ -164,66 +117,9 @@ public class SpecialtyController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
-
-
-
-                /*
-                DatabaseHandler dbHandler = new DatabaseHandler(context, Configuration.DATABASE_NAME, null, Configuration.DATABASE_VERSION);
-
-                Specialty sp = null;
-                if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 3)
-                    sp = dbHandler.getSpecialtyById(Configuration.SPECIALTY.getIdEspecialidad());
-                else {
-                    sp = dbHandler.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad());
-
-                }
-
-                SpecialtyFragment spFragment = new SpecialtyFragment();
-                Gson gsonf = new Gson();
-                String spj = gsonf.toJson(sp);
-                System.out.println(spj);
-                Bundle bundle = new Bundle();
-                bundle.putString("Specialty", spj);
-                spFragment.setArguments(bundle);
-
-                ((Activity) context).getFragmentManager()
-                        .beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, spFragment)
-                        .commit();
-                ((Activity) context).setTitle("Especialidad");
-                //Call<Specialty> call = restCon.getSpecialtyById(Configuration.LOGIN_USER.getUser().getAccreditor().getIdEspecialidad(), token);
-
-
-                //Toast.makeText(context, call.request().url().toString(), Toast.LENGTH_SHORT);
-                Toast.makeText(context, "Error2aa", Toast.LENGTH_SHORT).show();
-                */
-
-
             }
         });
-
-
-//        Specialty list = null;
-//        try {
-//            list = call.execute().body();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//
-//
-// }
-        /*
-        Configuration.SPECIALTY = list;
-
-        if (Configuration.SPECIALTY == null) {
-            Log.d("wat", "Es nulo");
-        } else {
-            Log.d("wat", "WAT");
-        }
-        */
         return list;
-
     }
 
     public boolean getCoursesxSpecialyxCycle(final Context context, final int idEspecialiad, final int idCycle) {
@@ -244,7 +140,7 @@ public class SpecialtyController {
                         @Override
                         protected Void doInBackground(Void... params) {
                             try {
-                                saveCourses(context, crf, idCycle);
+                                DatabaseHelperOperations.saveCourses(context, crf, idCycle);
                             } catch (SQLException e) {
                                 Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                                 e.printStackTrace();
@@ -274,7 +170,7 @@ public class SpecialtyController {
             public void onFailure(Call<List<CourseResponse>> call, Throwable t) {
                 //leo los cursos
                 try {
-                    List<CourseResponse> list = retrieveCourses(context, idCycle, idEspecialiad);
+                    List<CourseResponse> list = DatabaseHelperOperations.retrieveCourses(context, idCycle, idEspecialiad);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CourseList", (Serializable) list);
                     bundle.putInt("cicloAcademico", idCycle);
@@ -306,12 +202,14 @@ public class SpecialtyController {
                     List<Schedule> list = response.body();
                     //--guaradmos los horarios
                     try {
-                        saveCourseSchedule(context, list, idCourse, idAcademicCycle);
+                        DatabaseHelperOperations.saveCourseSchedule(context, list, idCourse, idAcademicCycle);
                     } catch (SQLException e) {
                         Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                     }
                     //
                     Bundle bundle = new Bundle();
+                    bundle.putInt("cicloAcademico", idAcademicCycle);
+                    bundle.putInt("curso", idCourse);
                     bundle.putSerializable("ScheduleList", (Serializable) list);
                     //Fragment
                     CoursexScheduleFragment csFragment = new CoursexScheduleFragment();
@@ -329,7 +227,7 @@ public class SpecialtyController {
             @Override
             public void onFailure(Call<List<Schedule>> call, Throwable t) {
                 try {
-                    List<Schedule> list = retrieveCourseSchedules(context, idCourse, idAcademicCycle);
+                    List<Schedule> list = DatabaseHelperOperations.retrieveCourseSchedules(context, idCourse, idAcademicCycle);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("ScheduleList", (Serializable) list);
                     //Fragment
@@ -366,7 +264,7 @@ public class SpecialtyController {
                     List<Specialty> list = response.body();
                     //--guardas todas las especialidades
                     try {
-                        saveSpecialties(list, context);
+                        DatabaseHelperOperations.saveSpecialties(list, context);
                     } catch (SQLException e) {
                         Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
@@ -386,7 +284,7 @@ public class SpecialtyController {
                 //Hay un error de conexion, deberia sacar las especialidades de la bd
 
                 try {
-                    List<Specialty> specialtyList = retriveSpecialties(context);
+                    List<Specialty> specialtyList = DatabaseHelperOperations.retriveSpecialties(context);
                     if (pd.isShowing()) pd.dismiss();
                     Intent intent = new Intent(context, NavigationDrawerAcreditacion.class);
                     intent.putExtra("specialtyList", (Serializable) specialtyList);
@@ -430,110 +328,102 @@ public class SpecialtyController {
         return true;
     }
 
-    private void saveCourseSchedule(final Context context, List<Schedule> scheduleList, int idCourse, int idAcademicCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
-        Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
-        for (Schedule schedule : scheduleList) {
-            schedule.setIdCiclo(idAcademicCycle);
-            schedule.setIdCurso(idCourse);
-            Schedule find = scheduleDao.queryForId(schedule.getIdHorario());
-            if (find == null) {
-                scheduleDao.create(schedule);
-            } else {
-                scheduleDao.update(schedule);
-            }
-            //guardamos sus profesores
-            List<Teacher> teachers = schedule.getProfessors();
-            if (teachers != null) {
-                for (Teacher teacher : teachers) {
-                    teacher.setIdSchedule(schedule.getIdHorario());
-                    Teacher findT = teacherDao.queryForId(teacher.getIdDocente());
-                    if (findT == null) {
-                        teacherDao.create(teacher);
-                    } else {
-                        teacherDao.update(teacher);
-                    }
+    public boolean getStudentsbySchedule(final Context context, final int schedule_id, final int idCicloAcademico, final int idCurso, final List<FileGen> evidences) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<Student>> call = restCon.getStudentsbySchedule(schedule_id, token);
+        call.enqueue(new Callback<List<Student>>() {
+            @Override
+            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+                if (response.isSuccessful()) {
+                    List<Student> result = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("students", (Serializable) result);
+                    bundle.putInt("cicloAcademico", idCicloAcademico);
+                    bundle.putInt("curso", idCurso);
+                    bundle.putInt("horario", schedule_id);
+                    bundle.putSerializable("evidences", (Serializable) evidences);
+                    StudentListFragment fragment = new StudentListFragment();
+                    fragment.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, fragment)
+                            .commit();
                 }
             }
-        }
-    }
 
-    private List<Schedule> retrieveCourseSchedules(final Context context, int idCourse, int idCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Schedule, Integer> scheduleDao = helper.getScheduleDao();
-        Dao<Teacher, Integer> teacherDao = helper.getTeacherDao();
-        List<Schedule> list = scheduleDao.queryBuilder()
-                .where().eq("course_id", idCourse)
-                .and().eq("idCicloAcademico", idCycle).query();
-        for (Schedule schedule : list) {
-            Log.d("COSI", schedule.getIdHorario() + "");
-            List<Teacher> teacherList = teacherDao.queryBuilder()
-                    .where().eq("schedule_id", schedule.getIdHorario()).query();
-            schedule.setProfessors(teacherList);
-        }
-        return list;
-    }
-
-    private void saveCourses(final Context context, List<CourseResponse> courseResponse, int idCycle) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
-        for (CourseResponse crs : courseResponse) {
-            crs.setIdAcademicCycle(idCycle);
-            CourseResponse find = courseDao.queryForId(crs.getIdCurso());
-            if (find == null) {
-                courseDao.create(crs);
-            } else {
-                courseDao.update(crs);
+            @Override
+            public void onFailure(Call<List<Student>> call, Throwable t) {
+                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_LONG).show();
             }
-        }
+        });
+        return true;
     }
 
-    private List<CourseResponse> retrieveCourses(final Context context, int idCycle, int idSpecialty) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<CourseResponse, Integer> courseDao = helper.getCourseDao();
-        return courseDao.queryBuilder()
-                .where().eq("idEspecialidad", idSpecialty)
-                .and().eq("idAcademicCycle", idCycle).query();
-    }
 
-    private void saveSpecialties(List<Specialty> specialtyList, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
-        for (Specialty specialty : specialtyList) {
-            //veo si la especialidad existe
-            Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
-            if (find == null) {
-                specialtyDao.create(specialty);
-            } else {
-                //si se encontro la actualizo
-                specialtyDao.update(specialty);
+    public void getCourseContribution(final Context context, int course_id, int semester_id) {
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+        Call<List<StudentResult>> call = restCon.getCourseContribution(course_id, semester_id, token);
+
+        call.enqueue(new Callback<List<StudentResult>>() {
+            @Override
+            public void onResponse(Call<List<StudentResult>> call, Response<List<StudentResult>> response) {
+                if (response.isSuccessful()) {
+                    List<StudentResult> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("studentResult", (Serializable) list);
+
+                    StudentResultListFragment srlf = new StudentResultListFragment();
+                    srlf.setArguments(bundle);
+
+                    ((Activity) context).getFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, srlf)
+                            .commit();
+
+
+                } else {
+                    Log.d("wat", response.errorBody().toString());
+                }
             }
-        }
+
+            @Override
+            public void onFailure(Call<List<StudentResult>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
     }
 
-    private List<Specialty> retriveSpecialties(final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
-        return specialtyDao.queryForAll();
+    public void getStudentEffort(final Context context, int idCicloAcademico, int idCurso, int idHorario, int idAlumno) {
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+        Call<List<StudentEffort>> call = restCon.getEffortResultsbyStudent(idCicloAcademico, idCurso, idHorario, idAlumno, token);
+        call.enqueue(new Callback<List<StudentEffort>>() {
+            @Override
+            public void onResponse(Call<List<StudentEffort>> call, Response<List<StudentEffort>> response) {
+                if (response.isSuccessful()) {
+                    List<StudentEffort> list = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("effort", (Serializable) list);
+                    StudentEffortResultFragment fragment = new StudentEffortResultFragment();
+                    fragment.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<StudentEffort>> call, Throwable t) {
+
+            }
+        });
     }
-
-    private void saveSpecialty(Specialty specialty, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
-        Specialty find = specialtyDao.queryForId(specialty.getIdEspecialidad());
-        if (find == null) {
-            specialtyDao.create(specialty);
-        } else {
-            specialtyDao.update(specialty);
-        }
-
-    }
-
-    private Specialty getSpecialty(Integer id, final Context context) throws SQLException {
-        DatabaseHelper helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        Dao<Specialty, Integer> specialtyDao = helper.getSpecialtyDao();
-        return specialtyDao.queryForId(id);
-    }
-
 }

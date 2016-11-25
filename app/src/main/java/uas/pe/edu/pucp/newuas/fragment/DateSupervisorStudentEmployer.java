@@ -35,7 +35,6 @@ import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.model.SingleRow;
 import uas.pe.edu.pucp.newuas.model.Student;
-import uas.pe.edu.pucp.newuas.model.StudentPsp;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
 
 public class DateSupervisorStudentEmployer extends Fragment {
@@ -58,10 +57,6 @@ public class DateSupervisorStudentEmployer extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_date_supervisor_student_employer, container, false);
 
-
-
-
-
         getActivity().setTitle("Citas con Jefes");
         listDates  = (ListView) view.findViewById(R.id.listViewCustom_psp_dates_sup_emp);
 
@@ -75,13 +70,7 @@ public class DateSupervisorStudentEmployer extends Fragment {
             listDates.setAdapter(adapter);
 
 
-
-
-
         }
-
-
-
 
         newAppointment = (Button) view.findViewById(R.id.btnNewAssignment_psp_dates_sup_emp);
         newAppointment.setOnClickListener(
@@ -89,11 +78,8 @@ public class DateSupervisorStudentEmployer extends Fragment {
                     @Override
                     public void onClick(View v) {
                         //((NavigationDrawerTutoria)getActivity()).replaceFragment(new AlumnoNuevaCitaFragment());
-
                         PSPControllerJ controller = new PSPControllerJ() ;
                         controller.getStudentsForDates(getActivity());
-
-
                     }
                 }
         );

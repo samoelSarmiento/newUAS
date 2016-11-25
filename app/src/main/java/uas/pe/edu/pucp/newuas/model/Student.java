@@ -15,38 +15,47 @@ import java.io.Serializable;
 public class Student implements Serializable {
     @SerializedName("IdAlumno")
     private int IdAlumno;
-    //@SerializedName("IdHorario")
+
+    @SerializedName("IdHorario")
     private int IdHorario;
+
     //@SerializedName("id")
     private int Id;
+
     @SerializedName("Nombre")
     private String nombre;
+
     @SerializedName("ApellidoPaterno")
     private String apellidoPaterno;
+
     @SerializedName("ApellidoMaterno")
     private String apellidoMaterno;
-   // @SerializedName("telefono")
+
     private String telefono;
-    //@SerializedName("correo")
+
     private String correo;
-    //@SerializedName("direccion")
+
     private String direccion;
+
     @SerializedName("Codigo")
     private String codigo;
-    //@SerializedName("IdUsuario")
+
+    @SerializedName("IdUsuario")
     private int idUsuario;
-  //  @SerializedName("idPspGroup")
+
     private int IdPspGroup;
-    //@SerializedName("IdEspecialidad")
+
     private int IdEspecialidad;
-    //@SerializedName("idSupervisor")
+
     private int IdSupervisor;
+
     @SerializedName("lleva_psp")
     private String lleva_psp;
 
-    public Student(){}
+    public Student() {
+    }
 
-    public Student (String nombre){
+    public Student(String nombre) {
         this.nombre = nombre;
     }
 
@@ -82,7 +91,6 @@ public class Student implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
 
     public String getTelefono() {
@@ -147,5 +155,13 @@ public class Student implements Serializable {
 
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getLleva_psp() {
+        return lleva_psp;
+    }
+
+    public void setLleva_psp(String lleva_psp) {
+        this.lleva_psp = lleva_psp;
     }
 }

@@ -2,11 +2,14 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Wingerlion on 09/11/2016.
  */
-public class AppointInformationRegisterTuto {
-
+public class AppointInformationRegisterTuto implements Serializable {
 
     @SerializedName("id")
     private Integer id;
@@ -38,6 +41,10 @@ public class AppointInformationRegisterTuto {
     private Integer duracionCita;
     @SerializedName("numberDays")
     private Integer numberDays;
+    @SerializedName("scheduleInfo")
+    private List<ScheduleInfoResponse> scheduleInfo = new ArrayList<ScheduleInfoResponse>();
+    @SerializedName("scheduleMeeting")
+    private List<ScheduleMeetingResponse> scheduleMeeting = new ArrayList<ScheduleMeetingResponse>();
 
     /**
      *
@@ -308,4 +315,41 @@ public class AppointInformationRegisterTuto {
     public void setNumberDays(Integer numberDays) {
         this.numberDays = numberDays;
     }
+
+    /**
+     *
+     * @return
+     * The scheduleInfo
+     */
+    public List<ScheduleInfoResponse> getScheduleInfo() {
+        return scheduleInfo;
+    }
+
+    /**
+     *
+     * @param scheduleInfo
+     * The scheduleInfo
+     */
+    public void setScheduleInfo(List<ScheduleInfoResponse> scheduleInfo) {
+        this.scheduleInfo = scheduleInfo;
+    }
+
+    /**
+     *
+     * @return
+     * The scheduleMeeting
+     */
+    public List<ScheduleMeetingResponse> getScheduleMeeting() {
+        return scheduleMeeting;
+    }
+
+    /**
+     *
+     * @param scheduleMeeting
+     * The scheduleMeeting
+     */
+    public void setScheduleMeeting(List<ScheduleMeetingResponse> scheduleMeeting) {
+        this.scheduleMeeting = scheduleMeeting;
+    }
+
 }

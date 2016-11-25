@@ -3,6 +3,7 @@ package uas.pe.edu.pucp.newuas.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import uas.pe.edu.pucp.newuas.R;
@@ -20,7 +23,6 @@ import uas.pe.edu.pucp.newuas.adapter.SpecialtyxCoursesAdapter;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.model.CourseResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
-
 
 public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
@@ -42,7 +44,7 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("Cursos de la especialidad");
+        getActivity().setTitle("Cursos de la Especialidad");
 
         View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
         ListView coursesxspecialty = (ListView) view.findViewById(R.id.lvCourses);
@@ -57,9 +59,18 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
         if (bundle != null) {
             idCicloAcademico = bundle.getInt("cicloAcademico");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
-            Context context = getActivity();
-            adapter = new SpecialtyxCoursesAdapter(context, list);
-            coursesxspecialty.setAdapter(adapter);
+            if (list != null && !list.isEmpty()) {
+                Context context = getActivity();
+                adapter = new SpecialtyxCoursesAdapter(context, list);
+                coursesxspecialty.setAdapter(adapter);
+            } else {
+                TextView tvNoCourses = (TextView) view.findViewById(R.id.tvNoCourses);
+                TextView tvNivel = (TextView) view.findViewById(R.id.tvNivel);
+                tvNivel.setVisibility(View.GONE);
+                tvNoCourses.setVisibility(View.VISIBLE);
+                spnNivel.setVisibility(View.GONE);
+                coursesxspecialty.setVisibility(View.GONE);
+            }
         }
         return view;
     }
@@ -68,7 +79,6 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
     public void onStart() {
         super.onStart();
     }
-
 
     //Para el spinner cambia el list view
     @Override

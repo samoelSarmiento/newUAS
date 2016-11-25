@@ -13,13 +13,15 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.model.Specialty;
+import uas.pe.edu.pucp.newuas.model.Teacher;
 
 /**
  * Created by Marshall on 20/10/2016.
  */
 
-public class SpecialtyFragment extends Fragment{
-    public SpecialtyFragment(){
+public class SpecialtyFragment extends Fragment {
+    public SpecialtyFragment() {
 
     }
 
@@ -28,42 +30,30 @@ public class SpecialtyFragment extends Fragment{
         super.onCreate(savedInstanceState);
 
 
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-
-        getActivity().setTitle("Especialidad");
-
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_specialty, container, false);
-
         TextView tvsplabel = (TextView) view.findViewById(R.id.tvSpecialtyLabel);
         TextView tvspcode = (TextView) view.findViewById(R.id.tvSpecialtyCode);
         TextView tvspcoord = (TextView) view.findViewById(R.id.tvSpecialtyCoord);
         TextView tvspdesc = (TextView) view.findViewById(R.id.tvSpecialtyDesc);
 
-
         Bundle bundle = this.getArguments();
-        if (bundle != null){
-            String str = bundle.getString("Specialty");
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonObject json = jp.parse(str).getAsJsonObject();
-            tvsplabel.setText(json.get("Nombre").getAsString());
-            tvspcode.setText(json.get("Codigo").getAsString());
-            JsonObject json2 = json.get("teacher").getAsJsonObject();
-            tvspcoord.setText(json2.get("Nombre").getAsString() + " " + json2.get("ApellidoPaterno").getAsString() + " " + json2.get("ApellidoMaterno").getAsString());
-            tvspdesc.setText(json.get("Descripcion").getAsString());
-            Log.d("TAG",json.get("Nombre").getAsString());
-            //Log.d("TAG",json.getAsString());
+        if (bundle != null) {
+            Specialty specialty = (Specialty) bundle.getSerializable("specialty");
+            if (specialty != null) {
+                tvsplabel.setText(specialty.getNombre());
+                tvspcode.setText(specialty.getCodigo());
+                Teacher coordinator = specialty.getCoordinator();
+                if (coordinator != null) {
+                    tvspcoord.setText(coordinator.getNombre() + " " + coordinator.getApellidoPaterno() + " " + coordinator.getApellidoMaterno());
+                }
+                tvspdesc.setText(specialty.getDescripcion());
+            }
         }
-
-
         return view;
-
     }
-
-
 }

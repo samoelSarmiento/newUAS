@@ -13,12 +13,18 @@ public class SingleRow {
     String hora;
     String tema;
     String estado;
+    int icon1;
+    int icon2;
+    int idAppoint;
 
-    public SingleRow(String fecha, String hora, String tema, String estado){
+    public SingleRow(String fecha, String hora, String tema, String estado, int icon1, int icon2, int idAppoint){
         this.fecha = fecha;
         this.hora = hora;
         this.tema = tema;
         this.estado = estado;
+        this.icon1 = icon1;
+        this.icon2 = icon2;
+        this.idAppoint = idAppoint;
     }
 
     public String getFecha() {
@@ -29,6 +35,15 @@ public class SingleRow {
         return tema;
     }public String getEstado() {
         return estado;
+    }
+    public int getIcon1() {
+        return icon1;
+    }
+    public int getIcon2() {
+        return icon2;
+    }
+    public int getIdAppoint() {
+        return idAppoint;
     }
 
 }

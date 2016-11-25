@@ -19,15 +19,6 @@
         android:orientation="horizontal">
 
 
-        <Button
-            android:id="@+id/btnFilterAssignmentsTutop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/bg_button_login_selector"
-            android:textColor="@color/white"
-            android:text="Filtrar" />
 
 
 
@@ -45,7 +36,7 @@
             android:id="@+id/btnNewAssignmentTuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="110dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/bg_button_login_selector"
             android:textColor="@color/white"

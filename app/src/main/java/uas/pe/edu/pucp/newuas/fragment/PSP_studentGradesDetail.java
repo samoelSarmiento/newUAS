@@ -16,6 +16,7 @@ import java.util.List;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.PSPStudentGradesAdapter;
 import uas.pe.edu.pucp.newuas.model.PSPGrade;
+import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 
 /**
 
@@ -82,9 +83,15 @@ public class PSP_studentGradesDetail extends Fragment {
         if(listaNotas!= null){
 
 
-            ArrayList<PSPGrade> list  =   (ArrayList<PSPGrade>) listaNotas.getSerializable("Grades");
-            adapter =  new PSPStudentGradesAdapter(getActivity(), list);
-            listView.setAdapter(adapter);
+            ArrayList<PSPStudentFinalGrade> list  =   (ArrayList<PSPStudentFinalGrade>) listaNotas.getSerializable("FinalScores");
+
+           if(!list.isEmpty()){
+               adapter =  new PSPStudentGradesAdapter(getActivity(), list);
+               listView.setAdapter(adapter);
+
+
+
+           }
 
 
         }

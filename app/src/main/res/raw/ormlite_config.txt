@@ -1,5 +1,5 @@
 #
-# generated on 2016/11/11 01:16:36
+# generated on 2016/11/12 06:59:43
 #
 # --table-start--
 dataClass=uas.pe.edu.pucp.newuas.model.Accreditor
@@ -149,6 +149,7 @@ tableName=confspecialty
 # --table-fields-start--
 # --field-start--
 fieldName=idConfEspecialidad
+columnName=IdConfEspecialidad
 id=true
 # --field-end--
 # --field-start--
@@ -177,12 +178,14 @@ fieldName=cycleAcademicStart
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --field-start--
 fieldName=cycleAcademicEnd
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -591,6 +594,10 @@ fieldName=idEspecialidad
 # --field-start--
 fieldName=nombre
 # --field-end--
+# --field-start--
+fieldName=idPeriodo
+columnName=idPeriodo
+# --field-end--
 # --table-fields-end--
 # --table-end--
 #################################
@@ -613,6 +620,7 @@ fieldName=configuration
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
+foreignAutoCreate=true
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -746,6 +754,10 @@ fieldName=fechaInicio
 # --field-end--
 # --field-start--
 fieldName=fechaFin
+# --field-end--
+# --field-start--
+fieldName=idConfEspecialidad
+columnName=IdConfEspecialidad
 # --field-end--
 # --table-fields-end--
 # --table-end--
