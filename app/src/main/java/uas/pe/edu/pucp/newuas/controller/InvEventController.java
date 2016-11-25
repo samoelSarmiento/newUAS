@@ -34,7 +34,7 @@ import uas.pe.edu.pucp.newuas.model.StringResponse;
 
 public class InvEventController {
 
-    public void getInvEvents(final Context context, Integer invGId){
+    public void getInvEvents(final Context context, Integer invGId, final Boolean editEvAvailability){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -61,6 +61,7 @@ public class InvEventController {
 */
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Events", (Serializable)example);
+                    bundle.putBoolean("editEvAvailability",editEvAvailability);
                     //bundle.putString("Groups", spj);
 
                     InvEventFragment spFragment = new InvEventFragment();
@@ -100,7 +101,7 @@ public class InvEventController {
 
         });
     }
-    public void getInvEvById(final Context context,final Integer id){
+    public void getInvEvById(final Context context,final Integer id, final Boolean editEvAvailability){
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
 
         Map<String, String> token = new HashMap<>();
@@ -126,6 +127,7 @@ public class InvEventController {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Event", (Serializable)example);
                     bundle.putBoolean("BotonEdit",true);
+                    bundle.putBoolean("editEvAvailability",editEvAvailability);
 
                     InvEventDetailFragment spFragment = new InvEventDetailFragment();
                     spFragment.setArguments(bundle);
@@ -182,6 +184,7 @@ public class InvEventController {
                 //Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.isSuccessful()) {
+                    Toast.makeText(context,"Se guardo correctamente", Toast.LENGTH_SHORT).show();
                     /*try {
                         saveInvEv(invEvent, context);
                         //Toast.makeText(context, "Se guardo en sql", Toast.LENGTH_SHORT).show();

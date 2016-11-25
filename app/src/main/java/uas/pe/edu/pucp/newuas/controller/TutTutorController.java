@@ -156,7 +156,6 @@ public class TutTutorController {
             public void onResponse(Call<List<AppointInformationRegisterTuto>> call, Response<List<AppointInformationRegisterTuto>> response) {
 
                 List<AppointInformationRegisterTuto> generalInformation = response.body();
-
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
                 TutorNewAppointFragment tnap = new TutorNewAppointFragment();

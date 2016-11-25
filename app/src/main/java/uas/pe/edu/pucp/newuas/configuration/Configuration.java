@@ -73,6 +73,10 @@ public class Configuration {
         return LOGIN_USER.getUser().getTutStudentForPsp() != null;
     }
 
+    public static int getIdUsuario(){
+        return LOGIN_USER.getUser().getIdUsuario();
+    }
+
     public static boolean isConnected(Context context) {
 
         ConnectivityManager cm =

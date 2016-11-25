@@ -193,7 +193,7 @@ public class DelivEditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDelivById(context,deliv.getId());
+                deliverableController.getDelivById(context,deliv.getId(),true);
             }
         });
 

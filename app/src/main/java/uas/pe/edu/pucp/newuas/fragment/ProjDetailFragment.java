@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Projects;
 
@@ -27,6 +28,7 @@ public class ProjDetailFragment extends Fragment {
     Button projEdit,projSeeDel;
     Projects p;
     Context context;
+    Boolean editEvAvailability;
 
     public ProjDetailFragment() {
         // Required empty public constructor
@@ -68,6 +70,20 @@ public class ProjDetailFragment extends Fragment {
         projDeliv.setText(cantEnt);
         projDesc.setText(proj.get(0).getDescripcion());
 
+        editEvAvailability=true;
+
+        if(proj.get(0).getGroup().getIdLider()!= Configuration.getIdUsuario()){
+            editEvAvailability=false;
+            projEdit.setVisibility(View.INVISIBLE);
+        }
+
+        if(Configuration.isAdmin()){
+            editEvAvailability=true;
+            projEdit.setVisibility(View.VISIBLE);
+        }
+
+
+
         projEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +103,7 @@ public class ProjDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDeliv(context,p.getId());
+                deliverableController.getDeliv(context,p.getId(),editEvAvailability);
             }
         });
 

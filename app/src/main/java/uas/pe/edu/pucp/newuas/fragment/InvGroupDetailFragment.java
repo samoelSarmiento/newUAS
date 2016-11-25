@@ -40,6 +40,7 @@ public class InvGroupDetailFragment extends Fragment {
     InvGroups invG;
     ImageView invGImage;
     Context context;
+    Boolean editEvAvailability=true;
 
     public InvGroupDetailFragment() {
         // Required empty public constructor
@@ -79,6 +80,21 @@ public class InvGroupDetailFragment extends Fragment {
         if(invGroup.get(0).getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.get(0).getImagen()).into(invGImage);
 
+        editEvAvailability = true;
+
+        //permisos
+        if(invGroup.get(0).getIdLider()!= Configuration.getIdUsuario()){
+            editEvAvailability=false;
+            invGroupBut.setVisibility(View.INVISIBLE);
+        }
+
+
+        if(Configuration.isAdmin()){
+            editEvAvailability=true;
+            invGroupBut.setVisibility(View.VISIBLE);
+        }
+
+
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +114,7 @@ public class InvGroupDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 InvEventController invEventController = new InvEventController();
-                invEventController.getInvEvents(context,invG.getId());
+                invEventController.getInvEvents(context,invG.getId(),editEvAvailability);
             }
         });
 

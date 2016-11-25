@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_evaluation_n_s"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="70dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvCourse"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:text="@string/tvCourse" />
+
+        <TextView
+            android:id="@+id/tvValueCourse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/e_name_evaluation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre Evaluacion" />
+
+    <TextView
+        android:id="@+id/e_estado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estado" />
+
+    <TextView
+        android:id="@+id/tv_fecha_inicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Inicio" />
+
+    <TextView
+        android:id="@+id/e_fecha_fin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha Fin" />
+
+    <TextView
+        android:id="@+id/e_descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion" />
+
+</LinearLayout>
+
+

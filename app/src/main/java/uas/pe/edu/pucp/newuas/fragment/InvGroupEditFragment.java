@@ -90,7 +90,7 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
                 String nom = invGroupName.getText().toString();
                 String desc = invGroupDesc.getText().toString();
                 if (!nom.isEmpty() && !desc.isEmpty()) {
-                    if (nom.matches(regex) && desc.matches(regex)) {
+                    if (nom.matches(regex) ) {
                         InvGroups changedIG = invG;
                         changedIG.setNombre(invGroupName.getText().toString());
                         changedIG.setDescripcion(invGroupDesc.getText().toString());

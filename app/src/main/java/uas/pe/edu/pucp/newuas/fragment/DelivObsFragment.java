@@ -98,7 +98,7 @@ public class DelivObsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeliverableController deliverableController = new DeliverableController();
-                deliverableController.getDelivById(context,del.getId());
+                deliverableController.getDelivById(context,del.getId(),true);
             }
         });
 
