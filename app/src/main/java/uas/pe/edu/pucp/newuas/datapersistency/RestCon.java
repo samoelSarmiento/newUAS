@@ -145,7 +145,7 @@ public interface RestCon {
     Call<List<Investigator>> getInvestigators(@QueryMap Map<String, String> token);
 
 
-@GET("investigation/getAllInvGroups")
+    @GET("investigation/getAllInvGroups")
     Call<List<InvGroups>> getInvGroups(@QueryMap Map<String, String> token);
 
     @GET("investigation/getAllProjects")
