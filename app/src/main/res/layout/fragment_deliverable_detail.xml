@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 
                 <TextView
@@ -34,7 +34,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 
                 <TextView
@@ -61,7 +61,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="match_parent"
@@ -71,7 +71,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/delivResp"
@@ -83,7 +83,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 
                 <TextView
@@ -102,7 +102,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 
                 <TextView
@@ -122,7 +122,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 
                 <TextView
@@ -142,7 +142,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="match_parent"
@@ -152,7 +152,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/delivObs"
@@ -165,14 +165,14 @@
                 android:id="@+id/delivRegObs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_login"
+                android:background="@drawable/btn_main_uas"
                 android:text="Registrar Observacion"
                 android:textColor="@color/white" />
             <Button
                 android:id="@+id/delivEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_login"
+                android:background="@drawable/btn_main_uas"
                 android:text="Editar"
                 android:textColor="@color/white" />
 

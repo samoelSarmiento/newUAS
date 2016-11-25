@@ -19,4 +19,5 @@
     <dimen name="left_right_padding">50dp</dimen>
     <dimen name="fragment_top">85dp</dimen>
     <dimen name="list_item_height">48dp</dimen>
+    <dimen name="margin_top_detail_linear_layout">20dp</dimen>
 </resources>
