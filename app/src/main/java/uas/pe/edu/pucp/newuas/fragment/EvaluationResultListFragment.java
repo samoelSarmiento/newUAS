@@ -56,35 +56,14 @@ public class EvaluationResultListFragment extends Fragment {
             lvEvaluations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            /*
-                    List<AppointInformationRegisterTuto> generalInformation = response.body();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Tutoria", (Serializable)generalInformation);
-                    TutorNewAppointFragment tnap = new TutorNewAppointFragment();
-                    tnap.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, tnap).commit();
-             */
-
                     Evaluation per = (Evaluation) adapter.getItem(position);
                     Log.d("evaluation", per.getId() + "");
-
                     Bundle eva = new Bundle();
                     eva.putSerializable("Evaluacion", (Serializable) per);
                     EvaluationFragment fragment = new EvaluationFragment();
                     getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_tutor, fragment).commit();
-
-
-                /*
-                    EvaluationsController mpc = new EvaluationsController();
-                    Context context = getActivity();
-
-                    mpc.getAllEvaluations(context, per.getId());
-                */
-
                 }
             });
-
-
         }
         return view;
     }

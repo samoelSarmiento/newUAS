@@ -10,9 +10,6 @@
     android:paddingTop="30dp"
     tools:context="uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="470dp">
 
 
         <LinearLayout
@@ -21,7 +18,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="650dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="70dp"
                 android:orientation="vertical">
@@ -39,13 +36,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
                     android:text="Alumno:"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="26dp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -55,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
@@ -70,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
@@ -85,12 +82,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
                     android:text="Lugar:"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="26dp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -100,12 +97,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
                     android:text="Información Extra:"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="26dp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -115,12 +112,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
                 <TextView
                     style="@style/GeneralTextViewsMedium"
                     android:text="Observaciones:"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="26dp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -132,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="28dp" />
 
 
             </LinearLayout>
@@ -140,7 +137,16 @@
 
         </LinearLayout>
 
-    </FrameLayout>
+    <Button
+        android:layout_marginLeft="265dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regresar"
+        android:background="@drawable/btn_main_uas"
+        android:textColor="@color/white"
+        android:id="@+id/btnRegresarVisualizar" />
+
+
 
 
 

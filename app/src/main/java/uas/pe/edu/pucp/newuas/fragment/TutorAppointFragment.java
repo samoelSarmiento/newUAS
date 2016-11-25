@@ -42,6 +42,9 @@ public class TutorAppointFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_tutor_appoint, container, false);
 
+        getActivity().setTitle("Historial de citas");
+
+
         TutTutorController ts = new TutTutorController();
         ts.getAppointment(getActivity(),view, Configuration.LOGIN_USER.getUser().getIdUsuario());
 

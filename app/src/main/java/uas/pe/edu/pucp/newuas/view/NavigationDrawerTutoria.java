@@ -144,12 +144,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
             TutStudentController studentController = new TutStudentController();
             studentController.showTopics(this);
 
-        } else if (id == R.id.nav_evaluaciones) {
-            //Logica para abrir tu fragmnet
-            SearchEvaluationQueryFragment searchEvaluationQueryFragment = new SearchEvaluationQueryFragment();
-            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,searchEvaluationQueryFragment).commit();
-
-
         } else if (id == R.id.nav_loginout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
@@ -190,7 +184,6 @@ public class NavigationDrawerTutoria extends AppCompatActivity
         // fragmentManager.beginTransaction()
         //       .replace(R.id.fragment_container , fragment)
         //      .commit();
-
 
 
     }

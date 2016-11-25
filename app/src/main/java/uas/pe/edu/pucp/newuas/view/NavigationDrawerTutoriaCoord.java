@@ -82,7 +82,7 @@ public class NavigationDrawerTutoriaCoord extends AppCompatActivity
 
         if (id == R.id.nav_alumnosCoordinador) {
             CoordinatorStudentFragment fragment = new CoordinatorStudentFragment();
-            (this).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, fragment).commit();
+            (this).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
         } else if (id == R.id.nav_loginoutCoordinador) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
