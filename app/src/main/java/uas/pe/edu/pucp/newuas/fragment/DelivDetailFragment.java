@@ -157,7 +157,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
         delivRegObs.setVisibility(View.INVISIBLE);
 
         //permisos
-        if(editEvAvailability){
+        if(!editEvAvailability){
             delivRegObs.setVisibility(View.INVISIBLE);
             delivEdit.setVisibility(View.INVISIBLE);
         }
@@ -178,7 +178,8 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
                 delivObs.setText(invDocs.get(i).getObservacion());
                 selectedVersion=invDocs.get(i);
                 if(i==0) // ultima version
-                    delivRegObs.setVisibility(View.VISIBLE);
+                    if(editEvAvailability) //tenga los permisos
+                        delivRegObs.setVisibility(View.VISIBLE);
                 else delivRegObs.setVisibility(View.INVISIBLE);
                 break;
             }
