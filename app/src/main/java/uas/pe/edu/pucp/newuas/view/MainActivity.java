@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //acreditador y administrador pueden entrar solo a acreditacion
         if (Configuration.isAccreditor() || Configuration.isAdmin()) {
             btModuleAcr.setVisibility(View.VISIBLE);
+            if (Configuration.isAdmin()) {
+                btModuleInv.setVisibility(View.VISIBLE);
+            }
         } else {
             //investigaor normal
             if (Configuration.isOnlyInvestigator()) {
