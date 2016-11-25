@@ -53,8 +53,6 @@ public class DescargaDeDocumentosAlumnosSuperv extends Fragment {
                 documentSelected = (DocumentStudentPsp) documentsAdapter.getItem(position);
                 Toast.makeText(getActivity(), "Item seleccionado " + documentSelected.getId() , Toast.LENGTH_SHORT).show();
 
-
-
                 PSPControllerJ controller = new PSPControllerJ();
                 controller.obtenerDocumentosFullAlumnoSuperv(  getActivity() ,documentSelected.getId()  );
 

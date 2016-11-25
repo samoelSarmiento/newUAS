@@ -135,6 +135,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
             }
         };
 
+
         return view;
     }
 
