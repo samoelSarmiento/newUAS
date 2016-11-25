@@ -104,13 +104,13 @@ public class TutTutorController {
             public void onResponse(Call<String> call, Response<String> response) {
 
                  TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                  TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
 
             }
         });

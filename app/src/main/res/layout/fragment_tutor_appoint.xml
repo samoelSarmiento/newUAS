@@ -20,15 +20,10 @@
         android:orientation="horizontal">
 
 
-
-
-
         <Button
             android:id="@+id/btnNoNewAssignmentTuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="-8dp"
             android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
@@ -38,7 +33,7 @@
             android:id="@+id/btnNewAssignmentTuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="-8dp"
             android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"

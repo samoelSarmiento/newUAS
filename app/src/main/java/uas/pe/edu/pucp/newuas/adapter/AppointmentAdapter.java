@@ -53,6 +53,7 @@ public class AppointmentAdapter extends BaseAdapter {
         public View getView(int position, View view, ViewGroup viewGroup) {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
             View row = inflater.inflate(R.layout.fragment_single_row_student,viewGroup,false);
             TextView titleDate = (TextView) row.findViewById(R.id.dateSingleRow);
             TextView titleHour = (TextView) row.findViewById(R.id.hourSingleRow);
@@ -222,6 +223,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             else if (temp.getEstado().equals("Cancelada") ){
 
+                icon2.setVisibility(View.GONE);
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -232,7 +234,6 @@ public class AppointmentAdapter extends BaseAdapter {
                             }
                         }
                 );
-                icon2.setVisibility(View.GONE);
                 icon2.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -246,6 +247,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             else if (temp.getEstado().equals("Rechazada") ){
 
+                icon2.setVisibility(View.GONE);
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -257,7 +259,6 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
 
-                icon2.setVisibility(View.GONE);
 
                 icon2.setOnClickListener(
                         new View.OnClickListener() {
@@ -271,6 +272,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             else if (temp.getEstado().equals("Asistida") ){
 
+                icon2.setVisibility(View.GONE);
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -294,6 +296,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             else if (temp.getEstado().equals("No asistida") ){
 
+                icon2.setVisibility(View.GONE);
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -306,7 +309,6 @@ public class AppointmentAdapter extends BaseAdapter {
                 );
 
 
-                icon2.setVisibility(View.GONE);
                 icon2.setOnClickListener(
                         new View.OnClickListener() {
                             @Override

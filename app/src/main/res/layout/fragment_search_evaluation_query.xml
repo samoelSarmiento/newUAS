@@ -4,80 +4,84 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:paddingTop="70dp">
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:text="@string/evName"
-                    android:id="@+id/textView3" />
-
-                <EditText
-                    android:id="@+id/evQuery"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:text="" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Estado" />
-
-    <EditText
-        android:id="@+id/evst"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/fragment_top">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/GeneralTextViewsMedium"
+            android:text="Alumno:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/evQuery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/evst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/invSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@drawable/bg_button_login_selector"
-            android:text="Buscar"
-            android:textColor="@color/white" />
-
-        <Button
             android:id="@+id/invCancel"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:text="Cancelar"
             android:textColor="@color/white" />
-    </LinearLayout>
 
+
+        <Button
+            android:id="@+id/invSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:background="@drawable/btn_main_uas"
+            android:text="Solicitar"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

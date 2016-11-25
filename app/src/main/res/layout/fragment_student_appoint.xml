@@ -24,7 +24,6 @@
             android:id="@+id/btnStudentFilterAssignments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="-0dp"
             android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
