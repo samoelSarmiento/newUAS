@@ -66,7 +66,8 @@ public class MeasurePeriodListFragment extends Fragment {
             lvPeriods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Period per = (Period) mpAdapter.getItem(position);
+                    Period per;
+                    per = (Period) mpAdapter.getItem(position);
                     Log.d("periodo", per.getIdEspecialidad() + "");
 
                     MeasurePeriodController mpc = new MeasurePeriodController();
