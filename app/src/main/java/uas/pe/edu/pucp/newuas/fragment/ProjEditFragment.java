@@ -33,6 +33,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.ProjectController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Projects;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
@@ -215,23 +216,23 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                                         //projectController.getProjectById(context,changedProj.getId());
                                         //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                                     }else{
-                                        Toast.makeText(getActivity(), "Existen entregables con fecha límite posterior al proyecto", Toast.LENGTH_LONG).show();
+                                        MyToast.makeText(getActivity(), "Existen entregables con fecha límite posterior al proyecto", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                                     }
 
                                 }else{
-                                    Toast.makeText(getActivity(), "La fecha inicial debe ser posterior a hoy", Toast.LENGTH_LONG).show();
+                                    MyToast.makeText(getActivity(), "La fecha inicial debe ser posterior a hoy", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                                 }
                             }else {
-                                Toast.makeText(getActivity(), "No puede reducir la cantidad de entregables", Toast.LENGTH_LONG).show();
+                                MyToast.makeText(getActivity(), "No puede reducir la cantidad de entregables", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                             }
                         }else{
-                            Toast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Verifique las fechas", Toast.LENGTH_LONG ,MyToast.infoAlert).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Cantidad de entregables", Toast.LENGTH_LONG).show();
+                        MyToast.makeText(getActivity(), "Cantidad de entregables", Toast.LENGTH_LONG,MyToast.infoAlert).show();
                     }
                 } else {
-                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG,MyToast.infoAlert).show();
                 }
 
 
