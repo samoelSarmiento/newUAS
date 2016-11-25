@@ -17,6 +17,11 @@ import com.google.gson.Gson;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.SpecialtyxCoursesAdapter;
@@ -48,11 +53,6 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
 
         View view = inflater.inflate(R.layout.fragment_courses_x_specialty, container, false);
         ListView coursesxspecialty = (ListView) view.findViewById(R.id.lvCourses);
-        //lleno el spinner
-        spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
-        spnAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerAcreditacion.niveles);
-        spnNivel.setOnItemSelectedListener(this);
-        spnNivel.setAdapter(spnAdapter);
         coursesxspecialty.setOnItemClickListener(this);
         //la informacion de la lista a mostrar
         Bundle bundle = this.getArguments();
@@ -60,6 +60,13 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
             idCicloAcademico = bundle.getInt("cicloAcademico");
             list = (ArrayList<CourseResponse>) bundle.getSerializable("CourseList");
             if (list != null && !list.isEmpty()) {
+                spnNivel = (Spinner) view.findViewById(R.id.spinnerNivel);
+                spnNivel.setOnItemSelectedListener(this);
+                Set<String> niveles = retornarNiveles(list);
+                String[] sniveles = niveles.toArray(new String[niveles.size()]);
+                spnAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, sniveles);
+                spnNivel.setAdapter(spnAdapter);
+                Configuration.CXE_ITEM_SHOW = Integer.parseInt(sniveles[0]);
                 Context context = getActivity();
                 adapter = new SpecialtyxCoursesAdapter(context, list);
                 coursesxspecialty.setAdapter(adapter);
@@ -73,6 +80,18 @@ public class CoursesxSpecialtyFragment extends Fragment implements AdapterView.O
             }
         }
         return view;
+    }
+
+    private Set<String> retornarNiveles(ArrayList<CourseResponse> list) {
+        Set<String> niveles = new TreeSet<String>(new Comparator<String>() {
+            public int compare(String a, String b) {
+                return Integer.valueOf(a).compareTo(Integer.valueOf(b));
+            }
+        });
+        for (CourseResponse course : list) {
+            niveles.add("" + course.getNivelAcademico());
+        }
+        return niveles;
     }
 
     @Override
