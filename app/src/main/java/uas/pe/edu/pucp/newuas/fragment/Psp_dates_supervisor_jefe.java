@@ -30,6 +30,7 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers_get;
 import uas.pe.edu.pucp.newuas.view.LogInActivity;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
@@ -129,12 +130,12 @@ public class Psp_dates_supervisor_jefe extends Fragment {
 
                     //    Toast.makeText(getActivity(), txtFecha.getText().toString() , Toast.LENGTH_LONG).show();
                         if ( txtFecha.getText().toString().compareTo("Seleccione la fecha")  == 0) {
-                            Toast.makeText(getActivity(), "Por favor registre la fecha", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Por favor registre la fecha", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                             return ;
                         }
                      //   Toast.makeText(getActivity(), lugar[0] , Toast.LENGTH_LONG).show();
                         if ( (txtLugar.getText().toString() == null) || (txtLugar.getText().toString().equals("")) ) {
-                            Toast.makeText(getActivity(), "Por favor registre el lugar", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Por favor registre el lugar", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                             return ;
                         }
 
@@ -155,7 +156,7 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                           Psp_dates_supervisor_employers_get date =   DateSupervisorStudentEmployer.datesSupEmp.get(i);
                           String fechaCita = date.getFecha() +" "+ date.getHoraInicio();
                               if(  fechaElegida.compareTo(fechaCita) == 0  ) {
-                              Toast.makeText(getActivity(), "Ya posee una cita a la misma fecha con el jefe del alumno " + date.getNombreAlumno()  , Toast.LENGTH_LONG).show();
+                              MyToast.makeText(getActivity(), "Ya posee una cita a la misma fecha con el jefe del alumno " + date.getNombreAlumno()  , Toast.LENGTH_LONG, MyToast.infoAlert).show();
                                 return ;
                           }
 
@@ -185,7 +186,7 @@ public class Psp_dates_supervisor_jefe extends Fragment {
                         }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                    public void onClick(DialogInterface dialog, int id) {
                                        dialog.cancel();
-                                       Toast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG).show();
+                                       MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                        //Lo guardo
                                        PSPControllerJ tsc = new PSPControllerJ();
                                        tsc.appointmentRequest(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario()  ,valorFecha[0], valorHora[0] , PspGetStudentsForDateEmployer.studentSelected.getIdAlumno() ,lugar[0]);//idAlumno );

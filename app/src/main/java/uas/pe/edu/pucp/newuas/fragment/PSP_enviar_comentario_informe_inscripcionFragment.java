@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.adapter.PSPInscriptionFilesItemsAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 import uas.pe.edu.pucp.newuas.model.InscriptionFilePSP;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerPSP;
 
 public class PSP_enviar_comentario_informe_inscripcionFragment extends Fragment implements View.OnClickListener {
@@ -80,7 +81,7 @@ Button btEnviarComentario , btCancelar ;
 
                 Intent intentPSP = new Intent(getActivity(), NavigationDrawerPSP.class);
                 startActivity(intentPSP);
-                Toast.makeText(getActivity(), "Comentario enviado correctamente", Toast.LENGTH_SHORT).show();
+                MyToast.makeText(getActivity(), "Comentario enviado correctamente", Toast.LENGTH_SHORT,MyToast.checkAlert).show();
 
                 break;
 

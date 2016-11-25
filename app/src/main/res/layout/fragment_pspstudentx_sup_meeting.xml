@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/general_bg_padding"
+    android:paddingTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSPStudentxSupMeetingFragment">
 
     <!-- TODO: Update blank fragment layout -->

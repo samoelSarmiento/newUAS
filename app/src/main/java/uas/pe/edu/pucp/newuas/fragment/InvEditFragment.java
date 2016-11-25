@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.controller.ImprovementPlanController;
 import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 /**
@@ -100,13 +101,13 @@ public class InvEditFragment extends Fragment implements View.OnClickListener {
                                 //investigatorController.getInvestigatorById(context,inv.getId());
                                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
                             }else
-                                Toast.makeText(getActivity(), "Verifique el email", Toast.LENGTH_LONG).show();
+                                MyToast.makeText(getActivity(), "Verifique el email", Toast.LENGTH_LONG,MyToast.errorAlert).show();
                         } else
-                            Toast.makeText(getActivity(), "Solo se aceptan números en el celular", Toast.LENGTH_LONG).show();
+                            MyToast.makeText(getActivity(), "Solo se aceptan números en el celular", Toast.LENGTH_LONG,MyToast.errorAlert).show();
                     } else
-                        Toast.makeText(getActivity(), "Solo se aceptan letras en el nombre", Toast.LENGTH_LONG).show();
+                        MyToast.makeText(getActivity(), "Solo se aceptan letras en el nombre", Toast.LENGTH_LONG, MyToast.errorAlert).show();
                 } else
-                    Toast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG).show();
+                    MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG,MyToast.errorAlert).show();
 
 
                 break;

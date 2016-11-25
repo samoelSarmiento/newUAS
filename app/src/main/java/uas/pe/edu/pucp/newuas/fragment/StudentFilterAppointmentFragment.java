@@ -30,6 +30,7 @@ import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequestMirror;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 
@@ -130,7 +131,7 @@ public class StudentFilterAppointmentFragment extends Fragment {
                         public void onClick(View v) {
                             if ((txtFechaInicio.getText().toString().matches("") && txtFechaFin.getText().toString().matches("")) || (!(txtFechaInicio.getText().toString()).isEmpty() && !(txtFechaFin.getText().toString()).isEmpty())) {
                                 String motivo = s.getSelectedItem().toString();
-                                Toast.makeText(getActivity(), "Se ha filtrado correctamente", Toast.LENGTH_LONG).show();
+                                MyToast.makeText(getActivity(), "Se ha filtrado correctamente", Toast.LENGTH_LONG,MyToast.checkAlert).show();
                                 AppointmentRequestMirror appointFilterInfo = new AppointmentRequestMirror(Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFechaI[0], valorFechaF[0], motivo, 2);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("Tutoria", (Serializable) appointFilterInfo);
@@ -139,7 +140,7 @@ public class StudentFilterAppointmentFragment extends Fragment {
                                 (getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, mp).commit();
                             }
                             else
-                                Toast.makeText(getActivity(), "Debe llenar los dos campos de fecha!", Toast.LENGTH_SHORT).show();
+                                MyToast.makeText(getActivity(), "Debe llenar los dos campos de fecha!", Toast.LENGTH_SHORT,MyToast.errorAlert).show();
 
 
                         }
