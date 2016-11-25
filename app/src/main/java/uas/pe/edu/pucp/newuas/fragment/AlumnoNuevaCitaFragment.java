@@ -69,7 +69,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-            getActivity().setTitle("Tutoria");
+            getActivity().setTitle("Solicitud de una nueva cita");
             final View view = inflater.inflate(R.layout.fragment_alumno_nueva_cita, container, false);
             txtFecha = (EditText) view.findViewById(R.id.dateText);
             btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitar);
@@ -167,7 +167,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                             else{
                                 valorHora[0] = spinnerHoras.getSelectedItem().toString();
                                 valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                                solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                                solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "¿Desea continuar?";
                                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

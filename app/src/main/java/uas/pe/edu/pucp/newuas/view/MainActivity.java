@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btModuleTutEv:
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
-                } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1) {
+                } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
                     intent = new Intent(this, NavigationDrawerTutoria.class);
                 } else intent = new Intent(this, NavigationDrawerTutoriaCoord.class);
                 startActivity(intent);

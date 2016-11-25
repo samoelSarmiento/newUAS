@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -127,13 +128,19 @@ public class TutTutorController {
             @Override
             public void onResponse(Call<List<NoAppointmentResponse>> call, Response<List<NoAppointmentResponse>> response) {
 
+
+
                 List<NoAppointmentResponse> generalInformation = response.body();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
-                TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
-                ttc.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ttc).commit();
-            }
+                if (generalInformation.isEmpty() || generalInformation == null) {
+                    Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Tutoria", (Serializable) generalInformation);
+                    TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
+                    ttc.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ttc).commit();                }
+                }
 
             @Override
             public void onFailure(Call<List<NoAppointmentResponse>> call, Throwable t) {
@@ -156,13 +163,16 @@ public class TutTutorController {
             public void onResponse(Call<List<AppointInformationRegisterTuto>> call, Response<List<AppointInformationRegisterTuto>> response) {
 
                 List<AppointInformationRegisterTuto> generalInformation = response.body();
-
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("Tutoria", (Serializable)generalInformation);
-                TutorNewAppointFragment tnap = new TutorNewAppointFragment();
-                tnap.setArguments(bundle);
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();
-
+                if (generalInformation == null || generalInformation.isEmpty()){
+                    Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Tutoria", (Serializable) generalInformation);
+                    TutorNewAppointFragment tnap = new TutorNewAppointFragment();
+                    tnap.setArguments(bundle);
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();
+                }
             }
 
             @Override
@@ -391,7 +401,7 @@ public class TutTutorController {
 
                         if (estado.equals("Pendiente")){
                              icon1[0] = R.drawable.ic_nullresource;
-                             icon2[0] = R.drawable.ic_cross;
+                            icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
                             icon1[0] = R.drawable.ic_atendercita;
@@ -404,6 +414,7 @@ public class TutTutorController {
 
                         }
                         else if (estado.equals("Cancelada")){
+
                             icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_nullresource;
 

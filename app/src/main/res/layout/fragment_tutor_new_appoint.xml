@@ -15,8 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        >
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -26,12 +27,12 @@
 
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="424dp"
             android:layout_height="wrap_content"
             android:id="@+id/tutorStudentSpinner"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="@dimen/left_right_padding"
+            android:layout_marginRight="@dimen/left_right_padding" />
 
     </LinearLayout>
 
@@ -39,8 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        >
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -56,14 +58,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="15dp"
         >
 
         <EditText
             android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginLeft="@dimen/left_right_padding"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/dateTextTutorNewAppoint"
@@ -75,7 +78,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_calendar"
             android:background="@android:color/transparent"
-            android:layout_marginLeft="230dp"
+            android:layout_marginLeft="430dp"
             android:id="@+id/btnCalendarTutorNewAppoint"
             />
 
@@ -90,8 +93,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        >
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -101,12 +105,12 @@
 
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="398dp"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerTutHora"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="@dimen/left_right_padding"
+            android:layout_marginRight="@dimen/left_right_padding"
             />
 
     </LinearLayout>
@@ -115,8 +119,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        >
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -129,8 +134,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinnerTema"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginLeft="@dimen/left_right_padding"
             />
 
 
@@ -140,14 +145,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="125dp"
+        >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
             android:id="@+id/buttonCancelarTutorNewAssigmentReg" />
 
@@ -157,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Solicitar"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
             android:id="@+id/buttonSolicitarTutorNewAssignmentReg" />
 

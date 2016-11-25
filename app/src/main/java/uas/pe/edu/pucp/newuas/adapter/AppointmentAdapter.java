@@ -180,6 +180,7 @@ public class AppointmentAdapter extends BaseAdapter {
 
             else if (temp.getEstado().equals("Pendiente")){
 
+                icon1.setVisibility(View.GONE);
                 icon1.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -231,7 +232,7 @@ public class AppointmentAdapter extends BaseAdapter {
                             }
                         }
                 );
-
+                icon2.setVisibility(View.GONE);
                 icon2.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -256,7 +257,9 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
 
-                icon2.setOnClickListener(
+                icon2.setVisibility(View.GONE);
+
+                icon2.setOnClickListener(   
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -302,6 +305,8 @@ public class AppointmentAdapter extends BaseAdapter {
                         }
                 );
 
+
+                icon2.setVisibility(View.GONE);
                 icon2.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
