@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Projects;
 
@@ -67,6 +68,12 @@ public class ProjDetailFragment extends Fragment {
         String cantEnt="" + proj.get(0).getNumEntregables();
         projDeliv.setText(cantEnt);
         projDesc.setText(proj.get(0).getDescripcion());
+
+        if(proj.get(0).getGroup().getIdLider()!= Configuration.getIdUsuario())
+            projEdit.setVisibility(View.INVISIBLE);
+        if(Configuration.isAdmin())
+            projEdit.setVisibility(View.VISIBLE);
+
 
         projEdit.setOnClickListener(new View.OnClickListener() {
             @Override

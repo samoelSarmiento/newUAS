@@ -79,6 +79,13 @@ public class InvGroupDetailFragment extends Fragment {
         if(invGroup.get(0).getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.get(0).getImagen()).into(invGImage);
 
+        //permisos
+        if(invGroup.get(0).getIdLider()!= Configuration.getIdUsuario())
+            invGroupBut.setVisibility(View.INVISIBLE);
+
+        if(Configuration.isAdmin())
+            invGroupBut.setVisibility(View.VISIBLE);
+
         invGroupBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

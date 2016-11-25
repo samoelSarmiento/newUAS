@@ -19,6 +19,7 @@ import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.adapter.InvestigatorsAdapter;
+import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.InvestigatorController;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 
@@ -67,6 +68,12 @@ public class InvDetailFragment extends Fragment {
         invMail.setText(investigator.get(0).getCorreo());
         invTel.setText(investigator.get(0).getCelular());
         invEsp.setText(investigator.get(0).getFaculty().getNombre());
+
+        //permisos
+        if(investigator.get(0).getId()!= Configuration.getIdUsuario())
+            editBut.setVisibility(View.INVISIBLE);
+        if(Configuration.isAdmin())
+            editBut.setVisibility(View.VISIBLE);
 
         editBut.setOnClickListener(new View.OnClickListener() {
             @Override
