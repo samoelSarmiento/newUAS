@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
+import uas.pe.edu.pucp.newuas.fragment.SearchEvaluationQueryFragment;
 
 public class NavigationDrawerTutoriaTutor extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -110,6 +111,12 @@ public class NavigationDrawerTutoriaTutor extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
+
+        } else if (id == R.id.nav_evaluaciones) {
+            //Logica para abrir tu fragmnet
+            SearchEvaluationQueryFragment searchEvaluationQueryFragment = new SearchEvaluationQueryFragment();
+            getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, searchEvaluationQueryFragment).commit();
+
 
         }
 
