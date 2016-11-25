@@ -34,21 +34,21 @@ import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
  * Created by Andree on 11/11/2016.
  */
 
-public class DelivDetailFragment extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
+public class DelivDetailFragment extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     Context context;
-    TextView delivName,delivFechaIni,delivFechaLim,delivAvance,delivObs,delivResp;
+    TextView delivName, delivFechaIni, delivFechaLim, delivAvance, delivObs, delivResp;
     Spinner delivVersion;
     ArrayAdapter<Integer> versionsAdapter;
     ImageButton delivDownload;
-    Button delivRegObs,delivEdit;
+    Button delivRegObs, delivEdit;
     Deliverable del;
     ArrayList<Integer> versionesArray;
     List<InvDocument> invDocs;
     InvDocument selectedVersion;
     Boolean editEvAvailability;
 
-    public DelivDetailFragment (){
+    public DelivDetailFragment() {
 
     }
 
@@ -59,54 +59,57 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
         context = getActivity();
         getActivity().setTitle("Proyectos > Entregables");
 
-        delivName= (TextView) view.findViewById(R.id.delivName);
-        delivFechaIni=(TextView) view.findViewById(R.id.delivFechaIni);
-        delivFechaLim=(TextView) view.findViewById(R.id.delivFechaLim);
-        delivAvance=(TextView) view.findViewById(R.id.delivAvance);
+        delivName = (TextView) view.findViewById(R.id.delivName);
+        delivFechaIni = (TextView) view.findViewById(R.id.delivFechaIni);
+        delivFechaLim = (TextView) view.findViewById(R.id.delivFechaLim);
+        delivAvance = (TextView) view.findViewById(R.id.delivAvance);
 
         //
-        delivVersion=(Spinner) view.findViewById(R.id.delivVersion);
-        delivResp=(TextView) view.findViewById(R.id.delivResp);
-        delivObs=(TextView) view.findViewById(R.id.delivObs);
+        delivVersion = (Spinner) view.findViewById(R.id.delivVersion);
+        delivResp = (TextView) view.findViewById(R.id.delivResp);
+        delivObs = (TextView) view.findViewById(R.id.delivObs);
         //
 
-        delivDownload=(ImageButton) view.findViewById(R.id.delivDownload);
-        delivRegObs=(Button) view.findViewById(R.id.delivRegObs);
-        delivEdit=(Button) view.findViewById(R.id.delivEdit);
+        delivDownload = (ImageButton) view.findViewById(R.id.delivDownload);
+        delivRegObs = (Button) view.findViewById(R.id.delivRegObs);
+        delivEdit = (Button) view.findViewById(R.id.delivEdit);
 
         Bundle bundle = this.getArguments();
-        List<Deliverable> deliverable=null;
+        List<Deliverable> deliverable = null;
         //boolean botonEdit=false;
-        if (bundle != null){
+        if (bundle != null) {
             //Toast.makeText(getActivity(), "entre2", Toast.LENGTH_SHORT).show();
             //botonEdit=bundle.getBoolean("BotonEdit");
-            deliverable= (List<Deliverable>) bundle.getSerializable("Deliverable");
-            editEvAvailability=bundle.getBoolean("editEvAvailability");
+            deliverable = (List<Deliverable>) bundle.getSerializable("Deliverable");
+            editEvAvailability = bundle.getBoolean("editEvAvailability");
         }
         del = deliverable.get(0);
         delivName.setText(deliverable.get(0).getNombre());
         delivFechaIni.setText(deliverable.get(0).getFechaInicio());
         delivFechaLim.setText(deliverable.get(0).getFechaLimite());
-        delivAvance.setText(deliverable.get(0).getPorcenAvance()+"");
+        delivAvance.setText(deliverable.get(0).getPorcenAvance() + "");
 
         List<InvDocument> versions = del.getInvDocuments();
-        selectedVersion= versions.get(0);
+        if (versions.size() == 0)
+            selectedVersion = null;
+        else
+            selectedVersion = versions.get(0);
         ArrayList<Integer> versiones = new ArrayList<Integer>();
 
-        invDocs=versions;
+        invDocs = versions;
 
         List<Investigator> inv = del.getInvestigator();
         String resp = "";
-        for(int i=0;i<inv.size();i++){
-            String nombre =inv.get(i).getNombre() + " " + inv.get(i).getApePaterno() + " " + inv.get(i).getApeMaterno();
-            if (i==0)resp = resp + nombre;
+        for (int i = 0; i < inv.size(); i++) {
+            String nombre = inv.get(i).getNombre() + " " + inv.get(i).getApePaterno() + " " + inv.get(i).getApeMaterno();
+            if (i == 0) resp = resp + nombre;
             else resp = resp + "\n" + nombre;
 
         }
-        for(int i=0;i<versions.size();i++)
+        for (int i = 0; i < versions.size(); i++)
             versiones.add(versions.get(i).getVersion());
 
-        versionesArray=versiones;
+        versionesArray = versiones;
 
         delivResp.setText(resp);
 
@@ -121,15 +124,15 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("DelObs", del);
-                bundle.putSerializable("InvDoc",selectedVersion);
+                bundle.putSerializable("InvDoc", selectedVersion);
 
                 DelivObsFragment mpvFragment = new DelivObsFragment();
                 mpvFragment.setArguments(bundle);
 
                 Context context = getActivity();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
-                ((Activity)context).setTitle("Proyectos > Entregables");
+                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, mpvFragment).commit();
+                ((Activity) context).setTitle("Proyectos > Entregables");
             }
         });
         delivEdit.setOnClickListener(new View.OnClickListener() {
@@ -142,22 +145,24 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
 
                 Context context = getActivity();
                 //Toast.makeText(getActivity(), "entre", Toast.LENGTH_SHORT).show();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,mpvFragment).commit();
-                ((Activity)context).setTitle("Proyectos > Entregables");
+                ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, mpvFragment).commit();
+                ((Activity) context).setTitle("Proyectos > Entregables");
             }
         });
         delivDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FileDownloadController fileDownloadController= new FileDownloadController();
-                if(selectedVersion.getRuta()!=null)
-                    fileDownloadController.downloadFile(context, Configuration.BASE_URL + "/" + selectedVersion.getRuta());
+                FileDownloadController fileDownloadController = new FileDownloadController();
+                if (selectedVersion != null) {
+                    if (selectedVersion.getRuta() != null)
+                        fileDownloadController.downloadFile(context, Configuration.BASE_URL + "/" + selectedVersion.getRuta());
+                }
             }
         });
         delivRegObs.setVisibility(View.INVISIBLE);
 
         //permisos
-        if(!editEvAvailability){
+        if (!editEvAvailability) {
             delivRegObs.setVisibility(View.INVISIBLE);
             delivEdit.setVisibility(View.INVISIBLE);
         }
@@ -173,14 +178,14 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Integer value = Integer.parseInt(delivVersion.getItemAtPosition(position).toString());
-        for(int i=0; i<invDocs.size();i++){
-            if(invDocs.get(i).getVersion()==value){
+        for (int i = 0; i < invDocs.size(); i++) {
+            if (invDocs.get(i).getVersion() == value) {
                 delivObs.setText(invDocs.get(i).getObservacion());
-                selectedVersion=invDocs.get(i);
-                if(i==0) // ultima version
-                    if(editEvAvailability) //tenga los permisos
+                selectedVersion = invDocs.get(i);
+                if (i == 0) // ultima version
+                    if (editEvAvailability) //tenga los permisos
                         delivRegObs.setVisibility(View.VISIBLE);
-                else delivRegObs.setVisibility(View.INVISIBLE);
+                    else delivRegObs.setVisibility(View.INVISIBLE);
                 break;
             }
         }
