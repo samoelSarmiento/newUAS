@@ -20,6 +20,7 @@
     <ListView
         android:id="@+id/lv_psp_sup_freeHours"
         android:layout_width="match_parent"
+        android:dividerHeight="4dp"
         android:layout_height="wrap_content">
 
     </ListView>
