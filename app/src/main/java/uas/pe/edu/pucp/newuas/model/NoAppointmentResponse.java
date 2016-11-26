@@ -13,6 +13,8 @@ public class NoAppointmentResponse implements Serializable {
 
     @SerializedName("duracionCita")
     private Integer duracionCita;
+    @SerializedName("numberDays")
+    private Integer numberDays;
     @SerializedName("studentInfo")
     private List<StudentInfoResponse> studentInfo = new ArrayList<StudentInfoResponse>();
     @SerializedName("tutorInfo")
@@ -21,6 +23,24 @@ public class NoAppointmentResponse implements Serializable {
     private List<ScheduleInfoResponse> scheduleInfo = new ArrayList<ScheduleInfoResponse>();
     @SerializedName("scheduleMeeting")
     private List<ScheduleMeetingResponse> scheduleMeeting = new ArrayList<ScheduleMeetingResponse>();
+    /**
+     *
+     * @return
+     * The numberDays
+     */
+    public Integer getNumberDays() {
+        return numberDays;
+    }
+
+    /**
+     *
+     * @param numberDays
+     * The numberDays
+     */
+    public void setNumberDays(Integer numberDays) {
+        this.numberDays = numberDays;
+    }
+
     /**
      *
      * @return

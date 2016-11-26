@@ -32,8 +32,10 @@ import uas.pe.edu.pucp.newuas.controller.TutStudentController;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
 import uas.pe.edu.pucp.newuas.model.MyToast;
+import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleMeetingResponse;
+import uas.pe.edu.pucp.newuas.model.StudentInfoResponse;
 import uas.pe.edu.pucp.newuas.model.TUTInfoResponse;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoria;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerTutoriaTutor;
@@ -47,7 +49,7 @@ public class TutorNewAppointFragment extends Fragment {
     Button btnSolicitar,btnCancelar;
     Spinner spinnerHoras, spinnerTemas, spinnerAlumnos;
     EditText txtFecha;
-    int day, year, month,duracionCita;
+    int day, year, month,duracionCita, idAlumno;
     int ndays[] = new int[1];
     private static DatePickerDialog.OnDateSetListener selectorListener;
     //Calendar[] dates = new Calendar[2];
@@ -57,6 +59,7 @@ public class TutorNewAppointFragment extends Fragment {
     Calendar maxTime = Calendar.getInstance();
     public static List<ScheduleInfoResponse> sir ;
     public static List<ScheduleMeetingResponse> smr ;
+    List<NoAppointmentResponse> tutGroup;
 
 
 
@@ -83,9 +86,10 @@ public class TutorNewAppointFragment extends Fragment {
         day = c.get(Calendar.DAY_OF_MONTH);
 
         Bundle bundle = this.getArguments();
-        List<AppointInformationRegisterTuto> tutGroup= null;
+        //List<AppointInformationRegisterTuto> tutGroup= null;
+        tutGroup = null;
         if (bundle != null){
-            tutGroup= (List<AppointInformationRegisterTuto>) bundle.getSerializable("Tutoria");
+            tutGroup= (List<NoAppointmentResponse>) bundle.getSerializable("Tutoria");
         }
         // Disponibilidad de las citas
 
@@ -94,11 +98,12 @@ public class TutorNewAppointFragment extends Fragment {
         sir = tutGroup.get(0).getScheduleInfo();
         smr = tutGroup.get(0).getScheduleMeeting();
 
-        List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup);
+        List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
         Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
         studentName.setAdapter(null);
         ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, nombreAlumnos);
         studentName.setAdapter(adapterStudent);
+
 
         Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
         s.setAdapter(null);
@@ -162,6 +167,8 @@ public class TutorNewAppointFragment extends Fragment {
                             valorTema[0] = spinnerTemas.getSelectedItem().toString();
                             valorHora[0] = spinnerHoras.getSelectedItem().toString();
                             valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+                            idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
+
                             solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                                 @Override
@@ -189,7 +196,8 @@ public class TutorNewAppointFragment extends Fragment {
                                             dialog.cancel();
                                             MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                             TutTutorController tsc = new TutTutorController();
-                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
+                                            //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
+                                            tsc.atencionNoConfirmada(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
 
                                         }
                                     }
@@ -216,6 +224,17 @@ public class TutorNewAppointFragment extends Fragment {
 
 
         return view;
+    }
+
+    public int obtenerIdAlumno(List<StudentInfoResponse> studentInformation, String nombreBuscado) {
+
+        int valorBuscado = 2;
+        for (StudentInfoResponse si : studentInformation) {
+            if (nombreBuscado.equals(si.getApePaterno() + " " + si.getApeMaterno() + " " + si.getNombre()))
+                valorBuscado = si.getId();
+        }
+
+        return valorBuscado;
     }
 
     public List<Calendar> obtenerFechasDisponibles(int dia, List<ScheduleInfoResponse> listaHorarios){
@@ -277,16 +296,17 @@ public class TutorNewAppointFragment extends Fragment {
         txtFecha.setText(fecha);
     }
 
-    public List<String> obtenerNombreAlumnos(List<AppointInformationRegisterTuto> studentInformation){
+
+
+    public List<String> obtenerNombreAlumnos(List<StudentInfoResponse> studentInformation) {
 
         List<String> retornar = new ArrayList<String>();
-        for ( AppointInformationRegisterTuto si : studentInformation){
-            retornar.add(si.getFullName());
+        for (StudentInfoResponse si : studentInformation) {
+            retornar.add(si.getApePaterno() + " " + si.getApeMaterno() + " " + si.getNombre());
         }
 
         return retornar;
     }
-
 
     public List<String> obtenerHorasDisponible(List<ScheduleInfoResponse> sir, List<ScheduleMeetingResponse> smr, int duracionCita, String paramString)
     {

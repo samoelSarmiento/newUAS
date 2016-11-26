@@ -153,38 +153,37 @@ public class TutTutorController {
 
     public boolean getAppointInformationTuto(final Context context,  int id ){
 
+
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-        Call<List<AppointInformationRegisterTuto>> call = restCon.getAppointInfoTuto(id,data);
-        //Log.d("xd", call.request().url() + "");
-        call.enqueue(new Callback<List<AppointInformationRegisterTuto>>() {
+        Call<List<NoAppointmentResponse>> call = restCon.getAppointInfoTuto(id,data);
+        call.enqueue(new Callback<List<NoAppointmentResponse>>() {
             @Override
-            public void onResponse(Call<List<AppointInformationRegisterTuto>> call, Response<List<AppointInformationRegisterTuto>> response) {
+            public void onResponse(Call<List<NoAppointmentResponse>> call, Response<List<NoAppointmentResponse>> response) {
 
-                List<AppointInformationRegisterTuto> generalInformation = response.body();
 
-                if (generalInformation == null || generalInformation.isEmpty()){
+
+                List<NoAppointmentResponse> generalInformation = response.body();
+                if (generalInformation.isEmpty() || generalInformation == null) {
                     Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
                 }
-                else {
+                else{
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Tutoria", (Serializable) generalInformation);
                     TutorNewAppointFragment tnap = new TutorNewAppointFragment();
                     tnap.setArguments(bundle);
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();
-                }
+                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();          }
             }
 
             @Override
-            public void onFailure(Call<List<AppointInformationRegisterTuto>> call, Throwable t) {
+            public void onFailure(Call<List<NoAppointmentResponse>> call, Throwable t) {
 
             }
-
         });
 
-
         return true;
+
     }
 
 
