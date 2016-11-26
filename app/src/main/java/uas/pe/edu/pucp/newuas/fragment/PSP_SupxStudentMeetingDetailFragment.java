@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -173,6 +174,10 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
                 String etFeedback = feedback.getText().toString();
                 String message = "";
 
+                etPlace = etPlace.trim();
+                etObservation = etObservation.trim();
+                etFeedback = etFeedback.trim();
+
 
                 meetings.setLugar(etPlace);
                 meetings.setObservaciones(etObservation);
@@ -183,9 +188,32 @@ public class PSP_SupxStudentMeetingDetailFragment extends Fragment implements Vi
                     meetings.getStatus().setIdStatus(status.get(pos).getIdStatus());
                 else{
 
-                    MyToast.makeText(getActivity(),"No ha seleccionado un estado" , Toast.LENGTH_SHORT, MyToast.errorAlert).show();
+                    MyToast.makeText(getActivity(),"No ha seleccionado un estado" , Toast.LENGTH_SHORT, MyToast.infoAlert).show();
                     return;
                 }
+
+                if(etPlace.isEmpty()){
+
+
+                    MyToast.makeText(getActivity(), "Campo lugar esta vacio" , Toast.LENGTH_SHORT, MyToast.infoAlert).show();
+                    return;
+
+                }
+
+                if(etFeedback.isEmpty()){
+
+                    MyToast.makeText(getActivity(), "Campo Retroalimentacion esta vacio" , Toast.LENGTH_SHORT, MyToast.infoAlert).show();
+                    return;
+
+                }
+
+                if(etObservation.isEmpty()){
+
+                    MyToast.makeText(getActivity(), "Campo observacion esta vacio" , Toast.LENGTH_SHORT, MyToast.infoAlert).show();
+                    return;
+
+                }
+
 
 
                 PSPController controller = new PSPController();

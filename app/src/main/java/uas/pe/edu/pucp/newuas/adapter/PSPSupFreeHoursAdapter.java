@@ -67,7 +67,7 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
 
             Date date  =simpleDateFormat.parse(items.get(position).getFecha());
             viewHolder.tvFecha.append(simpleDateFormat2.format(date));
-            viewHolder.tvHora.append(items.get(position).getHoraIni());
+            viewHolder.tvHora.append(items.get(position).getHoraIni() + ":00");
 
 
         } catch (Exception ex) {

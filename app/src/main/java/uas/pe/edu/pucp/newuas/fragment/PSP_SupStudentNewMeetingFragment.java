@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -242,8 +241,19 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                                             meeting.setIdAlumno(student.getIdAlumno());
                                             meeting.setFecha(valorFecha[0]);
                                             meeting.setHora(valorHora[0]);
-                                            meeting.setLugar(txtLugar.getText().toString());
 
+                                            String lugar  = txtLugar.getText().toString();
+
+
+                                                String stTrimmed =  lugar.trim();
+
+                                                if(stTrimmed.isEmpty()){
+                                                    String error =  "Campo lugar  esta vacio";
+                                                    MyToast.makeText(getActivity(),error,Toast.LENGTH_SHORT,MyToast.infoAlert).show();
+                                                    return;
+                                                }
+
+                                            meeting.setLugar(txtLugar.getText().toString());
                                             controller.insertSupStudentMeeting(getActivity(),meeting);
 
 
