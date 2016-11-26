@@ -84,8 +84,7 @@ public class ImprovementPlanViewFragment extends Fragment {
             });
 
 
-
-            if (ip.getIdArchivoEntrada() != null || Configuration.isConnected(getActivity()) ){
+            if (ip.getFile() != null) {
 
                 btDownload.setEnabled(true);
 
@@ -93,22 +92,16 @@ public class ImprovementPlanViewFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         FileDownloadController fdc = new FileDownloadController();
-                        fdc.downloadFile(getActivity(), Configuration.FILE_URL +  ip.getFile().getFilename() );
+                        fdc.downloadFile(getActivity(), Configuration.FILE_URL + ip.getFile().getFilename());
                     }
                 });
 
-            }else{
-                btDownload.setEnabled(false);
-
+            } else {
+                //btDownload.setEnabled(false);
+                TextView tvNoFile = (TextView) view.findViewById(R.id.tvNoFile);
+                tvNoFile.setVisibility(View.VISIBLE);
+                btDownload.setVisibility(View.GONE);
             }
-
-
-
-
-
-
-
-
         }
 
         return view;

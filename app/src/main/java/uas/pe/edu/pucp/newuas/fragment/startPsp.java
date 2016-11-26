@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import uas.pe.edu.pucp.newuas.R;
 
-public class startPsp extends Fragment {
+public class StartPsp extends Fragment {
 
-    public startPsp() {
+    public StartPsp() {
         // Required empty public constructor
     }
 

@@ -41,7 +41,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -61,7 +61,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -78,20 +78,37 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-            <Button
-                android:id="@+id/invGroupEdit"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_login"
-                android:textColor="@color/white"
-                android:text="Editar"/>
-            <Button
-                android:id="@+id/invGroupSeeEv"
+                android:paddingLeft="@dimen/left_right_padding"
+                android:paddingRight="@dimen/left_right_padding"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/invGroupEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_main_uas"
+                    android:textColor="@color/white"
+                    android:text="Editar"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_login"
-                android:textColor="@color/white"
-                android:text="Ver Eventos"/>
+                android:paddingLeft="@dimen/left_right_padding"
+                android:paddingRight="@dimen/left_right_padding"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/invGroupSeeEv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_main_uas"
+                    android:textColor="@color/white"
+                    android:text="Ver Eventos"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 

@@ -61,6 +61,7 @@ public class TutStudentController {
             public void onResponse(Call<List<TopicResponse>> call, Response<List<TopicResponse>> response) {
 
                 List<TopicResponse> topicResponses = response.body();
+                NavigationDrawerTutoria.nameTopicsList.clear();
                 for (TopicResponse topic : topicResponses) {
                     NavigationDrawerTutoria.nameTopicsList.add(topic.getNombre());
                 }

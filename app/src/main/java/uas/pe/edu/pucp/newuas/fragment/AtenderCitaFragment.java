@@ -45,6 +45,8 @@ public class AtenderCitaFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_atender_cita, container, false);
         Button btnSolicitar = (Button) view.findViewById(R.id.btnSolicitarAtenderCita);
 
+        getActivity().setTitle("Atención de cita");
+
 
         TextView codigoCita = (TextView) view.findViewById(R.id.codigoAtenderCita);
         TextView alumnoCita = (TextView) view.findViewById(R.id.alumnoAtenderCita);

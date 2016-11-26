@@ -7,19 +7,21 @@
     android:paddingBottom="40dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="40dp"
+    android:paddingTop="80dp"
     android:id="@+id/fragment_container"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="30dp">
 
@@ -35,8 +37,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tutorStudentSpinner"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginLeft="@dimen/left_right_padding"
+            />
 
     </LinearLayout>
 
@@ -45,12 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="30dp">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
             android:text="Hora inicio:"
+
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -61,14 +66,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="50dp"
         >
 
         <EditText
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
+            android:layout_marginTop="25dp"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/timeText"
@@ -77,7 +84,7 @@
 
         <ImageButton
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:src="@drawable/ic_clock"
             android:background="@android:color/transparent"
             android:layout_marginLeft="230dp"
@@ -93,7 +100,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp">
 
         <TextView
@@ -107,8 +115,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinnerTema"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginLeft="@dimen/left_right_padding"
             />
 
 
@@ -118,11 +126,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+
             android:text="Observación:"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -146,14 +156,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="30dp">
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+    >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
             android:id="@+id/buttonCancelarTutorNewNoAssigmentReg" />
 
@@ -163,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Solicitar"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
             android:id="@+id/buttonSolicitarTutorNewNoAssignmentReg" />
 

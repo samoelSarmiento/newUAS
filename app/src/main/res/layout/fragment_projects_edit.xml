@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -37,7 +37,7 @@
 
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -52,18 +52,18 @@
                     android:id="@+id/projInitDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.55"
                     android:text="" />
                 <ImageButton
                     android:id="@+id/selInitDate"
                     android:layout_width="0dp"
                     android:src="@drawable/ic_calendar"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"/>
+                    android:layout_weight="0.15"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -78,18 +78,18 @@
                     android:id="@+id/projFinDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.55"
                     android:text="" />
                 <ImageButton
                     android:id="@+id/selFinDate"
                     android:src="@drawable/ic_calendar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"/>
+                    android:layout_weight="0.15"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -110,7 +110,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -135,13 +135,15 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:paddingLeft="@dimen/left_right_padding"
+        android:paddingRight="@dimen/left_right_padding"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/projSave"
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
 
             android:textColor="@color/white"
             android:text="Guardar"/>
@@ -150,7 +152,7 @@
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login_selector"
+            android:background="@drawable/btn_main_uas"
             android:textColor="@color/white"
             android:text="Cancelar"/>
     </LinearLayout>

@@ -30,7 +30,6 @@ import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.TutTutorController;
 import uas.pe.edu.pucp.newuas.model.AppointInformationRegisterTuto;
-import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.NoAppointmentResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleInfoResponse;
 import uas.pe.edu.pucp.newuas.model.ScheduleMeetingResponse;
@@ -44,18 +43,18 @@ public class TutorNewNoAppointFragment extends Fragment {
 
     public String solicitud;
     ImageButton btnTime;
-    Button btnSolicitar,btnCancelar;
+    Button btnSolicitar, btnCancelar;
     Spinner spinnerHorasI, spinnerHorasF, spinnerTemas, spinnerAlumnos;
-    EditText txtFecha, txtObservacion,txtHora;
-    int day, year, month , idAlumno;
-    String date,hora;
+    EditText txtFecha, txtObservacion, txtHora;
+    int day, year, month, idAlumno;
+    String date, hora;
     private static TimePickerDialog.OnTimeSetListener selectorListener;
     Calendar[] dates = new Calendar[2];
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
-    public static List<ScheduleInfoResponse> sir ;
-    public static List<ScheduleMeetingResponse> smr ;
+    public static List<ScheduleInfoResponse> sir;
+    public static List<ScheduleMeetingResponse> smr;
     List<NoAppointmentResponse> tutGroup;
 
     @Override
@@ -63,13 +62,13 @@ public class TutorNewNoAppointFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tutor_new_no_appoint, container, false);
-        getActivity().setTitle("Tutoría");
+        getActivity().setTitle("Atención sin cita");
 
 
         Bundle bundle = this.getArguments();
-        tutGroup= null;
-        if (bundle != null){
-            tutGroup= (List<NoAppointmentResponse>) bundle.getSerializable("Tutoria");
+        tutGroup = null;
+        if (bundle != null) {
+            tutGroup = (List<NoAppointmentResponse>) bundle.getSerializable("Tutoria");
         }
 
 
@@ -79,39 +78,38 @@ public class TutorNewNoAppointFragment extends Fragment {
         spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
         spinnerAlumnos = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
         txtObservacion = (EditText) view.findViewById(R.id.tutoTextObsNoAppoint);
-        txtHora = (EditText)  view.findViewById(R.id.timeText);
+        txtHora = (EditText) view.findViewById(R.id.timeText);
         btnTime = (ImageButton) view.findViewById(R.id.btnClock);
 
-        final String [] valorFecha = new String[1], valorHoraI = new String[1], valorHoraF = new String[1], valorTema = new String[1];
-        final String [] valorNombre = new String[1];
-
+        final String[] valorFecha = new String[1], valorHoraI = new String[1], valorHoraF = new String[1], valorTema = new String[1];
+        final String[] valorNombre = new String[1];
 
 
         List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
         Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
         studentName.setAdapter(null);
-        ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, nombreAlumnos);
+        ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, nombreAlumnos);
         studentName.setAdapter(adapterStudent);
 
 
         Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
         s.setAdapter(null);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
         s.setAdapter(adapter);
 
         final int duracionCita = tutGroup.get(0).getDuracionCita();
         Calendar c = Calendar.getInstance();
         int anho = c.get(Calendar.YEAR);
-        int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+        int month = c.get(Calendar.MONTH); // Jan = 0, dec = 11
         int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
         date = dayOfMonth + "/" + month + "/" + anho;
         sir = tutGroup.get(0).getScheduleInfo();
         smr = tutGroup.get(0).getScheduleMeeting();
 
-       // List<String> horasDisponibles = obtenerHorasDisponibles(sir,smr,duracionCita,date);
-       // spinnerHorasI.setAdapter(null);
-       // ArrayAdapter<String> adapterHoras = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDisponibles);
-       // spinnerHorasI.setAdapter(adapterHoras);
+        // List<String> horasDisponibles = obtenerHorasDisponibles(sir,smr,duracionCita,date);
+        // spinnerHorasI.setAdapter(null);
+        // ArrayAdapter<String> adapterHoras = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDisponibles);
+        // spinnerHorasI.setAdapter(adapterHoras);
 
 
         //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
@@ -120,14 +118,13 @@ public class TutorNewNoAppointFragment extends Fragment {
 
         //TIME PICKEEEEEEEEEEEEEEEEEEEEEEER
 
-        selectorListener =  new TimePickerDialog.OnTimeSetListener() {
+        selectorListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
                 hora = hourOfDay + ":" + minute;
                 txtHora.setText(hora);
             }
         };
-
 
 
         btnTime.setOnClickListener(
@@ -137,7 +134,7 @@ public class TutorNewNoAppointFragment extends Fragment {
                         final Calendar c = Calendar.getInstance();
                         int hour = c.get(Calendar.HOUR_OF_DAY);
                         int minute = c.get(Calendar.MINUTE);
-                        TimePickerDialog d = TimePickerDialog.newInstance(selectorListener,hour,minute,true);
+                        TimePickerDialog d = TimePickerDialog.newInstance(selectorListener, hour, minute, true);
                         d.show(getActivity().getFragmentManager(), "TimePickerDialog");
                     }
                 }
@@ -146,10 +143,9 @@ public class TutorNewNoAppointFragment extends Fragment {
         //TIMEE PICKEEEEEEEEEEEEEEEEEEEEEEER
 
 
-
         btnCancelar.setOnClickListener(
 
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         TutTutorController tsc = new TutTutorController();
@@ -161,48 +157,56 @@ public class TutorNewNoAppointFragment extends Fragment {
 
         btnSolicitar.setOnClickListener(
 
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     @Override
 
                     public void onClick(View v) {
-                        valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                        //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
-                        valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
 
-                         idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(),valorNombre[0]);
+                        if (txtHora.getText().toString().matches("")) {
+                            Toast.makeText(getActivity(), "Debe seleccionar la hora de inicio!", Toast.LENGTH_LONG).show();
+                        } else {
 
-                        String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        //Borra los shared preferences
-                                        //regresa al login
-                                        break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //Nada pasa
-                                        break;
-                                }
-                            }
-                        };
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+                            valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                            //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
+                            valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
 
-                            }
-                        }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        MyToast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG, MyToast.checkAlert).show();
-                                        TutTutorController tsc = new TutTutorController();
-                                        tsc.atencionNoConfirmada(getActivity (), Configuration.LOGIN_USER.getUser().getIdUsuario(),date, hora,valorTema[0], txtObservacion.getText().toString(),idAlumno, duracionCita);
+                            idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
 
+                            String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
+                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which) {
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            //Borra los shared preferences
+                                            //regresa al login
+                                            break;
+
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            //Nada pasa
+                                            break;
                                     }
                                 }
-                        ).show();
+                            };
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Toast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.atencionNoConfirmada(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), date, hora, valorTema[0], txtObservacion.getText().toString(), idAlumno, duracionCita);
+
+                                        }
+                                    }
+                            ).show();
+
+                        }
                     }
                 }
 
@@ -211,20 +215,20 @@ public class TutorNewNoAppointFragment extends Fragment {
         return view;
     }
 
-    public List<String> obtenerNombreAlumnos(List<StudentInfoResponse> studentInformation){
+    public List<String> obtenerNombreAlumnos(List<StudentInfoResponse> studentInformation) {
 
         List<String> retornar = new ArrayList<String>();
-        for ( StudentInfoResponse si : studentInformation){
+        for (StudentInfoResponse si : studentInformation) {
             retornar.add(si.getApePaterno() + " " + si.getApeMaterno() + " " + si.getNombre());
         }
 
         return retornar;
     }
 
-    public int obtenerIdAlumno(List<StudentInfoResponse> studentInformation,String nombreBuscado){
+    public int obtenerIdAlumno(List<StudentInfoResponse> studentInformation, String nombreBuscado) {
 
         int valorBuscado = 2;
-        for ( StudentInfoResponse si : studentInformation){
+        for (StudentInfoResponse si : studentInformation) {
             if (nombreBuscado.equals(si.getApePaterno() + " " + si.getApeMaterno() + " " + si.getNombre()))
                 valorBuscado = si.getId();
         }
@@ -232,8 +236,7 @@ public class TutorNewNoAppointFragment extends Fragment {
         return valorBuscado;
     }
 
-    public List<String> obtenerHorasDisponibles(List<ScheduleInfoResponse> sir, List<ScheduleMeetingResponse> smr, int duracionCita, String paramString)
-    {
+    public List<String> obtenerHorasDisponibles(List<ScheduleInfoResponse> sir, List<ScheduleMeetingResponse> smr, int duracionCita, String paramString) {
 
         List<String> horaInicio = new ArrayList<String>();
 
@@ -242,7 +245,7 @@ public class TutorNewNoAppointFragment extends Fragment {
         int anho = Integer.parseInt(paramString.substring(6, 10));
         Calendar c = new GregorianCalendar(anho, mes, dia);
         int dayToday = c.get(Calendar.DAY_OF_WEEK);
-        if (dayToday == 1 ) dayToday = 7;
+        if (dayToday == 1) dayToday = 7;
         else if (dayToday == 7) dayToday = 6;
         else if (dayToday == 6) dayToday = 5;
         else if (dayToday == 5) dayToday = 4;
@@ -253,17 +256,17 @@ public class TutorNewNoAppointFragment extends Fragment {
 
         int intervalo = 60 / duracionCita;
 
-        for (int i = 0; i<sir.size(); i++){
-            if (sir.get(i).getDia() == dayToday){
-                String h = sir.get(i).getHoraInicio().substring(0,2);
-                String m = sir.get(i).getHoraInicio().substring(3,5);
+        for (int i = 0; i < sir.size(); i++) {
+            if (sir.get(i).getDia() == dayToday) {
+                String h = sir.get(i).getHoraInicio().substring(0, 2);
+                String m = sir.get(i).getHoraInicio().substring(3, 5);
                 String addHM = h + ":" + m;
                 horaInicio.add(addHM);
-                for (int j=1; j< intervalo; j++){
+                for (int j = 1; j < intervalo; j++) {
                     String tiempo = sir.get(i).getHoraInicio();
-                    String hora = tiempo.substring(0,2);
-                    int minInt = Integer.parseInt(tiempo.substring(3,5));
-                    int minAddInt = minInt + duracionCita*j;
+                    String hora = tiempo.substring(0, 2);
+                    int minInt = Integer.parseInt(tiempo.substring(3, 5));
+                    int minAddInt = minInt + duracionCita * j;
                     String minAddStr = "" + minAddInt;
                     String tiempoAgregar = hora + ":" + minAddStr;
                     horaInicio.add(tiempoAgregar);

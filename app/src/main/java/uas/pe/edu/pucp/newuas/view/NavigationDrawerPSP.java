@@ -1,9 +1,7 @@
 package uas.pe.edu.pucp.newuas.view;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -29,17 +27,11 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.controller.PSPControllerJ;
 
-import uas.pe.edu.pucp.newuas.fragment.DateSupervisorStudentEmployer;
-import uas.pe.edu.pucp.newuas.fragment.PSP_SupSetFreeHoursFragment;
-import uas.pe.edu.pucp.newuas.fragment.PSP_cycleFragment;
-
 import uas.pe.edu.pucp.newuas.fragment.PSP_dates_supervisor;
-import uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_messagesFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment;
-import uas.pe.edu.pucp.newuas.fragment.startPsp;
-import uas.pe.edu.pucp.newuas.model.MyToast;
+import uas.pe.edu.pucp.newuas.fragment.StartPsp;
 
 
 public class NavigationDrawerPSP extends AppCompatActivity
@@ -58,7 +50,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_psp);
 
-         startPsp fragment = new startPsp();
+         StartPsp fragment = new StartPsp();
         (this).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
 
 

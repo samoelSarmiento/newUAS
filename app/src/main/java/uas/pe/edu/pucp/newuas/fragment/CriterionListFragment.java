@@ -41,14 +41,14 @@ public class CriterionListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setTitle("Criterios");
-        View view = inflater.inflate(R.layout.fragment_criterion_list,container,false);
+        View view = inflater.inflate(R.layout.fragment_criterion_list, container, false);
         lvCrits = (ListView) view.findViewById(R.id.lvCriterions);
         Bundle bundle = this.getArguments();
-        if (bundle!=null){
+        if (bundle != null) {
             List<Criterion> list = (List<Criterion>) bundle.getSerializable("crits");
             final List<Criterion> listlev = list;
             Context context = getActivity();
-            crAdapter = new CriterionAdapter(context,list);
+            crAdapter = new CriterionAdapter(context, list);
             lvCrits.setAdapter(crAdapter);
 
             lvCrits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,11 +58,7 @@ public class CriterionListFragment extends Fragment {
                     eoc.getLevelsofCriterion(getActivity(), listlev.get(position).getIdCriterio());
                 }
             });
-
         }
-
-
-
         return view;
     }
 

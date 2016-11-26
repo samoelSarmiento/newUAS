@@ -232,6 +232,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("Pendiente")){
 
+            icon1.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -271,6 +272,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("Cancelada") ){
 
+            icon2.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -295,6 +297,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("Rechazada") ){
 
+            icon2.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -318,6 +321,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("Asistida") ){
 
+            icon2.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -341,6 +345,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("No asistida") ){
 
+            icon2.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override

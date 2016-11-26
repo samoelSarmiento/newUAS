@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //acreditador y administrador pueden entrar solo a acreditacion
         if (Configuration.isAccreditor() || Configuration.isAdmin()) {
             btModuleAcr.setVisibility(View.VISIBLE);
+            if (Configuration.isAdmin()) {
+                btModuleInv.setVisibility(View.VISIBLE);
+            }
         } else {
             //investigaor normal
             if (Configuration.isOnlyInvestigator()) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (Configuration.isStudent()) {
                     btModuleTutEv.setVisibility(View.VISIBLE);
                     //si lleva psp
-                    if (Configuration.LOGIN_USER.getUser().getStudent() != null && Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
+                    if (Configuration.LOGIN_USER.getUser().getStudent() != null && Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp() != null && Configuration.LOGIN_USER.getUser().getStudent().getLleva_psp().equals("1")) {
                         btModulePsp.setVisibility(View.VISIBLE);
                     }
                 } else {
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btModuleTutEv:
                 if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 2) {
                     intent = new Intent(this, NavigationDrawerTutoriaTutor.class);
-                } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 1) {
+                } else if (Configuration.LOGIN_USER.getUser().getIdPerfil() == 0) {
                     intent = new Intent(this, NavigationDrawerTutoria.class);
                 } else intent = new Intent(this, NavigationDrawerTutoriaCoord.class);
                 startActivity(intent);

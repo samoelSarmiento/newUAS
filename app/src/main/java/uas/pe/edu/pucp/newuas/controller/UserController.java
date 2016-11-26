@@ -23,6 +23,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.model.User;
@@ -33,11 +34,11 @@ import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 public class UserController {
 
-    public boolean logIn(final Context context, final String user, String password){
+    public boolean logIn(final Context context, final String user, String password) {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Call<UserResponse> call = restCon.getUser(new UserRequest(user, password));
 
-        final ProgressDialog pd = new ProgressDialog(context );
+        final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Cargando...");
         pd.setCanceledOnTouchOutside(false);
         pd.show();
@@ -49,20 +50,19 @@ public class UserController {
                     UserResponse user = response.body();
                     Configuration.LOGIN_USER = user;
                     Intent intent = new Intent(context, MainActivity.class);
-                    if(pd.isShowing())  pd.dismiss();
+                    if (pd.isShowing()) pd.dismiss();
                     context.startActivity(intent);
                 } else {
-                    Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
-
-                    if(pd.isShowing())  pd.dismiss();
+                    MyToast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG, MyToast.errorAlert).show();
+                    if (pd.isShowing()) pd.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(context, "Error de conexión.", Toast.LENGTH_SHORT).show();
-                if(pd.isShowing())  pd.dismiss();
+                MyToast.makeText(context, "Error de conexión", Toast.LENGTH_LONG, MyToast.errorAlert).show();
+                if (pd.isShowing()) pd.dismiss();
             }
         });
         return true;

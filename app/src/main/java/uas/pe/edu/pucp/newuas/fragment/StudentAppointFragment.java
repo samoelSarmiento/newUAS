@@ -45,6 +45,11 @@ public class StudentAppointFragment extends Fragment {
         Bundle bundle = this.getArguments();
         AppointmentRequestMirror infoAPIs= null;
 
+
+        getActivity().setTitle("Historial de citas");
+
+
+
         if (bundle != null){
             infoAPIs= (AppointmentRequestMirror) bundle.getSerializable("Tutoria");
         }
