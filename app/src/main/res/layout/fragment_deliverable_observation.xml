@@ -163,6 +163,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/left_right_padding"
+                android:paddingRight="@dimen/left_right_padding"
                 android:layout_marginTop="@dimen/margin_top_detail_linear_layout"
                 android:orientation="horizontal">
 

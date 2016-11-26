@@ -400,7 +400,7 @@ public class SpecialtyController {
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
         Map<String, String> token = new HashMap<>();
         token.put("token", Configuration.LOGIN_USER.getToken());
-
+        //if (Configuration.isAdmin()) idCicloAcademico = -1;
         Call<List<StudentEffort>> call = restCon.getEffortResultsbyStudent(idCicloAcademico, idCurso, idHorario, idAlumno, token);
         call.enqueue(new Callback<List<StudentEffort>>() {
             @Override
