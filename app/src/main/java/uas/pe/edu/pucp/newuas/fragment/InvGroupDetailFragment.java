@@ -80,14 +80,16 @@ public class InvGroupDetailFragment extends Fragment {
         if(invGroup.get(0).getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.get(0).getImagen()).into(invGImage);
 
-        editEvAvailability = true;
+        editEvAvailability = false;
 
         //permisos
-        if(invGroup.get(0).getIdLider()!= Configuration.getIdUsuario()){
-            editEvAvailability=false;
-            invGroupBut.setVisibility(View.INVISIBLE);
+        invGroupBut.setVisibility(View.GONE);
+        if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
+            if(invGroup.get(0).getIdLider()== Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente()){
+                editEvAvailability=true;
+                invGroupBut.setVisibility(View.VISIBLE);
+            }
         }
-
 
         if(Configuration.isAdmin()){
             editEvAvailability=true;

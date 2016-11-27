@@ -69,9 +69,20 @@ public class InvDetailFragment extends Fragment {
         invTel.setText(investigator.get(0).getCelular());
         invEsp.setText(investigator.get(0).getFaculty().getNombre());
 
+
+        //permisos
+        /*
+        editBut.setVisibility(View.GONE);
+        if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
+            if(proj.get(0).getGroup().getIdLider()== Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente()){
+                editBut.setVisibility(View.VISIBLE)
+
+        }*/
+
         //permisos
         if(investigator.get(0).getId()!= Configuration.getIdUsuario())
             editBut.setVisibility(View.INVISIBLE);
+
         if(Configuration.isAdmin())
             editBut.setVisibility(View.VISIBLE);
 

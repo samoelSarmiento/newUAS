@@ -13,6 +13,7 @@ import android.widget.Button;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
+import uas.pe.edu.pucp.newuas.controller.InvGroupController;
 import uas.pe.edu.pucp.newuas.controller.SpecialtyController;
 import uas.pe.edu.pucp.newuas.model.Specialty;
 
@@ -85,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btModuleInv:
+                /*InvGroupController invGroupController = new InvGroupController();
+                try {
+                    invGroupController.getInvGroups(this);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    //pd.hide();
+                }*/
                 intent = new Intent(this, NavigationDrawerInvestigacion.class);
                 startActivity(intent);
                 break;
