@@ -18,6 +18,7 @@
             android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="Numero" />
         <TextView
             android:gravity="center"
@@ -25,16 +26,19 @@
             android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripcion" />
+            android:text="Descripcion"
+            android:textStyle="bold"/>
         <TextView
             android:gravity="center"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fecha Inicio" />
 
         <TextView
+            android:textStyle="bold"
             android:gravity="center"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"

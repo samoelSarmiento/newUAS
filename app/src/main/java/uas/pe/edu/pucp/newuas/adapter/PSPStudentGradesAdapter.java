@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,7 +66,7 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
             viewHolder.tvStudentName = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_name);
             viewHolder.tvGrade = (TextView) view.findViewById(R.id.tv_item_psp_grade_finalscore);
             viewHolder.tvStudentId = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_id);
-            viewHolder.mail = (ImageView)view.findViewById(R.id.iv_item_psp_grade_mail);
+            viewHolder.mail = (ImageButton) view.findViewById(R.id.iv_item_psp_grade_mail);
 
             viewHolder.mail.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,7 +104,7 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
 
     public static class ViewHolder {
         TextView tvStudentName, tvGrade , tvStudentId;
-        ImageView mail;
+        ImageButton mail;
 
     }
 }
