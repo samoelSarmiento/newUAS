@@ -125,7 +125,7 @@
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_main_uas"
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
             android:text="Guardar"/>
         <Button
@@ -134,7 +134,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:background="@drawable/btn_main_uas"
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
             android:text="Cancelar"/>
     </LinearLayout>
