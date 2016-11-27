@@ -16,6 +16,7 @@
         <TextView
             android:id="@+id/codigoPspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Codigo: " />
@@ -35,6 +36,7 @@
         <TextView
             android:id="@+id/nombrePspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Nombre" />
@@ -54,6 +56,7 @@
         <TextView
             android:id="@+id/apellidoPspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Apellido" />
@@ -74,6 +77,7 @@
         <TextView
             android:id="@+id/correoPspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Correo" />
@@ -94,6 +98,7 @@
         <TextView
             android:id="@+id/grupoPspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Grupo" />
@@ -116,6 +121,7 @@
         <TextView
             android:id="@+id/especialidadPspStudentTut"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Especialidad" />
