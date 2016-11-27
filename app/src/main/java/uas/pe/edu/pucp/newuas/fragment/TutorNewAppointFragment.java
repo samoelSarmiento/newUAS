@@ -197,7 +197,7 @@ public class TutorNewAppointFragment extends Fragment {
                                             MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                             TutTutorController tsc = new TutTutorController();
                                             //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
-                                            tsc.atencionNoConfirmada(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
+                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
 
                                         }
                                     }

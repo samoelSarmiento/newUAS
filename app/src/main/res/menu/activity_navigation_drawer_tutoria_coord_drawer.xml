@@ -9,9 +9,17 @@
                 android:title="Alumnos" />
 
             <item
+                android:id="@+id/nav_changeModule"
+                android:icon="@drawable/ic_back"
+                android:title="@string/itdModule"
+                android:visible="true" />
+
+            <item
                 android:id="@+id/nav_loginoutCoordinador"
                 android:icon="@drawable/ic_logout"
                 android:title="Cerrar Sesión" />
+
+
 
         </menu>
     </item>

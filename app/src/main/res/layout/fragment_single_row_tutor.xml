@@ -54,13 +54,15 @@
 
         <ImageButton
             android:id="@+id/icon2SingleRowTuto"
-            android:layout_width="34dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="0dp"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/ic_cross" />
+
+
 
     </LinearLayout>
 
@@ -111,7 +113,7 @@
             style="@style/GeneralTextViewsSmall"
             android:layout_marginLeft="10dp"
             android:text="Sugerida"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
 

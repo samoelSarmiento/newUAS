@@ -3,7 +3,9 @@ package uas.pe.edu.pucp.newuas.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,9 +84,26 @@ public class AppointmentAdapterTutor extends BaseAdapter {
         icon1.setImageResource(temp.getIcon1());
         icon2.setImageResource(temp.getIcon2());
 
+        if (temp.getEstado().equals("Pendiente")) {
+            titleState.setBackgroundColor(Color.parseColor("#ff9800"));
+        }
+        else if (temp.getEstado().equals("Confirmada") )
+            titleState.setBackgroundColor(Color.parseColor("#26a69a"));
+        else if (temp.getEstado().equals("Cancelada") )
+            titleState.setBackgroundColor(Color.parseColor("#d9534f"));
+        else if (temp.getEstado().equals("Sugerida") )
+            titleState.setBackgroundColor(Color.parseColor("#ffeb3b"));
+        else if (temp.getEstado().equals("Rechazada") )
+            titleState.setBackgroundColor(Color.parseColor("#9e9e9e"));
+        else if (temp.getEstado().equals("Asistida") )
+            titleState.setBackgroundColor(Color.parseColor("#4051b5"));
+        else if (temp.getEstado().equals("No asistida"))
+            titleState.setBackgroundColor(Color.parseColor("#4caf50"));
 
-        final String solicitud = "Esta a punto de  confirmar una  cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + "                     ¿Desea continuar?";
-        final String solicitud2 = "Esta a punto de  cancelar una  cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + "                     ¿Desea continuar?";
+
+
+        final String solicitud = "Esta a punto de  confirmar una  cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + " ¿Desea continuar?";
+        final String solicitud2 = "Esta a punto de  cancelar una  cita con su alumno para el día " +  temp.getFecha()  + " a las " + temp.getHora() + " ¿Desea continuar?";
         final int idAppoint = temp.getIdAppoint();
 
         final Context contextAdapter = viewGroup.getContext();
