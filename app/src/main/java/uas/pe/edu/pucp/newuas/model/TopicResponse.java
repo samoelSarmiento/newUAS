@@ -2,12 +2,13 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Wingerlion on 23/10/2016.
  */
-public class TopicResponse {
+public class TopicResponse implements Serializable{
 
     @SerializedName("id")
     private Integer id;

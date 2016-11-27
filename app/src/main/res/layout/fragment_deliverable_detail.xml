@@ -39,6 +39,7 @@
 
                 <TextView
                     android:layout_width="0dp"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
                     android:text="Version" />
@@ -66,6 +67,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Responsables" />
             </LinearLayout>
             <LinearLayout
@@ -90,6 +92,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
+                    android:textColor="@color/black"
                     android:text="Fecha Inicio" />
 
                 <TextView
@@ -109,6 +112,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
+                    android:textColor="@color/black"
                     android:text="Fecha Limite" />
 
                 <TextView
@@ -129,6 +133,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
+                    android:textColor="@color/black"
                     android:text="Porc. de avance" />
 
                 <TextView
@@ -147,6 +152,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Observaciones" />
             </LinearLayout>
             <LinearLayout

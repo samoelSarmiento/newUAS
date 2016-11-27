@@ -9,7 +9,6 @@ import java.io.Serializable;
 /**
  * Created by samoe on 20/10/2016.
  */
-
 @DatabaseTable(tableName = "investigator")
 public class Investigator implements Serializable {
 

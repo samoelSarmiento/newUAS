@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @DatabaseTable(tableName = "deliverable")
-public class Deliverable implements Serializable{
+public class Deliverable implements Serializable {
 
     @SerializedName("id")
     @DatabaseField(id = true)
@@ -47,7 +47,6 @@ public class Deliverable implements Serializable{
 
     @SerializedName("investigators")
     private List<Investigator> investigator;
-
 
 
     public List<InvDocument> getInvDocuments() {
