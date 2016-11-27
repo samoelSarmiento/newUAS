@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
-        android:background="@drawable/btn_main_uas"
         android:text="@string/btModuleAcr"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 
     <Button
@@ -29,9 +29,9 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/btn_main_uas"
         android:text="@string/btModulePsp"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 
     <Button
@@ -41,9 +41,9 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/btn_main_uas"
         android:text="@string/btModuleTutEv"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 
     <Button
@@ -53,8 +53,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/btn_main_uas"
         android:text="@string/btModuleInv"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 </LinearLayout>
