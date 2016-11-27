@@ -7,8 +7,8 @@
 
 
     <ListView
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:id="@+id/lv_psp_student_grades"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

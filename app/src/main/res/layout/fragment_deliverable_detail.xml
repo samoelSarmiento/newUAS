@@ -172,8 +172,7 @@
                     android:id="@+id/delivRegObs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:background="@drawable/btn_main_uas"
+                    android:theme="@style/AppTheme.Button.uas"
                     android:text="Registrar Observacion"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -188,8 +187,7 @@
                     android:id="@+id/delivEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:background="@drawable/btn_main_uas"
+                    android:theme="@style/AppTheme.Button.uas"
                     android:text="Editar"
                     android:textColor="@color/white" />
             </LinearLayout>

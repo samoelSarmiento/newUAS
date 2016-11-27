@@ -7,7 +7,7 @@
     android:gravity="center"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -163,6 +163,7 @@
 
             <Button
                 android:text="Cancelar"
+                android:theme="@style/AppTheme.Button.uas"
                 android:id="@+id/btn_psp_student_meeting_detail_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
