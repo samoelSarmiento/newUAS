@@ -8,8 +8,6 @@
     android:background="@color/mdtp_neutral_pressed"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,47 +22,47 @@
 
             <TextView
                 android:text="Reunion"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Codigo"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Alumno"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Fecha"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Hora Inicio"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Hora Fin"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Lugar"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:layout_marginTop="20dp"
                 android:text="Estado"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
@@ -142,7 +140,7 @@
 
         <TextView
             android:text="Observaciones"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -154,7 +152,7 @@
             android:ems="10"
             android:id="@+id/et_psp_sup_meeting_observations" />
         <TextView
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="Retroalimentacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

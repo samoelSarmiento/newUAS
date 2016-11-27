@@ -23,7 +23,8 @@
             android:layout_weight="0.5"
             android:paddingEnd="@dimen/divider"
             android:paddingStart="@dimen/divider"
-            android:text="@string/tvHorario" />
+            android:text="@string/tvHorario"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -32,7 +33,8 @@
             android:layout_weight="0.5"
             android:paddingEnd="@dimen/divider"
             android:paddingStart="@dimen/divider"
-            android:text="@string/tvProfessor" />
+            android:text="@string/tvProfessor"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

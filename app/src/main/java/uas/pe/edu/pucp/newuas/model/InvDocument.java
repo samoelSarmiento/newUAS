@@ -11,7 +11,8 @@ import java.io.Serializable;
  */
 
 @DatabaseTable(tableName = "invDocument")
-public class InvDocument implements Serializable{
+public class
+InvDocument implements Serializable {
 
     @SerializedName("id")
     @DatabaseField(id = true)

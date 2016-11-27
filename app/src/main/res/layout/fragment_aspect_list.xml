@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/divider"
-        android:text="@string/tvSeeCrits"/>
+        android:text="@string/tvSeeCrits"
+        android:textColor="@color/black" />
 
     <ListView
         android:id="@+id/lvAspects"
