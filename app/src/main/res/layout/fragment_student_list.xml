@@ -23,9 +23,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btEvidence"
-        android:textColor="@color/white" />
+        android:theme="@style/AppTheme.Button.uas" />
 
     <TextView
         android:id="@+id/tvNoStudents"
