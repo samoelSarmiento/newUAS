@@ -2,11 +2,13 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Franz on 04/11/2016.
  */
 
-public class PSPCriterio {
+public class PSPCriterio implements Serializable {
 
 
 

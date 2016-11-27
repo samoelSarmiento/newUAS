@@ -40,6 +40,7 @@
 
                 <TextView
                     android:text="@string/invMail"
+                    android:textColor="@color/black"
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -61,6 +62,7 @@
 
                 <TextView
                     android:text="@string/invEsp"
+                    android:textColor="@color/black"
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -81,6 +83,7 @@
 
                 <TextView
                     android:text="@string/invTel"
+                    android:textColor="@color/black"
                     android:layout_weight="0.3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />

@@ -2,11 +2,13 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Franz on 28/10/2016.
  */
 
-public class PSPTemplate {
+public class PSPTemplate implements Serializable {
     @SerializedName("IdTemplate")
     private
     int IdTemplate;

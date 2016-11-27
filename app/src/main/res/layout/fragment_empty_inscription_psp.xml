@@ -17,6 +17,7 @@
             android:text="No se ha registrado el informe de inscripción"
             android:id="@+id/textView3"
             android:gravity="center"
+            android:textColor="@color/black"
             android:layout_marginLeft="@dimen/divider"
             android:layout_weight="1.35" />
     </LinearLayout>

@@ -17,7 +17,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:text="@string/tvCourse" />
+            android:text="@string/tvCourse"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvValueCourse"
@@ -36,7 +37,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:text="@string/tvSpecialtyCode" />
+            android:text="@string/tvSpecialtyCode"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvValueCode"
@@ -55,7 +57,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:text="@string/tvNivelAcademico" />
+            android:text="@string/tvNivelAcademico"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvValueLevel"

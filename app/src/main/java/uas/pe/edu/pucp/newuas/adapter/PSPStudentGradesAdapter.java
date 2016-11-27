@@ -68,7 +68,17 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
             viewHolder.tvStudentId = (TextView) view.findViewById(R.id.tv_item_psp_grade_student_id);
             viewHolder.mail = (ImageButton) view.findViewById(R.id.iv_item_psp_grade_mail);
 
-            viewHolder.mail.setOnClickListener(new View.OnClickListener() {
+
+
+
+            viewHolder.tvStudentName.setText(items.get(position).getNombre() + " "
+                    + items.get(position).getApellidoPaterno() + " "
+                    + items.get(position).getApellidoMaterno());
+            viewHolder.tvStudentId.setText(items.get(position).getCodigo());
+            int grade = items.get(position).getGrade();
+            if(grade >= 0 ){
+                viewHolder.tvGrade.setText(String.valueOf(items.get(position).getGrade()) );
+                viewHolder.mail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     PSPNotificationScpreRequest score = new PSPNotificationScpreRequest();
@@ -82,13 +92,8 @@ public class PSPStudentGradesAdapter   extends BaseAdapter {
                 }
             });
 
-            viewHolder.tvStudentName.setText(items.get(position).getNombre() + " "
-                    + items.get(position).getApellidoPaterno() + " "
-                    + items.get(position).getApellidoMaterno());
-            viewHolder.tvStudentId.setText(items.get(position).getCodigo());
-            int grade = items.get(position).getGrade();
-            if(grade >= 0 )
-                 viewHolder.tvGrade.setText(String.valueOf(items.get(position).getGrade()) );
+            }
+
 
 
         } catch (Exception ex) {
