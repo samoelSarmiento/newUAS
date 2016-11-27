@@ -100,8 +100,19 @@
 
 
 
-    <string name="noCita">Atender\n
+    <string name="noCita">Registrar\n
     sin cita</string>
+
+    <string name="Cita">Atender\n
+    nueva cita</string>
+
+    <string name="Solicitud">Solicitud\n
+    nueva cita</string>
+
+
+    <string name="Filtrar">Filtrar\n
+    citas</string>
+
 
     <!--Tutoria Fin-->
 

@@ -37,7 +37,7 @@
 
             android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:text="Nueva Cita" />
+            android:text="@string/Cita" />
 
     </LinearLayout>
 

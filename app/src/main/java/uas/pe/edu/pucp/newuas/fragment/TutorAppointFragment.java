@@ -55,10 +55,6 @@ public class TutorAppointFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Bundle bundle = new Bundle();
-                        //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
-                        //ap.setArguments(bundle);
-                        //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
 
                         TutTutorController ttc = new TutTutorController();
                         ttc.getAppointInformationTuto(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
@@ -73,17 +69,10 @@ public class TutorAppointFragment extends Fragment {
 
                         TutTutorController ttc = new TutTutorController();
                         ttc.obtenerInformacionNoCita(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
-
-                        //Bundle bundle = new Bundle();
-                        //AlumnoNuevaCitaFragment ap = new AlumnoNuevaCitaFragment();
-                        //ap.setArguments(bundle);
-                        //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ap).commit();
-                        //TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
-                        //getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout, ttc).commit();
-                        //ttc.getAppointInformationTuto(getActivity(),Configuration.LOGIN_USER.getUser().getIdUsuario());
                     }
                 }
         );
+
 
 
 
