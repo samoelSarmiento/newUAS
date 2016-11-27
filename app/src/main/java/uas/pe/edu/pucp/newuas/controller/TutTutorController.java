@@ -187,33 +187,36 @@ public class TutTutorController {
     }
 
 
-    public boolean appointmentRequest(final Context context, int idUser, String fecha, String hora, String motivo, String studentFullName){
+
+    public boolean appointmentRequest(final Context context,  int idUsuario, String fechaActual, String hora, String tema, String obs, int idAlumno, int duracionCita ){
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
         RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
-
-        Log.d("xd", "fechaaa y horaa " + fecha+ " " + hora);
-        Call<String> call = restCon.doAppointmentTutor(new AppointmentRequest(idUser,fecha,hora,"",motivo,studentFullName,123132),data);
-         Log.d("tag",  "ke pasa aca " + call.request().url() );
+        Call<String> call = restCon.doAppointmentTutor(new NoCitaRequest(idUsuario,fechaActual,hora,tema,obs,idAlumno, duracionCita), data);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
-
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                TutorAppointFragment mp = new TutorAppointFragment();
-                ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                ((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
             }
         });
 
+
         return true;
     }
+
 
     public boolean RealizarCitaConfirmada(final Context context,  int idAppoint ){
 

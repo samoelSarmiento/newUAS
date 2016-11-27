@@ -259,7 +259,7 @@ public interface RestCon {
     Call<String> doAppointment(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
 
     @POST("registerTutorAppointment")
-    Call<String> doAppointmentTutor(@Body AppointmentRequest appointmentRequest, @QueryMap Map<String, String> token);
+    Call<String> doAppointmentTutor(@Body NoCitaRequest appointmentRequest, @QueryMap Map<String, String> token);
 
     @GET("getAppointInformationTuto/{id_usuario}")
     Call<List<NoAppointmentResponse>> getAppointInfoTuto(@Path("id_usuario") int id_usuario, @QueryMap Map<String, String> token);

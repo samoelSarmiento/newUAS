@@ -117,7 +117,11 @@ public class NavigationDrawerTutoriaTutor extends AppCompatActivity
             SearchEvaluationQueryFragment searchEvaluationQueryFragment = new SearchEvaluationQueryFragment();
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, searchEvaluationQueryFragment).commit();
 
-
+        }
+        else if (id == R.id.nav_changeModule) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
 
