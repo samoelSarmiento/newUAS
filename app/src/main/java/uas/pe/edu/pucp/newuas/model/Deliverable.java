@@ -46,7 +46,7 @@ public class Deliverable implements Serializable{
     private List<InvDocument> invDocuments;
 
     @SerializedName("investigators")
-    private List<Investigator> investigator;
+    private List<InvDocument.Investigator> investigator;
 
 
 
@@ -58,18 +58,18 @@ public class Deliverable implements Serializable{
         this.invDocuments = invDocuments;
     }
 
-    public List<Investigator> getInvestigator() {
+    public List<InvDocument.Investigator> getInvestigator() {
         return investigator;
     }
 
-    public void setInvestigator(List<Investigator> investigator) {
+    public void setInvestigator(List<InvDocument.Investigator> investigator) {
         this.investigator = investigator;
     }
 
     public Deliverable() {
     }
 
-    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects, List<InvDocument> invDocuments, List<Investigator> investigator) {
+    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects, List<InvDocument> invDocuments, List<InvDocument.Investigator> investigator) {
         this.id = id;
         this.nombre = nombre;
         this.idProyecto = idProyecto;
