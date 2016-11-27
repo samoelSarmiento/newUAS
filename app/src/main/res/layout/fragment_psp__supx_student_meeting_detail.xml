@@ -118,7 +118,9 @@
                 android:minWidth="40dp"
                 android:id="@+id/cmb_psp_sup_meeting_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp">
 
             </Spinner>
 

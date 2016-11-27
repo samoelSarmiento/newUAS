@@ -8,6 +8,8 @@
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment">
 
             <ListView
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/lv_psp_phases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

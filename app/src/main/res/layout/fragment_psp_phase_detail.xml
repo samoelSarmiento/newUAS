@@ -18,6 +18,7 @@
             android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:text="Numero" />
         <TextView
@@ -26,18 +27,21 @@
             android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Descripcion" />
+            android:text="Descripcion"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
         <TextView
             android:gravity="center"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Fecha Inicio" />
 
         <TextView
+            android:textStyle="bold"
             android:gravity="center"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
