@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.75"
             android:orientation="vertical">
 
@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/tvipliststatus"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.25"
             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"

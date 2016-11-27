@@ -113,9 +113,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btSemPer"
-        android:textColor="@color/white" />
+        android:theme="@style/AppTheme.Button.uas" />
 
     <Button
         android:id="@+id/btnObjEdu"
@@ -124,9 +123,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btObjEdu"
-        android:textColor="@color/white" />
+        android:theme="@style/AppTheme.Button.uas" />
 
     <Button
         android:id="@+id/btnMeaInst"
@@ -135,9 +133,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btMeaInst"
-        android:textColor="@color/white" />
+        android:theme="@style/AppTheme.Button.uas" />
 
 
 </LinearLayout>

@@ -8,8 +8,9 @@
         android:id="@+id/btnSpecialtyDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/divider"
         android:focusable="false"
-        android:background="@drawable/bg_button_login_selector"
         android:focusableInTouchMode="false"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas" />
 </LinearLayout>

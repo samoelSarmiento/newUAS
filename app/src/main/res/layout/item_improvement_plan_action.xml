@@ -12,7 +12,7 @@
         <TextView
             android:id="@+id/tvactionsemester"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.20"
             android:gravity="center_vertical" />
 
@@ -46,17 +46,14 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnDownloadFileAction"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="80dp"
             android:layout_weight="0.25"
-            android:background="@drawable/bg_button_login_selector"
-            android:textAlignment="center"
             android:drawableTop="@drawable/ic_get_app_white_36dp"
             android:text="@string/btArchAction"
-            android:textColor="@color/white"
-            android:id="@+id/btnDownloadFileAction"/>
-
-
+            android:textAlignment="center"
+            android:theme="@style/AppTheme.Button.uas" />
 
 
     </LinearLayout>
