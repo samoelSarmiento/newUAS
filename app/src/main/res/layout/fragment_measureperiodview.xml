@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/tvMeasureResStartSemester" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/tvMeasureResEndSemester" />
 
         <TextView
@@ -57,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/tvMeasureCritLevel" />
 
         <TextView
@@ -77,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/tvMeasureAccLevel" />
 
         <TextView
@@ -97,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/tvMeasureAccPerc" />
 
         <TextView

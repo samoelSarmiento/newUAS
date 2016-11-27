@@ -66,6 +66,7 @@
             style="@style/GeneralTextViewsMedium"
             android:text="Desde:"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"/>
 
@@ -104,6 +105,7 @@
         <TextView
             style="@style/GeneralTextViewsMedium"
             android:text="Hasta:"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 

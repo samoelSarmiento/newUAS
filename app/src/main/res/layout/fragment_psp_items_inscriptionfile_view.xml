@@ -20,7 +20,8 @@
             android:text="Jefe Directo"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/pspJefeDirectoValor"
@@ -46,6 +47,7 @@
             android:text="Correo del jefe"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -73,6 +75,7 @@
             android:text="Teléfono del jefe"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView
@@ -97,6 +100,7 @@
             android:text="Dirección Empresa"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView
@@ -124,6 +128,7 @@
             android:text="Nombre del área"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -151,6 +156,7 @@
             android:text="Puesto"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -179,6 +185,7 @@
             android:text="Razón Social"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView
@@ -206,6 +213,7 @@
             android:text="Ubicación del área"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView
@@ -231,6 +239,7 @@
             android:text="Actividad económica"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -255,6 +264,7 @@
             android:text="Fecha de Inicio"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -276,6 +286,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspFechaTermino"
             android:layout_width="0dp"
@@ -283,6 +294,7 @@
             android:text="Fecha de termino"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView

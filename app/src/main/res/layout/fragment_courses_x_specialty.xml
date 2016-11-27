@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
             android:paddingTop="3dp"
             android:text="@string/tvNivel"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <Spinner

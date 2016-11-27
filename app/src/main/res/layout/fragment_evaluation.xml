@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/nombre_evaluacion" />
 
         <TextView
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/tvIpStatus" />
 
         <TextView
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/tvFechaInicio" />
 
         <TextView
@@ -81,6 +84,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/tvFechaFin" />
 
         <TextView
@@ -101,6 +105,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/tvDescription" />
 
         <TextView
@@ -121,6 +126,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_weight="0.4"
+            android:textStyle="bold"
             android:text="@string/tvTime" />
 
         <TextView

@@ -24,6 +24,7 @@
             android:paddingEnd="@dimen/divider"
             android:paddingStart="@dimen/divider"
             android:text="@string/tvHorario"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <TextView
@@ -34,6 +35,7 @@
             android:paddingEnd="@dimen/divider"
             android:paddingStart="@dimen/divider"
             android:text="@string/tvProfessor"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
     </LinearLayout>

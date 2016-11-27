@@ -19,6 +19,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Codigo: " />
 
         <TextView
@@ -39,6 +40,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Nombre" />
 
         <TextView
@@ -59,6 +61,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Apellido" />
 
         <TextView
@@ -80,6 +83,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Correo" />
 
         <TextView
@@ -101,6 +105,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Grupo" />
 
         <TextView
@@ -124,6 +129,7 @@
             android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:textStyle="bold"
             android:text="Especialidad" />
 
         <TextView
