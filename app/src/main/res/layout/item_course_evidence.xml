@@ -20,10 +20,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.30"
-            android:background="@drawable/bg_button_login_selector"
             android:drawableTop="@drawable/ic_get_app_white_36dp"
             android:text="@string/btArchAction"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:theme="@style/AppTheme.Button.uas" />
     </LinearLayout>
 </LinearLayout>

@@ -557,7 +557,22 @@ public class PSPController {
 
                     PSPMessage message = response.body();
 
-                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
+                    if(message.getMesssage().contains("previa")){
+                        MyToast.makeText(context,message.getMesssage(), Toast.LENGTH_SHORT, MyToast.errorAlert).show();
+
+
+                    }else if(message.getMesssage().contains("Fallida")){
+
+                        MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.errorAlert).show();
+
+
+                    }else{
+
+
+                         MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_SHORT, MyToast.checkAlert).show();
+
+                    }
+
 
 
                     ((Activity) context).getFragmentManager().popBackStack();
@@ -726,7 +741,9 @@ public class PSPController {
                     PSPMessage message = response.body();
 
                     if(message.getMesssage().contains("maximo"))
-                    MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.errorAlert).show();
+                        MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.errorAlert).show();
+                    else if(message.getMesssage().contains("alumnos"))
+                        MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.errorAlert).show();
                     else
                         MyToast.makeText(context, message.getMesssage(), Toast.LENGTH_LONG, MyToast.checkAlert).show();
 

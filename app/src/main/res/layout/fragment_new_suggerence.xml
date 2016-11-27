@@ -48,10 +48,9 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/bg_button_login_selector"
-        android:paddingTop="0dp"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
         android:text="@string/btSave"
-        android:textColor="@color/white" />
+        android:theme="@style/AppTheme.Button.uas" />
 </LinearLayout>

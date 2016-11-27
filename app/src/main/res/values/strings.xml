@@ -234,6 +234,9 @@
     <string name="tvTime">Tiempo:</string>
     <string name="no_criterio_level">El criterio no cuenta con niveles.</string>
     <string name="no_file">El Plan de Mejora no cuenta con un archivo asociado.</string>
+    <string name="ok">ok</string>
+    <string name="no_ok">no ok</string>
+    <string name="info">info</string>
 
 
 </resources>

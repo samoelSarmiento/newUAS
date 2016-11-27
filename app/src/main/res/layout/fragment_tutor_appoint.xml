@@ -24,8 +24,8 @@
             android:id="@+id/btnNoNewAssignmentTuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-8dp"
-            android:background="@drawable/btn_main_uas"
+
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
             android:text="@string/noCita" />
 
@@ -34,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="-8dp"
-            android:background="@drawable/btn_main_uas"
+
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
             android:text="@string/Cita" />
 
