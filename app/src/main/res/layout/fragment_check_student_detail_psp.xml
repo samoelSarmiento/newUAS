@@ -85,10 +85,11 @@
             android:layout_weight="0.7" />
 
     </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/grupoPspStudentTut"
@@ -134,10 +135,12 @@
         android:id="@+id/btVolverPspTutStudent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/divider"
         android:text="Volver"
-        android:background="@drawable/btn_main_uas"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas" />
 
 
 </LinearLayout>

@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pspSelectButtonInforme"
-            android:background="@drawable/btn_main_uas"
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"/>
 
         <Button
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/divider"
             android:text="@string/pspSelectButtonDocument"
-            android:background="@drawable/btn_main_uas"
+            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"/>
 
 

@@ -5,7 +5,7 @@
     android:paddingTop="70dp"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_teacherStudentsList">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <ListView
         android:id="@+id/lv_psp_teacher_students"
         android:layout_width="match_parent"
