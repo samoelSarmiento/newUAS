@@ -88,8 +88,15 @@
                     android:digits="1234567890"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.55"
                     android:text="" />
+                <ImageButton
+                    android:id="@+id/selHora"
+                    android:src="@drawable/ic_clock"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.15"
+                    android:layout_height="wrap_content" />
+                <!--
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -103,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:text="" />
-
+-->
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"

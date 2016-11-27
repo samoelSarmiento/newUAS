@@ -177,8 +177,8 @@ public class DelivEditFragment extends Fragment {
                 }
 
                 if (dateF.after(dateI)) {
-                    if (!dateFF.after(dateF)) {
-                        if (!dateFI.after(dateI)) {
+                    if (dateFF.after(dateF)) {
+                        if (dateFI.before(dateI)) {
                             DeliverableController deliverableController = new DeliverableController();
                             //Toast.makeText(getActivity(), "Hmm", Toast.LENGTH_LONG).show();
 

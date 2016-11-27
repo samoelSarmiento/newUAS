@@ -68,12 +68,14 @@ public class InvEventDetailFragment extends Fragment {
             invEvento= (List<InvEvent>) bundle.getSerializable("Event");
         }
 
-        if(!botonEdit) invEvBut.setVisibility(View.INVISIBLE);
+        //if(!botonEdit) invEvBut.setVisibility(View.INVISIBLE);
 
         invEv=invEvento.get(0);
         invEvName.setText(invEvento.get(0).getNombre());
         invEvDesc.setText(invEvento.get(0).getDescripcion());
         invEvFecha.setText(invEvento.get(0).getFecha());
+
+
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date=new Date();
@@ -93,7 +95,8 @@ public class InvEventDetailFragment extends Fragment {
 
         if(invEvento.get(0).getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL + "/"+ invEvento.get(0).getImagen()).into(invEvImage);
-
+        else
+            Picasso.with(context).load(Configuration.NOPHOTO_URL).into(invEvImage);
         /*if(invGroup.get(0).getImagen()!=null) {
             Bitmap bmp;
             try{
@@ -121,11 +124,20 @@ public class InvEventDetailFragment extends Fragment {
                 ((Activity)context).setTitle("Grupos de Inv. > Eventos");
             }
         });
+
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+
+        try{
+            date =format2.parse(invEvento.get(0).getFecha());
+
+        }catch (ParseException e){
+        }
+
         Date now = new Date();
-        if(now.after(date)) invEvBut.setVisibility(View.INVISIBLE);
+        if(now.after(date)) invEvBut.setVisibility(View.GONE);
         else {//permisos!
             if(!editEvAvailability)
-                invEvBut.setVisibility(View.INVISIBLE);
+                invEvBut.setVisibility(View.GONE);
         }
 
 

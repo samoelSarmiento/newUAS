@@ -35,7 +35,7 @@ public class InvGroups implements Serializable {
 
     @SerializedName("id_lider")
     @DatabaseField
-    private Integer idLider;
+    private String idLider;
 
     @SerializedName("faculty")
     @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
@@ -47,7 +47,7 @@ public class InvGroups implements Serializable {
     public InvGroups() {
     }
 
-    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, Integer idLider, Specialty faculty, Teacher leader) {
+    public InvGroups(Integer id, String nombre, Integer idEspecialidad, String descripcion, String imagen, String idLider, Specialty faculty, Teacher leader) {
         this.id = id;
         this.nombre = nombre;
         this.idEspecialidad = idEspecialidad;
@@ -98,11 +98,11 @@ public class InvGroups implements Serializable {
         this.imagen = imagen;
     }
 
-    public Integer getIdLider() {
+    public String getIdLider() {
         return idLider;
     }
 
-    public void setIdLider(Integer idLider) {
+    public void setIdLider(String idLider) {
         this.idLider = idLider;
     }
 

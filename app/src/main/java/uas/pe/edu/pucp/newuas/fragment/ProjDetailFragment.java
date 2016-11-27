@@ -60,7 +60,7 @@ public class ProjDetailFragment extends Fragment {
             botonEdit=bundle.getBoolean("BotonEdit");
         }
 
-        if(!botonEdit) projEdit.setVisibility(View.INVISIBLE);
+        //if(!botonEdit) projEdit.setVisibility(View.INVISIBLE);
 
         p=proj.get(0);
         projName.setText(proj.get(0).getNombre());
@@ -70,12 +70,19 @@ public class ProjDetailFragment extends Fragment {
         projDeliv.setText(cantEnt);
         projDesc.setText(proj.get(0).getDescripcion());
 
-        editEvAvailability=true;
 
-        if(proj.get(0).getGroup().getIdLider()!= Configuration.getIdUsuario()){
-            editEvAvailability=false;
-            projEdit.setVisibility(View.INVISIBLE);
+        editEvAvailability = false;
+
+        //permisos
+        projEdit.setVisibility(View.GONE);
+        if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
+            Integer id = Integer.parseInt(proj.get(0).getGroup().getIdLider());
+            if(id== Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente()){
+                editEvAvailability=true;
+                projEdit.setVisibility(View.VISIBLE);
+            }
         }
+
 
         if(Configuration.isAdmin()){
             editEvAvailability=true;

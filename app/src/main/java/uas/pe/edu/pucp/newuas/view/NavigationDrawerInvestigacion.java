@@ -126,6 +126,10 @@ public class NavigationDrawerInvestigacion extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
+        }else if (id == R.id.nav_changeModule) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

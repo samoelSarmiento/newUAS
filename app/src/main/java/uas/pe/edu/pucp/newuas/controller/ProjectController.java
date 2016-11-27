@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.EmptyListFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.fragment.ProjDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.ProjectsFragment;
@@ -75,15 +76,23 @@ public class ProjectController {
                         //Toast.makeText(context, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }*/
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Projects", (Serializable)example);
-                    //bundle.putString("Projects", spj);
+                    if(example.size()==0){
+                        EmptyListFragment spFragment = new EmptyListFragment();
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Investigadores");
+                    }else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Projects", (Serializable)example);
+                        //bundle.putString("Projects", spj);
 
-                    ProjectsFragment spFragment = new ProjectsFragment();
-                    spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Proyectos");
-                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                        ProjectsFragment spFragment = new ProjectsFragment();
+                        spFragment.setArguments(bundle);
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Proyectos");
+                        //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                    }
+
+
 
                 } else {
                     //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);

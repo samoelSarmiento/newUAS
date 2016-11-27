@@ -18,6 +18,7 @@ import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
 import uas.pe.edu.pucp.newuas.fragment.DelivDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.DeliverableFragment;
+import uas.pe.edu.pucp.newuas.fragment.EmptyListFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvEventDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvEventFragment;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
@@ -55,16 +56,23 @@ public class DeliverableController {
                         e.printStackTrace();
                     }
 */
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Deliverables", (Serializable)example);
-                    bundle.putBoolean("editEvAvailability",editEvAvailability);
-                    //bundle.putString("Groups", spj);
+                    if(example.size()==0){
+                        EmptyListFragment spFragment = new EmptyListFragment();
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Investigadores");
+                    }else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Deliverables", (Serializable)example);
+                        bundle.putBoolean("editEvAvailability",editEvAvailability);
+                        //bundle.putString("Groups", spj);
 
-                    DeliverableFragment spFragment = new DeliverableFragment();
-                    spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Proyectos > Entregables");
-                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                        DeliverableFragment spFragment = new DeliverableFragment();
+                        spFragment.setArguments(bundle);
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Proyectos > Entregables");
+                        //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                    }
 
                 } else {
                     //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);
@@ -196,7 +204,7 @@ public class DeliverableController {
             @Override
             public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
 /*
                 try {
                     InvEvent invG = getInvEv(id, context);
