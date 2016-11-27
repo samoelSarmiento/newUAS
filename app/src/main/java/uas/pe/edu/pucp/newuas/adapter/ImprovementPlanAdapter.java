@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,19 @@ public class ImprovementPlanAdapter extends BaseAdapter {
             viewHolder.tvIpUser.setText(items.get(position).getTeacher().getNombre() + " " + items.get(position).getTeacher().getApellidoPaterno() + " " + items.get(position).getTeacher().getApellidoMaterno());
         }
         viewHolder.tvIpStatus.setText(items.get(position).getEstado());
+        if (items.get(position).getEstado().equals("Pendiente")){
+            viewHolder.tvIpStatus.setTextColor(Color.YELLOW);
+
+        }
+        if (items.get(position).getEstado().equals("En Ejecución")){
+            viewHolder.tvIpStatus.setTextColor(Color.rgb(164, 198, 57));
+
+        }
+        if (items.get(position).getEstado().equals("Cerrado")){
+            viewHolder.tvIpStatus.setTextColor(Color.RED);
+
+        }
+
 
 
         return view;

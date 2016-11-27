@@ -47,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="@string/projInitDate" />
 
                 <TextView
@@ -74,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="@string/projFinDate" />
 
                 <TextView
@@ -101,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="@string/projDeliv" />
 
                 <EditText
@@ -123,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="Descripcion" />
 
                 <EditText
@@ -136,6 +140,7 @@
         </LinearLayout>
 
     </ScrollView>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

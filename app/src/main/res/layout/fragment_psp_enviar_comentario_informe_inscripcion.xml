@@ -26,6 +26,7 @@
         android:layout_height="68dp"
         android:layout_gravity="start|top"
         android:text="Comentario anterior"
+        android:textStyle="bold"
         android:maxLength="200"
         android:maxLines="5"
         android:textColor="@color/black"
@@ -50,6 +51,7 @@
         android:layout_gravity="start|center_vertical"
         android:textColor="@color/black"
         android:text="Nuevo comentario"
+        android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
