@@ -81,7 +81,7 @@ public class AppointmentAdapter extends BaseAdapter {
             else if (temp.getEstado().equals("Cancelada") )
                 titleState.setBackgroundColor(Color.parseColor("#d9534f"));
             else if (temp.getEstado().equals("Sugerida") )
-                titleState.setBackgroundColor(Color.parseColor("#ffeb3b"));
+                titleState.setBackgroundColor(Color.parseColor("#FFFF00"));
             else if (temp.getEstado().equals("Rechazada") )
                 titleState.setBackgroundColor(Color.parseColor("#9e9e9e"));
             else if (temp.getEstado().equals("Asistida") )

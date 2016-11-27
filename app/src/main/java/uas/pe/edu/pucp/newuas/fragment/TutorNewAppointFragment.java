@@ -197,7 +197,7 @@ public class TutorNewAppointFragment extends Fragment {
                                             MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                             TutTutorController tsc = new TutTutorController();
                                             //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
-                                            tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
+                                                tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
 
                                         }
                                     }
@@ -372,6 +372,43 @@ public class TutorNewAppointFragment extends Fragment {
                 Log.d("xd", "LLEGUE ACAAA " + posEliminar);
                 horaInicio.remove(posEliminar);
             }
+        }
+
+
+
+
+
+        Calendar today = Calendar.getInstance();
+        int diaToday = today.get(Calendar.DAY_OF_MONTH);
+        int mesToday = today.get(Calendar.MONTH) + 1;
+        int anhoToday = today.get(Calendar.YEAR);
+        int hora = today.get(Calendar.HOUR_OF_DAY); // 24 hour clock
+        int minute  = today.get(Calendar.MINUTE);
+
+        Log.d("xd", "el negrito de ojos claros");
+        List nuevasHoras = new ArrayList<String>();
+        if (diaToday == dia && mesToday == mes && anhoToday == anho){
+            Log.d("xd", "TU MARIDO TE QUIERE???");
+            int pos = 0;
+            for (int i = 0 ; i < horaInicio.size(); i++){
+
+                String horaMinList = horaInicio.get(i);
+                int horaActual = Integer.parseInt(horaMinList.substring(0,2));
+                int minActual = Integer.parseInt(horaMinList.substring(3,5));
+
+                Log.d("xd", " " + horaActual + " " +  minActual + " " +  hora + " " + minute );
+                if (horaActual <= hora ){
+                    Log.d("xd", " QUITAAAAAAAAAAAAAAAALOOOOO" );
+                }
+                else if  (horaActual == hora && minActual < minute) {
+                    Log.d("xd", " QUITAAAAAAAAAAAAAAAALOOOOO" );
+                }
+                else{
+                    nuevasHoras.add(horaInicio.get(i));
+                }
+
+            }
+            return nuevasHoras;
         }
 
         return horaInicio;

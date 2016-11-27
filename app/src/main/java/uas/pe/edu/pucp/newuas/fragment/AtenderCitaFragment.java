@@ -44,6 +44,8 @@ public class AtenderCitaFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_atender_cita, container, false);
         Button btnSolicitar = (Button) view.findViewById(R.id.btnSolicitarAtenderCita);
+        Button btnCancelar = (Button) view.findViewById(R.id.btnCancelarAtenderCita);
+
 
         getActivity().setTitle("Atención de cita");
 
@@ -124,6 +126,20 @@ public class AtenderCitaFragment extends Fragment {
                 }
 
         );
+
+        btnCancelar.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+
+                    public void onClick(View v) {
+                        TutTutorController tsc = new TutTutorController();
+                        tsc.showTopics(getActivity());
+                    }
+                }
+
+        );
+
 
         return view;
     }
