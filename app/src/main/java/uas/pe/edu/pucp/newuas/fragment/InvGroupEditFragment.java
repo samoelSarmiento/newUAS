@@ -72,7 +72,8 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
 
         if(invGroup.getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL +"/"+ invGroup.getImagen()).into(invGImage);
-
+        else
+            Picasso.with(context).load(Configuration.NOPHOTO_URL).into(invGImage);
         saveBut.setOnClickListener(this);
         cancelBut.setOnClickListener(this);
 

@@ -76,7 +76,8 @@ public class ProjDetailFragment extends Fragment {
         //permisos
         projEdit.setVisibility(View.GONE);
         if(Configuration.LOGIN_USER.getUser().getTeacher()!=null){
-            if(proj.get(0).getGroup().getIdLider()== Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente()){
+            Integer id = Integer.parseInt(proj.get(0).getGroup().getIdLider());
+            if(id== Configuration.LOGIN_USER.getUser().getTeacher().getIdDocente()){
                 editEvAvailability=true;
                 projEdit.setVisibility(View.VISIBLE);
             }

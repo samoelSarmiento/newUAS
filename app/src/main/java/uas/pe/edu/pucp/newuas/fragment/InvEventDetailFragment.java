@@ -93,7 +93,8 @@ public class InvEventDetailFragment extends Fragment {
 
         if(invEvento.get(0).getImagen()!=null)
             Picasso.with(context).load(Configuration.BASE_URL + "/"+ invEvento.get(0).getImagen()).into(invEvImage);
-
+        else
+            Picasso.with(context).load(Configuration.NOPHOTO_URL).into(invEvImage);
         /*if(invGroup.get(0).getImagen()!=null) {
             Bitmap bmp;
             try{
