@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.controller.FileDownloadController;
@@ -64,7 +69,18 @@ public class ImprovementPlanViewFragment extends Fragment {
             if (ip.getTeacher() != null)
                 tvIpResp.setText(ip.getTeacher().getNombre() + " " + ip.getTeacher().getApellidoPaterno() + " " + ip.getTeacher().getApellidoMaterno());
 
-            tvIpDate.setText(ip.getFechaImplementacion());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            SimpleDateFormat sdfDisplay = new SimpleDateFormat("dd MMM yyyy", new Locale("es", "ES"));
+
+            try {
+                Date when = sdf.parse(ip.getFechaImplementacion());
+                tvIpDate.setText(sdfDisplay.format(when));
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
             tvIpStatus.setText(ip.getEstado());
 
             btActions.setOnClickListener(new View.OnClickListener() {
