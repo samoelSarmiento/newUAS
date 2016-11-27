@@ -204,7 +204,7 @@ public class DeliverableController {
             @Override
             public void onFailure(Call<StringResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
 /*
                 try {
                     InvEvent invG = getInvEv(id, context);

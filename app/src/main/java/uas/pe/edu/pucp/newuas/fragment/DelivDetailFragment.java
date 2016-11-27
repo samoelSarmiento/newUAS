@@ -159,12 +159,12 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
                 }
             }
         });
-        delivRegObs.setVisibility(View.INVISIBLE);
+        delivRegObs.setVisibility(View.GONE);
 
         //permisos
         if (!editEvAvailability) {
-            delivRegObs.setVisibility(View.INVISIBLE);
-            delivEdit.setVisibility(View.INVISIBLE);
+            delivRegObs.setVisibility(View.GONE);
+            delivEdit.setVisibility(View.GONE);
         }
 
         return view;
@@ -185,7 +185,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
                 if (i == 0) // ultima version
                     if (editEvAvailability) //tenga los permisos
                         delivRegObs.setVisibility(View.VISIBLE);
-                    else delivRegObs.setVisibility(View.INVISIBLE);
+                    else delivRegObs.setVisibility(View.GONE);
                 break;
             }
         }
