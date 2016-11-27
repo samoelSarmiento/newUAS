@@ -35,7 +35,7 @@ public class User implements Serializable {
 
     @SerializedName("investigator")
     @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
-    private InvDocument.Investigator investigator;
+    private Investigator investigator;
 
     @SerializedName("tut_student")
     private TutStudentForPsp tutStudentForPsp;
@@ -46,7 +46,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer idUsuario, Integer idPerfil, String usuario, Accreditor accreditor, Teacher teacher, InvDocument.Investigator investigator) {
+    public User(Integer idUsuario, Integer idPerfil, String usuario, Accreditor accreditor, Teacher teacher, Investigator investigator) {
         this.idUsuario = idUsuario;
         this.idPerfil = idPerfil;
         this.usuario = usuario;
@@ -95,11 +95,11 @@ public class User implements Serializable {
         this.teacher = teacher;
     }
 
-    public InvDocument.Investigator getInvestigator() {
+    public Investigator getInvestigator() {
         return investigator;
     }
 
-    public void setInvestigator(InvDocument.Investigator investigator) {
+    public void setInvestigator(Investigator investigator) {
         this.investigator = investigator;
     }
 
