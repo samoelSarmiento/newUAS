@@ -1,7 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/uas_plomo_fondo"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,13 +13,12 @@
         android:id="@+id/btEnviarComentarioPSPaccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
         android:text="Enviar Comentario"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/btn_main_uas"
-        android:textColor="@color/white"/>
+        android:layout_marginBottom="@dimen/divider"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:theme="@style/AppTheme.Button.uas"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -64,13 +62,13 @@
 
     <Button
         android:id="@+id/btEnviarComentarioPSPcancelar"
-        android:layout_width="104dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:background="@drawable/bg_button_login_selector"
+        android:theme="@style/AppTheme.Button.uas"
         android:text="Aceptar"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginLeft="@dimen/left_right_padding"
         android:textColor="@color/white"
         android:visibility="gone" />
 
