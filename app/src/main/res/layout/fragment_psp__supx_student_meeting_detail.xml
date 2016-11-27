@@ -23,38 +23,45 @@
             <TextView
                 android:text="Reunion"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Codigo"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Alumno"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Fecha"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
             <TextView
                 android:text="Hora Inicio"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Hora Fin"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
             <TextView
                 android:text="Lugar"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
@@ -62,6 +69,7 @@
             <TextView
                 android:layout_marginTop="20dp"
                 android:text="Estado"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
@@ -141,6 +149,7 @@
         <TextView
             android:text="Observaciones"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -154,6 +163,7 @@
         <TextView
             android:textColor="@color/black"
             android:text="Retroalimentacion"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

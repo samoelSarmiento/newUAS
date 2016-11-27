@@ -13,7 +13,7 @@
     <dimen name="psp_item">20sp</dimen>
 
     <!--General divider-->
-    <dimen name="divider">20dp</dimen>
+    <dimen name="divider">10dp</dimen>
     <dimen name="half_divider">10dp</dimen>
     <dimen name="logo_divider">50dp</dimen>
     <dimen name="left_right_padding">50dp</dimen>
