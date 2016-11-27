@@ -20,7 +20,7 @@
             android:text="Nombre del documento"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold" />
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/pspNombreDocumentoFullValor"
@@ -44,7 +44,7 @@
             android:text="Obligatorio"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/psp_esObligatorioValor"
@@ -69,7 +69,7 @@
             android:text="Fecha limite"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/psp_fechaLimitedocValor"
@@ -92,7 +92,7 @@
             android:text="Documento entregado"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/psp_documentoEntregadoValor"
@@ -112,9 +112,9 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="Observacion"
+            android:textColor="@color/black"
             android:layout_weight="0.25"
-            android:gravity="left|center"
-            android:textStyle="bold" />
+            android:gravity="left|center" />
         <TextView
             android:id="@+id/psp_observacionesDocValor"
             android:layout_width="0dp"

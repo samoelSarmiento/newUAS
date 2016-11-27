@@ -2,13 +2,14 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
 /**
  * Created by jemarroquin on 30/10/2016.
  */
-public class Document {
+public class Document implements Serializable{
 
     @SerializedName("IdPSPDocument")
     private

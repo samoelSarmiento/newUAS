@@ -2,11 +2,13 @@ package uas.pe.edu.pucp.newuas.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Andree on 21/10/2016.
  */
 
-public class UserMe {
+public class UserMe implements Serializable{
 
     @SerializedName("IdUsuario")
     private int idUsuario;

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 
 
-public class UserResponse {
+public class UserResponse implements Serializable {
 
     @SerializedName("token")
     private String token;

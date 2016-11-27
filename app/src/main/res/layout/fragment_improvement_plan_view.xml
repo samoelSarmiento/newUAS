@@ -16,6 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpTitle" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpType" />
 
         <TextView
@@ -58,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpFound" />
 
         <TextView
@@ -79,6 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpCause" />
 
         <TextView
@@ -100,6 +104,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpResp" />
 
         <TextView
@@ -120,7 +125,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
+            android:layout_weight="0.32"
+            android:textColor="@color/black"
             android:text="@string/tvIpDate" />
 
         <TextView
@@ -129,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/half_divider"
             android:layout_marginStart="@dimen/half_divider"
-            android:layout_weight="0.7"
+            android:layout_weight="0.68"
             android:text="" />
     </LinearLayout>
 
@@ -142,6 +148,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:textColor="@color/black"
             android:text="@string/tvIpStatus" />
 
         <TextView
