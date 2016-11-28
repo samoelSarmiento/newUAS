@@ -135,11 +135,17 @@ public class TutTutorController {
                     Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Tutoria", (Serializable) generalInformation);
-                    TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
-                    ttc.setArguments(bundle);
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ttc).commit();                }
+                    if (generalInformation.get(0).getScheduleInfo().isEmpty() || generalInformation.get(0).getScheduleInfo() == null){
+                        Toast.makeText(context, "   El tutor no presenta horario disponible", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Tutoria", (Serializable) generalInformation);
+                        TutorNewNoAppointFragment ttc = new TutorNewNoAppointFragment();
+                        ttc.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, ttc).commit();
+                    }
+                  }
                 }
 
             @Override
@@ -169,11 +175,18 @@ public class TutTutorController {
                     Toast.makeText(context, "El tutor no tiene alumnos registrados!", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Tutoria", (Serializable) generalInformation);
-                    TutorNewAppointFragment tnap = new TutorNewAppointFragment();
-                    tnap.setArguments(bundle);
-                    ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();          }
+
+                    if (generalInformation.get(0).getScheduleInfo().isEmpty() || generalInformation.get(0).getScheduleInfo() == null){
+                        Toast.makeText(context, "   El tutor no presenta horario disponible", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Tutoria", (Serializable) generalInformation);
+                        TutorNewAppointFragment tnap = new TutorNewAppointFragment();
+                        tnap.setArguments(bundle);
+                        ((Activity) context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, tnap).commit();
+                    }
+                 }
             }
 
             @Override

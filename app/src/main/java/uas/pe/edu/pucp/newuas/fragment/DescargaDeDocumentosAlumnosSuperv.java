@@ -38,7 +38,7 @@ public class DescargaDeDocumentosAlumnosSuperv extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_descarga_de_documentos_alumnos_superv, container, false);
-        getActivity().setTitle("Documentos ");
+        getActivity().setTitle("Plantillas ");
         lvDocuments  = (ListView) view.findViewById(R.id.psp_documentListSu);
         Bundle bundle = this.getArguments();
         if (bundle != null){

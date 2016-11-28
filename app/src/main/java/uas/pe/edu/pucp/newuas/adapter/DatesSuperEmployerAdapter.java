@@ -48,10 +48,22 @@ public class DatesSuperEmployerAdapter  extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.dates_super_employer_item,null);
         ViewHolder viewHolder = new ViewHolder(view);
-        if(items.get(position).getTiporeunion() == 2 )
-        viewHolder.studentName.setText(items.get(position).getFecha() + "\t" + items.get(position).getHoraInicio()  + "\t"+ "Lugar : " + items.get(position).getLugar() + "\n" + "Con el jefe del alumno: " +  items.get(position).getNombreAlumno());
+
+
+        String auxFecha = items.get(position).getFecha().toString();
+        String aux = auxFecha;//2016-12-11
+        aux = "";
+        aux = aux + auxFecha.charAt(8) + auxFecha.charAt(9) + '/';
+        aux = aux + auxFecha.charAt(5) + auxFecha.charAt(6) + '/';
+        aux = aux + auxFecha.charAt(0) + auxFecha.charAt(1) + auxFecha.charAt(2) + auxFecha.charAt(3);
+
+        if(items.get(position).getTiporeunion() == 2 ) {
+
+            viewHolder.studentName.setText( "Fecha: " + aux + "  " + "Hora: " + items.get(position).getHoraInicio() + "\n" + "Lugar: " + items.get(position).getLugar() + "\n" + "Con el jefe del alumno: " + items.get(position).getNombreAlumno());
+
+        }
         else
-        viewHolder.studentName.setText(items.get(position).getFecha() + "\t" + items.get(position).getHoraInicio()  + "\t"+ "Lugar : " + items.get(position).getLugar() + "\n" + "Con el alumno: " +  items.get(position).getNombreAlumno());
+            viewHolder.studentName.setText( "Fecha: " + aux + "  " + "Hora: " + items.get(position).getHoraInicio() + "\n" + "Lugar: " + items.get(position).getLugar() + "\n" + "Con el alumno: " + items.get(position).getNombreAlumno());
         return view;
     }
     public static class ViewHolder{

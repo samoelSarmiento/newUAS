@@ -53,7 +53,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
                 if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Seleccione al alumno", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PSP_supDocumentFragment spFragment = new PSP_supDocumentFragment();
@@ -160,7 +160,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
                 if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Seleccione al alumno para agendar una reunión con su jefe", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PspGetStudentsForDateEmployer spFragment = new PspGetStudentsForDateEmployer();
@@ -223,7 +223,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<Student>> call, retrofit2.Response<List<Student>> response) {
                 if (response.isSuccessful()) {
                     List<Student> listaEstudiantes = response.body();
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Seleccione al alumno", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("Students", (Serializable) listaEstudiantes);
                     PspStudentSelectAll spFragment = new PspStudentSelectAll();
@@ -343,7 +343,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<DocumentStudentPsp>> call, retrofit2.Response<List<DocumentStudentPsp>> response) {
                 if (response.isSuccessful()) {
                     List<DocumentStudentPsp> listaEstudiantes = response.body();
-                    Toast.makeText(context, "Lista de alumnos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Lista de plantillas", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("DocumentsPSP", (Serializable) listaEstudiantes);
                     DescargaDeDocumentosAlumnosSuperv spFragment = new DescargaDeDocumentosAlumnosSuperv();
@@ -383,7 +383,7 @@ public class PSPControllerJ {
             public void onResponse(Call<List<DocumentStudentPsp>> call, retrofit2.Response<List<DocumentStudentPsp>> response) {
                 if (response.isSuccessful()) {
                     List<DocumentStudentPsp> informe = response.body();
-              //      Toast.makeText(context, "Informe de inscripción", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Detalle del documento", Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("DocumentFullPSP", (Serializable) informe);
                     DocumentPspStudentSupervFragment fragment = new DocumentPspStudentSupervFragment();
