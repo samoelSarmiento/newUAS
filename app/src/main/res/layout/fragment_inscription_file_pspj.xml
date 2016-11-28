@@ -11,7 +11,8 @@
     <ListView
         android:id="@+id/psp_lstItemsIncriptionFiles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="314dp"
+        android:layout_weight="0.03">
     </ListView>
 
     <LinearLayout
