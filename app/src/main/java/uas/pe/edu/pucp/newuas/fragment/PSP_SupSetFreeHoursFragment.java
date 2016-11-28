@@ -28,6 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import retrofit2.Callback;
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.MyToast;
@@ -137,9 +138,46 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
 
-                String format = "%1$02d";
-                hora = String.format(format,hourOfDay) + ":" + minute + "0";
-                txtHour.setText(hora);
+
+
+                String fecha = txtFecha.getText().toString();
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+                    Date dateNow = new Date();
+                    String  dateNowString  =formatDate.format(dateNow);
+
+
+                    if(fecha.matches(dateNowString)){
+
+                        Calendar cal = Calendar.getInstance();
+
+                        int hour  = cal.get(Calendar.HOUR_OF_DAY);
+                        cal.add(Calendar.HOUR_OF_DAY,1);
+                        Log.d("HOUR_NOW","" + hour);
+                        Log.d("HOUROFDAY", "" + hourOfDay);
+
+                        if(hourOfDay < hour){
+
+                            MyToast.makeText(getActivity(),"Error en la hora", Toast.LENGTH_SHORT,MyToast.errorAlert).show();
+
+
+                        }else{
+
+
+                            String format = "%1$02d";
+                            hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                            txtHour.setText(hora);
+
+
+                        }
+
+
+
+                    }
+
+
             }
         };
 

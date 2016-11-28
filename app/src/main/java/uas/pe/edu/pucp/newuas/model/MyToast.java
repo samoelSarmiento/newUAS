@@ -40,7 +40,7 @@ public class MyToast {
 
         Toast toast = new Toast(context);
         
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(view);
         return toast;
