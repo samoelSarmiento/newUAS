@@ -38,8 +38,8 @@ import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 public class InvEventEditFragment extends Fragment implements View.OnClickListener {
 
-    EditText invEvName, invEvDesc, invEvHora, invEvUbic;
-    TextView invEvFecha;
+    EditText invEvName, invEvDesc,  invEvUbic;
+    TextView invEvFecha,invEvHora;
     Button saveBut, cancelBut;
     ImageButton selFecha, selHora;
     InvEvent invEv;
@@ -66,13 +66,14 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         invEvName = (EditText) view.findViewById(R.id.invEvName);
         invEvDesc = (EditText) view.findViewById(R.id.invEvDesc);
         invEvFecha = (TextView) view.findViewById(R.id.invEvFecha);
-        invEvHora = (EditText) view.findViewById(R.id.invEvHora);
+        invEvHora = (TextView) view.findViewById(R.id.invEvHora);
         //invEvMin = (EditText) view.findViewById(R.id.invEvMin);
         invEvUbic = (EditText) view.findViewById(R.id.invEvUbic);
         saveBut = (Button) view.findViewById(R.id.invEvSave);
         cancelBut = (Button) view.findViewById(R.id.invEvCancel);
         selFecha = (ImageButton) view.findViewById(R.id.selFecha);
         invEvImage = (ImageView) view.findViewById(R.id.invEvImage);
+        selHora =(ImageButton)view.findViewById(R.id.selHora);
 
         Bundle bundle = this.getArguments();
         InvEvent invEvent = null;
@@ -109,6 +110,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         hourEv = (String) android.text.format.DateFormat.format("hh", date2);
         //hourEv = Integer.parseInt(hour);
         minuteEv = (String) android.text.format.DateFormat.format("mm", date2);
+        //Toast.makeText(getActivity(),hourEv , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),minuteEv , Toast.LENGTH_SHORT).show();
         //minuteEv = Integer.parseInt(minute);
         day2 = (String) android.text.format.DateFormat.format("dd", date2);
         month2 = (String) android.text.format.DateFormat.format("MM", date2);
@@ -127,6 +130,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         saveBut.setOnClickListener(this);
         cancelBut.setOnClickListener(this);
         selFecha.setOnClickListener(this);
+        selHora.setOnClickListener(this);
 
         selectorListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -227,6 +231,10 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 //Calendar c = Calendar.getInstance();
                 //d.setMinDate(c);
                 d.show(getActivity().getFragmentManager(), "");
+                break;
+            case R.id.selHora:
+                TimePickerDialog t = TimePickerDialog.newInstance(timeListener, Integer.parseInt(hourEv),Integer.parseInt( minuteEv), true);
+                t.show(getActivity().getFragmentManager(), "");
                 break;
         }
     }
