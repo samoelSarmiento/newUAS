@@ -26,6 +26,7 @@
 
                 <TextView
                     android:id="@+id/delivName"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -101,6 +102,8 @@
                 <TextView
                     android:id="@+id/delivFechaIni"
                     android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
                     android:text="" />
@@ -122,6 +125,8 @@
                 <TextView
                     android:id="@+id/delivFechaLim"
                     android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
                     android:text="" />
@@ -143,6 +148,8 @@
 
                 <TextView
                     android:id="@+id/delivAvance"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
@@ -168,6 +175,8 @@
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/delivObs"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
