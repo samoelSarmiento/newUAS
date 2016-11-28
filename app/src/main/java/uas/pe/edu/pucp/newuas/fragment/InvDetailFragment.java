@@ -79,10 +79,11 @@ public class InvDetailFragment extends Fragment {
 
         }*/
 
+        editBut.setVisibility(View.GONE);
         //permisos
         if(Configuration.LOGIN_USER.getUser().getInvestigator()!=null)
-            if(investigator.get(0).getId()!= Configuration.LOGIN_USER.getUser().getInvestigator().getId())
-                editBut.setVisibility(View.GONE);
+            if(investigator.get(0).getId()== Configuration.LOGIN_USER.getUser().getInvestigator().getId())
+                editBut.setVisibility(View.VISIBLE);
 
         if(Configuration.isAdmin())
             editBut.setVisibility(View.VISIBLE);

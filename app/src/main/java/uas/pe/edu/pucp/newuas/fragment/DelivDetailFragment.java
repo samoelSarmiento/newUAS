@@ -28,6 +28,8 @@ import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.InvDocument;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.Investigator;
+import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
 
 /**
@@ -104,8 +106,34 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             String nombre = inv.get(i).getNombre() + " " + inv.get(i).getApePaterno() + " " + inv.get(i).getApeMaterno();
             if (i == 0) resp = resp + nombre;
             else resp = resp + "\n" + nombre;
-
         }
+
+        List<Student> stud = del.getStudent();
+        String resp2 = "";
+        if (stud != null)
+            for (int i = 0; i < stud.size(); i++) {
+                String nombre = stud.get(i).getNombre() + " " + stud.get(i).getApellidoPaterno() + " " + stud.get(i).getApellidoMaterno();
+                if (i == 0) resp2 = resp2 + nombre;
+                else resp2 = resp2 + "\n" + nombre;
+            }
+
+        List<Teacher> teacher = del.getTeacher();
+        String resp3 = "";
+        if (teacher != null)
+            for (int i = 0; i < teacher.size(); i++) {
+                String nombre = teacher.get(i).getNombre() + " " + teacher.get(i).getApellidoPaterno() + " " + teacher.get(i).getApellidoMaterno();
+                if (i == 0) resp3 = resp3 + nombre;
+                else resp3 = resp3 + "\n" + nombre;
+            }
+
+        if (resp != null)
+            if(resp2!=null) resp = resp + "\n" + resp2;
+        else resp = resp2;
+
+        if (resp != null)
+            if(resp3!=null) resp = resp + "\n" + resp3;
+        else resp = resp3;
+
         for (int i = 0; i < versions.size(); i++)
             versiones.add(versions.get(i).getVersion());
 
@@ -161,6 +189,7 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
         });
         delivRegObs.setVisibility(View.GONE);
 
+        if(selectedVersion==null) delivDownload.setVisibility(View.GONE);
         //permisos
         if (!editEvAvailability) {
             delivRegObs.setVisibility(View.GONE);

@@ -48,6 +48,27 @@ public class Deliverable implements Serializable {
     @SerializedName("investigators")
     private List<Investigator> investigator;
 
+    @SerializedName("students")
+    private List<Student> student;
+
+    @SerializedName("teachers")
+    private List<Teacher> teacher;
+
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
+
+    public List<Teacher> getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(List<Teacher> teacher) {
+        this.teacher = teacher;
+    }
 
     public List<InvDocument> getInvDocuments() {
         return invDocuments;
@@ -68,7 +89,7 @@ public class Deliverable implements Serializable {
     public Deliverable() {
     }
 
-    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects, List<InvDocument> invDocuments, List<Investigator> investigator) {
+    public Deliverable(Integer id, String nombre, Integer idProyecto, String fechaInicio, String fechaLimite, Integer porcenAvance, Projects projects, List<InvDocument> invDocuments, List<Investigator> investigator, List<Student> student, List<Teacher> teacher) {
         this.id = id;
         this.nombre = nombre;
         this.idProyecto = idProyecto;
@@ -78,6 +99,8 @@ public class Deliverable implements Serializable {
         this.projects = projects;
         this.invDocuments = invDocuments;
         this.investigator = investigator;
+        this.student = student;
+        this.teacher = teacher;
     }
 
     public Integer getId() {
