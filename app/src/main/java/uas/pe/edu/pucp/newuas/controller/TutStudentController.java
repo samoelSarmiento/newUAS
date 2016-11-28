@@ -253,12 +253,17 @@ public class TutStudentController {
             public void onResponse(Call<List<TUTInfoResponse>> call, Response<List<TUTInfoResponse>> response) {
                 if(response.isSuccessful()) {
                     List<TUTInfoResponse> tutoInformation = response.body();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Tutoria", (Serializable)tutoInformation);
-                    AlumnoNuevaCitaFragment tiFragment = new AlumnoNuevaCitaFragment();
-                    tiFragment.setArguments(bundle);
-                    ((Activity)context).setTitle("Tutoria");
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
+                    if (tutoInformation.get(0).getScheduleInfo().isEmpty() || tutoInformation.get(0).getScheduleInfo() == null){
+                        Toast.makeText(context, "   El tutor no presenta horario disponible", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Tutoria", (Serializable)tutoInformation);
+                        AlumnoNuevaCitaFragment tiFragment = new AlumnoNuevaCitaFragment();
+                        tiFragment.setArguments(bundle);
+                        ((Activity)context).setTitle("Tutoria");
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
+                    }
                 }
                 else
                     Toast.makeText(context, "El alumno no tiene un tutor registrado!", Toast.LENGTH_LONG).show();
