@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
@@ -47,7 +48,8 @@ public class PspGetStudentsForDateEmployer extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                studentSelected = (Student) documentsAdapter.getItem(position);
                Psp_dates_supervisor_jefe psp = new Psp_dates_supervisor_jefe();
-               getFragmentManager().beginTransaction().replace(R.id.fragment_container_psp, psp).commit();
+               (getActivity()).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, psp).commit();
+
             }
         });
         return view ;

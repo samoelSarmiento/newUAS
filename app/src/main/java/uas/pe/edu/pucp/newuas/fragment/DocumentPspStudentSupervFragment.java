@@ -58,6 +58,8 @@ public class DocumentPspStudentSupervFragment extends Fragment {
                          //Descargamos el documento
                          FileDownloadController fdc = new FileDownloadController();
                          fdc.downloadFile(getActivity(), Configuration.BASE_URL + "/"+ rutaDocumento  );
+                    MyToast.makeText(getActivity(), "El documento se esta descargando" , Toast.LENGTH_SHORT, MyToast.errorAlert).show();
+
                 } else {
                     MyToast.makeText(getActivity(), "El alumno aún no sube el documento" , Toast.LENGTH_SHORT, MyToast.errorAlert).show();
                 }

@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginRight="@dimen/left_right_padding"
-        android:layout_marginTop="@dimen/divider"
+        android:layout_marginTop="50dp"
         android:text="Volver"
         android:textColor="@color/white"
         android:theme="@style/AppTheme.Button.uas" />
