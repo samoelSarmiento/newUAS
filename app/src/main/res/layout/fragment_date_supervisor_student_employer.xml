@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginTop="15dp"
         android:text="Nueva Cita"
         android:theme="@style/AppTheme.Button.uas"
         android:textColor="@color/white"/>
@@ -29,25 +30,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/GeneralTextViewsMedium"
-            android:text="Fecha"
+            android:text="Detalle de las citas"
             android:textColor="@color/black"
             android:textStyle="bold" />
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Hora"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
-            android:textStyle="bold" />
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Lugar"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
-            android:textStyle="bold" />
-
 
     </LinearLayout>
 
