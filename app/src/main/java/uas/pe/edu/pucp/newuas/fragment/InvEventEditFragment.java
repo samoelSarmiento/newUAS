@@ -73,6 +73,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         cancelBut = (Button) view.findViewById(R.id.invEvCancel);
         selFecha = (ImageButton) view.findViewById(R.id.selFecha);
         invEvImage = (ImageView) view.findViewById(R.id.invEvImage);
+        selHora =(ImageButton)view.findViewById(R.id.selHora);
 
         Bundle bundle = this.getArguments();
         InvEvent invEvent = null;
@@ -109,6 +110,8 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         hourEv = (String) android.text.format.DateFormat.format("hh", date2);
         //hourEv = Integer.parseInt(hour);
         minuteEv = (String) android.text.format.DateFormat.format("mm", date2);
+        //Toast.makeText(getActivity(),hourEv , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),minuteEv , Toast.LENGTH_SHORT).show();
         //minuteEv = Integer.parseInt(minute);
         day2 = (String) android.text.format.DateFormat.format("dd", date2);
         month2 = (String) android.text.format.DateFormat.format("MM", date2);
@@ -127,6 +130,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         saveBut.setOnClickListener(this);
         cancelBut.setOnClickListener(this);
         selFecha.setOnClickListener(this);
+        selHora.setOnClickListener(this);
 
         selectorListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -230,7 +234,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.selHora:
                 TimePickerDialog t = TimePickerDialog.newInstance(timeListener, Integer.parseInt(hourEv),Integer.parseInt( minuteEv), true);
-                t.show(getActivity().getFragmentManager(), "TimePickerDialog");
+                t.show(getActivity().getFragmentManager(), "");
                 break;
         }
     }
