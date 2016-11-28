@@ -89,7 +89,7 @@ public class ActionAdapter extends BaseAdapter {
 
 
         if (items.get(position).getIdArchivoEntrada() != null || Configuration.isConnected(context)) {
-            viewHolder.btDownloadFileAction.setEnabled(true);
+            viewHolder.btDownloadFileAction.setVisibility(View.VISIBLE);
             if (items.get(position).getActionFile() != null) {
                 final String arch = items.get(position).getActionFile().getFilename();
                 viewHolder.btDownloadFileAction.setOnClickListener(new View.OnClickListener() {
@@ -99,10 +99,10 @@ public class ActionAdapter extends BaseAdapter {
                     }
                 });
             } else {
-                viewHolder.btDownloadFileAction.setEnabled(false);
+                viewHolder.btDownloadFileAction.setVisibility(View.GONE);
             }
         } else {
-            viewHolder.btDownloadFileAction.setEnabled(false);
+            viewHolder.btDownloadFileAction.setVisibility(View.GONE);
         }
         return view;
     }
