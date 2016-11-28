@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:inputType="date"
+            android:textStyle="bold"
             android:ems="10"
             android:id="@+id/et_psp_sup_freehour_date"
             android:enabled="false" />
@@ -77,14 +78,31 @@
             android:textStyle="bold" />
 
 
-        <Spinner
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sp_psp_sup_freehour_hour"
-            android:layout_marginTop="32dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btn_psp_sup_freehour_clock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/transparente"
+                android:src="@drawable/ic_clock"
+                android:scaleType="fitXY"/>
+            <EditText
+                android:id="@+id/et_psp_sup_freehour_hour"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="100dp"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

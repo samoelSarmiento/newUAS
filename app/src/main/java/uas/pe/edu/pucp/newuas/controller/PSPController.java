@@ -195,7 +195,7 @@ public class PSPController {
                     ((Activity) context).setTitle("Fases");
                 } else {
 
-                    Toast.makeText(context, "Error mostrar fases", Toast.LENGTH_SHORT).show();
+                    MyToast.makeText(context, "No hay fases asociadas", Toast.LENGTH_SHORT , MyToast.errorAlert).show();
 
 
                 }

@@ -6,16 +6,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.Timepoint;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,13 +41,17 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public String solicitud;
+    public String hora;
     ImageButton btnCalendar;
     Button btnSolicitar, btnCancel;
-    Spinner spinnerHoras, spinnerTemas;
-    EditText txtFecha;
+    EditText txtFecha, txtHour;
     EditText txtLugar;
+
+
+    ImageButton btnClock;
     int day, year, month;
     private static DatePickerDialog.OnDateSetListener selectorListener;
+    private static TimePickerDialog.OnTimeSetListener selectTimeListener;
     Calendar[] dates = new Calendar[2];
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
@@ -91,9 +100,48 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
         btnSolicitar = (Button) view.findViewById(R.id.btn_psp_sup_freehour_register);
         btnCalendar = (ImageButton) view.findViewById(R.id.btn_psp_sup_freehour_calendar);
         btnCancel =(Button) view.findViewById(R.id.btn_psp_sup_freehour_cancel);
-        spinnerHoras = (Spinner) view.findViewById(R.id.sp_psp_sup_freehour_hour);
+        btnClock = (ImageButton) view.findViewById(R.id.btn_psp_sup_freehour_clock);
+        txtHour = (EditText) view.findViewById(R.id.et_psp_sup_freehour_hour);
 
 
+
+        btnClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = 0;
+
+                Log.d("Hour" , ""+ hour);
+                TimePickerDialog timePicker =  TimePickerDialog.newInstance(selectTimeListener, hour, minute, true);
+
+                timePicker.enableMinutes(false);
+
+                Timepoint timeAt;
+
+                timeAt = new Timepoint(8);
+
+
+
+                Timepoint timeTo =  new Timepoint(21);
+                timePicker.setMinTime(timeAt);
+                timePicker.setMaxTime(timeTo);
+
+                timePicker.show(getActivity().getFragmentManager(), "TimePickerDialog");
+
+            }
+        });
+
+        selectTimeListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+
+                String format = "%1$02d";
+                hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                txtHour.setText(hora);
+            }
+        };
 
 
 
@@ -120,7 +168,7 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
         s.setAdapter(adapter);
 */
         valorFecha[0] = txtFecha.getText().toString();
-        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+
         //  valorTema[0] = spinnerTemas.getSelectedItem().toString();
 
         selectorListener =  new DatePickerDialog.OnDateSetListener(){
@@ -164,23 +212,9 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
 
                     public void onClick(View v) {
 
-                        valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                        solicitud = "Está a punto de confirmar su disponibilidad para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        //Borra los shared preferences
-                                        //regresa al login
-                                        break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //Nada pasa
-                                        break;
-                                }
-                            }
-                        };
+                        solicitud = "Está a punto de confirmar su disponibilidad para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -194,12 +228,19 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
                                         PSPFreeHour freeHour = new PSPFreeHour();
 
 
+                                        if(txtHour.getText().toString().matches("")){
+
+                                            MyToast.makeText(getActivity(),"Asigne una hora valida",Toast.LENGTH_SHORT,MyToast.infoAlert).show();
+                                            return;
+
+
+                                        }
 
 
                                         freeHour.setFecha(valorFecha[0]);
 
 
-                                        freeHour.setHoraIni(valorHora[0]);
+                                        freeHour.setHoraIni(hora);
 
                                         controller.setSupFreeHour(getActivity(),freeHour);
 
