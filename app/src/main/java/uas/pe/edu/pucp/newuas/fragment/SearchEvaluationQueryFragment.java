@@ -1,6 +1,7 @@
 package uas.pe.edu.pucp.newuas.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.provider.Settings;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.EvaluationsController;
+import uas.pe.edu.pucp.newuas.view.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +36,7 @@ public class SearchEvaluationQueryFragment extends Fragment {
 
 
         Button btnSearch = (Button) view.findViewById(R.id.invSave);
+        Button btnCancel = (Button) view.findViewById(R.id.invCancel);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +53,15 @@ public class SearchEvaluationQueryFragment extends Fragment {
 
                 }
 
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         return view;

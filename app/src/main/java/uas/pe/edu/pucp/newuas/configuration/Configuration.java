@@ -24,7 +24,7 @@ public class Configuration {
 
 //"http://52.89.227.55";
     //public static final String BASE_URL = "http://52.89.227.55";//"http://192.168.0.10/internetUAS/public";//"http://52.89.227.55";//"http://10.101.2.35/internetUAS/public";  //"http://52.89.227.55/api";
-    public static final String BASE_URL = "http://192.168.0.11/internetUAS/public";
+    public static final String BASE_URL = "http://52.89.227.55";
     public static final String NOPHOTO_URL = "http://52.89.227.55/images/nofoto.png";
 
     public static final String FILE_URL = BASE_URL + "/uploads/";

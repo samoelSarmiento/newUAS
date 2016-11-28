@@ -37,6 +37,8 @@ public class RetrofitHelper {
 
    // public static String serverURL ="http://192.168.1.54/internetUAS/public/api/"; //http://192.168.1.33/internetUAS/public/api/" //"http://52.89.227.55/api/";
 
+    //public static String serverURL = "http://192.168.0.10/internetUAS/public/api/"; //http://192.168.1.33/internetUAS/public/api/" //"http://52.89.227.55/api/";
+
    // public static String serverURL = "http://192.168.1.54/internetUAS/public/api/"; //http://192.168.1.33/internetUAS/public/api/" //"http://52.89.227.55/api/";
 
 
