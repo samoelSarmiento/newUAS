@@ -25,6 +25,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.EmptyListFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvestigatorsFragment;
 import uas.pe.edu.pucp.newuas.fragment.MeasurePeriodListFragment;
@@ -75,15 +76,23 @@ public class InvestigatorController {
                         e.printStackTrace();
                     }*/
 
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Investigators", (Serializable)example);
-                    //bundle.putString("Investigators", spj);
+                    if(example.size()==0){
+                        EmptyListFragment spFragment = new EmptyListFragment();
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Investigadores");
+                    }else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Investigators", (Serializable)example);
+                        //bundle.putString("Investigators", spj);
 
-                    InvestigatorsFragment spFragment = new InvestigatorsFragment();
-                    spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Investigadores");
-                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                        InvestigatorsFragment spFragment = new InvestigatorsFragment();
+                        spFragment.setArguments(bundle);
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Investigadores");
+                        //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                    }
+
+
 
                 } else {
                     //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);

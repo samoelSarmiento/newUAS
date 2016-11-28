@@ -22,6 +22,7 @@ import uas.pe.edu.pucp.newuas.configuration.Configuration;
 import uas.pe.edu.pucp.newuas.datapersistency.DatabaseHelper;
 import uas.pe.edu.pucp.newuas.datapersistency.RestCon;
 import uas.pe.edu.pucp.newuas.datapersistency.RetrofitHelper;
+import uas.pe.edu.pucp.newuas.fragment.EmptyListFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvEventDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.InvEventFragment;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
@@ -59,16 +60,23 @@ public class InvEventController {
                         e.printStackTrace();
                     }
 */
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Events", (Serializable)example);
-                    bundle.putBoolean("editEvAvailability",editEvAvailability);
-                    //bundle.putString("Groups", spj);
+                    if(example.size()==0){
+                        EmptyListFragment spFragment = new EmptyListFragment();
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Investigadores");
+                    }else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Events", (Serializable)example);
+                        bundle.putBoolean("editEvAvailability",editEvAvailability);
+                        //bundle.putString("Groups", spj);
 
-                    InvEventFragment spFragment = new InvEventFragment();
-                    spFragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
-                    ((Activity)context).setTitle("Grupos de Inv. > Eventos");
-                    //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+                        InvEventFragment spFragment = new InvEventFragment();
+                        spFragment.setArguments(bundle);
+                        ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,spFragment).commit();
+                        ((Activity)context).setTitle("Grupos de Inv. > Eventos");
+                        //Toast.makeText(context, "entre", Toast.LENGTH_SHORT).show();
+
+                    }
 
                 } else {
                     //Toast.makeText(context, response.message(), Toast.LENGTH_SHORT);

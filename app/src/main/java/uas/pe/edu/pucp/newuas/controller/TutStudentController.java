@@ -6,6 +6,7 @@ import android.util.Log;
 import android.content.Context;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ import uas.pe.edu.pucp.newuas.fragment.StudentAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment;
 import uas.pe.edu.pucp.newuas.fragment.TutorInfoFragment;
 import uas.pe.edu.pucp.newuas.adapter.AppointmentAdapter;
+import uas.pe.edu.pucp.newuas.fragment.VisualizarCitaAlumnoFragment;
 import uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment;
 import uas.pe.edu.pucp.newuas.model.AppointmentFilterRequest;
 import uas.pe.edu.pucp.newuas.model.AppointmentRequest;
@@ -186,7 +188,7 @@ public class TutStudentController {
                 List<CitaInfoResponse> generalInformation = response.body();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Tutoria", (Serializable)generalInformation);
-                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                VisualizarCitaAlumnoFragment mp = new VisualizarCitaAlumnoFragment();
                 mp.setArguments(bundle);
                 ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
@@ -195,7 +197,7 @@ public class TutStudentController {
             public void onFailure(Call<List<CitaInfoResponse>> call, Throwable t) {
 
 
-                VisualizarCitaFragment mp = new VisualizarCitaFragment();
+                VisualizarCitaAlumnoFragment mp = new VisualizarCitaAlumnoFragment();
                 ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,mp).commit();
             }
         });
@@ -224,11 +226,14 @@ public class TutStudentController {
                     ((Activity)context).setTitle("Tutoria");
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
                 }
+                else{
+                    Toast.makeText(context, "El alumno no tiene un tutor registrado!", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
             public void onFailure(Call<List<TUTInfoResponse>> call, Throwable t) {
-
+                Toast.makeText(context, "El alumno no tiene un tutor registrado!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -255,11 +260,14 @@ public class TutStudentController {
                     ((Activity)context).setTitle("Tutoria");
                     ((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container ,tiFragment).commit();
                 }
+                else
+                    Toast.makeText(context, "El alumno no tiene un tutor registrado!", Toast.LENGTH_LONG).show();
+
             }
 
             @Override
             public void onFailure(Call<List<TUTInfoResponse>> call, Throwable t) {
-
+                Toast.makeText(context, "   El alumno no tiene tutor asignado", Toast.LENGTH_LONG).show();
             }
         });
 

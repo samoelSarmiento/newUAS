@@ -96,7 +96,7 @@ public class NavigationDrawerTutoriaCoord extends AppCompatActivity
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
-                            //Nada pasa
+                            //Nada pa   sa
                             break;
                     }
                 }

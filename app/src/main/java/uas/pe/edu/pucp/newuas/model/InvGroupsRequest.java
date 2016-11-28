@@ -31,7 +31,7 @@ public class InvGroupsRequest {
         this.idEspecialidad = ig.getIdEspecialidad();
         this.descripcion = ig.getDescripcion();
         this.imagen = ig.getImagen();
-        this.idLider = ig.getIdLider();
+        this.idLider = Integer.parseInt(ig.getIdLider());
         this.faculty = ig.getFaculty();
         this.leader = ig.getLeader();
     }

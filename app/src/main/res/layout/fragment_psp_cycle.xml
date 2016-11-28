@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/pspSpeciality" />
 
         <TextView
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/pspCycleDescription" />
 
         <TextView
@@ -59,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/pspTotalTutors" />
 
         <TextView
@@ -79,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/pspTotalAlumnos" />
 
         <TextView
