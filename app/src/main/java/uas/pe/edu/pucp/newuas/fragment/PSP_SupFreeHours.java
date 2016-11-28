@@ -113,10 +113,8 @@ public class PSP_SupFreeHours extends Fragment implements View.OnClickListener {
 
             case R.id.btn_psp_sup_new_free_hour:
 
-                Fragment fragment = new PSP_SupSetFreeHoursFragment();
-                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
-                        .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
-
+                PSPController controller = new PSPController();
+                controller.createFreehour(getActivity());
                 break;
 
 

@@ -23,6 +23,9 @@ public class PSPPhase implements Serializable {
     @SerializedName("fecha_fin")
     private Date fechaFin;
 
+    @SerializedName("curso")
+    private String curso;
+
 
     public int getIdPhase() {
         return idPhase;
@@ -62,5 +65,13 @@ public class PSPPhase implements Serializable {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 }

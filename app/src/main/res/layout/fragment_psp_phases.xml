@@ -8,9 +8,11 @@
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment">
 
             <ListView
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="@dimen/fragment_margin"
+                android:layout_marginLeft="@dimen/fragment_margin"
                 android:id="@+id/lv_psp_phases"
+                android:layout_marginEnd="@dimen/fragment_margin"
+                android:layout_marginRight="@dimen/fragment_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </ListView>

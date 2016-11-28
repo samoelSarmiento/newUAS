@@ -43,6 +43,7 @@ import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.PSPProcess;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Period;
 import uas.pe.edu.pucp.newuas.model.Psp_dates_supervisor_employers;
@@ -380,6 +381,10 @@ public interface RestCon {
 
     @POST("psp/student/notification/score")
     Call<PSPMessage> notifyScore(@Body PSPNotificationScpreRequest freeHour , @QueryMap Map<String, String> token);
+
+
+    @GET("psp/freehour/create")
+    Call<List<PSPProcess>> createFreehour(@QueryMap Map<String, String> token);
 
 
 

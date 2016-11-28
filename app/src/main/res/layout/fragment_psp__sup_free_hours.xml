@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="@dimen/fragment_top"
+
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_SupFreeHours">
 
 
@@ -17,8 +18,12 @@
         android:theme="@style/AppTheme.Button.uas" />
 
     <ListView
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+
+        android:layout_marginStart="@dimen/fragment_margin"
+        android:layout_marginRight="@dimen/fragment_margin"
+        android:layout_marginLeft="@dimen/fragment_margin"
+        android:layout_marginEnd="@dimen/fragment_margin"
+        android:layout_marginTop="20dp"
         android:id="@+id/lv_psp_sup_freeHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
