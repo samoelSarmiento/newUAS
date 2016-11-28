@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/fragment_top"
     android:gravity="center"
-    android:background="@color/mdtp_neutral_pressed"
+
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment">
 
     <LinearLayout

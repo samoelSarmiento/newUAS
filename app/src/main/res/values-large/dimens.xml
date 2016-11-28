@@ -13,6 +13,11 @@
     <dimen name="info_bg_padding">30dp</dimen>
     <dimen name="psp_item">20sp</dimen>
 
+
+    <!--PSP-->
+    <dimen name="fragment_margin">30dp</dimen>
+
+
     <!--General divider-->
     <dimen name="divider">20dp</dimen>
     <dimen name="half_divider">10dp</dimen>

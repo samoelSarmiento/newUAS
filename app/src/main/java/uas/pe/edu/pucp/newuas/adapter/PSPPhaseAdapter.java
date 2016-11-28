@@ -71,10 +71,10 @@ public class PSPPhaseAdapter extends BaseAdapter{
             viewHolder.tvPspPhaseStartDate = (TextView)  view.findViewById(R.id.tv_item_psp_starting_date);
             viewHolder.tvPspPhaseEndDate = (TextView) view.findViewById(R.id.tv_item_psp_end_date);
             viewHolder.icon  = (ImageView)view.findViewById(R.id.iv_item_psp_phase);
-
+            viewHolder.tvPspPhaseProcess = (TextView) view.findViewById(R.id.tv_item_psp_end_process);
 
             viewHolder.tvPspPhaseNumber .setText( String.valueOf(items.get(position).getNumero()));
-
+            viewHolder.tvPspPhaseProcess.setText(items.get(position).getCurso());
             String stDate = simpleDateFormat.format(items.get(position).getFechaInicio());
             viewHolder.tvPspPhaseStartDate .setText(stDate);
             String enDate = simpleDateFormat.format(items.get(position).getFechaFin());
@@ -91,7 +91,7 @@ public class PSPPhaseAdapter extends BaseAdapter{
 
 
     public static class ViewHolder{
-        TextView tvPspPhaseNumber, tvPspPhaseStartDate, tvPspPhaseEndDate;
+        TextView tvPspPhaseNumber, tvPspPhaseStartDate, tvPspPhaseEndDate , tvPspPhaseProcess;
         ImageView icon;
 
     }

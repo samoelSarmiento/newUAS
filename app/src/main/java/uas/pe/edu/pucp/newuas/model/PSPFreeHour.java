@@ -21,6 +21,13 @@ public class PSPFreeHour implements Serializable {
     @SerializedName("supervisor")
     private PSPSupervisor supervisor;
 
+    @SerializedName("idpspprocess")
+    private int idProcess;
+
+    @SerializedName("Nombre")
+    private String nombre;
+
+
 
     public String getFecha() {
         return fecha;
@@ -53,5 +60,22 @@ public class PSPFreeHour implements Serializable {
 
     public void setIdFreeHour(int idFreeHour) {
         this.idFreeHour = idFreeHour;
+    }
+
+
+    public int getIdProcess() {
+        return idProcess;
+    }
+
+    public void setIdProcess(int idProcess) {
+        this.idProcess = idProcess;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

@@ -111,6 +111,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            style="@style/GeneralTextViewsMedium"
+            android:text="Curso de PSP"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/cmb_psp_sup_freehour_course"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="55dp"
         android:layout_marginLeft="30dp">
