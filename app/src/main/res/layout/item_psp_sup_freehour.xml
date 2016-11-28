@@ -20,6 +20,12 @@
             android:id="@+id/tv_item_psp_sup_freehour_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:text="Curso: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_item_psp_sup_freehour_process"
+            />
 
 
 

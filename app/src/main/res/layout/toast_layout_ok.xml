@@ -2,9 +2,10 @@
     android:id="@+id/toast_layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DEE"
+    android:background="@drawable/toast_background_check"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
     <ImageView
         android:id="@+id/image_toast"
@@ -20,10 +21,10 @@
         android:id="@+id/text_toast"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.6"
+        android:layout_weight="0.8"
         android:gravity="center"
         android:textColor="#328332"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
 </LinearLayout>

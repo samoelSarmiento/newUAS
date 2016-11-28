@@ -30,6 +30,7 @@ import uas.pe.edu.pucp.newuas.fragment.PSP_StudentNewMeetingSup;
 import uas.pe.edu.pucp.newuas.fragment.PSP_StudentxSupMeetingDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupFreeHours;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupMeetingsStudentsFragment;
+import uas.pe.edu.pucp.newuas.fragment.PSP_SupSetFreeHoursFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupStudentNewMeetingFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment;
 import uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingsFragment;
@@ -48,6 +49,7 @@ import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
 import uas.pe.edu.pucp.newuas.model.PSPMessage;
 import uas.pe.edu.pucp.newuas.model.PSPNotificationScpreRequest;
 import uas.pe.edu.pucp.newuas.model.PSPPhase;
+import uas.pe.edu.pucp.newuas.model.PSPProcess;
 import uas.pe.edu.pucp.newuas.model.PSPStudentFinalGrade;
 import uas.pe.edu.pucp.newuas.model.Status;
 import uas.pe.edu.pucp.newuas.model.Student;
@@ -1288,6 +1290,75 @@ public class PSPController {
 
 
             return true;
+
+    }
+
+
+    public boolean createFreehour(final Context context){
+
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Map<String, String> token = new HashMap<>();
+        token.put("token", Configuration.LOGIN_USER.getToken());
+
+
+
+        Call<List<PSPProcess>> call =  restCon.createFreehour(token);
+
+        call.enqueue(new Callback<List<PSPProcess>>() {
+            @Override
+            public void onResponse(Call<List<PSPProcess>> call, Response<List<PSPProcess>> response) {
+
+                if(response.isSuccessful()){
+
+                    ArrayList<PSPProcess> process = (ArrayList<PSPProcess>)response.body();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("process", process);
+
+                    Fragment fragment = new PSP_SupSetFreeHoursFragment();
+                    fragment.setArguments(bundle);
+
+
+                    ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+
+
+
+
+
+
+
+
+                }else{
+
+                    try{
+                        PSPMessage message =  (PSPMessage)response.body();
+                        Log.d("SETFREEHOUR",message.getMesssage());
+
+                    }catch (Exception ex){
+
+
+
+
+                    }
+
+
+
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PSPProcess>> call, Throwable t) {
+
+            }
+        });
+
+
+        return true;
 
     }
 

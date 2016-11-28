@@ -64,10 +64,13 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvFecha = (TextView) view.findViewById(R.id.tv_item_psp_sup_freehour_date);
             viewHolder.tvHora = (TextView) view.findViewById(R.id.tv_item_psp_sup_freehour_hour);
+            viewHolder.tvCurso = (TextView) view.findViewById(R.id.tv_item_psp_sup_freehour_process);
+
 
             Date date  =simpleDateFormat.parse(items.get(position).getFecha());
             viewHolder.tvFecha.append(simpleDateFormat2.format(date));
             viewHolder.tvHora.append(items.get(position).getHoraIni() + ":00");
+            viewHolder.tvCurso.append(items.get(position).getNombre());
 
 
         } catch (Exception ex) {
@@ -87,6 +90,6 @@ public class PSPSupFreeHoursAdapter  extends BaseAdapter {
 
 
     public static class ViewHolder {
-        TextView tvFecha, tvHora;
+        TextView tvFecha, tvHora, tvCurso;
 
     }}

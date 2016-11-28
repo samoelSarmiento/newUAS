@@ -24,15 +24,19 @@ import com.wdullaer.materialdatetimepicker.time.Timepoint;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import retrofit2.Callback;
 import uas.pe.edu.pucp.newuas.R;
+import uas.pe.edu.pucp.newuas.adapter.SupSetFreehourCoursesSpinnerAdapter;
 import uas.pe.edu.pucp.newuas.controller.PSPController;
 import uas.pe.edu.pucp.newuas.model.MyToast;
 import uas.pe.edu.pucp.newuas.model.PSPFreeHour;
 import uas.pe.edu.pucp.newuas.model.PSPMeetingRequest;
+import uas.pe.edu.pucp.newuas.model.PSPProcess;
 
 /**
 
@@ -46,7 +50,7 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
     Button btnSolicitar, btnCancel;
     EditText txtFecha, txtHour;
     EditText txtLugar;
-
+    Spinner courseSpinner;
 
     ImageButton btnClock;
     int day, year, month;
@@ -56,6 +60,7 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
     Calendar maxTime = Calendar.getInstance();
+    ArrayList<PSPProcess> processList;
 
 
     public PSP_SupSetFreeHoursFragment() {
@@ -96,13 +101,28 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
 
 
 
+
+
+
         txtFecha = (EditText) view.findViewById(R.id.et_psp_sup_freehour_date);
         btnSolicitar = (Button) view.findViewById(R.id.btn_psp_sup_freehour_register);
         btnCalendar = (ImageButton) view.findViewById(R.id.btn_psp_sup_freehour_calendar);
         btnCancel =(Button) view.findViewById(R.id.btn_psp_sup_freehour_cancel);
         btnClock = (ImageButton) view.findViewById(R.id.btn_psp_sup_freehour_clock);
         txtHour = (EditText) view.findViewById(R.id.et_psp_sup_freehour_hour);
+        courseSpinner =  (Spinner) view.findViewById(R.id.cmb_psp_sup_freehour_course);
 
+
+
+        if (getArguments() != null){
+
+            processList =  (ArrayList<PSPProcess>) getArguments().getSerializable("process");
+            SupSetFreehourCoursesSpinnerAdapter adapter =  new SupSetFreehourCoursesSpinnerAdapter(getActivity(),android.R.layout.simple_spinner_item,processList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            courseSpinner.setAdapter(adapter);
+
+
+        }
 
 
         btnClock.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +157,46 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
 
-                String format = "%1$02d";
-                hora = String.format(format,hourOfDay) + ":" + minute + "0";
-                txtHour.setText(hora);
+
+
+                String fecha = txtFecha.getText().toString();
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+                    Date dateNow = new Date();
+                    String  dateNowString  =formatDate.format(dateNow);
+
+
+                    if(fecha.matches(dateNowString)){
+
+                        Calendar cal = Calendar.getInstance();
+
+                        int hour  = cal.get(Calendar.HOUR_OF_DAY);
+                        cal.add(Calendar.HOUR_OF_DAY,1);
+                        Log.d("HOUR_NOW","" + hour);
+                        Log.d("HOUROFDAY", "" + hourOfDay);
+
+                        if(hourOfDay < hour){
+
+                            MyToast.makeText(getActivity(),"Error en la hora", Toast.LENGTH_SHORT,MyToast.errorAlert).show();
+
+
+                        }else{
+
+
+                            String format = "%1$02d";
+                            hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                            txtHour.setText(hora);
+
+
+                        }
+
+
+
+                    }
+
+
             }
         };
 
@@ -160,7 +217,7 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
             e.printStackTrace();
         }
 
-        String[] lista = {"tema 1", "tema 2", "tema 3"};
+        final String[] lista = {"tema 1", "tema 2", "tema 3"};
 /*
         Spinner s = (Spinner) view.findViewById(R.id.cmb_psp_meeting_topic);
         s.setAdapter(null);
@@ -230,15 +287,23 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
 
                                         if(txtHour.getText().toString().matches("")){
 
-                                            MyToast.makeText(getActivity(),"Asigne una hora valida",Toast.LENGTH_SHORT,MyToast.infoAlert).show();
+                                            MyToast.makeText(getActivity(),"Asignar una hora valida",Toast.LENGTH_SHORT,MyToast.infoAlert).show();
                                             return;
 
 
                                         }
 
 
+                                        int position = courseSpinner.getSelectedItemPosition();
+                                        position = position -1;
+                                        if(position < 0 ) {
+                                            MyToast.makeText(getActivity(), "Escoja un curso", Toast.LENGTH_SHORT, MyToast.infoAlert).show();
+                                            return;
+                                        }
+
                                         freeHour.setFecha(valorFecha[0]);
 
+                                        freeHour.setIdProcess(processList.get(position).getIdProcess());
 
                                         freeHour.setHoraIni(hora);
 
