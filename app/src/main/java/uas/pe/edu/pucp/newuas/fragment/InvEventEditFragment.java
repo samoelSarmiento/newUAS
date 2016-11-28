@@ -38,8 +38,8 @@ import uas.pe.edu.pucp.newuas.model.SuggestionRequest;
 
 public class InvEventEditFragment extends Fragment implements View.OnClickListener {
 
-    EditText invEvName, invEvDesc, invEvHora, invEvUbic;
-    TextView invEvFecha;
+    EditText invEvName, invEvDesc,  invEvUbic;
+    TextView invEvFecha,invEvHora;
     Button saveBut, cancelBut;
     ImageButton selFecha, selHora;
     InvEvent invEv;
@@ -66,7 +66,7 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
         invEvName = (EditText) view.findViewById(R.id.invEvName);
         invEvDesc = (EditText) view.findViewById(R.id.invEvDesc);
         invEvFecha = (TextView) view.findViewById(R.id.invEvFecha);
-        invEvHora = (EditText) view.findViewById(R.id.invEvHora);
+        invEvHora = (TextView) view.findViewById(R.id.invEvHora);
         //invEvMin = (EditText) view.findViewById(R.id.invEvMin);
         invEvUbic = (EditText) view.findViewById(R.id.invEvUbic);
         saveBut = (Button) view.findViewById(R.id.invEvSave);
@@ -227,6 +227,10 @@ public class InvEventEditFragment extends Fragment implements View.OnClickListen
                 //Calendar c = Calendar.getInstance();
                 //d.setMinDate(c);
                 d.show(getActivity().getFragmentManager(), "");
+                break;
+            case R.id.selHora:
+                TimePickerDialog t = TimePickerDialog.newInstance(timeListener, Integer.parseInt(hourEv),Integer.parseInt( minuteEv), true);
+                t.show(getActivity().getFragmentManager(), "TimePickerDialog");
                 break;
         }
     }
