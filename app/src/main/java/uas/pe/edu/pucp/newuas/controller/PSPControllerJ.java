@@ -103,7 +103,7 @@ public class PSPControllerJ {
 
                 } else {
 
-                    Toast.makeText(context, "Hubo un problema", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "El alumno aún no registra su informe", Toast.LENGTH_SHORT).show();
                 }
             }
 
