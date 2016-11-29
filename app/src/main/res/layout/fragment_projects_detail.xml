@@ -51,6 +51,8 @@
 
                 <TextView
                     android:id="@+id/projInitDate"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
@@ -73,6 +75,8 @@
 
                 <TextView
                     android:id="@+id/projFinDate"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
@@ -95,6 +99,8 @@
 
                 <TextView
                     android:id="@+id/projDeliv"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
@@ -117,6 +123,8 @@
 
                 <TextView
                     android:id="@+id/projDesc"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"

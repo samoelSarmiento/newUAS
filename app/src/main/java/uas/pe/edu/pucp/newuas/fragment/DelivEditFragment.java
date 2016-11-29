@@ -19,12 +19,15 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import uas.pe.edu.pucp.newuas.R;
 import uas.pe.edu.pucp.newuas.controller.DeliverableController;
 import uas.pe.edu.pucp.newuas.model.Deliverable;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.MyToast;
+import uas.pe.edu.pucp.newuas.model.StudentInfoResponse;
+import uas.pe.edu.pucp.newuas.model.Teacher;
 
 /**
  * Created by Andree on 20/11/2016.
@@ -77,6 +80,44 @@ public class DelivEditFragment extends Fragment {
 
         delivName.setText(deliv.getNombre());
         delivFechaIni.setText(deliv.getFechaInicio());
+
+        List<Investigator> inv = deliv.getInvestigator();
+        String resp = "";
+        for (int i = 0; i < inv.size(); i++) {
+            String nombre = inv.get(i).getNombre() + " " + inv.get(i).getApePaterno() + " " + inv.get(i).getApeMaterno();
+            if (i == 0) resp = resp + nombre;
+            else resp = resp + "\n" + nombre;
+        }
+
+        List<StudentInfoResponse> stud = deliv.getStudent();
+        //Toast.makeText(getActivity(), stud.size()+"", Toast.LENGTH_SHORT).show();
+        String resp2 = "";
+        if (stud != null)
+            for (int i = 0; i < stud.size(); i++) {
+                String nombre = stud.get(i).getNombre() + " " + stud.get(i).getApePaterno() + " " + stud.get(i).getApeMaterno();
+                if (i == 0) resp2 = resp2 + nombre;
+                else resp2 = resp2 + "\n" + nombre;
+            }
+
+        List<Teacher> teacher = deliv.getTeacher();
+        //Toast.makeText(getActivity(), teacher.size()+"", Toast.LENGTH_SHORT).show();
+        String resp3 = "";
+        if (teacher != null)
+            for (int i = 0; i < teacher.size(); i++) {
+                String nombre = teacher.get(i).getNombre() + " " + teacher.get(i).getApellidoPaterno() + " " + teacher.get(i).getApellidoMaterno();
+                if (i == 0) resp3 = resp3 + nombre;
+                else resp3 = resp3 + "\n" + nombre;
+            }
+
+        if(stud.size()!=0)resp = resp + "\n" + resp2;
+
+        if (teacher.size()!=0) resp=resp + "\n" + resp3;
+
+
+        delivResp.setText(resp);
+
+
+
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         dateI = new Date();
         try {

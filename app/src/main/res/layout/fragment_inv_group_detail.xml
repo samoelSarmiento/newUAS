@@ -53,6 +53,8 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/invGroupEsp"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text=""
                     android:layout_weight="0.7"
                     android:layout_width="0dp"
@@ -76,6 +78,8 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/invGroupDesc"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text=""
                     android:layout_weight="0.7"
                     android:layout_width="0dp"
