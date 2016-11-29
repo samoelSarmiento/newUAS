@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -29,6 +30,7 @@ import uas.pe.edu.pucp.newuas.model.InvDocument;
 import uas.pe.edu.pucp.newuas.model.InvEvent;
 import uas.pe.edu.pucp.newuas.model.Investigator;
 import uas.pe.edu.pucp.newuas.model.Student;
+import uas.pe.edu.pucp.newuas.model.StudentInfoResponse;
 import uas.pe.edu.pucp.newuas.model.Teacher;
 import uas.pe.edu.pucp.newuas.view.NavigationDrawerAcreditacion;
 
@@ -108,16 +110,18 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
             else resp = resp + "\n" + nombre;
         }
 
-        List<Student> stud = del.getStudent();
+        List<StudentInfoResponse> stud = del.getStudent();
+        //Toast.makeText(getActivity(), stud.size()+"", Toast.LENGTH_SHORT).show();
         String resp2 = "";
         if (stud != null)
             for (int i = 0; i < stud.size(); i++) {
-                String nombre = stud.get(i).getNombre() + " " + stud.get(i).getApellidoPaterno() + " " + stud.get(i).getApellidoMaterno();
+                String nombre = stud.get(i).getNombre() + " " + stud.get(i).getApePaterno() + " " + stud.get(i).getApeMaterno();
                 if (i == 0) resp2 = resp2 + nombre;
                 else resp2 = resp2 + "\n" + nombre;
             }
 
         List<Teacher> teacher = del.getTeacher();
+        //Toast.makeText(getActivity(), teacher.size()+"", Toast.LENGTH_SHORT).show();
         String resp3 = "";
         if (teacher != null)
             for (int i = 0; i < teacher.size(); i++) {
@@ -126,13 +130,17 @@ public class DelivDetailFragment extends Fragment implements AdapterView.OnItemS
                 else resp3 = resp3 + "\n" + nombre;
             }
 
-        if (resp != null)
+        if(stud.size()!=0)resp = resp + "\n" + resp2;
+
+        if (teacher.size()!=0) resp=resp + "\n" + resp3;
+
+        /*if (resp != null)
             if(resp2!=null) resp = resp + "\n" + resp2;
         else resp = resp2;
 
         if (resp != null)
             if(resp3!=null) resp = resp + "\n" + resp3;
-        else resp = resp3;
+        else resp = resp3;*/
 
         for (int i = 0; i < versions.size(); i++)
             versiones.add(versions.get(i).getVersion());

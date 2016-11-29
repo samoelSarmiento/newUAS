@@ -34,11 +34,31 @@ public class StudentInfoResponse implements Serializable {
     @SerializedName("updated_at")
     private String updatedAt;
 
+    public StudentInfoResponse() {
+    }
+
+    public StudentInfoResponse(Integer id, Integer idUsuario, String codigo, String nombre, String apePaterno, String apeMaterno, String correo, Integer idEspecialidad, Integer idTutoria, Object deletedAt, String createdAt, String updatedAt) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.correo = correo;
+        this.idEspecialidad = idEspecialidad;
+        this.idTutoria = idTutoria;
+        this.deletedAt = deletedAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     /**
      *
      * @return
      * The id
      */
+
+
     public Integer getId() {
         return id;
     }
