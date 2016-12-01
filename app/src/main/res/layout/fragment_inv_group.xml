@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/fragment_top"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/fragment_top">
 
 
     <ListView
         android:id="@+id/invGroupList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

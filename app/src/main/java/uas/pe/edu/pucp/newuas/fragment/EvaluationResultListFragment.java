@@ -31,7 +31,6 @@ public class EvaluationResultListFragment extends Fragment {
 
     ListView lvEvaluations;
     EvaluationAdapter adapter;
-    EvaluationNameStateAdapter evaluacionNameState;
     int ipId = 0;
 
     public EvaluationResultListFragment() {
@@ -56,12 +55,13 @@ public class EvaluationResultListFragment extends Fragment {
             lvEvaluations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Evaluation per = (Evaluation) adapter.getItem(position);
+                    Evaluation per = adapter.getItem(position);
                     Log.d("evaluation", per.getId() + "");
                     Bundle eva = new Bundle();
-                    eva.putSerializable("Evaluacion", (Serializable) per);
+                    eva.putSerializable("Evaluacion", per);
                     EvaluationFragment fragment = new EvaluationFragment();
-                    getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_tutor, fragment).commit();
+                    fragment.setArguments(eva);
+                    getActivity().getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
                 }
             });
         }

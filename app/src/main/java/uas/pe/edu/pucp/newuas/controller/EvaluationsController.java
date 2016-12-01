@@ -56,16 +56,16 @@ public class EvaluationsController {
 
                 if (response.isSuccessful()) {
                     List<Evaluation> evaluation = response.body();
-                    List<Evaluation> aux=evaluation;
+                    List<Evaluation> aux = evaluation;
                     System.out.println("lista completa");
 
                     Bundle bundle = new Bundle();
                     //bundle.putSerializable("evaluation", (Serializable)evaluation);
-                    bundle.putSerializable("evaluation", (Serializable)aux);
+                    bundle.putSerializable("evaluation", (Serializable) aux);
                     EvaluationResultListFragment fragment = new EvaluationResultListFragment();
                     fragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction()
-                            .addToBackStack(null).replace(R.id.fragment_container,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container, fragment).commit();
                     //bundle.putString("Investigators", spj);
 
                     /*InvestigatorsFragment spFragment = new InvestigatorsFragment();
@@ -123,16 +123,16 @@ public class EvaluationsController {
                     List<Evaluation> evaluationes = response.body();
 
                     //resultado=buscarEnLista(finalList(),name,estado);
-                    resultado=buscarEnLista(evaluationes,name,estado);
+                    resultado = buscarEnLista(evaluationes, name, estado);
                     System.out.println("lista completa");
 
                     Bundle bundle = new Bundle();
                     //bundle.putSerializable("evaluation", (Serializable)evaluation);
-                    bundle.putSerializable("evaluation", (Serializable)resultado);
+                    bundle.putSerializable("evaluation", (Serializable) resultado);
                     EvaluationResultListFragment fragment = new EvaluationResultListFragment();
                     fragment.setArguments(bundle);
-                    ((Activity)context).getFragmentManager().beginTransaction()
-                            .addToBackStack(null).replace(R.id.fragment_container,fragment).commit();
+                    ((Activity) context).getFragmentManager().beginTransaction()
+                            .addToBackStack(null).replace(R.id.fragment_container_tutor, fragment).commit();
                 }
             }
 
@@ -144,9 +144,9 @@ public class EvaluationsController {
         return list;
     }
 
-    public List<Evaluation> buscarEnLista(List<Evaluation> lista, String nombre, int estado){
+    public List<Evaluation> buscarEnLista(List<Evaluation> lista, String nombre, int estado) {
         ArrayList<Evaluation> aux = new ArrayList<Evaluation>();
-        if(estado == 0 || estado == 1) {
+        if (estado == 0 || estado == 1) {
             if (nombre.equals("")) {
                 for (int i = 0; i < lista.size(); i++) {
                     if (estado == lista.get(i).getEstado()) aux.add(lista.get(i));
@@ -157,23 +157,37 @@ public class EvaluationsController {
                         aux.add(lista.get(i));
                 }
             }
-        }
-        else
-            for (int i=0;i<lista.size();i++){
+        } else
+            for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getNombre().contains(nombre)) aux.add(lista.get(i));
             }
-        if (aux.size()==0) return null;
+        if (aux.size() == 0) return null;
         else
-        return aux;
+            return aux;
     }
 
-    public List<Evaluation> finalList (){
+    public List<Evaluation> finalList() {
 
         Evaluation e1, e2, e3;
 
-        e1 = new Evaluation(); e1.setNombre("examen uno"); e1.setEstado(0); e1.setId(1000); e1.setFecha_Inicio("2016-11-10"); e1.setFecha_Fin("2016-12-15");
-        e2 = new Evaluation(); e2.setNombre("examen dos"); e2.setEstado(1); e2.setId(2000); e2.setFecha_Inicio("2016-11-12"); e2.setFecha_Fin("2016-12-20");
-        e3 = new Evaluation(); e3.setNombre("examen tres"); e3.setEstado(1); e3.setId(3000); e3.setFecha_Inicio("2016-11-13"); e3.setFecha_Fin("2016-12-30");
+        e1 = new Evaluation();
+        e1.setNombre("examen uno");
+        e1.setEstado(0);
+        e1.setId(1000);
+        e1.setFecha_Inicio("2016-11-10");
+        e1.setFecha_Fin("2016-12-15");
+        e2 = new Evaluation();
+        e2.setNombre("examen dos");
+        e2.setEstado(1);
+        e2.setId(2000);
+        e2.setFecha_Inicio("2016-11-12");
+        e2.setFecha_Fin("2016-12-20");
+        e3 = new Evaluation();
+        e3.setNombre("examen tres");
+        e3.setEstado(1);
+        e3.setId(3000);
+        e3.setFecha_Inicio("2016-11-13");
+        e3.setFecha_Fin("2016-12-30");
         ArrayList<Evaluation> lista = new ArrayList<>();
         lista.add(e1);
         lista.add(e2);

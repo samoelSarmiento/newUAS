@@ -2,21 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment"
     android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
     android:paddingTop="@dimen/fragment_top"
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="@dimen/general_bg_padding"
-        android:layout_marginLeft="30dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -27,47 +26,40 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="15dp"
-        >
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/et_psp_meeting_date"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:inputType="date"
             android:ems="10"
-            android:id="@+id/et_psp_meeting_date"
-            />
+            android:inputType="date" />
 
 
         <ImageButton
+            android:id="@+id/btn_psp_meeting_calendar"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_calendar"
-            android:background="@android:color/transparent"
             android:layout_marginLeft="230dp"
-            android:id="@+id/btn_psp_meeting_calendar"
-            />
-
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_calendar" />
 
 
     </RelativeLayout>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -77,22 +69,22 @@
 
 
         <Spinner
+            android:id="@+id/cmb_psp_meeting_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cmb_psp_meeting_hour"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="5dp"
-            android:entries="@array/hora"/>
+            android:layout_marginTop="32dp"
+            android:entries="@array/hora" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -101,13 +93,12 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/cmb_psp_meeting_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cmb_psp_meeting_topic"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            />
+            android:layout_marginTop="32dp" />
 
 
     </LinearLayout>
@@ -115,27 +106,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="55dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_psp_cancel_meeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/btn_psp_cancel_meeting" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
         <Button
-            android:layout_marginLeft="55dp"
+            android:id="@+id/btn_psp_register_meeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
             android:text="Registrar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/btn_psp_register_meeting" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
     </LinearLayout>

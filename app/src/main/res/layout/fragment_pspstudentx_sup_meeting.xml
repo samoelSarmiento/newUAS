@@ -8,13 +8,15 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
-        android:layout_marginEnd="@dimen/fragment_margin"
-        android:layout_marginRight="@dimen/fragment_margin"
-        android:layout_marginLeft="@dimen/fragment_margin"
-        android:layout_marginStart="@dimen/fragment_margin"
         android:id="@+id/lv_psp_student_sup_meetings"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fragment_margin"
+        android:layout_marginLeft="@dimen/fragment_margin"
+        android:layout_marginRight="@dimen/fragment_margin"
+        android:layout_marginStart="@dimen/fragment_margin"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

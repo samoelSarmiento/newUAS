@@ -15,12 +15,12 @@
 
         <TextView
             android:id="@+id/tvIdent"
-            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:text="@string/tvIdentificador"
             android:textColor="@color/black"
-            android:text="@string/tvIdentificador" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvValueIdent"
@@ -39,9 +39,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:textStyle="bold"
+            android:text="@string/tvDescription"
             android:textColor="@color/black"
-            android:text="@string/tvDescription" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvValueDescription"

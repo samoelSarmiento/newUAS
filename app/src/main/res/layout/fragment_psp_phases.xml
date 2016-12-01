@@ -1,22 +1,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/fragment_top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/fragment_top"
 
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_phasesFragment">
 
-            <ListView
-                android:layout_marginStart="@dimen/fragment_margin"
-                android:layout_marginLeft="@dimen/fragment_margin"
-                android:id="@+id/lv_psp_phases"
-                android:layout_marginEnd="@dimen/fragment_margin"
-                android:layout_marginRight="@dimen/fragment_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </ListView>
+    <ListView
+        android:id="@+id/lv_psp_phases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fragment_margin"
+        android:layout_marginLeft="@dimen/fragment_margin"
+        android:layout_marginRight="@dimen/fragment_margin"
+        android:layout_marginStart="@dimen/fragment_margin"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
+    </ListView>
 
 
 </LinearLayout>

@@ -10,6 +10,7 @@
         android:id="@+id/lv_psp_teacher_students"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       />
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider" />
 
 </LinearLayout>

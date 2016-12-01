@@ -2,21 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment"
     android:orientation="vertical"
     android:paddingBottom="@dimen/fragment_top"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
     android:paddingTop="@dimen/fragment_top"
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.AlumnoNuevaCitaFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/general_bg_padding"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -27,49 +26,41 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="15dp"
-       >
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/dateText"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            android:inputType="date"
             android:ems="10"
-            android:id="@+id/dateText"
-        />
+            android:inputType="date" />
 
 
         <ImageButton
+            android:id="@+id/btnCalendar"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_calendar"
-            android:background="@android:color/transparent"
             android:layout_marginLeft="440dp"
-            android:id="@+id/btnCalendar"
-            />
-
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_calendar" />
 
 
     </RelativeLayout>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginTop="40dp"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -79,21 +70,21 @@
 
 
         <Spinner
+            android:id="@+id/spinnerHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerHora"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/left_right_padding"
-            android:layout_marginRight="@dimen/left_right_padding"/>
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginTop="32dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="40dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -102,13 +93,12 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/spinnerTema"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerTema"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            />
+            android:layout_marginTop="32dp" />
 
 
     </LinearLayout>
@@ -116,27 +106,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="85dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/buttonCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/buttonCancelar" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
         <Button
-            android:layout_marginLeft="55dp"
+            android:id="@+id/buttonSolicitar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
             android:text="Solicitar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/buttonSolicitar" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
     </LinearLayout>
