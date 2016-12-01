@@ -16,11 +16,11 @@
         <TextView
             android:id="@+id/codigoPspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Codigo: " />
+            android:text="Codigo: "
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/codigoPspStudentTutValue"
@@ -37,11 +37,11 @@
         <TextView
             android:id="@+id/nombrePspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Nombre" />
+            android:text="Nombre"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/nombrePspStudentTutValue"
@@ -58,11 +58,11 @@
         <TextView
             android:id="@+id/apellidoPspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Apellido" />
+            android:text="Apellido"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/apellidoPspStudentTutValue"
@@ -80,11 +80,11 @@
         <TextView
             android:id="@+id/correoPspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Correo" />
+            android:text="Correo"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/correoPspStudentTutValue"
@@ -102,11 +102,11 @@
         <TextView
             android:id="@+id/grupoPspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Grupo" />
+            android:text="Grupo"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/grupoPspStudentTutValue"
@@ -126,11 +126,11 @@
         <TextView
             android:id="@+id/especialidadPspStudentTut"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
-            android:text="Especialidad" />
+            android:text="Especialidad"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/especialidadPspStudentTutValue"

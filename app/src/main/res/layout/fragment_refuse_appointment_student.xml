@@ -2,37 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.RefuseAppointmentStudentFragment"
     android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
     android:paddingTop="40dp"
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.RefuseAppointmentStudentFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="10dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
             android:text="Si va a cancelar/rechazar una cita cita, indique un motivo"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
     </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -41,13 +38,12 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/spinnerTema"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerTema"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-         />
+            android:layout_marginTop="32dp" />
 
 
     </LinearLayout>
@@ -55,27 +51,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="55dp"
-        android:layout_marginLeft="30dp">
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/buttonCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:id="@+id/buttonCancelar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
 
 
         <Button
-            android:layout_marginLeft="55dp"
+            android:id="@+id/buttonSolicitar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
             android:text="Aceptar"
-            android:id="@+id/buttonSolicitar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
 
 
     </LinearLayout>

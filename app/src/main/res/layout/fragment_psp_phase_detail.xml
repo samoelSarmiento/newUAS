@@ -1,98 +1,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:paddingTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_phaseDetailFragment">
 
     <LinearLayout
-        android:layout_weight="0.5"
         android:layout_width="0dp"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
 
         <TextView
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="Numero"
             android:textColor="@color/black"
+            android:textStyle="bold" />
 
-            android:text="Numero" />
         <TextView
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="Descripcion"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="Fecha Inicio"
             android:textColor="@color/black"
 
-            android:text="Fecha Inicio" />
+            android:textStyle="bold" />
 
         <TextView
 
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="Fecha fin"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="Fecha fin" />
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="0.5"
         android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/tv_item_psp_phase_number"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="Numero" />
+
         <TextView
             android:id="@+id/tv_item_psp_phase_description"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="Descripcion" />
+
         <TextView
-             android:id="@+id/tv_item_psp_phase_start_date"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+            android:id="@+id/tv_item_psp_phase_start_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="Fecha Inicio" />
 
 
         <TextView
             android:id="@+id/tv_item_psp_phase_end_date"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="Fecha fin" />
-
 
 
     </LinearLayout>

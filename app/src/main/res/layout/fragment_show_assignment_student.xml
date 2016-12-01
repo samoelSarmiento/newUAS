@@ -229,15 +229,13 @@
         android:id="@+id/buttonSolicitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginTop="20dp"
         android:text="Solicitar"
         android:theme="@style/AppTheme.Button.uas"
 
         />
-
-
 
 
 </LinearLayout>

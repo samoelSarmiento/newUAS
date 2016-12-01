@@ -12,7 +12,10 @@
         android:id="@+id/psp_lstItemsIncriptionFiles"
         android:layout_width="match_parent"
         android:layout_height="314dp"
-        android:layout_weight="0.03">
+        android:layout_weight="0.03"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
+
     </ListView>
 
     <LinearLayout
@@ -22,31 +25,32 @@
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1">
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/left_right_padding"
-            android:layout_marginLeft="@dimen/left_right_padding"
-            android:text="Mandar comentario"
             android:id="@+id/btEnviarComentariopspSobreinscripcion"
-            android:layout_gravity="center_horizontal"
-            android:enabled="true"
-            android:clickable="false"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"
-            />
-        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            android:text="Cancelar"
-            android:id="@+id/btAceptarpspSobreinscripcion"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/divider"
-            android:layout_marginBottom="@dimen/divider"
+            android:clickable="false"
             android:enabled="true"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"/>
+            android:text="Mandar comentario"
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
+
+        <Button
+            android:id="@+id/btAceptarpspSobreinscripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/divider"
+            android:layout_marginLeft="@dimen/left_right_padding"
+            android:layout_marginRight="@dimen/left_right_padding"
+            android:layout_marginTop="@dimen/divider"
+            android:enabled="true"
+            android:text="Cancelar"
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
     </LinearLayout>
 </LinearLayout>

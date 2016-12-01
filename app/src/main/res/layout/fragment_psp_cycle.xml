@@ -18,9 +18,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/pspSpeciality"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/pspSpeciality" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/psp_tvValueCycle"
@@ -39,9 +39,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/pspCycleDescription"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/pspCycleDescription" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/psp_tvValueCycleNumber"
@@ -60,9 +60,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/pspTotalTutors"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/pspTotalTutors" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/psp_tvValueTotalTutors"
@@ -81,9 +81,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/pspTotalAlumnos"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/pspTotalAlumnos" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/psp_tvValueTotalAlumnos"
