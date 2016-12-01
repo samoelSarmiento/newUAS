@@ -1,21 +1,16 @@
 <resources>
-    <string name="app_name">NewUAS</string>
+    <string name="app_name">UAS</string>
     <string name="url_server">http://52.89.227.55/api/</string>
     <string name="tag_authenticate">authenticate</string>
-
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-
     <string name="etUsername">Usuario</string>
     <string name="etPassword">Contraseña</string>
     <string name="btIngresar">INGRESAR</string>
     <string name="ivLogo_description">Logo</string>
     <string name="tvNivel">Nivel: </string>
-
     <string name="tvIpTitle">Titulo:</string>
     <string name="tvIpType">Tipo de Plan de Mejora:</string>
     <string name="tvIpFound">Hallazgo:</string>
@@ -27,7 +22,6 @@
     <string name="btnIpFile">Descargar archivo asociado</string>
     <string name="btnIpSug">Sugerencias al Plan</string>
 
-
     <!--Investigacion-->
     <string name="invModule">Módulo de Investigación</string>
     <string name="investigator">Investigadores</string>
@@ -35,20 +29,17 @@
     <string name="projects">Proyectos</string>
     <string name="invBack">Volver</string>
     <string name="invLogOut">Cerrar Sesión</string>
-
-
     <string name="invGroupEsp">Especialidad:</string>
     <string name="invGroupDesc">Descripcion:</string>
-
     <string name="invMail">Correo:</string>
     <string name="invEsp">Especialidad:</string>
     <string name="invTel">Telefono:</string>
-
     <string name="projInitDate">Fecha Inicial:</string>
     <string name="projFinDate">Fecha Final:</string>
     <string name="projDeliv">Cant. Entregables:</string>
     <string name="projMembers">Integrantes:</string>
     <!--Inv Fin-->
+
     <!--PSP-->
     <string name="pspCycle">Ciclo</string>
     <string name="pspTutors">Supervisores</string>
@@ -57,28 +48,21 @@
     <string name="pspDocumentsProfesor">DocumentosProfesor</string>
     <string name="pspDocuments">Documentos alumno</string>
     <string name="pspExit">Cerrar Sesión</string>
-
     <string name="pspSpeciality">Especialidad</string>
     <string name="pspCycleDescription">Descripción</string>
     <string name="pspTotalTutors">Total de supervisores</string>
     <string name="pspTotalAlumnos">Total de alumnos</string>
-
     <string name="pspSelectButtonInforme">Informacion de empresa</string>
     <string name="pspSelectButtonDocument">Documento</string>
-
-
     <string-array name="MeetingStatus">
-
         <item>--Seleccionar--</item>
         <item>Cancelada</item>
         <item>Pendiente</item>
         <item>Realizada</item>
-
     </string-array>
     <!--PSP Fin-->
 
     <!--Tutoria-->
-
     <string-array name="hora">
         <item>08:00</item>
         <item>09:00</item>
@@ -97,23 +81,14 @@
         <item>22:00</item>
     </string-array>
 
-
-
-
     <string name="noCita">Registrar\n
     sin cita</string>
-
     <string name="Cita">Atender\n
     nueva cita</string>
-
     <string name="Solicitud">Solicitud\n
     nueva cita</string>
-
-
     <string name="Filtrar">Filtrar\n
     citas</string>
-
-
     <!--Tutoria Fin-->
 
     <string name="btModuleAcr">Acreditacion</string>
@@ -124,7 +99,6 @@
     <string name="tvSpecialty">Especialidad:</string>
     <string name="tvProfessor">Profesor:</string>
     <string name="tvDescription">Descripcion:</string>
-
     <string name="tvSpecialtyLabel">Especialidad: </string>
     <string name="tvSpecialtyCode">Codigo: </string>
     <string name="tvSpecialtyCoord">Coordinador: </string>
@@ -136,21 +110,13 @@
     <string name="tvMeasureAccPerc">Porc. de Aceptacion: </string>
     <string name="btObjEdu">Objetivos Educacionales</string>
     <string name="btSemPer">Semestres Del Periodo</string>
-
     <string name="btMeaInst">Instrumentos De Medición</string>
-
     <string name="title_activity_navigation_drawer_investigacion">NavigationDrawerInvestigacion
     </string>
-
     <string name="title_activity_navigation_drawer_acreditacion">NavigationDrawerAcreditacion
     </string>
-
-
     <string name="title_activity_navigation_drawer_tutoria">Tutoría
     </string>
-
-
-    <!-- SPINNERS -->
     <string name="ivLogoAcr_description">Logo del modulo</string>
     <string name="itdAcrSpecialty">Mi Especialidad</string>
     <string name="itdAcrMyself">Mi Perfil</string>
@@ -167,21 +133,15 @@
     <string name="tvAcrName">Nombre:</string>
     <string name="tvAcrSurnames">Apellidos:</string>
     <string name="tvAcreEmail">Correo:</string>
-
     <string name="tvErrorLogin">Usuario o contraseña incorrectos</string>
     <string name="tvCicle">Ciclo:</string>
-
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="itdAcrSpecialtyList">Especialidades</string>
     <string name="tvHorario">Horario:</string>
     <string name="tvProfessorUnavailable">El curso no cuenta con profesores asociados</string>
-
     <string name="title_activity_navigation_drawer_tutoria_tutor">NavigationDrawerTutoriaTutor
     </string>
-
     <string name="pspGroup">Seleccionar grupo</string>
-
     <string name="tvNivelAcademico">Nivel Académico:</string>
     <string name="tvNoSchedules">El curso no cuenta con horarios activos en este ciclo.</string>
     <string name="btHorario">HORARIO</string>
@@ -191,8 +151,6 @@
     <string name="tvAspecto">ASPECTOS</string>
     <string name="nav_evaluaciones">Evaluaciones</string>
     <string name="btArchAction">Archivo</string>
-
-
     <string name="evName">Nombre:</string>
     <string name="tvWho">Por:</string>
     <string name="tvWhen">El:</string>
@@ -221,10 +179,7 @@
     <string name="no_comment">Sin comentarios</string>
     <string name="connection_error">Error de conexión</string>
     <string name="no_student">El curso no cuenta con alumnos.</string>
-
     <string name="btContribution">Aporte del curso</string>
-
-
     <string name="title_activity_navigation_drawer_tutoria_coord">NavigationDrawerTutoriaCoord</string>
     <string name="results">Presione en un alumno para visualizar los resultados de desempeño del alumno.</string>
     <string name="no_criterio">El alumno aun no ha sido evaluado</string>
@@ -238,9 +193,7 @@
     <string name="tvTime">Tiempo:</string>
     <string name="no_criterio_level">El criterio no cuenta con niveles.</string>
     <string name="no_file">El Plan de Mejora no cuenta con un archivo asociado.</string>
-    <string name="ok">ok</string>
-    <string name="no_ok">no ok</string>
+    <string name="ok">OK</string>
+    <string name="no_ok">no OK</string>
     <string name="info">info</string>
-
-
 </resources>
