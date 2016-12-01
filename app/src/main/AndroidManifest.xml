@@ -41,40 +41,54 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_navigation_drawer_acreditacion"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.NavigationDrawerInvestigacion"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_navigation_drawer_investigacion"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.NavigationDrawerTutoria"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_navigation_drawer_tutoria"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.NavigationDrawerTutoriaTutor"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_navigation_drawer_tutoria_tutor"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.NavigationDrawerPSP"
             android:configChanges="orientation|keyboardHidden"
             android:label="Psp"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity
             android:name=".view.NavigationDrawerTutoriaCoord"
             android:label="@string/title_activity_navigation_drawer_tutoria_coord"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+            
+        </activity>
     </application>
 
 </manifest>

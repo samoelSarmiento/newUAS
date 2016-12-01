@@ -22,7 +22,7 @@
     <dimen name="divider">20dp</dimen>
     <dimen name="half_divider">10dp</dimen>
     <dimen name="logo_divider">50dp</dimen>
-    <dimen name="left_right_padding">175dp</dimen>
+    <dimen name="left_right_padding">145dp</dimen>
     <dimen name="fragment_top">85dp</dimen>
     <dimen name="list_item_height">48dp</dimen>
     <dimen name="margin_top_detail_linear_layout">30dp</dimen>

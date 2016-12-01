@@ -28,10 +28,11 @@
             android:id="@+id/tvNivel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:paddingTop="3dp"
             android:text="@string/tvNivel"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerNivel"
@@ -40,6 +41,12 @@
 
         </Spinner>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        android:paddingBottom="@dimen/half_divider" />
 
     <ListView
         android:id="@+id/lvCourses"

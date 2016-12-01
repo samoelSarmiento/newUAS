@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1a2836</color>
-    <color name="colorPrimaryDark">#1a2836</color>
-    <color name="colorAccent">#1a2836</color>
+    <color name="colorPrimary">#5383b3</color>
+    <color name="colorPrimaryDark">#5383b3</color>
+    <color name="colorAccent">#5383b3</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
@@ -15,7 +15,7 @@
     <color name="uas_celeste">#92DCE0</color>
     <color name="uas_amarillo">#DEB539</color>
     <color name="uas_azul">#2A3F54</color>
-    <color name="uas_azul_oscuro">#1a2836</color>
+    <color name="uas_azul_oscuro">#5383b3</color>
     <color name="uas_azul_claro">#3d5b79</color>
     <color name="uas_plomo">#F7F7F7</color>
     <color name="uas_plomo_fondo">#cfcfcf</color>
