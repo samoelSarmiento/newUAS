@@ -199,4 +199,7 @@
     <string name="no_results">El curso no cuenta con aportes.</string>
     <string name="todos">Todos</string>
     <string name="no_suggestion">El plan de mejora no cuenta con sugerencias registradas.</string>
+    <string name="buscar">BUSCAR</string>
+    <string name="no_vigente">NO VIGENTE</string>
+    <string name="vigente">VIGENTE</string>
 </resources>

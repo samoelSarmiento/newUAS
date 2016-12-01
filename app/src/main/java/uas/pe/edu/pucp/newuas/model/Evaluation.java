@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by Pedro on 04/11/2016.
  */
 
-public class Evaluation implements Serializable{
+public class Evaluation implements Serializable {
     @SerializedName("id")
     private int Id;
 
