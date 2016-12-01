@@ -18,8 +18,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="@string/tvCourse"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvValueCourse"
@@ -36,11 +36,11 @@
         <TextView
             android:id="@+id/tvCode"
             android:layout_width="0dp"
-            android:textStyle="bold"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="@string/tvSpecialtyCode"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvValueCode"
@@ -59,9 +59,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:textStyle="bold"
             android:text="@string/tvNivelAcademico"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvValueLevel"
@@ -88,9 +88,9 @@
         android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/divider"
-        android:background="@drawable/bg_button_login_selector"
         android:text="@string/btHorario"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 
     <Button
