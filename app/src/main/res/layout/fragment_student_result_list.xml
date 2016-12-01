@@ -29,6 +29,8 @@
         android:id="@+id/lvStudentResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:paddingTop="15dp">

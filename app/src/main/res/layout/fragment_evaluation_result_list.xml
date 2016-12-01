@@ -21,8 +21,8 @@
             android:layout_gravity="start"
             android:layout_weight="0.5"
             android:text="@string/tEstado"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/nombre"
@@ -32,8 +32,8 @@
             android:layout_gravity="end"
             android:layout_weight="0.5"
             android:text="@string/tNombre"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -41,6 +41,8 @@
         android:id="@+id/lvEvaluation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider"
         android:paddingEnd="@dimen/divider"
         android:paddingStart="@dimen/divider"
         android:paddingTop="@dimen/divider">

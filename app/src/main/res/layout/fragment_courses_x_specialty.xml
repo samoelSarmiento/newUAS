@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/black"
-        android:paddingBottom="@dimen/half_divider" />
+        android:paddingBottom="@dimen/divider" />
 
     <ListView
         android:id="@+id/lvCourses"
@@ -55,7 +55,8 @@
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
         android:divider="@color/uas_plomo"
-        android:dividerHeight="0dp">
+        android:dividerHeight="0dp"
+        android:paddingTop="@dimen/half_divider">
 
     </ListView>
 </LinearLayout>

@@ -18,6 +18,8 @@
     <ListView
         android:id="@+id/lvCriterions"
         android:layout_width="match_parent"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider"
         android:layout_height="wrap_content">
 
     </ListView>
