@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class SuggestionListFragment extends Fragment {
                 || Configuration.isAdmin()
                 || Configuration.isOnlySupervisor()) {
             super.setHasOptionsMenu(false);
-        }else{
+        } else {
             super.setHasOptionsMenu(true);
         }
     }
@@ -55,11 +56,16 @@ public class SuggestionListFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             List<Suggestion> list = (List<Suggestion>) bundle.getSerializable("suggestions");
-            lvSuggestions = (ListView) view.findViewById(R.id.lvSuggestions);
-            ipId = bundle.getInt("idIp");
-            Context context = getActivity();
-            adapter = new SuggestionAdapter(context, list);
-            lvSuggestions.setAdapter(adapter);
+            if (list != null && !list.isEmpty()) {
+                lvSuggestions = (ListView) view.findViewById(R.id.lvSuggestions);
+                ipId = bundle.getInt("idIp");
+                Context context = getActivity();
+                adapter = new SuggestionAdapter(context, list);
+                lvSuggestions.setAdapter(adapter);
+            } else {
+                TextView tvNoSuggestion = (TextView) view.findViewById(R.id.tvNoSuggestion);
+                tvNoSuggestion.setVisibility(View.VISIBLE);
+            }
         }
         return view;
     }

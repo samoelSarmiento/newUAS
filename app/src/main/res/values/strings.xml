@@ -196,4 +196,7 @@
     <string name="ok">OK</string>
     <string name="no_ok">no OK</string>
     <string name="info">info</string>
+    <string name="no_results">El curso no cuenta con aportes.</string>
+    <string name="todos">Todos</string>
+    <string name="no_suggestion">El plan de mejora no cuenta con sugerencias registradas.</string>
 </resources>
