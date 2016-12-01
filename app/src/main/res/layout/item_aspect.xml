@@ -8,10 +8,10 @@
         android:id="@+id/tvAspect"
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_height"
-        android:layout_gravity="start|center"
+        android:background="@drawable/item_shape"
         android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
         android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
-        android:textAllCaps="true"
-        android:textColor="@color/black" />
+        android:gravity="start|center"
+        android:textAllCaps="true" />
 
 </LinearLayout>
