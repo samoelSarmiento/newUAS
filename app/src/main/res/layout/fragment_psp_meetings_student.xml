@@ -2,28 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginTop="@dimen/fragment_top"
+    android:orientation="vertical"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_meetings_studentFragment">
 
     <Button
         android:id="@+id/btn_psp_student_new_meeting"
-        android:theme="@style/AppTheme.Button.uas"
-
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginRight="@dimen/left_right_padding"
-        android:text="Nueva Cita"/>
+        android:text="Nueva Cita"
+        android:theme="@style/AppTheme.Button.uas" />
 
     <ListView
         android:id="@+id/lv_psp_student_meetings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/fragment_margin"
         android:layout_marginEnd="@dimen/fragment_margin"
+        android:layout_marginLeft="@dimen/fragment_margin"
+        android:layout_marginRight="@dimen/fragment_margin"
         android:layout_marginStart="@dimen/fragment_margin"
-        android:layout_marginLeft="@dimen/fragment_margin">
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

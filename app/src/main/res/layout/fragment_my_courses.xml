@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/left_right_padding"
         android:layout_marginStart="@dimen/left_right_padding"
-        android:divider="@color/uas_plomo"
-        android:dividerHeight="@dimen/divider">
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 </LinearLayout>

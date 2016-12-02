@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="@dimen/fragment_top"
-    android:gravity="center"
 
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_SupxStudentMeetingDetailFragment">
 
@@ -14,121 +14,128 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            android:layout_width="0dp"
-            android:paddingLeft="30dp"
-            android:layout_height="match_parent">
+            android:paddingLeft="30dp">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:text="Reunion"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:text="Codigo"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:text="Alumno"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:text="Fecha"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:text="Hora Inicio"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-            <TextView
-                android:text="Hora Fin"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-            <TextView
-                android:text="Lugar"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Hora Fin"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Lugar"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:layout_marginTop="20dp"
                 android:text="Estado"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="0.5"
-            android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
 
             <TextView
-                android:text="Reunion"
                 android:id="@+id/tv_psp_sup_meeting_number"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                />
+                android:text="Reunion" />
 
             <TextView
-                android:text="ALumno"
                 android:id="@+id/tv_psp_sup_meeting_student_name"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:text="ALumno" />
+
             <TextView
-                android:text="Codigo"
                 android:id="@+id/tv_psp_sup_meeting_student_id"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:text="Codigo" />
+
             <TextView
-                android:text="Fecha"
                 android:id="@+id/tv_psp_sup_meeting_date"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:text="Fecha" />
 
             <TextView
                 android:id="@+id/tv_psp_sup_meeting_at_hour"
-                android:text="Hora Inicio"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:text="Hora Inicio" />
+
             <TextView
-                android:text="Hora Fin"
                 android:id="@+id/tv_psp_sup_meeting_to_hour"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:text="Hora Fin" />
+
             <EditText
 
                 android:id="@+id/et_psp_sup_meeting_place"
-                android:inputType="text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
             <Spinner
-                android:minWidth="40dp"
                 android:id="@+id/cmb_psp_sup_meeting_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:minWidth="40dp">
 
             </Spinner>
 
@@ -136,74 +143,73 @@
         </LinearLayout>
 
 
-
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="30dp"
-        android:paddingLeft="30dp"
+        android:orientation="vertical"
         android:paddingEnd="30dp"
-        android:paddingRight="30dp">
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingStart="30dp">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Observaciones"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/et_psp_sup_meeting_observations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/et_psp_sup_meeting_observations" />
+            android:inputType="textMultiLine"
+            android:minHeight="40dp" />
+
         <TextView
-            android:textColor="@color/black"
-            android:text="Retroalimentacion"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            android:text="Retroalimentacion"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_psp_sup_meeting_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:ems="10"
-            android:minHeight="40dp"
-            android:id="@+id/et_psp_sup_meeting_feedback" />
+            android:inputType="textMultiLine"
+            android:minHeight="40dp" />
 
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="end"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
+
             <Button
-                android:text="Editar"
                 android:id="@+id/btn_psp_sup_meeting_detail_edit"
                 android:layout_width="wrap_content"
-                android:theme="@style/AppTheme.Button.uas"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Editar"
+                android:theme="@style/AppTheme.Button.uas" />
+
             <Button
-                android:text="Cancelar"
                 android:id="@+id/btn_psp_sup_meeting_detail_cancel"
                 android:layout_width="wrap_content"
-                android:theme="@style/AppTheme.Button.uas"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:theme="@style/AppTheme.Button.uas" />
 
 
         </LinearLayout>
 
 
-
     </LinearLayout>
-
 
 
 </LinearLayout>

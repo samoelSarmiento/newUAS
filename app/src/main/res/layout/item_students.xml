@@ -9,14 +9,20 @@
         android:id="@+id/tvCode"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
-        android:layout_weight="0.5"
+        android:text="asdsadsa"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.35"
+        android:gravity="center"
         android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
-        android:layout_weight="0.5"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.65"
+        android:gravity="start|center"
         android:maxLines="2"
+        android:text="sdasdas"
         android:textColor="@color/black" />
 </LinearLayout>

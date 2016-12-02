@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/fragment_top"
-    android:background="@color/uas_plomo_fondo"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:paddingTop="@dimen/fragment_top">
 
     <ListView
         android:id="@+id/invList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

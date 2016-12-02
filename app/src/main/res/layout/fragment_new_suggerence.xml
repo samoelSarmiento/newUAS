@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tvTitle"
-        android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etTitle"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:text="@string/tvSuggerence"
-        android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etValueSuggerence"

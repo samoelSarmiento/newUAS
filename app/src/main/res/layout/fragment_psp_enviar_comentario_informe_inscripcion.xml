@@ -6,74 +6,71 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/fragment_top">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    
     <Button
         android:id="@+id/btEnviarComentarioPSPaccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enviar Comentario"
         android:layout_marginBottom="@dimen/divider"
         android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginRight="@dimen/left_right_padding"
-        android:theme="@style/AppTheme.Button.uas"
-        />
+        android:text="Enviar Comentario"
+        android:theme="@style/AppTheme.Button.uas" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="337dp"
         android:layout_height="68dp"
         android:layout_gravity="start|top"
-        android:text="Comentario anterior"
-        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
         android:maxLength="200"
         android:maxLines="5"
-        android:textColor="@color/black"
+        android:text="Comentario anterior"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"/>
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextComentarioAnteriorPSPinforme"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginRight="25dp"
         android:enabled="true"
-        android:text=""
         android:maxLength="200"
         android:maxLines="5"
-        android:layout_marginRight="25dp"/>
+        android:text="" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_gravity="start|center_vertical"
-        android:textColor="@color/black"
-        android:text="Nuevo comentario"
-        android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Nuevo comentario"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextComentarioPSPinforme"
         android:layout_width="match_parent"
         android:layout_height="81dp"
+        android:layout_marginRight="25dp"
         android:maxLength="200"
-        android:maxLines="5"
-        android:layout_marginRight="25dp"/>
+        android:maxLines="5" />
 
     <Button
         android:id="@+id/btEnviarComentarioPSPcancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:theme="@style/AppTheme.Button.uas"
-        android:text="Aceptar"
-        android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:text="Aceptar"
         android:textColor="@color/white"
+        android:theme="@style/AppTheme.Button.uas"
         android:visibility="gone" />
 
 </LinearLayout>

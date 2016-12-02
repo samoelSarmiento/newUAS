@@ -11,11 +11,14 @@
         android:id="@+id/tvSemester"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="@dimen/divider"
         android:background="@drawable/item_shape"
         android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
         android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
         android:gravity="center_vertical"
+        android:paddingLeft="@dimen/half_divider"
+        android:paddingRight="@dimen/half_divider"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary" />
 

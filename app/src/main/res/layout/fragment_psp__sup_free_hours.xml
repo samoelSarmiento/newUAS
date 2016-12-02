@@ -19,15 +19,16 @@
 
     <ListView
 
-        android:layout_marginStart="@dimen/fragment_margin"
-        android:layout_marginRight="@dimen/fragment_margin"
-        android:layout_marginLeft="@dimen/fragment_margin"
-        android:layout_marginEnd="@dimen/fragment_margin"
-        android:layout_marginTop="20dp"
         android:id="@+id/lv_psp_sup_freeHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="4dp">
+        android:layout_marginEnd="@dimen/fragment_margin"
+        android:layout_marginLeft="@dimen/fragment_margin"
+        android:layout_marginRight="@dimen/fragment_margin"
+        android:layout_marginStart="@dimen/fragment_margin"
+        android:layout_marginTop="20dp"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

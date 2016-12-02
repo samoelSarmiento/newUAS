@@ -2,21 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.StudentFilterAppointmentFragment"
     android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
     android:paddingTop="80dp"
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.StudentFilterAppointmentFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -25,13 +24,12 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/spinnerMotivoFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerMotivoFilter"
-            android:layout_marginTop="53dp"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            />
+            android:layout_marginTop="53dp" />
 
 
     </LinearLayout>
@@ -39,10 +37,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginTop="60dp"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
@@ -53,42 +50,37 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="70dp"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
             android:text="Desde:"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/txtFechaBeginFilterStudent"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="120dp"
-            android:inputType="date"
             android:ems="10"
-            android:id="@+id/txtFechaBeginFilterStudent"
-            />
+            android:inputType="date" />
 
 
         <ImageButton
+            android:id="@+id/btnCalendarBeginFilterStudent"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_calendar"
-            android:background="@android:color/transparent"
             android:layout_marginLeft="250dp"
-            android:id="@+id/btnCalendarBeginFilterStudent"
-            />
-
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_calendar" />
 
 
     </RelativeLayout>
@@ -96,73 +88,64 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="15dp"
-        >
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+            android:layout_marginTop="10dp"
             android:text="Hasta:"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/txtFechaEndFilterStudent"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:inputType="date"
             android:ems="10"
-            android:id="@+id/txtFechaEndFilterStudent"
-            />
+            android:inputType="date" />
 
 
         <ImageButton
+            android:id="@+id/btnCalendarEndFilterStudent"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_calendar"
-            android:background="@android:color/transparent"
             android:layout_marginLeft="230dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/btnCalendarEndFilterStudent"
-            />
-
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_calendar" />
 
 
     </RelativeLayout>
-
-
-
-
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="130dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/buttonCancelarFilterStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_main_uas"
             android:text="Cancelar"
-            android:background="@drawable/btn_main_uas"
-            android:textColor="@color/white"
-            android:id="@+id/buttonCancelarFilterStudent" />
+            android:textColor="@color/white" />
 
 
         <Button
-            android:layout_marginLeft="55dp"
+            android:id="@+id/buttonSolicitarFilterStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aceptar"
+            android:layout_marginLeft="55dp"
             android:background="@drawable/btn_main_uas"
-            android:textColor="@color/white"
-            android:id="@+id/buttonSolicitarFilterStudent" />
+            android:text="Aceptar"
+            android:textColor="@color/white" />
 
 
     </LinearLayout>

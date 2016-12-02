@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
+    android:orientation="vertical"
     android:paddingTop="70dp"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_studentsFragment">
 
@@ -13,27 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <EditText
             android:layout_width="match_parent"
-            android:hint="nombre"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="nombre" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            android:theme="@style/AppTheme.Button.uas"
+            android:text="Buscar"
             android:textColor="@color/white"
-            android:text="Buscar"/>
+            android:theme="@style/AppTheme.Button.uas" />
 
     </LinearLayout>
-
 
 
     <ListView
         android:id="@+id/lv_psp_students"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
+
     </ListView>
 
 </LinearLayout>

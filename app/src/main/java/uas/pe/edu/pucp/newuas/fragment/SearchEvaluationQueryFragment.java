@@ -31,39 +31,28 @@ public class SearchEvaluationQueryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_evaluation_query, container, false);
-        final EditText ename = (EditText)view.findViewById(R.id.evQuery);
-        final EditText est = (EditText)view.findViewById(R.id.evst);
-
-
+        final EditText ename = (EditText) view.findViewById(R.id.evQuery);
+        final EditText est = (EditText) view.findViewById(R.id.evst);
+        
         Button btnSearch = (Button) view.findViewById(R.id.invSave);
-        Button btnCancel = (Button) view.findViewById(R.id.invCancel);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ename.getText().toString().equals("") && est.getText().toString().equals("")){
+                if (ename.getText().toString().equals("") && est.getText().toString().equals("")) {
                     EvaluationsController controller = new EvaluationsController();
                     controller.getAllEvaluations(getActivity());
                     System.out.println("Campos Nombre y Estado Vacios");
-                }else{
+                } else {
                     EvaluationsController controller = new EvaluationsController();
-                    if(est.getText().toString().equals(""))
-                         controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), 10);
-                    else controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), Integer.parseInt(est.getText().toString()));
-
+                    if (est.getText().toString().equals(""))
+                        controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), 10);
+                    else
+                        controller.getEvaluationsNameState(getActivity(), ename.getText().toString(), Integer.parseInt(est.getText().toString()));
                 }
-
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
         return view;
     }
 

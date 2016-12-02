@@ -11,143 +11,138 @@
     tools:context="uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="650dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="70dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:text="Codigo:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/VerCodigoAtenderCita"
                 android:layout_width="match_parent"
-                android:layout_height="650dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="70dp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Codigo:"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
 
 
-                <TextView
-                    android:id="@+id/VerCodigoAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Alumno:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/VerAlumnoAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="6dp"
+                android:text="Fecha:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/VerFechaAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="6dp"
+                android:text="Hora inicio:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/VerHoraIAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Lugar:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/VerLugarAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Información Extra:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/VerExtraAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Observaciones:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Alumno:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/VerAlumnoAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Fecha:"
-                    android:layout_marginTop="6dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/VerFechaAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Hora inicio:"
-                    android:layout_marginTop="6dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/VerHoraIAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Lugar:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/VerLugarAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Información Extra:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/VerExtraAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Observaciones:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-
-
-                <TextView
-                    android:id="@+id/VerObsAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/VerObsAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="28dp" />
 
 
         </LinearLayout>
 
+
+    </LinearLayout>
+
     <Button
-        android:layout_marginLeft="265dp"
+        android:id="@+id/btnRegresarVisualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Regresar"
+        android:layout_marginLeft="265dp"
         android:background="@drawable/btn_main_uas"
-        android:textColor="@color/white"
-        android:id="@+id/btnRegresarVisualizar" />
-
-
-
+        android:text="Regresar"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>
