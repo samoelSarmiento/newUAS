@@ -14,18 +14,24 @@
             android:id="@+id/tv_item_psp_sup_freehour_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Fecha: " />
 
         <TextView
             android:id="@+id/tv_item_psp_sup_freehour_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Hora: " />
 
         <TextView
             android:id="@+id/tv_item_psp_sup_freehour_process"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Curso: " />
 
 

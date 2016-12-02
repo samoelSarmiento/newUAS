@@ -15,6 +15,8 @@
             android:id="@+id/tv_item_psp_student_meeting_sup_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Reunion: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -23,6 +25,8 @@
             android:id="@+id/tv_item_psp_student_meeting_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Fecha: "
             android:textSize="18sp" />
 
@@ -30,6 +34,8 @@
             android:id="@+id/tv_item_psp_student_meeting_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Hora: "
             android:textSize="18sp" />
 
