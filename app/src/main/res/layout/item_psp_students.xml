@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Codigo" />
+            android:text="Codigo"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/psp_name_student"
@@ -24,7 +25,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Nombre" />
+            android:text="Nombre"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

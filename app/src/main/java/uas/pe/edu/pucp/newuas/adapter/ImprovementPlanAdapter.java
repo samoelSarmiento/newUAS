@@ -65,19 +65,18 @@ public class ImprovementPlanAdapter extends BaseAdapter {
             viewHolder.tvIpUser.setText(items.get(position).getTeacher().getNombre() + " " + items.get(position).getTeacher().getApellidoPaterno() + " " + items.get(position).getTeacher().getApellidoMaterno());
         }
         viewHolder.tvIpStatus.setText(items.get(position).getEstado());
-        if (items.get(position).getEstado().equals("Pendiente")){
+        if (items.get(position).getEstado().equals("Pendiente")) {
             viewHolder.tvIpStatus.setTextColor(Color.YELLOW);
 
         }
-        if (items.get(position).getEstado().equals("En Ejecución")){
-            viewHolder.tvIpStatus.setTextColor(Color.rgb(164, 198, 57));
+        if (items.get(position).getEstado().equals("En Ejecución")) {
+            viewHolder.tvIpStatus.setTextColor(Color.GREEN);
 
         }
-        if (items.get(position).getEstado().equals("Cerrado")){
+        if (items.get(position).getEstado().equals("Cerrado")) {
             viewHolder.tvIpStatus.setTextColor(Color.RED);
 
         }
-
 
 
         return view;

@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Fecha: " />
+            android:text="Fecha: "
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_item_psp_sup_freehour_hour"
@@ -24,7 +25,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Hora: " />
+            android:text="Hora: "
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_item_psp_sup_freehour_process"
@@ -32,7 +34,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Curso: " />
+            android:text="Curso: "
+            android:textColor="@color/black" />
 
 
     </LinearLayout>

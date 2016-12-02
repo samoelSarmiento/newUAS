@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="Numero" />
+            android:text="Numero"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_item_psp_description_group"
@@ -24,7 +25,8 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/half_divider"
             android:paddingStart="@dimen/half_divider"
-            android:text="descripcion" />
+            android:text="descripcion"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
