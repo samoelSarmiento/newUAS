@@ -14,7 +14,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.70"
-            android:gravity="start|center"/>
+            android:gravity="start|center"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btDownload"

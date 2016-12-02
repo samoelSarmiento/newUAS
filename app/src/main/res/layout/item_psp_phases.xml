@@ -33,17 +33,11 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.4"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:gravity="center"
             android:text="Fecha Fin"
             android:textSize="@dimen/psp_item" />
-
-        <ImageView
-            android:id="@+id/iv_item_psp_phase"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="0.05"
-            android:src="@drawable/ic_arrow_lv" />
-
 
     </LinearLayout>
 

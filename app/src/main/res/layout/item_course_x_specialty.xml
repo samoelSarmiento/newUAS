@@ -16,7 +16,8 @@
             android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvNameCurso"
@@ -27,6 +28,7 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:gravity="start|center"
             android:maxLines="2"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>
