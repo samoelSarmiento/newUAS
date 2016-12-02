@@ -10,7 +10,10 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
         android:layout_weight="0.75"
+        android:gravity="start|center"
         android:maxLines="2"
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider"
         android:textColor="@color/black" />
 
     <TextView
@@ -19,7 +22,9 @@
         android:layout_height="@dimen/list_item_height"
         android:layout_gravity="end"
         android:layout_weight="0.25"
-        android:gravity="end"
+        android:gravity="center"
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider"
         android:textColor="@color/black" />
 
 </LinearLayout>

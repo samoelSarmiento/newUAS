@@ -18,8 +18,10 @@
             android:layout_gravity="center"
             android:layout_weight="0.50"
             android:gravity="center_vertical"
+            android:paddingEnd="@dimen/half_divider"
             android:paddingLeft="@dimen/half_divider"
             android:paddingRight="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary" />
 
@@ -32,7 +34,9 @@
             android:layout_weight="0.50"
             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider" />
 
     </LinearLayout>
 

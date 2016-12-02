@@ -14,12 +14,16 @@
             android:id="@+id/psp_identifier_student"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Codigo" />
 
         <TextView
             android:id="@+id/psp_name_student"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Nombre" />
 
     </LinearLayout>

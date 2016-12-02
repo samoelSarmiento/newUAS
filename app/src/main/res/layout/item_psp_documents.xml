@@ -14,24 +14,32 @@
             android:id="@+id/tv_name_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Nombre documento" />
 
         <TextView
             android:id="@+id/tv_author_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Autor" />
 
         <TextView
             android:id="@+id/tv_format_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="formato" />
 
         <TextView
             android:id="@+id/tv_creation_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Fecha de creacion" />
     </LinearLayout>
 

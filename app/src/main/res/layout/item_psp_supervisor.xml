@@ -8,7 +8,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.9"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider">
 
         <TextView
             android:id="@+id/tv_psp_identifier_supervisor"
