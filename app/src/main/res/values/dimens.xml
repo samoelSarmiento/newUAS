@@ -15,6 +15,10 @@
 
     <dimen name="fragment_margin">20dp</dimen>
 
+    <dimen name="no_entra">20dp</dimen>
+    <dimen name="daddyYankee">0dp</dimen>
+
+
     <!--General divider-->
     <dimen name="divider">10dp</dimen>
     <dimen name="half_divider">10dp</dimen>
