@@ -170,9 +170,8 @@
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="30dp"
-                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:text="Horario de atención:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -181,7 +180,7 @@
                         android:layout_width="440dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginLeft="60dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -252,11 +251,12 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="160dp"
+                    android:layout_marginLeft="@dimen/daddyYankee"
                     android:layout_marginTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
+
                         android:layout_height="wrap_content">
 
                         <LinearLayout
