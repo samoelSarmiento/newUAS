@@ -37,17 +37,22 @@
             android:id="@+id/dateText"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/left_right_padding"
-            android:layout_marginRight="@dimen/left_right_padding"
+            android:gravity="center"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="83dp"
+            android:layout_marginLeft="83dp"
+            />
 
 
         <ImageButton
             android:id="@+id/btnCalendar"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="440dp"
+            android:layout_marginLeft="40dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_calendar" />
 
@@ -58,7 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -75,14 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="@dimen/general_bg_padding" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -98,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/left_right_padding"
             android:layout_marginRight="@dimen/left_right_padding"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="@dimen/general_bg_padding" />
 
 
     </LinearLayout>
@@ -106,7 +111,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="45dp"
         android:gravity="center"
         android:orientation="horizontal">
 
