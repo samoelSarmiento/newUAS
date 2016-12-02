@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/date_super_employer_item"
         android:layout_width="match_parent"
+        android:layout_marginTop="2dp"
         android:layout_height="@dimen/list_item_height"
         android:background="@drawable/item_shape"
         android:gravity="start|center"

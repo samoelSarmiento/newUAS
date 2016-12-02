@@ -11,7 +11,17 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1302,28 +1312,46 @@ public class PSPController {
 
 
 
-        Call<List<PSPProcess>> call =  restCon.createFreehour(token);
+        Call<Object> call =  restCon.createFreehour(token);
 
-        call.enqueue(new Callback<List<PSPProcess>>() {
+        call.enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call<List<PSPProcess>> call, Response<List<PSPProcess>> response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
+
 
                 if(response.isSuccessful()){
 
-                    ArrayList<PSPProcess> process = (ArrayList<PSPProcess>)response.body();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("process", process);
-
-                    Fragment fragment = new PSP_SupSetFreeHoursFragment();
-                    fragment.setArguments(bundle);
+                    Gson gson = new Gson();
+                    JsonElement element =  gson.toJsonTree(response.body());
+                    if(element.isJsonArray()){
 
 
-                    ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
-                            .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
+                        Type type = new TypeToken<List<PSPProcess>>(){}.getType();
+                        ArrayList<PSPProcess> process =(ArrayList<PSPProcess>) gson.fromJson(element,type);
+
+                       Bundle bundle = new Bundle();
+                        bundle.putSerializable("process", process);
+
+                        Fragment fragment = new PSP_SupSetFreeHoursFragment();
+                        fragment.setArguments(bundle);
+
+
+                        ((Activity)context).getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit, R.animator.slide_out_right, R.animator.slide_in_right)
+                                .replace(R.id.fragment_container_psp, fragment).addToBackStack(null).commit();
 
 
 
+
+
+
+                    }else{
+
+                        Type type = new TypeToken<PSPMessage>(){}.getType();
+                        PSPMessage mm = gson.fromJson(element,type);
+                        MyToast.makeText(context,mm.getMesssage(), Toast.LENGTH_SHORT,MyToast.errorAlert).show();
+
+
+                    }
 
 
 
@@ -1331,16 +1359,7 @@ public class PSPController {
 
                 }else{
 
-                    try{
-                        PSPMessage message =  (PSPMessage)response.body();
-                        Log.d("SETFREEHOUR",message.getMesssage());
-
-                    }catch (Exception ex){
-
-
-
-
-                    }
+                    MyToast.makeText(context,"Error",Toast.LENGTH_SHORT,MyToast.errorAlert).show();
 
 
 
@@ -1351,10 +1370,14 @@ public class PSPController {
 
             }
 
-            @Override
-            public void onFailure(Call<List<PSPProcess>> call, Throwable t) {
 
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+
+                MyToast.makeText(context,"No hay conexion",Toast.LENGTH_SHORT,MyToast.errorAlert).show();
             }
+
+
         });
 
 
