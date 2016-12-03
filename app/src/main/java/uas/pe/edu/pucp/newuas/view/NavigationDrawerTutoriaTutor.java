@@ -99,6 +99,7 @@ public class NavigationDrawerTutoriaTutor extends AppCompatActivity
                             //Borra los shared preferences
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
 
@@ -117,8 +118,7 @@ public class NavigationDrawerTutoriaTutor extends AppCompatActivity
             SearchEvaluationQueryFragment searchEvaluationQueryFragment = new SearchEvaluationQueryFragment();
             getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, searchEvaluationQueryFragment).commit();
 
-        }
-        else if (id == R.id.nav_changeModule) {
+        } else if (id == R.id.nav_changeModule) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

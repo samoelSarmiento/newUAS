@@ -183,8 +183,6 @@ public class NavigationDrawerAcreditacion extends AppCompatActivity
             }
 
 
-        } else if (id == R.id.nav_consolidate) {
-
         } else if (id == R.id.nav_signout) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
