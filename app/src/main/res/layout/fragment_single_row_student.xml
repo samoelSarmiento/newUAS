@@ -82,6 +82,7 @@
             android:id="@+id/stateSingleRow"
             style="@style/GeneralTextViewsSmall"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/item_shape"
             android:text="Sugerida"
             android:textColor="@color/white"
             android:textStyle="bold" />

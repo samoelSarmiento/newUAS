@@ -1,13 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="40dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:paddingTop="30dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.VisualizarCitaFragment">
 
 
@@ -17,9 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="650dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="70dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -35,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
 
             <TextView
@@ -51,11 +49,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
             <TextView
                 style="@style/GeneralTextViewsMedium"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="26dp"
                 android:text="Fecha:"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -66,11 +64,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
             <TextView
                 style="@style/GeneralTextViewsMedium"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="26dp"
                 android:text="Hora inicio:"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -81,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
             <TextView
                 style="@style/GeneralTextViewsMedium"
@@ -96,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
             <TextView
                 style="@style/GeneralTextViewsMedium"
@@ -111,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
             <TextView
                 style="@style/GeneralTextViewsMedium"
@@ -127,22 +125,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="28dp" />
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
+
+            <Button
+                android:id="@+id/btnRegresarVisualizar"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Regresar"
+                android:theme="@style/AppTheme.Button.uas"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
 
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnRegresarVisualizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="265dp"
-        android:background="@drawable/btn_main_uas"
-        android:text="Regresar"
-        android:textColor="@color/white" />
 
-
-</LinearLayout>
+</ScrollView>

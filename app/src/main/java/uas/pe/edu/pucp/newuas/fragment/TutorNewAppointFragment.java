@@ -90,136 +90,141 @@ public class TutorNewAppointFragment extends Fragment {
         tutGroup = null;
         if (bundle != null){
             tutGroup= (List<NoAppointmentResponse>) bundle.getSerializable("Tutoria");
-        }
-        // Disponibilidad de las citas
-
-        ndays[0] = tutGroup.get(0).getNumberDays();
-        duracionCita = tutGroup.get(0).getDuracionCita();
-        sir = tutGroup.get(0).getScheduleInfo();
-        smr = tutGroup.get(0).getScheduleMeeting();
-
-        List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
-        Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
-        studentName.setAdapter(null);
-        ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, nombreAlumnos);
-        studentName.setAdapter(adapterStudent);
 
 
-        Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
-        s.setAdapter(null);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
-        s.setAdapter(adapter);
 
-        valorFecha[0] = txtFecha.getText().toString();
-        //valorHora[0] = spinnerHoras.getSelectedItem().toString();
-        valorTema[0] = spinnerTemas.getSelectedItem().toString();
-        valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+            ndays[0] = tutGroup.get(0).getNumberDays();
+            duracionCita = tutGroup.get(0).getDuracionCita();
+            sir = tutGroup.get(0).getScheduleInfo();
+            smr = tutGroup.get(0).getScheduleMeeting();
 
-        selectorListener =  new DatePickerDialog.OnDateSetListener(){
-            @Override
-            public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                day = i2; month = i1; year = i;
-                String format = "%1$02d";
-                String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
-                txtFecha.setText(date);
-                valorFecha[0] = date.toString();
-
-                Spinner hora = (Spinner) view.findViewById(R.id.spinnerTutHora);
-                List<String> horasDispo = obtenerHorasDisponible(sir,smr,duracionCita,date.toString());
-                hora.setAdapter(null);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDispo);
-                hora.setAdapter(adapter);
+            List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
+            Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
+            studentName.setAdapter(null);
+            ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, nombreAlumnos);
+            studentName.setAdapter(adapterStudent);
 
 
-            }
-        };
+            Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
+            s.setAdapter(null);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
+            s.setAdapter(adapter);
 
-        btnCalendar.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            valorFecha[0] = txtFecha.getText().toString();
+            //valorHora[0] = spinnerHoras.getSelectedItem().toString();
+            valorTema[0] = spinnerTemas.getSelectedItem().toString();
+            valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
 
-                        DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
-                        Calendar now = Calendar.getInstance();
-                        //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
-                        d.setMinDate(now);
-                        //Calendar rekt = Calendar.getInstance();
-                        dates = obtenerFechasDisponibles(ndays[0],sir);
-                        Calendar [] cdates =  dates.toArray(new Calendar[dates.size()]);
-                        d.setSelectableDays(cdates);
-                        d.show(getActivity().getFragmentManager(), "Datepickerdialog");
+            selectorListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+                    day = i2;
+                    month = i1;
+                    year = i;
+                    String format = "%1$02d";
+                    String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
+                    txtFecha.setText(date);
+                    valorFecha[0] = date.toString();
 
-                    }
+                    Spinner hora = (Spinner) view.findViewById(R.id.spinnerTutHora);
+                    List<String> horasDispo = obtenerHorasDisponible(sir, smr, duracionCita, date.toString());
+                    hora.setAdapter(null);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, horasDispo);
+                    hora.setAdapter(adapter);
+
+
                 }
-        );
+            };
 
+            btnCalendar.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-        btnSolicitar.setOnClickListener(
+                            DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
+                            Calendar now = Calendar.getInstance();
+                            //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
+                            d.setMinDate(now);
+                            //Calendar rekt = Calendar.getInstance();
+                            dates = obtenerFechasDisponibles(ndays[0], sir);
+                            Calendar[] cdates = dates.toArray(new Calendar[dates.size()]);
+                            d.setSelectableDays(cdates);
+                            d.show(getActivity().getFragmentManager(), "Datepickerdialog");
 
-                new View.OnClickListener(){
-                    @Override
-
-                    public void onClick(View v) {
-                        if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
-                            MyToast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG, MyToast.infoAlert).show();
                         }
-                        else {
-                            valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                            valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                            valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
-                            idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
+                    }
+            );
 
-                            solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
-                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    switch (which) {
-                                        case DialogInterface.BUTTON_POSITIVE:
-                                            //Borra los shared preferences
-                                            //regresa al login
-                                            break;
 
-                                        case DialogInterface.BUTTON_NEGATIVE:
-                                            //Nada pasa
-                                            break;
-                                    }
-                                }
-                            };
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
+            btnSolicitar.setOnClickListener(
 
-                                }
-                            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                            MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
-                                            TutTutorController tsc = new TutTutorController();
-                                            //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
-                                                tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
+                    new View.OnClickListener() {
+                        @Override
 
+                        public void onClick(View v) {
+                            if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
+                                MyToast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG, MyToast.infoAlert).show();
+                            } else {
+                                valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                                valorHora[0] = spinnerHoras.getSelectedItem().toString();
+                                valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+                                idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
+
+                                solicitud = "Está a punto de confirmar una cita con su alumno para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
+                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                //Borra los shared preferences
+                                                //regresa al login
+                                                break;
+
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                //Nada pasa
+                                                break;
                                         }
                                     }
-                            ).show();
+                                };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+                                                TutTutorController tsc = new TutTutorController();
+                                                //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
+                                                tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);
+
+                                            }
+                                        }
+                                ).show();
+                            }
                         }
                     }
-                }
 
-        );
+            );
 
 
-        btnCancelar.setOnClickListener(
+            btnCancelar.setOnClickListener(
 
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        TutTutorController tsc = new TutTutorController();
-                        tsc.showTopics(getActivity());
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.showTopics(getActivity());
+                        }
                     }
-                }
 
-        );
+            );
+
+        }
+        else
+            Toast.makeText(getActivity(), "Intentelo nuevamente", Toast.LENGTH_LONG).show();
 
 
 

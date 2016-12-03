@@ -111,6 +111,7 @@
             style="@style/GeneralTextViewsSmall"
             android:layout_marginLeft="10dp"
             android:text="Sugerida"
+            android:background="@drawable/item_shape"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
