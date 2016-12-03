@@ -91,8 +91,10 @@ public class AppointmentAdapterTutor extends BaseAdapter {
             titleState.setBackgroundColor(Color.parseColor("#26a69a"));
         else if (temp.getEstado().equals("Cancelada") )
             titleState.setBackgroundColor(Color.parseColor("#d9534f"));
-        else if (temp.getEstado().equals("Sugerida") )
+        else if (temp.getEstado().equals("Sugerida") ) {
             titleState.setBackgroundColor(Color.parseColor("#FFFF00"));
+            titleState.setTextColor(Color.BLACK);
+        }
         else if (temp.getEstado().equals("Rechazada") )
             titleState.setBackgroundColor(Color.parseColor("#9e9e9e"));
         else if (temp.getEstado().equals("Asistida") )
@@ -113,7 +115,13 @@ public class AppointmentAdapterTutor extends BaseAdapter {
         int year       = c.get(Calendar.YEAR);
         int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
         int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+
+        String dayOfM = "" + dayOfMonth;
+        if (dayOfM.length() == 1) dayOfM = "0" + dayOfM;
+        String actualDate = year + "-" + (month+1) + "-" + dayOfM;
+
+         Log.d("tag", temp.getEstado() + " " + temp.getFecha() + " fecha xxx " + actualDate);
+
 
         if (temp.getEstado().equals("Sugerida") ) {
             icon1.setOnClickListener(
@@ -159,7 +167,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
                                             dialog.cancel();
                                             Toast.makeText(context, "Se ha rechazado la cita con el alumno", Toast.LENGTH_LONG).show();
                                                 TutTutorController tsc = new TutTutorController();
-                                                tsc.cancelListTutor(context, idAppoint);
+                                                tsc.rechazarListTutor(context, idAppoint);
                                         }
                                     }
                             ).show();
@@ -168,7 +176,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
                     }
             );
         }
-        else if (temp.getEstado().equals("Confirmada")  && actualDate.equals(temp.getFecha()) ){
+        else if (temp.getEstado().equals("Confirmada")  && temp.getFecha().equals(actualDate)){
 
             icon1.setOnClickListener(
                     new View.OnClickListener() {
@@ -208,7 +216,7 @@ public class AppointmentAdapterTutor extends BaseAdapter {
             );
         }
 
-        else if (temp.getEstado().equals("Confirmada") && !actualDate.equals(temp.getFecha()) ) {
+        else if (temp.getEstado().equals("Confirmada") && !temp.getFecha().equals(actualDate) ) {
 
             icon1.setOnClickListener(
                     new View.OnClickListener() {
@@ -251,12 +259,14 @@ public class AppointmentAdapterTutor extends BaseAdapter {
 
         else if (temp.getEstado().equals("Pendiente")){
 
-            icon1.setVisibility(View.GONE);
+            //icon1.setVisibility(View.GONE);
             icon1.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.visualizarCitaConfirmada(context,idAppoint);
 
                         }
                     }
