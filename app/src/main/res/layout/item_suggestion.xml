@@ -15,8 +15,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:layout_weight="0.5"
-            android:paddingEnd="@dimen/half_divider"
-            android:paddingStart="@dimen/half_divider"
             android:text="@string/tvWho"
             android:textColor="@color/black" />
 
@@ -28,8 +26,6 @@
             android:layout_gravity="end"
             android:layout_weight="0.5"
             android:gravity="end"
-            android:paddingEnd="@dimen/half_divider"
-            android:paddingStart="@dimen/half_divider"
             android:text="@string/tvWhen"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -52,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:maxLines="3" />
+        android:maxLines="3"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvEdit"
@@ -64,6 +61,7 @@
         android:paddingStart="@dimen/half_divider"
         android:paddingTop="@dimen/divider"
         android:text="@string/tvEdit"
+        android:textColor="@color/black"
         android:textSize="12sp"
         android:visibility="gone" />
 

@@ -1,5 +1,6 @@
 package uas.pe.edu.pucp.newuas.datapersistency;
 
+import java.io.ObjectInputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -384,7 +385,7 @@ public interface RestCon {
 
 
     @GET("psp/freehour/create")
-    Call<List<PSPProcess>> createFreehour(@QueryMap Map<String, String> token);
+    Call<Object> createFreehour(@QueryMap Map<String, String> token);
 
 
 

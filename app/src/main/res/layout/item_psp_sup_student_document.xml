@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.4"
         android:paddingEnd="@dimen/half_divider"
-        android:paddingStart="@dimen/half_divider" />
+        android:paddingStart="@dimen/half_divider"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tv_item_psp_sup_doc_status"
@@ -18,13 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
         android:paddingEnd="@dimen/half_divider"
-        android:paddingStart="@dimen/half_divider" />
+        android:paddingStart="@dimen/half_divider"
+        android:textColor="@color/black" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
         android:paddingEnd="@dimen/half_divider"
-        android:paddingStart="@dimen/half_divider" />
+        android:paddingStart="@dimen/half_divider"
+        android:textColor="@color/black" />
 
 </LinearLayout>

@@ -3,9 +3,10 @@
 
     <item
         android:id="@+id/menu_item_student_showMeeting"
-        android:title="Ver citas"></item>
+        android:title="Ver citas" />
+
     <item
         android:id="@+id/menu_item_student_requestMeeting"
-        android:title="Solicitar cita"></item>
+        android:title="Solicitar cita" />
 
 </menu>

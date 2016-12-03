@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingEnd="@dimen/half_divider"
-        android:paddingStart="@dimen/half_divider" />
+        android:paddingStart="@dimen/half_divider"
+        android:textColor="@color/black" />
 
 </LinearLayout>
