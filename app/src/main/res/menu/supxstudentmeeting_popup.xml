@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_item_meeting_student_showDetails"
-        android:title="Ver Detalle"></item>
+        android:title="Ver Detalle" />
     <item
         android:id="@+id/menu_item_meeting_student_notification"
-        android:title="Notificar"></item>
+        android:title="Notificar" />
 
 
 </menu>

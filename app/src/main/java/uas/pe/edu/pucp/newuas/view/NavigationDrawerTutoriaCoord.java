@@ -92,11 +92,12 @@ public class NavigationDrawerTutoriaCoord extends AppCompatActivity
                             //Borra los shared preferences
                             //regresa al login
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
-                            //Nada pa   sa
+                            //Nada pasa
                             break;
                     }
                 }
@@ -105,6 +106,10 @@ public class NavigationDrawerTutoriaCoord extends AppCompatActivity
             builder.setMessage("¿Salir?").setNegativeButton("No", dialogClickListener)
                     .setPositiveButton("Si", dialogClickListener).show();
 
+        } else if (id == R.id.nav_changeModule) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

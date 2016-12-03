@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_alumnosCoordinador"
+        android:icon="@drawable/ic_user"
+        android:title="Alumnos" />
 
-    <item android:title="Modulo Tutoría">
-        <menu>
-            <item
-                android:id="@+id/nav_alumnosCoordinador"
-                android:icon="@drawable/ic_user"
-                android:title="Alumnos" />
+    <item
+        android:id="@+id/nav_changeModule"
+        android:icon="@drawable/ic_back"
+        android:title="@string/itdModule"
+        android:visible="true" />
 
-            <item
-                android:id="@+id/nav_changeModule"
-                android:icon="@drawable/ic_back"
-                android:title="@string/itdModule"
-                android:visible="true" />
+    <item
+        android:id="@+id/nav_loginoutCoordinador"
+        android:icon="@drawable/ic_logout"
+        android:title="Cerrar Sesión" />
 
-            <item
-                android:id="@+id/nav_loginoutCoordinador"
-                android:icon="@drawable/ic_logout"
-                android:title="Cerrar Sesión" />
-
-
-
-        </menu>
-    </item>
 
 </menu>

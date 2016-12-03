@@ -50,7 +50,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_psp);
 
-         StartPsp fragment = new StartPsp();
+        StartPsp fragment = new StartPsp();
         (this).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container_psp, fragment).commit();
 
 
@@ -140,7 +140,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
 
                 menu.findItem(R.id.nav_items_pspSupxStudenMeeting).setVisible(true);
                 menu.findItem(R.id.nav_item_pspSupFreeHours).setVisible(true);
-                menu.findItem(R.id.nav_item_pspGrades).setVisible(true );
+                menu.findItem(R.id.nav_item_pspGrades).setVisible(true);
                 break;
 
         }
@@ -165,7 +165,7 @@ public class NavigationDrawerPSP extends AppCompatActivity
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
         //  showNotificationIcons(menu);
-        
+
 
         return false;
     }
@@ -377,10 +377,9 @@ public class NavigationDrawerPSP extends AppCompatActivity
             PSPController controller = new PSPController();
             controller.getStudentSupFinalScores(this);
 
-          //  controller.getTeacherStudents(this);
-
             //  controller.getTeacherStudents(this);
 
+            //  controller.getTeacherStudents(this);
 
 
         } else if (id == R.id.nav_items_pspSupxStudenMeeting) {
@@ -407,10 +406,12 @@ public class NavigationDrawerPSP extends AppCompatActivity
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
+                            Configuration.LOGIN_USER = null;
                             Intent intent = new Intent(getBaseContext(), LogInActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             break;
+
                         case DialogInterface.BUTTON_NEGATIVE:
                             break;
                     }
