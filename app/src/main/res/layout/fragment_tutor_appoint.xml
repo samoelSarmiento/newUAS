@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
 
-            android:text="@string/Cita"
+            android:text="@string/Solicitud"
             android:textColor="@color/white"
             android:theme="@style/AppTheme.Button.uas" />
 

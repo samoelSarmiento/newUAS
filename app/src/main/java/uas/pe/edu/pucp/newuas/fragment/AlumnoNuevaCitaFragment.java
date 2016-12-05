@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,10 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             btnCalendar = (ImageButton) view.findViewById(R.id.btnCalendar);
             spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora);
             spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
+
+            //KeyListener mKeyListener = txtFecha.getKeyListener();
+            txtFecha.setKeyListener(null);
+
 
             final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
 
@@ -190,7 +195,7 @@ public class AlumnoNuevaCitaFragment extends Fragment {
                                     }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     dialog.cancel();
-                                                    MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+                                                    MyToast.makeText(getActivity(), "Se ha solicitado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                                     TutStudentController tsc = new TutStudentController();
                                                     tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], duracionCita);
 

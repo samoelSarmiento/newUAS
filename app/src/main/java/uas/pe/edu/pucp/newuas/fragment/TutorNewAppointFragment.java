@@ -80,6 +80,9 @@ public class TutorNewAppointFragment extends Fragment {
         final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
         final String [] valorNombre = new String[1];
 
+        txtFecha.setKeyListener(null);
+
+
         Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -195,7 +198,7 @@ public class TutorNewAppointFragment extends Fragment {
                                 }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
-                                                MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+                                                MyToast.makeText(getActivity(), "Se ha solicitado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
                                                 TutTutorController tsc = new TutTutorController();
                                                 //tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], valorNombre[0]);
                                                 tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], "", idAlumno, duracionCita);

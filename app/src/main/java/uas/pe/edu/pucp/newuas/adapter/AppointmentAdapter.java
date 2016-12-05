@@ -57,7 +57,7 @@ public class AppointmentAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View row = inflater.inflate(R.layout.fragment_single_row_student,viewGroup,false);
-            TextView titleDate = (TextView) row.findViewById(R.id.  dateSingleRow);
+            TextView titleDate = (TextView) row.findViewById(R.id.dateSingleRow);
             TextView titleHour = (TextView) row.findViewById(R.id.hourSingleRow);
             TextView titleTopic = (TextView) row.findViewById(R.id.topicSingleRow);
             TextView titleState = (TextView) row.findViewById(R.id.stateSingleRow);

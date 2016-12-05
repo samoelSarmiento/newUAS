@@ -68,6 +68,9 @@ public class StudentFilterAppointmentFragment extends Fragment {
         listaSpinner.add("Pendiente"); listaSpinner.add("Confirmada"); listaSpinner.add("Cancelada"); listaSpinner.add("Sugerida");
         listaSpinner.add("Rechazada"); listaSpinner.add("Asistida"); listaSpinner.add("No asistida"); listaSpinner.add("");
 
+        txtFechaInicio.setKeyListener(null);
+        txtFechaFin.setKeyListener(null);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,listaSpinner);
         s.setAdapter(adapter);
 
