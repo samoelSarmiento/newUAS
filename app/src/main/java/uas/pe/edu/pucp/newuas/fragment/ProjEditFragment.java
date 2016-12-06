@@ -199,7 +199,7 @@ public class ProjEditFragment extends Fragment implements View.OnClickListener{/
                                             break;
                                         }
                                     }
-                                    if(!funciona){
+                                    if(funciona){
                                         Projects changedProj = p;
                                         changedProj.setNombre(projName.getText().toString());
                                         changedProj.setDescripcion(projDesc.getText().toString());
