@@ -160,6 +160,9 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
 
 
                 String fecha = txtFecha.getText().toString();
+
+                Log.d("fecha" , fecha);
+
                 SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
 
@@ -167,17 +170,20 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
                     Date dateNow = new Date();
                     String  dateNowString  =formatDate.format(dateNow);
 
+                    Log.d("fecha Now", dateNowString);
 
                     if(fecha.matches(dateNowString)){
 
                         Calendar cal = Calendar.getInstance();
 
                         int hour  = cal.get(Calendar.HOUR_OF_DAY);
+                        Log.d("hour1-", "" + hour);
                         cal.add(Calendar.HOUR_OF_DAY,1);
-                        Log.d("HOUR_NOW","" + hour);
+                        int hour1  = cal.get(Calendar.HOUR_OF_DAY);
+                        Log.d("HOUR_NOW","" + hour1);
                         Log.d("HOUROFDAY", "" + hourOfDay);
 
-                        if(hourOfDay < hour){
+                        if(hourOfDay < hour1){
 
                             MyToast.makeText(getActivity(),"Error en la hora", Toast.LENGTH_SHORT,MyToast.errorAlert).show();
 
@@ -194,6 +200,11 @@ public class PSP_SupSetFreeHoursFragment extends Fragment {
 
 
 
+                    }else{
+
+                        String format = "%1$02d";
+                        hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                        txtHour.setText(hora);
                     }
 
 
