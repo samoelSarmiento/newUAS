@@ -80,6 +80,8 @@ public class PSP_meetings_studentFragment extends Fragment implements View.OnCli
 
 
         if(meetings!= null){
+
+
              adapter = new PSPStudentMeetingsAdapter(getActivity(),meetings);
 
               ListView listView = (ListView) view.findViewById(R.id.lv_psp_student_meetings);
