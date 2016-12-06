@@ -16,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.Timepoint;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,9 +45,15 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
     ImageButton btnCalendar;
     Button btnSolicitar, btnCancel;
     Spinner spinnerHoras, spinnerStudents;
-    EditText txtFecha, txtLugar;
+    EditText txtFecha, txtLugar, txtHour;
     int day, year, month;
+
+    String hora;
+
+    ImageButton btnClock;
     private static DatePickerDialog.OnDateSetListener selectorListener;
+    private static TimePickerDialog.OnTimeSetListener selectTimeListener;
+
     Calendar[] dates = new Calendar[2];
     Calendar cal1 = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
@@ -112,12 +121,11 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         txtFecha = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_date);
         btnSolicitar = (Button) view.findViewById(R.id.btn_psp_sup_student_meeting_register);
         btnCalendar = (ImageButton) view.findViewById(R.id.btn_psp_sup_student_meeting_calendar);
-        spinnerHoras = (Spinner) view.findViewById(R.id.sp_psp_sup_student_meeting_hours);
         txtLugar = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_place);
         spinnerStudents = (Spinner) view.findViewById(R.id.cmb_psp_sup_student_meeting_students);
         btnCancel  = (Button) view.findViewById(R.id.btn_psp_sup_student_meeting_cancel);
-
-
+        btnClock = (ImageButton) view.findViewById(R.id.btn_psp_sup_student_meeting_clock);
+        txtHour = (EditText) view.findViewById(R.id.et_psp_sup_student_meeting_hours);
 
 
 
@@ -132,6 +140,94 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
 
 
         }
+
+
+        btnClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = 0;
+
+                Log.d("Hour" , ""+ hour);
+                TimePickerDialog timePicker =  TimePickerDialog.newInstance(selectTimeListener, hour, minute, true);
+
+                timePicker.enableMinutes(false);
+
+                Timepoint timeAt;
+
+                timeAt = new Timepoint(8);
+
+
+
+                Timepoint timeTo =  new Timepoint(21);
+                timePicker.setMinTime(timeAt);
+                timePicker.setMaxTime(timeTo);
+
+                timePicker.show(getActivity().getFragmentManager(), "TimePickerDialog");
+
+            }
+        });
+
+
+        selectTimeListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+
+
+
+                String fecha = txtFecha.getText().toString();
+
+                Log.d("fecha" , fecha);
+
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+                Date dateNow = new Date();
+                String  dateNowString  =formatDate.format(dateNow);
+
+                Log.d("fecha Now", dateNowString);
+
+                if(fecha.matches(dateNowString)){
+
+                    Calendar cal = Calendar.getInstance();
+
+                    int hour  = cal.get(Calendar.HOUR_OF_DAY);
+                    Log.d("hour1-", "" + hour);
+                    cal.add(Calendar.HOUR_OF_DAY,1);
+                    int hour1  = cal.get(Calendar.HOUR_OF_DAY);
+                    Log.d("HOUR_NOW","" + hour1);
+                    Log.d("HOUROFDAY", "" + hourOfDay);
+
+                    if(hourOfDay < hour1){
+
+                        MyToast.makeText(getActivity(),"Error en la hora", Toast.LENGTH_SHORT,MyToast.errorAlert).show();
+
+
+                    }else{
+
+
+                        String format = "%1$02d";
+                        hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                        txtHour.setText(hora);
+
+
+                    }
+
+
+
+                }else{
+
+                    String format = "%1$02d";
+                    hora = String.format(format,hourOfDay) + ":" + minute + "0";
+                    txtHour.setText(hora);
+                }
+
+
+            }
+        };
 
 
 
@@ -161,7 +257,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
         s.setAdapter(adapter);
 */
         valorFecha[0] = txtFecha.getText().toString();
-        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+
       //  valorTema[0] = spinnerTemas.getSelectedItem().toString();
 
         selectorListener =  new DatePickerDialog.OnDateSetListener(){
@@ -196,7 +292,7 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
 
                     public void onClick(View v) {
 
-                        valorHora[0] = spinnerHoras.getSelectedItem().toString();
+
                         solicitud = "Está a punto de confirmar una cita  para el " + valorFecha[0] + " a las " + valorHora[0] + "\n ¿Desea continuar?";
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
@@ -234,13 +330,30 @@ public class PSP_SupStudentNewMeetingFragment extends Fragment {
                                             return;
                                         }
 
+
+
+
+
+
+
                                         if(!studentsList.isEmpty()){
 
                                             Student student = studentsList.get(position -1);
 
                                             meeting.setIdAlumno(student.getIdAlumno());
+
+                                            if(txtHour.getText().toString().matches("")){
+
+                                                MyToast.makeText(getActivity(),"Asignar una hora valida",Toast.LENGTH_SHORT,MyToast.infoAlert).show();
+                                                return;
+
+
+                                            }
+
+
+
                                             meeting.setFecha(valorFecha[0]);
-                                            meeting.setHora(valorHora[0]);
+                                            meeting.setHora(hora);
 
                                             String lugar  = txtLugar.getText().toString();
 
