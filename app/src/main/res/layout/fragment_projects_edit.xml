@@ -29,7 +29,7 @@
                     android:id="@+id/projName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="50"
+                    android:maxLength="2000"
                     android:text="" />
 
             </LinearLayout>
@@ -139,38 +139,39 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:maxLength="100"
+                    android:maxLength="2000"
                     android:text="" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/left_right_padding"
+                android:paddingRight="@dimen/left_right_padding">
+
+                <Button
+                    android:id="@+id/projSave"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Guardar"
+
+                    android:textColor="@color/white"
+                    android:theme="@style/AppTheme.Button.uas" />
+
+                <Button
+                    android:id="@+id/projCancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Cancelar"
+                    android:textColor="@color/white"
+                    android:theme="@style/AppTheme.Button.uas" />
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/left_right_padding"
-        android:paddingRight="@dimen/left_right_padding">
 
-        <Button
-            android:id="@+id/projSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Guardar"
-
-            android:textColor="@color/white"
-            android:theme="@style/AppTheme.Button.uas" />
-
-        <Button
-            android:id="@+id/projCancel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Cancelar"
-            android:textColor="@color/white"
-            android:theme="@style/AppTheme.Button.uas" />
-    </LinearLayout>
 
 </LinearLayout>
