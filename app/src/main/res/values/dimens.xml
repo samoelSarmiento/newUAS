@@ -15,11 +15,15 @@
 
     <dimen name="fragment_margin">20dp</dimen>
 
+    <dimen name="no_entra">20dp</dimen>
+    <dimen name="daddyYankee">0dp</dimen>
+
+
     <!--General divider-->
     <dimen name="divider">10dp</dimen>
     <dimen name="half_divider">10dp</dimen>
     <dimen name="logo_divider">50dp</dimen>
-    <dimen name="left_right_padding">50dp</dimen>
+    <dimen name="left_right_padding">30dp</dimen>
     <dimen name="fragment_top">85dp</dimen>
     <dimen name="list_item_height">48dp</dimen>
     <dimen name="margin_top_detail_linear_layout">20dp</dimen>

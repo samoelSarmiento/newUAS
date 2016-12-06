@@ -1,6 +1,6 @@
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_tutor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,7 +8,6 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="30dp"
-    android:id="@+id/fragment_container_tutor"
     tools:context="uas.pe.edu.pucp.newuas.fragment.TutorAppointFragment">
 
 
@@ -25,9 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:theme="@style/AppTheme.Button.uas"
+            android:text="@string/noCita"
             android:textColor="@color/white"
-            android:text="@string/noCita" />
+            android:theme="@style/AppTheme.Button.uas" />
 
         <Button
             android:id="@+id/btnNewAssignmentTuto"
@@ -35,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
 
-            android:theme="@style/AppTheme.Button.uas"
+            android:text="@string/Solicitud"
             android:textColor="@color/white"
-            android:text="@string/Cita" />
+            android:theme="@style/AppTheme.Button.uas" />
 
     </LinearLayout>
 
@@ -58,23 +57,23 @@
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+            android:layout_marginLeft="50dp"
             android:text="Hora"
             android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
             android:textStyle="bold" />
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+            android:layout_marginLeft="50dp"
             android:text="Tema"
             android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
             android:textStyle="bold" />
 
         <TextView
             style="@style/GeneralTextViewsMedium"
+            android:layout_marginLeft="45dp"
             android:text="Acción"
             android:textColor="@color/black"
-            android:layout_marginLeft="45dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -82,19 +81,17 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/black"
-        android:layout_marginTop="160dp"/>
+        android:layout_marginTop="160dp"
+        android:background="@android:color/black" />
 
     <ListView
+        android:id="@+id/listViewCustomTuto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listViewCustomTuto"
         android:layout_marginTop="170dp"
-        android:listSelector="@android:color/transparent"
-        >
+        android:listSelector="@android:color/transparent">
 
     </ListView>
-
 
 
 </FrameLayout>

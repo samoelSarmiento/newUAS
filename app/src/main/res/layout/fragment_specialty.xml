@@ -16,9 +16,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvSpecialtyLabel"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvSpecialtyLabel" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSpecialtyLabel"
@@ -37,9 +37,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvSpecialtyCode"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvSpecialtyCode" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSpecialtyCode"
@@ -57,10 +57,10 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_weight="0.3"
+            android:text="@string/tvSpecialtyCoord"
             android:textColor="@color/black"
-            android:text="@string/tvSpecialtyCoord" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSpecialtyCoord"
@@ -79,9 +79,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:textStyle="bold"
+            android:text="@string/tvSpecialtyDesc"
             android:textColor="@color/black"
-            android:text="@string/tvSpecialtyDesc" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSpecialtyDesc"

@@ -33,7 +33,7 @@ public class EvaluationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_evaluation, container, false);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            Evaluation eva = (Evaluation) bundle.getSerializable("evaluation");
+            Evaluation eva = (Evaluation) bundle.getSerializable("Evaluacion");
             TextView tvNameEvaluation = (TextView) view.findViewById(R.id.tvNameEvaluation);
             TextView tvValueEstado = (TextView) view.findViewById(R.id.tvValueEstado);
             TextView tvValueFechaInicio = (TextView) view.findViewById(R.id.tvValueFechaInicio);
@@ -42,7 +42,8 @@ public class EvaluationFragment extends Fragment {
             TextView tvValueTime = (TextView) view.findViewById(R.id.tvValueTime);
             if (eva != null) {
                 tvNameEvaluation.setText(eva.getNombre());
-                tvValueEstado.setText(eva.getEstado());
+                if (eva.getEstado() == 0) tvValueEstado.setText(R.string.no_vigente);
+                else tvValueEstado.setText(R.string.vigente);
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                 SimpleDateFormat display = new SimpleDateFormat("dd-MM-yyyy", new Locale("es", "ES"));
                 String fechaInicio = eva.getFecha_Inicio();

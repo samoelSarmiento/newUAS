@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_shape"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tvCode"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
-        android:layout_weight="0.5"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.35"
+        android:gravity="center"
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider"
         android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="@dimen/list_item_height"
-        android:layout_weight="0.5"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.65"
+        android:gravity="start|center"
         android:maxLines="2"
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider"
         android:textColor="@color/black" />
 </LinearLayout>

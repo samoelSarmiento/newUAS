@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/divider"
-        android:divider="@color/uas_plomo"
+        android:divider="@color/white"
         android:dividerHeight="@dimen/half_divider">
 
 

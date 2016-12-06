@@ -16,9 +16,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpTitle"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpTitle" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpTitle"
@@ -39,9 +39,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpType"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpType" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpType"
@@ -62,9 +62,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpFound"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpFound" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpFound"
@@ -85,9 +85,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpCause"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpCause" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpCause"
@@ -108,9 +108,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpResp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpResp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpResp"
@@ -131,9 +131,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.32"
+            android:text="@string/tvIpDate"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpDate" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpDate"
@@ -154,9 +154,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:text="@string/tvIpStatus"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/tvIpStatus" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIpStatus"

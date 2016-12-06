@@ -62,83 +62,87 @@ public class AtenderCitaFragment extends Fragment {
         List<CitaInfoResponse> tutGroup= null;
         if (bundle != null){
             tutGroup= (List<CitaInfoResponse>) bundle.getSerializable("Tutoria");
-        }
-        List<StudentInfoResponse> infoAlumno =  tutGroup.get(0).getStudentInfo();
+            List<StudentInfoResponse> infoAlumno =  tutGroup.get(0).getStudentInfo();
 
-        idCita = tutGroup.get(0).getId() + "";
-        String codigoNombreAlumno = infoAlumno.get(0).getCodigo() + "-" + infoAlumno.get(0).getNombre() + " " + infoAlumno.get(0).getApePaterno();
-        String fechaCompleta =  tutGroup.get(0).getInicio();
-        String fecha = fechaCompleta.substring(0,10);
-        String hora = fechaCompleta.substring(11,16);
-        int horaEnt = Integer.parseInt(hora.substring(0,2));
-        if(horaEnt < 12) hora = hora + " am";
-        else hora = hora + " pm";
-        String lugarC = tutGroup.get(0).getLugar();
-        String extra = tutGroup.get(0).getAdicional();
+            idCita = tutGroup.get(0).getId() + "";
+            String codigoNombreAlumno = infoAlumno.get(0).getCodigo() + "-" + infoAlumno.get(0).getNombre() + " " + infoAlumno.get(0).getApePaterno();
+            String fechaCompleta =  tutGroup.get(0).getInicio();
+            String fecha = fechaCompleta.substring(0,10);
+            String hora = fechaCompleta.substring(11,16);
+            int horaEnt = Integer.parseInt(hora.substring(0,2));
+            if(horaEnt < 12) hora = hora + " am";
+            else hora = hora + " pm";
+            String lugarC = tutGroup.get(0).getLugar();
+            String extra = tutGroup.get(0).getAdicional();
 
-        codigoCita.setText(idCita);
-        alumnoCita.setText(codigoNombreAlumno);
-        fechaCita.setText(fecha);
-        horaI.setText(hora);
-        lugarCita.setText(lugarC);
-        extraCita.setText(extra);
+            codigoCita.setText(idCita);
+            alumnoCita.setText(codigoNombreAlumno);
+            fechaCita.setText(fecha);
+            horaI.setText(hora);
+            lugarCita.setText(lugarC);
+            extraCita.setText(extra);
 
 
-        btnSolicitar.setOnClickListener(
+            btnSolicitar.setOnClickListener(
 
-                new View.OnClickListener(){
-                    @Override
+                    new View.OnClickListener(){
+                        @Override
 
-                    public void onClick(View v) {
+                        public void onClick(View v) {
 
-                        String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        //Borra los shared preferences
-                                        //regresa al login
-                                        break;
+                            String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
+                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which) {
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            //Borra los shared preferences
+                                            //regresa al login
+                                            break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //Nada pasa
-                                        break;
-                                }
-                            }
-                        };
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-
-                            }
-                        }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        MyToast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG, MyToast.checkAlert).show();
-                                        TutTutorController tsc = new TutTutorController();
-                                        tsc.atencionCita(getActivity (), Integer.parseInt(idCita),obsCita.getText().toString());
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            //Nada pasa
+                                            break;
                                     }
                                 }
-                        ).show();
+                            };
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(solicitud).setNegativeButton("No",  new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            MyToast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+                                            TutTutorController tsc = new TutTutorController();
+                                            tsc.atencionCita(getActivity (), Integer.parseInt(idCita),obsCita.getText().toString());
+                                        }
+                                    }
+                            ).show();
+                        }
                     }
-                }
 
-        );
+            );
 
-        btnCancelar.setOnClickListener(
+            btnCancelar.setOnClickListener(
 
-                new View.OnClickListener(){
-                    @Override
+                    new View.OnClickListener(){
+                        @Override
 
-                    public void onClick(View v) {
-                        TutTutorController tsc = new TutTutorController();
-                        tsc.showTopics(getActivity());
+                        public void onClick(View v) {
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.showTopics(getActivity());
+                        }
                     }
-                }
 
-        );
+            );
+
+        }
+
+        else
+            Toast.makeText(getActivity(), "Intentelo nuevamente!", Toast.LENGTH_LONG).show();
 
 
         return view;

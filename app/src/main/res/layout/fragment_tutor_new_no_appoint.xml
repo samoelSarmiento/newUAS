@@ -1,185 +1,171 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.TutorNewNoAppointFragment"
     android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="80dp"
-    android:id="@+id/fragment_container"
-    >
+    android:paddingTop="40dp"
+    tools:context="uas.pe.edu.pucp.newuas.fragment.TutorNewNoAppointFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp">
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Alumno:"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-
-        <Spinner
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tutorStudentSpinner"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="@dimen/left_right_padding"
-            android:layout_marginLeft="@dimen/left_right_padding"
-            />
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp">
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Hora inicio:"
-
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:text="Alumno:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/tutorStudentSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_right_padding"
+                android:layout_marginRight="@dimen/left_right_padding"
+                android:layout_marginTop="@dimen/general_bg_padding" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="50dp"
-        >
-
-        <EditText
-            android:layout_width="115dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="25dp"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/timeText"
-            />
+        </LinearLayout>
 
 
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_clock"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="230dp"
-            android:id="@+id/btnClock"
-            />
-
-
-
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="30dp">
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-            android:text="Tema:"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <Spinner
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerTema"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="@dimen/left_right_padding"
-            android:layout_marginLeft="@dimen/left_right_padding"
-            />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:text="Hora inicio:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="30dp">
-
-        <TextView
-            style="@style/GeneralTextViewsMedium"
-
-            android:text="Observación:"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tutoTextObsNoAppoint"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="5dp"
-            android:lines = '3'
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="@dimen/general_bg_padding"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        />
+            <EditText
+                android:id="@+id/timeText"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:ems="10"
+                android:inputType="date" />
 
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/btnClock"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_clock" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="90dp"
-    >
 
-        <Button
-            android:layout_width="wrap_content"
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"
-            android:id="@+id/buttonCancelarTutorNewNoAssigmentReg" />
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:text="Tema:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerTema"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_right_padding"
+                android:layout_marginRight="@dimen/left_right_padding"
+                android:layout_marginTop="20dp" />
 
 
-        <Button
-            android:layout_marginLeft="55dp"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Solicitar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"
-            android:id="@+id/buttonSolicitarTutorNewNoAssignmentReg" />
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+
+                android:text="Observación:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/tutoTextObsNoAppoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="0dp"
+                android:lines='3'
+
+                />
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/general_bg_padding"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonCancelarTutorNewNoAssigmentReg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:textColor="@color/white"
+                android:theme="@style/AppTheme.Button.uas" />
+
+
+            <Button
+                android:id="@+id/buttonSolicitarTutorNewNoAssignmentReg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:text="Solicitar"
+                android:textColor="@color/white"
+                android:theme="@style/AppTheme.Button.uas" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

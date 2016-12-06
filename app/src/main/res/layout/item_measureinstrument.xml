@@ -4,20 +4,15 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical">
-
-    <LinearLayout
+    
+    <TextView
+        android:id="@+id/tvMeaInst"
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_height"
-        android:gravity="center_vertical">
+        android:background="@drawable/item_shape"
+        android:gravity="center_vertical"
+        android:textAllCaps="true"
+        android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/tvMeaInst"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimary" />
-
-    </LinearLayout>
 
 </LinearLayout>

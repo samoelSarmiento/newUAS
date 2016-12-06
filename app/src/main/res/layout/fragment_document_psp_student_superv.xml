@@ -12,12 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_weight="0.80">
+
         <ListView
             android:id="@+id/psp_lstItemsDocumentFiles"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            
         </ListView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="34dp"
@@ -25,26 +28,28 @@
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1">
+
         <Button
-            android:layout_width="183dp"
-            android:layout_height="36dp"
-            android:text="Descargar Documento"
             android:id="@+id/btDescargarDocumentoPsp"
-            android:layout_gravity="center_horizontal"
-            android:enabled="true"
-            android:clickable="false"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"/>
-        <Button
             android:layout_width="183dp"
             android:layout_height="36dp"
-            android:text="Cancelar"
-            android:id="@+id/btAceptarpspSobreDocumento"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:clickable="false"
             android:enabled="true"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"/>
+            android:text="Descargar Documento"
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
+
+        <Button
+            android:id="@+id/btAceptarpspSobreDocumento"
+            android:layout_width="183dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:enabled="true"
+            android:text="Cancelar"
+            android:textColor="@color/white"
+            android:theme="@style/AppTheme.Button.uas" />
     </LinearLayout>
 </LinearLayout>

@@ -2,67 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment"
     android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="40dp"
-
-    >
+    tools:context="uas.pe.edu.pucp.newuas.fragment.AcceptAppointmentStudentFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/GeneralTextViewsMedium"
-            android:text="Esta a punto de cancelar su cita con su tutor para el 09/11/2016 a las 10:00am"
-            android:textColor="@color/black"
             android:gravity="center"
-             />
+            android:text="Esta a punto de cancelar su cita con su tutor para el 09/11/2016 a las 10:00am"
+            android:textColor="@color/black" />
 
         <TextView
+            style="@style/GeneralTextViewsMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/GeneralTextViewsMedium"
-            android:textColor="@color/black"
-            android:text="¿Desea continuar?"
             android:gravity="center"
+            android:text="¿Desea continuar?"
+            android:textColor="@color/black"
 
             />
     </LinearLayout>
 
-\
+    \
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="35dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/buttonCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/buttonCancelar" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
         <Button
-            android:layout_marginLeft="45dp"
+            android:id="@+id/buttonSolicitar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
             android:text="Aceptar"
-            android:theme="@style/AppTheme.Button.uas"
             android:textColor="@color/white"
-            android:id="@+id/buttonSolicitar" />
+            android:theme="@style/AppTheme.Button.uas" />
 
 
     </LinearLayout>

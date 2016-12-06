@@ -1,173 +1,176 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="40dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:paddingTop="30dp"
+    android:paddingLeft="@dimen/half_divider"
+    android:paddingRight="@dimen/half_divider"
+    android:paddingTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.AtenderCitaFragment">
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="720dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="40dp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Codigo:"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/codigoAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Alumno:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/alumnoAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Fecha:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/fechaAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Hora inicio:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/horaIAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Lugar:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/lugarAtenderCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Información Extra:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/extraAtenderCita"
-                    android:layout_width="match_parent"
-                    android:text="No hay información extra"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="28dp" />
-
-                <TextView
-                    style="@style/GeneralTextViewsMedium"
-                    android:text="Observaciones:"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/observacionAtenderCita"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="5dp"
-                    android:lines = '2'/>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_marginLeft="30dp">
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancelar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"
-            android:id="@+id/btnCancelarAtenderCita" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="720dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/general_bg_padding"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:text="Codigo:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-        <Button
-            android:layout_marginLeft="55dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrar"
-            android:theme="@style/AppTheme.Button.uas"
-            android:textColor="@color/white"
-            android:id="@+id/btnSolicitarAtenderCita" />
+            <TextView
+                android:id="@+id/codigoAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding" />
+
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Alumno:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/alumnoAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Fecha:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fechaAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Hora inicio:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/horaIAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Lugar:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lugarAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Información Extra:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/extraAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:text="No hay información extra" />
+
+            <TextView
+                style="@style/GeneralTextViewsMedium"
+                android:layout_marginTop="26dp"
+                android:text="Observaciones:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/observacionAtenderCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/general_bg_padding"
+                android:lines='2' />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelarAtenderCita"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Cancelar"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="0dp"
+                    android:theme="@style/AppTheme.Button.uas" />
+
+
+                <Button
+                    android:id="@+id/btnSolicitarAtenderCita"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:text="Registrar"
+                    android:textColor="@color/white"
+                    android:theme="@style/AppTheme.Button.uas" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
     </LinearLayout>
 
-</LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

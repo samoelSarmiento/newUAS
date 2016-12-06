@@ -61,62 +61,62 @@ public class ImprovementPlanViewFragment extends Fragment {
 
         if (bundle != null) {
             final ImprovementPlan ip = (ImprovementPlan) bundle.getSerializable("IPlan");
+            if (ip != null) {
+                tvIpTitle.setText(ip.getDescripcion());
+                tvIpType.setText(ip.getImprovementPlanType().getCodigo() + " " + ip.getImprovementPlanType().getDescripcion());
+                tvIpFound.setText(ip.getHallazgo());
+                tvIpCause.setText(ip.getAnalisisCausal());
+                if (ip.getTeacher() != null)
+                    tvIpResp.setText(ip.getTeacher().getNombre() + " " + ip.getTeacher().getApellidoPaterno() + " " + ip.getTeacher().getApellidoMaterno());
+                else
+                    tvIpResp.setText(R.string.todos);
 
-            tvIpTitle.setText(ip.getDescripcion());
-            tvIpType.setText(ip.getImprovementPlanType().getCodigo() + " " + ip.getImprovementPlanType().getDescripcion());
-            tvIpFound.setText(ip.getHallazgo());
-            tvIpCause.setText(ip.getAnalisisCausal());
-            if (ip.getTeacher() != null)
-                tvIpResp.setText(ip.getTeacher().getNombre() + " " + ip.getTeacher().getApellidoPaterno() + " " + ip.getTeacher().getApellidoMaterno());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+                SimpleDateFormat sdfDisplay = new SimpleDateFormat("dd MMM yyyy", new Locale("es", "ES"));
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-            SimpleDateFormat sdfDisplay = new SimpleDateFormat("dd MMM yyyy", new Locale("es", "ES"));
+                try {
+                    Date when = sdf.parse(ip.getFechaImplementacion());
+                    tvIpDate.setText(sdfDisplay.format(when));
 
-            try {
-                Date when = sdf.parse(ip.getFechaImplementacion());
-                tvIpDate.setText(sdfDisplay.format(when));
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-
-            tvIpStatus.setText(ip.getEstado());
-
-            btActions.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ImprovementPlanController ipc = new ImprovementPlanController();
-                    ipc.getActionsOfImprovementPlan(getActivity(), ip.getIdPlanMejora());
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-            });
 
-            btSugg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ImprovementPlanController controller = new ImprovementPlanController();
-                    controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
-                }
-            });
+                tvIpStatus.setText(ip.getEstado());
 
-
-            if (ip.getFile() != null) {
-
-                btDownload.setEnabled(true);
-
-                btDownload.setOnClickListener(new View.OnClickListener() {
+                btActions.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        FileDownloadController fdc = new FileDownloadController();
-                        fdc.downloadFile(getActivity(), Configuration.FILE_URL + ip.getFile().getFilename());
+                        ImprovementPlanController ipc = new ImprovementPlanController();
+                        ipc.getActionsOfImprovementPlan(getActivity(), ip.getIdPlanMejora());
                     }
                 });
 
-            } else {
-                //btDownload.setEnabled(false);
-                TextView tvNoFile = (TextView) view.findViewById(R.id.tvNoFile);
-                tvNoFile.setVisibility(View.VISIBLE);
-                btDownload.setVisibility(View.GONE);
+                btSugg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ImprovementPlanController controller = new ImprovementPlanController();
+                        controller.getImprovementPlanSuggestions(getActivity(), ip.getIdPlanMejora());
+                    }
+                });
+
+
+                if (ip.getFile() != null) {
+
+                    btDownload.setEnabled(true);
+
+                    btDownload.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FileDownloadController.downloadFile(getActivity(), Configuration.FILE_URL + ip.getFile().getFilename());
+                        }
+                    });
+
+                } else {
+                    TextView tvNoFile = (TextView) view.findViewById(R.id.tvNoFile);
+                    tvNoFile.setVisibility(View.VISIBLE);
+                    btDownload.setVisibility(View.GONE);
+                }
             }
         }
 

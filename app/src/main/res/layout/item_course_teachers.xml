@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/item_shape"
         android:orientation="horizontal">
 
         <TextView
@@ -15,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/divider"
             android:layout_weight="0.25"
+            android:gravity="start|center"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -24,18 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.55"
             android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:paddingTop="15dp">
+            android:paddingStart="20dp">
 
         </ListView>
 
         <TextView
-            android:layout_marginTop="@dimen/divider"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
-            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.20" />
+            android:layout_marginTop="@dimen/divider"
+            android:layout_weight="0.20"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:gravity="start|center" />
     </LinearLayout>
 
 

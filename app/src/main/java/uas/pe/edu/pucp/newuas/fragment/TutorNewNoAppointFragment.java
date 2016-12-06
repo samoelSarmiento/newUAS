@@ -69,148 +69,156 @@ public class TutorNewNoAppointFragment extends Fragment {
         tutGroup = null;
         if (bundle != null) {
             tutGroup = (List<NoAppointmentResponse>) bundle.getSerializable("Tutoria");
-        }
+            //txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
+            btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewNoAssignmentReg);
+            btnCancelar = (Button) view.findViewById(R.id.buttonCancelarTutorNewNoAssigmentReg);
+            spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
+            spinnerAlumnos = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
+            txtObservacion = (EditText) view.findViewById(R.id.tutoTextObsNoAppoint);
+            txtHora = (EditText) view.findViewById(R.id.timeText);
+            btnTime = (ImageButton) view.findViewById(R.id.btnClock);
+
+            txtHora.setKeyListener(null);
 
 
-        txtFecha = (EditText) view.findViewById(R.id.dateTextTutorNewAppoint);
-        btnSolicitar = (Button) view.findViewById(R.id.buttonSolicitarTutorNewNoAssignmentReg);
-        btnCancelar = (Button) view.findViewById(R.id.buttonCancelarTutorNewNoAssigmentReg);
-        spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
-        spinnerAlumnos = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
-        txtObservacion = (EditText) view.findViewById(R.id.tutoTextObsNoAppoint);
-        txtHora = (EditText) view.findViewById(R.id.timeText);
-        btnTime = (ImageButton) view.findViewById(R.id.btnClock);
-
-        final String[] valorFecha = new String[1], valorHoraI = new String[1], valorHoraF = new String[1], valorTema = new String[1];
-        final String[] valorNombre = new String[1];
+            final String[] valorFecha = new String[1], valorHoraI = new String[1], valorHoraF = new String[1], valorTema = new String[1];
+            final String[] valorNombre = new String[1];
 
 
-        List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
-        Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
-        studentName.setAdapter(null);
-        ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, nombreAlumnos);
-        studentName.setAdapter(adapterStudent);
+            List<String> nombreAlumnos = obtenerNombreAlumnos(tutGroup.get(0).getStudentInfo());
+            Spinner studentName = (Spinner) view.findViewById(R.id.tutorStudentSpinner);
+            studentName.setAdapter(null);
+            ArrayAdapter<String> adapterStudent = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, nombreAlumnos);
+            studentName.setAdapter(adapterStudent);
 
 
-        Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
-        s.setAdapter(null);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
-        s.setAdapter(adapter);
+            Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
+            s.setAdapter(null);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerTutoriaTutor.nameTopic);
+            s.setAdapter(adapter);
 
-        final int duracionCita = tutGroup.get(0).getDuracionCita();
-        Calendar c = Calendar.getInstance();
-        int anho = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH); // Jan = 0, dec = 11
-        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-        date = dayOfMonth + "/" + month + "/" + anho;
-        sir = tutGroup.get(0).getScheduleInfo();
-        smr = tutGroup.get(0).getScheduleMeeting();
+            final int duracionCita = tutGroup.get(0).getDuracionCita();
+            Calendar c = Calendar.getInstance();
+            int anho = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+            int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+            date = dayOfMonth + "/" + month + "/" + anho;
+            sir = tutGroup.get(0).getScheduleInfo();
+            smr = tutGroup.get(0).getScheduleMeeting();
 
-        // List<String> horasDisponibles = obtenerHorasDisponibles(sir,smr,duracionCita,date);
-        // spinnerHorasI.setAdapter(null);
-        // ArrayAdapter<String> adapterHoras = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDisponibles);
-        // spinnerHorasI.setAdapter(adapterHoras);
-
-
-        //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
-        valorTema[0] = spinnerTemas.getSelectedItem().toString();
-        //valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
-
-        //TIME PICKEEEEEEEEEEEEEEEEEEEEEEER
-
-        selectorListener = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
-                hora = hourOfDay + ":" + minute;
-                txtHora.setText(hora);
-            }
-        };
+            // List<String> horasDisponibles = obtenerHorasDisponibles(sir,smr,duracionCita,date);
+            // spinnerHorasI.setAdapter(null);
+            // ArrayAdapter<String> adapterHoras = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDisponibles);
+            // spinnerHorasI.setAdapter(adapterHoras);
 
 
-        btnTime.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final Calendar c = Calendar.getInstance();
-                        int hour = c.get(Calendar.HOUR_OF_DAY);
-                        int minute = c.get(Calendar.MINUTE);
-                        TimePickerDialog d = TimePickerDialog.newInstance(selectorListener, hour, minute, true);
-                        d.show(getActivity().getFragmentManager(), "TimePickerDialog");
-                    }
+            //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
+            valorTema[0] = spinnerTemas.getSelectedItem().toString();
+            //valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+
+            //TIME PICKEEEEEEEEEEEEEEEEEEEEEEER
+
+            selectorListener = new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+                    String min = "" +minute;
+                    String ho = "" + hourOfDay;
+                    if (min.length() == 1) min = "0" + min;
+                    if (ho.length() == 1) ho = "0" + ho;
+                    hora = ho + ":" + min;
+                    txtHora.setText(hora);
                 }
-        );
-
-        //TIMEE PICKEEEEEEEEEEEEEEEEEEEEEEER
+            };
 
 
-        btnCancelar.setOnClickListener(
-
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        TutTutorController tsc = new TutTutorController();
-                        tsc.showTopics(getActivity());
-                    }
-                }
-
-        );
-
-        btnSolicitar.setOnClickListener(
-
-                new View.OnClickListener() {
-                    @Override
-
-                    public void onClick(View v) {
-
-                        if (txtHora.getText().toString().matches("")) {
-                            Toast.makeText(getActivity(), "Debe seleccionar la hora de inicio!", Toast.LENGTH_LONG).show();
-                        } else {
-
-
-                            valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                            //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
-                            valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
-
-                            idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
-
-                            String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
-                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    switch (which) {
-                                        case DialogInterface.BUTTON_POSITIVE:
-                                            //Borra los shared preferences
-                                            //regresa al login
-                                            break;
-
-                                        case DialogInterface.BUTTON_NEGATIVE:
-                                            //Nada pasa
-                                            break;
-                                    }
-                                }
-                            };
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-
-                                }
-                            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                            Toast.makeText(getActivity(), "Se ha atendido la cita!", Toast.LENGTH_LONG).show();
-                                            TutTutorController tsc = new TutTutorController();
-                                            tsc.atencionNoConfirmada(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), date, hora, valorTema[0], txtObservacion.getText().toString(), idAlumno, duracionCita);
-
-                                        }
-                                    }
-                            ).show();
-
+            btnTime.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            final Calendar c = Calendar.getInstance();
+                            int hour = c.get(Calendar.HOUR_OF_DAY);
+                            int minute = c.get(Calendar.MINUTE);
+                            TimePickerDialog d = TimePickerDialog.newInstance(selectorListener, hour, minute, true);
+                            d.show(getActivity().getFragmentManager(), "TimePickerDialog");
                         }
                     }
-                }
+            );
 
-        );
+            //TIMEE PICKEEEEEEEEEEEEEEEEEEEEEEER
+
+
+            btnCancelar.setOnClickListener(
+
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TutTutorController tsc = new TutTutorController();
+                            tsc.showTopics(getActivity());
+                        }
+                    }
+
+            );
+
+            btnSolicitar.setOnClickListener(
+
+                    new View.OnClickListener() {
+                        @Override
+
+                        public void onClick(View v) {
+
+                            if (txtHora.getText().toString().matches("")) {
+                                Toast.makeText(getActivity(), "Debe seleccionar la hora de inicio!", Toast.LENGTH_LONG).show();
+                            } else {
+
+
+                                valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                                //valorHoraI[0] = spinnerHorasI.getSelectedItem().toString();
+                                valorNombre[0] = spinnerAlumnos.getSelectedItem().toString();
+
+                                idAlumno = obtenerIdAlumno(tutGroup.get(0).getStudentInfo(), valorNombre[0]);
+
+                                String solicitud = "Está a punto de atender la cita ¿Desea continuar?";
+                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                //Borra los shared preferences
+                                                //regresa al login
+                                                break;
+
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                //Nada pasa
+                                                break;
+                                        }
+                                    }
+                                };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                Toast.makeText(getActivity(), "Se ha registrado la cita!", Toast.LENGTH_LONG).show();
+                                                TutTutorController tsc = new TutTutorController();
+                                                tsc.atencionNoConfirmada(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), date, hora, valorTema[0], txtObservacion.getText().toString(), idAlumno, duracionCita);
+
+                                            }
+                                        }
+                                ).show();
+
+                            }
+                        }
+                    }
+
+            );
+        }
+        else
+            Toast.makeText(getActivity(), "Intentelo nuevamente", Toast.LENGTH_LONG).show();
+
 
         return view;
     }

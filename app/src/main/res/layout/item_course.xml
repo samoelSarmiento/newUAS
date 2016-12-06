@@ -6,13 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_shape">
 
         <TextView
             android:id="@+id/tvCodigo"
             android:layout_width="0dp"
             android:layout_height="@dimen/list_item_height"
-            android:layout_weight="0.35" />
+            android:layout_gravity="center"
+            android:layout_weight="0.35"
+            android:gravity="center"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvCourse"
@@ -20,6 +24,8 @@
             android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.65"
             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
-            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp" />
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
+            android:gravity="start|center"
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>

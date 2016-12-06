@@ -10,16 +10,27 @@
     tools:context="uas.pe.edu.pucp.newuas.fragment.StudentResultListFragment">
 
     <TextView
+        android:id="@+id/tvNoResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_results"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/divider"
-        android:textColor="@color/black"
-        android:text="@string/tvSeeAspects" />
+        android:text="@string/tvSeeAspects"
+        android:textColor="@color/black" />
 
     <ListView
         android:id="@+id/lvStudentResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:paddingTop="15dp">

@@ -122,7 +122,7 @@ public class TutStudentController {
 
                         int idCreador = ap.getCreador();
                         if (estado.equals("Pendiente")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
@@ -359,7 +359,8 @@ public class TutStudentController {
 
                         int idCreador = ap.getCreador();
                         if (estado.equals("Pendiente")){
-                            icon1[0] = R.drawable.ic_nullresource;
+                            Log.d("tag","entre mierdaaa");
+                            icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){
@@ -426,7 +427,7 @@ public class TutStudentController {
 
                 //StudentAppointFragment mp = new StudentAppointFragment();
                 //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
-                ((Activity)context).getFragmentManager().popBackStack();
+                //((Activity)context).getFragmentManager().popBackStack();
                 showTopics(context);
             }
 
@@ -434,7 +435,7 @@ public class TutStudentController {
             public void onFailure(Call<String> call, Throwable t) {
                 //StudentAppointFragment mp = new StudentAppointFragment();
                 //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
-                ((Activity)context).getFragmentManager().popBackStack();
+                //((Activity)context).getFragmentManager().popBackStack();
                 showTopics(context);
             }
         });

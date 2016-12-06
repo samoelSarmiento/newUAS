@@ -13,15 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspJefeDirecto"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Jefe Directo"
             android:layout_weight="0.25"
             android:gravity="left|center"
+            android:text="Jefe Directo"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspJefeDirectoValor"
@@ -32,7 +33,6 @@
             android:textStyle="italic" />
 
 
-
     </LinearLayout>
 
 
@@ -40,15 +40,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspCorreoJefeDirecto"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Correo del jefe"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Correo del jefe"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspCorreoJefeDirectoValor"
@@ -59,24 +60,23 @@
             android:textStyle="italic" />
 
 
-
     </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspTelefonoJefeDirecto"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Teléfono del jefe"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:text="Teléfono del jefe"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspTelefonoJefeDirectoValor"
@@ -93,15 +93,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspDireccionEmpresa"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Dirección Empresa"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:text="Dirección Empresa"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspDireccionEmpresaValor"
@@ -114,22 +115,20 @@
     </LinearLayout>
 
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspNombreDelArea"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Nombre del área"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Nombre del área"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspNombreDelAreaValor"
@@ -142,22 +141,20 @@
     </LinearLayout>
 
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspPuesto"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Puesto"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Puesto"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspPuestoValor"
@@ -170,23 +167,20 @@
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspRazonSocial"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Razón Social"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:text="Razón Social"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspRazonSocialValor"
@@ -199,22 +193,20 @@
     </LinearLayout>
 
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspUbicacionArea"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Ubicación del área"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:text="Ubicación del área"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspUbicacionAreaValor"
@@ -227,20 +219,20 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspActividadEconomica"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Actividad económica"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Actividad económica"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspActividadEconomicaValor"
@@ -257,15 +249,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <TextView
             android:id="@+id/pspFechaInicio"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Fecha de Inicio"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Fecha de Inicio"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspFechaInicioValor"
@@ -278,10 +271,6 @@
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -291,11 +280,11 @@
             android:id="@+id/pspFechaTermino"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="Fecha de termino"
             android:layout_weight="0.25"
             android:gravity="left|center"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:text="Fecha de termino"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pspFechaTerminoValor"

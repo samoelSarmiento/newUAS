@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    >
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_weight="0.9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.9"
         android:orientation="vertical"
-
-        >
+        android:paddingEnd="@dimen/half_divider"
+        android:paddingStart="@dimen/half_divider">
 
         <TextView
             android:id="@+id/tv_psp_identifier_supervisor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Codigo"/>
+            android:text="Codigo"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_psp_name_supervisor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre"/>
+            android:text="Nombre"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
     <ImageView
-        android:background="@color/uas_plomo_oscuro"
-        android:src="@drawable/ic_menu_psp_listview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/uas_plomo_oscuro"
+        android:src="@drawable/ic_menu_psp_listview" />
 
 
 </LinearLayout>

@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.9"
         android:orientation="vertical">
+
         <TextView
+            android:id="@+id/tv_name_document"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Nombre documento"
-            android:id="@+id/tv_name_document"/>
+            android:textColor="@color/black" />
+
         <TextView
+            android:id="@+id/tv_author_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Autor"
-            android:id="@+id/tv_author_document"/>
+            android:textColor="@color/black" />
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:text="formato"
-            android:id="@+id/tv_format_document"/>
-        <TextView
+            android:id="@+id/tv_format_document"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
+            android:text="formato"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_creation_document"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:text="Fecha de creacion"
-            android:id="@+id/tv_creation_document"/>
+            android:textColor="@color/black" />
     </LinearLayout>
+
     <ImageView
-        android:layout_weight="0.1"
-        android:layout_gravity="right"
-        android:src="@drawable/ic_menu_psp_listview"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_weight="0.1"
+        android:src="@drawable/ic_menu_psp_listview" />
 
 </LinearLayout>

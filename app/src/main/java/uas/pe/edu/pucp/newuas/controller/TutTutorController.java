@@ -93,6 +93,38 @@ public class TutTutorController {
     }
 
 
+    public boolean rechazarListTutor(final Context context,  int idAppoint ){
+
+        Map<String, String> data = new HashMap<>();
+        data.put("token", Configuration.LOGIN_USER.getToken());
+        RestCon restCon = RetrofitHelper.apiConnector.create(RestCon.class);
+        Call<String> call = restCon.refuseAppointment(new AppointmentRequest(idAppoint,"","","","","", 123213), data);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                //((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //StudentAppointFragment mp = new StudentAppointFragment();
+                //((Activity)context).getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.drawer_layout ,mp).commit();
+                //((Activity)context).getFragmentManager().popBackStack();
+                showTopics(context);
+            }
+        });
+
+
+        return true;
+    }
+
+
+
+
     public boolean refreshListTutor(final Context context,  int idAppoint ){
 
         Map<String, String> data = new HashMap<>();
@@ -291,7 +323,7 @@ public class TutTutorController {
         return true;
     }
 
-    public boolean atencionNoConfirmada(final Context context,  int idUsuario, String fechaActual, String hora, String tema, String obs, int idAlumno, int duracionCita ){
+    public boolean  atencionNoConfirmada(final Context context,  int idUsuario, String fechaActual, String hora, String tema, String obs, int idAlumno, int duracionCita ){
 
         Map<String, String> data = new HashMap<>();
         data.put("token", Configuration.LOGIN_USER.getToken());
@@ -406,17 +438,25 @@ public class TutTutorController {
                         int year       = c.get(Calendar.YEAR);
                         int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
                         int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-                        String actualDate = year + "-" + (month+1) + "-" + dayOfMonth;
+                        String dayOfM = "" + dayOfMonth;
+
+                        if (dayOfM.length() == 1) dayOfM = "0" + dayOfM;
+                        String actualDate = year + "-" + (month+1) + "-" + dayOfM;
+
 
 
                         String tema = ap.getNombreTema();
                         String estado = ap.getNombreEstado();
                         String nombreP = ap.getNombreAlumno();
+
+                       // Log.d("tag", fechaI + " "  + " " + horaI + " " + estado + " actualDate" + actualDate);
+
+
                         int idCreador = ap.getCreador();
                         int idAppoint = ap.getId();
 
                         if (estado.equals("Pendiente")){
-                             icon1[0] = R.drawable.ic_nullresource;
+                             icon1[0] = R.drawable.ic_eye;
                             icon2[0] = R.drawable.ic_cross;
                         }
                         else if (estado.equals("Confirmada") && actualDate.equals(fechaI)){

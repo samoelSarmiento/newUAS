@@ -12,13 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/divider"
-        android:textColor="@color/black"
-        android:text="@string/tvSeeRes" />
+        android:text="@string/tvSeeRes"
+        android:textColor="@color/black" />
 
     <ListView
         android:id="@+id/lvObjectives"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 </LinearLayout>

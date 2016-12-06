@@ -170,18 +170,17 @@
 
                     <TextView
                         style="@style/GeneralTextViewsMedium"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="30dp"
+                        android:layout_gravity="center"
                         android:text="Horario de atención:"
-                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="440dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="12dp"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="60dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -252,11 +251,12 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="160dp"
+                    android:layout_marginLeft="@dimen/daddyYankee"
                     android:layout_marginTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
+
                         android:layout_height="wrap_content">
 
                         <LinearLayout
@@ -279,42 +279,42 @@
 
                                 <TextView
                                     android:id="@+id/lu8"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma8"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi8"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju8"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi8"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -322,8 +322,8 @@
                                     android:id="@+id/sa8"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                             </LinearLayout>
@@ -345,49 +345,49 @@
                                     android:id="@+id/lu9"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma9"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi9"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju9"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi9"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa9"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                             </LinearLayout>
@@ -409,32 +409,32 @@
                                     android:id="@+id/lu10"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma10"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi10"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju10"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
@@ -450,10 +450,9 @@
                                     android:id="@+id/sa10"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
-
 
 
                             </LinearLayout>
@@ -475,49 +474,49 @@
                                     android:id="@+id/lu11"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma11"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi11"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju11"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi11"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa11"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                             </LinearLayout>
@@ -537,50 +536,50 @@
                                 <TextView
                                     android:id="@+id/lu12"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma12"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi12"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju12"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi12"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa12"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -602,40 +601,40 @@
                                     android:id="@+id/lu13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -643,8 +642,8 @@
                                     android:id="@+id/sa13"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -665,34 +664,34 @@
 
                                 <TextView
                                     android:id="@+id/lu14"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma14"
-                                    android:text="--"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi14"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju14"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
@@ -708,8 +707,8 @@
                                     android:id="@+id/sa14"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -732,8 +731,8 @@
                                     android:id="@+id/lu15"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
@@ -748,33 +747,33 @@
                                     android:id="@+id/mi15"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju15"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi15"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa15"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -797,49 +796,49 @@
                                     android:id="@+id/lu16"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma16"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi16"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju16"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi16"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa16"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -862,49 +861,49 @@
                                     android:id="@+id/lu17"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma17"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi17"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju17"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi17"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa17"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -926,50 +925,50 @@
                                 <TextView
                                     android:id="@+id/lu18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa18"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -991,50 +990,50 @@
                                 <TextView
                                     android:id="@+id/lu19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa19"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -1056,41 +1055,41 @@
                                 <TextView
                                     android:id="@+id/lu20"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="30dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma20"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="36dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi20"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju20"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi20"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -1098,8 +1097,8 @@
                                     android:id="@+id/sa20"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
@@ -1122,49 +1121,49 @@
                                     android:id="@+id/lu21"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="30dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ma21"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="36dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/mi21"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="40dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ju21"
                                     style="@style/GeneralTextViewsMedium"
                                     android:layout_marginLeft="33dp"
-                                    android:text="--"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/vi21"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 
                                 <TextView
                                     android:id="@+id/sa21"
                                     style="@style/GeneralTextViewsMedium"
-                                    android:text="--"
                                     android:layout_marginLeft="33dp"
                                     android:layout_marginTop="10dp"
+                                    android:text="--"
                                     android:textColor="@color/black" />
 
 

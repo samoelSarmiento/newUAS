@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
-
-
-
-
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_weight="0.9"
         android:layout_width="0dp"
-        android:gravity="center_vertical"
         android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_item_psp_student_meeting_sup_name"
-            android:text="Reunion: "
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
+            android:text="Reunion: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <TextView
-            android:text="Fecha: "
-            android:textSize="18sp"
             android:id="@+id/tv_item_psp_student_meeting_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
+            android:text="Fecha: "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/tv_item_psp_student_meeting_hour"
-            android:text="Hora: "
-            android:textSize="18sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
+            android:text="Hora: "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
 
-
     <ImageView
         android:id="@+id/iv_item_psp_student_meeting_arrow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0.1"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_arrow_lv"/>
-
+        android:src="@drawable/ic_keyboard_arrow_right_black_36dp" />
 
 
 </LinearLayout>

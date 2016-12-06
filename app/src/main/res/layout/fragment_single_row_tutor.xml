@@ -7,8 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -42,15 +42,14 @@
             />
 
         <ImageButton
+            android:id="@+id/icon1SingleRowTuto"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="05dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:id="@+id/icon1SingleRowTuto"
-            android:src="@drawable/ic_check"
-            />
+            android:src="@drawable/ic_check" />
 
         <ImageButton
             android:id="@+id/icon2SingleRowTuto"
@@ -63,15 +62,14 @@
             android:src="@drawable/ic_cross" />
 
 
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="106dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:layout_marginRight="106dp"
         android:orientation="horizontal">
 
         <TextView
@@ -96,8 +94,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -113,6 +111,7 @@
             style="@style/GeneralTextViewsSmall"
             android:layout_marginLeft="10dp"
             android:text="Sugerida"
+            android:background="@drawable/item_shape"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>

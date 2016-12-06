@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toast_layout_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/toast_background_error"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="@dimen/half_divider">
 
     <ImageView
         android:id="@+id/image_toast"
@@ -14,8 +14,7 @@
         android:layout_marginRight="@dimen/half_divider"
         android:layout_weight="0.1"
         android:contentDescription="@string/no_ok"
-        android:src="@drawable/not_ok"
-        />
+        android:src="@drawable/not_ok" />
 
     <TextView
         android:id="@+id/text_toast"

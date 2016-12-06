@@ -8,26 +8,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_item_height">
+        android:layout_height="@dimen/list_item_height"
+        android:background="@drawable/item_shape">
 
         <TextView
             android:id="@+id/tvPeriod"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="0.50"
             android:gravity="center_vertical"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingLeft="@dimen/half_divider"
+            android:paddingRight="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/black" />
 
 
         <TextView
             android:id="@+id/tvPeriodStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="0.50"
             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_36dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_36dp"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider" />
 
     </LinearLayout>
 

@@ -5,13 +5,12 @@
     android:layout_marginTop="@dimen/fragment_top"
     tools:context="uas.pe.edu.pucp.newuas.fragment.PSP_supervisorFragment">
 
-
-
-
     <ListView
         android:id="@+id/lv_psp_supervisors"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/half_divider">
 
     </ListView>
 

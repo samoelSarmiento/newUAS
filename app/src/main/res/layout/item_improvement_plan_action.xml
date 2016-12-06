@@ -7,14 +7,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_shape">
 
         <TextView
             android:id="@+id/tvactionsemester"
             android:layout_width="0dp"
             android:layout_height="@dimen/list_item_height"
             android:layout_weight="0.20"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/half_divider"
+            android:paddingStart="@dimen/half_divider"
+            android:textColor="@color/black" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -25,22 +29,34 @@
             <TextView
                 android:id="@+id/tvactiondesc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/half_divider"
+                android:paddingStart="@dimen/half_divider"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvactionresp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/half_divider"
+                android:paddingStart="@dimen/half_divider"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvactioncomm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/half_divider"
+                android:paddingStart="@dimen/half_divider"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvactionperc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/half_divider"
+                android:paddingStart="@dimen/half_divider"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>

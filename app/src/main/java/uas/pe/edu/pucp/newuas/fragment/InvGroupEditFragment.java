@@ -91,14 +91,15 @@ public class InvGroupEditFragment extends Fragment implements View.OnClickListen
                 String nom = invGroupName.getText().toString();
                 String desc = invGroupDesc.getText().toString();
                 if (!nom.isEmpty() && !desc.isEmpty()) {
+                    InvGroups changedIG = invG;
+                    changedIG.setNombre(invGroupName.getText().toString());
+                    changedIG.setDescripcion(invGroupDesc.getText().toString());
+                    invGroupController.editInvGroup(context,changedIG);/*
                     if (nom.matches(regex) ) {
-                        InvGroups changedIG = invG;
-                        changedIG.setNombre(invGroupName.getText().toString());
-                        changedIG.setDescripcion(invGroupDesc.getText().toString());
-                        invGroupController.editInvGroup(context,changedIG);
+
                     } else {
                         MyToast.makeText(getActivity(), "Solo se aceptan letras", Toast.LENGTH_LONG , MyToast.errorAlert).show();
-                    }
+                    }*/
                 } else {
                     MyToast.makeText(getActivity(), "Verifique los campos vacíos", Toast.LENGTH_LONG,MyToast.errorAlert).show();
                 }

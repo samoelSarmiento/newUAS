@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,26 +80,27 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             spinnerHoras = (Spinner) view.findViewById(R.id.spinnerHora);
             spinnerTemas = (Spinner) view.findViewById(R.id.spinnerTema);
 
+            //KeyListener mKeyListener = txtFecha.getKeyListener();
+            txtFecha.setKeyListener(null);
+
+
             final String [] valorFecha = new String[1], valorHora = new String[1], valorTema = new String[1];
 
             Bundle bundle = this.getArguments();
             List<TUTInfoResponse> tutGroup= null;
             if (bundle != null){
                 tutGroup= (List<TUTInfoResponse>) bundle.getSerializable("Tutoria");
-            }
-
-
-            ndays[0] = tutGroup.get(0).getNumberDays();
-            sir = tutGroup.get(0).getScheduleInfo();
-            smr = tutGroup.get(0).getScheduleMeeting();
-            duracionCita = tutGroup.get(0).getDuracionCita();
-            //sir.get(0).
-            Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH);
-            day = c.get(Calendar.DAY_OF_MONTH);
-            //showDate();
-            gettingMaxTime();
+                ndays[0] = tutGroup.get(0).getNumberDays();
+                sir = tutGroup.get(0).getScheduleInfo();
+                smr = tutGroup.get(0).getScheduleMeeting();
+                duracionCita = tutGroup.get(0).getDuracionCita();
+                //sir.get(0).
+                Calendar c = Calendar.getInstance();
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                //showDate();
+                gettingMaxTime();
 
         /*
             try {
@@ -108,115 +110,119 @@ public class AlumnoNuevaCitaFragment extends Fragment {
             }
          */
 
-            Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
-            s.setAdapter(null);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, NavigationDrawerTutoria.nameTopic);
-            s.setAdapter(adapter);
+                Spinner s = (Spinner) view.findViewById(R.id.spinnerTema);
+                s.setAdapter(null);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, NavigationDrawerTutoria.nameTopic);
+                s.setAdapter(adapter);
 
 
+                valorFecha[0] = txtFecha.getText().toString();
+                valorTema[0] = spinnerTemas.getSelectedItem().toString();
 
-            valorFecha[0] = txtFecha.getText().toString();
-            valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                selectorListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+                        day = i2;
+                        month = i1;
+                        year = i;
+                        String format = "%1$02d";
+                        String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
+                        txtFecha.setText(date);
+                        valorFecha[0] = date.toString();
 
-            selectorListener =  new DatePickerDialog.OnDateSetListener(){
-                @Override
-                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                    day = i2; month = i1; year = i;
-                    String format = "%1$02d";
-                    String date = String.format(format, i2) + "/" + String.format(format, (i1 + 1)) + "/" + i;
-                    txtFecha.setText(date);
-                    valorFecha[0] = date.toString();
+                        Spinner hora = (Spinner) view.findViewById(R.id.spinnerHora);
+                        List<String> horasDispo = obtenerHorasDisponible(sir, smr, duracionCita, date.toString());
+                        hora.setAdapter(null);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, horasDispo);
+                        hora.setAdapter(adapter);
 
-                    Spinner hora = (Spinner) view.findViewById(R.id.spinnerHora);
-                    List<String> horasDispo = obtenerHorasDisponible(sir,smr,duracionCita,date.toString());
-                    hora.setAdapter(null);
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, horasDispo);
-                    hora.setAdapter(adapter);
-
-                }
-            };
-
-            btnCalendar.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
-                            Calendar now = Calendar.getInstance();
-                            //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
-                            d.setMinDate(now);
-                            //Calendar rekt = Calendar.getInstance();
-                            dates = obtenerFechasDisponibles(ndays[0],sir);
-                            Calendar [] cdates =  dates.toArray(new Calendar[dates.size()]);
-                            d.setSelectableDays(cdates);
-                            d.show(getActivity().getFragmentManager(), "Datepickerdialog");
-                        }
                     }
-            );
+                };
 
-
-            btnSolicitar.setOnClickListener(
-
-                    new View.OnClickListener(){
-                        @Override
-
-                        public void onClick(View v) {
-
-
-                            if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
-                                MyToast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG, MyToast.infoAlert).show();
+                btnCalendar.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                DatePickerDialog d = DatePickerDialog.newInstance(selectorListener, year, month, day);
+                                Calendar now = Calendar.getInstance();
+                                //Calendar future = now.add(Calendar.DAY_OF_YEAR,);
+                                d.setMinDate(now);
+                                //Calendar rekt = Calendar.getInstance();
+                                dates = obtenerFechasDisponibles(ndays[0], sir);
+                                Calendar[] cdates = dates.toArray(new Calendar[dates.size()]);
+                                d.setSelectableDays(cdates);
+                                d.show(getActivity().getFragmentManager(), "Datepickerdialog");
                             }
-                            else{
-                                valorHora[0] = spinnerHoras.getSelectedItem().toString();
-                                valorTema[0] = spinnerTemas.getSelectedItem().toString();
-                                solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "¿Desea continuar?";
-                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        switch (which) {
-                                            case DialogInterface.BUTTON_POSITIVE:
-                                                //Borra los shared preferences
-                                                //regresa al login
-                                                break;
+                        }
+                );
 
-                                            case DialogInterface.BUTTON_NEGATIVE:
-                                                //Nada pasa
-                                                break;
-                                        }
-                                    }
-                                };
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
 
-                                    }
-                                }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                                MyToast.makeText(getActivity(), "Se ha registrado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
-                                                TutStudentController tsc = new TutStudentController();
-                                                tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], duracionCita);
+                btnSolicitar.setOnClickListener(
 
+                        new View.OnClickListener() {
+                            @Override
+
+                            public void onClick(View v) {
+
+
+                                if (txtFecha.getText().toString().matches("") || spinnerHoras.getSelectedItem() == null) {
+                                    MyToast.makeText(getActivity(), "Debe rellenar los espacios en blanco!", Toast.LENGTH_LONG, MyToast.infoAlert).show();
+                                } else {
+                                    valorHora[0] = spinnerHoras.getSelectedItem().toString();
+                                    valorTema[0] = spinnerTemas.getSelectedItem().toString();
+                                    solicitud = "Está a punto de confirmar una cita con su tutor para el " + valorFecha[0] + " a las " + valorHora[0] + "¿Desea continuar?";
+                                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            switch (which) {
+                                                case DialogInterface.BUTTON_POSITIVE:
+                                                    //Borra los shared preferences
+                                                    //regresa al login
+                                                    break;
+
+                                                case DialogInterface.BUTTON_NEGATIVE:
+                                                    //Nada pasa
+                                                    break;
                                             }
                                         }
-                                ).show();
+                                    };
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                    builder.setMessage(solicitud).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+
+                                        }
+                                    }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                    MyToast.makeText(getActivity(), "Se ha solicitado una nueva cita", Toast.LENGTH_LONG, MyToast.checkAlert).show();
+                                                    TutStudentController tsc = new TutStudentController();
+                                                    tsc.appointmentRequest(getActivity(), Configuration.LOGIN_USER.getUser().getIdUsuario(), valorFecha[0], valorHora[0], valorTema[0], duracionCita);
+
+                                                }
+                                            }
+                                    ).show();
+                                }
                             }
                         }
-                    }
 
-            );
+                );
 
-        btnCancelar.setOnClickListener(
+                btnCancelar.setOnClickListener(
 
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        TutStudentController tsc = new TutStudentController();
-                        tsc.showTopics(getActivity());
-                    }
-                }
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                TutStudentController tsc = new TutStudentController();
+                                tsc.showTopics(getActivity());
+                            }
+                        }
 
-        );
+                );
+            }
+
+            else
+                Toast.makeText(getActivity(), "Intentelo nuevamente", Toast.LENGTH_LONG).show();
 
 
 
